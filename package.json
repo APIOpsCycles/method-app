@@ -9,12 +9,13 @@
     "node": ">=22.13.0"
   },
   "scripts": {
-    "predev": "npm run build --workspace @apiops/design-system && npm run sync:design-system-assets && npm run sync:method-data",
+    "predev": "npm run prepare:local-data",
     "dev": "vinext dev",
-    "prebuild": "npm run build --workspace @apiops/design-system && npm run sync:design-system-assets && npm run sync:method-data",
+    "prebuild": "npm run prepare:local-data",
     "build": "vinext build",
     "start": "vinext start",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next",
+    "prepare:local-data": "node packages/apiops-design-system/scripts/build.mjs && npm run sync:design-system-assets && npm run sync:method-data",
     "sync:method-data": "node scripts/sync-method-data.mjs",
     "db:generate": "drizzle-kit generate",
     "sync:design-system-assets": "node scripts/sync-design-system-assets.mjs"
