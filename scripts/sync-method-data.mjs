@@ -1618,7 +1618,12 @@ const siteLabelsData = {
 
 const partners = {
   source,
-  items: existsSync(partnerDataFile) ? readJson(partnerDataFile) : [],
+  items: existsSync(partnerDataFile)
+    ? readJson(partnerDataFile).map((partner) => ({
+        ...partner,
+        logo: partner.logo === "/favicon.svg" ? "/design-system/favicons/favicon.svg" : partner.logo,
+      }))
+    : [],
 };
 
 const announcement = existsSync(announcementFile)
