@@ -9,7 +9,7 @@ const categories = ["All", "Material icon", "Method icon", "Journey glyph", "Hum
 const colors = ["All", "strategy", "product", "architecture", "engineering", "operations", "community", "neutral"];
 
 const assetAccentByColor: Record<AssetColor, string> = {
-  strategy: "var(--apiops-accent-strategy)",
+  strategy: "var(--apiops-accent-business)",
   product: "var(--apiops-accent-product)",
   architecture: "var(--apiops-accent-architecture)",
   engineering: "var(--apiops-accent-engineering)",

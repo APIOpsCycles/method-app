@@ -2,20 +2,25 @@
   "name": "site-creator-vinext-starter",
   "version": "0.1.0",
   "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
   "engines": {
     "node": ">=22.13.0"
   },
   "scripts": {
-    "predev": "npm run sync:method-data",
+    "predev": "npm run build --workspace @apiops/design-system && npm run sync:design-system-assets && npm run sync:method-data",
     "dev": "vinext dev",
-    "prebuild": "npm run sync:method-data",
+    "prebuild": "npm run build --workspace @apiops/design-system && npm run sync:design-system-assets && npm run sync:method-data",
     "build": "vinext build",
     "start": "vinext start",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next",
     "sync:method-data": "node scripts/sync-method-data.mjs",
-    "db:generate": "drizzle-kit generate"
+    "db:generate": "drizzle-kit generate",
+    "sync:design-system-assets": "node scripts/sync-design-system-assets.mjs"
   },
   "dependencies": {
+    "@apiops/design-system": "0.1.0",
     "drizzle-orm": "0.45.2",
     "next": "16.2.9",
     "react": "19.2.6",

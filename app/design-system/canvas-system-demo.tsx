@@ -252,7 +252,7 @@ function PresentationCanvas({
           role="img"
           style={{ "--apiops-accent": "var(--canvas-accent)" } as CSSProperties}
         >
-          <use href="/design/humans/apiops-stick-figures-stories.svg#g59" />
+          <use href="/design-system/humans/apiops-stick-figures-stories.svg#g59" />
         </svg>
       </div>
       <div className="ds-canvas-presentation__actions">
