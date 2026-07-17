@@ -36,7 +36,13 @@ yarn-error.log*
 # typescript
 next-env.d.ts
 /dist/
+packages/apiops-design-system/dist/
 /.wrangler/
 /.vinext/
 /work/
 /public/design-system/
+
+# generated method data
+/app/data/*.json
+!/app/data/announcement.json
+/public/data/*.json
