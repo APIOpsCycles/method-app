@@ -1,0 +1,2554 @@
+{
+  "source": {
+    "repository": "https://github.com/APIOpsCycles/apiops-cycles-method-data",
+    "commit": "e17bff8b3f09b9ad26ab4497e339c4658802aaf8"
+  },
+  "locales": [
+    "en",
+    "fi",
+    "fr",
+    "de",
+    "pt"
+  ],
+  "defaultLocale": "en",
+  "translations": {
+    "pt": {
+      "apiBusinessModelCanvas": {
+        "id": "apiBusinessModelCanvas",
+        "title": "Canvas do Modelo de Negócio da API",
+        "purpose": "Qual será a viabilidade e a reutilização desta API? Temos um caso de negócio do ponto de vista de custo-benefício?",
+        "howToUse": "Resuma a proposta de valor de uma API a partir do Canvas da Proposta de Valor da API e siga a sequência numerada.",
+        "layout": {
+          "columns": 5,
+          "rows": 3
+        },
+        "metadata": {
+          "source": "APIOps Cycles",
+          "license": "CC-BY-SA 4.0",
+          "authors": [
+            "Alexander Osterwalder",
+            "Osaango Ltd"
+          ],
+          "website": "www.apiopscycles.com"
+        },
+        "footer": "",
+        "canvasCreatorUrl": "https://canvascreator.apiopscycles.com/?canvas=apiBusinessModelCanvas&locale=pt",
+        "importExportTemplate": {
+          "templateId": "apiBusinessModelCanvas",
+          "locale": "pt",
+          "metadata": {
+            "source": "APIOps Cycles",
+            "license": "CC-BY-SA 4.0",
+            "authors": [
+              "Alexander Osterwalder",
+              "Osaango Ltd"
+            ],
+            "website": "www.apiopscycles.com",
+            "date": "2026-07-17T05:59:44.194Z"
+          },
+          "sections": [
+            {
+              "sectionId": "keyPartners",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "keyActivities",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "keyResources",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "apiValueProposition",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "developerRelations",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "channels",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "apiConsumerSegments",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "costs",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "benefits",
+              "stickyNotes": []
+            }
+          ],
+          "footer": ""
+        },
+        "sections": [
+          {
+            "id": "apiValueProposition",
+            "title": "Proposta de valor da API",
+            "description": "Comece com uma nota adesiva que nomeie a API ou a família de APIs e, em seguida, anote o valor que a API oferece aos seus utilizadores.",
+            "gridPosition": {
+              "column": 2,
+              "row": 0,
+              "colSpan": 1,
+              "rowSpan": 2
+            },
+            "fillOrder": 1,
+            "highlight": true,
+            "journeySteps": false,
+            "defaultNoteColor": "#C0EB6A",
+            "defaultNoteIntent": "benefit"
+          },
+          {
+            "id": "apiConsumerSegments",
+            "title": "Segmentos de utilizadores da API",
+            "description": "Quem é o público-alvo da API?",
+            "gridPosition": {
+              "column": 4,
+              "row": 0,
+              "colSpan": 1,
+              "rowSpan": 2
+            },
+            "fillOrder": 2,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#DFDDC5",
+            "defaultNoteIntent": "neutral"
+          },
+          {
+            "id": "developerRelations",
+            "title": "Relações com programadores",
+            "description": "Como o fornecedor da API alcança e oferece apoio aos utilizadores da API?",
+            "gridPosition": {
+              "column": 3,
+              "row": 0,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 3,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#DFDDC5",
+            "defaultNoteIntent": "neutral"
+          },
+          {
+            "id": "channels",
+            "title": "Canais",
+            "description": "Através de quais mecanismos os utilizadores da API interagem com a API?",
+            "gridPosition": {
+              "column": 3,
+              "row": 1,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 4,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#7DC9E7",
+            "defaultNoteIntent": "task"
+          },
+          {
+            "id": "keyResources",
+            "title": "Recursos-chave",
+            "description": "Que ativos estratégicos exclusivos deve o fornecedor da API adquirir ou construir?",
+            "gridPosition": {
+              "column": 1,
+              "row": 1,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 5,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#DFDDC5",
+            "defaultNoteIntent": "neutral"
+          },
+          {
+            "id": "keyActivities",
+            "title": "Atividades-chave",
+            "description": "Quais são as ações mais importantes que o fornecedor da API deve realizar para operar com sucesso?",
+            "gridPosition": {
+              "column": 1,
+              "row": 0,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 6,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#7DC9E7",
+            "defaultNoteIntent": "task"
+          },
+          {
+            "id": "keyPartners",
+            "title": "Parceiros-chave",
+            "description": "Quem são as principais partes interessadas envolvidas?",
+            "gridPosition": {
+              "column": 0,
+              "row": 0,
+              "colSpan": 1,
+              "rowSpan": 2
+            },
+            "fillOrder": 7,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#DFDDC5",
+            "defaultNoteIntent": "neutral"
+          },
+          {
+            "id": "benefits",
+            "title": "Benefícios",
+            "description": "Quais são os benefícios significativos ou fluxos de receita gerados pela API?",
+            "gridPosition": {
+              "column": 2.5,
+              "row": 2,
+              "colSpan": 2.5,
+              "rowSpan": 1
+            },
+            "fillOrder": 8,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#C0EB6A",
+            "defaultNoteIntent": "benefit"
+          },
+          {
+            "id": "costs",
+            "title": "Custos",
+            "description": "Quais são os custos significativos envolvidos na construção, disponibilização e operação da API?",
+            "gridPosition": {
+              "column": 0,
+              "row": 2,
+              "colSpan": 2.5,
+              "rowSpan": 1
+            },
+            "fillOrder": 9,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#FFAFAF",
+            "defaultNoteIntent": "negative"
+          }
+        ]
+      },
+      "apiValuePropositionCanvas": {
+        "id": "apiValuePropositionCanvas",
+        "title": "Canvas da Proposta de Valor da API",
+        "purpose": "Como a percurso do cliente se relaciona com as APIs? Quais dificuldades e benefícios dos utilizadores finais e utilizadores de API precisam /de ser abordados?",
+        "howToUse": "Descreva a perspetiva dos utilizadores finais, começando pelas suas tarefas, depois as suas dificuldades e benefícios e os dos utilizadores de API e, finalmente, os produtos e funcionalidades da API.",
+        "layout": {
+          "columns": 4,
+          "rows": 3
+        },
+        "metadata": {
+          "source": "APIOps Cycles",
+          "license": "CC-BY-SA 4.0",
+          "authors": [
+            "Alexander Osterwalder",
+            "Osaango Ltd"
+          ],
+          "website": "www.apiopscycles.com"
+        },
+        "footer": "",
+        "canvasCreatorUrl": "https://canvascreator.apiopscycles.com/?canvas=apiValuePropositionCanvas&locale=pt",
+        "importExportTemplate": {
+          "templateId": "apiValuePropositionCanvas",
+          "locale": "pt",
+          "metadata": {
+            "source": "APIOps Cycles",
+            "license": "CC-BY-SA 4.0",
+            "authors": [
+              "Alexander Osterwalder",
+              "Osaango Ltd"
+            ],
+            "website": "www.apiopscycles.com",
+            "date": "2026-07-17T05:59:44.194Z"
+          },
+          "sections": [
+            {
+              "sectionId": "tasks",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "gainEnablingFeatures",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "painRelievingFeatures",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "apiProducts",
+              "stickyNotes": []
+            }
+          ],
+          "footer": ""
+        },
+        "sections": [
+          {
+            "id": "tasks",
+            "title": "Tarefas",
+            "description": "O que os clientes (utilizadores finais) estão a tentar alcançar?",
+            "gridPosition": {
+              "column": 0,
+              "row": 0,
+              "colSpan": 4,
+              "rowSpan": 1
+            },
+            "fillOrder": 1,
+            "highlight": true,
+            "journeySteps": true,
+            "defaultNoteColor": "#7DC9E7",
+            "defaultNoteIntent": "task"
+          },
+          {
+            "id": "gainEnablingFeatures",
+            "title": "Recursos que possibilitam ganhos",
+            "description": "Que funcionalidades permitem que os utilizadores finais e utilizadores de API alcancem ganhos?",
+            "gridPosition": {
+              "column": 0,
+              "row": 1,
+              "colSpan": 2,
+              "rowSpan": 1
+            },
+            "fillOrder": 2,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#C0EB6A",
+            "defaultNoteIntent": "benefit"
+          },
+          {
+            "id": "painRelievingFeatures",
+            "title": "Recursos que aliviam dificuldades",
+            "description": "Que funcionalidades ajudam os utilizadores finais e os utilizadores da API a superar dificuldades?",
+            "gridPosition": {
+              "column": 2,
+              "row": 1,
+              "colSpan": 2,
+              "rowSpan": 1
+            },
+            "fillOrder": 3,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#C0EB6A",
+            "defaultNoteIntent": "benefit"
+          },
+          {
+            "id": "apiProducts",
+            "title": "Produtos API",
+            "description": "Quais produtos e recursos API atendem às tarefas, dificuldades e ganhos?",
+            "gridPosition": {
+              "column": 0,
+              "row": 2,
+              "colSpan": 4,
+              "rowSpan": 1
+            },
+            "fillOrder": 4,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#DFDDC5",
+            "defaultNoteIntent": "neutral"
+          }
+        ]
+      },
+      "businessImpactCanvas": {
+        "id": "businessImpactCanvas",
+        "title": "Canvas de Impacto no Negócio",
+        "purpose": "Quais são os possíveis impactos no negócio da falha da API?",
+        "howToUse": "Considere o impacto potencial na disponibilidade, segurança e dados para cada API.",
+        "layout": {
+          "columns": 3,
+          "rows": 2
+        },
+        "metadata": {
+          "source": "APIOps Cycles",
+          "license": "CC-BY-SA 4.0",
+          "authors": [
+            "Osaango Ltd"
+          ],
+          "website": "www.apiopscycles.com"
+        },
+        "footer": "",
+        "canvasCreatorUrl": "https://canvascreator.apiopscycles.com/?canvas=businessImpactCanvas&locale=pt",
+        "importExportTemplate": {
+          "templateId": "businessImpactCanvas",
+          "locale": "pt",
+          "metadata": {
+            "source": "APIOps Cycles",
+            "license": "CC-BY-SA 4.0",
+            "authors": [
+              "Osaango Ltd"
+            ],
+            "website": "www.apiopscycles.com",
+            "date": "2026-07-17T05:59:44.195Z"
+          },
+          "sections": [
+            {
+              "sectionId": "availabilityRisks",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "securityRisks",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "dataRisks",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "mitigateAvailabilityRisks",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "mitigateSecurityRisks",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "mitigateDataRisks",
+              "stickyNotes": []
+            }
+          ],
+          "footer": ""
+        },
+        "sections": [
+          {
+            "id": "availabilityRisks",
+            "title": "Riscos de disponibilidade",
+            "description": "Quais são os riscos potenciais para a disponibilidade da API?",
+            "gridPosition": {
+              "column": 0,
+              "row": 0,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 1,
+            "highlight": true,
+            "journeySteps": false,
+            "defaultNoteColor": "#FFAFAF",
+            "defaultNoteIntent": "negative"
+          },
+          {
+            "id": "mitigateAvailabilityRisks",
+            "title": "Mitigar riscos de disponibilidade",
+            "description": "Como o fornecedor da API pode mitigar os riscos de disponibilidade?",
+            "gridPosition": {
+              "column": 0,
+              "row": 1,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 2,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#7DC9E7",
+            "defaultNoteIntent": "task"
+          },
+          {
+            "id": "securityRisks",
+            "title": "Riscos de segurança",
+            "description": "Quais são os riscos potenciais de segurança associados à API?",
+            "gridPosition": {
+              "column": 1,
+              "row": 0,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 3,
+            "highlight": true,
+            "journeySteps": false,
+            "defaultNoteColor": "#FFAFAF",
+            "defaultNoteIntent": "negative"
+          },
+          {
+            "id": "mitigateSecurityRisks",
+            "title": "Mitigar riscos de segurança",
+            "description": "Como o fornecedor da API pode mitigar os riscos de segurança?",
+            "gridPosition": {
+              "column": 1,
+              "row": 1,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 4,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#7DC9E7",
+            "defaultNoteIntent": "task"
+          },
+          {
+            "id": "dataRisks",
+            "title": "Riscos de dados",
+            "description": "Quais são os riscos potenciais para a integridade ou confidencialidade dos dados?",
+            "gridPosition": {
+              "column": 2,
+              "row": 0,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 5,
+            "highlight": true,
+            "journeySteps": false,
+            "defaultNoteColor": "#FFAFAF",
+            "defaultNoteIntent": "negative"
+          },
+          {
+            "id": "mitigateDataRisks",
+            "title": "Mitigar riscos de dados",
+            "description": "Como o fornecedor da API pode mitigar os riscos de dados?",
+            "gridPosition": {
+              "column": 2,
+              "row": 1,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 6,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#7DC9E7",
+            "defaultNoteIntent": "task"
+          }
+        ]
+      },
+      "capacityCanvas": {
+        "id": "capacityCanvas",
+        "title": "Canvas de Capacidade",
+        "purpose": "Quanta capacidade é necessária para suportar o consumo da API?",
+        "howToUse": "Analise os requisitos de capacidade atuais e futuros para cada API.",
+        "layout": {
+          "columns": 3,
+          "rows": 3
+        },
+        "metadata": {
+          "source": "APIOps Cycles",
+          "license": "CC-BY-SA 4.0",
+          "authors": [
+            "Osaango Ltd"
+          ],
+          "website": "www.apiopscycles.com"
+        },
+        "footer": "",
+        "canvasCreatorUrl": "https://canvascreator.apiopscycles.com/?canvas=capacityCanvas&locale=pt",
+        "importExportTemplate": {
+          "templateId": "capacityCanvas",
+          "locale": "pt",
+          "metadata": {
+            "source": "APIOps Cycles",
+            "license": "CC-BY-SA 4.0",
+            "authors": [
+              "Osaango Ltd"
+            ],
+            "website": "www.apiopscycles.com",
+            "date": "2026-07-17T05:59:44.195Z"
+          },
+          "sections": [
+            {
+              "sectionId": "currentBusinessVolumes",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "futureConsumptionTrends",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "peakLoadAndAvailabilityRequirements",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "cachingStrategies",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "rateLimitingStrategies",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "scalingStrategies",
+              "stickyNotes": []
+            }
+          ],
+          "footer": ""
+        },
+        "sections": [
+          {
+            "id": "currentBusinessVolumes",
+            "title": "Volumes de negócio atuais",
+            "description": "Quais são os volumes de negócio e as taxas de transação atuais?",
+            "gridPosition": {
+              "column": 0,
+              "row": 0,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 1,
+            "highlight": true,
+            "journeySteps": false,
+            "defaultNoteColor": "#DFDDC5",
+            "defaultNoteIntent": "neutral"
+          },
+          {
+            "id": "futureConsumptionTrends",
+            "title": "Tendências de consumo futuro",
+            "description": "Quais são as tendências de consumo futuro previstas?",
+            "gridPosition": {
+              "column": 1,
+              "row": 0,
+              "colSpan": 2,
+              "rowSpan": 1
+            },
+            "fillOrder": 2,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#DFDDC5",
+            "defaultNoteIntent": "neutral"
+          },
+          {
+            "id": "peakLoadAndAvailabilityRequirements",
+            "title": "Requisitos de pico de carga e disponibilidade",
+            "description": "Quais são os requisitos de pico de carga e disponibilidade?",
+            "gridPosition": {
+              "column": 0,
+              "row": 1,
+              "colSpan": 3,
+              "rowSpan": 1
+            },
+            "fillOrder": 3,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#DFDDC5",
+            "defaultNoteIntent": "neutral"
+          },
+          {
+            "id": "cachingStrategies",
+            "title": "Estratégias de cache",
+            "description": "Quais estratégias de cache podem ser usadas para otimizar o desempenho?",
+            "gridPosition": {
+              "column": 0,
+              "row": 2,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 4,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#7DC9E7",
+            "defaultNoteIntent": "task"
+          },
+          {
+            "id": "rateLimitingStrategies",
+            "title": "Estratégias de limitação de pedidos",
+            "description": "Que estratégias de limitação de pedidos podem ser usadas para gerir o consumo?",
+            "gridPosition": {
+              "column": 1,
+              "row": 2,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 5,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#7DC9E7",
+            "defaultNoteIntent": "task"
+          },
+          {
+            "id": "scalingStrategies",
+            "title": "Estratégias de dimensionamento",
+            "description": "Que estratégias de dimensionamento podem ser usadas para acomodar o crescimento?",
+            "gridPosition": {
+              "column": 2,
+              "row": 2,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 6,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#7DC9E7",
+            "defaultNoteIntent": "task"
+          }
+        ]
+      },
+      "customerJourneyCanvas": {
+        "id": "customerJourneyCanvas",
+        "title": "Canvas do Percurso do Cliente",
+        "purpose": "Qual é a percurso do cliente ou parceiro que a API pretende apoiar?",
+        "howToUse": "Descreva uma percurso real de um cliente ou utilizador — não o uso da API — para revelar pontos fracos, objetivos e contexto. Esta informação ajuda a definir que tipo de apoio de API será realmente necessário mais tarde.",
+        "layout": {
+          "columns": 5,
+          "rows": 4
+        },
+        "metadata": {
+          "source": "APIOps Cycles",
+          "license": "CC-BY-SA 4.0",
+          "authors": [
+            "Osaango Ltd"
+          ],
+          "website": "www.apiopscycles.com"
+        },
+        "footer": "",
+        "canvasCreatorUrl": "https://canvascreator.apiopscycles.com/?canvas=customerJourneyCanvas&locale=pt",
+        "importExportTemplate": {
+          "templateId": "customerJourneyCanvas",
+          "locale": "pt",
+          "metadata": {
+            "source": "APIOps Cycles",
+            "license": "CC-BY-SA 4.0",
+            "authors": [
+              "Osaango Ltd"
+            ],
+            "website": "www.apiopscycles.com",
+            "date": "2026-07-17T05:59:44.196Z"
+          },
+          "sections": [
+            {
+              "sectionId": "customerDiscoversNeed",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "persona",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "pains",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "journeySteps",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "customerNeedIsResolved",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "gains",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "inputsOutputs",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "interactionProcessingRules",
+              "stickyNotes": []
+            }
+          ],
+          "footer": ""
+        },
+        "sections": [
+          {
+            "id": "persona",
+            "title": "Persona",
+            "description": "Quem é o cliente típico que passa por esta percurso?",
+            "gridPosition": {
+              "column": 1,
+              "row": 0,
+              "colSpan": 3,
+              "rowSpan": 1
+            },
+            "fillOrder": 1,
+            "highlight": true,
+            "journeySteps": false,
+            "defaultNoteColor": "#DFDDC5",
+            "defaultNoteIntent": "neutral"
+          },
+          {
+            "id": "customerDiscoversNeed",
+            "title": "O cliente descobre a necessidade",
+            "description": "Como o cliente reconhece sua necessidade ou problema?",
+            "gridPosition": {
+              "column": 0,
+              "row": 0,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 2,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#DFDDC5",
+            "defaultNoteIntent": "neutral"
+          },
+          {
+            "id": "customerNeedIsResolved",
+            "title": "Necessidade do cliente resolvida",
+            "description": "Como a necessidade do cliente é resolvida no final?",
+            "gridPosition": {
+              "column": 4,
+              "row": 0,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 3,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#C0EB6A",
+            "defaultNoteIntent": "benefit"
+          },
+          {
+            "id": "journeySteps",
+            "title": "Etapas da percurso",
+            "description": "Quais são as etapas que o cliente percorre em sua percurso?",
+            "gridPosition": {
+              "column": 1,
+              "row": 1,
+              "colSpan": 3,
+              "rowSpan": 2
+            },
+            "fillOrder": 4,
+            "highlight": false,
+            "journeySteps": true,
+            "defaultNoteColor": "#7DC9E7",
+            "defaultNoteIntent": "task"
+          },
+          {
+            "id": "pains",
+            "title": "Dores",
+            "description": "Quais são os pontos fracos ou desafios do cliente?",
+            "gridPosition": {
+              "column": 0,
+              "row": 1,
+              "colSpan": 1,
+              "rowSpan": 2
+            },
+            "fillOrder": 5,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#FFAFAF",
+            "defaultNoteIntent": "negative"
+          },
+          {
+            "id": "gains",
+            "title": "Ganhos",
+            "description": "Quais são os ganhos ou benefícios do cliente?",
+            "gridPosition": {
+              "column": 4,
+              "row": 1,
+              "colSpan": 1,
+              "rowSpan": 2
+            },
+            "fillOrder": 6,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#C0EB6A",
+            "defaultNoteIntent": "benefit"
+          },
+          {
+            "id": "inputsOutputs",
+            "title": "Entradas e saídas",
+            "description": "Quais são as entradas e saídas em cada etapa?",
+            "gridPosition": {
+              "column": 0.5,
+              "row": 3,
+              "colSpan": 2,
+              "rowSpan": 1
+            },
+            "fillOrder": 7,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#DFDDC5",
+            "defaultNoteIntent": "neutral"
+          },
+          {
+            "id": "interactionProcessingRules",
+            "title": "Regras de interação e processamento",
+            "description": "Quais são as regras de interação e processamento em cada etapa?",
+            "gridPosition": {
+              "column": 2.5,
+              "row": 3,
+              "colSpan": 2,
+              "rowSpan": 1
+            },
+            "fillOrder": 8,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#DFDDC5",
+            "defaultNoteIntent": "neutral"
+          }
+        ]
+      },
+      "domainCanvas": {
+        "id": "domainCanvas",
+        "title": "Canvas de Domínio",
+        "purpose": "Quais são as entidades principais e as regras de negócio relacionadas com a API?",
+        "howToUse": "Defina o modelo de domínio para cada API, incluindo entidades, atributos e relações.",
+        "layout": {
+          "columns": 2,
+          "rows": 4
+        },
+        "metadata": {
+          "source": "APIOps Cycles",
+          "license": "CC-BY-SA 4.0",
+          "authors": [
+            "Osaango Ltd"
+          ],
+          "website": "www.apiopscycles.com"
+        },
+        "footer": "",
+        "canvasCreatorUrl": "https://canvascreator.apiopscycles.com/?canvas=domainCanvas&locale=pt",
+        "importExportTemplate": {
+          "templateId": "domainCanvas",
+          "locale": "pt",
+          "metadata": {
+            "source": "APIOps Cycles",
+            "license": "CC-BY-SA 4.0",
+            "authors": [
+              "Osaango Ltd"
+            ],
+            "website": "www.apiopscycles.com",
+            "date": "2026-07-17T05:59:44.196Z"
+          },
+          "sections": [
+            {
+              "sectionId": "selectedCustomerJourneySteps",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "coreEntitiesAndBusinessMeaning",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "attributesAndBusinessImportance",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "relationshipsBetweenEntities",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "businessComplianceAndIntegrityRules",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "securityAndPrivacyConsiderations",
+              "stickyNotes": []
+            }
+          ],
+          "footer": ""
+        },
+        "sections": [
+          {
+            "id": "selectedCustomerJourneySteps",
+            "title": "Etapas selecionadas da percurso do cliente",
+            "description": "Quais etapas da percurso do cliente são relevantes para este domínio?",
+            "gridPosition": {
+              "column": 0,
+              "row": 0,
+              "colSpan": 2,
+              "rowSpan": 1
+            },
+            "fillOrder": 1,
+            "highlight": true,
+            "journeySteps": true,
+            "defaultNoteColor": "#7DC9E7",
+            "defaultNoteIntent": "task"
+          },
+          {
+            "id": "coreEntitiesAndBusinessMeaning",
+            "title": "Entidades principais e significado de negócio",
+            "description": "Quais são as entidades principais e seu significado de negócio?",
+            "gridPosition": {
+              "column": 0,
+              "row": 1,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 2,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#DFDDC5",
+            "defaultNoteIntent": "neutral"
+          },
+          {
+            "id": "attributesAndBusinessImportance",
+            "title": "Atributos e importância de negócio",
+            "description": "Quais são os principais atributos de cada entidade e sua importância de negócio?",
+            "gridPosition": {
+              "column": 1,
+              "row": 1,
+              "colSpan": 1,
+              "rowSpan": 2
+            },
+            "fillOrder": 3,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#DFDDC5",
+            "defaultNoteIntent": "neutral"
+          },
+          {
+            "id": "relationshipsBetweenEntities",
+            "title": "Relações entre entidades",
+            "description": "Quais são as relações entre as entidades?",
+            "gridPosition": {
+              "column": 0,
+              "row": 2,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 4,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#DFDDC5",
+            "defaultNoteIntent": "neutral"
+          },
+          {
+            "id": "businessComplianceAndIntegrityRules",
+            "title": "Regras de negócio, conformidade e integridade",
+            "description": "Quais são as regras de negócio, conformidade e integridade relacionadas com as entidades?",
+            "gridPosition": {
+              "column": 0,
+              "row": 3,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 5,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#DFDDC5",
+            "defaultNoteIntent": "neutral"
+          },
+          {
+            "id": "securityAndPrivacyConsiderations",
+            "title": "Considerações sobre segurança e privacidade",
+            "description": "Quais são as considerações sobre segurança e privacidade relacionadas com as entidades?",
+            "gridPosition": {
+              "column": 1,
+              "row": 3,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 6,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#FFAFAF",
+            "defaultNoteIntent": "negative"
+          }
+        ]
+      },
+      "eventCanvas": {
+        "id": "eventCanvas",
+        "title": "Canvas de Eventos",
+        "purpose": "Quais eventos são relevantes para a API e como são processados?",
+        "howToUse": "Defina os eventos, os seus acionadores e a lógica de processamento para cada API.",
+        "layout": {
+          "columns": 4,
+          "rows": 3
+        },
+        "metadata": {
+          "source": "APIOps Cycles",
+          "license": "CC-BY-SA 4.0",
+          "authors": [
+            "Osaango Ltd"
+          ],
+          "website": "www.apiopscycles.com"
+        },
+        "footer": "",
+        "canvasCreatorUrl": "https://canvascreator.apiopscycles.com/?canvas=eventCanvas&locale=pt",
+        "importExportTemplate": {
+          "templateId": "eventCanvas",
+          "locale": "pt",
+          "metadata": {
+            "source": "APIOps Cycles",
+            "license": "CC-BY-SA 4.0",
+            "authors": [
+              "Osaango Ltd"
+            ],
+            "website": "www.apiopscycles.com",
+            "date": "2026-07-17T05:59:44.197Z"
+          },
+          "sections": [
+            {
+              "sectionId": "userTaskTrigger",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "inputEventPayload",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "processingLogic",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "outputEventResult",
+              "stickyNotes": []
+            }
+          ],
+          "footer": ""
+        },
+        "sections": [
+          {
+            "id": "userTaskTrigger",
+            "title": "Tarefa do utilizador/gatilho",
+            "description": "Que ação do utilizador ou evento do sistema aciona esta operação de evento?",
+            "gridPosition": {
+              "column": 0,
+              "row": 0,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 1,
+            "highlight": true,
+            "journeySteps": false,
+            "defaultNoteColor": "#7DC9E7",
+            "defaultNoteIntent": "task"
+          },
+          {
+            "id": "inputEventPayload",
+            "title": "Entrada / Carga útil do evento",
+            "description": "Que dados estão incluídos na carga útil do evento recebido? Especifique os atributos principais.",
+            "gridPosition": {
+              "column": 0,
+              "row": 1,
+              "colSpan": 1,
+              "rowSpan": 2
+            },
+            "fillOrder": 2,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#DFDDC5",
+            "defaultNoteIntent": "neutral"
+          },
+          {
+            "id": "processingLogic",
+            "title": "Processamento/Lógica",
+            "description": "Descreva a lógica de processamento de back-end, incluindo validações, transformações ou decisões de encaminhamento.",
+            "gridPosition": {
+              "column": 1,
+              "row": 1,
+              "colSpan": 2,
+              "rowSpan": 2
+            },
+            "fillOrder": 3,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#DFDDC5",
+            "defaultNoteIntent": "neutral"
+          },
+          {
+            "id": "outputEventResult",
+            "title": "Saída/Resultado do evento",
+            "description": "Que evento ou confirmação resultante é produzido? Inclua atributos da carga útil de saída.",
+            "gridPosition": {
+              "column": 3,
+              "row": 1,
+              "colSpan": 1,
+              "rowSpan": 2
+            },
+            "fillOrder": 4,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#C0EB6A",
+            "defaultNoteIntent": "benefit"
+          }
+        ]
+      },
+      "interactionCanvas": {
+        "id": "interactionCanvas",
+        "title": "Canvas de Interação",
+        "purpose": "Que tipos de interações esta API deve suportar antes de escolher uma conceção específica para o protocolo?",
+        "howToUse": "Identifique que estilos de interação são realmente necessários para esta API e quais estão fora do âmbito. Utilize este canvas para esclarecer a intenção antes de mapear o resultado para REST, eventos ou GraphQL.",
+        "layout": {
+          "columns": 4,
+          "rows": 3
+        },
+        "metadata": {
+          "source": "APIOps Cycles",
+          "license": "CC-BY-SA 4.0",
+          "authors": [
+            "Osaango Ltd"
+          ],
+          "website": "www.apiopscycles.com"
+        },
+        "footer": "",
+        "canvasCreatorUrl": "https://canvascreator.apiopscycles.com/?canvas=interactionCanvas&locale=pt",
+        "importExportTemplate": {
+          "templateId": "interactionCanvas",
+          "locale": "pt",
+          "metadata": {
+            "source": "APIOps Cycles",
+            "license": "CC-BY-SA 4.0",
+            "authors": [
+              "Osaango Ltd"
+            ],
+            "website": "www.apiopscycles.com",
+            "date": "2026-07-17T05:59:44.197Z"
+          },
+          "sections": [
+            {
+              "sectionId": "crudInteractions",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "crudInputOutputModels",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "crudProcessingValidation",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "queryDrivenInteractions",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "queryDrivenInputOutputModels",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "queryDrivenProcessingValidation",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "commandDrivenInteractions",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "commandDrivenInputOutputModels",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "commandDrivenProcessingValidation",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "eventDrivenInteractions",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "eventDrivenInputOutputModels",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "eventDrivenProcessingValidation",
+              "stickyNotes": []
+            }
+          ],
+          "footer": ""
+        },
+        "sections": [
+          {
+            "id": "crudInteractions",
+            "title": "Interações CRUD",
+            "description": "As interações do tipo CRUD (Criar, Ler, Atualizar, Eliminar) são necessárias aqui?",
+            "gridPosition": {
+              "column": 0,
+              "row": 0,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 1,
+            "highlight": true,
+            "journeySteps": false,
+            "defaultNoteColor": "#7DC9E7",
+            "defaultNoteIntent": "task"
+          },
+          {
+            "id": "crudInputOutputModels",
+            "title": "Modelos de entrada e saída CRUD",
+            "description": "Quais são os modelos de entrada e saída para as interações CRUD, caso esse estilo seja necessário?",
+            "gridPosition": {
+              "column": 0,
+              "row": 1,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 2,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#DFDDC5",
+            "defaultNoteIntent": "neutral"
+          },
+          {
+            "id": "crudProcessingValidation",
+            "title": "Processamento e validação CRUD",
+            "description": "Quais são as regras de processamento e validação para as interações CRUD, caso esse estilo seja necessário?",
+            "gridPosition": {
+              "column": 0,
+              "row": 2,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 3,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#DFDDC5",
+            "defaultNoteIntent": "neutral"
+          },
+          {
+            "id": "queryDrivenInteractions",
+            "title": "Interações orientadas por consulta",
+            "description": "Quais interações de leitura ou consulta são necessárias para responder às perguntas dos utilizadores?",
+            "gridPosition": {
+              "column": 1,
+              "row": 0,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 4,
+            "highlight": true,
+            "journeySteps": false,
+            "defaultNoteColor": "#7DC9E7",
+            "defaultNoteIntent": "task"
+          },
+          {
+            "id": "queryDrivenInputOutputModels",
+            "title": "Modelos de entrada e saída orientados por consulta",
+            "description": "Quais são os modelos de entrada e saída para as interações orientadas por consulta?",
+            "gridPosition": {
+              "column": 1,
+              "row": 1,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 5,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#DFDDC5",
+            "defaultNoteIntent": "neutral"
+          },
+          {
+            "id": "queryDrivenProcessingValidation",
+            "title": "Processamento e validação orientados por consulta",
+            "description": "Quais são as regras de processamento e validação para as interações orientadas por consulta?",
+            "gridPosition": {
+              "column": 1,
+              "row": 2,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 6,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#DFDDC5",
+            "defaultNoteIntent": "neutral"
+          },
+          {
+            "id": "commandDrivenInteractions",
+            "title": "Interações orientadas por comando",
+            "description": "Quais comandos de alteração de estado são necessários, se houver?",
+            "gridPosition": {
+              "column": 2,
+              "row": 0,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 7,
+            "highlight": true,
+            "journeySteps": false,
+            "defaultNoteColor": "#7DC9E7",
+            "defaultNoteIntent": "task"
+          },
+          {
+            "id": "commandDrivenInputOutputModels",
+            "title": "Modelos de entrada e saída orientados por comando",
+            "description": "Quais são os modelos de entrada e saída para as interações orientadas por comando, caso esse estilo seja necessário?",
+            "gridPosition": {
+              "column": 2,
+              "row": 1,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 8,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#DFDDC5",
+            "defaultNoteIntent": "neutral"
+          },
+          {
+            "id": "commandDrivenProcessingValidation",
+            "title": "Processamento e validação orientados por comando",
+            "description": "Quais são as regras de processamento e validação para as interações orientadas por comando, caso esse estilo seja necessário?",
+            "gridPosition": {
+              "column": 2,
+              "row": 2,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 9,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#DFDDC5",
+            "defaultNoteIntent": "neutral"
+          },
+          {
+            "id": "eventDrivenInteractions",
+            "title": "Interações orientadas por eventos",
+            "description": "Quais eventos precisam /de ser publicados ou consumidos, se houver?",
+            "gridPosition": {
+              "column": 3,
+              "row": 0,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 10,
+            "highlight": true,
+            "journeySteps": false,
+            "defaultNoteColor": "#7DC9E7",
+            "defaultNoteIntent": "task"
+          },
+          {
+            "id": "eventDrivenInputOutputModels",
+            "title": "Modelos de entrada e saída orientados por eventos",
+            "description": "Quais são os modelos de entrada e saída para as interações orientadas a eventos, caso esse estilo seja necessário?",
+            "gridPosition": {
+              "column": 3,
+              "row": 1,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 11,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#DFDDC5",
+            "defaultNoteIntent": "neutral"
+          },
+          {
+            "id": "eventDrivenProcessingValidation",
+            "title": "Processamento e validação orientados por eventos",
+            "description": "Quais são as regras de processamento e validação para as interações orientadas por eventos, caso esse estilo seja necessário?",
+            "gridPosition": {
+              "column": 3,
+              "row": 2,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 12,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#DFDDC5",
+            "defaultNoteIntent": "neutral"
+          }
+        ]
+      },
+      "locationsCanvas": {
+        "id": "locationsCanvas",
+        "title": "Canvas de Localizações",
+        "purpose": "Que fronteiras geopolíticas, regulamentares, de rede e de confiança afetam esta API?",
+        "howToUse": "Identifique onde os utilizadores, fornecedores e sistemas dependentes da API operam em redes internas, redes de parceiros, internet pública e regiões regulamentadas. Descreva as implicações de latência, confiança, conformidade e conectividade entre eles.",
+        "layout": {
+          "columns": 4,
+          "rows": 2
+        },
+        "metadata": {
+          "source": "APIOps Cycles",
+          "license": "CC-BY-SA 4.0",
+          "authors": [
+            "Osaango Ltd"
+          ],
+          "website": "www.apiopscycles.com"
+        },
+        "footer": "",
+        "canvasCreatorUrl": "https://canvascreator.apiopscycles.com/?canvas=locationsCanvas&locale=pt",
+        "importExportTemplate": {
+          "templateId": "locationsCanvas",
+          "locale": "pt",
+          "metadata": {
+            "source": "APIOps Cycles",
+            "license": "CC-BY-SA 4.0",
+            "authors": [
+              "Osaango Ltd"
+            ],
+            "website": "www.apiopscycles.com",
+            "date": "2026-07-17T05:59:44.198Z"
+          },
+          "sections": [
+            {
+              "sectionId": "locationGroups",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "locationGroupCharacteristics",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "locations",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "locationCharacteristics",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "locationDistances",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "locationDistanceCharacteristics",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "locationEndpoints",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "locationEndpointCharacteristics",
+              "stickyNotes": []
+            }
+          ],
+          "footer": ""
+        },
+        "sections": [
+          {
+            "id": "locationGroups",
+            "title": "Grupos de Localização / Confiança",
+            "description": "Quais são os grupos geopolíticos, regulamentares, de rede ou de confiança relevantes?",
+            "gridPosition": {
+              "column": 0,
+              "row": 0,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 1,
+            "highlight": true,
+            "journeySteps": false,
+            "defaultNoteColor": "#DFDDC5",
+            "defaultNoteIntent": "neutral"
+          },
+          {
+            "id": "locationGroupCharacteristics",
+            "title": "Características do grupo",
+            "description": "Quais são as características desses grupos, como residência, nível de confiança ou exposição de rede?",
+            "gridPosition": {
+              "column": 0,
+              "row": 1,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 2,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#DFDDC5",
+            "defaultNoteIntent": "neutral"
+          },
+          {
+            "id": "locations",
+            "title": "Locais / Zonas Relevantes",
+            "description": "Quais são os locais, zonas ou ambientes relevantes dentro de cada grupo?",
+            "gridPosition": {
+              "column": 1,
+              "row": 0,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 3,
+            "highlight": true,
+            "journeySteps": false,
+            "defaultNoteColor": "#DFDDC5",
+            "defaultNoteIntent": "neutral"
+          },
+          {
+            "id": "locationCharacteristics",
+            "title": "Características de localização / zona",
+            "description": "Quais são as características dessas localizações ou zonas, tais como propriedade, região ou exposição?",
+            "gridPosition": {
+              "column": 1,
+              "row": 1,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 4,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#DFDDC5",
+            "defaultNoteIntent": "neutral"
+          },
+          {
+            "id": "locationDistances",
+            "title": "Distâncias de Rede / Regulatórias",
+            "description": "Que distâncias de latência, confiança, regulatórias ou de conectividade existem entre os locais?",
+            "gridPosition": {
+              "column": 2,
+              "row": 0,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 5,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#FFAFAF",
+            "defaultNoteIntent": "negative"
+          },
+          {
+            "id": "locationDistanceCharacteristics",
+            "title": "Características da Distância",
+            "description": "Quais são as características dessas distâncias, como sensibilidade à latência, restrições de residência ou limites de confiança?",
+            "gridPosition": {
+              "column": 2,
+              "row": 1,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 6,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#DFDDC5",
+            "defaultNoteIntent": "neutral"
+          },
+          {
+            "id": "locationEndpoints",
+            "title": "Pontos de extremidade de conectividade",
+            "description": "Quais pontos de extremidade ou interfaces de conectividade estão associados aos locais?",
+            "gridPosition": {
+              "column": 3,
+              "row": 0,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 7,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#DFDDC5",
+            "defaultNoteIntent": "neutral"
+          },
+          {
+            "id": "locationEndpointCharacteristics",
+            "title": "Características de acesso aos pontos de extremidade",
+            "description": "Quais são as características desses pontos de extremidade, tais como exposição, protocolo, segurança ou restrições de acesso?",
+            "gridPosition": {
+              "column": 3,
+              "row": 1,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 8,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#DFDDC5",
+            "defaultNoteIntent": "neutral"
+          }
+        ]
+      },
+      "restCanvas": {
+        "id": "restCanvas",
+        "title": "Canvas REST",
+        "purpose": "Como a API pode ser concebida utilizando os princípios RESTful?",
+        "howToUse": "Defina os recursos, verbos e exemplos de pedidos e respostas da API.",
+        "layout": {
+          "columns": 4,
+          "rows": 3
+        },
+        "metadata": {
+          "source": "APIOps Cycles",
+          "license": "CC-BY-SA 4.0",
+          "authors": [
+            "Osaango Ltd"
+          ],
+          "website": "www.apiopscycles.com"
+        },
+        "footer": "",
+        "canvasCreatorUrl": "https://canvascreator.apiopscycles.com/?canvas=restCanvas&locale=pt",
+        "importExportTemplate": {
+          "templateId": "restCanvas",
+          "locale": "pt",
+          "metadata": {
+            "source": "APIOps Cycles",
+            "license": "CC-BY-SA 4.0",
+            "authors": [
+              "Osaango Ltd"
+            ],
+            "website": "www.apiopscycles.com",
+            "date": "2026-07-17T05:59:44.198Z"
+          },
+          "sections": [
+            {
+              "sectionId": "apiResources",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "apiResourceModel",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "apiVerbs",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "apiVerbExample",
+              "stickyNotes": []
+            }
+          ],
+          "footer": ""
+        },
+        "sections": [
+          {
+            "id": "apiResources",
+            "title": "Recursos da API",
+            "description": "Quais são os principais recursos expostos pela API?",
+            "gridPosition": {
+              "column": 0,
+              "row": 0,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 1,
+            "highlight": true,
+            "journeySteps": false,
+            "defaultNoteColor": "#DFDDC5",
+            "defaultNoteIntent": "neutral"
+          },
+          {
+            "id": "apiResourceModel",
+            "title": "Modelo de recurso da API",
+            "description": "Qual é a estrutura do modelo de recurso da API?",
+            "gridPosition": {
+              "column": 0,
+              "row": 1,
+              "colSpan": 1,
+              "rowSpan": 2
+            },
+            "fillOrder": 2,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#DFDDC5",
+            "defaultNoteIntent": "neutral"
+          },
+          {
+            "id": "apiVerbs",
+            "title": "Verbos da API",
+            "description": "Quais verbos HTTP são usados para interagir com os recursos da API?",
+            "gridPosition": {
+              "column": 1,
+              "row": 0,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 3,
+            "highlight": true,
+            "journeySteps": false,
+            "defaultNoteColor": "#7DC9E7",
+            "defaultNoteIntent": "task"
+          },
+          {
+            "id": "apiVerbExample",
+            "title": "Exemplo de verbo da API",
+            "description": "Forneça um exemplo de pedido e resposta da API para cada verbo.",
+            "gridPosition": {
+              "column": 1,
+              "row": 1,
+              "colSpan": 3,
+              "rowSpan": 2
+            },
+            "fillOrder": 4,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#7DC9E7",
+            "defaultNoteIntent": "task"
+          }
+        ]
+      },
+      "graphqlCanvas": {
+        "id": "graphqlCanvas",
+        "title": "Canvas GraphQL",
+        "purpose": "Como a API pode ser concebida utilizando os princípios do GraphQL?",
+        "howToUse": "Defina os tipos-chave, consultas, mutações e restrições para a sua API GraphQL.",
+        "layout": {
+          "columns": 4,
+          "rows": 3
+        },
+        "metadata": {
+          "source": "APIOps Cycles",
+          "license": "CC-BY-SA 4.0",
+          "authors": [
+            "Osaango Ltd"
+          ],
+          "website": "www.apiopscycles.com"
+        },
+        "footer": "",
+        "canvasCreatorUrl": "https://canvascreator.apiopscycles.com/?canvas=graphqlCanvas&locale=pt",
+        "importExportTemplate": {
+          "templateId": "graphqlCanvas",
+          "locale": "pt",
+          "metadata": {
+            "source": "APIOps Cycles",
+            "license": "CC-BY-SA 4.0",
+            "authors": [
+              "Osaango Ltd"
+            ],
+            "website": "www.apiopscycles.com",
+            "date": "2026-07-17T05:59:44.199Z"
+          },
+          "sections": [
+            {
+              "sectionId": "apiName",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "consumerGoals",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "keyTypes",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "relationships",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "queries",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "mutations",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "subscriptions",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "authorizationRules",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "consumerConstraints",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "openQuestions",
+              "stickyNotes": []
+            }
+          ],
+          "footer": ""
+        },
+        "sections": [
+          {
+            "id": "apiName",
+            "title": "Nome da API",
+            "description": "Qual é o nome da API GraphQL ou do endpoint?",
+            "gridPosition": {
+              "column": 0,
+              "row": 0,
+              "colSpan": 2,
+              "rowSpan": 1
+            },
+            "fillOrder": 1,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#FFF399",
+            "defaultNoteIntent": "default"
+          },
+          {
+            "id": "consumerGoals",
+            "title": "Objetivos do utilizador",
+            "description": "Que problemas os utilizadores da API estão a tentar resolver? De que dados precisam?",
+            "gridPosition": {
+              "column": 2,
+              "row": 0,
+              "colSpan": 2,
+              "rowSpan": 1
+            },
+            "fillOrder": 2,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#C0EB6A",
+            "defaultNoteIntent": "benefit"
+          },
+          {
+            "id": "keyTypes",
+            "title": "Tipos de chave",
+            "description": "Quais são os tipos principais expostos (por exemplo, Utilizador, Pedido, Produto)?",
+            "gridPosition": {
+              "column": 0,
+              "row": 1,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 3,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#DFDDC5",
+            "defaultNoteIntent": "neutral"
+          },
+          {
+            "id": "relationships",
+            "title": "Relações",
+            "description": "Como os tipos se relacionam entre si em consultas aninhadas?",
+            "gridPosition": {
+              "column": 1,
+              "row": 1,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 4,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#DFDDC5",
+            "defaultNoteIntent": "neutral"
+          },
+          {
+            "id": "queries",
+            "title": "Consultas",
+            "description": "Quais consultas comuns devem ser suportadas?",
+            "gridPosition": {
+              "column": 2,
+              "row": 1,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 5,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#7DC9E7",
+            "defaultNoteIntent": "task"
+          },
+          {
+            "id": "mutations",
+            "title": "Mutações",
+            "description": "Quais operações modificarão os dados (por exemplo, criar, atualizar, eliminar)?",
+            "gridPosition": {
+              "column": 3,
+              "row": 1,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 6,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#7DC9E7",
+            "defaultNoteIntent": "task"
+          },
+          {
+            "id": "subscriptions",
+            "title": "Assinaturas",
+            "description": "Existem atualizações em tempo real ou eventos que os utilizadores podem assinar?",
+            "gridPosition": {
+              "column": 0,
+              "row": 2,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 7,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#7DC9E7",
+            "defaultNoteIntent": "task"
+          },
+          {
+            "id": "authorizationRules",
+            "title": "Regras de autorização",
+            "description": "Quem pode aceder quais campos ou tipos?",
+            "gridPosition": {
+              "column": 1,
+              "row": 2,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 8,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#FFAFAF",
+            "defaultNoteIntent": "negative"
+          },
+          {
+            "id": "consumerConstraints",
+            "title": "Restrições do utilizador",
+            "description": "Existem restrições de paginação, filtragem ou limitação de pedidos?",
+            "gridPosition": {
+              "column": 2,
+              "row": 2,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 9,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#FFAFAF",
+            "defaultNoteIntent": "negative"
+          },
+          {
+            "id": "openQuestions",
+            "title": "Notas/Questões em aberto",
+            "description": "Alguma decisão pendente ou considerações sobre integração?",
+            "gridPosition": {
+              "column": 3,
+              "row": 2,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 10,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#FFF399",
+            "defaultNoteIntent": "default"
+          }
+        ]
+      },
+      "capabilityValuePropositionCanvas": {
+        "id": "capabilityValuePropositionCanvas",
+        "title": "Canvas da Proposta de Valor da Capacidade",
+        "purpose": "Que capacidade reutilizável criaria valor para os utilizadores sem decidir ainda se deve ser disponibilizada como API, evento, ficheiro, stream, produto de dados ou outro estilo de implementação?",
+        "howToUse": "Comece pelas tarefas e resultados dos utilizadores. Capte funcionalidades da capacidade que permitem ganhos e aliviam dores; depois descreva capacidades reutilizáveis candidatas sem nomear a tecnologia demasiado cedo.",
+        "layout": {
+          "columns": 4,
+          "rows": 3
+        },
+        "metadata": {
+          "source": "APIOps Cycles",
+          "license": "CC-BY-SA 4.0",
+          "authors": [
+            "Osaango Ltd"
+          ],
+          "website": "www.apiopscycles.com"
+        },
+        "footer": "",
+        "canvasCreatorUrl": "https://canvascreator.apiopscycles.com/?canvas=capabilityValuePropositionCanvas&locale=pt",
+        "importExportTemplate": {
+          "templateId": "capabilityValuePropositionCanvas",
+          "locale": "pt",
+          "metadata": {
+            "source": "APIOps Cycles",
+            "license": "CC-BY-SA 4.0",
+            "authors": [
+              "Osaango Ltd"
+            ],
+            "website": "www.apiopscycles.com",
+            "date": "2026-07-17T05:59:44.199Z"
+          },
+          "sections": [
+            {
+              "sectionId": "consumerTasks",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "gainEnablingCapabilities",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "painRelievingCapabilities",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "reusableCapabilities",
+              "stickyNotes": []
+            }
+          ],
+          "footer": ""
+        },
+        "sections": [
+          {
+            "id": "consumerTasks",
+            "title": "Tarefas e resultados dos utilizadores",
+            "description": "O que os utilizadores, parceiros, utilizadores, sistemas ou equipas estão a tentar alcançar?",
+            "gridPosition": {
+              "column": 0,
+              "row": 0,
+              "colSpan": 4,
+              "rowSpan": 1
+            },
+            "fillOrder": 1,
+            "highlight": true,
+            "journeySteps": true,
+            "defaultNoteColor": "#7DC9E7",
+            "defaultNoteIntent": "task"
+          },
+          {
+            "id": "gainEnablingCapabilities",
+            "title": "Funcionalidades da capacidade que permitem ganhos",
+            "description": "Que funcionalidades da capacidade ajudariam os utilizadores a alcançar melhores resultados, rapidez, automação, conhecimento, alcance ou conformidade?",
+            "gridPosition": {
+              "column": 0,
+              "row": 1,
+              "colSpan": 2,
+              "rowSpan": 1
+            },
+            "fillOrder": 2,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#C0EB6A",
+            "defaultNoteIntent": "benefit"
+          },
+          {
+            "id": "painRelievingCapabilities",
+            "title": "Funcionalidades da capacidade que aliviam dores",
+            "description": "Que funcionalidades da capacidade removeriam atrito, trabalho manual, erros, atrasos, risco ou incerteza para os utilizadores?",
+            "gridPosition": {
+              "column": 2,
+              "row": 1,
+              "colSpan": 2,
+              "rowSpan": 1
+            },
+            "fillOrder": 3,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#C0EB6A",
+            "defaultNoteIntent": "benefit"
+          },
+          {
+            "id": "reusableCapabilities",
+            "title": "Capacidades reutilizáveis",
+            "description": "Que capacidades de negócio ou de dados reutilizáveis poderiam servir estas tarefas, ganhos e dores em mais do que um utilizador ou caso de utilização?",
+            "gridPosition": {
+              "column": 0,
+              "row": 2,
+              "colSpan": 4,
+              "rowSpan": 1
+            },
+            "fillOrder": 4,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#DFDDC5",
+            "defaultNoteIntent": "neutral"
+          }
+        ]
+      },
+      "capabilityBusinessModelCanvas": {
+        "id": "capabilityBusinessModelCanvas",
+        "title": "Canvas do Modelo de Negócio da Capacidade",
+        "purpose": "Quão viável, reutilizável, financiada, atribuída, apoiada e detetável deve ser esta capacidade de integração?",
+        "howToUse": "Resuma a proposta de valor da capacidade, identifique utilizadores e canais de envolvimento, e depois mapeie propriedade, atividades, recursos, parceiros, benefícios e custos.",
+        "layout": {
+          "columns": 5,
+          "rows": 3
+        },
+        "metadata": {
+          "source": "APIOps Cycles",
+          "license": "CC-BY-SA 4.0",
+          "authors": [
+            "Osaango Ltd"
+          ],
+          "website": "www.apiopscycles.com"
+        },
+        "footer": "",
+        "canvasCreatorUrl": "https://canvascreator.apiopscycles.com/?canvas=capabilityBusinessModelCanvas&locale=pt",
+        "importExportTemplate": {
+          "templateId": "capabilityBusinessModelCanvas",
+          "locale": "pt",
+          "metadata": {
+            "source": "APIOps Cycles",
+            "license": "CC-BY-SA 4.0",
+            "authors": [
+              "Osaango Ltd"
+            ],
+            "website": "www.apiopscycles.com",
+            "date": "2026-07-17T05:59:44.200Z"
+          },
+          "sections": [
+            {
+              "sectionId": "keyPartners",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "keyActivities",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "keyResources",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "capabilityValueProposition",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "consumerEngagement",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "channels",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "capabilityConsumerSegments",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "costs",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "benefits",
+              "stickyNotes": []
+            }
+          ],
+          "footer": ""
+        },
+        "sections": [
+          {
+            "id": "capabilityValueProposition",
+            "title": "Proposta de valor da capacidade",
+            "description": "Que valor esta capacidade reutilizável oferece aos utilizadores e à organização ou ecossistema?",
+            "gridPosition": {
+              "column": 2,
+              "row": 0,
+              "colSpan": 1,
+              "rowSpan": 2
+            },
+            "fillOrder": 1,
+            "highlight": true,
+            "journeySteps": false,
+            "defaultNoteColor": "#C0EB6A",
+            "defaultNoteIntent": "benefit"
+          },
+          {
+            "id": "capabilityConsumerSegments",
+            "title": "Segmentos de utilizadores da capacidade",
+            "description": "Quem são os utilizadores atuais e potenciais da capacidade, incluindo equipas, parceiros, sistemas, produtos ou utilizadores de dados?",
+            "gridPosition": {
+              "column": 4,
+              "row": 0,
+              "colSpan": 1,
+              "rowSpan": 2
+            },
+            "fillOrder": 2,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#DFDDC5",
+            "defaultNoteIntent": "neutral"
+          },
+          {
+            "id": "consumerEngagement",
+            "title": "Envolvimento dos utilizadores",
+            "description": "Como irão os utilizadores descobrir, avaliar, solicitar, integrar-se, obter apoio e dar feedback sobre a capacidade?",
+            "gridPosition": {
+              "column": 3,
+              "row": 0,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 3,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#DFDDC5",
+            "defaultNoteIntent": "neutral"
+          },
+          {
+            "id": "channels",
+            "title": "Canais",
+            "description": "Através de que catálogos, portais, marketplaces, sites de documentação, caminhos de apoio ou processos de governação os utilizadores irão interagir com a capacidade?",
+            "gridPosition": {
+              "column": 3,
+              "row": 1,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 4,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#7DC9E7",
+            "defaultNoteIntent": "task"
+          },
+          {
+            "id": "keyResources",
+            "title": "Recursos-chave",
+            "description": "Que sistemas, ativos de dados, plataformas, pessoas, normas, financiamento e capacidades operacionais são necessários?",
+            "gridPosition": {
+              "column": 1,
+              "row": 1,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 5,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#DFDDC5",
+            "defaultNoteIntent": "neutral"
+          },
+          {
+            "id": "keyActivities",
+            "title": "Atividades-chave",
+            "description": "O que o responsável pela capacidade e os produtores devem fazer para conceber, entregar, governar, apoiar e melhorar a capacidade?",
+            "gridPosition": {
+              "column": 1,
+              "row": 0,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 6,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#7DC9E7",
+            "defaultNoteIntent": "task"
+          },
+          {
+            "id": "keyPartners",
+            "title": "Parceiros-chave",
+            "description": "Que parceiros de negócio, tecnologia, dados, segurança, jurídico, plataforma ou externos são necessários para que a capacidade funcione?",
+            "gridPosition": {
+              "column": 0,
+              "row": 0,
+              "colSpan": 1,
+              "rowSpan": 2
+            },
+            "fillOrder": 7,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#DFDDC5",
+            "defaultNoteIntent": "neutral"
+          },
+          {
+            "id": "benefits",
+            "title": "Benefícios",
+            "description": "Que benefícios de negócio, operacionais, de ecossistema, reutilização, conformidade ou custo justificam a capacidade?",
+            "gridPosition": {
+              "column": 2.5,
+              "row": 2,
+              "colSpan": 2.5,
+              "rowSpan": 1
+            },
+            "fillOrder": 8,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#C0EB6A",
+            "defaultNoteIntent": "benefit"
+          },
+          {
+            "id": "costs",
+            "title": "Custos",
+            "description": "Quais são os custos significativos de construir, operar, governar, apoiar e evoluir a capacidade?",
+            "gridPosition": {
+              "column": 0,
+              "row": 2,
+              "colSpan": 2.5,
+              "rowSpan": 1
+            },
+            "fillOrder": 9,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#FFAFAF",
+            "defaultNoteIntent": "negative"
+          }
+        ]
+      },
+      "consumerExperienceRequirementsCanvas": {
+        "id": "consumerExperienceRequirementsCanvas",
+        "title": "Canvas de Requisitos da Experiência do Utilizador",
+        "purpose": "Que requisitos de experiência e requisitos não funcionais os utilizadores precisam /de esclarecer antes de decidir a melhor arquitetura de integração?",
+        "howToUse": "Utilize isto como uma tabela de requisitos independente da tecnologia. Capte expectativas e restrições dos utilizadores; depois utilize as implicações de arquitetura para escolher APIs, eventos, ficheiros, streams, produtos de dados ou outro estilo de implementação.",
+        "layout": {
+          "columns": 4,
+          "rows": 3
+        },
+        "metadata": {
+          "source": "APIOps Cycles",
+          "license": "CC-BY-SA 4.0",
+          "authors": [
+            "Osaango Ltd"
+          ],
+          "website": "www.apiopscycles.com"
+        },
+        "footer": "",
+        "canvasCreatorUrl": "https://canvascreator.apiopscycles.com/?canvas=consumerExperienceRequirementsCanvas&locale=pt",
+        "importExportTemplate": {
+          "templateId": "consumerExperienceRequirementsCanvas",
+          "locale": "pt",
+          "metadata": {
+            "source": "APIOps Cycles",
+            "license": "CC-BY-SA 4.0",
+            "authors": [
+              "Osaango Ltd"
+            ],
+            "website": "www.apiopscycles.com",
+            "date": "2026-07-17T05:59:44.201Z"
+          },
+          "sections": [
+            {
+              "sectionId": "consumerGoals",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "availabilityAndTimeliness",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "volumeAndPerformance",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "dataQualityAndConsistency",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "securityPrivacyAndCompliance",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "onboardingAndAccess",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "changeAndVersioning",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "observabilityAndSupport",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "recoveryAndContinuity",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "architectureImplications",
+              "stickyNotes": []
+            }
+          ],
+          "footer": ""
+        },
+        "sections": [
+          {
+            "id": "consumerGoals",
+            "title": "Objetivos dos utilizadores",
+            "description": "Quais são os objetivos de negócio, de fluxo de trabalho, de decisão, de automação ou de utilização de dados dos utilizadores?",
+            "gridPosition": {
+              "column": 0,
+              "row": 0,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 1,
+            "highlight": true,
+            "journeySteps": false,
+            "defaultNoteColor": "#C0EB6A",
+            "defaultNoteIntent": "benefit"
+          },
+          {
+            "id": "availabilityAndTimeliness",
+            "title": "Disponibilidade e atualidade",
+            "description": "Quando é que a capacidade deve estar disponível, quão atualizada deve estar a informação e que latência ou janelas de entrega importam?",
+            "gridPosition": {
+              "column": 1,
+              "row": 0,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 2,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#DFDDC5",
+            "defaultNoteIntent": "neutral"
+          },
+          {
+            "id": "volumeAndPerformance",
+            "title": "Volume e desempenho",
+            "description": "Que volumes de pedidos, eventos, registos, ficheiros, lotes, utilizadores ou transações a capacidade deve suportar agora e no futuro?",
+            "gridPosition": {
+              "column": 2,
+              "row": 0,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 3,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#DFDDC5",
+            "defaultNoteIntent": "neutral"
+          },
+          {
+            "id": "dataQualityAndConsistency",
+            "title": "Qualidade e consistência dos dados",
+            "description": "Que expectativas de exatidão, completude, consistência, ordenação, deduplicação, reconciliação ou validação têm os utilizadores?",
+            "gridPosition": {
+              "column": 3,
+              "row": 0,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 4,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#DFDDC5",
+            "defaultNoteIntent": "neutral"
+          },
+          {
+            "id": "securityPrivacyAndCompliance",
+            "title": "Segurança, privacidade e conformidade",
+            "description": "Que restrições de identidade, autorização, confidencialidade, residência, consentimento, retenção, auditoria ou regulamentação se aplicam?",
+            "gridPosition": {
+              "column": 0,
+              "row": 1,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 5,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#FFAFAF",
+            "defaultNoteIntent": "negative"
+          },
+          {
+            "id": "onboardingAndAccess",
+            "title": "Integração e acesso",
+            "description": "Como devem os utilizadores encontrar, solicitar, testar, obter aprovação e começar a utilizar a capacidade?",
+            "gridPosition": {
+              "column": 1,
+              "row": 1,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 6,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#7DC9E7",
+            "defaultNoteIntent": "task"
+          },
+          {
+            "id": "changeAndVersioning",
+            "title": "Mudança e controlo de versões",
+            "description": "Que tolerância à mudança têm os utilizadores e que expectativas de aviso prévio, compatibilidade, migração ou controlo de versões se aplicam?",
+            "gridPosition": {
+              "column": 2,
+              "row": 1,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 7,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#FFAFAF",
+            "defaultNoteIntent": "negative"
+          },
+          {
+            "id": "observabilityAndSupport",
+            "title": "Observabilidade e apoio",
+            "description": "Que monitorização, estado, rastreabilidade, visibilidade da qualidade dos dados, apoio, propriedade e comunicação de incidentes os utilizadores precisam?",
+            "gridPosition": {
+              "column": 3,
+              "row": 1,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 8,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#7DC9E7",
+            "defaultNoteIntent": "task"
+          },
+          {
+            "id": "recoveryAndContinuity",
+            "title": "Recuperação e continuidade",
+            "description": "Que expectativas de repetição, nova tentativa, reconciliação, cópia de segurança, fallback, continuidade ou recuperação manual devem ser suportadas?",
+            "gridPosition": {
+              "column": 0,
+              "row": 2,
+              "colSpan": 2,
+              "rowSpan": 1
+            },
+            "fillOrder": 9,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#7DC9E7",
+            "defaultNoteIntent": "task"
+          },
+          {
+            "id": "architectureImplications",
+            "title": "Implicações de arquitetura",
+            "description": "O que estes requisitos implicam para possíveis estilos de arquitetura, como APIs, eventos, ficheiros, streams, produtos de dados ou integração direta?",
+            "gridPosition": {
+              "column": 2,
+              "row": 2,
+              "colSpan": 2,
+              "rowSpan": 1
+            },
+            "fillOrder": 10,
+            "highlight": true,
+            "journeySteps": false,
+            "defaultNoteColor": "#DFDDC5",
+            "defaultNoteIntent": "neutral"
+          }
+        ]
+      }
+    }
+  }
+}

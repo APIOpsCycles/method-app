@@ -1,0 +1,459 @@
+{
+  "source": {
+    "repository": "https://github.com/APIOpsCycles/apiops-cycles-method-data",
+    "commit": "e17bff8b3f09b9ad26ab4497e339c4658802aaf8"
+  },
+  "locales": [
+    "en",
+    "fi",
+    "fr",
+    "de",
+    "pt"
+  ],
+  "defaultLocale": "en",
+  "translations": {
+    "fi": [
+      {
+        "id": "platform-architect:facilitate-station",
+        "routeId": "platform-architect",
+        "title": "Facilitate a station with Alusta-arkkitehti",
+        "mode": "facilitate-station",
+        "prompt": "Stakeholder: Alusta-arkkitehti\nCycles: Kyvykkyyden tuotteistamisen sykli, API-tuotteistamisen sykli, Integraatiokyvykkyyden tuotteistamisen sykli, Automaatiosykli\nStations: Strategia, Arkkitehtuuri- ja alustapäätökset, Ratkaisu- ja rajapintasuunnittelu, Toimitus ja operointi, Laadun ja valmiuden varmistus, Seuranta ja parantaminen\nResources and canvases: Asiakaspolkukanvas, Toimialuekanvas, Kyvykkyyden arvolupauskanvas, Kyvykkyyden liiketoimintamallikanvas, Liiketoimintavaikutuskanvas, Sijaintikanvas, Kapasiteettikanvas, Vuorovaikutuskanvas, API-arvolupauskanvas, API-liiketoimintamallikanvas, REST-kanvas, Tapahtumakanvas, GraphQL-kanvas\n\nAct as an APIOps Cycles facilitator. Use the selected station questions, entry criteria, exit criteria, stakeholders, and related resources to guide the discussion. Produce decisions, evidence gaps, and next steps."
+      },
+      {
+        "id": "platform-architect:use-resources",
+        "routeId": "platform-architect",
+        "title": "Use station resources with Alusta-arkkitehti",
+        "mode": "use-resources",
+        "prompt": "Stakeholder: Alusta-arkkitehti\nCycles: Kyvykkyyden tuotteistamisen sykli, API-tuotteistamisen sykli, Integraatiokyvykkyyden tuotteistamisen sykli, Automaatiosykli\nStations: Strategia, Arkkitehtuuri- ja alustapäätökset, Ratkaisu- ja rajapintasuunnittelu, Toimitus ja operointi, Laadun ja valmiuden varmistus, Seuranta ja parantaminen\nResources and canvases: Asiakaspolkukanvas, Toimialuekanvas, Kyvykkyyden arvolupauskanvas, Kyvykkyyden liiketoimintamallikanvas, Liiketoimintavaikutuskanvas, Sijaintikanvas, Kapasiteettikanvas, Vuorovaikutuskanvas, API-arvolupauskanvas, API-liiketoimintamallikanvas, REST-kanvas, Tapahtumakanvas, GraphQL-kanvas\n\nHelp the team use the recommended APIOps Cycles resources. For canvases, ask for evidence section by section and propose sticky notes. For checklists or guidelines, summarize what to review, what evidence is missing, and who should answer."
+      },
+      {
+        "id": "platform-architect:next-actions",
+        "routeId": "platform-architect",
+        "title": "Generate next actions for Alusta-arkkitehti",
+        "mode": "next-actions",
+        "prompt": "Stakeholder: Alusta-arkkitehti\nCycles: Kyvykkyyden tuotteistamisen sykli, API-tuotteistamisen sykli, Integraatiokyvykkyyden tuotteistamisen sykli, Automaatiosykli\nStations: Strategia, Arkkitehtuuri- ja alustapäätökset, Ratkaisu- ja rajapintasuunnittelu, Toimitus ja operointi, Laadun ja valmiuden varmistus, Seuranta ja parantaminen\nResources and canvases: Asiakaspolkukanvas, Toimialuekanvas, Kyvykkyyden arvolupauskanvas, Kyvykkyyden liiketoimintamallikanvas, Liiketoimintavaikutuskanvas, Sijaintikanvas, Kapasiteettikanvas, Vuorovaikutuskanvas, API-arvolupauskanvas, API-liiketoimintamallikanvas, REST-kanvas, Tapahtumakanvas, GraphQL-kanvas\n\nGenerate practical next actions, owners, evidence to collect, related resources to use, and suggested next stations. Keep the output suitable for Markdown or Confluence."
+      },
+      {
+        "id": "platform-owner:facilitate-station",
+        "routeId": "platform-owner",
+        "title": "Facilitate a station with Alustan omistaja",
+        "mode": "facilitate-station",
+        "prompt": "Stakeholder: Alustan omistaja\nCycles: Kyvykkyyden tuotteistamisen sykli, Integraatiokyvykkyyden tuotteistamisen sykli, Automaatiosykli\nStations: Arkkitehtuuri- ja alustapäätökset, Strategia, Seuranta ja parantaminen\nResources and canvases: Liiketoimintavaikutuskanvas, Sijaintikanvas, Kapasiteettikanvas, Asiakaspolkukanvas, Toimialuekanvas, Kyvykkyyden arvolupauskanvas, Kyvykkyyden liiketoimintamallikanvas\n\nAct as an APIOps Cycles facilitator. Use the selected station questions, entry criteria, exit criteria, stakeholders, and related resources to guide the discussion. Produce decisions, evidence gaps, and next steps."
+      },
+      {
+        "id": "platform-owner:use-resources",
+        "routeId": "platform-owner",
+        "title": "Use station resources with Alustan omistaja",
+        "mode": "use-resources",
+        "prompt": "Stakeholder: Alustan omistaja\nCycles: Kyvykkyyden tuotteistamisen sykli, Integraatiokyvykkyyden tuotteistamisen sykli, Automaatiosykli\nStations: Arkkitehtuuri- ja alustapäätökset, Strategia, Seuranta ja parantaminen\nResources and canvases: Liiketoimintavaikutuskanvas, Sijaintikanvas, Kapasiteettikanvas, Asiakaspolkukanvas, Toimialuekanvas, Kyvykkyyden arvolupauskanvas, Kyvykkyyden liiketoimintamallikanvas\n\nHelp the team use the recommended APIOps Cycles resources. For canvases, ask for evidence section by section and propose sticky notes. For checklists or guidelines, summarize what to review, what evidence is missing, and who should answer."
+      },
+      {
+        "id": "platform-owner:next-actions",
+        "routeId": "platform-owner",
+        "title": "Generate next actions for Alustan omistaja",
+        "mode": "next-actions",
+        "prompt": "Stakeholder: Alustan omistaja\nCycles: Kyvykkyyden tuotteistamisen sykli, Integraatiokyvykkyyden tuotteistamisen sykli, Automaatiosykli\nStations: Arkkitehtuuri- ja alustapäätökset, Strategia, Seuranta ja parantaminen\nResources and canvases: Liiketoimintavaikutuskanvas, Sijaintikanvas, Kapasiteettikanvas, Asiakaspolkukanvas, Toimialuekanvas, Kyvykkyyden arvolupauskanvas, Kyvykkyyden liiketoimintamallikanvas\n\nGenerate practical next actions, owners, evidence to collect, related resources to use, and suggested next stations. Keep the output suitable for Markdown or Confluence."
+      },
+      {
+        "id": "api-architect:facilitate-station",
+        "routeId": "api-architect",
+        "title": "Facilitate a station with API-arkkitehti",
+        "mode": "facilitate-station",
+        "prompt": "Stakeholder: API-arkkitehti\nCycles: API-tuotteistamisen sykli, Integraatiokyvykkyyden tuotteistamisen sykli\nStations: Arkkitehtuuri- ja alustapäätökset\nResources and canvases: Liiketoimintavaikutuskanvas, Sijaintikanvas, Kapasiteettikanvas\n\nAct as an APIOps Cycles facilitator. Use the selected station questions, entry criteria, exit criteria, stakeholders, and related resources to guide the discussion. Produce decisions, evidence gaps, and next steps."
+      },
+      {
+        "id": "api-architect:use-resources",
+        "routeId": "api-architect",
+        "title": "Use station resources with API-arkkitehti",
+        "mode": "use-resources",
+        "prompt": "Stakeholder: API-arkkitehti\nCycles: API-tuotteistamisen sykli, Integraatiokyvykkyyden tuotteistamisen sykli\nStations: Arkkitehtuuri- ja alustapäätökset\nResources and canvases: Liiketoimintavaikutuskanvas, Sijaintikanvas, Kapasiteettikanvas\n\nHelp the team use the recommended APIOps Cycles resources. For canvases, ask for evidence section by section and propose sticky notes. For checklists or guidelines, summarize what to review, what evidence is missing, and who should answer."
+      },
+      {
+        "id": "api-architect:next-actions",
+        "routeId": "api-architect",
+        "title": "Generate next actions for API-arkkitehti",
+        "mode": "next-actions",
+        "prompt": "Stakeholder: API-arkkitehti\nCycles: API-tuotteistamisen sykli, Integraatiokyvykkyyden tuotteistamisen sykli\nStations: Arkkitehtuuri- ja alustapäätökset\nResources and canvases: Liiketoimintavaikutuskanvas, Sijaintikanvas, Kapasiteettikanvas\n\nGenerate practical next actions, owners, evidence to collect, related resources to use, and suggested next stations. Keep the output suitable for Markdown or Confluence."
+      },
+      {
+        "id": "governance-specialist:facilitate-station",
+        "routeId": "governance-specialist",
+        "title": "Facilitate a station with API-hallinnan omistaja",
+        "mode": "facilitate-station",
+        "prompt": "Stakeholder: API-hallinnan omistaja\nCycles: Kyvykkyyden tuotteistamisen sykli, API-tuotteistamisen sykli, Integraatiokyvykkyyden tuotteistamisen sykli, Automaatiosykli\nStations: Laadun ja valmiuden varmistus\nResources and canvases: \n\nAct as an APIOps Cycles facilitator. Use the selected station questions, entry criteria, exit criteria, stakeholders, and related resources to guide the discussion. Produce decisions, evidence gaps, and next steps."
+      },
+      {
+        "id": "governance-specialist:use-resources",
+        "routeId": "governance-specialist",
+        "title": "Use station resources with API-hallinnan omistaja",
+        "mode": "use-resources",
+        "prompt": "Stakeholder: API-hallinnan omistaja\nCycles: Kyvykkyyden tuotteistamisen sykli, API-tuotteistamisen sykli, Integraatiokyvykkyyden tuotteistamisen sykli, Automaatiosykli\nStations: Laadun ja valmiuden varmistus\nResources and canvases: \n\nHelp the team use the recommended APIOps Cycles resources. For canvases, ask for evidence section by section and propose sticky notes. For checklists or guidelines, summarize what to review, what evidence is missing, and who should answer."
+      },
+      {
+        "id": "governance-specialist:next-actions",
+        "routeId": "governance-specialist",
+        "title": "Generate next actions for API-hallinnan omistaja",
+        "mode": "next-actions",
+        "prompt": "Stakeholder: API-hallinnan omistaja\nCycles: Kyvykkyyden tuotteistamisen sykli, API-tuotteistamisen sykli, Integraatiokyvykkyyden tuotteistamisen sykli, Automaatiosykli\nStations: Laadun ja valmiuden varmistus\nResources and canvases: \n\nGenerate practical next actions, owners, evidence to collect, related resources to use, and suggested next stations. Keep the output suitable for Markdown or Confluence."
+      },
+      {
+        "id": "api-consumer-specialist:facilitate-station",
+        "routeId": "api-consumer-specialist",
+        "title": "Facilitate a station with API-hyödyntäjien edustaja",
+        "mode": "facilitate-station",
+        "prompt": "Stakeholder: API-hyödyntäjien edustaja\nCycles: Kyvykkyyden tuotteistamisen sykli, API-tuotteistamisen sykli, Integraatiokyvykkyyden tuotteistamisen sykli, Automaatiosykli\nStations: Hyödyntäjien vaatimukset ja käyttöönotto, Ratkaisu- ja rajapintasuunnittelu, Julkaisu ja käyttöönoton mahdollistaminen, Seuranta ja parantaminen, Strategia, Arkkitehtuuri- ja alustapäätökset\nResources and canvases: Hyödyntäjäkokemuksen vaatimuskanvas, Toimialuekanvas, Vuorovaikutuskanvas, Asiakaspolkukanvas, Kyvykkyyden arvolupauskanvas, Kyvykkyyden liiketoimintamallikanvas, Liiketoimintavaikutuskanvas, Sijaintikanvas, Kapasiteettikanvas, API-arvolupauskanvas, REST-kanvas, Tapahtumakanvas, GraphQL-kanvas, API-liiketoimintamallikanvas\n\nAct as an APIOps Cycles facilitator. Use the selected station questions, entry criteria, exit criteria, stakeholders, and related resources to guide the discussion. Produce decisions, evidence gaps, and next steps."
+      },
+      {
+        "id": "api-consumer-specialist:use-resources",
+        "routeId": "api-consumer-specialist",
+        "title": "Use station resources with API-hyödyntäjien edustaja",
+        "mode": "use-resources",
+        "prompt": "Stakeholder: API-hyödyntäjien edustaja\nCycles: Kyvykkyyden tuotteistamisen sykli, API-tuotteistamisen sykli, Integraatiokyvykkyyden tuotteistamisen sykli, Automaatiosykli\nStations: Hyödyntäjien vaatimukset ja käyttöönotto, Ratkaisu- ja rajapintasuunnittelu, Julkaisu ja käyttöönoton mahdollistaminen, Seuranta ja parantaminen, Strategia, Arkkitehtuuri- ja alustapäätökset\nResources and canvases: Hyödyntäjäkokemuksen vaatimuskanvas, Toimialuekanvas, Vuorovaikutuskanvas, Asiakaspolkukanvas, Kyvykkyyden arvolupauskanvas, Kyvykkyyden liiketoimintamallikanvas, Liiketoimintavaikutuskanvas, Sijaintikanvas, Kapasiteettikanvas, API-arvolupauskanvas, REST-kanvas, Tapahtumakanvas, GraphQL-kanvas, API-liiketoimintamallikanvas\n\nHelp the team use the recommended APIOps Cycles resources. For canvases, ask for evidence section by section and propose sticky notes. For checklists or guidelines, summarize what to review, what evidence is missing, and who should answer."
+      },
+      {
+        "id": "api-consumer-specialist:next-actions",
+        "routeId": "api-consumer-specialist",
+        "title": "Generate next actions for API-hyödyntäjien edustaja",
+        "mode": "next-actions",
+        "prompt": "Stakeholder: API-hyödyntäjien edustaja\nCycles: Kyvykkyyden tuotteistamisen sykli, API-tuotteistamisen sykli, Integraatiokyvykkyyden tuotteistamisen sykli, Automaatiosykli\nStations: Hyödyntäjien vaatimukset ja käyttöönotto, Ratkaisu- ja rajapintasuunnittelu, Julkaisu ja käyttöönoton mahdollistaminen, Seuranta ja parantaminen, Strategia, Arkkitehtuuri- ja alustapäätökset\nResources and canvases: Hyödyntäjäkokemuksen vaatimuskanvas, Toimialuekanvas, Vuorovaikutuskanvas, Asiakaspolkukanvas, Kyvykkyyden arvolupauskanvas, Kyvykkyyden liiketoimintamallikanvas, Liiketoimintavaikutuskanvas, Sijaintikanvas, Kapasiteettikanvas, API-arvolupauskanvas, REST-kanvas, Tapahtumakanvas, GraphQL-kanvas, API-liiketoimintamallikanvas\n\nGenerate practical next actions, owners, evidence to collect, related resources to use, and suggested next stations. Keep the output suitable for Markdown or Confluence."
+      },
+      {
+        "id": "api-designer:facilitate-station",
+        "routeId": "api-designer",
+        "title": "Facilitate a station with API-suunnittelija",
+        "mode": "facilitate-station",
+        "prompt": "Stakeholder: API-suunnittelija\nCycles: Kyvykkyyden tuotteistamisen sykli, API-tuotteistamisen sykli, Integraatiokyvykkyyden tuotteistamisen sykli, Automaatiosykli\nStations: Ratkaisu- ja rajapintasuunnittelu, Toimitus ja operointi, Laadun ja valmiuden varmistus, Hyödyntäjien vaatimukset ja käyttöönotto\nResources and canvases: Toimialuekanvas, Vuorovaikutuskanvas, Hyödyntäjäkokemuksen vaatimuskanvas, REST-kanvas, Tapahtumakanvas, GraphQL-kanvas, API-arvolupauskanvas, Asiakaspolkukanvas\n\nAct as an APIOps Cycles facilitator. Use the selected station questions, entry criteria, exit criteria, stakeholders, and related resources to guide the discussion. Produce decisions, evidence gaps, and next steps."
+      },
+      {
+        "id": "api-designer:use-resources",
+        "routeId": "api-designer",
+        "title": "Use station resources with API-suunnittelija",
+        "mode": "use-resources",
+        "prompt": "Stakeholder: API-suunnittelija\nCycles: Kyvykkyyden tuotteistamisen sykli, API-tuotteistamisen sykli, Integraatiokyvykkyyden tuotteistamisen sykli, Automaatiosykli\nStations: Ratkaisu- ja rajapintasuunnittelu, Toimitus ja operointi, Laadun ja valmiuden varmistus, Hyödyntäjien vaatimukset ja käyttöönotto\nResources and canvases: Toimialuekanvas, Vuorovaikutuskanvas, Hyödyntäjäkokemuksen vaatimuskanvas, REST-kanvas, Tapahtumakanvas, GraphQL-kanvas, API-arvolupauskanvas, Asiakaspolkukanvas\n\nHelp the team use the recommended APIOps Cycles resources. For canvases, ask for evidence section by section and propose sticky notes. For checklists or guidelines, summarize what to review, what evidence is missing, and who should answer."
+      },
+      {
+        "id": "api-designer:next-actions",
+        "routeId": "api-designer",
+        "title": "Generate next actions for API-suunnittelija",
+        "mode": "next-actions",
+        "prompt": "Stakeholder: API-suunnittelija\nCycles: Kyvykkyyden tuotteistamisen sykli, API-tuotteistamisen sykli, Integraatiokyvykkyyden tuotteistamisen sykli, Automaatiosykli\nStations: Ratkaisu- ja rajapintasuunnittelu, Toimitus ja operointi, Laadun ja valmiuden varmistus, Hyödyntäjien vaatimukset ja käyttöönotto\nResources and canvases: Toimialuekanvas, Vuorovaikutuskanvas, Hyödyntäjäkokemuksen vaatimuskanvas, REST-kanvas, Tapahtumakanvas, GraphQL-kanvas, API-arvolupauskanvas, Asiakaspolkukanvas\n\nGenerate practical next actions, owners, evidence to collect, related resources to use, and suggested next stations. Keep the output suitable for Markdown or Confluence."
+      },
+      {
+        "id": "api-product-owner:facilitate-station",
+        "routeId": "api-product-owner",
+        "title": "Facilitate a station with API-tuoteomistaja",
+        "mode": "facilitate-station",
+        "prompt": "Stakeholder: API-tuoteomistaja\nCycles: Kyvykkyyden tuotteistamisen sykli, API-tuotteistamisen sykli, Integraatiokyvykkyyden tuotteistamisen sykli\nStations: Arkkitehtuuri- ja alustapäätökset, Ratkaisu- ja rajapintasuunnittelu, Strategia, Hyödyntäjien vaatimukset ja käyttöönotto, Toimitus ja operointi, Laadun ja valmiuden varmistus, Julkaisu ja käyttöönoton mahdollistaminen, Seuranta ja parantaminen\nResources and canvases: Liiketoimintavaikutuskanvas, Sijaintikanvas, Kapasiteettikanvas, Toimialuekanvas, Vuorovaikutuskanvas, Asiakaspolkukanvas, Kyvykkyyden arvolupauskanvas, Kyvykkyyden liiketoimintamallikanvas, Hyödyntäjäkokemuksen vaatimuskanvas, REST-kanvas, Tapahtumakanvas, GraphQL-kanvas, API-arvolupauskanvas, API-liiketoimintamallikanvas\n\nAct as an APIOps Cycles facilitator. Use the selected station questions, entry criteria, exit criteria, stakeholders, and related resources to guide the discussion. Produce decisions, evidence gaps, and next steps."
+      },
+      {
+        "id": "api-product-owner:use-resources",
+        "routeId": "api-product-owner",
+        "title": "Use station resources with API-tuoteomistaja",
+        "mode": "use-resources",
+        "prompt": "Stakeholder: API-tuoteomistaja\nCycles: Kyvykkyyden tuotteistamisen sykli, API-tuotteistamisen sykli, Integraatiokyvykkyyden tuotteistamisen sykli\nStations: Arkkitehtuuri- ja alustapäätökset, Ratkaisu- ja rajapintasuunnittelu, Strategia, Hyödyntäjien vaatimukset ja käyttöönotto, Toimitus ja operointi, Laadun ja valmiuden varmistus, Julkaisu ja käyttöönoton mahdollistaminen, Seuranta ja parantaminen\nResources and canvases: Liiketoimintavaikutuskanvas, Sijaintikanvas, Kapasiteettikanvas, Toimialuekanvas, Vuorovaikutuskanvas, Asiakaspolkukanvas, Kyvykkyyden arvolupauskanvas, Kyvykkyyden liiketoimintamallikanvas, Hyödyntäjäkokemuksen vaatimuskanvas, REST-kanvas, Tapahtumakanvas, GraphQL-kanvas, API-arvolupauskanvas, API-liiketoimintamallikanvas\n\nHelp the team use the recommended APIOps Cycles resources. For canvases, ask for evidence section by section and propose sticky notes. For checklists or guidelines, summarize what to review, what evidence is missing, and who should answer."
+      },
+      {
+        "id": "api-product-owner:next-actions",
+        "routeId": "api-product-owner",
+        "title": "Generate next actions for API-tuoteomistaja",
+        "mode": "next-actions",
+        "prompt": "Stakeholder: API-tuoteomistaja\nCycles: Kyvykkyyden tuotteistamisen sykli, API-tuotteistamisen sykli, Integraatiokyvykkyyden tuotteistamisen sykli\nStations: Arkkitehtuuri- ja alustapäätökset, Ratkaisu- ja rajapintasuunnittelu, Strategia, Hyödyntäjien vaatimukset ja käyttöönotto, Toimitus ja operointi, Laadun ja valmiuden varmistus, Julkaisu ja käyttöönoton mahdollistaminen, Seuranta ja parantaminen\nResources and canvases: Liiketoimintavaikutuskanvas, Sijaintikanvas, Kapasiteettikanvas, Toimialuekanvas, Vuorovaikutuskanvas, Asiakaspolkukanvas, Kyvykkyyden arvolupauskanvas, Kyvykkyyden liiketoimintamallikanvas, Hyödyntäjäkokemuksen vaatimuskanvas, REST-kanvas, Tapahtumakanvas, GraphQL-kanvas, API-arvolupauskanvas, API-liiketoimintamallikanvas\n\nGenerate practical next actions, owners, evidence to collect, related resources to use, and suggested next stations. Keep the output suitable for Markdown or Confluence."
+      },
+      {
+        "id": "customer-specialist:facilitate-station",
+        "routeId": "customer-specialist",
+        "title": "Facilitate a station with Asiakas- tai kumppaniedustaja",
+        "mode": "facilitate-station",
+        "prompt": "Stakeholder: Asiakas- tai kumppaniedustaja\nCycles: Kyvykkyyden tuotteistamisen sykli, API-tuotteistamisen sykli, Integraatiokyvykkyyden tuotteistamisen sykli, Automaatiosykli\nStations: Strategia, Hyödyntäjien vaatimukset ja käyttöönotto\nResources and canvases: Asiakaspolkukanvas, Toimialuekanvas, Kyvykkyyden arvolupauskanvas, Kyvykkyyden liiketoimintamallikanvas, Hyödyntäjäkokemuksen vaatimuskanvas, API-arvolupauskanvas, API-liiketoimintamallikanvas\n\nAct as an APIOps Cycles facilitator. Use the selected station questions, entry criteria, exit criteria, stakeholders, and related resources to guide the discussion. Produce decisions, evidence gaps, and next steps."
+      },
+      {
+        "id": "customer-specialist:use-resources",
+        "routeId": "customer-specialist",
+        "title": "Use station resources with Asiakas- tai kumppaniedustaja",
+        "mode": "use-resources",
+        "prompt": "Stakeholder: Asiakas- tai kumppaniedustaja\nCycles: Kyvykkyyden tuotteistamisen sykli, API-tuotteistamisen sykli, Integraatiokyvykkyyden tuotteistamisen sykli, Automaatiosykli\nStations: Strategia, Hyödyntäjien vaatimukset ja käyttöönotto\nResources and canvases: Asiakaspolkukanvas, Toimialuekanvas, Kyvykkyyden arvolupauskanvas, Kyvykkyyden liiketoimintamallikanvas, Hyödyntäjäkokemuksen vaatimuskanvas, API-arvolupauskanvas, API-liiketoimintamallikanvas\n\nHelp the team use the recommended APIOps Cycles resources. For canvases, ask for evidence section by section and propose sticky notes. For checklists or guidelines, summarize what to review, what evidence is missing, and who should answer."
+      },
+      {
+        "id": "customer-specialist:next-actions",
+        "routeId": "customer-specialist",
+        "title": "Generate next actions for Asiakas- tai kumppaniedustaja",
+        "mode": "next-actions",
+        "prompt": "Stakeholder: Asiakas- tai kumppaniedustaja\nCycles: Kyvykkyyden tuotteistamisen sykli, API-tuotteistamisen sykli, Integraatiokyvykkyyden tuotteistamisen sykli, Automaatiosykli\nStations: Strategia, Hyödyntäjien vaatimukset ja käyttöönotto\nResources and canvases: Asiakaspolkukanvas, Toimialuekanvas, Kyvykkyyden arvolupauskanvas, Kyvykkyyden liiketoimintamallikanvas, Hyödyntäjäkokemuksen vaatimuskanvas, API-arvolupauskanvas, API-liiketoimintamallikanvas\n\nGenerate practical next actions, owners, evidence to collect, related resources to use, and suggested next stations. Keep the output suitable for Markdown or Confluence."
+      },
+      {
+        "id": "automation-engineer:facilitate-station",
+        "routeId": "automation-engineer",
+        "title": "Facilitate a station with Automaatiokehittäjä",
+        "mode": "facilitate-station",
+        "prompt": "Stakeholder: Automaatiokehittäjä\nCycles: Automaatiosykli\nStations: Strategia, Arkkitehtuuri- ja alustapäätökset, Ratkaisu- ja rajapintasuunnittelu, Toimitus ja operointi, Laadun ja valmiuden varmistus, Julkaisu ja käyttöönoton mahdollistaminen, Seuranta ja parantaminen\nResources and canvases: Asiakaspolkukanvas, Toimialuekanvas, Kyvykkyyden arvolupauskanvas, Liiketoimintavaikutuskanvas, Sijaintikanvas, Kapasiteettikanvas, Vuorovaikutuskanvas\n\nAct as an APIOps Cycles facilitator. Use the selected station questions, entry criteria, exit criteria, stakeholders, and related resources to guide the discussion. Produce decisions, evidence gaps, and next steps."
+      },
+      {
+        "id": "automation-engineer:use-resources",
+        "routeId": "automation-engineer",
+        "title": "Use station resources with Automaatiokehittäjä",
+        "mode": "use-resources",
+        "prompt": "Stakeholder: Automaatiokehittäjä\nCycles: Automaatiosykli\nStations: Strategia, Arkkitehtuuri- ja alustapäätökset, Ratkaisu- ja rajapintasuunnittelu, Toimitus ja operointi, Laadun ja valmiuden varmistus, Julkaisu ja käyttöönoton mahdollistaminen, Seuranta ja parantaminen\nResources and canvases: Asiakaspolkukanvas, Toimialuekanvas, Kyvykkyyden arvolupauskanvas, Liiketoimintavaikutuskanvas, Sijaintikanvas, Kapasiteettikanvas, Vuorovaikutuskanvas\n\nHelp the team use the recommended APIOps Cycles resources. For canvases, ask for evidence section by section and propose sticky notes. For checklists or guidelines, summarize what to review, what evidence is missing, and who should answer."
+      },
+      {
+        "id": "automation-engineer:next-actions",
+        "routeId": "automation-engineer",
+        "title": "Generate next actions for Automaatiokehittäjä",
+        "mode": "next-actions",
+        "prompt": "Stakeholder: Automaatiokehittäjä\nCycles: Automaatiosykli\nStations: Strategia, Arkkitehtuuri- ja alustapäätökset, Ratkaisu- ja rajapintasuunnittelu, Toimitus ja operointi, Laadun ja valmiuden varmistus, Julkaisu ja käyttöönoton mahdollistaminen, Seuranta ja parantaminen\nResources and canvases: Asiakaspolkukanvas, Toimialuekanvas, Kyvykkyyden arvolupauskanvas, Liiketoimintavaikutuskanvas, Sijaintikanvas, Kapasiteettikanvas, Vuorovaikutuskanvas\n\nGenerate practical next actions, owners, evidence to collect, related resources to use, and suggested next stations. Keep the output suitable for Markdown or Confluence."
+      },
+      {
+        "id": "automation-owner:facilitate-station",
+        "routeId": "automation-owner",
+        "title": "Facilitate a station with Automaation omistaja",
+        "mode": "facilitate-station",
+        "prompt": "Stakeholder: Automaation omistaja\nCycles: Automaatiosykli\nStations: Strategia, Hyödyntäjien vaatimukset ja käyttöönotto, Arkkitehtuuri- ja alustapäätökset, Ratkaisu- ja rajapintasuunnittelu, Toimitus ja operointi, Laadun ja valmiuden varmistus, Julkaisu ja käyttöönoton mahdollistaminen, Seuranta ja parantaminen\nResources and canvases: Asiakaspolkukanvas, Toimialuekanvas, Kyvykkyyden arvolupauskanvas, Hyödyntäjäkokemuksen vaatimuskanvas, Liiketoimintavaikutuskanvas, Sijaintikanvas, Kapasiteettikanvas, Vuorovaikutuskanvas\n\nAct as an APIOps Cycles facilitator. Use the selected station questions, entry criteria, exit criteria, stakeholders, and related resources to guide the discussion. Produce decisions, evidence gaps, and next steps."
+      },
+      {
+        "id": "automation-owner:use-resources",
+        "routeId": "automation-owner",
+        "title": "Use station resources with Automaation omistaja",
+        "mode": "use-resources",
+        "prompt": "Stakeholder: Automaation omistaja\nCycles: Automaatiosykli\nStations: Strategia, Hyödyntäjien vaatimukset ja käyttöönotto, Arkkitehtuuri- ja alustapäätökset, Ratkaisu- ja rajapintasuunnittelu, Toimitus ja operointi, Laadun ja valmiuden varmistus, Julkaisu ja käyttöönoton mahdollistaminen, Seuranta ja parantaminen\nResources and canvases: Asiakaspolkukanvas, Toimialuekanvas, Kyvykkyyden arvolupauskanvas, Hyödyntäjäkokemuksen vaatimuskanvas, Liiketoimintavaikutuskanvas, Sijaintikanvas, Kapasiteettikanvas, Vuorovaikutuskanvas\n\nHelp the team use the recommended APIOps Cycles resources. For canvases, ask for evidence section by section and propose sticky notes. For checklists or guidelines, summarize what to review, what evidence is missing, and who should answer."
+      },
+      {
+        "id": "automation-owner:next-actions",
+        "routeId": "automation-owner",
+        "title": "Generate next actions for Automaation omistaja",
+        "mode": "next-actions",
+        "prompt": "Stakeholder: Automaation omistaja\nCycles: Automaatiosykli\nStations: Strategia, Hyödyntäjien vaatimukset ja käyttöönotto, Arkkitehtuuri- ja alustapäätökset, Ratkaisu- ja rajapintasuunnittelu, Toimitus ja operointi, Laadun ja valmiuden varmistus, Julkaisu ja käyttöönoton mahdollistaminen, Seuranta ja parantaminen\nResources and canvases: Asiakaspolkukanvas, Toimialuekanvas, Kyvykkyyden arvolupauskanvas, Hyödyntäjäkokemuksen vaatimuskanvas, Liiketoimintavaikutuskanvas, Sijaintikanvas, Kapasiteettikanvas, Vuorovaikutuskanvas\n\nGenerate practical next actions, owners, evidence to collect, related resources to use, and suggested next stations. Keep the output suitable for Markdown or Confluence."
+      },
+      {
+        "id": "api-devrel-specialist:facilitate-station",
+        "routeId": "api-devrel-specialist",
+        "title": "Facilitate a station with Dokumentoinnin ja kehittäjäsuhteiden omistaja",
+        "mode": "facilitate-station",
+        "prompt": "Stakeholder: Dokumentoinnin ja kehittäjäsuhteiden omistaja\nCycles: Kyvykkyyden tuotteistamisen sykli, API-tuotteistamisen sykli, Integraatiokyvykkyyden tuotteistamisen sykli, Automaatiosykli\nStations: Hyödyntäjien vaatimukset ja käyttöönotto, Julkaisu ja käyttöönoton mahdollistaminen, Seuranta ja parantaminen, Ratkaisu- ja rajapintasuunnittelu\nResources and canvases: Hyödyntäjäkokemuksen vaatimuskanvas, Toimialuekanvas, Vuorovaikutuskanvas, API-arvolupauskanvas, Asiakaspolkukanvas, REST-kanvas, Tapahtumakanvas, GraphQL-kanvas\n\nAct as an APIOps Cycles facilitator. Use the selected station questions, entry criteria, exit criteria, stakeholders, and related resources to guide the discussion. Produce decisions, evidence gaps, and next steps."
+      },
+      {
+        "id": "api-devrel-specialist:use-resources",
+        "routeId": "api-devrel-specialist",
+        "title": "Use station resources with Dokumentoinnin ja kehittäjäsuhteiden omistaja",
+        "mode": "use-resources",
+        "prompt": "Stakeholder: Dokumentoinnin ja kehittäjäsuhteiden omistaja\nCycles: Kyvykkyyden tuotteistamisen sykli, API-tuotteistamisen sykli, Integraatiokyvykkyyden tuotteistamisen sykli, Automaatiosykli\nStations: Hyödyntäjien vaatimukset ja käyttöönotto, Julkaisu ja käyttöönoton mahdollistaminen, Seuranta ja parantaminen, Ratkaisu- ja rajapintasuunnittelu\nResources and canvases: Hyödyntäjäkokemuksen vaatimuskanvas, Toimialuekanvas, Vuorovaikutuskanvas, API-arvolupauskanvas, Asiakaspolkukanvas, REST-kanvas, Tapahtumakanvas, GraphQL-kanvas\n\nHelp the team use the recommended APIOps Cycles resources. For canvases, ask for evidence section by section and propose sticky notes. For checklists or guidelines, summarize what to review, what evidence is missing, and who should answer."
+      },
+      {
+        "id": "api-devrel-specialist:next-actions",
+        "routeId": "api-devrel-specialist",
+        "title": "Generate next actions for Dokumentoinnin ja kehittäjäsuhteiden omistaja",
+        "mode": "next-actions",
+        "prompt": "Stakeholder: Dokumentoinnin ja kehittäjäsuhteiden omistaja\nCycles: Kyvykkyyden tuotteistamisen sykli, API-tuotteistamisen sykli, Integraatiokyvykkyyden tuotteistamisen sykli, Automaatiosykli\nStations: Hyödyntäjien vaatimukset ja käyttöönotto, Julkaisu ja käyttöönoton mahdollistaminen, Seuranta ja parantaminen, Ratkaisu- ja rajapintasuunnittelu\nResources and canvases: Hyödyntäjäkokemuksen vaatimuskanvas, Toimialuekanvas, Vuorovaikutuskanvas, API-arvolupauskanvas, Asiakaspolkukanvas, REST-kanvas, Tapahtumakanvas, GraphQL-kanvas\n\nGenerate practical next actions, owners, evidence to collect, related resources to use, and suggested next stations. Keep the output suitable for Markdown or Confluence."
+      },
+      {
+        "id": "integration-architect:facilitate-station",
+        "routeId": "integration-architect",
+        "title": "Facilitate a station with Integraatioarkkitehti",
+        "mode": "facilitate-station",
+        "prompt": "Stakeholder: Integraatioarkkitehti\nCycles: Kyvykkyyden tuotteistamisen sykli, Integraatiokyvykkyyden tuotteistamisen sykli, Automaatiosykli\nStations: Arkkitehtuuri- ja alustapäätökset, Ratkaisu- ja rajapintasuunnittelu, Strategia, Hyödyntäjien vaatimukset ja käyttöönotto, Toimitus ja operointi, Laadun ja valmiuden varmistus, Julkaisu ja käyttöönoton mahdollistaminen, Seuranta ja parantaminen\nResources and canvases: Liiketoimintavaikutuskanvas, Sijaintikanvas, Kapasiteettikanvas, Toimialuekanvas, Vuorovaikutuskanvas, Asiakaspolkukanvas, Kyvykkyyden arvolupauskanvas, Kyvykkyyden liiketoimintamallikanvas, Hyödyntäjäkokemuksen vaatimuskanvas, REST-kanvas, Tapahtumakanvas, GraphQL-kanvas\n\nAct as an APIOps Cycles facilitator. Use the selected station questions, entry criteria, exit criteria, stakeholders, and related resources to guide the discussion. Produce decisions, evidence gaps, and next steps."
+      },
+      {
+        "id": "integration-architect:use-resources",
+        "routeId": "integration-architect",
+        "title": "Use station resources with Integraatioarkkitehti",
+        "mode": "use-resources",
+        "prompt": "Stakeholder: Integraatioarkkitehti\nCycles: Kyvykkyyden tuotteistamisen sykli, Integraatiokyvykkyyden tuotteistamisen sykli, Automaatiosykli\nStations: Arkkitehtuuri- ja alustapäätökset, Ratkaisu- ja rajapintasuunnittelu, Strategia, Hyödyntäjien vaatimukset ja käyttöönotto, Toimitus ja operointi, Laadun ja valmiuden varmistus, Julkaisu ja käyttöönoton mahdollistaminen, Seuranta ja parantaminen\nResources and canvases: Liiketoimintavaikutuskanvas, Sijaintikanvas, Kapasiteettikanvas, Toimialuekanvas, Vuorovaikutuskanvas, Asiakaspolkukanvas, Kyvykkyyden arvolupauskanvas, Kyvykkyyden liiketoimintamallikanvas, Hyödyntäjäkokemuksen vaatimuskanvas, REST-kanvas, Tapahtumakanvas, GraphQL-kanvas\n\nHelp the team use the recommended APIOps Cycles resources. For canvases, ask for evidence section by section and propose sticky notes. For checklists or guidelines, summarize what to review, what evidence is missing, and who should answer."
+      },
+      {
+        "id": "integration-architect:next-actions",
+        "routeId": "integration-architect",
+        "title": "Generate next actions for Integraatioarkkitehti",
+        "mode": "next-actions",
+        "prompt": "Stakeholder: Integraatioarkkitehti\nCycles: Kyvykkyyden tuotteistamisen sykli, Integraatiokyvykkyyden tuotteistamisen sykli, Automaatiosykli\nStations: Arkkitehtuuri- ja alustapäätökset, Ratkaisu- ja rajapintasuunnittelu, Strategia, Hyödyntäjien vaatimukset ja käyttöönotto, Toimitus ja operointi, Laadun ja valmiuden varmistus, Julkaisu ja käyttöönoton mahdollistaminen, Seuranta ja parantaminen\nResources and canvases: Liiketoimintavaikutuskanvas, Sijaintikanvas, Kapasiteettikanvas, Toimialuekanvas, Vuorovaikutuskanvas, Asiakaspolkukanvas, Kyvykkyyden arvolupauskanvas, Kyvykkyyden liiketoimintamallikanvas, Hyödyntäjäkokemuksen vaatimuskanvas, REST-kanvas, Tapahtumakanvas, GraphQL-kanvas\n\nGenerate practical next actions, owners, evidence to collect, related resources to use, and suggested next stations. Keep the output suitable for Markdown or Confluence."
+      },
+      {
+        "id": "partner-specialist:facilitate-station",
+        "routeId": "partner-specialist",
+        "title": "Facilitate a station with Kumppani- ja toimittajavastaava",
+        "mode": "facilitate-station",
+        "prompt": "Stakeholder: Kumppani- ja toimittajavastaava\nCycles: Kyvykkyyden tuotteistamisen sykli, Integraatiokyvykkyyden tuotteistamisen sykli\nStations: Julkaisu ja käyttöönoton mahdollistaminen, Strategia, Hyödyntäjien vaatimukset ja käyttöönotto, Toimitus ja operointi\nResources and canvases: Asiakaspolkukanvas, Toimialuekanvas, Kyvykkyyden arvolupauskanvas, Kyvykkyyden liiketoimintamallikanvas, Hyödyntäjäkokemuksen vaatimuskanvas\n\nAct as an APIOps Cycles facilitator. Use the selected station questions, entry criteria, exit criteria, stakeholders, and related resources to guide the discussion. Produce decisions, evidence gaps, and next steps."
+      },
+      {
+        "id": "partner-specialist:use-resources",
+        "routeId": "partner-specialist",
+        "title": "Use station resources with Kumppani- ja toimittajavastaava",
+        "mode": "use-resources",
+        "prompt": "Stakeholder: Kumppani- ja toimittajavastaava\nCycles: Kyvykkyyden tuotteistamisen sykli, Integraatiokyvykkyyden tuotteistamisen sykli\nStations: Julkaisu ja käyttöönoton mahdollistaminen, Strategia, Hyödyntäjien vaatimukset ja käyttöönotto, Toimitus ja operointi\nResources and canvases: Asiakaspolkukanvas, Toimialuekanvas, Kyvykkyyden arvolupauskanvas, Kyvykkyyden liiketoimintamallikanvas, Hyödyntäjäkokemuksen vaatimuskanvas\n\nHelp the team use the recommended APIOps Cycles resources. For canvases, ask for evidence section by section and propose sticky notes. For checklists or guidelines, summarize what to review, what evidence is missing, and who should answer."
+      },
+      {
+        "id": "partner-specialist:next-actions",
+        "routeId": "partner-specialist",
+        "title": "Generate next actions for Kumppani- ja toimittajavastaava",
+        "mode": "next-actions",
+        "prompt": "Stakeholder: Kumppani- ja toimittajavastaava\nCycles: Kyvykkyyden tuotteistamisen sykli, Integraatiokyvykkyyden tuotteistamisen sykli\nStations: Julkaisu ja käyttöönoton mahdollistaminen, Strategia, Hyödyntäjien vaatimukset ja käyttöönotto, Toimitus ja operointi\nResources and canvases: Asiakaspolkukanvas, Toimialuekanvas, Kyvykkyyden arvolupauskanvas, Kyvykkyyden liiketoimintamallikanvas, Hyödyntäjäkokemuksen vaatimuskanvas\n\nGenerate practical next actions, owners, evidence to collect, related resources to use, and suggested next stations. Keep the output suitable for Markdown or Confluence."
+      },
+      {
+        "id": "capability-owner:facilitate-station",
+        "routeId": "capability-owner",
+        "title": "Facilitate a station with Kyvykkyyden omistaja",
+        "mode": "facilitate-station",
+        "prompt": "Stakeholder: Kyvykkyyden omistaja\nCycles: Kyvykkyyden tuotteistamisen sykli, Integraatiokyvykkyyden tuotteistamisen sykli\nStations: Strategia, Hyödyntäjien vaatimukset ja käyttöönotto, Arkkitehtuuri- ja alustapäätökset, Ratkaisu- ja rajapintasuunnittelu, Toimitus ja operointi, Laadun ja valmiuden varmistus, Julkaisu ja käyttöönoton mahdollistaminen, Seuranta ja parantaminen\nResources and canvases: Asiakaspolkukanvas, Toimialuekanvas, Kyvykkyyden arvolupauskanvas, Kyvykkyyden liiketoimintamallikanvas, Hyödyntäjäkokemuksen vaatimuskanvas, Liiketoimintavaikutuskanvas, Sijaintikanvas, Kapasiteettikanvas, Vuorovaikutuskanvas, REST-kanvas, Tapahtumakanvas, GraphQL-kanvas\n\nAct as an APIOps Cycles facilitator. Use the selected station questions, entry criteria, exit criteria, stakeholders, and related resources to guide the discussion. Produce decisions, evidence gaps, and next steps."
+      },
+      {
+        "id": "capability-owner:use-resources",
+        "routeId": "capability-owner",
+        "title": "Use station resources with Kyvykkyyden omistaja",
+        "mode": "use-resources",
+        "prompt": "Stakeholder: Kyvykkyyden omistaja\nCycles: Kyvykkyyden tuotteistamisen sykli, Integraatiokyvykkyyden tuotteistamisen sykli\nStations: Strategia, Hyödyntäjien vaatimukset ja käyttöönotto, Arkkitehtuuri- ja alustapäätökset, Ratkaisu- ja rajapintasuunnittelu, Toimitus ja operointi, Laadun ja valmiuden varmistus, Julkaisu ja käyttöönoton mahdollistaminen, Seuranta ja parantaminen\nResources and canvases: Asiakaspolkukanvas, Toimialuekanvas, Kyvykkyyden arvolupauskanvas, Kyvykkyyden liiketoimintamallikanvas, Hyödyntäjäkokemuksen vaatimuskanvas, Liiketoimintavaikutuskanvas, Sijaintikanvas, Kapasiteettikanvas, Vuorovaikutuskanvas, REST-kanvas, Tapahtumakanvas, GraphQL-kanvas\n\nHelp the team use the recommended APIOps Cycles resources. For canvases, ask for evidence section by section and propose sticky notes. For checklists or guidelines, summarize what to review, what evidence is missing, and who should answer."
+      },
+      {
+        "id": "capability-owner:next-actions",
+        "routeId": "capability-owner",
+        "title": "Generate next actions for Kyvykkyyden omistaja",
+        "mode": "next-actions",
+        "prompt": "Stakeholder: Kyvykkyyden omistaja\nCycles: Kyvykkyyden tuotteistamisen sykli, Integraatiokyvykkyyden tuotteistamisen sykli\nStations: Strategia, Hyödyntäjien vaatimukset ja käyttöönotto, Arkkitehtuuri- ja alustapäätökset, Ratkaisu- ja rajapintasuunnittelu, Toimitus ja operointi, Laadun ja valmiuden varmistus, Julkaisu ja käyttöönoton mahdollistaminen, Seuranta ja parantaminen\nResources and canvases: Asiakaspolkukanvas, Toimialuekanvas, Kyvykkyyden arvolupauskanvas, Kyvykkyyden liiketoimintamallikanvas, Hyödyntäjäkokemuksen vaatimuskanvas, Liiketoimintavaikutuskanvas, Sijaintikanvas, Kapasiteettikanvas, Vuorovaikutuskanvas, REST-kanvas, Tapahtumakanvas, GraphQL-kanvas\n\nGenerate practical next actions, owners, evidence to collect, related resources to use, and suggested next stations. Keep the output suitable for Markdown or Confluence."
+      },
+      {
+        "id": "business-owner:facilitate-station",
+        "routeId": "business-owner",
+        "title": "Facilitate a station with Liiketoiminnan omistaja",
+        "mode": "facilitate-station",
+        "prompt": "Stakeholder: Liiketoiminnan omistaja\nCycles: Kyvykkyyden tuotteistamisen sykli, API-tuotteistamisen sykli, Integraatiokyvykkyyden tuotteistamisen sykli, Automaatiosykli\nStations: Strategia, Hyödyntäjien vaatimukset ja käyttöönotto, Arkkitehtuuri- ja alustapäätökset, Julkaisu ja käyttöönoton mahdollistaminen, Seuranta ja parantaminen, Ratkaisu- ja rajapintasuunnittelu, Toimitus ja operointi, Laadun ja valmiuden varmistus\nResources and canvases: Asiakaspolkukanvas, Toimialuekanvas, Kyvykkyyden arvolupauskanvas, Kyvykkyyden liiketoimintamallikanvas, Hyödyntäjäkokemuksen vaatimuskanvas, Liiketoimintavaikutuskanvas, Sijaintikanvas, Kapasiteettikanvas, Vuorovaikutuskanvas, API-arvolupauskanvas, API-liiketoimintamallikanvas, REST-kanvas, Tapahtumakanvas, GraphQL-kanvas\n\nAct as an APIOps Cycles facilitator. Use the selected station questions, entry criteria, exit criteria, stakeholders, and related resources to guide the discussion. Produce decisions, evidence gaps, and next steps."
+      },
+      {
+        "id": "business-owner:use-resources",
+        "routeId": "business-owner",
+        "title": "Use station resources with Liiketoiminnan omistaja",
+        "mode": "use-resources",
+        "prompt": "Stakeholder: Liiketoiminnan omistaja\nCycles: Kyvykkyyden tuotteistamisen sykli, API-tuotteistamisen sykli, Integraatiokyvykkyyden tuotteistamisen sykli, Automaatiosykli\nStations: Strategia, Hyödyntäjien vaatimukset ja käyttöönotto, Arkkitehtuuri- ja alustapäätökset, Julkaisu ja käyttöönoton mahdollistaminen, Seuranta ja parantaminen, Ratkaisu- ja rajapintasuunnittelu, Toimitus ja operointi, Laadun ja valmiuden varmistus\nResources and canvases: Asiakaspolkukanvas, Toimialuekanvas, Kyvykkyyden arvolupauskanvas, Kyvykkyyden liiketoimintamallikanvas, Hyödyntäjäkokemuksen vaatimuskanvas, Liiketoimintavaikutuskanvas, Sijaintikanvas, Kapasiteettikanvas, Vuorovaikutuskanvas, API-arvolupauskanvas, API-liiketoimintamallikanvas, REST-kanvas, Tapahtumakanvas, GraphQL-kanvas\n\nHelp the team use the recommended APIOps Cycles resources. For canvases, ask for evidence section by section and propose sticky notes. For checklists or guidelines, summarize what to review, what evidence is missing, and who should answer."
+      },
+      {
+        "id": "business-owner:next-actions",
+        "routeId": "business-owner",
+        "title": "Generate next actions for Liiketoiminnan omistaja",
+        "mode": "next-actions",
+        "prompt": "Stakeholder: Liiketoiminnan omistaja\nCycles: Kyvykkyyden tuotteistamisen sykli, API-tuotteistamisen sykli, Integraatiokyvykkyyden tuotteistamisen sykli, Automaatiosykli\nStations: Strategia, Hyödyntäjien vaatimukset ja käyttöönotto, Arkkitehtuuri- ja alustapäätökset, Julkaisu ja käyttöönoton mahdollistaminen, Seuranta ja parantaminen, Ratkaisu- ja rajapintasuunnittelu, Toimitus ja operointi, Laadun ja valmiuden varmistus\nResources and canvases: Asiakaspolkukanvas, Toimialuekanvas, Kyvykkyyden arvolupauskanvas, Kyvykkyyden liiketoimintamallikanvas, Hyödyntäjäkokemuksen vaatimuskanvas, Liiketoimintavaikutuskanvas, Sijaintikanvas, Kapasiteettikanvas, Vuorovaikutuskanvas, API-arvolupauskanvas, API-liiketoimintamallikanvas, REST-kanvas, Tapahtumakanvas, GraphQL-kanvas\n\nGenerate practical next actions, owners, evidence to collect, related resources to use, and suggested next stations. Keep the output suitable for Markdown or Confluence."
+      },
+      {
+        "id": "domain-specialist:facilitate-station",
+        "routeId": "domain-specialist",
+        "title": "Facilitate a station with Liiketoiminta-asiantuntija",
+        "mode": "facilitate-station",
+        "prompt": "Stakeholder: Liiketoiminta-asiantuntija\nCycles: Kyvykkyyden tuotteistamisen sykli, API-tuotteistamisen sykli, Integraatiokyvykkyyden tuotteistamisen sykli, Automaatiosykli\nStations: Strategia, Hyödyntäjien vaatimukset ja käyttöönotto, Ratkaisu- ja rajapintasuunnittelu, Arkkitehtuuri- ja alustapäätökset, Seuranta ja parantaminen\nResources and canvases: Asiakaspolkukanvas, Toimialuekanvas, Kyvykkyyden arvolupauskanvas, Kyvykkyyden liiketoimintamallikanvas, Hyödyntäjäkokemuksen vaatimuskanvas, Vuorovaikutuskanvas, Liiketoimintavaikutuskanvas, Sijaintikanvas, Kapasiteettikanvas, API-arvolupauskanvas, API-liiketoimintamallikanvas, REST-kanvas, Tapahtumakanvas, GraphQL-kanvas\n\nAct as an APIOps Cycles facilitator. Use the selected station questions, entry criteria, exit criteria, stakeholders, and related resources to guide the discussion. Produce decisions, evidence gaps, and next steps."
+      },
+      {
+        "id": "domain-specialist:use-resources",
+        "routeId": "domain-specialist",
+        "title": "Use station resources with Liiketoiminta-asiantuntija",
+        "mode": "use-resources",
+        "prompt": "Stakeholder: Liiketoiminta-asiantuntija\nCycles: Kyvykkyyden tuotteistamisen sykli, API-tuotteistamisen sykli, Integraatiokyvykkyyden tuotteistamisen sykli, Automaatiosykli\nStations: Strategia, Hyödyntäjien vaatimukset ja käyttöönotto, Ratkaisu- ja rajapintasuunnittelu, Arkkitehtuuri- ja alustapäätökset, Seuranta ja parantaminen\nResources and canvases: Asiakaspolkukanvas, Toimialuekanvas, Kyvykkyyden arvolupauskanvas, Kyvykkyyden liiketoimintamallikanvas, Hyödyntäjäkokemuksen vaatimuskanvas, Vuorovaikutuskanvas, Liiketoimintavaikutuskanvas, Sijaintikanvas, Kapasiteettikanvas, API-arvolupauskanvas, API-liiketoimintamallikanvas, REST-kanvas, Tapahtumakanvas, GraphQL-kanvas\n\nHelp the team use the recommended APIOps Cycles resources. For canvases, ask for evidence section by section and propose sticky notes. For checklists or guidelines, summarize what to review, what evidence is missing, and who should answer."
+      },
+      {
+        "id": "domain-specialist:next-actions",
+        "routeId": "domain-specialist",
+        "title": "Generate next actions for Liiketoiminta-asiantuntija",
+        "mode": "next-actions",
+        "prompt": "Stakeholder: Liiketoiminta-asiantuntija\nCycles: Kyvykkyyden tuotteistamisen sykli, API-tuotteistamisen sykli, Integraatiokyvykkyyden tuotteistamisen sykli, Automaatiosykli\nStations: Strategia, Hyödyntäjien vaatimukset ja käyttöönotto, Ratkaisu- ja rajapintasuunnittelu, Arkkitehtuuri- ja alustapäätökset, Seuranta ja parantaminen\nResources and canvases: Asiakaspolkukanvas, Toimialuekanvas, Kyvykkyyden arvolupauskanvas, Kyvykkyyden liiketoimintamallikanvas, Hyödyntäjäkokemuksen vaatimuskanvas, Vuorovaikutuskanvas, Liiketoimintavaikutuskanvas, Sijaintikanvas, Kapasiteettikanvas, API-arvolupauskanvas, API-liiketoimintamallikanvas, REST-kanvas, Tapahtumakanvas, GraphQL-kanvas\n\nGenerate practical next actions, owners, evidence to collect, related resources to use, and suggested next stations. Keep the output suitable for Markdown or Confluence."
+      },
+      {
+        "id": "process-owner:facilitate-station",
+        "routeId": "process-owner",
+        "title": "Facilitate a station with Prosessin omistaja",
+        "mode": "facilitate-station",
+        "prompt": "Stakeholder: Prosessin omistaja\nCycles: Automaatiosykli\nStations: Strategia, Hyödyntäjien vaatimukset ja käyttöönotto, Ratkaisu- ja rajapintasuunnittelu, Toimitus ja operointi, Laadun ja valmiuden varmistus, Julkaisu ja käyttöönoton mahdollistaminen, Seuranta ja parantaminen\nResources and canvases: Asiakaspolkukanvas, Toimialuekanvas, Kyvykkyyden arvolupauskanvas, Hyödyntäjäkokemuksen vaatimuskanvas, Vuorovaikutuskanvas\n\nAct as an APIOps Cycles facilitator. Use the selected station questions, entry criteria, exit criteria, stakeholders, and related resources to guide the discussion. Produce decisions, evidence gaps, and next steps."
+      },
+      {
+        "id": "process-owner:use-resources",
+        "routeId": "process-owner",
+        "title": "Use station resources with Prosessin omistaja",
+        "mode": "use-resources",
+        "prompt": "Stakeholder: Prosessin omistaja\nCycles: Automaatiosykli\nStations: Strategia, Hyödyntäjien vaatimukset ja käyttöönotto, Ratkaisu- ja rajapintasuunnittelu, Toimitus ja operointi, Laadun ja valmiuden varmistus, Julkaisu ja käyttöönoton mahdollistaminen, Seuranta ja parantaminen\nResources and canvases: Asiakaspolkukanvas, Toimialuekanvas, Kyvykkyyden arvolupauskanvas, Hyödyntäjäkokemuksen vaatimuskanvas, Vuorovaikutuskanvas\n\nHelp the team use the recommended APIOps Cycles resources. For canvases, ask for evidence section by section and propose sticky notes. For checklists or guidelines, summarize what to review, what evidence is missing, and who should answer."
+      },
+      {
+        "id": "process-owner:next-actions",
+        "routeId": "process-owner",
+        "title": "Generate next actions for Prosessin omistaja",
+        "mode": "next-actions",
+        "prompt": "Stakeholder: Prosessin omistaja\nCycles: Automaatiosykli\nStations: Strategia, Hyödyntäjien vaatimukset ja käyttöönotto, Ratkaisu- ja rajapintasuunnittelu, Toimitus ja operointi, Laadun ja valmiuden varmistus, Julkaisu ja käyttöönoton mahdollistaminen, Seuranta ja parantaminen\nResources and canvases: Asiakaspolkukanvas, Toimialuekanvas, Kyvykkyyden arvolupauskanvas, Hyödyntäjäkokemuksen vaatimuskanvas, Vuorovaikutuskanvas\n\nGenerate practical next actions, owners, evidence to collect, related resources to use, and suggested next stations. Keep the output suitable for Markdown or Confluence."
+      },
+      {
+        "id": "api-engineer:facilitate-station",
+        "routeId": "api-engineer",
+        "title": "Facilitate a station with Toimituskehittäjä",
+        "mode": "facilitate-station",
+        "prompt": "Stakeholder: Toimituskehittäjä\nCycles: Kyvykkyyden tuotteistamisen sykli, API-tuotteistamisen sykli, Integraatiokyvykkyyden tuotteistamisen sykli, Automaatiosykli\nStations: Toimitus ja operointi, Laadun ja valmiuden varmistus, Arkkitehtuuri- ja alustapäätökset, Ratkaisu- ja rajapintasuunnittelu, Julkaisu ja käyttöönoton mahdollistaminen, Seuranta ja parantaminen\nResources and canvases: Liiketoimintavaikutuskanvas, Sijaintikanvas, Kapasiteettikanvas, Toimialuekanvas, Vuorovaikutuskanvas, REST-kanvas, Tapahtumakanvas, GraphQL-kanvas\n\nAct as an APIOps Cycles facilitator. Use the selected station questions, entry criteria, exit criteria, stakeholders, and related resources to guide the discussion. Produce decisions, evidence gaps, and next steps."
+      },
+      {
+        "id": "api-engineer:use-resources",
+        "routeId": "api-engineer",
+        "title": "Use station resources with Toimituskehittäjä",
+        "mode": "use-resources",
+        "prompt": "Stakeholder: Toimituskehittäjä\nCycles: Kyvykkyyden tuotteistamisen sykli, API-tuotteistamisen sykli, Integraatiokyvykkyyden tuotteistamisen sykli, Automaatiosykli\nStations: Toimitus ja operointi, Laadun ja valmiuden varmistus, Arkkitehtuuri- ja alustapäätökset, Ratkaisu- ja rajapintasuunnittelu, Julkaisu ja käyttöönoton mahdollistaminen, Seuranta ja parantaminen\nResources and canvases: Liiketoimintavaikutuskanvas, Sijaintikanvas, Kapasiteettikanvas, Toimialuekanvas, Vuorovaikutuskanvas, REST-kanvas, Tapahtumakanvas, GraphQL-kanvas\n\nHelp the team use the recommended APIOps Cycles resources. For canvases, ask for evidence section by section and propose sticky notes. For checklists or guidelines, summarize what to review, what evidence is missing, and who should answer."
+      },
+      {
+        "id": "api-engineer:next-actions",
+        "routeId": "api-engineer",
+        "title": "Generate next actions for Toimituskehittäjä",
+        "mode": "next-actions",
+        "prompt": "Stakeholder: Toimituskehittäjä\nCycles: Kyvykkyyden tuotteistamisen sykli, API-tuotteistamisen sykli, Integraatiokyvykkyyden tuotteistamisen sykli, Automaatiosykli\nStations: Toimitus ja operointi, Laadun ja valmiuden varmistus, Arkkitehtuuri- ja alustapäätökset, Ratkaisu- ja rajapintasuunnittelu, Julkaisu ja käyttöönoton mahdollistaminen, Seuranta ja parantaminen\nResources and canvases: Liiketoimintavaikutuskanvas, Sijaintikanvas, Kapasiteettikanvas, Toimialuekanvas, Vuorovaikutuskanvas, REST-kanvas, Tapahtumakanvas, GraphQL-kanvas\n\nGenerate practical next actions, owners, evidence to collect, related resources to use, and suggested next stations. Keep the output suitable for Markdown or Confluence."
+      },
+      {
+        "id": "operations-specialist:facilitate-station",
+        "routeId": "operations-specialist",
+        "title": "Facilitate a station with Tuki- ja operaatioiden omistaja",
+        "mode": "facilitate-station",
+        "prompt": "Stakeholder: Tuki- ja operaatioiden omistaja\nCycles: Kyvykkyyden tuotteistamisen sykli, API-tuotteistamisen sykli, Integraatiokyvykkyyden tuotteistamisen sykli, Automaatiosykli\nStations: Hyödyntäjien vaatimukset ja käyttöönotto, Toimitus ja operointi, Laadun ja valmiuden varmistus, Julkaisu ja käyttöönoton mahdollistaminen, Seuranta ja parantaminen, Arkkitehtuuri- ja alustapäätökset\nResources and canvases: Hyödyntäjäkokemuksen vaatimuskanvas, Liiketoimintavaikutuskanvas, Sijaintikanvas, Kapasiteettikanvas, API-arvolupauskanvas, Asiakaspolkukanvas\n\nAct as an APIOps Cycles facilitator. Use the selected station questions, entry criteria, exit criteria, stakeholders, and related resources to guide the discussion. Produce decisions, evidence gaps, and next steps."
+      },
+      {
+        "id": "operations-specialist:use-resources",
+        "routeId": "operations-specialist",
+        "title": "Use station resources with Tuki- ja operaatioiden omistaja",
+        "mode": "use-resources",
+        "prompt": "Stakeholder: Tuki- ja operaatioiden omistaja\nCycles: Kyvykkyyden tuotteistamisen sykli, API-tuotteistamisen sykli, Integraatiokyvykkyyden tuotteistamisen sykli, Automaatiosykli\nStations: Hyödyntäjien vaatimukset ja käyttöönotto, Toimitus ja operointi, Laadun ja valmiuden varmistus, Julkaisu ja käyttöönoton mahdollistaminen, Seuranta ja parantaminen, Arkkitehtuuri- ja alustapäätökset\nResources and canvases: Hyödyntäjäkokemuksen vaatimuskanvas, Liiketoimintavaikutuskanvas, Sijaintikanvas, Kapasiteettikanvas, API-arvolupauskanvas, Asiakaspolkukanvas\n\nHelp the team use the recommended APIOps Cycles resources. For canvases, ask for evidence section by section and propose sticky notes. For checklists or guidelines, summarize what to review, what evidence is missing, and who should answer."
+      },
+      {
+        "id": "operations-specialist:next-actions",
+        "routeId": "operations-specialist",
+        "title": "Generate next actions for Tuki- ja operaatioiden omistaja",
+        "mode": "next-actions",
+        "prompt": "Stakeholder: Tuki- ja operaatioiden omistaja\nCycles: Kyvykkyyden tuotteistamisen sykli, API-tuotteistamisen sykli, Integraatiokyvykkyyden tuotteistamisen sykli, Automaatiosykli\nStations: Hyödyntäjien vaatimukset ja käyttöönotto, Toimitus ja operointi, Laadun ja valmiuden varmistus, Julkaisu ja käyttöönoton mahdollistaminen, Seuranta ja parantaminen, Arkkitehtuuri- ja alustapäätökset\nResources and canvases: Hyödyntäjäkokemuksen vaatimuskanvas, Liiketoimintavaikutuskanvas, Sijaintikanvas, Kapasiteettikanvas, API-arvolupauskanvas, Asiakaspolkukanvas\n\nGenerate practical next actions, owners, evidence to collect, related resources to use, and suggested next stations. Keep the output suitable for Markdown or Confluence."
+      },
+      {
+        "id": "security-specialist:facilitate-station",
+        "routeId": "security-specialist",
+        "title": "Facilitate a station with Turvallisuusasiantuntija",
+        "mode": "facilitate-station",
+        "prompt": "Stakeholder: Turvallisuusasiantuntija\nCycles: Kyvykkyyden tuotteistamisen sykli, API-tuotteistamisen sykli, Integraatiokyvykkyyden tuotteistamisen sykli, Automaatiosykli\nStations: Arkkitehtuuri- ja alustapäätökset, Ratkaisu- ja rajapintasuunnittelu, Toimitus ja operointi, Laadun ja valmiuden varmistus, Julkaisu ja käyttöönoton mahdollistaminen, Seuranta ja parantaminen, Strategia\nResources and canvases: Liiketoimintavaikutuskanvas, Sijaintikanvas, Kapasiteettikanvas, Toimialuekanvas, Vuorovaikutuskanvas, Asiakaspolkukanvas, Kyvykkyyden arvolupauskanvas, Kyvykkyyden liiketoimintamallikanvas, REST-kanvas, Tapahtumakanvas, GraphQL-kanvas, API-arvolupauskanvas, API-liiketoimintamallikanvas\n\nAct as an APIOps Cycles facilitator. Use the selected station questions, entry criteria, exit criteria, stakeholders, and related resources to guide the discussion. Produce decisions, evidence gaps, and next steps."
+      },
+      {
+        "id": "security-specialist:use-resources",
+        "routeId": "security-specialist",
+        "title": "Use station resources with Turvallisuusasiantuntija",
+        "mode": "use-resources",
+        "prompt": "Stakeholder: Turvallisuusasiantuntija\nCycles: Kyvykkyyden tuotteistamisen sykli, API-tuotteistamisen sykli, Integraatiokyvykkyyden tuotteistamisen sykli, Automaatiosykli\nStations: Arkkitehtuuri- ja alustapäätökset, Ratkaisu- ja rajapintasuunnittelu, Toimitus ja operointi, Laadun ja valmiuden varmistus, Julkaisu ja käyttöönoton mahdollistaminen, Seuranta ja parantaminen, Strategia\nResources and canvases: Liiketoimintavaikutuskanvas, Sijaintikanvas, Kapasiteettikanvas, Toimialuekanvas, Vuorovaikutuskanvas, Asiakaspolkukanvas, Kyvykkyyden arvolupauskanvas, Kyvykkyyden liiketoimintamallikanvas, REST-kanvas, Tapahtumakanvas, GraphQL-kanvas, API-arvolupauskanvas, API-liiketoimintamallikanvas\n\nHelp the team use the recommended APIOps Cycles resources. For canvases, ask for evidence section by section and propose sticky notes. For checklists or guidelines, summarize what to review, what evidence is missing, and who should answer."
+      },
+      {
+        "id": "security-specialist:next-actions",
+        "routeId": "security-specialist",
+        "title": "Generate next actions for Turvallisuusasiantuntija",
+        "mode": "next-actions",
+        "prompt": "Stakeholder: Turvallisuusasiantuntija\nCycles: Kyvykkyyden tuotteistamisen sykli, API-tuotteistamisen sykli, Integraatiokyvykkyyden tuotteistamisen sykli, Automaatiosykli\nStations: Arkkitehtuuri- ja alustapäätökset, Ratkaisu- ja rajapintasuunnittelu, Toimitus ja operointi, Laadun ja valmiuden varmistus, Julkaisu ja käyttöönoton mahdollistaminen, Seuranta ja parantaminen, Strategia\nResources and canvases: Liiketoimintavaikutuskanvas, Sijaintikanvas, Kapasiteettikanvas, Toimialuekanvas, Vuorovaikutuskanvas, Asiakaspolkukanvas, Kyvykkyyden arvolupauskanvas, Kyvykkyyden liiketoimintamallikanvas, REST-kanvas, Tapahtumakanvas, GraphQL-kanvas, API-arvolupauskanvas, API-liiketoimintamallikanvas\n\nGenerate practical next actions, owners, evidence to collect, related resources to use, and suggested next stations. Keep the output suitable for Markdown or Confluence."
+      },
+      {
+        "id": "compliance-specialist:facilitate-station",
+        "routeId": "compliance-specialist",
+        "title": "Facilitate a station with Vaatimustenmukaisuus- ja lakiasiantuntija",
+        "mode": "facilitate-station",
+        "prompt": "Stakeholder: Vaatimustenmukaisuus- ja lakiasiantuntija\nCycles: Kyvykkyyden tuotteistamisen sykli, API-tuotteistamisen sykli, Integraatiokyvykkyyden tuotteistamisen sykli, Automaatiosykli\nStations: Strategia, Arkkitehtuuri- ja alustapäätökset, Toimitus ja operointi, Laadun ja valmiuden varmistus, Seuranta ja parantaminen, Ratkaisu- ja rajapintasuunnittelu, Julkaisu ja käyttöönoton mahdollistaminen, Hyödyntäjien vaatimukset ja käyttöönotto\nResources and canvases: Asiakaspolkukanvas, Toimialuekanvas, Kyvykkyyden arvolupauskanvas, Kyvykkyyden liiketoimintamallikanvas, Liiketoimintavaikutuskanvas, Sijaintikanvas, Kapasiteettikanvas, Vuorovaikutuskanvas, Hyödyntäjäkokemuksen vaatimuskanvas, API-arvolupauskanvas, API-liiketoimintamallikanvas, REST-kanvas, Tapahtumakanvas, GraphQL-kanvas\n\nAct as an APIOps Cycles facilitator. Use the selected station questions, entry criteria, exit criteria, stakeholders, and related resources to guide the discussion. Produce decisions, evidence gaps, and next steps."
+      },
+      {
+        "id": "compliance-specialist:use-resources",
+        "routeId": "compliance-specialist",
+        "title": "Use station resources with Vaatimustenmukaisuus- ja lakiasiantuntija",
+        "mode": "use-resources",
+        "prompt": "Stakeholder: Vaatimustenmukaisuus- ja lakiasiantuntija\nCycles: Kyvykkyyden tuotteistamisen sykli, API-tuotteistamisen sykli, Integraatiokyvykkyyden tuotteistamisen sykli, Automaatiosykli\nStations: Strategia, Arkkitehtuuri- ja alustapäätökset, Toimitus ja operointi, Laadun ja valmiuden varmistus, Seuranta ja parantaminen, Ratkaisu- ja rajapintasuunnittelu, Julkaisu ja käyttöönoton mahdollistaminen, Hyödyntäjien vaatimukset ja käyttöönotto\nResources and canvases: Asiakaspolkukanvas, Toimialuekanvas, Kyvykkyyden arvolupauskanvas, Kyvykkyyden liiketoimintamallikanvas, Liiketoimintavaikutuskanvas, Sijaintikanvas, Kapasiteettikanvas, Vuorovaikutuskanvas, Hyödyntäjäkokemuksen vaatimuskanvas, API-arvolupauskanvas, API-liiketoimintamallikanvas, REST-kanvas, Tapahtumakanvas, GraphQL-kanvas\n\nHelp the team use the recommended APIOps Cycles resources. For canvases, ask for evidence section by section and propose sticky notes. For checklists or guidelines, summarize what to review, what evidence is missing, and who should answer."
+      },
+      {
+        "id": "compliance-specialist:next-actions",
+        "routeId": "compliance-specialist",
+        "title": "Generate next actions for Vaatimustenmukaisuus- ja lakiasiantuntija",
+        "mode": "next-actions",
+        "prompt": "Stakeholder: Vaatimustenmukaisuus- ja lakiasiantuntija\nCycles: Kyvykkyyden tuotteistamisen sykli, API-tuotteistamisen sykli, Integraatiokyvykkyyden tuotteistamisen sykli, Automaatiosykli\nStations: Strategia, Arkkitehtuuri- ja alustapäätökset, Toimitus ja operointi, Laadun ja valmiuden varmistus, Seuranta ja parantaminen, Ratkaisu- ja rajapintasuunnittelu, Julkaisu ja käyttöönoton mahdollistaminen, Hyödyntäjien vaatimukset ja käyttöönotto\nResources and canvases: Asiakaspolkukanvas, Toimialuekanvas, Kyvykkyyden arvolupauskanvas, Kyvykkyyden liiketoimintamallikanvas, Liiketoimintavaikutuskanvas, Sijaintikanvas, Kapasiteettikanvas, Vuorovaikutuskanvas, Hyödyntäjäkokemuksen vaatimuskanvas, API-arvolupauskanvas, API-liiketoimintamallikanvas, REST-kanvas, Tapahtumakanvas, GraphQL-kanvas\n\nGenerate practical next actions, owners, evidence to collect, related resources to use, and suggested next stations. Keep the output suitable for Markdown or Confluence."
+      }
+    ]
+  }
+}

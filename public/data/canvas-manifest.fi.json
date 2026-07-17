@@ -1,0 +1,2554 @@
+{
+  "source": {
+    "repository": "https://github.com/APIOpsCycles/apiops-cycles-method-data",
+    "commit": "e17bff8b3f09b9ad26ab4497e339c4658802aaf8"
+  },
+  "locales": [
+    "en",
+    "fi",
+    "fr",
+    "de",
+    "pt"
+  ],
+  "defaultLocale": "en",
+  "translations": {
+    "fi": {
+      "apiBusinessModelCanvas": {
+        "id": "apiBusinessModelCanvas",
+        "title": "API-liiketoimintamallikanvas",
+        "purpose": "Kuinka elinkelpoinen ja uudelleenkäytettävä tämä API on? Onko sille kustannus-hyötynäkökulmasta perusteltu liiketoimintamalli?",
+        "howToUse": "Tiivistä API-rajapinnan arvolupaus API-arvolupauskanvas -kanvaksesta ja etene numeroidussa järjestyksessä.",
+        "layout": {
+          "columns": 5,
+          "rows": 3
+        },
+        "metadata": {
+          "source": "APIOps Cycles",
+          "license": "CC-BY-SA 4.0",
+          "authors": [
+            "Alexander Osterwalder",
+            "Osaango Ltd"
+          ],
+          "website": "www.apiopscycles.com"
+        },
+        "footer": "",
+        "canvasCreatorUrl": "https://canvascreator.apiopscycles.com/?canvas=apiBusinessModelCanvas&locale=fi",
+        "importExportTemplate": {
+          "templateId": "apiBusinessModelCanvas",
+          "locale": "fi",
+          "metadata": {
+            "source": "APIOps Cycles",
+            "license": "CC-BY-SA 4.0",
+            "authors": [
+              "Alexander Osterwalder",
+              "Osaango Ltd"
+            ],
+            "website": "www.apiopscycles.com",
+            "date": "2026-07-17T05:59:44.171Z"
+          },
+          "sections": [
+            {
+              "sectionId": "keyPartners",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "keyActivities",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "keyResources",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "apiValueProposition",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "developerRelations",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "channels",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "apiConsumerSegments",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "costs",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "benefits",
+              "stickyNotes": []
+            }
+          ],
+          "footer": ""
+        },
+        "sections": [
+          {
+            "id": "apiValueProposition",
+            "title": "APIn arvolupaus",
+            "description": "Aloita yhdellä tarralapulla, jossa nimeät APIn tai API-perheen, kerro sitten mitä arvoa API tarjoaa API-hyödyntäjille.",
+            "gridPosition": {
+              "column": 2,
+              "row": 0,
+              "colSpan": 1,
+              "rowSpan": 2
+            },
+            "fillOrder": 1,
+            "highlight": true,
+            "journeySteps": false,
+            "defaultNoteColor": "#C0EB6A",
+            "defaultNoteIntent": "benefit"
+          },
+          {
+            "id": "apiConsumerSegments",
+            "title": "API-hyödyntäjäsegmentit",
+            "description": "Keitä ovat APIn kohdeyleisöt?",
+            "gridPosition": {
+              "column": 4,
+              "row": 0,
+              "colSpan": 1,
+              "rowSpan": 2
+            },
+            "fillOrder": 2,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#DFDDC5",
+            "defaultNoteIntent": "neutral"
+          },
+          {
+            "id": "developerRelations",
+            "title": "Suhde kehittäjiin",
+            "description": "Miten API-tarjoaja tavoittaa ja tukee APIn käyttäjiä?",
+            "gridPosition": {
+              "column": 3,
+              "row": 0,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 3,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#DFDDC5",
+            "defaultNoteIntent": "neutral"
+          },
+          {
+            "id": "channels",
+            "title": "Kanavat",
+            "description": "Minkä kanavien kautta APIn käyttäjät ovat vuorovaikutuksessa APIn kanssa?",
+            "gridPosition": {
+              "column": 3,
+              "row": 1,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 4,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#7DC9E7",
+            "defaultNoteIntent": "task"
+          },
+          {
+            "id": "keyResources",
+            "title": "Keskeiset resurssit",
+            "description": "Mitä ainutlaatuisia strategisia resursseja API-tarjoajan on hankittava tai kehitettävä?",
+            "gridPosition": {
+              "column": 1,
+              "row": 1,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 5,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#DFDDC5",
+            "defaultNoteIntent": "neutral"
+          },
+          {
+            "id": "keyActivities",
+            "title": "Keskeiset toiminnot",
+            "description": "Mitkä ovat tärkeimmät toimet, jotka API-tarjoajan on toteutettava menestyäkseen?",
+            "gridPosition": {
+              "column": 1,
+              "row": 0,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 6,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#7DC9E7",
+            "defaultNoteIntent": "task"
+          },
+          {
+            "id": "keyPartners",
+            "title": "Keskeiset kumppanit",
+            "description": "Ketkä ovat tärkeimmät sidosryhmät?",
+            "gridPosition": {
+              "column": 0,
+              "row": 0,
+              "colSpan": 1,
+              "rowSpan": 2
+            },
+            "fillOrder": 7,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#DFDDC5",
+            "defaultNoteIntent": "neutral"
+          },
+          {
+            "id": "benefits",
+            "title": "Hyödyt",
+            "description": "Mitkä ovat APIn tuottamat merkittävät hyödyt tai tulovirrat?",
+            "gridPosition": {
+              "column": 2.5,
+              "row": 2,
+              "colSpan": 2.5,
+              "rowSpan": 1
+            },
+            "fillOrder": 8,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#C0EB6A",
+            "defaultNoteIntent": "benefit"
+          },
+          {
+            "id": "costs",
+            "title": "Kustannukset",
+            "description": "Mitkä ovat merkittävimmät kustannukset APIn rakentamisessa, julkaisemisessa ja ylläpidossa?",
+            "gridPosition": {
+              "column": 0,
+              "row": 2,
+              "colSpan": 2.5,
+              "rowSpan": 1
+            },
+            "fillOrder": 9,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#FFAFAF",
+            "defaultNoteIntent": "negative"
+          }
+        ]
+      },
+      "apiValuePropositionCanvas": {
+        "id": "apiValuePropositionCanvas",
+        "title": "API-arvolupauskanvas",
+        "purpose": "Miten asiakaspolku liittyy API-rajapintoihin? Mitkä loppukäyttäjien ja API-hyödyntäjien kipupisteet ja tavoitellut hyödyt täytyy huomioida?",
+        "howToUse": "Kuvaa loppukäyttäjien näkökulma aloittamalla heidän tehtävistään, kipupisteistään ja hyödyistään. Lisää sen jälkeen API-hyödyntäjien vastaavat tarpeet sekä API-tuotteet ja API-ominaisuudet.",
+        "layout": {
+          "columns": 4,
+          "rows": 3
+        },
+        "metadata": {
+          "source": "APIOps Cycles",
+          "license": "CC-BY-SA 4.0",
+          "authors": [
+            "Alexander Osterwalder",
+            "Osaango Ltd"
+          ],
+          "website": "www.apiopscycles.com"
+        },
+        "footer": "",
+        "canvasCreatorUrl": "https://canvascreator.apiopscycles.com/?canvas=apiValuePropositionCanvas&locale=fi",
+        "importExportTemplate": {
+          "templateId": "apiValuePropositionCanvas",
+          "locale": "fi",
+          "metadata": {
+            "source": "APIOps Cycles",
+            "license": "CC-BY-SA 4.0",
+            "authors": [
+              "Alexander Osterwalder",
+              "Osaango Ltd"
+            ],
+            "website": "www.apiopscycles.com",
+            "date": "2026-07-17T05:59:44.172Z"
+          },
+          "sections": [
+            {
+              "sectionId": "tasks",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "gainEnablingFeatures",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "painRelievingFeatures",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "apiProducts",
+              "stickyNotes": []
+            }
+          ],
+          "footer": ""
+        },
+        "sections": [
+          {
+            "id": "tasks",
+            "title": "Tehtävät",
+            "description": "Mitä asiakkaat tai loppukäyttäjät yrittävät saavuttaa?",
+            "gridPosition": {
+              "column": 0,
+              "row": 0,
+              "colSpan": 4,
+              "rowSpan": 1
+            },
+            "fillOrder": 1,
+            "highlight": true,
+            "journeySteps": true,
+            "defaultNoteColor": "#7DC9E7",
+            "defaultNoteIntent": "task"
+          },
+          {
+            "id": "gainEnablingFeatures",
+            "title": "Hyötyjä mahdollistavat ominaisuudet",
+            "description": "Mitkä ominaisuudet auttavat loppukäyttäjiä ja API-hyödyntäjiä saavuttamaan tavoitellut hyödyt?",
+            "gridPosition": {
+              "column": 0,
+              "row": 1,
+              "colSpan": 2,
+              "rowSpan": 1
+            },
+            "fillOrder": 2,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#C0EB6A",
+            "defaultNoteIntent": "benefit"
+          },
+          {
+            "id": "painRelievingFeatures",
+            "title": "Kipupisteitä vähentävät ominaisuudet",
+            "description": "Mitkä ominaisuudet auttavat loppukäyttäjiä ja API-hyödyntäjiä vähentämään kipupisteitä?",
+            "gridPosition": {
+              "column": 2,
+              "row": 1,
+              "colSpan": 2,
+              "rowSpan": 1
+            },
+            "fillOrder": 3,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#C0EB6A",
+            "defaultNoteIntent": "benefit"
+          },
+          {
+            "id": "apiProducts",
+            "title": "APIn tuotteet",
+            "description": "Mitkä API-tuotteet ja -ominaisuudet vastaavat tehtäviin, kipupisteisiin ja hyötyihin?",
+            "gridPosition": {
+              "column": 0,
+              "row": 2,
+              "colSpan": 4,
+              "rowSpan": 1
+            },
+            "fillOrder": 4,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#DFDDC5",
+            "defaultNoteIntent": "neutral"
+          }
+        ]
+      },
+      "businessImpactCanvas": {
+        "id": "businessImpactCanvas",
+        "title": "Liiketoimintavaikutuskanvas",
+        "purpose": "Mitkä ovat kyvykkyyden tai rajapinnan epäonnistumisen mahdolliset liiketoimintavaikutukset?",
+        "howToUse": "Arvioi vaikutukset saatavuuteen, turvallisuuteen, dataan ja operointiin ennen toteutustyylin lukitsemista.",
+        "layout": {
+          "columns": 3,
+          "rows": 2
+        },
+        "metadata": {
+          "source": "APIOps Cycles",
+          "license": "CC-BY-SA 4.0",
+          "authors": [
+            "Osaango Ltd"
+          ],
+          "website": "www.apiopscycles.com"
+        },
+        "footer": "",
+        "canvasCreatorUrl": "https://canvascreator.apiopscycles.com/?canvas=businessImpactCanvas&locale=fi",
+        "importExportTemplate": {
+          "templateId": "businessImpactCanvas",
+          "locale": "fi",
+          "metadata": {
+            "source": "APIOps Cycles",
+            "license": "CC-BY-SA 4.0",
+            "authors": [
+              "Osaango Ltd"
+            ],
+            "website": "www.apiopscycles.com",
+            "date": "2026-07-17T05:59:44.172Z"
+          },
+          "sections": [
+            {
+              "sectionId": "availabilityRisks",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "securityRisks",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "dataRisks",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "mitigateAvailabilityRisks",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "mitigateSecurityRisks",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "mitigateDataRisks",
+              "stickyNotes": []
+            }
+          ],
+          "footer": ""
+        },
+        "sections": [
+          {
+            "id": "availabilityRisks",
+            "title": "Saatavuuteen liittyvät riskit",
+            "description": "Mitkä ovat APIn saatavuuteen liittyvät mahdolliset riskit?",
+            "gridPosition": {
+              "column": 0,
+              "row": 0,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 1,
+            "highlight": true,
+            "journeySteps": false,
+            "defaultNoteColor": "#FFAFAF",
+            "defaultNoteIntent": "negative"
+          },
+          {
+            "id": "mitigateAvailabilityRisks",
+            "title": "Saatavuusriskien vähentäminen",
+            "description": "Miten API-tarjoaja voi vähentää saatavuuteen liittyviä riskejä?",
+            "gridPosition": {
+              "column": 0,
+              "row": 1,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 2,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#7DC9E7",
+            "defaultNoteIntent": "task"
+          },
+          {
+            "id": "securityRisks",
+            "title": "Tietoturvariskit",
+            "description": "Mitkä ovat API-rajapintaan liittyvät mahdolliset tietoturvariskit?",
+            "gridPosition": {
+              "column": 1,
+              "row": 0,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 3,
+            "highlight": true,
+            "journeySteps": false,
+            "defaultNoteColor": "#FFAFAF",
+            "defaultNoteIntent": "negative"
+          },
+          {
+            "id": "mitigateSecurityRisks",
+            "title": "Tietoturvariskien vähentäminen",
+            "description": "Miten API-tarjoaja voi vähentää tietoturvariskejä?",
+            "gridPosition": {
+              "column": 1,
+              "row": 1,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 4,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#7DC9E7",
+            "defaultNoteIntent": "task"
+          },
+          {
+            "id": "dataRisks",
+            "title": "Tietoriskit",
+            "description": "Mitkä ovat mahdolliset riskit tiedon eheydelle tai luottamuksellisuudelle?",
+            "gridPosition": {
+              "column": 2,
+              "row": 0,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 5,
+            "highlight": true,
+            "journeySteps": false,
+            "defaultNoteColor": "#FFAFAF",
+            "defaultNoteIntent": "negative"
+          },
+          {
+            "id": "mitigateDataRisks",
+            "title": "Tietoriskien vähentäminen",
+            "description": "Miten API-tarjoaja voi vähentää tietoriskejä?",
+            "gridPosition": {
+              "column": 2,
+              "row": 1,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 6,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#7DC9E7",
+            "defaultNoteIntent": "task"
+          }
+        ]
+      },
+      "capacityCanvas": {
+        "id": "capacityCanvas",
+        "title": "Kapasiteettikanvas",
+        "purpose": "Kuinka paljon kapasiteettia kyvykkyyden tai rajapinnan käytön tukeminen edellyttää?",
+        "howToUse": "Analysoi nykyiset ja tulevat kapasiteettivaatimukset kyvykkyydelle tai rajapinnalle.",
+        "layout": {
+          "columns": 3,
+          "rows": 3
+        },
+        "metadata": {
+          "source": "APIOps Cycles",
+          "license": "CC-BY-SA 4.0",
+          "authors": [
+            "Osaango Ltd"
+          ],
+          "website": "www.apiopscycles.com"
+        },
+        "footer": "",
+        "canvasCreatorUrl": "https://canvascreator.apiopscycles.com/?canvas=capacityCanvas&locale=fi",
+        "importExportTemplate": {
+          "templateId": "capacityCanvas",
+          "locale": "fi",
+          "metadata": {
+            "source": "APIOps Cycles",
+            "license": "CC-BY-SA 4.0",
+            "authors": [
+              "Osaango Ltd"
+            ],
+            "website": "www.apiopscycles.com",
+            "date": "2026-07-17T05:59:44.173Z"
+          },
+          "sections": [
+            {
+              "sectionId": "currentBusinessVolumes",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "futureConsumptionTrends",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "peakLoadAndAvailabilityRequirements",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "cachingStrategies",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "rateLimitingStrategies",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "scalingStrategies",
+              "stickyNotes": []
+            }
+          ],
+          "footer": ""
+        },
+        "sections": [
+          {
+            "id": "currentBusinessVolumes",
+            "title": "Nykyinen liiketoimintavolyymi",
+            "description": "Mitkä ovat nykyiset liiketoimintavolyymit ja transaktiomäärät?",
+            "gridPosition": {
+              "column": 0,
+              "row": 0,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 1,
+            "highlight": true,
+            "journeySteps": false,
+            "defaultNoteColor": "#DFDDC5",
+            "defaultNoteIntent": "neutral"
+          },
+          {
+            "id": "futureConsumptionTrends",
+            "title": "Tulevat kulutustrendit",
+            "description": "Mitkä ovat ennakoidut tulevat kulutustrendit?",
+            "gridPosition": {
+              "column": 1,
+              "row": 0,
+              "colSpan": 2,
+              "rowSpan": 1
+            },
+            "fillOrder": 2,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#DFDDC5",
+            "defaultNoteIntent": "neutral"
+          },
+          {
+            "id": "peakLoadAndAvailabilityRequirements",
+            "title": "Huipputehon ja saatavuuden vaatimukset",
+            "description": "Mitkä ovat huippukuormituksen ja saatavuuden vaatimukset?",
+            "gridPosition": {
+              "column": 0,
+              "row": 1,
+              "colSpan": 3,
+              "rowSpan": 1
+            },
+            "fillOrder": 3,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#DFDDC5",
+            "defaultNoteIntent": "neutral"
+          },
+          {
+            "id": "cachingStrategies",
+            "title": "Välimuististrategiat",
+            "description": "Mitä välimuististrategioita voidaan käyttää suorituskyvyn optimoimiseksi?",
+            "gridPosition": {
+              "column": 0,
+              "row": 2,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 4,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#7DC9E7",
+            "defaultNoteIntent": "task"
+          },
+          {
+            "id": "rateLimitingStrategies",
+            "title": "Kutsunopeuden rajoitusstrategiat",
+            "description": "Mitä kutsunopeuden rajoitusstrategioita voidaan käyttää kulutuksen hallintaan?",
+            "gridPosition": {
+              "column": 1,
+              "row": 2,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 5,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#7DC9E7",
+            "defaultNoteIntent": "task"
+          },
+          {
+            "id": "scalingStrategies",
+            "title": "Skaalausstrategiat",
+            "description": "Mitä skaalausstrategioita voidaan käyttää kasvun tukemiseen?",
+            "gridPosition": {
+              "column": 2,
+              "row": 2,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 6,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#7DC9E7",
+            "defaultNoteIntent": "task"
+          }
+        ]
+      },
+      "customerJourneyCanvas": {
+        "id": "customerJourneyCanvas",
+        "title": "Asiakaspolkukanvas",
+        "purpose": "Mikä asiakkaan tai kumppanin polku synnyttää tarpeen kyvykkyydelle tai rajapinnalle?",
+        "howToUse": "Kuvaa todellinen asiakkaan, kumppanin tai käyttäjän polku, ei API-rajapinnan käyttöä. Polku tuo näkyviin kipupisteet, tavoitteet ja kontekstin, jotka auttavat määrittämään kyvykkyyden ja rajapinnan vaatimukset.",
+        "layout": {
+          "columns": 5,
+          "rows": 4
+        },
+        "metadata": {
+          "source": "APIOps Cycles",
+          "license": "CC-BY-SA 4.0",
+          "authors": [
+            "Osaango Ltd"
+          ],
+          "website": "www.apiopscycles.com"
+        },
+        "footer": "",
+        "canvasCreatorUrl": "https://canvascreator.apiopscycles.com/?canvas=customerJourneyCanvas&locale=fi",
+        "importExportTemplate": {
+          "templateId": "customerJourneyCanvas",
+          "locale": "fi",
+          "metadata": {
+            "source": "APIOps Cycles",
+            "license": "CC-BY-SA 4.0",
+            "authors": [
+              "Osaango Ltd"
+            ],
+            "website": "www.apiopscycles.com",
+            "date": "2026-07-17T05:59:44.173Z"
+          },
+          "sections": [
+            {
+              "sectionId": "customerDiscoversNeed",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "persona",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "pains",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "journeySteps",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "customerNeedIsResolved",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "gains",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "inputsOutputs",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "interactionProcessingRules",
+              "stickyNotes": []
+            }
+          ],
+          "footer": ""
+        },
+        "sections": [
+          {
+            "id": "persona",
+            "title": "Persona",
+            "description": "Kuka on tämän asiakaspolun kokija?",
+            "gridPosition": {
+              "column": 1,
+              "row": 0,
+              "colSpan": 3,
+              "rowSpan": 1
+            },
+            "fillOrder": 1,
+            "highlight": true,
+            "journeySteps": false,
+            "defaultNoteColor": "#DFDDC5",
+            "defaultNoteIntent": "neutral"
+          },
+          {
+            "id": "customerDiscoversNeed",
+            "title": "Asiakas havaitsee tarpeen",
+            "description": "Miten asiakas huomaa tarpeensa?",
+            "gridPosition": {
+              "column": 0,
+              "row": 0,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 2,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#DFDDC5",
+            "defaultNoteIntent": "neutral"
+          },
+          {
+            "id": "customerNeedIsResolved",
+            "title": "Tarve täyttyy",
+            "description": "Miten tarve lopulta täyttyy — mahdollisesti ilman APIa?",
+            "gridPosition": {
+              "column": 4,
+              "row": 0,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 3,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#C0EB6A",
+            "defaultNoteIntent": "benefit"
+          },
+          {
+            "id": "journeySteps",
+            "title": "Asiakaspolun vaiheet",
+            "description": "Mitä vaiheita asiakas käy läpi?",
+            "gridPosition": {
+              "column": 1,
+              "row": 1,
+              "colSpan": 3,
+              "rowSpan": 2
+            },
+            "fillOrder": 4,
+            "highlight": false,
+            "journeySteps": true,
+            "defaultNoteColor": "#7DC9E7",
+            "defaultNoteIntent": "task"
+          },
+          {
+            "id": "pains",
+            "title": "Kipupisteet",
+            "description": "Mitkä haasteet tai ongelmat ilmenevät polun aikana?",
+            "gridPosition": {
+              "column": 0,
+              "row": 1,
+              "colSpan": 1,
+              "rowSpan": 2
+            },
+            "fillOrder": 5,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#FFAFAF",
+            "defaultNoteIntent": "negative"
+          },
+          {
+            "id": "gains",
+            "title": "Hyödyt",
+            "description": "Mitä hyötyä tai arvoa asiakas saa lopputuloksena?",
+            "gridPosition": {
+              "column": 4,
+              "row": 1,
+              "colSpan": 1,
+              "rowSpan": 2
+            },
+            "fillOrder": 6,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#C0EB6A",
+            "defaultNoteIntent": "benefit"
+          },
+          {
+            "id": "inputsOutputs",
+            "title": "Syötteet ja tulosteet",
+            "description": "Mitkä asiat käynnistävät ja seuraavat eri vaiheita?",
+            "gridPosition": {
+              "column": 0.5,
+              "row": 3,
+              "colSpan": 2,
+              "rowSpan": 1
+            },
+            "fillOrder": 7,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#DFDDC5",
+            "defaultNoteIntent": "neutral"
+          },
+          {
+            "id": "interactionProcessingRules",
+            "title": "Vuorovaikutus- ja käsittelysäännöt",
+            "description": "Mitkä roolit, järjestelmät tai säännöt vaikuttavat kulkuun?",
+            "gridPosition": {
+              "column": 2.5,
+              "row": 3,
+              "colSpan": 2,
+              "rowSpan": 1
+            },
+            "fillOrder": 8,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#DFDDC5",
+            "defaultNoteIntent": "neutral"
+          }
+        ]
+      },
+      "domainCanvas": {
+        "id": "domainCanvas",
+        "title": "Toimialuekanvas",
+        "purpose": "Mitkä keskeiset käsitteet, entiteetit ja toimialueen säännöt kyvykkyyden tai rajapinnan täytyy huomioida?",
+        "howToUse": "Määritä toimialuemalli kyvykkyydelle tai rajapinnalle, mukaan lukien entiteetit, attribuutit ja suhteet.",
+        "layout": {
+          "columns": 2,
+          "rows": 4
+        },
+        "metadata": {
+          "source": "APIOps Cycles",
+          "license": "CC-BY-SA 4.0",
+          "authors": [
+            "Osaango Ltd"
+          ],
+          "website": "www.apiopscycles.com"
+        },
+        "footer": "",
+        "canvasCreatorUrl": "https://canvascreator.apiopscycles.com/?canvas=domainCanvas&locale=fi",
+        "importExportTemplate": {
+          "templateId": "domainCanvas",
+          "locale": "fi",
+          "metadata": {
+            "source": "APIOps Cycles",
+            "license": "CC-BY-SA 4.0",
+            "authors": [
+              "Osaango Ltd"
+            ],
+            "website": "www.apiopscycles.com",
+            "date": "2026-07-17T05:59:44.174Z"
+          },
+          "sections": [
+            {
+              "sectionId": "selectedCustomerJourneySteps",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "coreEntitiesAndBusinessMeaning",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "attributesAndBusinessImportance",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "relationshipsBetweenEntities",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "businessComplianceAndIntegrityRules",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "securityAndPrivacyConsiderations",
+              "stickyNotes": []
+            }
+          ],
+          "footer": ""
+        },
+        "sections": [
+          {
+            "id": "selectedCustomerJourneySteps",
+            "title": "Valitut asiakaspolun vaiheet",
+            "description": "Mitkä asiakaspolun vaiheet ovat olennaisia tälle toimialueelle?",
+            "gridPosition": {
+              "column": 0,
+              "row": 0,
+              "colSpan": 2,
+              "rowSpan": 1
+            },
+            "fillOrder": 1,
+            "highlight": true,
+            "journeySteps": true,
+            "defaultNoteColor": "#7DC9E7",
+            "defaultNoteIntent": "task"
+          },
+          {
+            "id": "coreEntitiesAndBusinessMeaning",
+            "title": "Ydinkohteet ja liiketoiminnallinen merkitys",
+            "description": "Mitkä ovat keskeiset entiteetit ja niiden liiketoiminnallinen merkitys?",
+            "gridPosition": {
+              "column": 0,
+              "row": 1,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 2,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#DFDDC5",
+            "defaultNoteIntent": "neutral"
+          },
+          {
+            "id": "attributesAndBusinessImportance",
+            "title": "Attribuutit ja liiketoiminnallinen merkitys",
+            "description": "Mitkä ovat kunkin entiteetin keskeiset attribuutit ja niiden liiketoiminnallinen merkitys?",
+            "gridPosition": {
+              "column": 1,
+              "row": 1,
+              "colSpan": 1,
+              "rowSpan": 2
+            },
+            "fillOrder": 3,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#DFDDC5",
+            "defaultNoteIntent": "neutral"
+          },
+          {
+            "id": "relationshipsBetweenEntities",
+            "title": "Entiteettien väliset suhteet",
+            "description": "Mitkä ovat entiteettien väliset suhteet?",
+            "gridPosition": {
+              "column": 0,
+              "row": 2,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 4,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#DFDDC5",
+            "defaultNoteIntent": "neutral"
+          },
+          {
+            "id": "businessComplianceAndIntegrityRules",
+            "title": "Liiketoiminta-, sääntely- ja eheysvaatimukset",
+            "description": "Mitkä ovat entiteetteihin liittyvät liiketoiminta-, sääntely- ja eheysvaatimukset?",
+            "gridPosition": {
+              "column": 0,
+              "row": 3,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 5,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#DFDDC5",
+            "defaultNoteIntent": "neutral"
+          },
+          {
+            "id": "securityAndPrivacyConsiderations",
+            "title": "Tietoturva- ja yksityisyysnäkökohdat",
+            "description": "Mitä tietoturvaan ja yksityisyyteen liittyviä näkökulmia entiteetteihin liittyy?",
+            "gridPosition": {
+              "column": 1,
+              "row": 3,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 6,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#FFAFAF",
+            "defaultNoteIntent": "negative"
+          }
+        ]
+      },
+      "eventCanvas": {
+        "id": "eventCanvas",
+        "title": "Tapahtumakanvas",
+        "purpose": "Mitkä tapahtumat ovat olennaisia kyvykkyydelle tai rajapinnalle ja miten ne käsitellään?",
+        "howToUse": "Määritä tapahtumat, niiden laukaisijat ja käsittelylogiikka kyvykkyydelle tai rajapinnalle.",
+        "layout": {
+          "columns": 4,
+          "rows": 3
+        },
+        "metadata": {
+          "source": "APIOps Cycles",
+          "license": "CC-BY-SA 4.0",
+          "authors": [
+            "Osaango Ltd"
+          ],
+          "website": "www.apiopscycles.com"
+        },
+        "footer": "",
+        "canvasCreatorUrl": "https://canvascreator.apiopscycles.com/?canvas=eventCanvas&locale=fi",
+        "importExportTemplate": {
+          "templateId": "eventCanvas",
+          "locale": "fi",
+          "metadata": {
+            "source": "APIOps Cycles",
+            "license": "CC-BY-SA 4.0",
+            "authors": [
+              "Osaango Ltd"
+            ],
+            "website": "www.apiopscycles.com",
+            "date": "2026-07-17T05:59:44.174Z"
+          },
+          "sections": [
+            {
+              "sectionId": "userTaskTrigger",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "inputEventPayload",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "processingLogic",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "outputEventResult",
+              "stickyNotes": []
+            }
+          ],
+          "footer": ""
+        },
+        "sections": [
+          {
+            "id": "userTaskTrigger",
+            "title": "Käyttäjän tehtävä / Laukaisija",
+            "description": "Mikä käyttäjän toiminto tai järjestelmätapahtuma laukaisee tämän tapahtuman?",
+            "gridPosition": {
+              "column": 0,
+              "row": 0,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 1,
+            "highlight": true,
+            "journeySteps": false,
+            "defaultNoteColor": "#7DC9E7",
+            "defaultNoteIntent": "task"
+          },
+          {
+            "id": "inputEventPayload",
+            "title": "Syöte / Tapahtumakuorma",
+            "description": "Mitä tietoja saapuva tapahtumakuorma sisältää? Määrittele keskeiset attribuutit.",
+            "gridPosition": {
+              "column": 0,
+              "row": 1,
+              "colSpan": 1,
+              "rowSpan": 2
+            },
+            "fillOrder": 2,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#DFDDC5",
+            "defaultNoteIntent": "neutral"
+          },
+          {
+            "id": "processingLogic",
+            "title": "Käsittely / Logiikka",
+            "description": "Kuvaile taustajärjestelmän käsittelylogiikka mukaan lukien validoinnit, muunnokset ja reitityspäätökset.",
+            "gridPosition": {
+              "column": 1,
+              "row": 1,
+              "colSpan": 2,
+              "rowSpan": 2
+            },
+            "fillOrder": 3,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#DFDDC5",
+            "defaultNoteIntent": "neutral"
+          },
+          {
+            "id": "outputEventResult",
+            "title": "Tulos / Tapahtuman lopputulos",
+            "description": "Mikä tapahtuma tai kuittaus syntyy? Sisällytä vastauksen attribuutit.",
+            "gridPosition": {
+              "column": 3,
+              "row": 1,
+              "colSpan": 1,
+              "rowSpan": 2
+            },
+            "fillOrder": 4,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#C0EB6A",
+            "defaultNoteIntent": "benefit"
+          }
+        ]
+      },
+      "interactionCanvas": {
+        "id": "interactionCanvas",
+        "title": "Vuorovaikutuskanvas",
+        "purpose": "Minkä tyyppisiä vuorovaikutuksia kyvykkyyden tai rajapinnan täytyy tukea ennen protokollakohtaisen suunnittelun valintaa?",
+        "howToUse": "Tunnista, mitä vuorovaikutustyylejä todella tarvitaan ja mitkä jäävät rajauksen ulkopuolelle. Käytä kanvasta tarkoituksen selkeyttämiseen ennen kuin ratkaisu mallinnetaan REST-, tapahtuma- tai GraphQL-toteutukseksi.",
+        "layout": {
+          "columns": 4,
+          "rows": 3
+        },
+        "metadata": {
+          "source": "APIOps Cycles",
+          "license": "CC-BY-SA 4.0",
+          "authors": [
+            "Osaango Ltd"
+          ],
+          "website": "www.apiopscycles.com"
+        },
+        "footer": "",
+        "canvasCreatorUrl": "https://canvascreator.apiopscycles.com/?canvas=interactionCanvas&locale=fi",
+        "importExportTemplate": {
+          "templateId": "interactionCanvas",
+          "locale": "fi",
+          "metadata": {
+            "source": "APIOps Cycles",
+            "license": "CC-BY-SA 4.0",
+            "authors": [
+              "Osaango Ltd"
+            ],
+            "website": "www.apiopscycles.com",
+            "date": "2026-07-17T05:59:44.175Z"
+          },
+          "sections": [
+            {
+              "sectionId": "crudInteractions",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "crudInputOutputModels",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "crudProcessingValidation",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "queryDrivenInteractions",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "queryDrivenInputOutputModels",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "queryDrivenProcessingValidation",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "commandDrivenInteractions",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "commandDrivenInputOutputModels",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "commandDrivenProcessingValidation",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "eventDrivenInteractions",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "eventDrivenInputOutputModels",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "eventDrivenProcessingValidation",
+              "stickyNotes": []
+            }
+          ],
+          "footer": ""
+        },
+        "sections": [
+          {
+            "id": "crudInteractions",
+            "title": "CRUD-vuorovaikutukset",
+            "description": "Tarvitaanko CRUD (luo, lue, päivitä, poista) -tyylisiä vuorovaikutuksia?",
+            "gridPosition": {
+              "column": 0,
+              "row": 0,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 1,
+            "highlight": true,
+            "journeySteps": false,
+            "defaultNoteColor": "#7DC9E7",
+            "defaultNoteIntent": "task"
+          },
+          {
+            "id": "crudInputOutputModels",
+            "title": "CRUD-syötteet  ja vastaukset",
+            "description": "Mitkä ovat CRUD-vuorovaikutusten syötteet ja vastaukset, jos tätä tyyliä tarvitaan?",
+            "gridPosition": {
+              "column": 0,
+              "row": 1,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 2,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#DFDDC5",
+            "defaultNoteIntent": "neutral"
+          },
+          {
+            "id": "crudProcessingValidation",
+            "title": "CRUD-käsittely ja validointi",
+            "description": "Mitkä ovat CRUD-vuorovaikutusten käsittely- ja validointisäännöt, jos tätä tyyliä tarvitaan?",
+            "gridPosition": {
+              "column": 0,
+              "row": 2,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 3,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#DFDDC5",
+            "defaultNoteIntent": "neutral"
+          },
+          {
+            "id": "queryDrivenInteractions",
+            "title": "Kyselyohjatut vuorovaikutukset",
+            "description": "Mitä luku- tai kyselyvuorovaikutuksia tarvitaan vastaamaan hyödyntäjien kysymyksiin?",
+            "gridPosition": {
+              "column": 1,
+              "row": 0,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 4,
+            "highlight": true,
+            "journeySteps": false,
+            "defaultNoteColor": "#7DC9E7",
+            "defaultNoteIntent": "task"
+          },
+          {
+            "id": "queryDrivenInputOutputModels",
+            "title": "Kyselyohjatut syötteet ja vastaukset",
+            "description": "Mitkä ovat kyselyohjattujen vuorovaikutusten syötteet ja vastaukset?",
+            "gridPosition": {
+              "column": 1,
+              "row": 1,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 5,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#DFDDC5",
+            "defaultNoteIntent": "neutral"
+          },
+          {
+            "id": "queryDrivenProcessingValidation",
+            "title": "Kyselyohjatut käsittely- ja validointisäännöt",
+            "description": "Mitkä ovat kyselyohjattujen vuorovaikutusten käsittely- ja validointisäännöt?",
+            "gridPosition": {
+              "column": 1,
+              "row": 2,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 6,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#DFDDC5",
+            "defaultNoteIntent": "neutral"
+          },
+          {
+            "id": "commandDrivenInteractions",
+            "title": "Komento-ohjatut vuorovaikutukset",
+            "description": "Mitä tilaa muuttavia komentoja tarvitaan, jos niitä tarvitaan?",
+            "gridPosition": {
+              "column": 2,
+              "row": 0,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 7,
+            "highlight": true,
+            "journeySteps": false,
+            "defaultNoteColor": "#7DC9E7",
+            "defaultNoteIntent": "task"
+          },
+          {
+            "id": "commandDrivenInputOutputModels",
+            "title": "Komento-ohjatut syötteet ja vastaukset",
+            "description": "Mitkä ovat komento-ohjattujen vuorovaikutusten syötteet ja vastaukset, jos tätä tyyliä tarvitaan?",
+            "gridPosition": {
+              "column": 2,
+              "row": 1,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 8,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#DFDDC5",
+            "defaultNoteIntent": "neutral"
+          },
+          {
+            "id": "commandDrivenProcessingValidation",
+            "title": "Komento-ohjattu käsittely ja validointi",
+            "description": "Mitkä ovat komento-ohjattujen vuorovaikutusten käsittely- ja validointisäännöt, jos tätä tyyliä tarvitaan?",
+            "gridPosition": {
+              "column": 2,
+              "row": 2,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 9,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#DFDDC5",
+            "defaultNoteIntent": "neutral"
+          },
+          {
+            "id": "eventDrivenInteractions",
+            "title": "Tapahtumapohjaiset vuorovaikutukset",
+            "description": "Mitkä tapahtumat on julkaistava tai hyödynnettävä, jos sellaisia on?",
+            "gridPosition": {
+              "column": 3,
+              "row": 0,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 10,
+            "highlight": true,
+            "journeySteps": false,
+            "defaultNoteColor": "#7DC9E7",
+            "defaultNoteIntent": "task"
+          },
+          {
+            "id": "eventDrivenInputOutputModels",
+            "title": "Tapahtumapohjaiset syötteet ja vasstaukset",
+            "description": "Mitkä ovat tapahtumapohjaisten vuorovaikutusten syötteet ja vastaukset, jos tätä tyyliä tarvitaan?",
+            "gridPosition": {
+              "column": 3,
+              "row": 1,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 11,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#DFDDC5",
+            "defaultNoteIntent": "neutral"
+          },
+          {
+            "id": "eventDrivenProcessingValidation",
+            "title": "Tapahtumapohjainen käsittely ja validointi",
+            "description": "Mitkä ovat tapahtumapohjaisten vuorovaikutusten käsittely- ja validointisäännöt, jos tätä tyyliä tarvitaan?",
+            "gridPosition": {
+              "column": 3,
+              "row": 2,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 12,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#DFDDC5",
+            "defaultNoteIntent": "neutral"
+          }
+        ]
+      },
+      "locationsCanvas": {
+        "id": "locationsCanvas",
+        "title": "Sijaintikanvas",
+        "purpose": "Mitkä geopoliittiset, sääntelyyn liittyvät, verkko- ja luottamusrajat vaikuttavat tähän kyvykkyyteen tai rajapintaan?",
+        "howToUse": "Tunnista, missä hyödyntäjät, tuottajat ja riippuvat järjestelmät toimivat sisäverkoissa, kumppaniverkoissa, julkisessa internetissä ja säännellyillä alueilla. Kuvaa vaikutukset latenssiin, luottamukseen, vaatimustenmukaisuuteen ja yhteyksiin.",
+        "layout": {
+          "columns": 4,
+          "rows": 2
+        },
+        "metadata": {
+          "source": "APIOps Cycles",
+          "license": "CC-BY-SA 4.0",
+          "authors": [
+            "Osaango Ltd"
+          ],
+          "website": "www.apiopscycles.com"
+        },
+        "footer": "",
+        "canvasCreatorUrl": "https://canvascreator.apiopscycles.com/?canvas=locationsCanvas&locale=fi",
+        "importExportTemplate": {
+          "templateId": "locationsCanvas",
+          "locale": "fi",
+          "metadata": {
+            "source": "APIOps Cycles",
+            "license": "CC-BY-SA 4.0",
+            "authors": [
+              "Osaango Ltd"
+            ],
+            "website": "www.apiopscycles.com",
+            "date": "2026-07-17T05:59:44.175Z"
+          },
+          "sections": [
+            {
+              "sectionId": "locationGroups",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "locationGroupCharacteristics",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "locations",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "locationCharacteristics",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "locationDistances",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "locationDistanceCharacteristics",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "locationEndpoints",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "locationEndpointCharacteristics",
+              "stickyNotes": []
+            }
+          ],
+          "footer": ""
+        },
+        "sections": [
+          {
+            "id": "locationGroups",
+            "title": "Sijainti-/luottamusryhmät",
+            "description": "Mitkä ovat merkitykselliset geopoliittiset, sääntely-, verkko- tai luottamusryhmät?",
+            "gridPosition": {
+              "column": 0,
+              "row": 0,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 1,
+            "highlight": true,
+            "journeySteps": false,
+            "defaultNoteColor": "#DFDDC5",
+            "defaultNoteIntent": "neutral"
+          },
+          {
+            "id": "locationGroupCharacteristics",
+            "title": "Ryhmän ominaisuudet",
+            "description": "Mitkä ovat näiden ryhmien ominaisuudet, kuten sijainti, luottamustaso tai verkkoaltistuminen?",
+            "gridPosition": {
+              "column": 0,
+              "row": 1,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 2,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#DFDDC5",
+            "defaultNoteIntent": "neutral"
+          },
+          {
+            "id": "locations",
+            "title": "Merkittävät sijainnit / vyöhykkeet",
+            "description": "Mitkä ovat kunkin ryhmän merkittävät sijainnit, vyöhykkeet tai ympäristöt?",
+            "gridPosition": {
+              "column": 1,
+              "row": 0,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 3,
+            "highlight": true,
+            "journeySteps": false,
+            "defaultNoteColor": "#DFDDC5",
+            "defaultNoteIntent": "neutral"
+          },
+          {
+            "id": "locationCharacteristics",
+            "title": "Sijainnin / vyöhykkeen ominaisuudet",
+            "description": "Mitkä ovat kyseisten sijaintien tai vyöhykkeiden ominaisuudet, kuten omistajuus, alue tai altistuminen?",
+            "gridPosition": {
+              "column": 1,
+              "row": 1,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 4,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#DFDDC5",
+            "defaultNoteIntent": "neutral"
+          },
+          {
+            "id": "locationDistances",
+            "title": "Verkko- / sääntelyetäisyyde",
+            "description": "Mitä viive-, luottamus-, sääntely- tai yhteysetäisyyksiä sijaintien välillä on?",
+            "gridPosition": {
+              "column": 2,
+              "row": 0,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 5,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#FFAFAF",
+            "defaultNoteIntent": "negative"
+          },
+          {
+            "id": "locationDistanceCharacteristics",
+            "title": "Etäisyyden ominaisuudet",
+            "description": "Mitkä ovat näiden etäisyyksien ominaisuudet, kuten viiveherkkyys, sijaintirajoitukset tai luottamusrajat?",
+            "gridPosition": {
+              "column": 2,
+              "row": 1,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 6,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#DFDDC5",
+            "defaultNoteIntent": "neutral"
+          },
+          {
+            "id": "locationEndpoints",
+            "title": "Yhteyspäätepisteet",
+            "description": "Mitkä yhteyspäätepisteet tai rajapinnat liittyvät sijainteihin?",
+            "gridPosition": {
+              "column": 3,
+              "row": 0,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 7,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#DFDDC5",
+            "defaultNoteIntent": "neutral"
+          },
+          {
+            "id": "locationEndpointCharacteristics",
+            "title": "Päätepisteiden käyttöominaisuudet",
+            "description": "Mitkä ovat näiden päätepisteiden ominaisuudet, kuten altistuminen, protokolla, turvallisuus tai käyttörajoitukset?",
+            "gridPosition": {
+              "column": 3,
+              "row": 1,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 8,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#DFDDC5",
+            "defaultNoteIntent": "neutral"
+          }
+        ]
+      },
+      "restCanvas": {
+        "id": "restCanvas",
+        "title": "REST-kanvas",
+        "purpose": "Miten API voidaan suunnitella REST-periaatteiden mukaisesti?",
+        "howToUse": "Määrittele APIn resurssit, verbit sekä esimerkkipyynnöt ja -vastaukset.",
+        "layout": {
+          "columns": 4,
+          "rows": 3
+        },
+        "metadata": {
+          "source": "APIOps Cycles",
+          "license": "CC-BY-SA 4.0",
+          "authors": [
+            "Osaango Ltd"
+          ],
+          "website": "www.apiopscycles.com"
+        },
+        "footer": "",
+        "canvasCreatorUrl": "https://canvascreator.apiopscycles.com/?canvas=restCanvas&locale=fi",
+        "importExportTemplate": {
+          "templateId": "restCanvas",
+          "locale": "fi",
+          "metadata": {
+            "source": "APIOps Cycles",
+            "license": "CC-BY-SA 4.0",
+            "authors": [
+              "Osaango Ltd"
+            ],
+            "website": "www.apiopscycles.com",
+            "date": "2026-07-17T05:59:44.176Z"
+          },
+          "sections": [
+            {
+              "sectionId": "apiResources",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "apiResourceModel",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "apiVerbs",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "apiVerbExample",
+              "stickyNotes": []
+            }
+          ],
+          "footer": ""
+        },
+        "sections": [
+          {
+            "id": "apiResources",
+            "title": "APIn resurssit",
+            "description": "Mitkä ovat keskeiset resurssit, joita API paljastaa?",
+            "gridPosition": {
+              "column": 0,
+              "row": 0,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 1,
+            "highlight": true,
+            "journeySteps": false,
+            "defaultNoteColor": "#DFDDC5",
+            "defaultNoteIntent": "neutral"
+          },
+          {
+            "id": "apiResourceModel",
+            "title": "APIn resurssimalli",
+            "description": "Millainen on APIn resurssimallin rakenne?",
+            "gridPosition": {
+              "column": 0,
+              "row": 1,
+              "colSpan": 1,
+              "rowSpan": 2
+            },
+            "fillOrder": 2,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#DFDDC5",
+            "defaultNoteIntent": "neutral"
+          },
+          {
+            "id": "apiVerbs",
+            "title": "APIn verbit",
+            "description": "Mitä HTTP-verbejä käytetään APIn resurssien kanssa vuorovaikutuksessa?",
+            "gridPosition": {
+              "column": 1,
+              "row": 0,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 3,
+            "highlight": true,
+            "journeySteps": false,
+            "defaultNoteColor": "#7DC9E7",
+            "defaultNoteIntent": "task"
+          },
+          {
+            "id": "apiVerbExample",
+            "title": "API-verbin esimerkki",
+            "description": "Anna esimerkki API-pyynnöstä ja -vastauksesta kullekin verbille.",
+            "gridPosition": {
+              "column": 1,
+              "row": 1,
+              "colSpan": 3,
+              "rowSpan": 2
+            },
+            "fillOrder": 4,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#7DC9E7",
+            "defaultNoteIntent": "task"
+          }
+        ]
+      },
+      "graphqlCanvas": {
+        "id": "graphqlCanvas",
+        "title": "GraphQL-kanvas",
+        "purpose": "Miten API voidaan suunnitella GraphQL-periaatteiden mukaisesti?",
+        "howToUse": "Määritä GraphQL-API-rajapinnan keskeiset tyypit, kyselyt, mutaatiot ja rajoitteet.",
+        "layout": {
+          "columns": 4,
+          "rows": 3
+        },
+        "metadata": {
+          "source": "APIOps Cycles",
+          "license": "CC-BY-SA 4.0",
+          "authors": [
+            "Osaango Ltd"
+          ],
+          "website": "www.apiopscycles.com"
+        },
+        "footer": "",
+        "canvasCreatorUrl": "https://canvascreator.apiopscycles.com/?canvas=graphqlCanvas&locale=fi",
+        "importExportTemplate": {
+          "templateId": "graphqlCanvas",
+          "locale": "fi",
+          "metadata": {
+            "source": "APIOps Cycles",
+            "license": "CC-BY-SA 4.0",
+            "authors": [
+              "Osaango Ltd"
+            ],
+            "website": "www.apiopscycles.com",
+            "date": "2026-07-17T05:59:44.176Z"
+          },
+          "sections": [
+            {
+              "sectionId": "apiName",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "consumerGoals",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "keyTypes",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "relationships",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "queries",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "mutations",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "subscriptions",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "authorizationRules",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "consumerConstraints",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "openQuestions",
+              "stickyNotes": []
+            }
+          ],
+          "footer": ""
+        },
+        "sections": [
+          {
+            "id": "apiName",
+            "title": "APIn nimi",
+            "description": "Mikä on GraphQL-API:n tai päätepisteen nimi?",
+            "gridPosition": {
+              "column": 0,
+              "row": 0,
+              "colSpan": 2,
+              "rowSpan": 1
+            },
+            "fillOrder": 1,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#FFF399",
+            "defaultNoteIntent": "default"
+          },
+          {
+            "id": "consumerGoals",
+            "title": "Käyttäjien tavoitteet",
+            "description": "Mitä ongelmia API:n käyttäjät yrittävät ratkaista? Mitä dataa he tarvitsevat?",
+            "gridPosition": {
+              "column": 2,
+              "row": 0,
+              "colSpan": 2,
+              "rowSpan": 1
+            },
+            "fillOrder": 2,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#C0EB6A",
+            "defaultNoteIntent": "benefit"
+          },
+          {
+            "id": "keyTypes",
+            "title": "Keskeiset tyypit",
+            "description": "Mitkä ovat keskeiset tyypit (esim. User, Order, Product)?",
+            "gridPosition": {
+              "column": 0,
+              "row": 1,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 3,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#DFDDC5",
+            "defaultNoteIntent": "neutral"
+          },
+          {
+            "id": "relationships",
+            "title": "Suhteet",
+            "description": "Miten tyypit liittyvät toisiinsa sisäkkäisissä kyselyissä?",
+            "gridPosition": {
+              "column": 1,
+              "row": 1,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 4,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#DFDDC5",
+            "defaultNoteIntent": "neutral"
+          },
+          {
+            "id": "queries",
+            "title": "Kyselyt",
+            "description": "Mitä yleisiä kyselyitä pitäisi tukea?",
+            "gridPosition": {
+              "column": 2,
+              "row": 1,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 5,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#7DC9E7",
+            "defaultNoteIntent": "task"
+          },
+          {
+            "id": "mutations",
+            "title": "Mutaatiot",
+            "description": "Mitkä toiminnot muuttavat dataa (esim. luonti, päivitys, poisto)?",
+            "gridPosition": {
+              "column": 3,
+              "row": 1,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 6,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#7DC9E7",
+            "defaultNoteIntent": "task"
+          },
+          {
+            "id": "subscriptions",
+            "title": "Tilaukset",
+            "description": "Onko reaaliaikaisia päivityksiä tai tapahtumia, joita voi tilata?",
+            "gridPosition": {
+              "column": 0,
+              "row": 2,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 7,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#7DC9E7",
+            "defaultNoteIntent": "task"
+          },
+          {
+            "id": "authorizationRules",
+            "title": "Valtuutussäännöt",
+            "description": "Kuka voi käyttää mitäkin kenttiä tai tyyppejä?",
+            "gridPosition": {
+              "column": 1,
+              "row": 2,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 8,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#FFAFAF",
+            "defaultNoteIntent": "negative"
+          },
+          {
+            "id": "consumerConstraints",
+            "title": "Käyttäjärajoitukset",
+            "description": "Onko sivutukseen, suodatukseen tai nopeusrajoihin liittyviä rajoitteita?",
+            "gridPosition": {
+              "column": 2,
+              "row": 2,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 9,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#FFAFAF",
+            "defaultNoteIntent": "negative"
+          },
+          {
+            "id": "openQuestions",
+            "title": "Huomiot / Avoimet kysymykset",
+            "description": "Onko keskeneräisiä päätöksiä tai integraatioon liittyviä huomioita?",
+            "gridPosition": {
+              "column": 3,
+              "row": 2,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 10,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#FFF399",
+            "defaultNoteIntent": "default"
+          }
+        ]
+      },
+      "capabilityValuePropositionCanvas": {
+        "id": "capabilityValuePropositionCanvas",
+        "title": "Kyvykkyyden arvolupauskanvas",
+        "purpose": "Mikä uudelleenkäytettävä kyvykkyys loisi arvoa hyödyntäjille ilman, että vielä päätetään toteutetaanko se API-rajapintana, tapahtumana, tiedostona, streamina, datatuotteena tai muuna integraatiotyylinä?",
+        "howToUse": "Aloita hyödyntäjien tehtävistä ja lopputuloksista. Kuvaa hyödyt mahdollistavat ja kipupisteitä vähentävät kyvykkyyden ominaisuudet. Määritä sen jälkeen mahdolliset uudelleenkäytettävät kyvykkyydet nimeämättä teknologiaa liian aikaisin.",
+        "layout": {
+          "columns": 4,
+          "rows": 3
+        },
+        "metadata": {
+          "source": "APIOps Cycles",
+          "license": "CC-BY-SA 4.0",
+          "authors": [
+            "Osaango Ltd"
+          ],
+          "website": "www.apiopscycles.com"
+        },
+        "footer": "",
+        "canvasCreatorUrl": "https://canvascreator.apiopscycles.com/?canvas=capabilityValuePropositionCanvas&locale=fi",
+        "importExportTemplate": {
+          "templateId": "capabilityValuePropositionCanvas",
+          "locale": "fi",
+          "metadata": {
+            "source": "APIOps Cycles",
+            "license": "CC-BY-SA 4.0",
+            "authors": [
+              "Osaango Ltd"
+            ],
+            "website": "www.apiopscycles.com",
+            "date": "2026-07-17T05:59:44.178Z"
+          },
+          "sections": [
+            {
+              "sectionId": "consumerTasks",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "gainEnablingCapabilities",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "painRelievingCapabilities",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "reusableCapabilities",
+              "stickyNotes": []
+            }
+          ],
+          "footer": ""
+        },
+        "sections": [
+          {
+            "id": "consumerTasks",
+            "title": "Hyödyntäjien tehtävät ja lopputulokset",
+            "description": "Mitä hyödyntäjät, kumppanit, käyttäjät, järjestelmät tai tiimit yrittävät saavuttaa?",
+            "gridPosition": {
+              "column": 0,
+              "row": 0,
+              "colSpan": 4,
+              "rowSpan": 1
+            },
+            "fillOrder": 1,
+            "highlight": true,
+            "journeySteps": true,
+            "defaultNoteColor": "#7DC9E7",
+            "defaultNoteIntent": "task"
+          },
+          {
+            "id": "gainEnablingCapabilities",
+            "title": "Hyötyjä mahdollistavat kyvykkyyden ominaisuudet",
+            "description": "Mitkä kyvykkyyden ominaisuudet auttaisivat hyödyntäjiä saavuttamaan parempia tuloksia, nopeutta, automaatiota, oivalluksia, kattavuutta tai vaatimustenmukaisuutta?",
+            "gridPosition": {
+              "column": 0,
+              "row": 1,
+              "colSpan": 2,
+              "rowSpan": 1
+            },
+            "fillOrder": 2,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#C0EB6A",
+            "defaultNoteIntent": "benefit"
+          },
+          {
+            "id": "painRelievingCapabilities",
+            "title": "Kipupisteitä vähentävät kyvykkyyden ominaisuudet",
+            "description": "Mitkä kyvykkyyden ominaisuudet poistaisivat kitkaa, manuaalista työtä, virheitä, viiveitä, riskejä tai epävarmuutta hyödyntäjiltä?",
+            "gridPosition": {
+              "column": 2,
+              "row": 1,
+              "colSpan": 2,
+              "rowSpan": 1
+            },
+            "fillOrder": 3,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#C0EB6A",
+            "defaultNoteIntent": "benefit"
+          },
+          {
+            "id": "reusableCapabilities",
+            "title": "Uudelleenkäytettävät kyvykkyydet",
+            "description": "Mitkä uudelleenkäytettävät liiketoiminta- tai datakyvykkyydet voisivat palvella näitä tehtäviä, hyötyjä ja kipupisteitä useamman kuin yhden hyödyntäjän tai käyttötapauksen tarpeisiin?",
+            "gridPosition": {
+              "column": 0,
+              "row": 2,
+              "colSpan": 4,
+              "rowSpan": 1
+            },
+            "fillOrder": 4,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#DFDDC5",
+            "defaultNoteIntent": "neutral"
+          }
+        ]
+      },
+      "capabilityBusinessModelCanvas": {
+        "id": "capabilityBusinessModelCanvas",
+        "title": "Kyvykkyyden liiketoimintamallikanvas",
+        "purpose": "Kuinka elinkelpoinen, uudelleenkäytettävä, rahoitettu, omistettu, tuettu ja löydettävä tämän integraatiokyvykkyyden tulisi olla?",
+        "howToUse": "Tiivistä kyvykkyyden arvolupaus, tunnista hyödyntäjät ja osallistamiskanavat sekä kartoita omistajuus, toiminnot, resurssit, kumppanit, hyödyt ja kustannukset.",
+        "layout": {
+          "columns": 5,
+          "rows": 3
+        },
+        "metadata": {
+          "source": "APIOps Cycles",
+          "license": "CC-BY-SA 4.0",
+          "authors": [
+            "Osaango Ltd"
+          ],
+          "website": "www.apiopscycles.com"
+        },
+        "footer": "",
+        "canvasCreatorUrl": "https://canvascreator.apiopscycles.com/?canvas=capabilityBusinessModelCanvas&locale=fi",
+        "importExportTemplate": {
+          "templateId": "capabilityBusinessModelCanvas",
+          "locale": "fi",
+          "metadata": {
+            "source": "APIOps Cycles",
+            "license": "CC-BY-SA 4.0",
+            "authors": [
+              "Osaango Ltd"
+            ],
+            "website": "www.apiopscycles.com",
+            "date": "2026-07-17T05:59:44.179Z"
+          },
+          "sections": [
+            {
+              "sectionId": "keyPartners",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "keyActivities",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "keyResources",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "capabilityValueProposition",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "consumerEngagement",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "channels",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "capabilityConsumerSegments",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "costs",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "benefits",
+              "stickyNotes": []
+            }
+          ],
+          "footer": ""
+        },
+        "sections": [
+          {
+            "id": "capabilityValueProposition",
+            "title": "Kyvykkyyden arvolupaus",
+            "description": "Mitä arvoa tämä uudelleenkäytettävä kyvykkyys tuottaa hyödyntäjille sekä organisaatiolle tai ekosysteemille?",
+            "gridPosition": {
+              "column": 2,
+              "row": 0,
+              "colSpan": 1,
+              "rowSpan": 2
+            },
+            "fillOrder": 1,
+            "highlight": true,
+            "journeySteps": false,
+            "defaultNoteColor": "#C0EB6A",
+            "defaultNoteIntent": "benefit"
+          },
+          {
+            "id": "capabilityConsumerSegments",
+            "title": "Kyvykkyyden hyödyntäjäsegmentit",
+            "description": "Ketkä ovat kyvykkyyden nykyisiä ja mahdollisia hyödyntäjiä, mukaan lukien tiimit, kumppanit, järjestelmät, tuotteet tai datan käyttäjät?",
+            "gridPosition": {
+              "column": 4,
+              "row": 0,
+              "colSpan": 1,
+              "rowSpan": 2
+            },
+            "fillOrder": 2,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#DFDDC5",
+            "defaultNoteIntent": "neutral"
+          },
+          {
+            "id": "consumerEngagement",
+            "title": "Hyödyntäjien osallistaminen",
+            "description": "Miten hyödyntäjät löytävät, arvioivat, pyytävät käyttöönsä, ottavat käyttöön, saavat tukea ja antavat palautetta kyvykkyydestä?",
+            "gridPosition": {
+              "column": 3,
+              "row": 0,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 3,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#DFDDC5",
+            "defaultNoteIntent": "neutral"
+          },
+          {
+            "id": "channels",
+            "title": "Kanavat",
+            "description": "Minkä katalogien, portaalien, markkinapaikkojen, dokumentaatiosivustojen, tukikanavien tai governance-prosessien kautta hyödyntäjät ovat vuorovaikutuksessa kyvykkyyden kanssa?",
+            "gridPosition": {
+              "column": 3,
+              "row": 1,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 4,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#7DC9E7",
+            "defaultNoteIntent": "task"
+          },
+          {
+            "id": "keyResources",
+            "title": "Keskeiset resurssit",
+            "description": "Mitä järjestelmiä, data-aineistoja, alustoja, ihmisiä, standardeja, rahoitusta ja operatiivisia kyvykkyyksiä tarvitaan?",
+            "gridPosition": {
+              "column": 1,
+              "row": 1,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 5,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#DFDDC5",
+            "defaultNoteIntent": "neutral"
+          },
+          {
+            "id": "keyActivities",
+            "title": "Keskeiset toiminnot",
+            "description": "Mitä kyvykkyyden omistajan ja tuottajien täytyy tehdä kyvykkyyden suunnittelemiseksi, toimittamiseksi, hallitsemiseksi, tukemiseksi ja parantamiseksi?",
+            "gridPosition": {
+              "column": 1,
+              "row": 0,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 6,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#7DC9E7",
+            "defaultNoteIntent": "task"
+          },
+          {
+            "id": "keyPartners",
+            "title": "Keskeiset kumppanit",
+            "description": "Mitä liiketoiminnan, teknologian, datan, turvallisuuden, juridiikan, alustan tai ulkoisia kumppaneita tarvitaan, jotta kyvykkyys toimii?",
+            "gridPosition": {
+              "column": 0,
+              "row": 0,
+              "colSpan": 1,
+              "rowSpan": 2
+            },
+            "fillOrder": 7,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#DFDDC5",
+            "defaultNoteIntent": "neutral"
+          },
+          {
+            "id": "benefits",
+            "title": "Hyödyt",
+            "description": "Mitkä liiketoiminnalliset, operatiiviset, ekosysteemiin, uudelleenkäyttöön, vaatimustenmukaisuuteen tai kustannuksiin liittyvät hyödyt perustelevat kyvykkyyden?",
+            "gridPosition": {
+              "column": 2.5,
+              "row": 2,
+              "colSpan": 2.5,
+              "rowSpan": 1
+            },
+            "fillOrder": 8,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#C0EB6A",
+            "defaultNoteIntent": "benefit"
+          },
+          {
+            "id": "costs",
+            "title": "Kustannukset",
+            "description": "Mitkä ovat kyvykkyyden rakentamisen, operoinnin, governancen, tuen ja kehittämisen merkittävät kustannukset?",
+            "gridPosition": {
+              "column": 0,
+              "row": 2,
+              "colSpan": 2.5,
+              "rowSpan": 1
+            },
+            "fillOrder": 9,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#FFAFAF",
+            "defaultNoteIntent": "negative"
+          }
+        ]
+      },
+      "consumerExperienceRequirementsCanvas": {
+        "id": "consumerExperienceRequirementsCanvas",
+        "title": "Hyödyntäjäkokemuksen vaatimuskanvas",
+        "purpose": "Mitä kokemukseen liittyviä ja ei-toiminnallisia vaatimuksia hyödyntäjillä on ennen parhaan integraatioarkkitehtuurin valintaa?",
+        "howToUse": "Käytä tätä teknologiariippumattomana vaatimuskanvaksena. Kuvaa hyödyntäjien odotukset ja rajoitteet ja käytä arkkitehtuurivaikutuksia API-rajapintojen, tapahtumien, tiedostojen, streamien, datatuotteiden tai muun mallin valintaan.",
+        "layout": {
+          "columns": 4,
+          "rows": 3
+        },
+        "metadata": {
+          "source": "APIOps Cycles",
+          "license": "CC-BY-SA 4.0",
+          "authors": [
+            "Osaango Ltd"
+          ],
+          "website": "www.apiopscycles.com"
+        },
+        "footer": "",
+        "canvasCreatorUrl": "https://canvascreator.apiopscycles.com/?canvas=consumerExperienceRequirementsCanvas&locale=fi",
+        "importExportTemplate": {
+          "templateId": "consumerExperienceRequirementsCanvas",
+          "locale": "fi",
+          "metadata": {
+            "source": "APIOps Cycles",
+            "license": "CC-BY-SA 4.0",
+            "authors": [
+              "Osaango Ltd"
+            ],
+            "website": "www.apiopscycles.com",
+            "date": "2026-07-17T05:59:44.179Z"
+          },
+          "sections": [
+            {
+              "sectionId": "consumerGoals",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "availabilityAndTimeliness",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "volumeAndPerformance",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "dataQualityAndConsistency",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "securityPrivacyAndCompliance",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "onboardingAndAccess",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "changeAndVersioning",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "observabilityAndSupport",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "recoveryAndContinuity",
+              "stickyNotes": []
+            },
+            {
+              "sectionId": "architectureImplications",
+              "stickyNotes": []
+            }
+          ],
+          "footer": ""
+        },
+        "sections": [
+          {
+            "id": "consumerGoals",
+            "title": "Hyödyntäjien tavoitteet",
+            "description": "Mitkä ovat hyödyntäjien liiketoiminta-, työnkulku-, päätöksenteko-, automaatio- tai datankäyttötavoitteet?",
+            "gridPosition": {
+              "column": 0,
+              "row": 0,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 1,
+            "highlight": true,
+            "journeySteps": false,
+            "defaultNoteColor": "#C0EB6A",
+            "defaultNoteIntent": "benefit"
+          },
+          {
+            "id": "availabilityAndTimeliness",
+            "title": "Saatavuus ja ajantasaisuus",
+            "description": "Milloin kyvykkyyden täytyy olla saatavilla, kuinka ajantasaista tiedon täytyy olla ja millä latenssi- tai toimitusikkunoilla on merkitystä?",
+            "gridPosition": {
+              "column": 1,
+              "row": 0,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 2,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#DFDDC5",
+            "defaultNoteIntent": "neutral"
+          },
+          {
+            "id": "volumeAndPerformance",
+            "title": "Volyymi ja suorituskyky",
+            "description": "Mitä pyyntö-, tapahtuma-, tietue-, tiedosto-, eräajo-, käyttäjä- tai transaktiovolyymeja kyvykkyyden täytyy tukea nyt ja myöhemmin?",
+            "gridPosition": {
+              "column": 2,
+              "row": 0,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 3,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#DFDDC5",
+            "defaultNoteIntent": "neutral"
+          },
+          {
+            "id": "dataQualityAndConsistency",
+            "title": "Datan laatu ja yhdenmukaisuus",
+            "description": "Mitä tarkkuuteen, täydellisyyteen, yhdenmukaisuuteen, järjestykseen, deduplikointiin, täsmäytykseen tai validointiin liittyviä odotuksia hyödyntäjillä on?",
+            "gridPosition": {
+              "column": 3,
+              "row": 0,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 4,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#DFDDC5",
+            "defaultNoteIntent": "neutral"
+          },
+          {
+            "id": "securityPrivacyAndCompliance",
+            "title": "Turvallisuus, tietosuoja ja vaatimustenmukaisuus",
+            "description": "Mitä identiteettiin, valtuutukseen, luottamuksellisuuteen, datan sijaintiin, suostumukseen, säilytykseen, auditointiin tai sääntelyyn liittyviä rajoitteita sovelletaan?",
+            "gridPosition": {
+              "column": 0,
+              "row": 1,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 5,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#FFAFAF",
+            "defaultNoteIntent": "negative"
+          },
+          {
+            "id": "onboardingAndAccess",
+            "title": "Käyttöönotto ja pääsy",
+            "description": "Miten hyödyntäjien tulisi löytää, pyytää, testata, saada hyväksyntä ja aloittaa kyvykkyyden käyttö?",
+            "gridPosition": {
+              "column": 1,
+              "row": 1,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 6,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#7DC9E7",
+            "defaultNoteIntent": "task"
+          },
+          {
+            "id": "changeAndVersioning",
+            "title": "Muutokset ja versiointi",
+            "description": "Kuinka paljon muutoksia hyödyntäjät sietävät ja mitä ennakkoilmoituksiin, yhteensopivuuteen, migraatioon tai versiointiin liittyviä odotuksia sovelletaan?",
+            "gridPosition": {
+              "column": 2,
+              "row": 1,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 7,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#FFAFAF",
+            "defaultNoteIntent": "negative"
+          },
+          {
+            "id": "observabilityAndSupport",
+            "title": "Havainnoitavuus ja tuki",
+            "description": "Mitä monitorointia, tilatietoa, jäljitettävyyttä, datan laadun näkyvyyttä, tukea, omistajuutta ja häiriöviestintää hyödyntäjät tarvitsevat?",
+            "gridPosition": {
+              "column": 3,
+              "row": 1,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "fillOrder": 8,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#7DC9E7",
+            "defaultNoteIntent": "task"
+          },
+          {
+            "id": "recoveryAndContinuity",
+            "title": "Palautuminen ja jatkuvuus",
+            "description": "Mitä uudelleentoistoon, uudelleenyrityksiin, täsmäytykseen, varmuuskopiointiin, varamenettelyihin, jatkuvuuteen tai manuaaliseen palautumiseen liittyviä odotuksia täytyy tukea?",
+            "gridPosition": {
+              "column": 0,
+              "row": 2,
+              "colSpan": 2,
+              "rowSpan": 1
+            },
+            "fillOrder": 9,
+            "highlight": false,
+            "journeySteps": false,
+            "defaultNoteColor": "#7DC9E7",
+            "defaultNoteIntent": "task"
+          },
+          {
+            "id": "architectureImplications",
+            "title": "Arkkitehtuurivaikutukset",
+            "description": "Mitä nämä vaatimukset tarkoittavat mahdollisille arkkitehtuurityyleille, kuten API-rajapinnoille, tapahtumille, tiedostoille, streameille, datatuotteille tai suoralle integraatiolle?",
+            "gridPosition": {
+              "column": 2,
+              "row": 2,
+              "colSpan": 2,
+              "rowSpan": 1
+            },
+            "fillOrder": 10,
+            "highlight": true,
+            "journeySteps": false,
+            "defaultNoteColor": "#DFDDC5",
+            "defaultNoteIntent": "neutral"
+          }
+        ]
+      }
+    }
+  }
+}

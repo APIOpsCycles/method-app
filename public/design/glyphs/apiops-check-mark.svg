@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="512"
+   height="512"
+   viewBox="0 0 512 512"
+   role="img"
+   aria-labelledby="title description"
+   version="1.1"
+   id="svg7"
+   sodipodi:docname="apiops-check-mark.svg"
+   inkscape:version="1.4.3 (0d15f75, 2025-12-25)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <defs
+     id="defs7" />
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="true"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="1.4142136"
+     inkscape:cx="584.0702"
+     inkscape:cy="302.99526"
+     inkscape:window-width="3840"
+     inkscape:window-height="2054"
+     inkscape:window-x="-11"
+     inkscape:window-y="-11"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="g7" />
+  <title
+     id="title">That’s APIOps checkmark symbol</title>
+  <desc
+     id="description">
+    A segmented APIOps Cycles ring with a purple checkmark in the center
+    and a grey station at the bottom.
+  </desc>
+  <!-- Transparent background -->
+  <g
+     fill="none"
+     stroke-linecap="round"
+     stroke-linejoin="round"
+     id="g7">
+    <!-- Segmented outer ring -->
+    <!-- Bottom station -->
+    <!-- Central checkmark -->
+    <path
+       d="M165 257 L226 318 L354 190"
+       stroke="#6842C2"
+       stroke-width="30"
+       id="path7" />
+    <path
+       d="m 254.02027,54.025822 c 71.29914,-7.13e-4 137.18253,38.036611 172.8321,99.783468"
+       stroke="#2F7D32"
+       stroke-width="22"
+       id="path1-0"
+       style="stroke:#10b981;stroke-width:21.3822;stroke-dasharray:none;stroke-opacity:1"
+       sodipodi:nodetypes="cc" />
+    <path
+       d="m 426.85237,153.80929 c 35.6492,61.74623 35.6492,137.82072 0,199.56695"
+       stroke="#0A8F8F"
+       stroke-width="22"
+       id="path2-9"
+       style="stroke:#1656b8;stroke-width:21.3822;stroke-dasharray:none;stroke-opacity:1"
+       sodipodi:nodetypes="cc" />
+    <path
+       d="m 426.85237,353.37624 c -35.64957,61.74686 -101.53296,99.7842 -172.8321,99.78347"
+       stroke="#1656B8"
+       stroke-width="22"
+       id="path3-4"
+       style="stroke:#8b5cf6;stroke-width:21.3822;stroke-dasharray:none;stroke-opacity:1"
+       sodipodi:nodetypes="cc" />
+    <path
+       d="M 254.02027,453.15971 C 182.72114,453.16044 116.83774,415.1231 81.188174,353.37624"
+       stroke="#666A70"
+       stroke-width="22"
+       id="path4-8"
+       style="stroke:#ef4444;stroke-width:21.3822;stroke-dasharray:none;stroke-opacity:1"
+       sodipodi:nodetypes="cc" />
+    <path
+       d="m 81.188174,353.37624 c -35.649198,-61.74623 -35.649198,-137.82072 0,-199.56695"
+       stroke="#E5640A"
+       stroke-width="22"
+       id="path5-8"
+       style="stroke:#f5b30b;stroke-width:21.3822;stroke-dasharray:none;stroke-opacity:1"
+       sodipodi:nodetypes="cc" />
+    <path
+       d="M 81.188174,153.80929 C 116.83774,92.062433 182.72114,54.025087 254.02027,54.025822"
+       stroke="#67389B"
+       stroke-width="22"
+       id="path6-2"
+       style="stroke:#14cab6;stroke-width:21.3822;stroke-dasharray:none;stroke-opacity:1"
+       sodipodi:nodetypes="cc" />
+    <circle
+       cx="254.02028"
+       cy="453.1597"
+       r="21.382172"
+       fill="#F7F8FA"
+       stroke="#666A70"
+       stroke-width="12"
+       id="circle9"
+       style="fill:#ffffff;fill-opacity:1;stroke:#ef4444;stroke-width:14.2548;stroke-dasharray:none;stroke-opacity:1" />
+  </g>
+  <metadata
+     id="metadata1">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:title>That’s APIOps checkmark symbol</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+</svg>
