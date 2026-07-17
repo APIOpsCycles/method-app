@@ -1,7 +1,7 @@
 {
   "source": {
     "repository": "https://github.com/APIOpsCycles/apiops-cycles-method-data",
-    "commit": "3750e9a4f1946b3f5a344e9e9ebe7888e420eb68"
+    "commit": "c3692b0f593531e49decbbfb6663c5110f5b0e0c"
   },
   "locales": [
     "en",
@@ -11,7 +11,7 @@
     "pt"
   ],
   "defaultLocale": "en",
-  "generatedAt": "2026-07-17T11:34:04.760Z",
+  "generatedAt": "2026-07-17T12:14:57.452Z",
   "translations": {
     "de": {
       "labels": {

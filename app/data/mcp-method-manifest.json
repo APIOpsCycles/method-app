@@ -1,7 +1,7 @@
 {
   "source": {
     "repository": "https://github.com/APIOpsCycles/apiops-cycles-method-data",
-    "commit": "3750e9a4f1946b3f5a344e9e9ebe7888e420eb68"
+    "commit": "c3692b0f593531e49decbbfb6663c5110f5b0e0c"
   },
   "version": 1,
   "description": "Static APIOps Cycles manifest for a future MCP server.",
