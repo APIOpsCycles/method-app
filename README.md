@@ -90,7 +90,7 @@ actions tied to the current ChatGPT user. Leave public content anonymous.
 - `npm run dev`: start local development
 - `npm run build`: verify the vinext build output
 - `npm run db:generate`: generate Drizzle migrations after schema changes
-- `bun install && bun run build`: Cloudflare build command
+- `bun install && bun run build`: Cloudflare build command (requires cloudflare app access to repository)
 
 ## Learn More
 
