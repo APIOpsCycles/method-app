@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import CatalogPage, { normalizeLocale } from "../../../catalog-page";
+import { PublicCycleContent } from "../../../public-content";
+import { canonicalUrl, getCycleBySlug, languageAlternates } from "../../../public-method-data";
 import routeIndex from "../../../data/route-index.json";
 
 export function generateStaticParams() {
@@ -14,10 +17,35 @@ export function generateMetadata({
   params: { locale: string; cycle: string };
 }): Metadata {
   const locale = normalizeLocale(params.locale);
-  const cycle = routeIndex.translations[locale].cycles.find((item) => item.slug === params.cycle || item.id === params.cycle);
+  const cycle = getCycleBySlug(params.cycle, locale);
   return {
-    title: cycle ? `${cycle.title} | APIOps Cycles` : "APIOps Cycles",
+    title: cycle ? cycle.title : "APIOps Cycles",
     description: cycle?.description,
+    alternates: cycle
+      ? {
+          canonical: locale === "en" ? `/cycles/${cycle.slug}` : `/${locale}/cycles/${cycle.slug}`,
+          languages: languageAlternates((item) => {
+            const localized = getCycleBySlug(params.cycle, item);
+            return `/cycles/${localized?.slug ?? cycle.slug}`;
+          }),
+        }
+      : undefined,
+    openGraph: cycle
+      ? {
+          title: cycle.title,
+          description: cycle.description,
+          url: canonicalUrl(locale, `/cycles/${cycle.slug}`),
+          type: "article",
+        }
+      : undefined,
+    twitter: cycle
+      ? {
+          card: "summary",
+          title: cycle.title,
+          description: cycle.description,
+        }
+      : undefined,
+    robots: { index: Boolean(cycle), follow: Boolean(cycle) },
   };
 }
 
@@ -26,5 +54,12 @@ export default function LocalizedCyclePage({
 }: {
   params: { locale: string; cycle: string };
 }) {
-  return <CatalogPage locale={params.locale} initialCycleId={params.cycle} />;
+  const cycle = getCycleBySlug(params.cycle, params.locale);
+  if (!cycle) notFound();
+  return (
+    <>
+      <PublicCycleContent cycle={cycle} locale={params.locale} />
+      <CatalogPage locale={params.locale} initialCycleId={params.cycle} />
+    </>
+  );
 }

@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import CatalogPage from "../../catalog-page";
+import { PublicCycleContent } from "../../public-content";
+import { canonicalUrl, getCycleBySlug, languageAlternates } from "../../public-method-data";
 import routeIndex from "../../data/route-index.json";
 
 export function generateStaticParams() {
@@ -11,10 +14,29 @@ export function generateMetadata({
 }: {
   params: { cycle: string };
 }): Metadata {
-  const cycle = routeIndex.translations.en.cycles.find((item) => item.slug === params.cycle || item.id === params.cycle);
+  const cycle = getCycleBySlug(params.cycle, "en");
   return {
-    title: cycle ? `${cycle.title} | APIOps Cycles` : "APIOps Cycles",
+    title: cycle ? cycle.title : "APIOps Cycles",
     description: cycle?.description,
+    alternates: cycle ? {
+      canonical: `/cycles/${cycle.slug}`,
+      languages: languageAlternates((locale) => {
+        const localized = getCycleBySlug(params.cycle, locale);
+        return `/cycles/${localized?.slug ?? cycle.slug}`;
+      }),
+    } : undefined,
+    openGraph: cycle ? {
+      title: cycle.title,
+      description: cycle.description,
+      url: canonicalUrl("en", `/cycles/${cycle.slug}`),
+      type: "article",
+    } : undefined,
+    twitter: cycle ? {
+      card: "summary",
+      title: cycle.title,
+      description: cycle.description,
+    } : undefined,
+    robots: { index: Boolean(cycle), follow: Boolean(cycle) },
   };
 }
 
@@ -23,5 +45,12 @@ export default function CyclePage({
 }: {
   params: { cycle: string };
 }) {
-  return <CatalogPage locale="en" initialCycleId={params.cycle} />;
+  const cycle = getCycleBySlug(params.cycle, "en");
+  if (!cycle) notFound();
+  return (
+    <>
+      <PublicCycleContent cycle={cycle} locale="en" />
+      <CatalogPage locale="en" initialCycleId={params.cycle} />
+    </>
+  );
 }

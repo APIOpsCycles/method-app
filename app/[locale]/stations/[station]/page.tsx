@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import CatalogPage, { normalizeLocale } from "../../../catalog-page";
+import { PublicStationContent } from "../../../public-content";
+import { canonicalUrl, getStationBySlug } from "../../../public-method-data";
 import routeIndex from "../../../data/route-index.json";
 
 export function generateStaticParams() {
@@ -14,10 +17,29 @@ export function generateMetadata({
   params: { locale: string; station: string };
 }): Metadata {
   const locale = normalizeLocale(params.locale);
-  const station = routeIndex.translations[locale].stations.find((item) => item.id === params.station);
+  const station = getStationBySlug(params.station, locale);
   return {
-    title: station ? `${station.title} | APIOps Cycles` : "APIOps Cycles Station",
+    title: station ? station.title : "APIOps Cycles Station",
     description: station?.description,
+    alternates: station
+      ? { canonical: locale === "en" ? `/stations/${station.id}` : `/${locale}/stations/${station.id}` }
+      : undefined,
+    openGraph: station
+      ? {
+          title: station.title,
+          description: station.description,
+          url: canonicalUrl(locale, `/stations/${station.id}`),
+          type: "article",
+        }
+      : undefined,
+    twitter: station
+      ? {
+          card: "summary",
+          title: station.title,
+          description: station.description,
+        }
+      : undefined,
+    robots: { index: Boolean(station), follow: Boolean(station) },
   };
 }
 
@@ -26,5 +48,12 @@ export default function LocalizedStationPage({
 }: {
   params: { locale: string; station: string };
 }) {
-  return <CatalogPage locale={params.locale} initialStationId={params.station} />;
+  const station = getStationBySlug(params.station, params.locale);
+  if (!station) notFound();
+  return (
+    <>
+      <PublicStationContent station={station} locale={params.locale} />
+      <CatalogPage locale={params.locale} initialStationId={params.station} />
+    </>
+  );
 }
