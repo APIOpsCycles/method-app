@@ -156,6 +156,7 @@ a {
 .island-metro text { fill: #071640; font-size: 9px; font-weight: 700; }
 .metro-button { cursor: pointer; }
 .island-selection { background: #eef4ff; border-radius: .5rem; padding: .75rem; }
+.metro-controls { margin: 1.25rem 0; }
 .source-content, .prompt-preview pre, .export-grid pre { background: #f2f5fa; border-radius: .5rem; max-height: 24rem; overflow: auto; padding: 1rem; white-space: pre-wrap; }
 .export-grid, .canvas-grid { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
 .canvas-metadata { display: grid; gap: .75rem; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); margin: 1.5rem 0; }

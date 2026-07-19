@@ -1,9 +1,11 @@
 import { type RefObject, useRef, useState } from "react";
+import { StakeholderRoleSelector } from "@apiops/design-system/react";
 
 export type MetroCycleStation = { id: string; index: number; title: string; baseTitle: string };
 export type MetroCycle = { id: string; title: string; stations: MetroCycleStation[] };
 export type MetroLine = { id: string; title: string; color: string; stations: string[] };
 export type MetroStation = { id: string; title: string; description: string };
+export type MetroRole = { id: string; title: string; involvementByStation: Record<string, string> };
 
 const colors: Record<string, string> = {
   "capability-productization-cycle": "var(--color-cycle-capability)",
@@ -502,9 +504,10 @@ function MetroMapView({
   );
 }
 
-export default function MetroMapIsland({ locale, cycles, lines, stations, initialCycleId, initialStationId }: { locale: string; cycles: MetroCycle[]; lines: MetroLine[]; stations: MetroStation[]; initialCycleId?: string; initialStationId?: string }) {
+export default function MetroMapIsland({ locale, cycles, lines, stations, roles, initialCycleId, initialStationId, initialRoleId }: { locale: string; cycles: MetroCycle[]; lines: MetroLine[]; stations: MetroStation[]; roles: MetroRole[]; initialCycleId?: string; initialStationId?: string; initialRoleId?: string }) {
   const [cycleId, setCycleId] = useState(initialCycleId ?? cycles[0]?.id ?? "");
   const [stationId, setStationId] = useState(initialStationId ?? cycles[0]?.stations[0]?.id ?? stations[0]?.id ?? "");
+  const [roleId, setRoleId] = useState(initialRoleId ?? "");
   const svgRef = useRef<SVGSVGElement>(null);
   const labels = { "map.ariaLabel": "APIOps Cycles metro map", "map.zoneStrategic": "Strategic", "map.zoneGovernance": "Governance", "map.zoneConsumer": "Consumer", "map.zoneTechnical": "Technical" };
   function exportSvg() {
@@ -519,7 +522,8 @@ export default function MetroMapIsland({ locale, cycles, lines, stations, initia
   return <section className="island-panel" aria-labelledby="metro-map-title">
     <header className="island-heading"><div><p className="public-kicker">Method map</p><h2 id="metro-map-title">Metro map</h2></div><button type="button" onClick={exportSvg}>Export SVG</button></header>
     <p>Select a cycle or station to inspect the established APIOps Cycles method map.</p>
-    <MetroMapView cycles={cycles} lines={lines} stations={stations} selectedCycleId={cycleId} selectedStationId={stationId} stakeholderInvolvementByStation={{}} onSelectCycle={(id) => { setCycleId(id); const first = cycles.find((cycle) => cycle.id === id)?.stations[0]; if (first) setStationId(first.id); }} onSelectStation={setStationId} uiLabels={labels} svgRef={svgRef} />
+    <div className="metro-controls"><StakeholderRoleSelector roles={roles} value={roleId} label="Stakeholder involvement" placeholder="Select stakeholder" involvementLabels={{ lead: "Lead", core: "Core", consulted: "Consulted" }} onChange={setRoleId} /></div>
+    <MetroMapView cycles={cycles} lines={lines} stations={stations} selectedCycleId={cycleId} selectedStationId={stationId} stakeholderInvolvementByStation={roles.find((role) => role.id === roleId)?.involvementByStation ?? {}} onSelectCycle={(id) => { setCycleId(id); const first = cycles.find((cycle) => cycle.id === id)?.stations[0]; if (first) setStationId(first.id); }} onSelectStation={setStationId} uiLabels={labels} svgRef={svgRef} />
     <p className="island-selection" aria-live="polite">Selected station: <strong>{stations.find((station) => station.id === stationId)?.title ?? "None"}</strong></p>
   </section>;
 }

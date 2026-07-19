@@ -1,9 +1,9 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { CanvasSystemGrid, CanvasSystemMetadataEditor, CanvasSystemShell, CanvasSystemZone } from "@apiops/design-system/react";
+import { CanvasSystemGrid, CanvasSystemMetadataEditor, CanvasSystemShell, CanvasSystemZone, type CanvasSystemMetadata, type CanvasSystemSection } from "@apiops/design-system/react";
 
 type Note = { content: string; color: string; size: number };
-type Metadata = { title: string; owner: string; context: string; date: string };
-export type CanvasSection = { id: string; title: string; description: string; gridPosition: { column: number; row: number; colSpan: number; rowSpan: number }; fillOrder: number; highlight: boolean; journeySteps: boolean; defaultNoteColor: string; defaultNoteIntent: string };
+type Metadata = CanvasSystemMetadata;
+export type CanvasSection = CanvasSystemSection;
 export type CanvasDefinition = { id: string; title: string; purpose: string; howToUse: string; layout: { columns: number; rows: number }; sections: CanvasSection[]; metadata?: { source?: string; license?: string; authors?: string[] }; footer?: string; importExportTemplate: { templateId: string; metadata: Record<string, unknown> } };
 
 export default function CanvasWorkspaceIsland({ locale, entityId, entityTitle, canvas }: { locale: string; entityId: string; entityTitle: string; canvas: CanvasDefinition }) {
