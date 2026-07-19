@@ -138,6 +138,7 @@ function MetroMapView({
   stations,
   selectedCycleId,
   selectedStationId,
+  selectedLineId,
   stakeholderInvolvementByStation,
   onSelectCycle,
   onSelectStation,
@@ -149,6 +150,7 @@ function MetroMapView({
   stations: Station[];
   selectedCycleId: string;
   selectedStationId: string;
+  selectedLineId?: string;
   stakeholderInvolvementByStation: Record<string, string>;
   onSelectCycle: (id: string) => void;
   onSelectStation: (id: string) => void;
@@ -396,7 +398,7 @@ function MetroMapView({
       ))}
       {linePoints.map((line) => (
         <g key={line.id}>
-          <MetroLinePath id={line.id} points={linePathPoints(line)} color={line.color} strokeWidth={5} opacity={0.82} className="metro-line-path" />
+          <MetroLinePath id={line.id} points={linePathPoints(line)} color={line.color} strokeWidth={selectedLineId === line.id ? 10 : 5} opacity={selectedLineId && selectedLineId !== line.id ? 0.18 : 0.82} className="metro-line-path" />
           {line.points.filter((point) => point.support).map((point) => (
             <MetroStationButton key={`${line.id}-${point.id}`} id={point.id} label={point.baseTitle} x={point.x} y={point.y} selected={point.id === selectedStationId} className={stationClassName(point.id)} onSelect={onSelectStation}>
               {involvementFor(point.id) ? (
@@ -449,7 +451,7 @@ function MetroMapView({
   );
 }
 
-export default function MetroMapIsland({ locale, labels, cycles, lines, stations, roles, initialCycleId, initialStationId, initialRoleId }: { locale: string; labels: Record<string, string>; cycles: MetroCycle[]; lines: MetroLine[]; stations: MetroStation[]; roles: MetroRole[]; initialCycleId?: string; initialStationId?: string; initialRoleId?: string }) {
+export default function MetroMapIsland({ locale, labels, cycles, lines, stations, roles, initialCycleId, initialStationId, initialRoleId, initialLineId }: { locale: string; labels: Record<string, string>; cycles: MetroCycle[]; lines: MetroLine[]; stations: MetroStation[]; roles: MetroRole[]; initialCycleId?: string; initialStationId?: string; initialRoleId?: string; initialLineId?: string }) {
   const [cycleId, setCycleId] = useState(initialCycleId ?? cycles[0]?.id ?? "");
   const [stationId, setStationId] = useState(initialStationId ?? cycles[0]?.stations[0]?.id ?? stations[0]?.id ?? "");
   const [roleId, setRoleId] = useState(initialRoleId ?? "");
@@ -469,7 +471,7 @@ export default function MetroMapIsland({ locale, labels, cycles, lines, stations
     <header className="island-heading"><div><p className="public-kicker">{labels["map.methodKicker"]}</p><h2 id="metro-map-title">{labels["map.title"]}</h2></div><button type="button" onClick={exportSvg}>{labels["map.exportSvg"]}</button></header>
     <p>{labels["map.help"]}</p>
     <div className="metro-controls"><StakeholderRoleSelector roles={roles} value={roleId} label={labels["controls.stakeholderInvolvement"]} placeholder={labels["controls.selectStakeholder"]} involvementLabels={{ lead: labels["involvement.lead"], core: labels["involvement.core"], consulted: labels["involvement.consulted"] }} onChange={(id) => { setRoleId(id); navigate(`/roles/${id}`); }} /></div>
-    <MetroMapView cycles={cycles} lines={lines} stations={stations} selectedCycleId={cycleId} selectedStationId={stationId} stakeholderInvolvementByStation={roles.find((role) => role.id === roleId)?.involvementByStation ?? {}} onSelectCycle={(id) => { setCycleId(id); const selected = cycles.find((cycle) => cycle.id === id); if (selected) navigate(`/cycles/${selected.slug}`); }} onSelectStation={(id) => { setStationId(id); const selectedCycle = cycles.find((cycle) => cycle.id === cycleId); const isCycleStation = selectedCycle?.stations.some((station) => station.id === id); navigate(isCycleStation ? `/cycles/${selectedCycle.slug}/stations/${id}` : `/stations/${id}`); }} uiLabels={labels} svgRef={svgRef} />
+    <MetroMapView cycles={cycles} lines={lines} stations={stations} selectedCycleId={cycleId} selectedStationId={stationId} selectedLineId={initialLineId} stakeholderInvolvementByStation={roles.find((role) => role.id === roleId)?.involvementByStation ?? {}} onSelectCycle={(id) => { setCycleId(id); const selected = cycles.find((cycle) => cycle.id === id); if (selected) navigate(`/cycles/${selected.slug}`); }} onSelectStation={(id) => { setStationId(id); const selectedCycle = cycles.find((cycle) => cycle.id === cycleId); const isCycleStation = selectedCycle?.stations.some((station) => station.id === id); navigate(isCycleStation ? `/cycles/${selectedCycle.slug}/stations/${id}` : `/stations/${id}`); }} uiLabels={labels} svgRef={svgRef} />
     <p className="island-selection" aria-live="polite">{labels["map.selectedStation"]} <strong>{stations.find((station) => station.id === stationId)?.title ?? labels["map.none"]}</strong></p>
   </section>;
 }

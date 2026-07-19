@@ -1,0 +1,13 @@
+---
+import LineContent from "../../../../components/content/cycle[cycle]/LineContent.astro";
+import BaseLayout from "../../../../layouts/BaseLayout.astro";
+import { getCatalog, getCycle, getLine, localizedLocales, locales, type Locale } from "../../../../lib/method-data";
+export function getStaticPaths() { return localizedLocales.flatMap((locale) => { const data = getCatalog(locale); return data.cycles.flatMap((cycle) => data.lines.filter((line) => line.stations.some((id) => cycle.stations.some((station) => station.id === id))).map((line) => ({ params: { locale, cycle: cycle.slug, line: line.slug }, props: { locale } }))); }); }
+const { locale } = Astro.props as { locale: Locale };
+const cycle = getCycle(locale, Astro.params.cycle!); const line = getLine(locale, Astro.params.line!);
+if (!cycle || !line) throw new Error("Unknown cycle or line");
+const canonicalPath = `/${locale}/cycle${cycle.slug}/lines/${line.slug}`;
+const languageAlternates = locales.map((language) => ({ lang: language, path: `${language === "en" ? "" : `/${language}`}/cycle${cycle.slug}/lines/${line.slug}` }));
+const jsonLd = { "@context": "https://schema.org", "@type": "ItemList", name: line.title, description: line.description, itemListElement: cycle.stations.filter((station) => line.stations.includes(station.id)).map((station, index) => ({ "@type": "ListItem", position: index + 1, name: station.title, url: `/${locale}/stations/${station.id}` })) };
+---
+<BaseLayout title={line.title} description={line.description} lang={locale} canonicalPath={canonicalPath} languageAlternates={languageAlternates} jsonLd={jsonLd}><LineContent cycle={cycle} line={line} locale={locale} /></BaseLayout>

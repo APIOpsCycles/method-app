@@ -16,6 +16,7 @@ export type Locale = keyof typeof catalogs;
 export type Catalog = (typeof catalogEn)["translations"]["en"];
 export type Cycle = Catalog["cycles"][number];
 export type Station = Catalog["stations"][number];
+export type Line = Catalog["lines"][number];
 export type Resource = Catalog["resources"][number];
 export type Role = Catalog["routeProfiles"][number];
 
@@ -35,6 +36,7 @@ export type LabelSubset<K extends keyof Labels> = Pick<Labels, K>;
 export const pickLabels = <K extends keyof Labels>(labels: Labels, keys: readonly K[]): LabelSubset<K> =>
   Object.fromEntries(keys.map((key) => [key, labels[key]])) as LabelSubset<K>;
 export const getCycle = (locale: Locale, slug: string) => getCatalog(locale).cycles.find((item) => item.slug === slug || item.id === slug);
+export const getLine = (locale: Locale, slug: string) => getCatalog(locale).lines.find((item) => item.slug === slug || item.id === slug);
 export const getStation = (locale: Locale, slug: string) => getCatalog(locale).stations.find((item) => item.id === slug || item.slug === slug || item.slug === `method/${slug}`);
 export const getRole = (locale: Locale, slug: string) => getCatalog(locale).routeProfiles.find((item) => item.id === slug || item.stakeholderId === slug);
 export const getResource = (locale: Locale, slug: string) => getCatalog(locale).resources.find((item) => !item.draft && (item.id === slug || item.slug === slug || item.slug === `resources/${slug}`));

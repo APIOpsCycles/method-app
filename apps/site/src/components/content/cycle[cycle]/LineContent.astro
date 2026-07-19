@@ -1,0 +1,40 @@
+---
+import { getCatalog, getLabels, localePrefix, type Cycle, type Line, type Locale } from "../../../lib/method-data";
+import MethodMap from "../MethodMap.astro";
+interface Props { cycle: Cycle; line: Line; locale: Locale }
+const { cycle, line, locale } = Astro.props;
+const prefix = localePrefix(locale);
+const labels = getLabels(locale);
+const catalog = getCatalog(locale);
+const stationIds = new Set(line.stations);
+// Cycle order is authoritative on a cycle-specific line page.
+const stations = cycle.stations.filter((station) => stationIds.has(station.id));
+const cyclesByStation = new Map(catalog.stations.map((station) => [station.id, catalog.cycles.filter((candidate) => candidate.stations.some((item) => item.id === station.id))]));
+---
+<main class="public-content">
+  <nav class="public-breadcrumbs" aria-label={labels["chrome.breadcrumb"]}><a href={`${prefix}/`}>APIOps Cycles</a><span aria-hidden="true">/</span><a href={`${prefix}/cycles/${cycle.slug}`}>{cycle.title}</a><span aria-hidden="true">/</span><span>{line.title}</span></nav>
+  <section class="public-hero" style={`--line-color: ${line.color}`}>
+    <p class="public-kicker">{labels["entity.line"]}</p>
+    <div class="line-heading"><span class="line-icon" aria-hidden="true">{line.icon || "●"}</span><h1>{line.title}</h1></div>
+    <p>{line.description}</p><span class="line-color"><span aria-hidden="true"></span>{line.color}</span>
+  </section>
+  <section class="public-section" aria-label={line.title}><MethodMap locale={locale} cycleId={cycle.id} stationId={stations[0]?.id} lineId={line.id} /></section>
+  <section class="public-section" aria-labelledby="line-stations"><h2 id="line-stations">{labels["section.stations"]}</h2>
+    <ol class="public-step-list">{stations.map((station, index) => {
+      const previous = stations[index - 1]; const next = stations[index + 1]; const stationCycles = cyclesByStation.get(station.id) ?? [];
+      return <li><h3><a href={`${prefix}/stations/${station.id}`}>{station.title}</a></h3><p>{station.description}</p>
+        <dl class="line-relationships">{previous && <><dt>{labels["line.previous"]}</dt><dd><a href={`${prefix}/stations/${previous.id}`}>{previous.title}</a></dd></>}{next && <><dt>{labels["line.next"]}</dt><dd><a href={`${prefix}/stations/${next.id}`}>{next.title}</a></dd></>}</dl>
+        <p><strong>{labels["section.stationCycles"]}:</strong> {stationCycles.map((item, cycleIndex) => <>{cycleIndex > 0 && ", "}<a href={`${prefix}/cycles/${item.slug}`}>{item.title}</a></>)}</p>
+      </li>;
+    })}</ol>
+  </section>
+</main>
+<style>
+  .line-heading { align-items: center; display: flex; gap: .75rem; }
+  .line-icon { align-items: center; background: var(--line-color); border-radius: 999px; color: white; display: inline-flex; font-weight: 800; height: 2.5rem; justify-content: center; min-width: 2.5rem; padding: .25rem; }
+  .line-color { align-items: center; display: inline-flex; font-family: monospace; gap: .5rem; }
+  .line-color span { background: var(--line-color); border-radius: 999px; display: inline-block; height: 1rem; width: 3rem; }
+  .line-relationships { display: grid; grid-template-columns: max-content 1fr; gap: .25rem .75rem; }
+  .line-relationships dt { font-weight: 700; }
+  .line-relationships dd { margin: 0; }
+</style>
