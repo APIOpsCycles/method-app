@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import CatalogPage from "../../catalog-page";
-import { PublicRoleContent } from "../../public-content";
 import { canonicalUrl, getStakeholderBySlug, pageLanguageAlternates } from "../../public-method-data";
 import routeIndex from "../../data/route-index.json";
 
@@ -52,7 +51,6 @@ export default function RolePage({
   if (!role) notFound();
   return (
     <>
-      <PublicRoleContent role={role} locale="en" />
       <CatalogPage locale="en" initialRoleId={params.role} />
     </>
   );

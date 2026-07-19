@@ -1,0 +1,11 @@
+---
+import ResourceContent from "../../components/content/ResourceContent.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getCatalog, getResource, type Locale } from "../../lib/method-data";
+export function getStaticPaths() { return getCatalog("en").resources.filter((item) => !item.draft).map((item) => ({ params: { resource: item.id }, props: { locale: "en" as Locale } })); }
+const { locale } = Astro.props;
+const item = getResource(locale, Astro.params.resource!);
+if (!item) throw new Error("Unknown resource");
+const canonicalPath = `/resources/${item.id}`;
+---
+<BaseLayout title={item.title} description={item.description} lang={locale} canonicalPath={canonicalPath}><ResourceContent resource={item} locale={locale} /></BaseLayout>

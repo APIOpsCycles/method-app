@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import CatalogPage from "../../catalog-page";
-import { PublicResourceContent } from "../../public-content";
 import { canonicalUrl, getPublicResources, getResourceBySlug, pageLanguageAlternates } from "../../public-method-data";
 
 export function generateStaticParams() {
@@ -46,7 +45,6 @@ export default function ResourcePage({
   if (!resource) notFound();
   return (
     <>
-      <PublicResourceContent resource={resource} locale="en" />
       <CatalogPage locale="en" />
     </>
   );

@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import CatalogPage from "../../catalog-page";
-import { PublicCycleContent } from "../../public-content";
 import { canonicalUrl, getCycleBySlug, pageLanguageAlternates } from "../../public-method-data";
 import routeIndex from "../../data/route-index.json";
 
@@ -46,7 +45,6 @@ export default function CyclePage({
   if (!cycle) notFound();
   return (
     <>
-      <PublicCycleContent cycle={cycle} locale="en" />
       <CatalogPage locale="en" initialCycleId={params.cycle} />
     </>
   );

@@ -48,16 +48,10 @@ a {
 }
 
 .public-content {
-  border: 0;
-  clip: rect(0, 0, 0, 0);
-  clip-path: inset(50%);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  white-space: normal;
-  width: 1px;
+  margin: 0 auto;
+  max-width: 1120px;
+  padding: clamp(3rem, 8vw, 7rem) clamp(1.25rem, 5vw, 4rem);
+  width: 100%;
 }
 
 .sr-only {
