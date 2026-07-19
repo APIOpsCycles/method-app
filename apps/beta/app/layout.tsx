@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "@apiops/design-system/styles.css";
 import { designSystemAssets } from "@apiops/design-system/assets";
 import "./globals.css";
+import SiteChrome from "./site-chrome";
 
 export const metadata: Metadata = {
   title: {
@@ -48,7 +49,7 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body suppressHydrationWarning>{children}</body>
+      <body suppressHydrationWarning><SiteChrome>{children}</SiteChrome></body>
     </html>
   );
 }

@@ -1,0 +1,4 @@
+import { notFound } from "next/navigation";
+import Link from "next/link";
+import { getCatalog } from "../../public-method-data";
+export default function Page({ params }: { params: { line: string } }) { const catalog = getCatalog("en"); const line = catalog.lines.find((item) => item.id === params.line); if (!line) notFound(); return <main className="public-content"><section className="public-hero"><p className="public-kicker">Metro line</p><h1>{line.title}</h1><p>{line.description}</p></section><section className="public-section"><h2>Stations</h2><ol className="public-link-list">{line.stations.map((stationId) => { const station = catalog.stations.find((item) => item.id === stationId); return station ? <li key={stationId}><Link href={`/stations/${stationId}`}>{station.title}</Link></li> : null; })}</ol></section></main>; }

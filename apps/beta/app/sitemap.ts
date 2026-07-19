@@ -7,9 +7,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return allPublicPages()
     .map((page) => ({
       url: page.path === "/" ? siteOrigin : `${siteOrigin}${page.path}`,
-      alternates: {
+      ...(page.kind === "designSystem" ? {} : { alternates: {
         languages: absolutePageLanguageAlternates(page.kind, page.id),
-      },
+      }}),
     }))
     .filter((entry) => {
       if (seen.has(entry.url)) return false;

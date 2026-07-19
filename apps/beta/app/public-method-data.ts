@@ -19,6 +19,7 @@ export type Cycle = Translation["cycles"][number];
 export type Station = Translation["stations"][number];
 export type Resource = Translation["resources"][number];
 export type RouteProfile = Translation["routeProfiles"][number];
+export type MetroLine = Translation["lines"][number];
 
 const supportedLocales = routeIndex.locales as Locale[];
 export const defaultLocale = routeIndex.defaultLocale as Locale;
@@ -128,7 +129,7 @@ export function absoluteLanguageAlternates(pathForLocale: (locale: Locale) => st
   );
 }
 
-type PublicPageKind = "home" | "partners" | "licensing" | "cycle" | "station" | "methodStation" | "role" | "resource";
+type PublicPageKind = "home" | "partners" | "licensing" | "data" | "designSystem" | "cycle" | "station" | "cycleStation" | "line" | "methodStation" | "role" | "resource";
 
 type PublicPage = {
   locale: Locale;
@@ -149,12 +150,23 @@ function pathForPage(locale: Locale, kind: PublicPageKind, id?: string) {
       return "/partners";
     case "licensing":
       return "/licensing";
+    case "data":
+      return "/data";
+    case "designSystem":
+      return "/design-system";
     case "cycle": {
       const cycle = data.cycles.find((item) => item.id === id);
       return cycle ? `/cycles/${cycle.slug}` : "/";
     }
     case "station":
       return `/stations/${id}`;
+    case "cycleStation": {
+      const [cycleId, stationId] = id?.split(":") ?? [];
+      const cycle = data.cycles.find((item) => item.id === cycleId);
+      return cycle ? `/cycles/${cycle.slug}/stations/${stationId}` : "/";
+    }
+    case "line":
+      return `/lines/${id}`;
     case "methodStation":
       return `/method/${id}`;
     case "role":
@@ -174,20 +186,21 @@ export function absolutePageLanguageAlternates(kind: PublicPageKind, id?: string
   return absoluteLanguageAlternates((locale) => pathForPage(locale, kind, id));
 }
 
-export function allPublicPages() {
-  return supportedLocales.flatMap((locale) => {
+export function allPublicPages(): PublicPage[] {
+  const localizedPages: PublicPage[] = supportedLocales.flatMap((locale): PublicPage[] => {
     const prefix = localePrefix(locale);
     const data = getCatalog(locale);
     return [
       { locale, path: `${prefix}/`, title: "APIOps Cycles Knowledge Catalog", kind: "home" },
       { locale, path: `${prefix}/partners`, title: "APIOps Cycles Partners", kind: "partners" },
       { locale, path: `${prefix}/licensing`, title: "APIOps Cycles Licensing", kind: "licensing" },
+      { locale, path: `${prefix}/data`, title: "APIOps Cycles static data", kind: "data" },
       ...data.cycles.map((cycle) => ({
         locale,
         path: `${prefix}/cycles/${cycle.slug}`,
         title: cycle.title,
         summary: cycle.description,
-        kind: "cycle",
+        kind: "cycle" as const,
         id: cycle.id,
       })),
       ...data.stations.map((station) => ({
@@ -195,15 +208,24 @@ export function allPublicPages() {
         path: `${prefix}/stations/${station.id}`,
         title: station.title,
         summary: station.description,
-        kind: "station",
+        kind: "station" as const,
         id: station.id,
       })),
+      ...data.lines.map((line) => ({ locale, path: `${prefix}/lines/${line.id}`, title: line.title, kind: "line" as const, id: line.id })),
+      ...data.cycles.flatMap((cycle) => cycle.stations.map((station) => ({
+        locale,
+        path: `${prefix}/cycles/${cycle.slug}/stations/${station.id}`,
+        title: `${station.title} — ${cycle.title}`,
+        summary: station.description,
+        kind: "cycleStation" as const,
+        id: `${cycle.id}:${station.id}`,
+      }))),
       ...data.routeProfiles.map((role) => ({
         locale,
         path: `${prefix}/roles/${role.id}`,
         title: role.title,
         summary: role.summary,
-        kind: "role",
+        kind: "role" as const,
         id: role.id,
       })),
       ...data.resources.filter((resource) => !resource.draft).map((resource) => ({
@@ -211,9 +233,11 @@ export function allPublicPages() {
         path: `${prefix}/${resource.slug}`,
         title: resource.title,
         summary: resource.description,
-        kind: "resource",
+        kind: "resource" as const,
         id: resource.id,
       })),
     ] satisfies PublicPage[];
   });
+  // This route is English-only and therefore intentionally has no localized copies.
+  return [...localizedPages, { locale: defaultLocale, path: "/design-system", title: "APIOps Design System", kind: "designSystem" }] satisfies PublicPage[];
 }
