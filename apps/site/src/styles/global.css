@@ -48,16 +48,41 @@ a {
 }
 
 .public-content {
-  border: 0;
-  clip: rect(0, 0, 0, 0);
-  clip-path: inset(50%);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  white-space: normal;
-  width: 1px;
+  margin: 0 auto;
+  max-width: 1120px;
+  padding: clamp(3rem, 8vw, 7rem) clamp(1.25rem, 5vw, 4rem);
+  width: 100%;
+}
+
+.public-hero {
+  max-width: 760px;
+}
+
+.public-kicker {
+  color: var(--apiops-accent-community, #0069c0);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.public-hero h1 {
+  font-family: var(--font-heading, "Urbanist", sans-serif);
+  font-size: clamp(2.5rem, 7vw, 5rem);
+  letter-spacing: -0.04em;
+  line-height: 0.98;
+  margin: 1rem 0 1.5rem;
+}
+
+.public-hero > p:last-child {
+  font-size: clamp(1.05rem, 2vw, 1.3rem);
+  line-height: 1.65;
+}
+
+.public-section {
+  border-top: 1px solid var(--panel-border, #d7dfed);
+  margin-top: clamp(3rem, 7vw, 6rem);
+  padding-top: clamp(2rem, 5vw, 4rem);
 }
 
 .sr-only {
