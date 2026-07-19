@@ -145,6 +145,29 @@ a {
   width: 1px;
 }
 
+.island-stack { display: grid; gap: 2rem; }
+.island-panel { background: var(--panel-bg, #fff); border: 1px solid var(--panel-border, #d7dfed); border-radius: 1rem; padding: clamp(1rem, 3vw, 2rem); }
+.island-panel h2 { margin-top: .35rem; }
+.island-heading, .canvas-toolbar { align-items: center; display: flex; flex-wrap: wrap; gap: .75rem; justify-content: space-between; }
+.island-panel button { background: #071640; border: 1px solid #071640; border-radius: .45rem; color: #fff; padding: .65rem .9rem; }
+.island-field { display: grid; font-weight: 700; gap: .4rem; margin: 1rem 0; max-width: 38rem; }
+.island-field select, .canvas-metadata input, .canvas-zone input { border: 1px solid #aab6ca; border-radius: .4rem; min-height: 2.6rem; padding: .5rem; }
+.island-metro { border: 1px solid #d7dfed; border-radius: .75rem; height: auto; max-height: 42rem; width: 100%; }
+.island-metro text { fill: #071640; font-size: 9px; font-weight: 700; }
+.metro-button { cursor: pointer; }
+.island-selection { background: #eef4ff; border-radius: .5rem; padding: .75rem; }
+.source-content, .prompt-preview pre, .export-grid pre { background: #f2f5fa; border-radius: .5rem; max-height: 24rem; overflow: auto; padding: 1rem; white-space: pre-wrap; }
+.export-grid, .canvas-grid { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+.canvas-metadata { display: grid; gap: .75rem; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); margin: 1.5rem 0; }
+.canvas-metadata label { display: grid; gap: .3rem; text-transform: capitalize; }
+.canvas-zone { background: #f7f9fc; border: 1px solid #d7dfed; border-radius: .65rem; padding: 1rem; }
+.canvas-zone ul { display: grid; gap: .6rem; list-style: none; padding: 0; }
+.canvas-zone li { display: flex; padding: .5rem; }
+.canvas-zone textarea { background: transparent; border: 0; flex: 1; min-height: 5rem; resize: vertical; }
+.canvas-zone form { display: flex; gap: .5rem; }
+.canvas-zone form input { flex: 1; min-width: 0; }
+.no-script-note { border-left: 4px solid #0069c0; padding-left: 1rem; }
+
 .site-shell {
   min-height: 100vh;
   background:
