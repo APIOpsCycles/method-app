@@ -1,14 +1,7 @@
-
-{
-	"pid": 22456,
-	"port": 4321,
-	"url": "http://localhost:4321",
-	"urls": {
-		"local": [
-			"http://localhost:4321/"
-		],
-		"network": []
-	},
-	"background": false,
-	"startedAt": "2026-07-19T07:16:20.211Z"
-}
+  {
+    "name": "worker-name",
+    "compatibility_date": "2026-07-19",
+    "assets": {
+      "directory": "./dist"
+    }
+  }
