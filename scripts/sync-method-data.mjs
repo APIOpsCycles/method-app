@@ -395,6 +395,7 @@ function siteLabels(locale) {
   };
   const translations = {
     fi: {
+      "section.journeyCriteria": "Matkan kriteerit",
       "nav.workflows": "Työnkulut",
       "nav.data": "Data",
       "nav.language": "Kieli",
@@ -539,6 +540,7 @@ function siteLabels(locale) {
       "footer.community": "Yhteisötapahtumat ja liittyminen",
     },
     fr: {
+      "section.journeyCriteria": "Critères du parcours",
       "nav.workflows": "Flux de travail",
       "nav.data": "Données",
       "nav.language": "Langue",
@@ -683,6 +685,7 @@ function siteLabels(locale) {
       "footer.community": "Événements communautaires et adhésion",
     },
     de: {
+      "section.journeyCriteria": "Ablaufkriterien",
       "nav.workflows": "Workflows",
       "nav.data": "Daten",
       "nav.language": "Sprache",
@@ -827,6 +830,7 @@ function siteLabels(locale) {
       "footer.community": "Community-Events und Beitritt",
     },
     pt: {
+      "section.journeyCriteria": "Critérios do percurso",
       "nav.workflows": "Fluxos de trabalho",
       "nav.data": "Dados",
       "nav.language": "Idioma",
