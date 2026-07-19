@@ -4,8 +4,12 @@ The deliberately small APIOps visual foundation: tokens, CSS, assets, metadata, 
 
 ```tsx
 import "@apiops/design-system/styles.css";
-import { CanvasSystemShell } from "@apiops/design-system/react";
+import { CanvasSystemShell, StakeholderRoleSelector } from "@apiops/design-system/react";
 ```
+
+The React entry point includes the canvas shell, grid, zones, notes, and metadata
+controls as well as the stakeholder-role selector and involvement legend used by
+the metro map.
 
 This package owns visual concepts only. Method catalogs, cycle and station data, canvas content, and APIOps method IDs stay in `apiops-cycles-method-data` or the consuming application.
 

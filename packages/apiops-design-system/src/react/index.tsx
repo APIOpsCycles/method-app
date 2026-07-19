@@ -2,6 +2,42 @@
 
 import type { CSSProperties, KeyboardEvent, ReactNode } from "react";
 
+export type StakeholderRoleOption = {
+  id: string;
+  title: string;
+};
+
+export function StakeholderRoleSelector({
+  roles,
+  value,
+  label,
+  placeholder,
+  involvementLabels,
+  onChange,
+}: {
+  roles: StakeholderRoleOption[];
+  value: string;
+  label: string;
+  placeholder: string;
+  involvementLabels: { lead: string; core: string; consulted: string };
+  onChange: (roleId: string) => void;
+}) {
+  return (
+    <label className="ds-stakeholder-role-selector">
+      <span className="ds-stakeholder-role-selector__label">{label}</span>
+      <select value={value} onChange={(event) => onChange(event.target.value)}>
+        <option value="">{placeholder}</option>
+        {roles.map((role) => <option key={role.id} value={role.id}>{role.title}</option>)}
+      </select>
+      <span className="ds-involvement-legend" aria-label={label}>
+        <i className="is-lead" aria-hidden="true" />{involvementLabels.lead}
+        <i className="is-core" aria-hidden="true" />{involvementLabels.core}
+        <i className="is-consulted" aria-hidden="true" />{involvementLabels.consulted}
+      </span>
+    </label>
+  );
+}
+
 export type CanvasSystemMode = "interactive" | "print" | "presentation";
 
 export type CanvasSystemSection = {
