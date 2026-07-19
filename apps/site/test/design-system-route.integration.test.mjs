@@ -12,6 +12,11 @@ test("the English-only design system static route documents its public contract"
   assert.match(source, /General React components/);
   assert.match(source, /Metro components/);
   assert.match(source, /CanvasSystemFixture/);
+  assert.match(source, /Individual SVG symbols/);
+  assert.match(source, /apiops-metro-icons\.svg\?raw/);
+  assert.match(source, /apiops-stick-figures-poses\.svg\?raw/);
+  assert.match(source, /React export inventory/);
+  assert.ok(source.indexOf("Metro components") < source.indexOf("<MetroDesignSystemExample"), "metro guidance precedes its colocated example");
 });
 
 test("the design system route has no generated localized variant", () => {
