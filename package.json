@@ -7,7 +7,7 @@
     "packages/*"
   ],
   "engines": {
-    "node": ">=24.18.0"
+    "node": ">=22.16.0"
   },
   "scripts": {
     "predev": "npm run prepare:local-data",
