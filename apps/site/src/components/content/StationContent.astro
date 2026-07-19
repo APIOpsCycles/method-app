@@ -2,14 +2,15 @@
 import { getCatalog, localePrefix, type Locale, type Station } from "../../lib/method-data";
 import EntityTools from "./EntityTools.astro";
 import MethodMap from "./MethodMap.astro";
-interface Props { station: Station; locale: Locale; compatibilityAlias?: boolean }
-const { station, locale, compatibilityAlias = false } = Astro.props;
+interface Props { station: Station; locale: Locale; cycle?: ReturnType<typeof getCatalog>["cycles"][number]; compatibilityAlias?: boolean }
+const { station, locale, cycle, compatibilityAlias = false } = Astro.props;
 const prefix = localePrefix(locale);
 const cycles = getCatalog(locale).cycles.filter((cycle) => cycle.stations.some((item) => item.id === station.id));
-const selectedCycle = cycles[0];
+const selectedCycle = cycle ?? cycles[0];
+const toolEntityId = cycle ? `${cycle.id}:${station.id}` : station.id;
 ---
 <main class="public-content">
-  <nav class="public-breadcrumbs" aria-label="Breadcrumb"><a href={`${prefix}/`}>APIOps Cycles</a><span aria-hidden="true">/</span><span>{station.title}</span></nav>
+  <nav class="public-breadcrumbs" aria-label="Breadcrumb"><a href={`${prefix}/`}>APIOps Cycles</a><span aria-hidden="true">/</span>{cycle && <><a href={`${prefix}/cycles/${cycle.slug}`}>{cycle.title}</a><span aria-hidden="true">/</span></>}<span>{station.title}</span></nav>
   <section class="public-hero"><p class="public-kicker">Station</p><h1>{station.title}</h1><p>{station.description}</p>{station.whyItMatters && <p>{station.whyItMatters}</p>}{compatibilityAlias && <p class="alias-notice">This compatibility URL presents the canonical station content.</p>}</section>
   <section class="public-section" aria-label="Selected station map"><MethodMap locale={locale} cycleId={selectedCycle?.id} stationId={station.id} /></section>
   <section class="public-section" aria-labelledby="cycles"><h2 id="cycles">Cycles</h2><ul class="public-link-list">{cycles.map((cycle) => <li><a href={`${prefix}/cycles/${cycle.slug}`}>{cycle.title}</a><span>{cycle.description}</span></li>)}</ul></section>
@@ -18,6 +19,6 @@ const selectedCycle = cycles[0];
   <section class="public-section" aria-labelledby="work"><h2 id="work">How to apply it in work</h2><p>{station.applyInWork}</p><ol>{station.steps.map((step) => <li>{step.text}{step.resourceId && step.resourceTitle && <> — <a href={`${prefix}/resources/${step.resourceId}`}>{step.resourceTitle}</a></>}</li>)}</ol></section>
   <section class="public-section" aria-labelledby="roles"><h2 id="roles">People to involve</h2><ul class="public-link-list">{station.stakeholders.map((role) => <li><a href={`${prefix}/roles/${role.id}`}>{role.title}</a><span>{role.description}</span></li>)}</ul></section>
   <section class="public-section" aria-labelledby="resources"><h2 id="resources">Related resources</h2><ul class="public-link-list">{(station.resources ?? []).filter((item) => !item.draft).map((resource) => <li><a href={`${prefix}/${resource.slug}`}>{resource.title}</a><span>{resource.description}</span></li>)}</ul></section>
-  <EntityTools locale={locale} station={station} />
+  <EntityTools locale={locale} station={station} entityId={toolEntityId} />
   <section class="public-section" aria-labelledby="license"><h2 id="license">Licensing</h2><p>Reuse this community method content according to the <a href="https://github.com/APIOpsCycles/apiops-cycles-method-data/blob/main/LICENSE">method data license</a>.</p></section>
 </main>

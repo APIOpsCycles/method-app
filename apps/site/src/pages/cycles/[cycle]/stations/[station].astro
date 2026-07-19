@@ -1,0 +1,21 @@
+---
+import StationContent from "../../../../components/content/StationContent.astro";
+import BaseLayout from "../../../../layouts/BaseLayout.astro";
+import { getCatalog, getCycle, type Locale } from "../../../../lib/method-data";
+
+export function getStaticPaths() {
+  return getCatalog("en").cycles.flatMap((cycle) => cycle.stations.map((station) => ({
+    params: { cycle: cycle.slug, station: station.id },
+    props: { locale: "en" as Locale },
+  })));
+}
+
+const { locale } = Astro.props;
+const cycle = getCycle(locale, Astro.params.cycle!);
+const station = cycle?.stations.find((item) => item.id === Astro.params.station);
+if (!cycle || !station) throw new Error("Unknown cycle station");
+const canonicalPath = `/cycles/${cycle.slug}/stations/${station.id}`;
+---
+<BaseLayout title={`${station.title} · ${cycle.title}`} description={station.description} lang={locale} canonicalPath={canonicalPath}>
+  <StationContent station={station} cycle={cycle} locale={locale} />
+</BaseLayout>
