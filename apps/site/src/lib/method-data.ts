@@ -1,10 +1,16 @@
 import routeIndex from "../../../../generated/method/route-index.json";
+import labelsEn from "../../../../generated/method/site-labels.en.json";
+import labelsFi from "../../../../generated/method/site-labels.fi.json";
+import labelsFr from "../../../../generated/method/site-labels.fr.json";
+import labelsDe from "../../../../generated/method/site-labels.de.json";
+import labelsPt from "../../../../generated/method/site-labels.pt.json";
 import catalogEn from "../../../../generated/method/method-catalog.en.json";
 import catalogFi from "../../../../generated/method/method-catalog.fi.json";
 import catalogFr from "../../../../generated/method/method-catalog.fr.json";
 import catalogDe from "../../../../generated/method/method-catalog.de.json";
 import catalogPt from "../../../../generated/method/method-catalog.pt.json";
 
+const labelCatalogs = { en: labelsEn, fi: labelsFi, fr: labelsFr, de: labelsDe, pt: labelsPt } as const;
 const catalogs = { en: catalogEn, fi: catalogFi, fr: catalogFr, de: catalogDe, pt: catalogPt } as const;
 export type Locale = keyof typeof catalogs;
 export type Catalog = (typeof catalogEn)["translations"]["en"];
@@ -19,6 +25,12 @@ export const generatedRouteIndex = routeIndex;
 export const localizedLocales = locales.filter((locale) => locale !== defaultLocale);
 export const localePrefix = (locale: Locale) => locale === defaultLocale ? "" : `/${locale}`;
 export const getCatalog = (locale: Locale = defaultLocale) => catalogs[locale].translations[locale] as Catalog;
+export type Labels = typeof labelsEn.translations.en;
+/** Fallback rule: a missing locale key uses the generated English value; translated values are never guessed at runtime. */
+export const getLabels = (locale: Locale = defaultLocale): Labels => ({
+  ...labelCatalogs.en.translations.en,
+  ...labelCatalogs[locale].translations[locale],
+});
 export const getCycle = (locale: Locale, slug: string) => getCatalog(locale).cycles.find((item) => item.slug === slug || item.id === slug);
 export const getStation = (locale: Locale, slug: string) => getCatalog(locale).stations.find((item) => item.id === slug || item.slug === slug || item.slug === `method/${slug}`);
 export const getRole = (locale: Locale, slug: string) => getCatalog(locale).routeProfiles.find((item) => item.id === slug || item.stakeholderId === slug);
