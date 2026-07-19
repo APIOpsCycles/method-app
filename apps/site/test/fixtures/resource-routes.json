@@ -1,0 +1,14 @@
+[
+  {
+    "description": "a non-canvas resource uses its public kebab-case slug",
+    "locale": "en",
+    "resource": { "id": "releaseReadinessGuide", "slug": "resources/release-readiness-guide", "canvasId": null },
+    "expected": "/resources/release-readiness-guide"
+  },
+  {
+    "description": "a canvas resource uses the same public route convention",
+    "locale": "fi",
+    "resource": { "id": "customerJourneyCanvas", "slug": "resources/customer-journey-canvas", "canvasId": "customerJourneyCanvas" },
+    "expected": "/fi/resources/customer-journey-canvas"
+  }
+]

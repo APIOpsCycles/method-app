@@ -9,6 +9,7 @@ import catalogFi from "../../../../generated/method/method-catalog.fi.json";
 import catalogFr from "../../../../generated/method/method-catalog.fr.json";
 import catalogDe from "../../../../generated/method/method-catalog.de.json";
 import catalogPt from "../../../../generated/method/method-catalog.pt.json";
+import { resourcePath as buildResourcePath, resourceRouteSegment } from "./resource-routes.mjs";
 
 const labelCatalogs = { en: labelsEn, fi: labelsFi, fr: labelsFr, de: labelsDe, pt: labelsPt } as const;
 const catalogs = { en: catalogEn, fi: catalogFi, fr: catalogFr, de: catalogDe, pt: catalogPt } as const;
@@ -41,7 +42,8 @@ export const getStation = (locale: Locale, slug: string) => getCatalog(locale).s
 export const getRole = (locale: Locale, slug: string) => getCatalog(locale).routeProfiles.find((item) => item.id === slug || item.stakeholderId === slug);
 export const getResource = (locale: Locale, slug: string) => getCatalog(locale).resources.find((item) => !item.draft && (item.id === slug || item.slug === slug || item.slug === `resources/${slug}`));
 export const publicResources = (locale: Locale) => getCatalog(locale).resources.filter((item) => !item.draft);
-export const resourceRouteSegment = (resource: Resource) => resource.slug.replace(/^resources\//, "");
+export { resourceRouteSegment };
+export const resourcePath = (locale: Locale, resource: Resource) => buildResourcePath(locale, resource);
 
 export function getStationResources(locale: Locale, station: Station) {
   const catalog = getCatalog(locale);

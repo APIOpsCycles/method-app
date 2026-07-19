@@ -1,11 +1,11 @@
 ---
 import ResourceContent from "../../../components/content/ResourceContent.astro";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
-import { getCatalog, getResource, localizedLocales, resourceRouteSegment, type Locale } from "../../../lib/method-data";
+import { getCatalog, getResource, localizedLocales, resourcePath, resourceRouteSegment, type Locale } from "../../../lib/method-data";
 export function getStaticPaths() { return localizedLocales.flatMap((locale) => getCatalog(locale).resources.filter((item) => !item.draft).map((item) => ({ params: { locale, resource: resourceRouteSegment(item) }, props: { locale } }))); }
 const { locale } = Astro.props as { locale: Locale };
 const item = getResource(locale, Astro.params.resource!);
 if (!item) throw new Error("Unknown resource");
-const canonicalPath = `/${locale}/resources/${resourceRouteSegment(item)}`;
+const canonicalPath = resourcePath(locale, item);
 ---
 <BaseLayout title={item.title} description={item.description} lang={locale} canonicalPath={canonicalPath}><ResourceContent resource={item} locale={locale} /></BaseLayout>
