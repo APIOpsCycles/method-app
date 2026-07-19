@@ -10,5 +10,12 @@
     "locale": "fi",
     "resource": { "id": "customerJourneyCanvas", "slug": "resources/customer-journey-canvas", "canvasId": "customerJourneyCanvas" },
     "expected": "/fi/resources/customer-journey-canvas"
+  },
+  {
+    "description": "the generated API audit checklist identifier uses its exact public slug",
+    "locale": "en",
+    "resource": { "id": "api-audit-checklist", "slug": "resources/api-audit-checklist", "canvasId": null },
+    "expected": "/resources/api-audit-checklist",
+    "assertStaticHtml": true
   }
 ]

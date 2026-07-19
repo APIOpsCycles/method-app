@@ -6,6 +6,9 @@ import canvasFi from "../../../../../generated/method/canvas-manifest.fi.json";
 import canvasFr from "../../../../../generated/method/canvas-manifest.fr.json";
 import canvasDe from "../../../../../generated/method/canvas-manifest.de.json";
 import canvasPt from "../../../../../generated/method/canvas-manifest.pt.json";
+import { createMarkdownProcessor } from "@astrojs/markdown-remark";
+import remarkGfm from "remark-gfm";
+import rehypeSanitize from "rehype-sanitize";
 interface Props { resource: Resource; locale: Locale }
 const { resource, locale } = Astro.props;
 const prefix = localePrefix(locale);
@@ -15,12 +18,52 @@ const stations = getCatalog(locale).stations.filter((station) =>
 );
 const manifests = { en: canvasEn, fi: canvasFi, fr: canvasFr, de: canvasDe, pt: canvasPt };
 const canvas = resource.canvasId ? manifests[locale].translations[locale][resource.canvasId as keyof typeof manifests.en.translations.en] : undefined;
+
+type ChecklistStage = { id?: string; title?: string; readinessLabel?: string; items?: Array<{ id?: string; label?: string }> };
+let checklistStages: ChecklistStage[] | null = null;
+if (resource.contentMarkdown && resource.sourcePath?.endsWith(".json")) {
+  try {
+    const parsed = JSON.parse(resource.contentMarkdown);
+    if (Array.isArray(parsed.stages)) checklistStages = parsed.stages;
+  } catch {
+    // A non-checklist JSON snippet is rendered as a fenced code block below.
+  }
+}
+let sourceHtml = "";
+if (resource.contentMarkdown && !checklistStages) {
+  const markdown = resource.sourcePath?.endsWith(".json")
+    ? `\`\`\`json\n${resource.contentMarkdown}\n\`\`\``
+    : resource.contentMarkdown;
+  const processor = await createMarkdownProcessor({
+    syntaxHighlight: false,
+    remarkPlugins: [remarkGfm],
+    rehypePlugins: [rehypeSanitize],
+  });
+  sourceHtml = (await processor.render(markdown)).code;
+}
+if (resource.sourcePath && !resource.contentMarkdown) {
+  console.warn(`[ResourceContent] Missing snippet content for ${resource.id}: ${resource.sourcePath}`);
+}
+const missingSource = {
+  en: "This source content is temporarily unavailable.", fi: "Tämä lähdesisältö ei ole tilapäisesti saatavilla.",
+  fr: "Ce contenu source est temporairement indisponible.", de: "Dieser Quellinhalt ist vorübergehend nicht verfügbar.",
+  pt: "Este conteúdo de origem está temporariamente indisponível.",
+}[locale];
 ---
 <main class="public-content">
   <nav class="public-breadcrumbs" aria-label={labels["chrome.breadcrumb"]}><a href={`${prefix}/`}>APIOps Cycles</a><span aria-hidden="true">/</span><span>{resource.title}</span></nav>
   <section class="public-hero"><p class="public-kicker">{resource.category}</p><h1>{resource.title}</h1><p>{resource.description}</p></section>
   <section class="public-section" aria-labelledby="outcomes"><h2 id="outcomes">{labels["section.outcomes"]}</h2><ul>{resource.outcomes.map((item) => <li>{item}</li>)}</ul></section>
   <section class="public-section" aria-labelledby="steps"><h2 id="steps">{labels["section.howToUse"]}</h2><ol>{resource.steps.map((item) => <li>{item}</li>)}</ol></section>
+  {(resource.contentMarkdown || resource.sourcePath || resource.sourceUrl) && <section class="public-section source-content" aria-labelledby="source-content">
+    <h2 id="source-content">{labels["resources.sourceContent"]}</h2>
+    {checklistStages ? checklistStages.map((stage) => <section class="source-checklist" aria-labelledby={`source-${stage.id}`}>
+      <h3 id={`source-${stage.id}`}>{stage.title ?? stage.id}</h3>
+      {stage.readinessLabel && <p><strong>{stage.readinessLabel}</strong></p>}
+      <ul class="task-list">{stage.items?.map((item) => <li><input type="checkbox" disabled aria-label={item.label} /> <span>{item.label ?? item.id}</span></li>)}</ul>
+    </section>) : sourceHtml ? <div class="source-markdown" set:html={sourceHtml} /> : <p role="status">{missingSource}</p>}
+    {resource.sourceUrl && <p><a href={resource.sourceUrl} rel="noopener noreferrer">{labels["resources.viewSource"]}</a></p>}
+  </section>}
   {canvas && <section class="public-section island-stack" aria-label={`${resource.title} workspace`}><div class="tool-summary"><h2>{labels["canvas.workWith"]}</h2><p>Use the purpose, outcomes, and instructions above as your static reference while capturing evidence in the interactive workspace.</p></div><CanvasWorkspaceIsland labels={pickLabels(labels, ["canvas.markdownExported", "canvas.jsonExported", "canvas.jsonImported", "canvas.localWorkspace", "canvas.focusSection", "canvas.showAll", "canvas.activeSection", "canvas.selectSectionInstructions", "canvas.exportMarkdown", "canvas.exportJson", "canvas.importJson", "canvas.metadata", "canvas.owner", "canvas.context", "canvas.date", "canvas.addStickyNote", "canvas.removeNote", "canvas.confirmRemove", "canvas.newNote", "canvas.add"] as const)} locale={locale} entityId={resource.id} entityTitle={resource.title} canvas={canvas} client:visible /></section>}
   <section class="public-section" aria-labelledby="stations"><h2 id="stations">{labels["section.relatedStations"]}</h2><ul class="public-link-list">{stations.map((station) => <li><a href={`${prefix}/stations/${station.id}`}>{station.title}</a><span>{station.description}</span></li>)}</ul></section>
   <section class="public-section" aria-labelledby="license"><h2 id="license">{labels["section.licensing"]}</h2><p>This resource is part of the community method data. See the <a href="https://github.com/APIOpsCycles/apiops-cycles-method-data/blob/main/LICENSE">source license</a>.</p></section>
