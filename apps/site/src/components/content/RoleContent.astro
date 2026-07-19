@@ -1,5 +1,6 @@
 ---
 import { localePrefix, type Locale, type Role } from "../../lib/method-data";
+import EntityTools from "./EntityTools.astro";
 interface Props { role: Role; locale: Locale }
 const { role, locale } = Astro.props;
 const prefix = localePrefix(locale);
@@ -11,5 +12,6 @@ const prefix = localePrefix(locale);
   <section class="public-section" aria-labelledby="stations"><h2 id="stations">Relevant stations</h2><ul class="public-link-list">{role.stations.map((station) => <li><a href={`${prefix}/stations/${station.id}`}>{station.title}</a><span>{station.description}</span></li>)}</ul></section>
   <section class="public-section" aria-labelledby="decisions"><h2 id="decisions">Decisions and outputs</h2><h3>Decisions</h3><ul>{role.decisions.map((item) => <li>{item}</li>)}</ul><h3>Outputs</h3><ul>{role.outputs.map((item) => <li>{item}</li>)}</ul></section>
   <section class="public-section" aria-labelledby="resources"><h2 id="resources">Recommended resources</h2><ul class="public-link-list">{role.recommendedResources.filter((item) => !item.draft).map((resource) => <li><a href={`${prefix}/${resource.slug}`}>{resource.title}</a><span>{resource.description}</span></li>)}</ul></section>
+  <EntityTools locale={locale} role={role} />
   <section class="public-section" aria-labelledby="license"><h2 id="license">Licensing</h2><p>This guide is community method content. Review the <a href="https://github.com/APIOpsCycles/apiops-cycles-method-data/blob/main/LICENSE">method data license</a> before reuse.</p></section>
 </main>

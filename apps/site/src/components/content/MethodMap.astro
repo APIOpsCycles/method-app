@@ -1,0 +1,12 @@
+---
+import { getCatalog, type Locale } from "../../lib/method-data";
+import MetroMapIsland from "../islands/MetroMapIsland";
+interface Props { locale: Locale; cycleId?: string; stationId?: string; roleId?: string }
+const { locale, cycleId, stationId, roleId } = Astro.props;
+const data = getCatalog(locale);
+const mapStations = data.stations.map(({ id, title, description }) => ({ id, title, description }));
+const mapCycles = data.cycles.map(({ id, slug, title, stations }) => ({ id, slug, title, stations: stations.map(({ id: stationId, index, title: stationTitle, baseTitle }) => ({ id: stationId, index, title: stationTitle, baseTitle })) }));
+const mapLines = data.lines.map(({ id, title, color, stations }) => ({ id, title, color, stations }));
+const mapRoles = data.routeProfiles.map(({ id, title, stakeholderId }) => ({ id, title, involvementByStation: Object.fromEntries(data.stations.flatMap((station) => { const involvement = station.stakeholders.find((stakeholder) => stakeholder.id === stakeholderId)?.involvement; return involvement ? [[station.id, involvement]] : []; })) }));
+---
+<MetroMapIsland locale={locale} cycles={mapCycles} stations={mapStations} lines={mapLines} roles={mapRoles} initialCycleId={cycleId} initialStationId={stationId} initialRoleId={roleId} client:idle />
