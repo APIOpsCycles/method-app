@@ -9,8 +9,19 @@ const root = path.resolve(import.meta.dirname, "../../..");
 const fixtures = JSON.parse(await readFile(new URL("./fixtures/resource-routes.json", import.meta.url), "utf8"));
 
 for (const fixture of fixtures) {
-  test(fixture.description, () => {
+  test(fixture.description, async () => {
     assert.equal(resourcePath(fixture.locale, fixture.resource), fixture.expected);
+    if (fixture.assertStaticHtml) {
+      const artifact = (await import(`../../../generated/method/method-catalog.${fixture.locale}.json`, { with: { type: "json" } })).default;
+      const generated = artifact.translations[fixture.locale].resources.find((item) => item.id === fixture.resource.id);
+      assert.equal(generated?.id, "api-audit-checklist");
+      assert.equal(generated?.slug, "resources/api-audit-checklist");
+      const html = await readFile(path.join(root, "dist", fixture.expected.slice(1), "index.html"), "utf8");
+      assert.match(html, /All concept checklist items are audited/);
+      assert.match(html, /<ul class="task-list">/);
+      assert.match(html, /<input type="checkbox" disabled/);
+      assert.doesNotMatch(html, /api-audit-chekclist/);
+    }
   });
 }
 
