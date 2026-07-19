@@ -11,14 +11,26 @@ for (const locale of locales) {
     const artifact = (await import(`../../../generated/method/method-catalog.${locale}.json`, { with: { type: "json" } })).default;
     const catalog = artifact.translations[locale];
     const prefix = locale === "en" ? "" : `/${locale}`;
+    const homeHtml = await readFile(path.join(root, "dist", prefix.replace(/^\//, ""), "index.html"), "utf8");
+    const homeLineLinks = [...homeHtml.matchAll(/href="([^"#?]*\/cycle\/[^/]+\/lines\/[^/"]+)"/g)].map((match) => match[1]);
+
+    assert.equal(homeLineLinks.length, catalog.lines.length, "the home page links every line");
+    assert.doesNotMatch(homeHtml, /href="[^"\s]*\/cycle[^/\s"]+\/lines\//, "the home page has no malformed line URLs");
+    for (const href of homeLineLinks) {
+      const linkedHtml = await readFile(path.join(root, "dist", href.replace(/^\//, ""), "index.html"), "utf8");
+      assert.match(linkedHtml, new RegExp(`<link rel="canonical" href="[^"]+${href}"`));
+    }
+
     for (const cycle of catalog.cycles) {
       const cycleStationIds = new Set(cycle.stations.map((station) => station.id));
       for (const line of catalog.lines.filter((candidate) => candidate.stations.some((id) => cycleStationIds.has(id)))) {
-        const route = `${prefix}/cycle${cycle.slug}/lines/${line.slug}`;
+        const route = `${prefix}/cycle/${cycle.slug}/lines/${line.slug}`;
+        const malformedRoute = `${prefix}/cycle${cycle.slug}/lines/${line.slug}`;
         const htmlPath = path.join(root, "dist", route.replace(/^\//, ""), "index.html");
         const html = await readFile(htmlPath, "utf8");
         assert.match(html, new RegExp(`<link rel="canonical" href="[^"]+${route}"`));
         assert.match(route, new RegExp(`/lines/${line.slug}$`));
+        await assert.rejects(readFile(path.join(root, "dist", malformedRoute.replace(/^\//, ""), "index.html"), "utf8"), { code: "ENOENT" });
         for (const station of cycle.stations.filter((item) => line.stations.includes(item.id))) {
           assert.match(html, new RegExp(`href="${prefix}/stations/${station.id}"`));
           await readFile(path.join(root, "dist", prefix.replace(/^\//, ""), "stations", station.id, "index.html"), "utf8");

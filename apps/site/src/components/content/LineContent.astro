@@ -1,6 +1,6 @@
 ---
-import { getCatalog, getLabels, localePrefix, type Cycle, type Line, type Locale } from "../../../lib/method-data";
-import MethodMap from "../MethodMap.astro";
+import { getCatalog, getLabels, localePrefix, type Cycle, type Line, type Locale } from "../../lib/method-data";
+import MethodMap from "./MethodMap.astro";
 interface Props { cycle: Cycle; line: Line; locale: Locale }
 const { cycle, line, locale } = Astro.props;
 const prefix = localePrefix(locale);
