@@ -8,6 +8,7 @@ import {
   CanvasSystemZone,
   type CanvasSystemNote,
 } from "@apiops/design-system/react";
+import { designSystemAssets } from "@apiops/design-system/assets";
 import { hasMaterialIcon, MaterialIcon } from "./material-icon";
 
 type Resource = {
@@ -1035,7 +1036,7 @@ function MetroMap({
         </g>
       ))}
       <image
-        href="/design-system/brand/apiops-cycles-logo-dark.svg"
+        href={designSystemAssets.brand.cyclesLogoDark}
         x={center.x - 30}
         y={center.y - 30}
         width="60"
@@ -1708,7 +1709,7 @@ function CatalogExplorer({
     clone.setAttribute("height", "1000");
     for (const image of Array.from(clone.querySelectorAll("image"))) {
       const href = image.getAttribute("href");
-      if (href === "/design-system/brand/apiops-cycles-logo-dark.svg") {
+      if (href === designSystemAssets.brand.cyclesLogoDark) {
         const response = await fetch(href);
         const logoText = await response.text();
         const logo = new DOMParser().parseFromString(logoText, "image/svg+xml").documentElement;
@@ -1834,7 +1835,7 @@ ${prompt.prompt}`;
       <header className="app-header">
         <nav className="topbar" aria-label={localizedLabels["nav.primary"]}>
           <a className="brand" href={locale === "en" ? "/" : `/${locale}`}>
-            <img className="brand__logo" src="/design-system/brand/apiops-cycles-logo-dark.svg" alt="" />
+            <img className="brand__logo" src={designSystemAssets.brand.cyclesLogoDark} alt="" />
             <span>APIOps Cycles</span>
           </a>
           <button

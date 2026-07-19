@@ -10,6 +10,7 @@
     "./react": { "types": "./dist/react/index.d.ts", "default": "./dist/react/index.js" },
     "./styles.css": "./dist/styles.css",
     "./tokens.json": "./dist/tokens.json",
+    "./assets": { "types": "./dist/assets/index.d.ts", "default": "./dist/assets/index.js" },
     "./assets/*": "./dist/assets/*",
     "./metadata/*": "./dist/metadata/*"
   },

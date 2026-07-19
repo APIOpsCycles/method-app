@@ -1,5 +1,6 @@
 import { type RefObject, useRef, useState } from "react";
 import { StakeholderRoleSelector } from "@apiops/design-system/react";
+import { designSystemAssets } from "@apiops/design-system/assets";
 
 export type MetroCycleStation = { id: string; index: number; title: string; baseTitle: string };
 export type MetroCycle = { id: string; title: string; stations: MetroCycleStation[] };
@@ -484,7 +485,7 @@ function MetroMapView({
         </g>
       ))}
       <image
-        href="/design-system/brand/apiops-cycles-logo-dark.svg"
+        href={designSystemAssets.brand.cyclesLogoDark}
         x={center.x - 30}
         y={center.y - 30}
         width="60"

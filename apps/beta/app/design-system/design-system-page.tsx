@@ -1,4 +1,5 @@
 import type { CSSProperties, ReactNode } from "react";
+import { designSystemAssetPath, designSystemAssets } from "@apiops/design-system/assets";
 import { MaterialIcon } from "../material-icon";
 import AssetLibrary from "./asset-library";
 import { spriteAssets } from "./assets";
@@ -358,7 +359,7 @@ function DocHeader({ locale }: { locale: string }) {
     <header className="app-header ds-header">
       <div className="topbar">
         <a className="brand" href={`${prefix}/`}>
-          <img className="brand__logo" src="/design-system/brand/apiops-cycles-logo.svg" alt="" />
+          <img className="brand__logo" src={designSystemAssets.brand.cyclesLogo} alt="" />
           <span>APIOps Cycles</span>
         </a>
         <nav className="ds-topnav" aria-label="Design system sections">
@@ -482,7 +483,7 @@ function DoDontIcon({ type }: { type: "do" | "dont" }) {
       style={{ "--apiops-accent": isDo ? "var(--apiops-accent-operations)" : "var(--apiops-accent-engineering)" } as CSSProperties}
       viewBox="0 0 96 96"
     >
-      <use href={`/design-system/icons/apiops-iconset.svg#${isDo ? "icon-quality" : "icon-risk"}`} />
+      <use href={`${designSystemAssets.icons.method}#${isDo ? "icon-quality" : "icon-risk"}`} />
     </svg>
   );
 }
@@ -1011,7 +1012,7 @@ export default function DesignSystemPage({ locale = "en" }: { locale?: string })
         </div>
         <div className="ds-grid ds-grid--two">
           <article className="ds-panel">
-            <img src="/design-system/glyphs/apiops-logo.svg" alt="apiops" width="128" height="128"  />
+            <img src={designSystemAssetPath("glyphs/apiops-logo.svg")} alt="apiops" width="128" height="128"  />
             <h3>APIOps</h3>
             <p>
               APIOps is the master community brand. It represents the open community, ecosystem, events,
@@ -1020,7 +1021,7 @@ export default function DesignSystemPage({ locale = "en" }: { locale?: string })
             </p>
           </article>
           <article className="ds-panel">
-            <img src="/design-system/glyphs/apiops-cycles-logo.svg" alt="apiops cycles" width="64" height="64" />
+            <img src={designSystemAssetPath("glyphs/apiops-cycles-logo.svg")} alt="apiops cycles" width="64" height="64" />
             <h3>APIOps Cycles</h3>
             <p>
               APIOps Cycles is the methodology. It uses the connected station ring, a purple methodology accent,
@@ -1062,7 +1063,7 @@ export default function DesignSystemPage({ locale = "en" }: { locale?: string })
                 notes={["Outer ring", "Neutral center", "Selected or focus state", "Label nearby, not inside the dot"]}
               >
                 <SvgSpritePreview
-                  source="/design-system/icons/apiops-metro-icons.svg"
+                  source={designSystemAssetPath("icons/apiops-metro-icons.svg")}
                   symbolId="glyph-station"
                   label="Station"
                   accent="var(--apiops-accent-product)"
@@ -1077,7 +1078,7 @@ export default function DesignSystemPage({ locale = "en" }: { locale?: string })
                 notes={["Central node", "Multiple connections", "Visual emphasis", "Label nearby, not inside the dot"]}
               >
                 <SvgSpritePreview
-                  source="/design-system/icons/apiops-metro-icons.svg"
+                  source={designSystemAssetPath("icons/apiops-metro-icons.svg")}
                   symbolId="glyph-hub"
                   label="Hub"
                   accent="var(--apiops-accent-business)"
@@ -1092,7 +1093,7 @@ export default function DesignSystemPage({ locale = "en" }: { locale?: string })
                 notes={["Boundary", "Semantic color", "Label is inside, near the edge of the shape"]}
               >
                 <SvgSpritePreview
-                  source="/design-system/icons/apiops-metro-icons.svg"
+                  source={designSystemAssetPath("icons/apiops-metro-icons.svg")}
                   symbolId="glyph-region"
                   label="Region"
                   accent="var(--metro-zone--governance)"
@@ -1107,7 +1108,7 @@ export default function DesignSystemPage({ locale = "en" }: { locale?: string })
                 notes={["Inclusive abstract pose", "Navy linework", "One semantic accent", "Use to tell a collaboration story"]}
               >
                 <SvgSpritePreview
-                  source="/design-system/humans/apiops-stick-figures-poses.svg"
+                  source={designSystemAssetPath("humans/apiops-stick-figures-poses.svg")}
                   symbolId="pose-facilitating"
                   label="Facilitating"
                   accent="var(--apiops-accent-operations)"
@@ -1122,7 +1123,7 @@ export default function DesignSystemPage({ locale = "en" }: { locale?: string })
                 notes={["Distinct visual treatment", "Clear semantic meaning", "Immediate recognition", "Contextual relevance"]}
               >
                 <SvgSpritePreview
-                  source="/design-system/icons/apiops-iconset.svg"
+                  source={designSystemAssetPath("icons/apiops-iconset.svg")}
                   symbolId="icon-risk"
                   label="Risk"
                   accent="--apiops-accent-engineering"
@@ -1143,26 +1144,26 @@ export default function DesignSystemPage({ locale = "en" }: { locale?: string })
 
           <div className="ds-grid ds-grid--two">
           <article className="ds-panel">
-              <svg width="224" aria-hidden="true" className="ds-asset-size-symbol" viewBox="20 30 225 410"><use href="/design-system/humans/apiops-stick-figures-stories.svg#g59"></use></svg>
+              <svg width="224" aria-hidden="true" className="ds-asset-size-symbol" viewBox="20 30 225 410"><use href={`${designSystemAssets.humans.stories}#g59`}></use></svg>
                           
              </article>
             <article className="ds-panel">
             <ComponentPreview title="Human figures and poses">
             <div className="ds-symbol-row">
               <SvgSpritePreview
-                source="/design-system/humans/apiops-stick-figures-poses.svg"
+                source={designSystemAssetPath("humans/apiops-stick-figures-poses.svg")}
                 symbolId="pose-presenting"
                 label="Presenting"
                 accent="var(--apiops-accent-community)"
               />
               <SvgSpritePreview
-                source="/design-system/humans/apiops-stick-figures-poses.svg"
+                source={designSystemAssetPath("humans/apiops-stick-figures-poses.svg")}
                 symbolId="pose-discussing"
                 label="Discussing"
                 accent="var(--apiops-accent-product)"
               />
               <SvgSpritePreview
-                source="/design-system/humans/apiops-stick-figures-poses.svg"
+                source={designSystemAssetPath("humans/apiops-stick-figures-poses.svg")}
                 symbolId="pose-thinking"
                 label="Thinking"
                 accent="var(--apiops-accent-architecture)"
