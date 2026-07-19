@@ -1,0 +1,56 @@
+---
+import "@apiops/design-system/styles.css";
+import "../styles/global.css";
+import { canonicalUrl } from "../env";
+
+interface Props {
+  title?: string;
+  description?: string;
+  lang?: string;
+  canonicalPath?: string;
+}
+
+const {
+  title = "APIOps Cycles Knowledge Catalog",
+  description = "A static, localizable APIOps Cycles method site with method-catalog routes, AI prompt packs, canvas workspaces, Confluence exports, and method data surfaces.",
+  lang = "en",
+  canonicalPath = Astro.url.pathname,
+} = Astro.props;
+const pageTitle = title === "APIOps Cycles Knowledge Catalog" ? title : `${title} | APIOps Cycles`;
+const canonical = canonicalUrl(canonicalPath);
+const keywords = [
+  "APIOps Cycles",
+  "API productization",
+  "integration productization",
+  "knowledge catalog",
+  "AI prompts",
+  "Confluence templates",
+  "canvas workspace",
+  "API design",
+  "capability productization",
+];
+---
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content={keywords.join(", ")} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/design-system/favicons/favicon.svg" type="image/svg+xml" />
+    <link rel="shortcut icon" href="/design-system/favicons/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

@@ -46,3 +46,6 @@ packages/apiops-design-system/dist/
 /app/data/*.json
 !/app/data/announcement.json
 /public/data/*.json
+/apps/beta/app/data/*.json
+!/apps/beta/app/data/announcement.json
+/apps/site/.astro/

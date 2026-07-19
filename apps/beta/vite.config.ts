@@ -2,7 +2,7 @@ import vinext from "vinext";
 import { defineConfig } from "vite";
 import { cloudflare } from "@cloudflare/vite-plugin";
 import Icons from "unplugin-icons/vite";
-import hostingConfig from "./.openai/hosting.json";
+import hostingConfig from "../../.openai/hosting.json";
 import { sites } from "./build/sites-vite-plugin";
 
 const SITE_CREATOR_PLACEHOLDER_DATABASE_ID =
@@ -33,6 +33,7 @@ const localBindingConfig = {
 };
 
 export default defineConfig({
+  publicDir: "../../public",
   plugins: [
     vinext(),
     Icons({ compiler: "jsx", jsx: "react" }),
