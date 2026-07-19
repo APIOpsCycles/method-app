@@ -3,12 +3,15 @@ import "@apiops/design-system/styles.css";
 import { designSystemAssets } from "@apiops/design-system/assets";
 import "../styles/global.css";
 import { canonicalUrl } from "../env";
+import type { Locale } from "../lib/method-data";
 
 interface Props {
   title?: string;
   description?: string;
   lang?: string;
   canonicalPath?: string;
+  languageAlternates?: { lang: Locale | string; path: string }[];
+  jsonLd?: Record<string, unknown>;
 }
 
 const {
@@ -16,6 +19,8 @@ const {
   description = "A static, localizable APIOps Cycles method site with method-catalog routes, AI prompt packs, canvas workspaces, Confluence exports, and method data surfaces.",
   lang = "en",
   canonicalPath = Astro.url.pathname,
+  languageAlternates = [],
+  jsonLd,
 } = Astro.props;
 const pageTitle = title === "APIOps Cycles Knowledge Catalog" ? title : `${title} | APIOps Cycles`;
 const canonical = canonicalUrl(canonicalPath);
@@ -41,6 +46,9 @@ const keywords = [
     <meta name="description" content={description} />
     <meta name="keywords" content={keywords.join(", ")} />
     <link rel="canonical" href={canonical} />
+    {languageAlternates.map((alternate) => <link rel="alternate" hreflang={alternate.lang} href={canonicalUrl(alternate.path)} />)}
+    {languageAlternates.length > 0 && <link rel="alternate" hreflang="x-default" href={canonicalUrl(languageAlternates.find((alternate) => alternate.lang === "en")?.path ?? canonicalPath)} />}
+    {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
     <link rel="icon" href={designSystemAssets.favicon} type="image/svg+xml" />
     <link rel="shortcut icon" href={designSystemAssets.favicon} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
