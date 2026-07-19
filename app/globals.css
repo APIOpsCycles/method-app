@@ -47,6 +47,19 @@ a {
   color: inherit;
 }
 
+.public-content {
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: normal;
+  width: 1px;
+}
+
 .sr-only {
   clip: rect(0, 0, 0, 0);
   border: 0;
@@ -57,10 +70,6 @@ a {
   position: absolute;
   white-space: nowrap;
   width: 1px;
-}
-
-.js-enabled .public-content {
-  display: none;
 }
 
 .site-shell {

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import CatalogPage, { normalizeLocale } from "../../../catalog-page";
 import { PublicResourceContent } from "../../../public-content";
-import { canonicalUrl, getPublicResources, getResourceBySlug } from "../../../public-method-data";
+import { canonicalUrl, getPublicResources, getResourceBySlug, pageLanguageAlternates } from "../../../public-method-data";
 import routeIndex from "../../../data/route-index.json";
 
 export function generateStaticParams() {
@@ -25,7 +25,10 @@ export function generateMetadata({
     title: resource ? resource.title : "APIOps Cycles Resource",
     description: resource?.description,
     alternates: resource
-      ? { canonical: locale === "en" ? `/${resource.slug}` : `/${locale}/${resource.slug}` }
+      ? {
+          canonical: locale === "en" ? `/${resource.slug}` : `/${locale}/${resource.slug}`,
+          languages: pageLanguageAlternates("resource", resource.id),
+        }
       : undefined,
     openGraph: resource
       ? {

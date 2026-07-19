@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import CatalogPage, { normalizeLocale } from "../../../catalog-page";
 import { PublicRoleContent } from "../../../public-content";
-import { canonicalUrl, getStakeholderBySlug } from "../../../public-method-data";
+import { canonicalUrl, getStakeholderBySlug, pageLanguageAlternates } from "../../../public-method-data";
 import routeIndex from "../../../data/route-index.json";
 
 export function generateStaticParams() {
@@ -22,7 +22,10 @@ export function generateMetadata({
     title: role ? `${role.title} Guide` : "Stakeholder Guide",
     description: role?.summary,
     alternates: role
-      ? { canonical: locale === "en" ? `/roles/${role.id}` : `/${locale}/roles/${role.id}` }
+      ? {
+          canonical: locale === "en" ? `/roles/${role.id}` : `/${locale}/roles/${role.id}`,
+          languages: pageLanguageAlternates("role", role.id),
+        }
       : undefined,
     openGraph: role
       ? {

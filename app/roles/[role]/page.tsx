@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import CatalogPage from "../../catalog-page";
 import { PublicRoleContent } from "../../public-content";
-import { canonicalUrl, getStakeholderBySlug } from "../../public-method-data";
+import { canonicalUrl, getStakeholderBySlug, pageLanguageAlternates } from "../../public-method-data";
 import routeIndex from "../../data/route-index.json";
 
 export function generateStaticParams() {
@@ -18,7 +18,12 @@ export function generateMetadata({
   return {
     title: role ? `${role.title} Guide` : "Stakeholder Guide",
     description: role?.summary,
-    alternates: role ? { canonical: `/roles/${role.id}` } : undefined,
+    alternates: role
+      ? {
+          canonical: `/roles/${role.id}`,
+          languages: pageLanguageAlternates("role", role.id),
+        }
+      : undefined,
     openGraph: role
       ? {
           title: `${role.title} Guide`,

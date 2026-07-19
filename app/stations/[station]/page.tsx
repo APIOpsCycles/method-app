@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import CatalogPage from "../../catalog-page";
 import { PublicStationContent } from "../../public-content";
-import { canonicalUrl, getStationBySlug } from "../../public-method-data";
+import { canonicalUrl, getStationBySlug, pageLanguageAlternates } from "../../public-method-data";
 import routeIndex from "../../data/route-index.json";
 
 export function generateStaticParams() {
@@ -18,7 +18,12 @@ export function generateMetadata({
   return {
     title: station ? station.title : "APIOps Cycles Station",
     description: station?.description,
-    alternates: station ? { canonical: `/stations/${station.id}` } : undefined,
+    alternates: station
+      ? {
+          canonical: `/stations/${station.id}`,
+          languages: pageLanguageAlternates("station", station.id),
+        }
+      : undefined,
     openGraph: station
       ? {
           title: station.title,

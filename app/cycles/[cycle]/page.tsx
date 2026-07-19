@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import CatalogPage from "../../catalog-page";
 import { PublicCycleContent } from "../../public-content";
-import { canonicalUrl, getCycleBySlug, languageAlternates } from "../../public-method-data";
+import { canonicalUrl, getCycleBySlug, pageLanguageAlternates } from "../../public-method-data";
 import routeIndex from "../../data/route-index.json";
 
 export function generateStaticParams() {
@@ -20,10 +20,7 @@ export function generateMetadata({
     description: cycle?.description,
     alternates: cycle ? {
       canonical: `/cycles/${cycle.slug}`,
-      languages: languageAlternates((locale) => {
-        const localized = getCycleBySlug(params.cycle, locale);
-        return `/cycles/${localized?.slug ?? cycle.slug}`;
-      }),
+      languages: pageLanguageAlternates("cycle", cycle.id),
     } : undefined,
     openGraph: cycle ? {
       title: cycle.title,

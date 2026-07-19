@@ -46,6 +46,7 @@ function readJson(file) {
 }
 
 function writeJson(relativePath, value, { publish = false } = {}) {
+  value = normalizeGeneratedText(value);
   const appPath = path.join(appDataRoot, relativePath);
   mkdirSync(path.dirname(appPath), { recursive: true });
   writeFileSync(appPath, `${JSON.stringify(value, null, 2)}\n`);
@@ -54,6 +55,55 @@ function writeJson(relativePath, value, { publish = false } = {}) {
     mkdirSync(path.dirname(publicPath), { recursive: true });
     writeFileSync(publicPath, `${JSON.stringify(value, null, 2)}\n`);
   }
+}
+
+function normalizeGeneratedText(value) {
+  if (typeof value === "string") return repairMojibake(value);
+  if (Array.isArray(value)) return value.map((item) => normalizeGeneratedText(item));
+  if (value && typeof value === "object") {
+    return Object.fromEntries(
+      Object.entries(value).map(([key, item]) => [key, normalizeGeneratedText(item)]),
+    );
+  }
+  return value;
+}
+
+function repairMojibake(value) {
+  if (!/[ÃÂâ]/.test(value)) return value;
+  const repaired = Buffer.from([...value].map((char) => windows1252Byte(char) ?? char.charCodeAt(0))).toString("utf8");
+  return repaired.includes("\uFFFD") ? value : repaired;
+}
+
+function windows1252Byte(char) {
+  return {
+    "€": 0x80,
+    "‚": 0x82,
+    "ƒ": 0x83,
+    "„": 0x84,
+    "…": 0x85,
+    "†": 0x86,
+    "‡": 0x87,
+    "ˆ": 0x88,
+    "‰": 0x89,
+    "Š": 0x8a,
+    "‹": 0x8b,
+    "Œ": 0x8c,
+    "Ž": 0x8e,
+    "‘": 0x91,
+    "’": 0x92,
+    "“": 0x93,
+    "”": 0x94,
+    "•": 0x95,
+    "–": 0x96,
+    "—": 0x97,
+    "˜": 0x98,
+    "™": 0x99,
+    "š": 0x9a,
+    "›": 0x9b,
+    "œ": 0x9c,
+    "ž": 0x9e,
+    "Ÿ": 0x9f,
+  }[char];
 }
 
 function copyPublicAsset(name) {

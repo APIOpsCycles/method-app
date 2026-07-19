@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import CatalogPage from "../../catalog-page";
 import { PublicStationContent } from "../../public-content";
-import { canonicalUrl, getCycleBySlug, getStationBySlug } from "../../public-method-data";
+import { canonicalUrl, getCycleBySlug, getStationBySlug, pageLanguageAlternates } from "../../public-method-data";
 import routeIndex from "../../data/route-index.json";
 
 const apiProductizationCycleId = "api-productization-cycle";
@@ -22,7 +22,12 @@ export function generateMetadata({
   return {
     title: station ? `${station.title} | ${cycle?.title ?? "APIOps Cycles"}` : "APIOps Cycles Method",
     description: station?.description ?? cycle?.description,
-    alternates: station ? { canonical: `/method/${station.id}` } : undefined,
+    alternates: station
+      ? {
+          canonical: `/method/${station.id}`,
+          languages: pageLanguageAlternates("methodStation", station.id),
+        }
+      : undefined,
     openGraph: station
       ? {
           title: station.title,
