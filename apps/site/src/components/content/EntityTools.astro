@@ -1,14 +1,8 @@
 ---
-import CanvasWorkspaceIsland from "../islands/CanvasWorkspaceIsland";
 import ConfluenceExportIsland from "../islands/ConfluenceExportIsland";
 import PromptPackIsland from "../islands/PromptPackIsland";
 import ResourceViewerIsland from "../islands/ResourceViewerIsland";
 import type { Cycle, Locale, Role, Station } from "../../lib/method-data";
-import canvasEn from "../../../../../generated/method/canvas-manifest.en.json";
-import canvasFi from "../../../../../generated/method/canvas-manifest.fi.json";
-import canvasFr from "../../../../../generated/method/canvas-manifest.fr.json";
-import canvasDe from "../../../../../generated/method/canvas-manifest.de.json";
-import canvasPt from "../../../../../generated/method/canvas-manifest.pt.json";
 import promptsEn from "../../../../../generated/method/prompt-packs.en.json";
 import promptsFi from "../../../../../generated/method/prompt-packs.fi.json";
 import promptsFr from "../../../../../generated/method/prompt-packs.fr.json";
@@ -22,25 +16,35 @@ import exportsPt from "../../../../../generated/method/export-templates.pt.json"
 
 interface Props { locale: Locale; cycle?: Cycle; station?: Station; role?: Role; entityId?: string }
 const { locale, cycle, station, role, entityId } = Astro.props;
-const manifests = { en: canvasEn, fi: canvasFi, fr: canvasFr, de: canvasDe, pt: canvasPt };
 const promptData = { en: promptsEn, fi: promptsFi, fr: promptsFr, de: promptsDe, pt: promptsPt };
 const exportData = { en: exportsEn, fi: exportsFi, fr: exportsFr, de: exportsDe, pt: exportsPt };
-const canvases = manifests[locale].translations[locale];
 const stationResources = station ? (station.resources ?? []).filter((resource) => !resource.draft) : [];
-const stationCanvasIds = station ? [...new Set(station.steps.map((step) => step.canvasId).filter((id): id is string => Boolean(id)))] : [];
-const roleCanvasIds = role ? role.canvases.map((canvas) => canvas.id) : [];
-const canvasIds = stationCanvasIds.length ? stationCanvasIds : roleCanvasIds;
 const prompts = role ? promptData[locale].translations[locale].filter((prompt) => prompt.routeId === role.id || role.promptIds.includes(prompt.id)) : [];
-const templates = cycle ? exportData[locale].translations[locale].filter((template) => template.cycleId === cycle.id) : [];
-const entity = station ?? role;
-const toolEntityId = entityId ?? entity?.id;
+type ExportRoute = "cycle" | "station" | "role";
+type ExportTemplate = (typeof exportData.en.translations.en)[number] & {
+  route?: ExportRoute | string;
+  routeId?: string;
+  entityId?: string;
+  entityIds?: string[];
+  stationId?: string;
+  roleId?: string;
+};
+const route: ExportRoute | undefined = cycle ? "cycle" : station ? "station" : role ? "role" : undefined;
+const currentEntityId = entityId ?? cycle?.id ?? station?.id ?? role?.id;
+const routeEntityId = cycle?.id ?? station?.id ?? role?.id;
+const templates = (exportData[locale].translations[locale] as ExportTemplate[]).filter((template) => {
+  if (!route || !routeEntityId) return false;
+  const declaredRoute = template.route?.replace(/^\//, "").split("/")[0].replace(/s$/, "");
+  if (declaredRoute && declaredRoute !== route) return false;
+  const declaredIds = [template.entityId, ...(template.entityIds ?? [])];
+  if (route === "cycle") declaredIds.push(template.cycleId);
+  if (route === "station") declaredIds.push(template.stationId);
+  if (route === "role") declaredIds.push(template.roleId, template.routeId);
+  return declaredIds.filter(Boolean).includes(routeEntityId);
+});
 ---
 {(station || role || cycle) && <section class="public-section island-stack" aria-label="Tools for this page">
-  {station && <ResourceViewerIsland locale={locale} stationId={station.id} stationTitle={station.title} resources={stationResources} client:visible />}
-  {entity && toolEntityId && canvasIds.map((canvasId) => {
-    const canvas = canvases[canvasId as keyof typeof canvases];
-    return canvas && <CanvasWorkspaceIsland locale={locale} entityId={toolEntityId} entityTitle={entity.title} canvas={canvas} client:visible />;
-  })}
-  {role && prompts.length > 0 && <PromptPackIsland locale={locale} routeId={role.id} prompts={prompts} client:visible />}
-  {cycle && templates.length > 0 && <ConfluenceExportIsland locale={locale} entityId={cycle.id} templates={templates} client:visible />}
+  {station && <><div class="tool-summary"><h2>Review station resources</h2><p>Browse the resources selected for {station.title}; the summary above explains how they support this station’s work.</p></div><ResourceViewerIsland locale={locale} stationId={station.id} stationTitle={station.title} resources={stationResources} client:visible /></>}
+  {role && prompts.length > 0 && <><div class="tool-summary"><h2>Facilitate as {role.title}</h2><p>Use these prepared prompts alongside the stakeholder decisions, outputs, stations, and resources summarized above.</p></div><PromptPackIsland locale={locale} routeId={role.id} prompts={prompts} client:visible /></>}
+  {currentEntityId && templates.length > 0 && <><div class="tool-summary"><h2>Publish this {route}</h2><p>Export the page-specific template after reviewing the entity summary and supporting details above.</p></div><ConfluenceExportIsland locale={locale} entityId={currentEntityId} templates={templates} client:visible /></>}
 </section>}
