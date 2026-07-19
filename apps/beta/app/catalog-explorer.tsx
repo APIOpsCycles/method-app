@@ -7,6 +7,10 @@ import {
   CanvasSystemShell,
   CanvasSystemZone,
   type CanvasSystemNote,
+  AnnouncementToast,
+  PartnerCard,
+  PillList,
+  ResourceSelector,
 } from "@apiops/design-system/react";
 import { designSystemAssets } from "@apiops/design-system/assets";
 import { hasMaterialIcon, MaterialIcon } from "./material-icon";
@@ -2156,47 +2160,19 @@ ${prompt.prompt}`;
             <div className="compact-section-head">
               <h3>{localizedLabels["station.relatedCanvases"]}</h3>
             </div>
-            <div className="side-resource-grid">
-              {canvasResources.map((resource) => (
-                <button key={resource.id} className="side-resource-card" type="button" onClick={() => openResource(resource)}>
-                  <span className="side-resource-card__meta">
-                    <MaterialIcon name={resource.icon} />
-                    {categoryLabel(methodLabels, localizedLabels, resource.category)}
-                  </span>
-                  <strong>{resource.title}</strong>
-                  <small>{resource.description}</small>
-                </button>
-              ))}
-              {!canvasResources.length ? <span className="side-resource-card side-resource-card--empty">{localizedLabels["resources.emptyCanvases"]}</span> : null}
-            </div>
+            <ResourceSelector emptyLabel={localizedLabels["resources.emptyCanvases"]} onChange={(id) => { const resource = canvasResources.find((item) => item.id === id); if (resource) openResource(resource); }} items={canvasResources.map((resource) => ({ id: resource.id, type: categoryLabel(methodLabels, localizedLabels, resource.category), title: resource.title, description: resource.description, icon: <MaterialIcon name={resource.icon} /> }))} />
           </section>
               <section>
                 <div className="compact-section-head">
                   <h3>{localizedLabels["station.relatedResources"]}</h3>
                 </div>
-                <div className="side-resource-grid">
-                  {otherResources.map((resource) => (
-                    <button key={resource.id} className="side-resource-card" type="button" onClick={() => openResource(resource)}>
-                      <span className="side-resource-card__meta">
-                        <MaterialIcon name={resource.icon} />
-                        {categoryLabel(methodLabels, localizedLabels, resource.category)}
-                      </span>
-                      <strong>{resource.title}</strong>
-                      <small>{resource.description}</small>
-                    </button>
-                  ))}
-                  {!otherResources.length ? <span className="side-resource-card side-resource-card--empty">{localizedLabels["resources.emptyOther"]}</span> : null}
-                </div>
+                <ResourceSelector emptyLabel={localizedLabels["resources.emptyOther"]} onChange={(id) => { const resource = otherResources.find((item) => item.id === id); if (resource) openResource(resource); }} items={otherResources.map((resource) => ({ id: resource.id, type: categoryLabel(methodLabels, localizedLabels, resource.category), title: resource.title, description: resource.description, icon: <MaterialIcon name={resource.icon} /> }))} />
               </section>
               <section>
                 <div className="compact-section-head">
                   <h3>{localizedLabels["station.people"]}</h3>
                 </div>
-                <div className="pill-list">
-                  {roleGuideRows.slice(0, 8).map((item) => (
-                    <button key={item.id} type="button" onClick={() => showView("guide")}>{item.title}</button>
-                  ))}
-                </div>
+                <PillList label={localizedLabels["station.people"]} items={roleGuideRows.slice(0, 8).map((item) => ({ id: item.id, label: item.title }))} onSelect={() => showView("guide")} />
                 <div className="chips chips--compact chips--buttons">
                   {participantChips.map((participant) => (
                     <button key={participant} type="button" onClick={() => showView("guide")}>{participant}</button>
@@ -2234,13 +2210,7 @@ ${prompt.prompt}`;
         </div>
         <div className="partner-grid">
           {partners.items.map((partner) => (
-            <a key={partner.title} className="ds-partner-card" href={partner.href} target="_blank" rel="noreferrer">
-              <img src={partner.logo} alt={`${partner.title} logo`} />
-              <div>
-                <h3>{partner.title}</h3>
-                <p>{partner.description}</p>
-              </div>
-            </a>
+            <PartnerCard key={partner.title} href={partner.href} logo={partner.logo} logoAlt={`${partner.title} logo`} title={partner.title} description={partner.description} external />
           ))}
         </div>
       </section>
@@ -2250,15 +2220,10 @@ ${prompt.prompt}`;
         <a href="https://www.apiops.info" target="_blank" rel="noreferrer">{localizedLabels["footer.community"]}</a>
       </footer>
       {showAnnouncement ? (
-        <aside className="ds-announcement ds-announcement-toast" role="status" aria-live="polite">
-          <p>
+        <AnnouncementToast className="ds-announcement-toast" dismissLabel={announcement.dismiss} onDismiss={dismissAnnouncement}>
             <span>{announcement.message}</span>
             <a href={announcement.href}>{announcement.link} &rarr;</a>
-          </p>
-          <button type="button" onClick={dismissAnnouncement} aria-label={announcement.dismiss}>
-            &times;
-          </button>
-        </aside>
+        </AnnouncementToast>
       ) : null}
       {copyStatus ? <div className="copy-toast ds-toast-preview" role="status">{copyStatus}</div> : null}
     </main>

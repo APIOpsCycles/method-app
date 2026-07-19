@@ -1,5 +1,6 @@
 import type { CSSProperties, ReactNode } from "react";
 import { designSystemAssetPath, designSystemAssets } from "@apiops/design-system/assets";
+import { AnnouncementToast, CompactSection, PartnerCard, PillList, ResourceSelector } from "@apiops/design-system/react";
 import { MaterialIcon } from "../material-icon";
 import AssetLibrary from "./asset-library";
 import { spriteAssets } from "./assets";
@@ -764,27 +765,10 @@ function FeedbackSurfaceStateDemo() {
 
 function ResourceSelectorStateDemo() {
   return (
-    <div className="side-resource-grid" style={{ maxWidth: 420 }}>
-      <button className="side-resource-card is-active" type="button">
-        <span className="side-resource-card__meta">
-          <MaterialIcon name="dashboard-outline" />
-          Canvas
-        </span>
-        <strong>Customer Journey Canvas</strong>
-        <small>Capture the real customer journey, not the solution usage itself.</small>
-      </button>
-      <button className="side-resource-card" type="button">
-        <span className="side-resource-card__meta">
-          <MaterialIcon name="edit-document-outline" />
-          Guide
-        </span>
-        <strong>API Onboarding Best Practices</strong>
-        <small>Guidance for consumer onboarding, documentation, and adoption.</small>
-      </button>
-      <span className="side-resource-card side-resource-card--empty">
-        No direct resources
-      </span>
-    </div>
+    <div style={{ maxWidth: 420 }}><ResourceSelector value="journey" emptyLabel="No direct resources" onChange={() => undefined} items={[
+      { id: "journey", type: "Canvas", title: "Customer Journey Canvas", description: "Capture the real customer journey, not the solution usage itself.", icon: <MaterialIcon name="dashboard-outline" /> },
+      { id: "onboarding", type: "Guide", title: "API Onboarding Best Practices", description: "Guidance for consumer onboarding, documentation, and adoption.", icon: <MaterialIcon name="edit-document-outline" /> },
+    ]} /></div>
   );
 }
 
@@ -861,27 +845,17 @@ function StationContextPanelDemo() {
 
 function CompactSectionHeaderDemo() {
   return (
-    <section className="journey-criteria" style={{ maxWidth: 420 }}>
-      <div className="compact-section-head">
-        <h3>Key questions</h3>
-        <button type="button" aria-expanded="true">▾</button>
-      </div>
+    <div style={{ maxWidth: 420 }}><CompactSection title="Key questions" expanded expandLabel="Expand" collapseLabel="Collapse">
       <ul className="criteria-list">
         <li><MaterialIcon name="check-box-outline" /> Which consumers need this API?</li>
         <li><MaterialIcon name="check-box-outline" /> What evidence is needed before moving on?</li>
       </ul>
-    </section>
+    </CompactSection></div>
   );
 }
 
 function PillListStateDemo() {
-  return (
-    <div className="pill-list" aria-label="Stakeholder chip list example">
-      <button type="button">API Product Owner</button>
-      <button type="button">API Designer</button>
-      <button type="button">Platform Architect</button>
-    </div>
-  );
+  return <PillList label="Stakeholder chip list example" onSelect={() => undefined} items={["API Product Owner", "API Designer", "Platform Architect"].map((label) => ({ id: slugify(label), label }))} />;
 }
 
 function LineNavigationCardDemo() {
@@ -927,24 +901,15 @@ function RoleGuideTableDemo() {
 }
 
 function PartnerCardDemo() {
-  return (
-    <a className="ds-partner-card" href="#governance">
-      <img src="/partners/osaango-black.svg" alt="" />
-      <h3>Osaango</h3>
-      <span>Community partner and method contributor.</span>
-    </a>
-  );
+  return <PartnerCard href="#governance" logo="/partners/osaango-black.svg" title="Osaango" description="Community partner and method contributor." />;
 }
 
 function AnnouncementToastDemo() {
   return (
-    <aside className="ds-announcement ds-announcement-demo" role="status" aria-live="polite">
-      <p>
+    <AnnouncementToast className="ds-announcement-demo" dismissLabel="Dismiss announcement" onDismiss={() => undefined}>
         <span>Version 2.0 is live with faster loading times! See what's new </span>
         <a href="#governance">&rarr;</a>
-      </p>
-      <button type="button" aria-label="Dismiss announcement">&times;</button>
-    </aside>
+    </AnnouncementToast>
   );
 }
 

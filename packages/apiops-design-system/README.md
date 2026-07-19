@@ -9,8 +9,9 @@ import { designSystemAssets, designSystemAssetManifest } from "@apiops/design-sy
 ```
 
 The React entry point includes the canvas shell, grid, zones, notes, and metadata
-controls as well as the stakeholder-role selector and involvement legend used by
-the metro map.
+controls; selectors for stakeholder roles and resources; and compact sections,
+pill lists, partner cards, and announcement toasts. Every component is
+method-agnostic and receives its content and localized labels through props.
 
 This package owns visual concepts only. Method catalogs, cycle and station data, canvas content, and APIOps method IDs stay in `apiops-cycles-method-data` or the consuming application.
 

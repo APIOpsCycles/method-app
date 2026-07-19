@@ -7,6 +7,79 @@ export type StakeholderRoleOption = {
   title: string;
 };
 
+export function CompactSection({
+  title,
+  expanded,
+  expandLabel,
+  collapseLabel,
+  onToggle,
+  children,
+}: {
+  title: string;
+  expanded: boolean;
+  expandLabel: string;
+  collapseLabel: string;
+  onToggle?: () => void;
+  children?: ReactNode;
+}) {
+  return (
+    <section className="journey-criteria">
+      <div className="compact-section-head">
+        <h3>{title}</h3>
+        <button type="button" aria-expanded={expanded} aria-label={`${expanded ? collapseLabel : expandLabel}: ${title}`} onClick={onToggle}>
+          {expanded ? "▾" : "▸"}
+        </button>
+      </div>
+      {expanded ? children : null}
+    </section>
+  );
+}
+
+export type PillListItem = { id: string; label: string };
+
+export function PillList({ items, label, onSelect }: { items: PillListItem[]; label: string; onSelect?: (id: string) => void }) {
+  return (
+    <div className="pill-list" aria-label={label}>
+      {items.map((item) => onSelect ? (
+        <button key={item.id} type="button" onClick={() => onSelect(item.id)}>{item.label}</button>
+      ) : <span key={item.id}>{item.label}</span>)}
+    </div>
+  );
+}
+
+export type ResourceSelectorItem = { id: string; type: string; title: string; description: string; icon?: ReactNode };
+
+export function ResourceSelector({ items, value, emptyLabel, onChange }: { items: ResourceSelectorItem[]; value?: string; emptyLabel: string; onChange: (id: string) => void }) {
+  if (!items.length) return <span className="side-resource-card side-resource-card--empty">{emptyLabel}</span>;
+  return (
+    <div className="side-resource-grid">
+      {items.map((item) => (
+        <button className={`side-resource-card${item.id === value ? " is-active" : ""}`} key={item.id} type="button" onClick={() => onChange(item.id)}>
+          <span className="side-resource-card__meta">{item.icon}{item.type}</span>
+          <strong>{item.title}</strong>
+          <small>{item.description}</small>
+        </button>
+      ))}
+    </div>
+  );
+}
+
+export function PartnerCard({ href, title, description, logo, logoAlt = "", external = false }: { href: string; title: string; description: string; logo?: string; logoAlt?: string; external?: boolean }) {
+  return (
+    <a className="ds-partner-card" href={href} target={external ? "_blank" : undefined} rel={external ? "noreferrer" : undefined}>
+      {logo ? <img src={logo} alt={logoAlt} /> : null}<div><h3>{title}</h3><p>{description}</p></div>
+    </a>
+  );
+}
+
+export function AnnouncementToast({ children, dismissLabel, onDismiss, className = "" }: { children: ReactNode; dismissLabel: string; onDismiss: () => void; className?: string }) {
+  return (
+    <aside className={`ds-announcement ${className}`.trim()} role="status" aria-live="polite">
+      <p>{children}</p><button type="button" aria-label={dismissLabel} onClick={onDismiss}>&times;</button>
+    </aside>
+  );
+}
+
 export function StakeholderRoleSelector({
   roles,
   value,
