@@ -179,6 +179,76 @@ function readLabels(locale) {
 
 function siteLabels(locale) {
   const english = {
+    'chrome.breadcrumb': 'Breadcrumb',
+    'entity.cycle': 'Cycle',
+    'entity.station': 'Station',
+    'entity.role': 'Stakeholder guide',
+    'entity.resource': 'Resource',
+    'section.cycles': 'Cycles',
+    'section.stations': 'Stations',
+    'section.relevantCycles': 'Relevant cycles',
+    'section.relevantStations': 'Relevant stations',
+    'section.outcomes': 'Expected outcomes',
+    'section.criteria': 'Criteria',
+    'section.journeyCriteria': 'Journey criteria',
+    'section.entryCriteria': 'Entry criteria',
+    'section.exitCriteria': 'Exit criteria',
+    'section.roles': 'Stakeholders and roles',
+    'section.people': 'People to involve',
+    'section.resources': 'Related resources',
+    'section.resourcesCanvases': 'Resources and canvases',
+    'section.recommendedResources': 'Recommended resources',
+    'section.decisionsOutputs': 'Decisions and outputs',
+    'section.decisions': 'Decisions',
+    'section.outputs': 'Outputs',
+    'section.applyWork': 'How to apply it in work',
+    'section.licensing': 'Licensing',
+    'section.attribution': 'Attribution and licensing',
+    'section.howToUse': 'How to use it',
+    'section.relatedStations': 'Related stations',
+    'section.stakeholderGuides': 'Stakeholder guides',
+    'section.methodMap': 'Explore the method map',
+    'map.selectedCycle': 'Selected cycle map',
+    'map.selectedStation': 'Selected station:',
+    'map.methodKicker': 'Method map',
+    'map.title': 'Metro map',
+    'map.help': 'Select a cycle, station, or stakeholder to open its permanent method page.',
+    'map.none': 'None',
+    'tools.aria': 'Tools for this page',
+    'tools.interactive': 'Interactive method tools',
+    'tools.reviewResources': 'Review station resources',
+    'tools.facilitate': 'Facilitate as',
+    'tools.publish': 'Publish this',
+    'resources.stationKicker': 'Station resources',
+    'resources.choose': 'Choose a resource',
+    'resources.viewSource': 'View original source',
+    'resources.expand': 'Expand source content',
+    'resources.collapse': 'Hide source content',
+    'resources.emptyLinked': 'No downloadable resources are currently linked to this station.',
+    'canvas.workWith': 'Work with this canvas',
+    'canvas.workspaceAria': 'workspace',
+    'canvas.metadata': 'Canvas metadata',
+    'canvas.owner': 'Owner',
+    'canvas.context': 'Context',
+    'canvas.date': 'Date',
+    'canvas.add': 'Add',
+    'canvas.addStickyNote': 'Add a sticky note',
+    'canvas.newNote': 'New note for',
+    'canvas.confirmRemove': 'Remove this sticky note?',
+    'exports.publishing': 'Publishing',
+    'exports.title': 'Markdown and Confluence export',
+    'exports.purpose': 'Export purpose',
+    'exports.empty': 'No export templates are available for this item.',
+    'clipboard.copied': 'Copied.',
+    'clipboard.failed': 'Copy failed.',
+    'prompt.kicker': 'AI facilitation',
+    'prompt.title': 'Prompt pack',
+    'prompt.choose': 'Choose a prompt',
+    'prompt.copy': 'Copy prompt',
+    'prompt.empty': 'No prompts are available for this guide.',
+    'home.kicker': 'APIOps Cycles public beta',
+    'home.title': 'Stakeholder-Guided APIOps Cycles Method',
+    'home.description': 'Explore the APIOps Cycles method as cycle journeys, stations, stakeholder guides, and reusable resources.',
     "nav.workflows": "Workflows",
     "nav.data": "Data",
     "nav.language": "Language",
@@ -325,6 +395,7 @@ function siteLabels(locale) {
   };
   const translations = {
     fi: {
+      "section.journeyCriteria": "Matkan kriteerit",
       "nav.workflows": "Työnkulut",
       "nav.data": "Data",
       "nav.language": "Kieli",
@@ -469,6 +540,7 @@ function siteLabels(locale) {
       "footer.community": "Yhteisötapahtumat ja liittyminen",
     },
     fr: {
+      "section.journeyCriteria": "Critères du parcours",
       "nav.workflows": "Flux de travail",
       "nav.data": "Données",
       "nav.language": "Langue",
@@ -613,6 +685,7 @@ function siteLabels(locale) {
       "footer.community": "Événements communautaires et adhésion",
     },
     de: {
+      "section.journeyCriteria": "Ablaufkriterien",
       "nav.workflows": "Workflows",
       "nav.data": "Daten",
       "nav.language": "Sprache",
@@ -757,6 +830,7 @@ function siteLabels(locale) {
       "footer.community": "Community-Events und Beitritt",
     },
     pt: {
+      "section.journeyCriteria": "Critérios do percurso",
       "nav.workflows": "Fluxos de trabalho",
       "nav.data": "Dados",
       "nav.language": "Idioma",
@@ -901,16 +975,51 @@ function siteLabels(locale) {
       "footer.community": "Eventos da comunidade e participação",
     },
   };
+  // Prefer labels maintained by method-data. `site.*` allows an explicit chrome
+  // override; aliases reuse the existing semantic method labels for page headings.
+  const methodLabelAliases = {
+    "section.stations": ["stations"],
+    "section.outcomes": ["outcomes"],
+    "section.entryCriteria": ["entry_criteria", "entry_criteria_title"],
+    "section.exitCriteria": ["exit_criteria", "exit_criteria_title"],
+    "section.applyWork": ["apply_in_work"],
+    "section.howToUse": ["how_it_works"],
+    "controls.stakeholderInvolvement": ["stakeholder.involvement.title"],
+    "involvement.lead": ["stakeholder.involvement.lead"],
+    "involvement.core": ["stakeholder.involvement.core"],
+    "involvement.consulted": ["stakeholder.involvement.consulted"],
+    "map.linesTitle": ["lines.title"],
+  };
+  const methodLabel = (targetLocale, key) => {
+    const labels = labelsByLocale[targetLocale] ?? {};
+    return labels[`site.${key}`] ?? methodLabelAliases[key]?.map((alias) => labels[alias]).find(Boolean);
+  };
   const localized = translations[locale] ?? {};
+  const siteLabelAliases = {
+    "entity.role": "role.kicker", "entity.resource": "resources.kicker",
+    "section.people": "station.people", "section.resources": "station.relatedResources",
+    "section.outcomes": "resources.expectedOutcomes", "section.howToUse": "resources.howToUse",
+    "section.stakeholderGuides": "role.kicker", "section.roles": "role.kicker",
+    "map.methodKicker": "map.kicker", "map.title": "views.map",
+    "tools.reviewResources": "station.relatedResources",
+    "resources.stationKicker": "resources.kicker", "resources.choose": "resources.select",
+    "resources.expand": "actions.expandAll", "resources.collapse": "actions.collapseAll",
+    "canvas.workWith": "canvas.localWorkspace", "canvas.addStickyNote": "canvas.addStickyNote",
+    "exports.publishing": "confluence.kicker", "exports.title": "confluence.title",
+    "exports.purpose": "confluence.questionTemplate",
+    "clipboard.copied": "actions.copied", "prompt.copy": "ai.copyPrompt",
+    "prompt.kicker": "ai.kicker", "prompt.title": "ai.facilitate",
+  };
+  const translatedSiteLabel = (key) => localized[key] ?? localized[siteLabelAliases[key]];
   if (locale === "en") {
     return Object.fromEntries(Object.entries(english).map(([key, value]) => {
-      const methodLabel = labelsByLocale.en?.[`site.${key}`];
-      return [key, localized[key] ?? methodLabel ?? value];
+      const sourceLabel = methodLabel("en", key);
+      return [key, sourceLabel ?? translatedSiteLabel(key) ?? value];
     }));
   }
   return Object.fromEntries(Object.entries(english).flatMap(([key]) => {
-    const methodLabel = labelsByLocale[locale]?.[`site.${key}`];
-    const translated = localized[key] ?? methodLabel;
+    const sourceLabel = methodLabel(locale, key);
+    const translated = sourceLabel ?? translatedSiteLabel(key);
     return translated === undefined ? [] : [[key, translated]];
   }));
 }
@@ -1724,6 +1833,16 @@ const mcpManifest = {
 };
 
 function validate() {
+  const englishLabelKeys = Object.keys(siteLabelsData.translations.en);
+  const methodChromeKeys = Object.keys(labelsByLocale.en).filter((key) =>
+    key.startsWith("criterion.") || ["stations", "outcomes", "how_it_works", "apply_in_work", "entry_criteria", "exit_criteria"].includes(key),
+  );
+  for (const locale of locales) {
+    const missingMethodKeys = methodChromeKeys.filter((key) => labelsByLocale[locale]?.[key] === undefined);
+    if (missingMethodKeys.length) console.warn(`[method-labels] ${locale}: missing ${missingMethodKeys.length} key(s): ${missingMethodKeys.join(", ")}`);
+    const missing = englishLabelKeys.filter((key) => siteLabelsData.translations[locale][key] === undefined);
+    if (missing.length) console.warn(`[labels] ${locale}: missing ${missing.length} key(s), using English build-time fallback: ${missing.join(", ")}`);
+  }
   const cycleIds = new Set(cyclesRaw.map((cycle) => cycle.id));
   const stationIds = new Set(stationsRawList.map((station) => station.id));
   const resourceIds = new Set(resourcesRaw.map((resource) => resource.id));

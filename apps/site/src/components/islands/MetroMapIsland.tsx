@@ -449,12 +449,11 @@ function MetroMapView({
   );
 }
 
-export default function MetroMapIsland({ locale, cycles, lines, stations, roles, initialCycleId, initialStationId, initialRoleId }: { locale: string; cycles: MetroCycle[]; lines: MetroLine[]; stations: MetroStation[]; roles: MetroRole[]; initialCycleId?: string; initialStationId?: string; initialRoleId?: string }) {
+export default function MetroMapIsland({ locale, labels, cycles, lines, stations, roles, initialCycleId, initialStationId, initialRoleId }: { locale: string; labels: Record<string, string>; cycles: MetroCycle[]; lines: MetroLine[]; stations: MetroStation[]; roles: MetroRole[]; initialCycleId?: string; initialStationId?: string; initialRoleId?: string }) {
   const [cycleId, setCycleId] = useState(initialCycleId ?? cycles[0]?.id ?? "");
   const [stationId, setStationId] = useState(initialStationId ?? cycles[0]?.stations[0]?.id ?? stations[0]?.id ?? "");
   const [roleId, setRoleId] = useState(initialRoleId ?? "");
   const svgRef = useRef<SVGSVGElement>(null);
-  const labels = { "map.ariaLabel": "APIOps Cycles metro map", "map.zoneStrategic": "Strategic", "map.zoneGovernance": "Governance", "map.zoneConsumer": "Consumer", "map.zoneTechnical": "Technical" };
   function exportSvg() {
     if (!svgRef.current) return;
     const clone = svgRef.current.cloneNode(true) as SVGSVGElement;
@@ -467,10 +466,10 @@ export default function MetroMapIsland({ locale, cycles, lines, stations, roles,
   const prefix = locale === "en" ? "" : `/${locale}`;
   const navigate = (path: string) => window.location.assign(`${prefix}${path}`);
   return <section className="island-panel" aria-labelledby="metro-map-title">
-    <header className="island-heading"><div><p className="public-kicker">Method map</p><h2 id="metro-map-title">Metro map</h2></div><button type="button" onClick={exportSvg}>Export SVG</button></header>
-    <p>Select a cycle, station, or stakeholder to open its permanent method page.</p>
-    <div className="metro-controls"><StakeholderRoleSelector roles={roles} value={roleId} label="Stakeholder involvement" placeholder="Select stakeholder" involvementLabels={{ lead: "Lead", core: "Core", consulted: "Consulted" }} onChange={(id) => { setRoleId(id); navigate(`/roles/${id}`); }} /></div>
+    <header className="island-heading"><div><p className="public-kicker">{labels["map.methodKicker"]}</p><h2 id="metro-map-title">{labels["map.title"]}</h2></div><button type="button" onClick={exportSvg}>{labels["map.exportSvg"]}</button></header>
+    <p>{labels["map.help"]}</p>
+    <div className="metro-controls"><StakeholderRoleSelector roles={roles} value={roleId} label={labels["controls.stakeholderInvolvement"]} placeholder={labels["controls.selectStakeholder"]} involvementLabels={{ lead: labels["involvement.lead"], core: labels["involvement.core"], consulted: labels["involvement.consulted"] }} onChange={(id) => { setRoleId(id); navigate(`/roles/${id}`); }} /></div>
     <MetroMapView cycles={cycles} lines={lines} stations={stations} selectedCycleId={cycleId} selectedStationId={stationId} stakeholderInvolvementByStation={roles.find((role) => role.id === roleId)?.involvementByStation ?? {}} onSelectCycle={(id) => { setCycleId(id); const selected = cycles.find((cycle) => cycle.id === id); if (selected) navigate(`/cycles/${selected.slug}`); }} onSelectStation={(id) => { setStationId(id); const selectedCycle = cycles.find((cycle) => cycle.id === cycleId); const isCycleStation = selectedCycle?.stations.some((station) => station.id === id); navigate(isCycleStation ? `/cycles/${selectedCycle.slug}/stations/${id}` : `/stations/${id}`); }} uiLabels={labels} svgRef={svgRef} />
-    <p className="island-selection" aria-live="polite">Selected station: <strong>{stations.find((station) => station.id === stationId)?.title ?? "None"}</strong></p>
+    <p className="island-selection" aria-live="polite">{labels["map.selectedStation"]} <strong>{stations.find((station) => station.id === stationId)?.title ?? labels["map.none"]}</strong></p>
   </section>;
 }

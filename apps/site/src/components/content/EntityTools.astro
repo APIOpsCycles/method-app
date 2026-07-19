@@ -2,7 +2,7 @@
 import ConfluenceExportIsland from "../islands/ConfluenceExportIsland";
 import PromptPackIsland from "../islands/PromptPackIsland";
 import ResourceViewerIsland from "../islands/ResourceViewerIsland";
-import { getStationResources, type Cycle, type Locale, type Role, type Station } from "../../lib/method-data";
+import { getLabels, pickLabels, getStationResources, type Cycle, type Locale, type Role, type Station } from "../../lib/method-data";
 import promptsEn from "../../../../../generated/method/prompt-packs.en.json";
 import promptsFi from "../../../../../generated/method/prompt-packs.fi.json";
 import promptsFr from "../../../../../generated/method/prompt-packs.fr.json";
@@ -18,6 +18,7 @@ interface Props { locale: Locale; cycle?: Cycle; station?: Station; role?: Role;
 const { locale, cycle, station, role, entityId } = Astro.props;
 const promptData = { en: promptsEn, fi: promptsFi, fr: promptsFr, de: promptsDe, pt: promptsPt };
 const exportData = { en: exportsEn, fi: exportsFi, fr: exportsFr, de: exportsDe, pt: exportsPt };
+const labels = getLabels(locale);
 const stationResources = station ? getStationResources(locale, station) : [];
 const prompts = role ? promptData[locale].translations[locale].filter((prompt) => prompt.routeId === role.id || role.promptIds.includes(prompt.id)) : [];
 type ExportRoute = "cycle" | "station" | "role";
@@ -43,8 +44,8 @@ const templates = (exportData[locale].translations[locale] as ExportTemplate[]).
   return declaredIds.filter(Boolean).includes(routeEntityId);
 });
 ---
-{(station || role || cycle) && <section class="public-section island-stack" aria-label="Tools for this page">
-  {station && <><div class="tool-summary"><h2>Review station resources</h2><p>Browse the resources selected for {station.title}; the summary above explains how they support this station’s work.</p></div><ResourceViewerIsland locale={locale} stationId={station.id} stationTitle={station.title} resources={stationResources} client:visible /></>}
-  {role && prompts.length > 0 && <><div class="tool-summary"><h2>Facilitate as {role.title}</h2><p>Use these prepared prompts alongside the stakeholder decisions, outputs, stations, and resources summarized above.</p></div><PromptPackIsland locale={locale} routeId={role.id} prompts={prompts} client:visible /></>}
-  {currentEntityId && templates.length > 0 && <><div class="tool-summary"><h2>Publish this {route}</h2><p>Export the page-specific template after reviewing the entity summary and supporting details above.</p></div><ConfluenceExportIsland locale={locale} entityId={currentEntityId} templates={templates} client:visible /></>}
+{(station || role || cycle) && <section class="public-section island-stack" aria-label={labels["tools.aria"]}>
+  {station && <><div class="tool-summary"><h2>{labels["tools.reviewResources"]}</h2><p>Browse the resources selected for {station.title}; the summary above explains how they support this station’s work.</p></div><ResourceViewerIsland labels={pickLabels(labels, ["resources.stationKicker", "resources.choose", "section.outcomes", "section.howToUse", "resources.collapse", "resources.expand", "resources.viewSource", "resources.emptyLinked"] as const)} locale={locale} stationId={station.id} stationTitle={station.title} resources={stationResources} client:visible /></>}
+  {role && prompts.length > 0 && <><div class="tool-summary"><h2>{labels["tools.facilitate"]} {role.title}</h2><p>Use these prepared prompts alongside the stakeholder decisions, outputs, stations, and resources summarized above.</p></div><PromptPackIsland labels={pickLabels(labels, ["clipboard.copied", "clipboard.failed", "prompt.kicker", "prompt.title", "prompt.choose", "prompt.copy", "prompt.empty"] as const)} locale={locale} routeId={role.id} prompts={prompts} client:visible /></>}
+  {currentEntityId && templates.length > 0 && <><div class="tool-summary"><h2>{labels["tools.publish"]} {route}</h2><p>Export the page-specific template after reviewing the entity summary and supporting details above.</p></div><ConfluenceExportIsland labels={pickLabels(labels, ["clipboard.copied", "clipboard.failed", "exports.publishing", "exports.title", "exports.purpose", "exports.empty", "confluence.markdown", "confluence.confluenceWiki", "confluence.copyMarkdown", "confluence.copyConfluenceWiki"] as const)} locale={locale} entityId={currentEntityId} templates={templates} client:visible /></>}
 </section>}
