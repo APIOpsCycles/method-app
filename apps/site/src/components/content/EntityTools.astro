@@ -2,7 +2,7 @@
 import ConfluenceExportIsland from "../islands/ConfluenceExportIsland";
 import PromptPackIsland from "../islands/PromptPackIsland";
 import ResourceViewerIsland from "../islands/ResourceViewerIsland";
-import { getLabels, getStationResources, type Cycle, type Locale, type Role, type Station } from "../../lib/method-data";
+import { getLabels, pickLabels, getStationResources, type Cycle, type Locale, type Role, type Station } from "../../lib/method-data";
 import promptsEn from "../../../../../generated/method/prompt-packs.en.json";
 import promptsFi from "../../../../../generated/method/prompt-packs.fi.json";
 import promptsFr from "../../../../../generated/method/prompt-packs.fr.json";
@@ -45,7 +45,7 @@ const templates = (exportData[locale].translations[locale] as ExportTemplate[]).
 });
 ---
 {(station || role || cycle) && <section class="public-section island-stack" aria-label={labels["tools.aria"]}>
-  {station && <><div class="tool-summary"><h2>{labels["tools.reviewResources"]}</h2><p>Browse the resources selected for {station.title}; the summary above explains how they support this station’s work.</p></div><ResourceViewerIsland labels={labels} locale={locale} stationId={station.id} stationTitle={station.title} resources={stationResources} client:visible /></>}
-  {role && prompts.length > 0 && <><div class="tool-summary"><h2>{labels["tools.facilitate"]} {role.title}</h2><p>Use these prepared prompts alongside the stakeholder decisions, outputs, stations, and resources summarized above.</p></div><PromptPackIsland labels={labels} locale={locale} routeId={role.id} prompts={prompts} client:visible /></>}
-  {currentEntityId && templates.length > 0 && <><div class="tool-summary"><h2>{labels["tools.publish"]} {route}</h2><p>Export the page-specific template after reviewing the entity summary and supporting details above.</p></div><ConfluenceExportIsland labels={labels} locale={locale} entityId={currentEntityId} templates={templates} client:visible /></>}
+  {station && <><div class="tool-summary"><h2>{labels["tools.reviewResources"]}</h2><p>Browse the resources selected for {station.title}; the summary above explains how they support this station’s work.</p></div><ResourceViewerIsland labels={pickLabels(labels, ["resources.stationKicker", "resources.choose", "section.outcomes", "section.howToUse", "resources.collapse", "resources.expand", "resources.viewSource", "resources.emptyLinked"] as const)} locale={locale} stationId={station.id} stationTitle={station.title} resources={stationResources} client:visible /></>}
+  {role && prompts.length > 0 && <><div class="tool-summary"><h2>{labels["tools.facilitate"]} {role.title}</h2><p>Use these prepared prompts alongside the stakeholder decisions, outputs, stations, and resources summarized above.</p></div><PromptPackIsland labels={pickLabels(labels, ["clipboard.copied", "clipboard.failed", "prompt.kicker", "prompt.title", "prompt.choose", "prompt.copy", "prompt.empty"] as const)} locale={locale} routeId={role.id} prompts={prompts} client:visible /></>}
+  {currentEntityId && templates.length > 0 && <><div class="tool-summary"><h2>{labels["tools.publish"]} {route}</h2><p>Export the page-specific template after reviewing the entity summary and supporting details above.</p></div><ConfluenceExportIsland labels={pickLabels(labels, ["clipboard.copied", "clipboard.failed", "exports.publishing", "exports.title", "exports.purpose", "exports.empty", "confluence.markdown", "confluence.confluenceWiki", "confluence.copyMarkdown", "confluence.copyConfluenceWiki"] as const)} locale={locale} entityId={currentEntityId} templates={templates} client:visible /></>}
 </section>}

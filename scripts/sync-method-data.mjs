@@ -971,16 +971,51 @@ function siteLabels(locale) {
       "footer.community": "Eventos da comunidade e participação",
     },
   };
+  // Prefer labels maintained by method-data. `site.*` allows an explicit chrome
+  // override; aliases reuse the existing semantic method labels for page headings.
+  const methodLabelAliases = {
+    "section.stations": ["stations"],
+    "section.outcomes": ["outcomes"],
+    "section.entryCriteria": ["entry_criteria", "entry_criteria_title"],
+    "section.exitCriteria": ["exit_criteria", "exit_criteria_title"],
+    "section.applyWork": ["apply_in_work"],
+    "section.howToUse": ["how_it_works"],
+    "controls.stakeholderInvolvement": ["stakeholder.involvement.title"],
+    "involvement.lead": ["stakeholder.involvement.lead"],
+    "involvement.core": ["stakeholder.involvement.core"],
+    "involvement.consulted": ["stakeholder.involvement.consulted"],
+    "map.linesTitle": ["lines.title"],
+  };
+  const methodLabel = (targetLocale, key) => {
+    const labels = labelsByLocale[targetLocale] ?? {};
+    return labels[`site.${key}`] ?? methodLabelAliases[key]?.map((alias) => labels[alias]).find(Boolean);
+  };
   const localized = translations[locale] ?? {};
+  const siteLabelAliases = {
+    "entity.role": "role.kicker", "entity.resource": "resources.kicker",
+    "section.people": "station.people", "section.resources": "station.relatedResources",
+    "section.outcomes": "resources.expectedOutcomes", "section.howToUse": "resources.howToUse",
+    "section.stakeholderGuides": "role.kicker", "section.roles": "role.kicker",
+    "map.methodKicker": "map.kicker", "map.title": "views.map",
+    "tools.reviewResources": "station.relatedResources",
+    "resources.stationKicker": "resources.kicker", "resources.choose": "resources.select",
+    "resources.expand": "actions.expandAll", "resources.collapse": "actions.collapseAll",
+    "canvas.workWith": "canvas.localWorkspace", "canvas.addStickyNote": "canvas.addStickyNote",
+    "exports.publishing": "confluence.kicker", "exports.title": "confluence.title",
+    "exports.purpose": "confluence.questionTemplate",
+    "clipboard.copied": "actions.copied", "prompt.copy": "ai.copyPrompt",
+    "prompt.kicker": "ai.kicker", "prompt.title": "ai.facilitate",
+  };
+  const translatedSiteLabel = (key) => localized[key] ?? localized[siteLabelAliases[key]];
   if (locale === "en") {
     return Object.fromEntries(Object.entries(english).map(([key, value]) => {
-      const methodLabel = labelsByLocale.en?.[`site.${key}`];
-      return [key, localized[key] ?? methodLabel ?? value];
+      const sourceLabel = methodLabel("en", key);
+      return [key, sourceLabel ?? translatedSiteLabel(key) ?? value];
     }));
   }
   return Object.fromEntries(Object.entries(english).flatMap(([key]) => {
-    const methodLabel = labelsByLocale[locale]?.[`site.${key}`];
-    const translated = localized[key] ?? methodLabel;
+    const sourceLabel = methodLabel(locale, key);
+    const translated = sourceLabel ?? translatedSiteLabel(key);
     return translated === undefined ? [] : [[key, translated]];
   }));
 }
@@ -1795,7 +1830,12 @@ const mcpManifest = {
 
 function validate() {
   const englishLabelKeys = Object.keys(siteLabelsData.translations.en);
+  const methodChromeKeys = Object.keys(labelsByLocale.en).filter((key) =>
+    key.startsWith("criterion.") || ["stations", "outcomes", "how_it_works", "apply_in_work", "entry_criteria", "exit_criteria"].includes(key),
+  );
   for (const locale of locales) {
+    const missingMethodKeys = methodChromeKeys.filter((key) => labelsByLocale[locale]?.[key] === undefined);
+    if (missingMethodKeys.length) console.warn(`[method-labels] ${locale}: missing ${missingMethodKeys.length} key(s): ${missingMethodKeys.join(", ")}`);
     const missing = englishLabelKeys.filter((key) => siteLabelsData.translations[locale][key] === undefined);
     if (missing.length) console.warn(`[labels] ${locale}: missing ${missing.length} key(s), using English build-time fallback: ${missing.join(", ")}`);
   }
