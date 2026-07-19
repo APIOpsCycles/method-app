@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "@apiops/design-system/styles.css";
+import { designSystemAssets } from "@apiops/design-system/assets";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -21,8 +22,8 @@ export const metadata: Metadata = {
     "capability productization",
   ],
   icons: {
-    icon: "/design-system/favicons/favicon.svg",
-    shortcut: "/design-system/favicons/favicon.svg",
+    icon: designSystemAssets.favicon,
+    shortcut: designSystemAssets.favicon,
   },
   openGraph: {
     title: "APIOps Cycles Knowledge Catalog",

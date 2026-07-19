@@ -1,3 +1,5 @@
+import { designSystemAssetPath, designSystemAssets } from "@apiops/design-system/assets";
+
 export type AssetColor =
   | "strategy"
   | "product"
@@ -31,10 +33,10 @@ export type AssetItem = {
 
 type AssetItemInput = Omit<AssetItem, "status" | "recommendedUse"> & Partial<Pick<AssetItem, "status" | "recommendedUse">>;
 
-const methodIconSource = "/design-system/icons/apiops-iconset.svg";
-const journeyGlyphSource = "/design-system/icons/apiops-metro-icons.svg";
-const poseSource = "/design-system/humans/apiops-stick-figures-poses.svg";
-const storySource = "/design-system/humans/apiops-stick-figures-stories.svg";
+const methodIconSource = designSystemAssets.icons.method;
+const journeyGlyphSource = designSystemAssets.icons.metro;
+const poseSource = designSystemAssets.humans.poses;
+const storySource = designSystemAssets.humans.stories;
 
 const materialMethodIcons = [
   ["analytics-outline", "Analytics", "Metrics, measurement, and improvement"],
@@ -330,7 +332,7 @@ const spriteAssetInputs: AssetItemInput[] = [
     id: "apiops-mark",
     title: "APIOps mark",
     category: "Brand glyph",
-    source: "/design-system/glyphs/apiops-mark.svg",
+    source: designSystemAssetPath("glyphs/apiops-mark.svg"),
     semantic: "Master community brand mark",
     sizes: "32, 48, 64",
     color: "product",
@@ -339,7 +341,7 @@ const spriteAssetInputs: AssetItemInput[] = [
     id: "apiops-logo",
     title: "APIOps logo",
     category: "Brand glyph",
-    source: "/design-system/glyphs/apiops-logo.svg",
+    source: designSystemAssetPath("glyphs/apiops-logo.svg"),
     semantic: "Full APIOps brand logo",
     sizes: "128, 256",
     color: "product",
@@ -348,7 +350,7 @@ const spriteAssetInputs: AssetItemInput[] = [
     id: "apiops-station-circle",
     title: "Connected station ring",
     category: "Brand glyph",
-    source: "/design-system/glyphs/apiops-station-circle.svg",
+    source: designSystemAssetPath("glyphs/apiops-station-circle.svg"),
     semantic: "A compact symbol for connected station work",
     sizes: "32, 48, 64",
     color: "strategy",
@@ -357,7 +359,7 @@ const spriteAssetInputs: AssetItemInput[] = [
     id: "apiops-check-mark",
     title: "APIOps check mark",
     category: "Brand glyph",
-    source: "/design-system/glyphs/apiops-check-mark.svg",
+    source: designSystemAssetPath("glyphs/apiops-check-mark.svg"),
     semantic: "A positive signal for completion, readiness, or decision",
     sizes: "32, 48, 64",
     color: "product",
@@ -366,7 +368,7 @@ const spriteAssetInputs: AssetItemInput[] = [
     id: "apiops-flow",
     title: "APIOps flow",
     category: "Brand glyph",
-    source: "/design-system/glyphs/apiops-flow.svg",
+    source: designSystemAssetPath("glyphs/apiops-flow.svg"),
     semantic: "A horizontal journey composition for method storytelling",
     sizes: "128, 256",
     color: "community",
@@ -375,7 +377,7 @@ const spriteAssetInputs: AssetItemInput[] = [
     id: "apiops-flow-en-text",
     title: "APIOps flow with text",
     category: "Brand glyph",
-    source: "/design-system/glyphs/apiops-flow-en-text.svg",
+    source: designSystemAssetPath("glyphs/apiops-flow-en-text.svg"),
     semantic: "A horizontal journey composition with English labels",
     sizes: "128, 256",
     color: "community",

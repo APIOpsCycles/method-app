@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import type { CSSProperties, KeyboardEvent } from "react";
+import { designSystemAssets } from "@apiops/design-system/assets";
 import canvasManifest from "../data/canvas-manifest.en.json";
 
 type CanvasMode = "interactive" | "print" | "presentation";
@@ -252,7 +253,7 @@ function PresentationCanvas({
           role="img"
           style={{ "--apiops-accent": "var(--canvas-accent)" } as CSSProperties}
         >
-          <use href="/design-system/humans/apiops-stick-figures-stories.svg#g59" />
+          <use href={`${designSystemAssets.humans.stories}#g59`} />
         </svg>
       </div>
       <div className="ds-canvas-presentation__actions">
