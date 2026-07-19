@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import CatalogPage from "../../catalog-page";
-import { PublicStationContent } from "../../public-content";
 import { canonicalUrl, getStationBySlug, pageLanguageAlternates } from "../../public-method-data";
 import routeIndex from "../../data/route-index.json";
 
@@ -52,7 +51,6 @@ export default function StationPage({
   if (!station) notFound();
   return (
     <>
-      <PublicStationContent station={station} locale="en" />
       <CatalogPage locale="en" initialStationId={params.station} />
     </>
   );

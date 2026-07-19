@@ -1,0 +1,8 @@
+---
+import HomeContent from "../../components/content/HomeContent.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { localizedLocales, type Locale } from "../../lib/method-data";
+export function getStaticPaths() { return localizedLocales.map((locale) => ({ params: { locale }, props: { locale } })); }
+const { locale } = Astro.props as { locale: Locale };
+---
+<BaseLayout title="Stakeholder-Guided APIOps Cycles Method" lang={locale} canonicalPath={`/${locale}/`}><HomeContent locale={locale} /></BaseLayout>

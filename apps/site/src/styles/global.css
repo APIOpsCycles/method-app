@@ -82,6 +82,57 @@ a {
   padding-top: clamp(2rem, 5vw, 4rem);
 }
 
+.public-breadcrumbs {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-bottom: 2.5rem;
+}
+
+.public-card-grid,
+.criteria-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.public-card,
+.criteria-grid > div {
+  background: var(--panel-bg, #fff);
+  border: 1px solid var(--panel-border, #d7dfed);
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+}
+
+.public-link-list {
+  display: grid;
+  gap: 1rem;
+  list-style: none;
+  padding: 0;
+}
+
+.public-link-list li {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.public-link-list a,
+.public-card a {
+  color: var(--apiops-accent-community, #0069c0);
+  font-weight: 750;
+}
+
+.public-link-list span,
+.alias-notice {
+  color: var(--muted, #526078);
+}
+
+.public-section li,
+.public-section p {
+  line-height: 1.65;
+}
+
 .sr-only {
   clip: rect(0, 0, 0, 0);
   border: 0;

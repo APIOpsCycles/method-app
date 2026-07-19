@@ -1,18 +1,7 @@
 ---
-import CatalogFilters from "../components/CatalogFilters";
+import HomeContent from "../components/content/HomeContent.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 <BaseLayout title="Stakeholder-Guided APIOps Cycles Method" canonicalPath="/">
-  <main class="public-content">
-    <section class="public-hero">
-      <p class="public-kicker">APIOps Cycles public beta</p>
-      <h1>Stakeholder-Guided APIOps Cycles Method</h1>
-      <p>Explore the APIOps Cycles method as cycle journeys, stations, stakeholder guides, and reusable resources.</p>
-    </section>
-    <section class="public-section" aria-labelledby="catalog-heading">
-      <h2 id="catalog-heading">Knowledge catalog</h2>
-      <p>The route-by-route Astro migration is underway. The beta application remains available while static route and feature parity are verified.</p>
-      <CatalogFilters client:load />
-    </section>
-  </main>
+  <HomeContent locale="en" />
 </BaseLayout>

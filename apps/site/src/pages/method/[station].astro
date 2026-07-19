@@ -1,0 +1,11 @@
+---
+import StationContent from "../../components/content/StationContent.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getCatalog, getStation, type Locale } from "../../lib/method-data";
+export function getStaticPaths() { return getCatalog("en").stations.map((item) => ({ params: { station: item.id }, props: { locale: "en" as Locale } })); }
+const { locale } = Astro.props;
+const item = getStation(locale, Astro.params.station!);
+if (!item) throw new Error("Unknown station");
+const canonicalPath = `/stations/${item.id}`;
+---
+<BaseLayout title={item.title} description={item.description} lang={locale} canonicalPath={canonicalPath}><StationContent station={item} locale={locale} compatibilityAlias /></BaseLayout>

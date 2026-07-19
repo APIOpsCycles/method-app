@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import CatalogPage, { normalizeLocale } from "../../../catalog-page";
-import { PublicStationContent } from "../../../public-content";
 import { canonicalUrl, getStationBySlug, pageLanguageAlternates } from "../../../public-method-data";
 import routeIndex from "../../../data/route-index.json";
 
@@ -55,7 +54,6 @@ export default function LocalizedStationPage({
   if (!station) notFound();
   return (
     <>
-      <PublicStationContent station={station} locale={params.locale} />
       <CatalogPage locale={params.locale} initialStationId={params.station} />
     </>
   );

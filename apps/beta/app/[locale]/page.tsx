@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import CatalogPage, { normalizeLocale } from "../catalog-page";
 import routeIndex from "../data/route-index.json";
-import { PublicHomeContent } from "../public-content";
 
 export function generateStaticParams() {
   return routeIndex.locales
@@ -41,7 +40,6 @@ export default function LocalizedHome({
 }) {
   return (
     <>
-      <PublicHomeContent locale={params.locale} />
       <CatalogPage locale={params.locale} />
     </>
   );

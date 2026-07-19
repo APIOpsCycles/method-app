@@ -1,0 +1,11 @@
+---
+import CycleContent from "../../../components/content/CycleContent.astro";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import { getCatalog, getCycle, localizedLocales, type Locale } from "../../../lib/method-data";
+export function getStaticPaths() { return localizedLocales.flatMap((locale) => getCatalog(locale).cycles.map((item) => ({ params: { locale, cycle: item.slug }, props: { locale } }))); }
+const { locale } = Astro.props as { locale: Locale };
+const item = getCycle(locale, Astro.params.cycle!);
+if (!item) throw new Error("Unknown cycle");
+const canonicalPath = `/${locale}/cycles/${item.slug}`;
+---
+<BaseLayout title={item.title} description={item.description} lang={locale} canonicalPath={canonicalPath}><CycleContent cycle={item} locale={locale} /></BaseLayout>

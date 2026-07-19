@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import CatalogPage, { normalizeLocale } from "../../../catalog-page";
-import { PublicResourceContent } from "../../../public-content";
 import { canonicalUrl, getPublicResources, getResourceBySlug, pageLanguageAlternates } from "../../../public-method-data";
 import routeIndex from "../../../data/route-index.json";
 
@@ -51,7 +50,6 @@ export default function LocalizedResourcePage({
   if (!resource) notFound();
   return (
     <>
-      <PublicResourceContent resource={resource} locale={params.locale} />
       <CatalogPage locale={params.locale} />
     </>
   );
