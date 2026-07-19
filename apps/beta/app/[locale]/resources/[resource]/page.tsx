@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import CatalogPage, { normalizeLocale } from "../../../catalog-page";
 import { canonicalUrl, getPublicResources, getResourceBySlug, pageLanguageAlternates } from "../../../public-method-data";
-import routeIndex from "../../../data/route-index.json";
+import routeIndex from "generated-data/route-index.json";
 
 export function generateStaticParams() {
   return routeIndex.locales.flatMap((locale) =>

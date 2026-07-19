@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import CatalogPage from "../../catalog-page";
 import { canonicalUrl, getStakeholderBySlug, pageLanguageAlternates } from "../../public-method-data";
-import routeIndex from "../../data/route-index.json";
+import routeIndex from "generated-data/route-index.json";
 
 export function generateStaticParams() {
   return routeIndex.translations.en.routeProfiles.map((role) => ({ role: role.id }));

@@ -1,9 +1,9 @@
-import routeIndex from "../../../beta/app/data/route-index.json";
-import catalogEn from "../../../beta/app/data/method-catalog.en.json";
-import catalogFi from "../../../beta/app/data/method-catalog.fi.json";
-import catalogFr from "../../../beta/app/data/method-catalog.fr.json";
-import catalogDe from "../../../beta/app/data/method-catalog.de.json";
-import catalogPt from "../../../beta/app/data/method-catalog.pt.json";
+import routeIndex from "../../../../generated/method/route-index.json";
+import catalogEn from "../../../../generated/method/method-catalog.en.json";
+import catalogFi from "../../../../generated/method/method-catalog.fi.json";
+import catalogFr from "../../../../generated/method/method-catalog.fr.json";
+import catalogDe from "../../../../generated/method/method-catalog.de.json";
+import catalogPt from "../../../../generated/method/method-catalog.pt.json";
 
 const catalogs = { en: catalogEn, fi: catalogFi, fr: catalogFr, de: catalogDe, pt: catalogPt } as const;
 export type Locale = keyof typeof catalogs;

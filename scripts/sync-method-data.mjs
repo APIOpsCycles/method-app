@@ -30,12 +30,12 @@ const snippetRoot = path.join(sourceRoot, "src", "snippets");
 const assetRoot = path.join(sourceRoot, "src", "assets");
 const partnerRoot = path.join(sourceRoot, "public", "partners");
 const partnerDataFile = path.join(sourceRoot, "src", "data", "partners.json");
-const appDataRoot = path.join(root, "apps", "beta", "app", "data");
+const buildDataRoot = path.join(root, "generated", "method");
 const publicDataRoot = path.join(root, "public", "data");
 const publicAssetRoot = path.join(root, "public", "assets");
 const publicPartnerRoot = path.join(root, "public", "partners");
 const designGlyphRoot = path.join(root, "public", "design", "glyphs");
-const announcementFile = path.join(appDataRoot, "announcement.json");
+const announcementFile = path.join(root, "data", "announcement.json");
 const locales = ["en", "fi", "fr", "de", "pt"];
 const methodEngine = await import(pathToFileURL(path.join(sourceRoot, "src", "lib", "method-engine.js")));
 
@@ -45,16 +45,18 @@ function readJson(file) {
   return JSON.parse(readFileSync(file, "utf8"));
 }
 
-function writeJson(relativePath, value, { publish = false } = {}) {
-  value = normalizeGeneratedText(value);
-  const appPath = path.join(appDataRoot, relativePath);
-  mkdirSync(path.dirname(appPath), { recursive: true });
-  writeFileSync(appPath, `${JSON.stringify(value, null, 2)}\n`);
-  if (publish) {
-    const publicPath = path.join(publicDataRoot, relativePath);
-    mkdirSync(path.dirname(publicPath), { recursive: true });
-    writeFileSync(publicPath, `${JSON.stringify(value, null, 2)}\n`);
-  }
+function writeArtifact(targetRoot, relativePath, value) {
+  const targetPath = path.join(targetRoot, relativePath);
+  mkdirSync(path.dirname(targetPath), { recursive: true });
+  writeFileSync(targetPath, `${JSON.stringify(normalizeGeneratedText(value), null, 2)}\n`);
+}
+
+function writeBuildArtifact(relativePath, value) {
+  writeArtifact(buildDataRoot, relativePath, value);
+}
+
+function writePublicArtifact(relativePath, value) {
+  writeArtifact(publicDataRoot, relativePath, value);
 }
 
 function normalizeGeneratedText(value) {
@@ -106,20 +108,16 @@ function windows1252Byte(char) {
   }[char];
 }
 
-function copyPublicAsset(name) {
-  const sourcePath = path.join(assetRoot, name);
+function copyMethodAsset(sourcePath, targetPath) {
   if (!existsSync(sourcePath)) return;
-  mkdirSync(publicAssetRoot, { recursive: true });
-  copyFileSync(sourcePath, path.join(publicAssetRoot, name));
+  mkdirSync(path.dirname(targetPath), { recursive: true });
+  copyFileSync(sourcePath, targetPath);
 }
 
 function copyPartnerAsset(logo) {
   if (!logo?.startsWith("/partners/")) return;
   const name = logo.replace("/partners/", "");
-  const sourcePath = path.join(partnerRoot, name);
-  if (!existsSync(sourcePath)) return;
-  mkdirSync(publicPartnerRoot, { recursive: true });
-  copyFileSync(sourcePath, path.join(publicPartnerRoot, name));
+  copyMethodAsset(path.join(partnerRoot, name), path.join(publicPartnerRoot, name));
 }
 
 function copyIfExists(sourcePath, targetPath) {
@@ -1756,38 +1754,72 @@ function validate() {
 }
 
 validate();
-mkdirSync(appDataRoot, { recursive: true });
+mkdirSync(buildDataRoot, { recursive: true });
 mkdirSync(publicDataRoot, { recursive: true });
-copyPublicAsset("apiops-cycles-logo-dark.svg");
-copyPublicAsset("apiops-cycles-logo-white.svg");
+copyMethodAsset(
+  path.join(assetRoot, "apiops-cycles-logo-dark.svg"),
+  path.join(publicAssetRoot, "apiops-cycles-logo-dark.svg"),
+);
+copyMethodAsset(
+  path.join(assetRoot, "apiops-cycles-logo-white.svg"),
+  path.join(publicAssetRoot, "apiops-cycles-logo-white.svg"),
+);
 copyBrandOverrides();
 for (const partner of partners.items) copyPartnerAsset(partner.logo);
-writeJson("route-index.json", routeIndex, { publish: true });
+writeBuildArtifact("route-index.json", routeIndex);
 for (const locale of locales) {
-  writeJson(`site-labels.${locale}.json`, {
+  writeBuildArtifact(`site-labels.${locale}.json`, {
     ...siteLabelsData,
     translations: { [locale]: siteLabelsData.translations[locale] },
-  }, { publish: true });
-  writeJson(`method-catalog.${locale}.json`, {
+  });
+  writeBuildArtifact(`method-catalog.${locale}.json`, {
     ...catalog,
     translations: { [locale]: catalog.translations[locale] },
-  }, { publish: true });
-  writeJson(`canvas-manifest.${locale}.json`, {
+  });
+  writeBuildArtifact(`canvas-manifest.${locale}.json`, {
     ...canvasManifest,
     translations: { [locale]: canvasManifest.translations[locale] },
-  }, { publish: true });
-  writeJson(`prompt-packs.${locale}.json`, {
+  });
+  writeBuildArtifact(`prompt-packs.${locale}.json`, {
     ...prompts,
     translations: { [locale]: prompts.translations[locale] },
-  }, { publish: true });
-  writeJson(`export-templates.${locale}.json`, {
+  });
+  writeBuildArtifact(`export-templates.${locale}.json`, {
     ...exportsData,
     translations: { [locale]: exportsData.translations[locale] },
-  }, { publish: true });
+  });
 }
-writeJson("partners.json", partners, { publish: true });
-writeJson("announcement.json", announcement, { publish: true });
-writeJson("mcp-method-manifest.json", mcpManifest, { publish: true });
+writeBuildArtifact("partners.json", partners);
+writeBuildArtifact("announcement.json", announcement);
+writeBuildArtifact("mcp-method-manifest.json", mcpManifest);
+
+// These files form the deliberate, URL-addressable method-data integration surface.
+writePublicArtifact("route-index.json", routeIndex);
+for (const locale of locales) {
+  writePublicArtifact(`site-labels.${locale}.json`, {
+    ...siteLabelsData,
+    translations: { [locale]: siteLabelsData.translations[locale] },
+  });
+  writePublicArtifact(`method-catalog.${locale}.json`, {
+    ...catalog,
+    translations: { [locale]: catalog.translations[locale] },
+  });
+  writePublicArtifact(`canvas-manifest.${locale}.json`, {
+    ...canvasManifest,
+    translations: { [locale]: canvasManifest.translations[locale] },
+  });
+  writePublicArtifact(`prompt-packs.${locale}.json`, {
+    ...prompts,
+    translations: { [locale]: prompts.translations[locale] },
+  });
+  writePublicArtifact(`export-templates.${locale}.json`, {
+    ...exportsData,
+    translations: { [locale]: exportsData.translations[locale] },
+  });
+}
+writePublicArtifact("partners.json", partners);
+writePublicArtifact("announcement.json", announcement);
+writePublicArtifact("mcp-method-manifest.json", mcpManifest);
 
 const published = readdirSync(publicDataRoot).filter((name) => name.endsWith(".json"));
 console.log(`Synced APIOps Cycles artifacts from ${sourceRoot}`);

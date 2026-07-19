@@ -11,11 +11,16 @@ The production site is being migrated to a statically generated Astro applicatio
 
 Set `PUBLIC_SITE_ORIGIN` to the public origin used for Astro canonical URLs and the static host's `site` setting. During migration, `NEXT_PUBLIC_SITE_ORIGIN` and `SITE_ORIGIN` remain supported as fallbacks. The default is `https://beta.apiopscycles.com`.
 
+## Generated method data
+
+`npm run prepare:local-data` writes internal build artifacts to `generated/method/` and publishes only the JSON integration surface under `public/data/`. Run it before building either the Astro site or the beta application; the root build scripts do this automatically.
+
 ## Commands
 
 ```bash
 npm install
 npm run dev          # Astro development server
+npm run prepare:local-data # required before either application build
 npm run build        # static Astro production artifact in dist/
 npm run dev:beta     # temporary vinext application
 npm run build:beta   # verify the temporary vinext application

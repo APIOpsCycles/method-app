@@ -1,4 +1,4 @@
-import routeIndex from "./data/route-index.json";
+import routeIndex from "generated-data/route-index.json";
 import CatalogExplorer from "./catalog-explorer";
 
 const supportedLocales = routeIndex.locales;

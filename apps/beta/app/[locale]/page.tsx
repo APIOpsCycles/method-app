@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import CatalogPage, { normalizeLocale } from "../catalog-page";
-import routeIndex from "../data/route-index.json";
+import routeIndex from "generated-data/route-index.json";
 
 export function generateStaticParams() {
   return routeIndex.locales

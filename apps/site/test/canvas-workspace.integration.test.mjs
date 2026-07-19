@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import canvasManifest from "../../beta/app/data/canvas-manifest.en.json" with { type: "json" };
+import canvasManifest from "../../../generated/method/canvas-manifest.en.json" with { type: "json" };
 import { canvasStorageKeys, createCanvasExport, parseCanvasExport } from "../src/lib/canvas-workspace.mjs";
 
 const canvas = canvasManifest.translations.en.customerJourneyCanvas;

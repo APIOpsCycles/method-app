@@ -43,9 +43,6 @@ packages/apiops-design-system/dist/
 /public/design-system/
 
 # generated method data
-/app/data/*.json
-!/app/data/announcement.json
+/generated/method/
 /public/data/*.json
-/apps/beta/app/data/*.json
-!/apps/beta/app/data/announcement.json
 /apps/site/.astro/

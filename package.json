@@ -25,7 +25,9 @@
     "sync:design-system-assets": "node scripts/sync-design-system-assets.mjs",
     "preview": "astro preview",
     "dev:beta": "npm run dev --workspace @apiops/beta",
-    "build:beta": "npm run build --workspace @apiops/beta"
+    "build:beta": "npm run build --workspace @apiops/beta",
+    "predev:beta": "npm run prepare:local-data",
+    "prebuild:beta": "npm run prepare:local-data"
   },
   "dependencies": {
     "@apiops/design-system": "0.1.0",
