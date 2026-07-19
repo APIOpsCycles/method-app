@@ -1,0 +1,5 @@
+{
+  "name": "@apiops/site",
+  "private": true,
+  "type": "module"
+}

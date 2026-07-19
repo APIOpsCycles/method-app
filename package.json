@@ -1,8 +1,9 @@
 {
-  "name": "site-creator-vinext-starter",
+  "name": "apiops-cycles-site",
   "version": "0.1.0",
   "private": true,
   "workspaces": [
+    "apps/*",
     "packages/*"
   ],
   "engines": {
@@ -10,15 +11,18 @@
   },
   "scripts": {
     "predev": "npm run prepare:local-data",
-    "dev": "vinext dev",
+    "dev": "astro dev",
     "prebuild": "npm run prepare:local-data",
-    "build": "vinext build",
+    "build": "astro build",
     "start": "vinext start",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next",
     "prepare:local-data": "node packages/apiops-design-system/scripts/build.mjs && npm run sync:design-system-assets && npm run sync:method-data",
     "sync:method-data": "node scripts/sync-method-data.mjs",
     "db:generate": "drizzle-kit generate",
-    "sync:design-system-assets": "node scripts/sync-design-system-assets.mjs"
+    "sync:design-system-assets": "node scripts/sync-design-system-assets.mjs",
+    "preview": "astro preview",
+    "dev:beta": "npm run dev --workspace @apiops/beta",
+    "build:beta": "npm run build --workspace @apiops/beta"
   },
   "dependencies": {
     "@apiops/design-system": "0.1.0",
@@ -49,7 +53,9 @@
     "unplugin-icons": "^23.0.1",
     "vinext": "0.0.50",
     "vite": "8.1.3",
-    "wrangler": "4.107.0"
+    "wrangler": "4.107.0",
+    "astro": "latest",
+    "@astrojs/react": "latest"
   },
   "overrides": {
     "postcss": "8.5.10",
