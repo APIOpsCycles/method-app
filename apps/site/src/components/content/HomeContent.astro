@@ -36,15 +36,16 @@ const canvasId = role.canvases[0]?.id ?? station.steps.find((step) => step.canva
 const canvas = canvasId ? manifests[locale].translations[locale][canvasId] : undefined;
 const prompts = promptData[locale].translations[locale].filter((prompt) => prompt.routeId === role.id || role.promptIds.includes(prompt.id));
 const templates = exportData[locale].translations[locale].filter((template) => template.cycleId === cycle.id && template.format === "markdown");
-const mapStations = data.stations.map((item, index) => ({ id: item.id, title: item.title, x: 75 + (index % 7) * 108, y: 55 + Math.floor(index / 7) * 85 }));
-const mapLines = data.lines.map((line) => ({ id: line.id, title: line.title, color: line.color, stationIds: line.stations }));
+const mapStations = data.stations.map(({ id, title, description }) => ({ id, title, description }));
+const mapCycles = data.cycles.map(({ id, title, stations }) => ({ id, title, stations: stations.map(({ id: stationId, index, title: stationTitle, baseTitle }) => ({ id: stationId, index, title: stationTitle, baseTitle })) }));
+const mapLines = data.lines.map(({ id, title, color, stations }) => ({ id, title, color, stations }));
 ---
 <main class="public-content">
   <section class="public-hero"><p class="public-kicker">APIOps Cycles public beta</p><h1>Stakeholder-Guided APIOps Cycles Method</h1><p>Explore the APIOps Cycles method as cycle journeys, stations, stakeholder guides, and reusable resources.</p></section>
   <section class="public-section" aria-labelledby="cycles"><h2 id="cycles">Cycles</h2><div class="public-card-grid">{data.cycles.map((cycle) => <article class="public-card"><h3><a href={`${prefix}/cycles/${cycle.slug}`}>{cycle.title}</a></h3><p>{cycle.description}</p></article>)}</div></section>
   <section class="public-section" aria-labelledby="roles"><h2 id="roles">Stakeholder guides</h2><ul class="public-link-list">{data.routeProfiles.map((role) => <li><a href={`${prefix}/roles/${role.id}`}>{role.title}</a><span>{role.summary}</span></li>)}</ul></section>
   <section class="public-section island-stack" aria-label="Interactive method tools">
-    <MetroMapIsland locale={locale} stations={mapStations} lines={mapLines} initialStationId={station.id} client:idle />
+    <MetroMapIsland locale={locale} cycles={mapCycles} stations={mapStations} lines={mapLines} initialCycleId={cycle.id} initialStationId={station.id} client:idle />
     <ResourceViewerIsland locale={locale} stationId={station.id} stationTitle={station.title} resources={resources} client:visible />
     {canvas && <CanvasWorkspaceIsland locale={locale} entityId={role.id} entityTitle={role.title} canvas={canvas} client:visible />}
     <PromptPackIsland locale={locale} routeId={role.id} prompts={prompts} client:visible />
