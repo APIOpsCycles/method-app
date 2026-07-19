@@ -16,5 +16,5 @@ const labels = getLabels(locale);
     <MethodMap locale={locale} />
     <noscript><p class="no-script-note">Use the cycle, station, and stakeholder links above to open permanent method pages without JavaScript.</p></noscript>
   </section>
-  <section class="public-section" aria-labelledby="license"><h2 id="license">{labels["section.attribution"]}</h2><p>APIOps Cycles method data is maintained by the APIOps Cycles community. See the <a href="https://github.com/APIOpsCycles/apiops-cycles-method-data/blob/main/LICENSE">source license</a> for reuse terms.</p></section>
+  <section class="public-section" aria-labelledby="license"><h2 id="license">{labels["section.attribution"]}</h2><p>APIOps Cycles method data is maintained by the APIOps Cycles community. See the <a href="https://github.com/APIOpsCycles/apiops-cycles-method-data/blob/main/LICENSE">source license</a> for reuse terms.</p>{locale === "en" && <p><a href="/design-system">Design system reference</a></p>}</section>
 </main>
