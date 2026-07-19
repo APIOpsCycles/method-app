@@ -9,7 +9,12 @@ import { designSystemAssets, designSystemAssetManifest } from "@apiops/design-sy
 ```
 
 The React entry point includes the canvas shell, grid, zones, notes, and metadata
-controls; selectors for stakeholder roles and resources; and compact sections,
+controls. `CanvasSystemFixture` renders every mode and the complete canvas visual-state
+contract for regression and accessibility review.
+
+The ownership boundary and expected application mapping are documented in
+[`docs/canvas-application-design-system-mapping.md`](../../docs/canvas-application-design-system-mapping.md).
+The entry point also includes selectors for stakeholder roles and resources; compact sections,
 pill lists, partner cards, and announcement toasts. Every component is
 method-agnostic and receives its content and localized labels through props.
 
