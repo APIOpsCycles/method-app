@@ -1,6 +1,6 @@
 import type { CSSProperties, ReactNode } from "react";
 import { designSystemAssetPath, designSystemAssets } from "@apiops/design-system/assets";
-import { AnnouncementToast, CompactSection, PartnerCard, PillList, ResourceSelector } from "@apiops/design-system/react";
+import { AnnouncementToast, CompactSection, MetroLegend, MetroLinePath, MetroMapShell, MetroSelectionRing, MetroStationButton, MetroStationMarker, PartnerCard, PillList, ResourceSelector } from "@apiops/design-system/react";
 import { MaterialIcon } from "../material-icon";
 import AssetLibrary from "./asset-library";
 import { spriteAssets } from "./assets";
@@ -936,6 +936,22 @@ function SvgSpritePreview({
   );
 }
 
+
+function MetroPrimitivesDemo() {
+  const noop = () => undefined;
+  return (
+    <MetroMapShell label="Metro primitive demonstration" width={360} height={220} className="metro-map ds-metro-demo">
+      <MetroLinePath id="demo-line" color="var(--color-line-business)" selected points={[{ x: 45, y: 105 }, { x: 150, y: 105 }, { x: 255, y: 55 }]} onSelect={noop} />
+      <MetroStationButton id="demo-station" label="Accessible station button" x={150} y={105} selected selectionColor="var(--color-cycle-api)" onSelect={noop}>
+        <MetroStationMarker x={150} y={105} radius={14} number={2} nodeClassName="metro-node" />
+      </MetroStationButton>
+      <MetroSelectionRing x={255} y={55} radius={19} color="var(--color-cycle-api)" />
+      <MetroStationMarker x={255} y={55} radius={8} label="Station marker" labelX={270} labelY={55} />
+      <MetroLegend items={[{ id: "demo-line", label: "Line path", color: "var(--color-line-business)" }]} x={45} y={175} />
+    </MetroMapShell>
+  );
+}
+
 export default function DesignSystemPage({ locale = "en" }: { locale?: string }) {
   return (
     <main className="site-shell ds-shell">
@@ -1271,6 +1287,10 @@ export default function DesignSystemPage({ locale = "en" }: { locale?: string })
           </p>
         </div>
         <div className="ds-component-grid">
+          <ComponentPreview title="Metro map primitives">
+            <MetroPrimitivesDemo />
+            <p>Map shell, line path, marker, legend, selection ring, and keyboard-operable station button.</p>
+          </ComponentPreview>
           <ComponentPreview title="Buttons">
             <ButtonStateDemo />
           </ComponentPreview>

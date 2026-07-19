@@ -1,5 +1,5 @@
 import { type RefObject, useRef, useState } from "react";
-import { StakeholderRoleSelector } from "@apiops/design-system/react";
+import { MetroLegend, MetroLinePath, MetroMapShell, MetroStationButton, MetroStationMarker, StakeholderRoleSelector } from "@apiops/design-system/react";
 import { designSystemAssets } from "@apiops/design-system/assets";
 
 export type MetroCycleStation = { id: string; index: number; title: string; baseTitle: string };
@@ -370,12 +370,12 @@ function MetroMapView({
       id: cycle.id,
       title: cycle.title,
       color: colors[cycle.id] ?? "#164e63",
-      d: points.map((point, index) => `${index === 0 ? "M" : "L"} ${point.x} ${point.y}`).join(" ") + " Z",
+      points,
     };
   });
 
   return (
-    <svg ref={svgRef} className="metro-map" viewBox={`0 0 ${width} ${height}`} role="img" aria-label={uiLabels["map.ariaLabel"]}>
+    <MetroMapShell svgRef={svgRef} width={width} height={height} label={uiLabels["map.ariaLabel"]}>
       <defs>
         <clipPath id="metro-map-circle-clip">
           <circle cx="500" cy="500" r="445" />
@@ -396,75 +396,26 @@ function MetroMapView({
       ))}
       {linePoints.map((line) => (
         <g key={line.id}>
-          <polyline
-            points={linePathPoints(line).map((point) => `${point.x},${point.y}`).join(" ")}
-            fill="none"
-            stroke={line.color}
-            strokeWidth="5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            opacity="0.82"
-          />
+          <MetroLinePath id={line.id} points={linePathPoints(line)} color={line.color} strokeWidth={5} opacity={0.82} className="metro-line-path" />
           {line.points.filter((point) => point.support).map((point) => (
-            <g
-              key={`${line.id}-${point.id}`}
-              role="button"
-              tabIndex={0}
-              className={stationClassName(point.id)}
-              onClick={() => onSelectStation(point.id)}
-              onKeyDown={(event) => {
-                if (event.key === "Enter" || event.key === " ") onSelectStation(point.id);
-              }}
-            >
-              <title>{point.baseTitle}</title>
-              {point.id === selectedStationId ? (
-                <circle cx={point.x} cy={point.y} r="13" className="metro-selection-ring" />
-              ) : null}
+            <MetroStationButton key={`${line.id}-${point.id}`} id={point.id} label={point.baseTitle} x={point.x} y={point.y} selected={point.id === selectedStationId} className={stationClassName(point.id)} onSelect={onSelectStation}>
               {involvementFor(point.id) ? (
                 <circle cx={point.x} cy={point.y} r="10" className={`metro-involvement-ring metro-involvement-ring--${involvementFor(point.id)}`} />
               ) : null}
-              <circle cx={point.x} cy={point.y} r="6" className="metro-support-node" />
-              <text x={point.x + point.dx} y={point.y + point.dy} textAnchor={point.anchor} dominantBaseline="middle" className="metro-support-label">{point.baseTitle}</text>
-            </g>
+              <MetroStationMarker x={point.x} y={point.y} radius={6} label={point.baseTitle} labelX={point.x + point.dx} labelY={point.y + point.dy} textAnchor={point.anchor} />
+            </MetroStationButton>
           ))}
         </g>
       ))}
       {paths.map((path) => (
-        <path
-          key={path.id}
-          d={path.d}
-          fill="none"
-          stroke={path.color}
-          strokeWidth={path.id === selectedCycleId ? 6 : 3}
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          opacity={path.id === selectedCycleId ? 0.92 : 0.08}
-          onClick={() => onSelectCycle(path.id)}
-          className="metro-route"
-        />
+        <MetroLinePath key={path.id} id={path.id} points={path.points} color={path.color} selected={path.id === selectedCycleId} onSelect={onSelectCycle} closed />
       ))}
       {corePoints.map((point) => (
-        <g
-          key={point.id}
-          role="button"
-          tabIndex={0}
-          className={stationClassName(point.id)}
-          onClick={() => onSelectStation(point.id)}
-          onKeyDown={(event) => {
-            if (event.key === "Enter" || event.key === " ") onSelectStation(point.id);
-          }}
-        >
-          <title>{point.baseTitle}</title>
-          {point.id === selectedStationId ? (
-            <circle cx={point.x} cy={point.y} r="25" className="metro-selection-ring" />
-          ) : null}
+        <MetroStationButton key={point.id} id={point.id} label={point.baseTitle} x={point.x} y={point.y} selected={point.id === selectedStationId} selectionRadius={25} className={stationClassName(point.id)} onSelect={onSelectStation}>
           {involvementFor(point.id) ? (
             <circle cx={point.x} cy={point.y} r="20" className={`metro-involvement-ring metro-involvement-ring--${involvementFor(point.id)}`} />
           ) : null}
-          <circle cx={point.x} cy={point.y} r="14" className="metro-node" />
-          <text x={point.x} y={point.y + 4} textAnchor="middle" className="metro-node-number">
-            {point.index}
-          </text>
+          <MetroStationMarker x={point.x} y={point.y} radius={14} number={point.index} nodeClassName="metro-node" />
           {(() => {
             const lines = wrapMapLabel(point.displayTitle);
             const boxWidth = Math.max(128, Math.max(...lines.map((line) => line.length)) * 7 + 20);
@@ -482,7 +433,7 @@ function MetroMapView({
               </g>
             );
           })()}
-        </g>
+        </MetroStationButton>
       ))}
       <image
         href={designSystemAssets.brand.cyclesLogoDark}
@@ -492,16 +443,9 @@ function MetroMapView({
         height="60"
         className="metro-brand"
       />
-      <g className="metro-line-legend">
-        {lineLegend.map((line) => (
-          <g key={line.id} transform={`translate(${line.x} ${line.y})`}>
-            <rect x="0" y="-12" width="18" height="18" fill={line.color} />
-            <text x="30" y="2">{line.title}</text>
-          </g>
-        ))}
+      <MetroLegend items={lineLegend.map((line) => ({ id: line.id, label: line.title, color: line.color }))} x={220} y={700} />
       </g>
-      </g>
-    </svg>
+    </MetroMapShell>
   );
 }
 

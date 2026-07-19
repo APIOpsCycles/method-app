@@ -3,6 +3,36 @@
 import { useState } from "react";
 import type { CSSProperties, KeyboardEvent, ReactNode } from "react";
 
+export type MetroPoint = { x: number; y: number };
+
+/** Presentation-only SVG frame for a metro diagram. Routing and data stay with the consumer. */
+export function MetroMapShell({ label, children, svgRef, width = 1000, height = 1000, className = "metro-map" }: { label: string; children: ReactNode; svgRef?: React.RefObject<SVGSVGElement | null>; width?: number; height?: number; className?: string }) {
+  return <svg ref={svgRef} className={className} viewBox={`0 0 ${width} ${height}`} role="img" aria-label={label}>{children}</svg>;
+}
+
+/** A generic visual route. The application remains responsible for producing its points. */
+export function MetroLinePath({ id, points, color, selected = false, onSelect, closed = false, className = "metro-route", strokeWidth, opacity }: { id: string; points: MetroPoint[]; color: string; selected?: boolean; onSelect?: (id: string) => void; closed?: boolean; className?: string; strokeWidth?: number; opacity?: number }) {
+  const d = points.map((point, index) => `${index ? "L" : "M"} ${point.x} ${point.y}`).join(" ") + (closed ? " Z" : "");
+  return <path d={d} fill="none" stroke={color} strokeWidth={strokeWidth ?? (selected ? 6 : 3)} strokeLinecap="round" strokeLinejoin="round" opacity={opacity ?? (selected ? 0.92 : 0.08)} onClick={onSelect ? () => onSelect(id) : undefined} className={className} />;
+}
+
+export function MetroSelectionRing({ x, y, radius, color, className = "metro-selection-ring" }: { x: number; y: number; radius: number; color?: string; className?: string }) {
+  return <circle cx={x} cy={y} r={radius} className={className} stroke={color} />;
+}
+
+/** Keyboard-operable SVG station wrapper; visuals are supplied as children. */
+export function MetroStationButton({ id, label, x, y, selected = false, selectionRadius = 13, selectionColor, className = "metro-station", onSelect, children }: { id: string; label: string; x: number; y: number; selected?: boolean; selectionRadius?: number; selectionColor?: string; className?: string; onSelect: (id: string) => void; children: ReactNode }) {
+  return <g role="button" tabIndex={0} aria-label={label} className={className} onClick={() => onSelect(id)} onKeyDown={(event) => { if (event.key === "Enter" || event.key === " ") { event.preventDefault(); onSelect(id); } }}><title>{label}</title>{selected ? <MetroSelectionRing x={x} y={y} radius={selectionRadius} color={selectionColor} /> : null}{children}</g>;
+}
+
+export function MetroStationMarker({ x, y, radius, label, labelX, labelY, textAnchor = "start", number, nodeClassName = "metro-support-node", labelClassName = "metro-support-label" }: { x: number; y: number; radius: number; label?: string; labelX?: number; labelY?: number; textAnchor?: "start" | "middle" | "end"; number?: string | number; nodeClassName?: string; labelClassName?: string }) {
+  return <><circle cx={x} cy={y} r={radius} className={nodeClassName} />{number !== undefined ? <text x={x} y={y + 4} textAnchor="middle" className="metro-node-number">{number}</text> : null}{label ? <text x={labelX ?? x + radius + 6} y={labelY ?? y} textAnchor={textAnchor} dominantBaseline="middle" className={labelClassName}>{label}</text> : null}</>;
+}
+
+export function MetroLegend({ items, x, y, rowGap = 28 }: { items: Array<{ id: string; label: string; color: string }>; x: number; y: number; rowGap?: number }) {
+  return <g className="metro-line-legend">{items.map((item, index) => <g key={item.id} transform={`translate(${x} ${y + index * rowGap})`}><rect x="0" y="-12" width="18" height="18" fill={item.color} /><text x="30" y="2">{item.label}</text></g>)}</g>;
+}
+
 export type StakeholderRoleOption = {
   id: string;
   title: string;
