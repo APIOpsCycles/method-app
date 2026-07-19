@@ -1,0 +1,85 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { CanvasDesignSystemExample, GeneralDesignSystemExamples, MetroDesignSystemExample } from "../components/islands/DesignSystemExamples";
+import tokens from "@apiops/design-system/tokens.json";
+import { designSystemAssetManifest, designSystemAssetPath } from "@apiops/design-system/assets";
+import methodIcons from "@apiops/design-system/assets/icons/apiops-iconset.svg?raw";
+import metroIcons from "@apiops/design-system/assets/icons/apiops-metro-icons.svg?raw";
+import humanPoses from "@apiops/design-system/assets/humans/apiops-stick-figures-poses.svg?raw";
+import humanStories from "@apiops/design-system/assets/humans/apiops-stick-figures-stories.svg?raw";
+
+type TokenLeaf = { $type: string; $value: unknown };
+type TokenRow = { name: string; group: string; type: string; value: unknown; declared: string };
+const tokenRows: TokenRow[] = [];
+function collectTokens(node: Record<string, unknown>, path: string[] = []) {
+  for (const [name, value] of Object.entries(node)) {
+    if (value && typeof value === "object" && "$value" in value) {
+      const leaf = value as TokenLeaf;
+      tokenRows.push({ name: [...path, name].join("."), group: path[0], type: leaf.$type, value: leaf.$value, declared: Array.isArray(leaf.$value) ? leaf.$value.join(", ") : typeof leaf.$value === "object" ? `${(leaf.$value as { value: number }).value}${(leaf.$value as { unit: string }).unit}` : String(leaf.$value) });
+    } else if (value && typeof value === "object") collectTokens(value as Record<string, unknown>, [...path, name]);
+  }
+}
+collectTokens(tokens as Record<string, unknown>);
+const groupGuidance: Record<string, string> = {
+  color: "Use semantic colors for text, surfaces, routes, cycles, and note intent; never rely on color alone.",
+  font: "Use display for headings, body for reading, and code for paths or technical examples.",
+  canvas: "Use canvas dimensions through package styles when composing the exported canvas primitives.",
+};
+const assetGuidance: Record<string, string> = {
+  brand: "Use the appropriate contrast variant and meaningful alt text when the logo conveys identity.",
+  favicon: "Reference from document metadata; its neighboring page title supplies the accessible name.",
+  glyph: "Treat decorative glyphs as hidden; label an action when a glyph is its only visible content.",
+  icon: "Metro and method icon sheets are supporting visuals, not a substitute for text labels.",
+  human: "Describe an illustration only when it adds information; otherwise use an empty alt attribute.",
+};
+const supportedGroups = ["color", "typography", "spacing", "radius", "shadow", "focus", "control", "canvas", "metro"];
+function symbols(source: string, path: string) {
+  return [...source.matchAll(/<symbol\b[^>]*\bid=["']([^"']+)["'][^>]*\bviewBox=["']([^"']+)["']/g)].map((match) => ({ id: match[1], viewBox: match[2], path }));
+}
+const symbolSheets = [
+  { title: "Method glyphs", description: "Concept icons for labelled supporting content.", symbols: symbols(methodIcons, "icons/apiops-iconset.svg") },
+  { title: "Metro icons", description: "Journey, station, actor, and event symbols for diagrams.", symbols: symbols(metroIcons, "icons/apiops-metro-icons.svg") },
+  { title: "Human poses", description: "Individual people for method-neutral workshop scenes.", symbols: symbols(humanPoses, "humans/apiops-stick-figures-poses.svg") },
+  { title: "Human stories", description: "Small, reusable storytelling compositions.", symbols: symbols(humanStories, "humans/apiops-stick-figures-stories.svg") },
+];
+const componentExports = ["CompactSection", "PillList", "ResourceSelector", "PartnerCard", "AnnouncementToast", "StakeholderRoleSelector", "MetroMapShell", "MetroLinePath", "MetroSelectionRing", "MetroStationButton", "MetroStationMarker", "MetroLegend", "CanvasSystemShell", "CanvasSystemGrid", "CanvasSystemZone", "CanvasSystemNoteView", "CanvasSystemMetadataEditor", "CanvasSystemMetadataReadOnly", "CanvasSystemFixture"];
+---
+<BaseLayout title="Design system reference" description="English reference for APIOps design tokens, assets, React components, metro primitives, and canvas states." lang="en" canonicalPath="/design-system">
+  <main class="public-content design-system-page">
+    <nav class="public-breadcrumbs" aria-label="Breadcrumb"><a href="/">APIOps Cycles</a><span aria-hidden="true">/</span><span>Design system</span></nav>
+    <section class="public-hero"><p class="public-kicker">Package reference</p><h1>Design system</h1><p>A living, English-only reference for the visual contracts shared by APIOps applications.</p></section>
+
+    <section class="public-section" aria-labelledby="purpose"><h2 id="purpose">Purpose and package boundary</h2><p><code>@apiops/design-system</code> owns visual tokens, assets, styles, and method-agnostic components. The <a href="https://github.com/APIOpsCycles/apiops-cycles-method-data/blob/main/docs/canvas-application-design-system-mapping.md">canvas application and design-system mapping</a> assigns grid, notes, metadata controls, modes, focus treatments, and print presentation to the package, while the consuming application owns state and domain decisions.</p><p>Method catalogs, station IDs, route data, localized method content, and persistence do <strong>not</strong> belong in this package. Applications supply those concerns to reusable visual primitives.</p></section>
+
+    <section class="public-section" aria-labelledby="tokens"><h2 id="tokens">Design tokens</h2><p>This inventory is rendered directly from <code>@apiops/design-system/tokens.json</code>; values are not copied into this page. The contract can cover {supportedGroups.join(", ")} groups as they are published. This release declares {Array.from(new Set(tokenRows.map((token) => token.group))).join(", ")} tokens.</p>
+      <div class="token-table-wrap"><table><thead><tr><th>Token name</th><th>Declared value</th><th>Usage guidance</th><th>Visual sample</th></tr></thead><tbody>{tokenRows.map((token) => <tr><th scope="row"><code>{token.name}</code></th><td><code>{token.declared}</code></td><td>{groupGuidance[token.group]}</td><td>{token.type === "color" ? <span class="token-color" style={`--sample: ${token.declared}`}><span class="sr-only">Color sample</span></span> : token.type === "fontFamily" ? <span style={`font-family: ${token.declared}`}>Aa</span> : <span class="token-size" style={`--sample-size: ${token.declared}`}><span class="sr-only">Dimension sample</span></span>}</td></tr>)}</tbody></table></div>
+    </section>
+
+    <section class="public-section" aria-labelledby="assets"><h2 id="assets">Brand and supporting assets</h2><p>The package asset metadata manifest is the source of this inventory. Copy either the supported package import or the public path example.</p><div class="asset-grid">{designSystemAssetManifest.assets.filter((asset) => !["icon", "human"].includes(asset.kind)).map((asset) => <article class="asset-card"><img src={designSystemAssetPath(asset.path)} alt="" loading="lazy" /><div><h3>{asset.tags.at(-1)}</h3><p><strong>{asset.kind}</strong> — {assetGuidance[asset.kind]}</p><code>@apiops/design-system/assets/{asset.path}</code><code>{designSystemAssetPath(asset.path)}</code></div></article>)}</div>
+      <h3>Individual SVG symbols</h3><p>SVG sheets contain individually addressable symbols. Use a symbol through an accessible inline SVG: give the SVG a name when it conveys meaning, or add <code>aria-hidden="true"</code> when decorative. The reference is the sheet path followed by <code>#symbol-id</code>.</p>
+      {symbolSheets.map((sheet) => <section class="symbol-section" aria-labelledby={`symbols-${sheet.title.toLowerCase().replaceAll(" ", "-")}`}><h4 id={`symbols-${sheet.title.toLowerCase().replaceAll(" ", "-")}`}>{sheet.title}</h4><p>{sheet.description}</p><div class="symbol-grid">{sheet.symbols.map((symbol) => <article class="symbol-card"><svg viewBox={symbol.viewBox} role="img" aria-label={symbol.id.replaceAll("-", " ")}><use href={`${designSystemAssetPath(symbol.path)}#${symbol.id}`}></use></svg><strong>{symbol.id}</strong><code>{`${designSystemAssetPath(symbol.path)}#${symbol.id}`}</code><code>{`<svg viewBox="${symbol.viewBox}" role="img" aria-label="…"><use href="${designSystemAssetPath(symbol.path)}#${symbol.id}" /></svg>`}</code></article>)}</div></section>)}
+    </section>
+
+    <section class="public-section" aria-labelledby="components"><h2 id="components">General React components and controls</h2><p>These hydrated, method-neutral fixtures demonstrate CompactSection, interactive PillList buttons, ResourceSelector cards, PartnerCard with a logo, AnnouncementToast, StakeholderRoleSelector, buttons, and a drop-down menu.</p><GeneralDesignSystemExamples client:load /><h3>React export inventory</h3><p>The public React entry point also exposes the lower-level canvas and metro composition primitives:</p><ul class="export-list">{componentExports.map((name) => <li><code>{name}</code></li>)}</ul></section>
+
+    <section class="public-section" id="metro" aria-labelledby="metro-title"><h2 id="metro-title">Metro components</h2><p>This example composes MetroMapShell, MetroLinePath, MetroStationButton, MetroStationMarker, MetroSelectionRing, and MetroLegend without importing the generated method catalog. It includes keyboard operation and selected-state behavior; route and station data remain application-owned.</p><MetroDesignSystemExample client:load /></section>
+
+    <section class="public-section" aria-labelledby="canvas"><h2 id="canvas">Canvas components and states</h2><p>The hydrated <code>CanvasSystemFixture</code> documents interactive, presentation, and print modes together with active-section and focus-only behavior. Its metadata editor and read-only metadata, populated and empty note areas, anchor highlight, and journey treatment exercise the complete visual contract.</p><ul><li><strong>Interactive:</strong> focus, activate sections, edit metadata, and operate notes.</li><li><strong>Presentation:</strong> readable content without editing controls.</li><li><strong>Print:</strong> ink-safe structure and writable space.</li><li><strong>State coverage:</strong> active section, focus-only layout, metadata, note, anchor, and journey states.</li></ul><CanvasDesignSystemExample client:visible /></section>
+
+    <section class="public-section" id="installation" aria-labelledby="installation-title"><h2 id="installation-title">Installation and usage</h2><p>Import the application stylesheet once in the application layout, then import components and data only where needed.</p><pre><code>{`import { CanvasSystemFixture } from "@apiops/design-system";
+import { MetroMapShell } from "@apiops/design-system/react";
+import "@apiops/design-system/styles.css"; // once, in the application layout
+import tokens from "@apiops/design-system/tokens.json";
+import { designSystemAssets } from "@apiops/design-system/assets";
+import assetManifest from "@apiops/design-system/metadata/assets.json";`}</code></pre><p>The supported public boundaries are <code>@apiops/design-system</code>, <code>/react</code>, <code>/styles.css</code>, <code>/tokens.json</code>, <code>/assets</code>, and <code>/metadata/*</code>.</p></section>
+  </main>
+</BaseLayout>
+
+<style>
+  .design-system-page { max-width: 1280px; }
+  table { border-collapse: collapse; min-width: 760px; width: 100%; } th, td { border-bottom: 1px solid var(--panel-border); padding: .75rem; text-align: left; vertical-align: middle; } .token-table-wrap { overflow-x: auto; }
+  .token-color { background: var(--sample); border: 1px solid var(--panel-border); border-radius: .3rem; display: inline-block; height: 2.5rem; width: 4rem; } .token-size { background: var(--apiops-accent-community); display: inline-block; height: min(var(--sample-size), 3rem); width: min(var(--sample-size), 8rem); min-height: 2px; min-width: 2px; }
+  .asset-grid, .ds-example-grid { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); }.asset-card { align-items: center; border: 1px solid var(--panel-border); border-radius: .75rem; display: grid; gap: 1rem; grid-template-columns: 100px 1fr; padding: 1rem; }.asset-card img { max-height: 90px; max-width: 100px; }.asset-card code, .symbol-card code { display: block; font-size: .72rem; margin-top: .5rem; overflow-wrap: anywhere; }
+  .symbol-section { margin-top: 2rem; }.symbol-grid { display: grid; gap: .75rem; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); }.symbol-card { background: var(--panel-bg); border: 1px solid var(--panel-border); border-radius: .75rem; display: grid; gap: .5rem; padding: 1rem; }.symbol-card svg { height: 120px; width: 100%; }.export-list { display: flex; flex-wrap: wrap; gap: .5rem; list-style: none; padding: 0; }.export-list li { background: var(--panel-bg); border: 1px solid var(--panel-border); border-radius: 999px; padding: .35rem .7rem; }
+  pre { background: var(--panel-bg); border: 1px solid var(--panel-border); border-radius: .75rem; overflow-x: auto; padding: 1.25rem; }.ds-metro-demo { margin-block: 2rem; }.ds-metro-demo svg { border: 1px solid var(--panel-border); border-radius: .75rem; max-height: 300px; width: 100%; }.ds-example-stack { display: grid; gap: 2rem; }
+</style>
