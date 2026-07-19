@@ -3,7 +3,7 @@ import { MetroLegend, MetroLinePath, MetroMapShell, MetroStationButton, MetroSta
 import { designSystemAssets } from "@apiops/design-system/assets";
 
 export type MetroCycleStation = { id: string; index: number; title: string; baseTitle: string };
-export type MetroCycle = { id: string; title: string; stations: MetroCycleStation[] };
+export type MetroCycle = { id: string; slug: string; title: string; stations: MetroCycleStation[] };
 export type MetroLine = { id: string; title: string; color: string; stations: string[] };
 export type MetroStation = { id: string; title: string; description: string };
 export type MetroRole = { id: string; title: string; involvementByStation: Record<string, string> };
@@ -464,11 +464,13 @@ export default function MetroMapIsland({ locale, cycles, lines, stations, roles,
     const url = URL.createObjectURL(new Blob([new XMLSerializer().serializeToString(clone)], { type: "image/svg+xml" }));
     const link = document.createElement("a"); link.href = url; link.download = `apiops-metro-${locale}.svg`; link.click(); URL.revokeObjectURL(url);
   }
+  const prefix = locale === "en" ? "" : `/${locale}`;
+  const navigate = (path: string) => window.location.assign(`${prefix}${path}`);
   return <section className="island-panel" aria-labelledby="metro-map-title">
     <header className="island-heading"><div><p className="public-kicker">Method map</p><h2 id="metro-map-title">Metro map</h2></div><button type="button" onClick={exportSvg}>Export SVG</button></header>
-    <p>Select a cycle or station to inspect the established APIOps Cycles method map.</p>
-    <div className="metro-controls"><StakeholderRoleSelector roles={roles} value={roleId} label="Stakeholder involvement" placeholder="Select stakeholder" involvementLabels={{ lead: "Lead", core: "Core", consulted: "Consulted" }} onChange={setRoleId} /></div>
-    <MetroMapView cycles={cycles} lines={lines} stations={stations} selectedCycleId={cycleId} selectedStationId={stationId} stakeholderInvolvementByStation={roles.find((role) => role.id === roleId)?.involvementByStation ?? {}} onSelectCycle={(id) => { setCycleId(id); const first = cycles.find((cycle) => cycle.id === id)?.stations[0]; if (first) setStationId(first.id); }} onSelectStation={setStationId} uiLabels={labels} svgRef={svgRef} />
+    <p>Select a cycle, station, or stakeholder to open its permanent method page.</p>
+    <div className="metro-controls"><StakeholderRoleSelector roles={roles} value={roleId} label="Stakeholder involvement" placeholder="Select stakeholder" involvementLabels={{ lead: "Lead", core: "Core", consulted: "Consulted" }} onChange={(id) => { setRoleId(id); navigate(`/roles/${id}`); }} /></div>
+    <MetroMapView cycles={cycles} lines={lines} stations={stations} selectedCycleId={cycleId} selectedStationId={stationId} stakeholderInvolvementByStation={roles.find((role) => role.id === roleId)?.involvementByStation ?? {}} onSelectCycle={(id) => { setCycleId(id); const selected = cycles.find((cycle) => cycle.id === id); if (selected) navigate(`/cycles/${selected.slug}`); }} onSelectStation={(id) => { setStationId(id); const selectedCycle = cycles.find((cycle) => cycle.id === cycleId); const isCycleStation = selectedCycle?.stations.some((station) => station.id === id); navigate(isCycleStation ? `/cycles/${selectedCycle.slug}/stations/${id}` : `/stations/${id}`); }} uiLabels={labels} svgRef={svgRef} />
     <p className="island-selection" aria-live="polite">Selected station: <strong>{stations.find((station) => station.id === stationId)?.title ?? "None"}</strong></p>
   </section>;
 }

@@ -1,57 +1,21 @@
 ---
 import { getCatalog, localePrefix, type Locale } from "../../lib/method-data";
-import MetroMapIsland from "../islands/MetroMapIsland";
-import ResourceViewerIsland from "../islands/ResourceViewerIsland";
-import CanvasWorkspaceIsland from "../islands/CanvasWorkspaceIsland";
-import PromptPackIsland from "../islands/PromptPackIsland";
-import ConfluenceExportIsland from "../islands/ConfluenceExportIsland";
-import canvasEn from "../../../../../generated/method/canvas-manifest.en.json";
-import canvasFi from "../../../../../generated/method/canvas-manifest.fi.json";
-import canvasFr from "../../../../../generated/method/canvas-manifest.fr.json";
-import canvasDe from "../../../../../generated/method/canvas-manifest.de.json";
-import canvasPt from "../../../../../generated/method/canvas-manifest.pt.json";
-import promptsEn from "../../../../../generated/method/prompt-packs.en.json";
-import promptsFi from "../../../../../generated/method/prompt-packs.fi.json";
-import promptsFr from "../../../../../generated/method/prompt-packs.fr.json";
-import promptsDe from "../../../../../generated/method/prompt-packs.de.json";
-import promptsPt from "../../../../../generated/method/prompt-packs.pt.json";
-import exportsEn from "../../../../../generated/method/export-templates.en.json";
-import exportsFi from "../../../../../generated/method/export-templates.fi.json";
-import exportsFr from "../../../../../generated/method/export-templates.fr.json";
-import exportsDe from "../../../../../generated/method/export-templates.de.json";
-import exportsPt from "../../../../../generated/method/export-templates.pt.json";
+import MethodMap from "./MethodMap.astro";
 interface Props { locale: Locale }
 const { locale } = Astro.props;
 const data = getCatalog(locale);
 const prefix = localePrefix(locale);
-const manifests = { en: canvasEn, fi: canvasFi, fr: canvasFr, de: canvasDe, pt: canvasPt };
-const promptData = { en: promptsEn, fi: promptsFi, fr: promptsFr, de: promptsDe, pt: promptsPt };
-const exportData = { en: exportsEn, fi: exportsFi, fr: exportsFr, de: exportsDe, pt: exportsPt };
 const station = data.stations[0];
 const role = data.routeProfiles[0];
 const cycle = data.cycles[0];
-const resourceIds = new Set(station.steps.map((step) => step.resourceId).filter(Boolean));
-const resources = data.resources.filter((resource) => resourceIds.has(resource.id)).slice(0, 8);
-const canvasId = role.canvases[0]?.id ?? station.steps.find((step) => step.canvasId)?.canvasId;
-const canvas = canvasId ? manifests[locale].translations[locale][canvasId] : undefined;
-const prompts = promptData[locale].translations[locale].filter((prompt) => prompt.routeId === role.id || role.promptIds.includes(prompt.id));
-const templates = exportData[locale].translations[locale].filter((template) => template.cycleId === cycle.id && template.format === "markdown");
-const mapStations = data.stations.map(({ id, title, description }) => ({ id, title, description }));
-const mapCycles = data.cycles.map(({ id, title, stations }) => ({ id, title, stations: stations.map(({ id: stationId, index, title: stationTitle, baseTitle }) => ({ id: stationId, index, title: stationTitle, baseTitle })) }));
-const mapLines = data.lines.map(({ id, title, color, stations }) => ({ id, title, color, stations }));
-const mapRoles = data.routeProfiles.map(({ id, title, stakeholderId }) => ({ id, title, involvementByStation: Object.fromEntries(data.stations.flatMap((mapStation) => { const involvement = mapStation.stakeholders.find((stakeholder) => stakeholder.id === stakeholderId)?.involvement; return involvement ? [[mapStation.id, involvement]] : []; })) }));
 ---
 <main class="public-content">
   <section class="public-hero"><p class="public-kicker">APIOps Cycles public beta</p><h1>Stakeholder-Guided APIOps Cycles Method</h1><p>Explore the APIOps Cycles method as cycle journeys, stations, stakeholder guides, and reusable resources.</p></section>
   <section class="public-section" aria-labelledby="cycles"><h2 id="cycles">Cycles</h2><div class="public-card-grid">{data.cycles.map((cycle) => <article class="public-card"><h3><a href={`${prefix}/cycles/${cycle.slug}`}>{cycle.title}</a></h3><p>{cycle.description}</p></article>)}</div></section>
   <section class="public-section" aria-labelledby="roles"><h2 id="roles">Stakeholder guides</h2><ul class="public-link-list">{data.routeProfiles.map((role) => <li><a href={`${prefix}/roles/${role.id}`}>{role.title}</a><span>{role.summary}</span></li>)}</ul></section>
   <section class="public-section island-stack" aria-label="Interactive method tools">
-    <MetroMapIsland locale={locale} cycles={mapCycles} stations={mapStations} lines={mapLines} roles={mapRoles} initialCycleId={cycle.id} initialStationId={station.id} initialRoleId={role.id} client:idle />
-    <ResourceViewerIsland locale={locale} stationId={station.id} stationTitle={station.title} resources={resources} client:visible />
-    {canvas && <CanvasWorkspaceIsland locale={locale} entityId={role.id} entityTitle={role.title} canvas={canvas} client:visible />}
-    <PromptPackIsland locale={locale} routeId={role.id} prompts={prompts} client:visible />
-    <ConfluenceExportIsland locale={locale} entityId={cycle.id} templates={templates} client:visible />
-    <noscript><p class="no-script-note">These tools enhance the catalog with local editing and copy/export actions. All station, resource, prompt, canvas, and export content above remains readable without JavaScript.</p></noscript>
+    <MethodMap locale={locale} cycleId={cycle.id} stationId={station.id} roleId={role.id} />
+    <noscript><p class="no-script-note">Use the cycle, station, and stakeholder links above to open permanent method pages without JavaScript.</p></noscript>
   </section>
   <section class="public-section" aria-labelledby="license"><h2 id="license">Attribution and licensing</h2><p>APIOps Cycles method data is maintained by the APIOps Cycles community. See the <a href="https://github.com/APIOpsCycles/apiops-cycles-method-data/blob/main/LICENSE">source license</a> for reuse terms.</p></section>
 </main>
