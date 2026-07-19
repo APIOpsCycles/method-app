@@ -1,5 +1,5 @@
 import Link from "next/link";
-import partners from "./data/partners.json";
+import partners from "generated-data/partners.json";
 import {
   canonicalPath,
   canonicalUrl,

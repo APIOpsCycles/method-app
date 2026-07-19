@@ -1,9 +1,9 @@
-import routeIndex from "./data/route-index.json";
-import catalogEn from "./data/method-catalog.en.json";
-import catalogFi from "./data/method-catalog.fi.json";
-import catalogFr from "./data/method-catalog.fr.json";
-import catalogDe from "./data/method-catalog.de.json";
-import catalogPt from "./data/method-catalog.pt.json";
+import routeIndex from "generated-data/route-index.json";
+import catalogEn from "generated-data/method-catalog.en.json";
+import catalogFi from "generated-data/method-catalog.fi.json";
+import catalogFr from "generated-data/method-catalog.fr.json";
+import catalogDe from "generated-data/method-catalog.de.json";
+import catalogPt from "generated-data/method-catalog.pt.json";
 
 const catalogs = {
   en: catalogEn,

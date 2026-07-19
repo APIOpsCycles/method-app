@@ -3,7 +3,7 @@
 import { useState } from "react";
 import type { CSSProperties, KeyboardEvent } from "react";
 import { designSystemAssets } from "@apiops/design-system/assets";
-import canvasManifest from "../data/canvas-manifest.en.json";
+import canvasManifest from "generated-data/canvas-manifest.en.json";
 
 type CanvasMode = "interactive" | "print" | "presentation";
 
