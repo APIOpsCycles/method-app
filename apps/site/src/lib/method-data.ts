@@ -24,6 +24,16 @@ export const getStation = (locale: Locale, slug: string) => getCatalog(locale).s
 export const getRole = (locale: Locale, slug: string) => getCatalog(locale).routeProfiles.find((item) => item.id === slug || item.stakeholderId === slug);
 export const getResource = (locale: Locale, slug: string) => getCatalog(locale).resources.find((item) => !item.draft && (item.id === slug || item.slug === slug || item.slug === `resources/${slug}`));
 export const publicResources = (locale: Locale) => getCatalog(locale).resources.filter((item) => !item.draft);
+export const resourceRouteSegment = (resource: Resource) => resource.slug.replace(/^resources\//, "");
+
+export function getStationResources(locale: Locale, station: Station) {
+  const catalog = getCatalog(locale);
+  const resourceIds = new Set([
+    ...((station.resources ?? []).map((resource) => resource.id)),
+    ...station.steps.map((step) => step.resourceId).filter((id): id is string => Boolean(id)),
+  ]);
+  return catalog.resources.filter((resource) => resourceIds.has(resource.id) && !resource.draft);
+}
 
 export function uniqueById<T extends { id: string }>(items: T[]) {
   return [...new Map(items.map((item) => [item.id, item])).values()];

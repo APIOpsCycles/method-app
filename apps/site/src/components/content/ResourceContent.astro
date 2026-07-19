@@ -9,7 +9,9 @@ import canvasPt from "../../../../../generated/method/canvas-manifest.pt.json";
 interface Props { resource: Resource; locale: Locale }
 const { resource, locale } = Astro.props;
 const prefix = localePrefix(locale);
-const stations = getCatalog(locale).stations.filter((station) => (station.resources ?? []).some((item) => item.id === resource.id));
+const stations = getCatalog(locale).stations.filter((station) =>
+  (station.resources ?? []).some((item) => item.id === resource.id) || station.steps.some((step) => step.resourceId === resource.id)
+);
 const manifests = { en: canvasEn, fi: canvasFi, fr: canvasFr, de: canvasDe, pt: canvasPt };
 const canvas = resource.canvasId ? manifests[locale].translations[locale][resource.canvasId as keyof typeof manifests.en.translations.en] : undefined;
 ---

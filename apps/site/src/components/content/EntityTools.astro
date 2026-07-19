@@ -2,7 +2,7 @@
 import ConfluenceExportIsland from "../islands/ConfluenceExportIsland";
 import PromptPackIsland from "../islands/PromptPackIsland";
 import ResourceViewerIsland from "../islands/ResourceViewerIsland";
-import type { Cycle, Locale, Role, Station } from "../../lib/method-data";
+import { getStationResources, type Cycle, type Locale, type Role, type Station } from "../../lib/method-data";
 import promptsEn from "../../../../../generated/method/prompt-packs.en.json";
 import promptsFi from "../../../../../generated/method/prompt-packs.fi.json";
 import promptsFr from "../../../../../generated/method/prompt-packs.fr.json";
@@ -18,7 +18,7 @@ interface Props { locale: Locale; cycle?: Cycle; station?: Station; role?: Role;
 const { locale, cycle, station, role, entityId } = Astro.props;
 const promptData = { en: promptsEn, fi: promptsFi, fr: promptsFr, de: promptsDe, pt: promptsPt };
 const exportData = { en: exportsEn, fi: exportsFi, fr: exportsFr, de: exportsDe, pt: exportsPt };
-const stationResources = station ? (station.resources ?? []).filter((resource) => !resource.draft) : [];
+const stationResources = station ? getStationResources(locale, station) : [];
 const prompts = role ? promptData[locale].translations[locale].filter((prompt) => prompt.routeId === role.id || role.promptIds.includes(prompt.id)) : [];
 type ExportRoute = "cycle" | "station" | "role";
 type ExportTemplate = (typeof exportData.en.translations.en)[number] & {
