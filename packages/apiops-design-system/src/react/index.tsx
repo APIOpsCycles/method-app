@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import type { CSSProperties, KeyboardEvent, ReactNode } from "react";
 
 export type StakeholderRoleOption = {
@@ -378,4 +379,45 @@ export function CanvasSystemMetadataReadOnly({
       <div><dt>{labels.date}</dt><dd>{metadata.date}</dd></div>
     </dl>
   );
+}
+
+/** Executable visual-contract fixture. Application persistence and method data do not belong here. */
+export function CanvasSystemFixture() {
+  const [metadata, setMetadata] = useState<CanvasSystemMetadata>({ title: "Fixture canvas", owner: "Design team", context: "Component review", date: "2026-07-19" });
+  const [active, setActive] = useState("anchor");
+  const sections: CanvasSystemSection[] = [
+    { id: "anchor", title: "Highlighted section", description: "An anchor section with a populated note area.", gridPosition: { column: 0, row: 0, colSpan: 1, rowSpan: 1 }, fillOrder: 1, highlight: true, journeySteps: false, defaultNoteColor: "#fff399", defaultNoteIntent: "idea" },
+    { id: "journey", title: "Journey section", description: "A journey treatment with an intentionally empty note area.", gridPosition: { column: 1, row: 0, colSpan: 1, rowSpan: 1 }, fillOrder: 2, highlight: false, journeySteps: true, defaultNoteColor: "#d9f6ee", defaultNoteIntent: "step" },
+  ];
+  const labels = { title: "Canvas name", owner: "Owner", context: "Context", date: "Date" };
+  const notes: Record<string, CanvasSystemNote[]> = { anchor: [{ id: "fixture-note", text: "Populated note", color: "#fff399" }], journey: [] };
+
+  return <div className="ds-canvas-system" data-testid="canvas-system-fixture">
+    {(["interactive", "presentation", "print"] as CanvasSystemMode[]).map((mode) => (
+      <CanvasSystemShell
+        key={mode}
+        mode={mode}
+        focusOnly={mode === "interactive"}
+        kicker="Canvas system fixture"
+        title={`${mode[0].toUpperCase()}${mode.slice(1)} mode`}
+        description="Visual states are deliberately colocated for regression review."
+        metadata={mode === "interactive" ? <CanvasSystemMetadataEditor metadata={metadata} labels={labels} onChange={setMetadata} /> : <CanvasSystemMetadataReadOnly metadata={metadata} labels={labels} />}
+      >
+        <CanvasSystemGrid columns={2} rows={1}>
+          {sections.map((section) => <CanvasSystemZone
+            key={section.id}
+            section={section}
+            mode={mode}
+            active={active === section.id}
+            notes={notes[section.id]}
+            addLabel="Add note"
+            deleteLabel="Delete note"
+            onActivate={mode === "interactive" ? () => setActive(section.id) : undefined}
+            onNoteChange={() => undefined}
+            onNoteDelete={() => undefined}
+          />)}
+        </CanvasSystemGrid>
+      </CanvasSystemShell>
+    ))}
+  </div>;
 }
