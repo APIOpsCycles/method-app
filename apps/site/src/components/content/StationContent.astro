@@ -1,5 +1,5 @@
 ---
-import { getCatalog, getLabels, getStationResources, localePrefix, type Locale, type Station } from "../../lib/method-data";
+import { getCatalog, getLabels, getStationResources, localePrefix, resourcePath, type Locale, type Station } from "../../lib/method-data";
 import EntityTools from "./EntityTools.astro";
 import MethodMap from "./MethodMap.astro";
 interface Props { station: Station; locale: Locale; cycle?: ReturnType<typeof getCatalog>["cycles"][number]; compatibilityAlias?: boolean }
@@ -10,6 +10,13 @@ const cycles = getCatalog(locale).cycles.filter((cycle) => cycle.stations.some((
 const selectedCycle = cycle ?? cycles[0];
 const toolEntityId = cycle ? `${cycle.id}:${station.id}` : station.id;
 const resources = getStationResources(locale, station);
+const catalogResources = getCatalog(locale).resources;
+const steps = station.steps.map((step) => ({
+  step,
+  resource: step.resourceId
+    ? catalogResources.find((resource) => resource.id === step.resourceId && !resource.draft)
+    : undefined,
+}));
 ---
 <main class="public-content">
   <nav class="public-breadcrumbs" aria-label={labels["chrome.breadcrumb"]}><a href={`${prefix}/`}>APIOps Cycles</a><span aria-hidden="true">/</span>{cycle && <><a href={`${prefix}/cycles/${cycle.slug}`}>{cycle.title}</a><span aria-hidden="true">/</span></>}<span>{station.title}</span></nav>
@@ -18,9 +25,9 @@ const resources = getStationResources(locale, station);
   <section class="public-section" aria-labelledby="cycles"><h2 id="cycles">{labels["section.cycles"]}</h2><ul class="public-link-list">{cycles.map((cycle) => <li><a href={`${prefix}/cycles/${cycle.slug}`}>{cycle.title}</a><span>{cycle.description}</span></li>)}</ul></section>
   <section class="public-section" aria-labelledby="outcomes"><h2 id="outcomes">{labels["section.outcomes"]}</h2><ul>{station.outcomes.map((item) => <li>{item}</li>)}</ul></section>
   <section class="public-section" aria-labelledby="criteria"><h2 id="criteria">{labels["section.journeyCriteria"]}</h2><ul>{station.criteriaDetails.map((item) => <li>{item.title}</li>)}</ul></section>
-  <section class="public-section" aria-labelledby="work"><h2 id="work">{labels["section.applyWork"]}</h2><p>{station.applyInWork}</p><ol>{station.steps.map((step) => <li>{step.text}{step.resourceId && step.resourceTitle && <> — <a href={`${prefix}/resources/${step.resourceId}`}>{step.resourceTitle}</a></>}</li>)}</ol></section>
+  <section class="public-section" aria-labelledby="work"><h2 id="work">{labels["section.applyWork"]}</h2><p>{station.applyInWork}</p><ol>{steps.map(({ step, resource }) => <li>{step.text}{resource && <> — <a href={resourcePath(locale, resource)}>{step.resourceTitle || resource.title}</a></>}</li>)}</ol></section>
   <section class="public-section" aria-labelledby="roles"><h2 id="roles">{labels["section.people"]}</h2><ul class="public-link-list">{station.stakeholders.map((role) => <li><a href={`${prefix}/roles/${role.id}`}>{role.title}</a><span>{role.description}</span></li>)}</ul></section>
-  <section class="public-section" aria-labelledby="resources"><h2 id="resources">{labels["section.resources"]}</h2><ul class="public-link-list">{resources.map((resource) => <li><a href={`${prefix}/${resource.slug}`}>{resource.title}</a><span>{resource.description}</span></li>)}</ul></section>
+  <section class="public-section" aria-labelledby="resources"><h2 id="resources">{labels["section.resources"]}</h2><ul class="public-link-list">{resources.map((resource) => <li><a href={resourcePath(locale, resource)}>{resource.title}</a><span>{resource.description}</span></li>)}</ul></section>
   <EntityTools locale={locale} station={station} entityId={toolEntityId} />
   <section class="public-section" aria-labelledby="license"><h2 id="license">{labels["section.licensing"]}</h2><p>Reuse this community method content according to the <a href="https://github.com/APIOpsCycles/apiops-cycles-method-data/blob/main/LICENSE">method data license</a>.</p></section>
 </main>
