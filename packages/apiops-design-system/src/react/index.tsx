@@ -258,6 +258,7 @@ export function canvasSectionGridStyle(section: CanvasSystemSection): CSSPropert
 export function CanvasSystemShell({
   mode = "interactive",
   focusOnly = false,
+  fullscreen = false,
   title,
   kicker,
   description,
@@ -267,6 +268,7 @@ export function CanvasSystemShell({
 }: {
   mode?: CanvasSystemMode;
   focusOnly?: boolean;
+  fullscreen?: boolean;
   title: string;
   kicker?: string;
   description?: string;
@@ -275,7 +277,7 @@ export function CanvasSystemShell({
   metadata?: ReactNode;
 }) {
   return (
-    <div className={`ds-canvas-shell ds-canvas-shell--${mode}${focusOnly ? " is-focus-only" : ""}`}>
+    <div className={`ds-canvas-shell ds-canvas-shell--${mode}${focusOnly ? " is-focus-only" : ""}${fullscreen ? " is-fullscreen" : ""}`}>
       <header className="ds-canvas-shell__header">
         <div>
           {kicker ? <p className="section-kicker">{kicker}</p> : null}
