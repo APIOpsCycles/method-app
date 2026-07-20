@@ -2,6 +2,8 @@
 import { getLabels, localePrefix, uniqueById, type Cycle, type Locale } from "../../lib/method-data";
 import EntityTools from "./EntityTools.astro";
 import MethodMap from "./MethodMap.astro";
+import { JourneyCriteria } from "@apiops/design-system/react";
+import { PublicResourceSelector } from "../islands/PublicSelectors";
 interface Props { cycle: Cycle; locale: Locale }
 const { cycle, locale } = Astro.props;
 const prefix = localePrefix(locale);
@@ -14,9 +16,9 @@ const roles = uniqueById(cycle.audienceStakeholders.length ? cycle.audienceStake
   <section class="public-hero"><p class="public-kicker">{labels["entity.cycle"]}</p><h1>{cycle.title}</h1><p>{cycle.description}</p>{cycle.purpose && <p>{cycle.purpose}</p>}</section>
   <section class="public-section" aria-label={labels["map.selectedCycle"]}><MethodMap locale={locale} cycleId={cycle.id} stationId={cycle.stations[0]?.id} /></section>
   <section class="public-section" aria-labelledby="stations"><h2 id="stations">{labels["section.stations"]}</h2><ol class="public-step-list">{cycle.stations.map((station) => <li><h3><a href={`${prefix}/cycles/${cycle.slug}/stations/${station.id}`}>{station.title}</a></h3><p>{station.description}</p>{station.whyItMatters && <p>{station.whyItMatters}</p>}</li>)}</ol></section>
-  <section class="public-section" aria-labelledby="criteria"><h2 id="criteria">{labels["section.journeyCriteria"]}</h2><div class="criteria-grid"><div><h3>{labels["section.entryCriteria"]}</h3><ul>{cycle.entryCriteriaDetails.map((item) => <li>{item.title}</li>)}</ul></div><div><h3>{labels["section.exitCriteria"]}</h3><ul>{cycle.exitCriteriaDetails.map((item) => <li>{item.title}</li>)}</ul></div></div></section>
+  <section class="public-section" aria-labelledby="criteria"><h2 id="criteria">{labels["section.journeyCriteria"]}</h2><JourneyCriteria entryLabel={labels["section.entryCriteria"]} exitLabel={labels["section.exitCriteria"]} entryCriteria={cycle.entryCriteriaDetails} exitCriteria={cycle.exitCriteriaDetails} /></section>
   <section class="public-section" aria-labelledby="stakeholders"><h2 id="stakeholders">{labels["section.roles"]}</h2><ul class="public-link-list">{roles.map((role) => <li><a href={`${prefix}/roles/${role.id}`}>{role.title}</a><span>{role.description}</span></li>)}</ul></section>
-  <section class="public-section" aria-labelledby="resources"><h2 id="resources">{labels["section.resourcesCanvases"]}</h2><ul class="public-link-list">{resources.map((resource) => <li><a href={`${prefix}/${resource.slug}`}>{resource.title}</a><span>{resource.description}</span></li>)}</ul></section>
+  <section class="public-section" aria-labelledby="resources"><h2 id="resources">{labels["section.resourcesCanvases"]}</h2><PublicResourceSelector client:load emptyLabel={labels["resources.emptyLinked"]} items={resources.map((resource) => ({ id: resource.id, type: resource.category, title: resource.title, description: resource.description, href: `${prefix}/${resource.slug}` }))} /></section>
   <EntityTools locale={locale} cycle={cycle} />
   <section class="public-section" aria-labelledby="license"><h2 id="license">{labels["section.attribution"]}</h2><p>APIOps Cycles method data is maintained by the APIOps Cycles community under its <a href="https://github.com/APIOpsCycles/apiops-cycles-method-data/blob/main/LICENSE">source license</a>.</p></section>
 </main>
