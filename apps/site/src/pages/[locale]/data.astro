@@ -1,0 +1,8 @@
+---
+import DataContent from "../../components/content/DataContent.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { localizedLocales, type Locale } from "../../lib/method-data";
+export function getStaticPaths() { return localizedLocales.map((locale) => ({ params: { locale }, props: { locale } })); }
+const { locale } = Astro.props as { locale: Locale };
+---
+<BaseLayout title="Static method data" lang={locale} canonicalPath={`/${locale}/data`}><DataContent locale={locale} /></BaseLayout>
