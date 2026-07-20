@@ -10,8 +10,8 @@
   "dependencies": {
     "@apiops/design-system": "0.1.0",
     "@astrojs/markdown-remark": "7.2.1",
-    "@astrojs/react": "5.0.7",
-    "astro": "6.4.8",
+    "@astrojs/react": "^6.0.1",
+    "astro": "^7.1.1",
     "react": "19.2.6",
     "react-dom": "19.2.6"
   }

@@ -46,3 +46,6 @@ packages/apiops-design-system/dist/
 /generated/method/
 /public/data/*.json
 /apps/site/.astro/
+
+#astro
+/apps/site/node_modules/
