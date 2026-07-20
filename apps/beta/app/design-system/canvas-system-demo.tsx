@@ -322,7 +322,7 @@ export default function CanvasSystemDemo() {
 
       <div
         id="canvas-mode-panel"
-        className={`ds-canvas-shell ds-canvas-shell--${mode}${focusOnly ? " is-focus-only" : ""}`}
+        className={`ds-canvas-shell ds-canvas-shell--${mode}${focusOnly ? " is-focus-only" : ""}${mode === "presentation" ? " is-fullscreen" : ""}`}
         role="tabpanel"
         aria-labelledby={`canvas-mode-${mode}`}
       >
@@ -346,6 +346,7 @@ export default function CanvasSystemDemo() {
             </div>
           ) : null}
           {mode === "print" ? <span className="ds-canvas-mode-label">Print and PDF safe</span> : null}
+          {mode === "presentation" ? <button className="ds-canvas-presentation__exit" type="button" onClick={() => setMode("interactive")}>Exit presentation</button> : null}
         </header>
 
         {mode === "presentation" ? (

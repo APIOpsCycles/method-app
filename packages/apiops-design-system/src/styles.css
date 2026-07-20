@@ -281,6 +281,7 @@
   font-size: 0.68rem;
   font-weight: 750;
   text-transform: uppercase;
+  overflow-wrap: anywhere;
 }
 
 .ds-canvas-station {
@@ -323,6 +324,7 @@
   font-size: 0.68rem;
   font-weight: 600;
   line-height: 1.2;
+  overflow-wrap: anywhere;
 }
 
 .ds-canvas-zone__helper {
@@ -428,6 +430,11 @@
   font-weight: 600;
   min-height: 36px;
   padding: 7px 9px;
+}
+
+.ds-canvas-add-note:hover {
+  background: color-mix(in srgb, var(--canvas-accent) 6%, white);
+  border-color: var(--canvas-accent);
 }
 
 .ds-canvas-shell--print {
@@ -559,6 +566,30 @@
   gap: 24px;
   min-height: 620px;
   padding: clamp(24px, 5vw, 64px);
+}
+
+.ds-canvas-shell--presentation.is-fullscreen {
+  border: 0;
+  border-radius: 0;
+  inset: 0;
+  overflow: auto;
+  position: fixed;
+  z-index: 1000;
+}
+
+.ds-canvas-shell--presentation.is-fullscreen .ds-canvas-presentation {
+  min-height: calc(100dvh - 92px);
+}
+
+.ds-canvas-presentation__exit {
+  background: white;
+  border: 1px solid var(--panel-border);
+  border-radius: 8px;
+  color: var(--color-neutral-graphite);
+  flex: 0 0 auto;
+  font-weight: 800;
+  min-height: 44px;
+  padding: 9px 13px;
 }
 
 .ds-canvas-progress {
