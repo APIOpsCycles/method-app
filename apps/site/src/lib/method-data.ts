@@ -57,3 +57,12 @@ export function getStationResources(locale: Locale, station: Station) {
 export function uniqueById<T extends { id: string }>(items: T[]) {
   return [...new Map(items.map((item) => [item.id, item])).values()];
 }
+
+/** Returns every line, or the lines shared by the supplied cycle/station context. */
+export function getLinesForContext(catalog: Catalog, cycle?: Cycle, station?: Station) {
+  const cycleStationIds = cycle ? new Set(cycle.stations.map((item) => item.id)) : undefined;
+  return catalog.lines.filter((line) =>
+    (!cycleStationIds || line.stations.some((id) => cycleStationIds.has(id))) &&
+    (!station || line.stations.includes(station.id))
+  );
+}

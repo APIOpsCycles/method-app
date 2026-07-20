@@ -1,6 +1,8 @@
 ---
 import { getCatalog, getLabels, pickLabels, localePrefix, type Locale, type Resource } from "../../lib/method-data";
 import CanvasWorkspaceIsland from "../islands/CanvasWorkspaceIsland";
+import { StationsSection } from "@apiops/design-system/react";
+import { metroLineColor } from "../../lib/line-colors";
 import canvasEn from "../../../../../generated/method/canvas-manifest.en.json";
 import canvasFi from "../../../../../generated/method/canvas-manifest.fi.json";
 import canvasFr from "../../../../../generated/method/canvas-manifest.fr.json";
@@ -65,5 +67,5 @@ const missingSource = {
     {resource.sourceUrl && <p><a href={resource.sourceUrl} rel="noopener noreferrer">{labels["resources.viewSource"]}</a></p>}
   </section>}
   {canvas && <section class="public-section island-stack" aria-label={`${resource.title} workspace`}><div class="tool-summary"><h2>{labels["canvas.workWith"]}</h2><p>Use the purpose, outcomes, and instructions above as your static reference while capturing evidence in the interactive workspace.</p></div><CanvasWorkspaceIsland labels={pickLabels(labels, ["canvas.markdownExported", "canvas.jsonExported", "canvas.jsonImported", "canvas.localWorkspace", "canvas.focusSection", "canvas.showAll", "canvas.activeSection", "canvas.selectSectionInstructions", "canvas.exportMarkdown", "canvas.exportJson", "canvas.importJson", "canvas.metadata", "canvas.owner", "canvas.context", "canvas.date", "canvas.addStickyNote", "canvas.removeNote", "canvas.confirmRemove", "canvas.newNote", "canvas.add"] as const)} locale={locale} entityId={resource.id} entityTitle={resource.title} canvas={canvas} client:visible /></section>}
-  <section class="public-section" aria-labelledby="stations"><h2 id="stations">{labels["section.relatedStations"]}</h2><ul class="public-link-list">{stations.map((station) => <li><a href={`${prefix}/stations/${station.id}`}>{station.title}</a><span>{station.description}</span></li>)}</ul></section>
+  <StationsSection title={labels["section.relatedStations"]} items={stations.map((station) => ({ id: station.id, title: station.title, description: station.description, href: `${prefix}/stations/${station.id}`, lineColors: getCatalog(locale).lines.filter((line) => line.stations.includes(station.id)).map((line) => metroLineColor(line.id)) }))} />
  </main>

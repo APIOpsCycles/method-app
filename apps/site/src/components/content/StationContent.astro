@@ -1,8 +1,9 @@
 ---
-import { getCatalog, getLabels, getStationResources, localePrefix, resourcePath, type Locale, type Station } from "../../lib/method-data";
+import { getCatalog, getLabels, getLinesForContext, getStationResources, localePrefix, resourcePath, type Locale, type Station } from "../../lib/method-data";
 import EntityTools from "./EntityTools.astro";
 import MethodMap from "./MethodMap.astro";
-import { JourneyCriteria } from "@apiops/design-system/react";
+import { CyclesSection, JourneyCriteria, LinesSection } from "@apiops/design-system/react";
+import { metroLineColor } from "../../lib/line-colors";
 import { PublicPillList, PublicResourceSelector } from "../islands/PublicSelectors";
 interface Props { station: Station; locale: Locale; cycle?: ReturnType<typeof getCatalog>["cycles"][number]; compatibilityAlias?: boolean }
 const { station, locale, cycle, compatibilityAlias = false } = Astro.props;
@@ -30,6 +31,7 @@ const entryCriteria = selectedCycleStationIndex <= 0
 const exitCriteria = station.criteriaDetails.length
   ? station.criteriaDetails
   : selectedCycle?.exitCriteriaDetails ?? [];
+const relatedLines = getLinesForContext(getCatalog(locale), selectedCycle, station);
 ---
 <main class="public-content">
   <nav class="public-breadcrumbs" aria-label={labels["chrome.breadcrumb"]}><a href={`${prefix}/`}>APIOps Cycles</a><span aria-hidden="true">/</span>{cycle && <><a href={`${prefix}/cycles/${cycle.slug}`}>{cycle.title}</a><span aria-hidden="true">/</span></>}<span>{station.title}</span></nav>
@@ -40,6 +42,7 @@ const exitCriteria = station.criteriaDetails.length
   <section class="public-section" aria-labelledby="outcomes"><h2 id="outcomes">{labels["section.outcomes"]}</h2><ul>{station.outcomes.map((item) => <li>{item}</li>)}</ul></section>
   <section class="public-section" aria-labelledby="criteria"><h2 id="criteria">{labels["section.journeyCriteria"]}</h2><JourneyCriteria entryLabel={labels["section.entryCriteria"]} exitLabel={labels["section.exitCriteria"]} entryCriteria={entryCriteria} exitCriteria={exitCriteria} /></section>
   <section class="public-section" aria-labelledby="work"><h2 id="work">{labels["section.applyWork"]}</h2><p>{station.applyInWork}</p><ol>{steps.map(({ step, resource }) => <li>{step.text}{resource && <> — <a href={resourcePath(locale, resource)}>{step.resourceTitle || resource.title}</a></>}</li>)}</ol></section>
+  <LinesSection title={labels["section.lines"]} items={relatedLines.map((line) => ({ id: line.id, title: line.title, description: line.description, icon: line.icon, color: metroLineColor(line.id), href: selectedCycle ? `${prefix}/cycle/${selectedCycle.slug}/lines/${line.slug}` : `${prefix}/` }))} />
   <EntityTools locale={locale} station={station} entityId={toolEntityId} />
-  <section class="public-section" aria-labelledby="cycles"><h2 id="cycles">{labels["section.relevantCycles"]}</h2><div class="public-card-grid">{cycles.map((cycle) => <div class="public-card"><h3><a href={`${prefix}/cycles/${cycle.id}`}>{cycle.title}</a></h3><p>{cycle.description}</p></div>)}</div></section>
+  <CyclesSection title={labels["section.relevantCycles"]} items={cycles.map((cycle) => ({ id: cycle.id, title: cycle.title, description: cycle.description, href: `${prefix}/cycles/${cycle.slug}` }))} />
 </main>

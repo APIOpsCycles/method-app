@@ -716,6 +716,20 @@
 .ds-involvement-legend .is-core { background: var(--ds-panel-bg, #fff); }
 .ds-involvement-legend .is-consulted { background: transparent; border-style: dashed; }
 
+.ds-cycle-card { border-top: .35rem solid var(--color-brand-cyan, #0891b2); }
+.ds-line-card { border-top: .4rem solid var(--line-color); }
+.ds-line-title { align-items: center; display: flex; gap: .65rem; }
+.ds-line-title > span { align-items: center; background: var(--line-color); border-radius: 50%; color: white; display: inline-flex; flex: 0 0 2.25rem; font-weight: 850; height: 2.25rem; justify-content: center; }
+.ds-line-title h3 { margin: 0; }
+.ds-station-list { display: grid; gap: .8rem; list-style: none; margin: 0; padding: 0; }
+.ds-station-list > li { align-items: start; background: var(--ds-panel-bg, #fff); border: 1px solid var(--panel-border, #d8dee8); border-radius: 8px; display: grid; gap: 1rem; grid-template-columns: 1.2rem 1fr; padding: 1rem 1.15rem; }
+.ds-station-list > li::marker { color: var(--color-neutral-slate, #475569); font-weight: 800; }
+.ds-station-marker { background: var(--station-lines); border: 3px solid white; border-radius: 50%; box-shadow: 0 0 0 2px var(--color-neutral-slate, #475569); height: 1.15rem; margin-top: .3rem; width: 1.15rem; }
+.ds-station-list h3 { margin: 0; }
+.ds-station-list p { margin-bottom: 0; }
+.ds-station-related { display: flex; flex-wrap: wrap; gap: .4rem .75rem; list-style: none; margin: .75rem 0 0; padding: 0; }
+.ds-station-related a { background: color-mix(in srgb, var(--color-brand-cyan, #0891b2) 10%, white); border-radius: 999px; display: inline-block; font-size: .88rem; font-weight: 700; padding: .28rem .65rem; }
+
 @media (max-width: 1100px) {
   .ds-canvas-mode-switcher {
     grid-template-columns: repeat(2, minmax(0, 1fr));

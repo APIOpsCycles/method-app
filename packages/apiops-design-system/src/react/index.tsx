@@ -119,6 +119,65 @@ export function PartnerCard({ href, title, description, logo, logoAlt = "", exte
   );
 }
 
+export type EntitySectionItem = {
+  id: string;
+  title: string;
+  description?: string;
+  href: string;
+};
+
+export type StationSectionItem = EntitySectionItem & {
+  /** Every route color that passes through this station. */
+  lineColors?: string[];
+  /** Optional contextual links, such as the cycle-specific version of a core station. */
+  relatedLinks?: Array<{ href: string; label: string }>;
+  supportingText?: string;
+};
+
+export type LineSectionItem = EntitySectionItem & { color: string; icon?: string };
+
+function EntityHeading({ id, title, href }: Pick<EntitySectionItem, "id" | "title" | "href">) {
+  return <h3><a href={href} data-entity-id={id}>{title}</a></h3>;
+}
+
+/** Canonical presentation for an `id="cycles"` collection. */
+export function CyclesSection({ title, items, id = "cycles" }: { title: string; items: EntitySectionItem[]; id?: string }) {
+  return <section className="public-section ds-entity-section ds-cycles-section" aria-labelledby={id}>
+    <h2 id={id}>{title}</h2>
+    <div className="public-card-grid">{items.map((item) => <article className="public-card ds-cycle-card" key={item.id}>
+      <EntityHeading {...item} />{item.description ? <p>{item.description}</p> : null}
+    </article>)}</div>
+  </section>;
+}
+
+/** Canonical station collection. Line colors make interchange and shared stations visible. */
+export function StationsSection({ title, items, ordered = false, id = "stations" }: { title: string; items: StationSectionItem[]; ordered?: boolean; id?: string }) {
+  const List = ordered ? "ol" : "ul";
+  return <section className="public-section ds-entity-section ds-stations-section" aria-labelledby={id}>
+    <h2 id={id}>{title}</h2>
+    <List className="ds-station-list">{items.map((item) => {
+      const colors = item.lineColors?.length ? item.lineColors : ["var(--color-neutral-silver, #94a3b8)"];
+      const stripe = `linear-gradient(180deg, ${colors.map((color, index) => `${color} ${index / colors.length * 100}% ${(index + 1) / colors.length * 100}%`).join(", ")})`;
+      return <li key={item.id} style={{ "--station-lines": stripe } as CSSProperties}>
+        <div className="ds-station-marker" aria-hidden="true" />
+        <div><EntityHeading {...item} />{item.description ? <p>{item.description}</p> : null}{item.supportingText ? <p>{item.supportingText}</p> : null}
+          {item.relatedLinks?.length ? <ul className="ds-station-related">{item.relatedLinks.map((link) => <li key={link.href}><a href={link.href}>{link.label}</a></li>)}</ul> : null}
+        </div>
+      </li>;
+    })}</List>
+  </section>;
+}
+
+/** Canonical line collection; consumers choose all lines or a pre-filtered cycle/station set. */
+export function LinesSection({ title, items, id = "lines" }: { title: string; items: LineSectionItem[]; id?: string }) {
+  return <section className="public-section ds-entity-section ds-lines-section" aria-labelledby={id}>
+    <h2 id={id}>{title}</h2>
+    <div className="public-card-grid">{items.map((item) => <article className="public-card ds-line-card" style={{ "--line-color": item.color } as CSSProperties} key={item.id}>
+      <div className="ds-line-title"><span aria-hidden="true">{item.icon || "●"}</span><EntityHeading {...item} /></div>{item.description ? <p>{item.description}</p> : null}
+    </article>)}</div>
+  </section>;
+}
+
 export function AnnouncementToast({ children, dismissLabel, onDismiss, className = "" }: { children: ReactNode; dismissLabel: string; onDismiss: () => void; className?: string }) {
   return (
     <aside className={`ds-announcement ${className}`.trim()} role="status" aria-live="polite">
