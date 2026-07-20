@@ -10,8 +10,8 @@ const site =
 export default defineConfig({
   output: "static",
   site,
-  srcDir: "./apps/site/src",
-  publicDir: "./public",
-  outDir: "./dist",
+  srcDir: "./src",
+  publicDir: "../../public",
+  outDir: "../../dist",
   integrations: [react()],
 });
