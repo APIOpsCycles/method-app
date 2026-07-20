@@ -9,5 +9,5 @@ const sharedFiles = ["route-index.json", "mcp-method-manifest.json", "partners.j
 <main class="public-content">
   <section class="public-hero"><p class="public-kicker">Open data</p><h1>Static method data</h1><p>Download generated JSON for the {locale.toUpperCase()} catalog, integrations, and offline tools.</p></section>
   <section class="public-section"><h2>Localized files</h2><ul class="public-link-list">{localizedFiles.map((name) => <li><a href={`/data/${name}.${locale}.json`} download>{name}.{locale}.json</a></li>)}</ul></section>
-  <section class="public-section"><h2>Shared files</h2><ul class="public-link-list">{sharedFiles.map((name) => <li><a href={`/data/${name}`} download>{name}</a></li>)}</ul><p><a href={`${prefix}/licensing`}>Review licensing information</a> before redistributing method content.</p></section>
+  <section class="public-section"><h2>Shared files</h2><ul class="public-link-list">{sharedFiles.map((name) => <li><a href={`/data/${name}`} download>{name}</a></li>)}</ul></section>
 </main>

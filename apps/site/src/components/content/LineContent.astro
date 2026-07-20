@@ -18,7 +18,7 @@ const cyclesByStation = new Map(catalog.stations.map((station) => [station.id, c
   <section class="public-hero" style={`--line-color: ${lineColor}`}>
     <p class="public-kicker">{labels["entity.line"]}</p>
     <div class="line-heading"><span class="line-icon" aria-hidden="true">{line.icon || "●"}</span><h1>{line.title}</h1></div>
-    <p>{line.description}</p><span class="line-color"><span aria-hidden="true"></span>{lineColor}</span>
+    <p>{line.description}</p><span class="line-color"><span aria-hidden="true"></span></span>
   </section>
   <section class="public-section" aria-label={line.title}><MethodMap locale={locale} cycleId={cycle.id} stationId={stations[0]?.id} lineId={line.id} /></section>
   <section class="public-section" aria-labelledby="line-stations"><h2 id="line-stations">{labels["section.stations"]}</h2>
@@ -35,7 +35,7 @@ const cyclesByStation = new Map(catalog.stations.map((station) => [station.id, c
   .line-heading { align-items: center; display: flex; gap: .75rem; }
   .line-icon { align-items: center; background: var(--line-color); border-radius: 999px; color: white; display: inline-flex; font-weight: 800; height: 2.5rem; justify-content: center; min-width: 2.5rem; padding: .25rem; }
   .line-color { align-items: center; display: inline-flex; font-family: monospace; gap: .5rem; }
-  .line-color span { background: var(--line-color); border-radius: 999px; display: inline-block; height: 1rem; width: 3rem; }
+  .line-color span { background: var(--line-color); border-radius: 999px; display: inline-block; height: 1rem; width: 10rem; }
   .line-relationships { display: grid; grid-template-columns: max-content 1fr; gap: .25rem .75rem; }
   .line-relationships dt { font-weight: 700; }
   .line-relationships dd { margin: 0; }

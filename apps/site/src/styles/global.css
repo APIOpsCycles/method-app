@@ -121,7 +121,7 @@ a {
 .public-card,
 .criteria-grid > div {
   background: var(--panel-bg, #fff);
-  border: 1px solid var(--panel-border, #d7dfed);
+  border-top: .35rem solid var(--panel-border, #d7dfed);
   border-radius: 0.75rem;
   padding: 1.25rem;
 }
