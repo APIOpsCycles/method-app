@@ -95,6 +95,22 @@ export function ResourceSelector({ items, value, emptyLabel, onChange }: { items
   );
 }
 
+export type JourneyCriterion = { id: string; title: string };
+
+/** A shared entry/exit criteria presentation for method journeys. */
+export function JourneyCriteria({ entryCriteria, exitCriteria, entryLabel, exitLabel, emptyLabel }: { entryCriteria: JourneyCriterion[]; exitCriteria: JourneyCriterion[]; entryLabel: string; exitLabel: string; emptyLabel?: string }) {
+  const criteriaList = (items: JourneyCriterion[]) => items.length ? (
+    <ul>{items.map((item) => <li key={item.id}>{item.title}</li>)}</ul>
+  ) : emptyLabel ? <p className="journey-criteria__empty">{emptyLabel}</p> : null;
+
+  return (
+    <div className="criteria-grid">
+      <div><h3>{entryLabel}</h3>{criteriaList(entryCriteria)}</div>
+      <div><h3>{exitLabel}</h3>{criteriaList(exitCriteria)}</div>
+    </div>
+  );
+}
+
 export function PartnerCard({ href, title, description, logo, logoAlt = "", external = false }: { href: string; title: string; description: string; logo?: string; logoAlt?: string; external?: boolean }) {
   return (
     <a className="ds-partner-card" href={href} target={external ? "_blank" : undefined} rel={external ? "noreferrer" : undefined}>
