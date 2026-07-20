@@ -339,6 +339,10 @@ const lineColors: Record<string, string> = {
   "operating-model-line": "var(--color-line-operating-model)",
 };
 
+function lineColor(lineId: string) {
+  return lineColors[lineId] ?? "var(--color-line-adoption)";
+}
+
 const viewKeys = ["map", "guide", "canvases", "data"] as const;
 type ViewKey = (typeof viewKeys)[number];
 
@@ -1374,7 +1378,7 @@ function CatalogExplorer({
   const resources = arrayOrEmpty(data.resources);
   const lines = arrayOrEmpty(data.lines).map((line) => ({
     ...line,
-    color: lineColors[line.id] ?? line.color,
+    color: lineColor(line.id),
   }));
   const canvasData = canvases.translations[locale] ?? canvases.translations[canvases.defaultLocale] ?? canvases.translations.en ?? {};
   const localizedLabels = {
