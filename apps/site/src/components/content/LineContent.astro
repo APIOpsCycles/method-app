@@ -1,5 +1,6 @@
 ---
 import { getCatalog, getLabels, localePrefix, type Cycle, type Line, type Locale } from "../../lib/method-data";
+import { metroLineColor } from "../../lib/line-colors";
 import MethodMap from "./MethodMap.astro";
 interface Props { cycle: Cycle; line: Line; locale: Locale }
 const { cycle, line, locale } = Astro.props;
@@ -9,14 +10,15 @@ const catalog = getCatalog(locale);
 const stationIds = new Set(line.stations);
 // Cycle order is authoritative on a cycle-specific line page.
 const stations = cycle.stations.filter((station) => stationIds.has(station.id));
+const lineColor = metroLineColor(line.id);
 const cyclesByStation = new Map(catalog.stations.map((station) => [station.id, catalog.cycles.filter((candidate) => candidate.stations.some((item) => item.id === station.id))]));
 ---
 <main class="public-content">
   <nav class="public-breadcrumbs" aria-label={labels["chrome.breadcrumb"]}><a href={`${prefix}/`}>APIOps Cycles</a><span aria-hidden="true">/</span><a href={`${prefix}/cycles/${cycle.slug}`}>{cycle.title}</a><span aria-hidden="true">/</span><span>{line.title}</span></nav>
-  <section class="public-hero" style={`--line-color: ${line.color}`}>
+  <section class="public-hero" style={`--line-color: ${lineColor}`}>
     <p class="public-kicker">{labels["entity.line"]}</p>
     <div class="line-heading"><span class="line-icon" aria-hidden="true">{line.icon || "●"}</span><h1>{line.title}</h1></div>
-    <p>{line.description}</p><span class="line-color"><span aria-hidden="true"></span>{line.color}</span>
+    <p>{line.description}</p><span class="line-color"><span aria-hidden="true"></span>{lineColor}</span>
   </section>
   <section class="public-section" aria-label={line.title}><MethodMap locale={locale} cycleId={cycle.id} stationId={stations[0]?.id} lineId={line.id} /></section>
   <section class="public-section" aria-labelledby="line-stations"><h2 id="line-stations">{labels["section.stations"]}</h2>
