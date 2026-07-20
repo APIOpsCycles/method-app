@@ -4,7 +4,7 @@ The production site is being migrated to a statically generated Astro applicatio
 
 ## Applications
 
-- `apps/site/` contains the Astro source. The root `astro.config.mjs` sets `output: "static"`; React is reserved for explicitly hydrated interactive islands.
+- `apps/site/` contains the Astro source. `apps/site/astro.config.mjs` sets `output: "static"`; React is reserved for explicitly hydrated interactive islands.
 - `apps/beta/` retains the vinext application while route and feature parity are verified. Its Cloudflare worker and Sites Vite plugin are beta-only and are not part of the Astro build.
 
 ## Configuration
@@ -22,6 +22,8 @@ npm install
 npm run dev          # Astro development server
 npm run prepare:local-data # required before either application build
 npm run build        # static Astro production artifact in dist/
+npm start            # preview the built Astro site locally
 npm run dev:beta     # temporary vinext application
 npm run build:beta   # verify the temporary vinext application
+npm run start:beta   # serve the built temporary vinext application
 ```
