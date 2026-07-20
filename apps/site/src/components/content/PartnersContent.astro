@@ -1,0 +1,4 @@
+---
+import partners from "../../../../../generated/method/partners.json";
+---
+<main class="public-content"><section class="public-hero"><p class="public-kicker">Community</p><h1>APIOps Cycles partners</h1><p>Organizations supporting community adoption, training, method development, and implementation.</p></section><section class="public-section"><div class="public-card-grid">{partners.items.map((partner) => <article class="public-card"><img src={partner.logo} alt={`${partner.title} logo`} height="44" /><h2><a href={partner.href}>{partner.title}</a></h2><p>{partner.description}</p></article>)}</div></section></main>

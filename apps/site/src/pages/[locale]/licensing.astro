@@ -1,0 +1,8 @@
+---
+import LicensingContent from "../../components/content/LicensingContent.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { localizedLocales, type Locale } from "../../lib/method-data";
+export function getStaticPaths() { return localizedLocales.map((locale) => ({ params: { locale }, props: { locale } })); }
+const { locale } = Astro.props as { locale: Locale };
+---
+<BaseLayout title="Licensing" lang={locale} canonicalPath={`/${locale}/licensing`}><LicensingContent /></BaseLayout>

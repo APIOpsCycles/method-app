@@ -1,0 +1,35 @@
+---
+import { designSystemAssets } from "@apiops/design-system/assets";
+import { defaultLocale, locales, localePrefix, type Locale } from "../lib/method-data";
+
+interface Props { locale?: Locale }
+const locale = Astro.props.locale ?? defaultLocale;
+const prefix = localePrefix(locale);
+const repository = "https://github.com/APIOpsCycles/apiops-cycles-method-data";
+const localeNames: Record<Locale, string> = { en: "English", fi: "Suomi", fr: "Français", de: "Deutsch", pt: "Português" };
+---
+<header class="site-header">
+  <nav class="site-navigation" aria-label="Main navigation">
+    <a class="site-navigation__brand" href={`${prefix}/`}><img src={designSystemAssets.brand.cyclesLogoDark} alt="" /><span>APIOps Cycles</span></a>
+    <div class="site-navigation__links">
+      <a href={`${prefix}/partners`}>Partners</a>
+      <a href={repository} target="_blank" rel="noreferrer">GitHub</a>
+      <a href="/design-system">Design system</a>
+      <a href={`${prefix}/data`}>Data</a>
+      <label><span class="sr-only">Language</span><select id="site-language" aria-label="Language" data-default-locale={defaultLocale}>
+        {locales.map((item) => <option value={item} selected={item === locale}>{localeNames[item]}</option>)}
+      </select></label>
+    </div>
+  </nav>
+</header>
+<script is:inline>
+  document.querySelector('#site-language')?.addEventListener('change', (event) => {
+    const select = event.currentTarget;
+    const next = select.value;
+    const supported = Array.from(select.options).map((option) => option.value);
+    const parts = window.location.pathname.split('/').filter(Boolean);
+    if (supported.includes(parts[0])) parts.shift();
+    const path = `/${parts.join('/')}`;
+    window.location.assign(path === '/design-system' || next === select.dataset.defaultLocale ? path || '/' : `/${next}${path === '/' ? '' : path}`);
+  });
+</script>

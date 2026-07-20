@@ -47,6 +47,26 @@ a {
   color: inherit;
 }
 
+.global-shell { min-height: 100vh; display: flex; flex-direction: column; }
+.global-header { background: rgba(255,255,255,.96); border-bottom: 1px solid var(--panel-border); position: sticky; top: 0; z-index: 100; }
+.global-nav { align-items: center; display: flex; gap: 24px; justify-content: space-between; margin: auto; max-width: 1800px; min-height: 68px; padding: 10px clamp(16px,3vw,36px); }
+.global-nav .brand { align-items: center; display: flex; font-weight: 850; gap: 10px; text-decoration: none; }
+.global-nav .brand img { height: 34px; max-width: 180px; }
+.global-nav__links { align-items: center; display: flex; flex-wrap: wrap; gap: 6px; }
+.global-nav__links a { border-radius: 8px; font-weight: 750; padding: 9px 11px; text-decoration: none; }
+.global-nav__links a:hover { background: #f1f5fb; color: var(--accent); }
+.global-nav__links select { background: white; border: 1px solid var(--panel-border); border-radius: 8px; min-height: 40px; padding: 0 28px 0 10px; }
+.global-shell > main, .global-shell > .site-shell { flex: 1; }
+.global-footer { background: #fff; border-top: 1px solid var(--panel-border); margin-top: auto; padding: 32px clamp(18px,4vw,56px); }
+.global-footer > section, .global-footer__legal { margin-inline: auto; max-width: 1400px; }
+.global-footer h2 { font-size: 1.15rem; margin: 0 0 16px; }
+.global-footer__partners { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit,minmax(160px,1fr)); }
+.global-footer__partners a { align-items: center; border: 1px solid var(--panel-border); border-radius: 10px; display: flex; gap: 12px; min-height: 74px; padding: 12px; text-decoration: none; }
+.global-footer__partners img { max-height: 34px; max-width: 90px; object-fit: contain; }
+.global-footer__legal { border-top: 1px solid var(--panel-border); display: flex; flex-wrap: wrap; gap: 12px 20px; margin-top: 24px; padding-top: 18px; }
+.global-footer__legal a { color: var(--blue); font-weight: 750; }
+@media (max-width: 760px) { .global-nav { align-items: flex-start; flex-direction: column; } .global-nav__links { width: 100%; } }
+
 .public-content {
   margin: 0 auto;
   max-width: 1120px;

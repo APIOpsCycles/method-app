@@ -4,6 +4,8 @@ import { designSystemAssets } from "@apiops/design-system/assets";
 import "../styles/global.css";
 import { canonicalUrl } from "../env";
 import type { Locale } from "../lib/method-data";
+import SiteHeader from "../components/SiteHeader.astro";
+import SiteFooter from "../components/SiteFooter.astro";
 
 interface Props {
   title?: string;
@@ -35,6 +37,7 @@ const keywords = [
   "API design",
   "capability productization",
 ];
+const locale = lang as Locale;
 ---
 <!doctype html>
 <html lang={lang}>
@@ -60,6 +63,10 @@ const keywords = [
     <meta property="og:url" content={canonical} />
   </head>
   <body>
-    <slot />
+    <div class="global-site-shell">
+      <SiteHeader locale={locale} />
+      <slot />
+      <SiteFooter locale={locale} />
+    </div>
   </body>
 </html>

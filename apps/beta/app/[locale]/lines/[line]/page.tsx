@@ -1,0 +1,4 @@
+import { notFound } from "next/navigation";
+import Link from "next/link";
+import { getCatalog, localePrefix, normalizeLocale } from "../../../public-method-data";
+export default function Page({ params }: { params: { locale: string; line: string } }) { const locale = normalizeLocale(params.locale); const catalog = getCatalog(locale); const line = catalog.lines.find((item) => item.id === params.line); if (!line) notFound(); const prefix = localePrefix(locale); return <main className="public-content"><section className="public-hero"><p className="public-kicker">Metro line</p><h1>{line.title}</h1><p>{line.description}</p></section><section className="public-section"><h2>Stations</h2><ol className="public-link-list">{line.stations.map((stationId) => { const station = catalog.stations.find((item) => item.id === stationId); return station ? <li key={stationId}><Link href={`${prefix}/stations/${stationId}`}>{station.title}</Link></li> : null; })}</ol></section></main>; }
