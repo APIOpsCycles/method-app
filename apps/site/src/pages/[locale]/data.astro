@@ -1,8 +1,11 @@
 ---
 import DataContent from "../../components/content/DataContent.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import { metadataForRoute } from "../../lib/seo";
 import { localizedLocales, type Locale } from "../../lib/method-data";
 export function getStaticPaths() { return localizedLocales.map((locale) => ({ params: { locale }, props: { locale } })); }
 const { locale } = Astro.props as { locale: Locale };
+const canonicalPath = `/${locale}/data`;
+const seo = metadataForRoute("data", locale, canonicalPath);
 ---
-<BaseLayout title="Static method data" lang={locale} canonicalPath={`/${locale}/data`}><DataContent locale={locale} /></BaseLayout>
+<BaseLayout title="Static method data" lang={locale} canonicalPath={canonicalPath} {...seo}><DataContent locale={locale} /></BaseLayout>

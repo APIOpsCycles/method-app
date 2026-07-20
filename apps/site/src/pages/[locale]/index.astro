@@ -2,7 +2,12 @@
 import HomeContent from "../../components/content/HomeContent.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { localizedLocales, type Locale } from "../../lib/method-data";
+import { metadataForRoute, websiteJsonLd } from "../../lib/seo";
 export function getStaticPaths() { return localizedLocales.map((locale) => ({ params: { locale }, props: { locale } })); }
 const { locale } = Astro.props as { locale: Locale };
+const canonicalPath = `/${locale}/`;
+const title = "Stakeholder-Guided APIOps Cycles Method";
+const description = "Explore the stakeholder-guided APIOps Cycles method.";
+const seo = metadataForRoute("home", locale, canonicalPath);
 ---
-<BaseLayout title="Stakeholder-Guided APIOps Cycles Method" lang={locale} canonicalPath={`/${locale}/`}><HomeContent locale={locale} /></BaseLayout>
+<BaseLayout title={title} description={description} lang={locale} canonicalPath={canonicalPath} {...seo} jsonLd={websiteJsonLd(locale, title, description, canonicalPath)}><HomeContent locale={locale} /></BaseLayout>

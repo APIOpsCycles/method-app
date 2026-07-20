@@ -1,11 +1,15 @@
 ---
 import RoleContent from "../../../components/content/RoleContent.astro";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
+import { learningResourceJsonLd, metadataForRoute } from "../../../lib/seo";
 import { getCatalog, getRole, localizedLocales, type Locale } from "../../../lib/method-data";
 export function getStaticPaths() { return localizedLocales.flatMap((locale) => getCatalog(locale).routeProfiles.map((item) => ({ params: { locale, role: item.id }, props: { locale } }))); }
 const { locale } = Astro.props as { locale: Locale };
 const item = getRole(locale, Astro.params.role!);
 if (!item) throw new Error("Unknown role");
 const canonicalPath = `/${locale}/roles/${item.id}`;
+const homePath = locale === "en" ? "/" : `/${locale}/`;
+const seo = metadataForRoute("role", locale, canonicalPath);
+const jsonLd = learningResourceJsonLd(item, locale, canonicalPath, [{ name: "APIOps Cycles", path: homePath }, { name: item.title, path: canonicalPath }]);
 ---
-<BaseLayout title={item.title} description={item.summary} lang={locale} canonicalPath={canonicalPath}><RoleContent role={item} locale={locale} /></BaseLayout>
+<BaseLayout title={item.title} description={item.summary} lang={locale} canonicalPath={canonicalPath} {...seo} openGraphType="article" jsonLd={jsonLd}><RoleContent role={item} locale={locale} /></BaseLayout>
