@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { CyclesSection, StationsSection } from "@apiops/design-system/react";
 import partners from "generated-data/partners.json";
 import {
   canonicalPath,
@@ -33,6 +34,12 @@ function uniqueById<T extends { id: string }>(items: T[]) {
   return Array.from(new Map(items.map((item) => [item.id, item])).values());
 }
 
+const publicLineColor = (id: string) => ({
+  "business-opportunities-line": "var(--color-line-business)", "platform-architecture-line": "var(--color-line-architecture)",
+  "api-design-line": "var(--color-line-design)", "delivery-line": "var(--color-line-delivery)",
+  "publishing-and-adoption-line": "var(--color-line-publishing)", "operating-model-line": "var(--color-line-operating-model)",
+}[id] ?? "var(--color-line-adoption)");
+
 export function PublicHomeContent({ locale = defaultLocale }: { locale?: string }) {
   const normalized = normalizeLocale(locale);
   const data = getCatalog(normalized);
@@ -62,19 +69,7 @@ export function PublicHomeContent({ locale = defaultLocale }: { locale?: string 
           Explore the APIOps Cycles method as cycle journeys, stations, stakeholder guides, and reusable resources.
         </p>
       </section>
-      <section className="public-section" aria-labelledby="cycles">
-        <h2 id="cycles">Cycles</h2>
-        <div className="public-card-grid">
-          {data.cycles.map((cycle) => (
-            <article className="public-card" key={cycle.id}>
-              <h3>
-                <Link href={`${localePrefix(normalized)}/cycles/${cycle.slug}`}>{cycle.title}</Link>
-              </h3>
-              <p>{cycle.description}</p>
-            </article>
-          ))}
-        </div>
-      </section>
+      <CyclesSection title="Cycles" items={data.cycles.map((cycle) => ({ id: cycle.id, title: cycle.title, description: cycle.description, href: `${localePrefix(normalized)}/cycles/${cycle.slug}` }))} />
       <section className="public-section" aria-labelledby="roles">
         <h2 id="roles">Stakeholder guides</h2>
         <ul className="public-link-list">
@@ -130,20 +125,7 @@ export function PublicCycleContent({ cycle, locale = defaultLocale }: { cycle: C
         <p>{cycle.description}</p>
         {cycle.purpose ? <p>{cycle.purpose}</p> : null}
       </section>
-      <section className="public-section" aria-labelledby="stations">
-        <h2 id="stations">Stations</h2>
-        <ol className="public-step-list">
-          {cycle.stations.map((station) => (
-            <li key={station.id}>
-              <h3>
-                <Link href={`${prefix}/stations/${station.id}`}>{station.title}</Link>
-              </h3>
-              <p>{station.description}</p>
-              {station.whyItMatters ? <p>{station.whyItMatters}</p> : null}
-            </li>
-          ))}
-        </ol>
-      </section>
+      <StationsSection ordered title="Stations" items={cycle.stations.map((station) => ({ id: station.id, title: station.title, description: station.description, supportingText: station.whyItMatters, href: `${prefix}/cycles/${cycle.slug}/stations/${station.id}`, lineColors: getCatalog(normalized).lines.filter((line) => line.stations.includes(station.id)).map((line) => publicLineColor(line.id)) }))} />
       <section className="public-section" aria-labelledby="stakeholders">
         <h2 id="stakeholders">Stakeholders and roles</h2>
         <ul className="public-link-list">

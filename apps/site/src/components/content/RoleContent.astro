@@ -2,16 +2,20 @@
 import { getLabels, localePrefix, type Locale, type Role } from "../../lib/method-data";
 import EntityTools from "./EntityTools.astro";
 import { PublicResourceSelector } from "../islands/PublicSelectors";
+import { CyclesSection, StationsSection } from "@apiops/design-system/react";
+import { getCatalog } from "../../lib/method-data";
+import { metroLineColor } from "../../lib/line-colors";
 interface Props { role: Role; locale: Locale }
 const { role, locale } = Astro.props;
 const prefix = localePrefix(locale);
 const labels = getLabels(locale);
+const catalog = getCatalog(locale);
 ---
 <main class="public-content">
   <nav class="public-breadcrumbs" aria-label={labels["chrome.breadcrumb"]}><a href={`${prefix}/`}>APIOps Cycles</a><span aria-hidden="true">/</span><span>{role.title}</span></nav>
   <section class="public-hero"><p class="public-kicker">{labels["entity.role"]}</p><h1>{role.title}</h1><p>{role.summary}</p></section>
-    <section class="public-section" aria-labelledby="cycles"><h2 id="cycles">{labels["section.relevantCycles"]}</h2><div class="public-card-grid">{role.cycles.map((cycle) => <div class="public-card"><h3><a href={`${prefix}/cycles/${cycle.id}`}>{cycle.title}</a></h3><p>{cycle.description}</p></div>)}</div></section>
-  <section class="public-section" aria-labelledby="stations"><h2 id="stations">{labels["section.relevantStations"]}</h2><ul class="public-link-list">{role.stations.map((station) => <li><a href={`${prefix}/stations/${station.id}`}>{station.title}</a><span>{station.description}</span></li>)}</ul></section>
+  <CyclesSection title={labels["section.relevantCycles"]} items={role.cycles.map((cycle) => ({ id: cycle.id, title: cycle.title, description: cycle.description, href: `${prefix}/cycles/${cycle.slug}` }))} />
+  <StationsSection title={labels["section.relevantStations"]} items={role.stations.map((station) => ({ id: station.id, title: station.title, description: station.description, href: `${prefix}/stations/${station.id}`, lineColors: catalog.lines.filter((line) => line.stations.includes(station.id)).map((line) => metroLineColor(line.id)) }))} />
   <section class="public-section" aria-labelledby="decisions"><h2 id="decisions">{labels["section.decisionsOutputs"]}</h2><h3>{labels["section.decisions"]}</h3><ul>{role.decisions.map((item) => <li>{item}</li>)}</ul><h3>{labels["section.outputs"]}</h3><ul>{role.outputs.map((item) => <li>{item}</li>)}</ul></section>
   <section class="public-section" aria-labelledby="resources"><h2 id="resources">{labels["section.recommendedResources"]}</h2><PublicResourceSelector client:load emptyLabel={labels["resources.emptyLinked"]} items={role.recommendedResources.filter((item) => !item.draft).map((resource) => ({ id: resource.id, type: resource.category, title: resource.title, description: resource.description, href: `${prefix}/${resource.slug}` }))} /></section>
   <EntityTools locale={locale} role={role} />
