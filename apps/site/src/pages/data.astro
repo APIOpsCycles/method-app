@@ -1,5 +1,9 @@
 ---
 import DataContent from "../components/content/DataContent.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { metadataForRoute } from "../lib/seo";
+const locale = "en";
+const canonicalPath = "/data";
+const seo = metadataForRoute("data", locale, canonicalPath);
 ---
-<BaseLayout title="Static method data" canonicalPath="/data"><DataContent /></BaseLayout>
+<BaseLayout title="Static method data" lang={locale} canonicalPath={canonicalPath} {...seo}><DataContent /></BaseLayout>

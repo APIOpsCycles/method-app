@@ -1,8 +1,11 @@
 ---
 import PartnersContent from "../../components/content/PartnersContent.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import { metadataForRoute } from "../../lib/seo";
 import { localizedLocales, type Locale } from "../../lib/method-data";
 export function getStaticPaths() { return localizedLocales.map((locale) => ({ params: { locale }, props: { locale } })); }
 const { locale } = Astro.props as { locale: Locale };
+const canonicalPath = `/${locale}/partners`;
+const seo = metadataForRoute("partners", locale, canonicalPath);
 ---
-<BaseLayout title="Partners" lang={locale} canonicalPath={`/${locale}/partners`}><PartnersContent /></BaseLayout>
+<BaseLayout title="Partners" lang={locale} canonicalPath={canonicalPath} {...seo}><PartnersContent /></BaseLayout>

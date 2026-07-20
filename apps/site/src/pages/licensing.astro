@@ -1,5 +1,9 @@
 ---
 import LicensingContent from "../components/content/LicensingContent.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { metadataForRoute } from "../lib/seo";
+const locale = "en";
+const canonicalPath = "/licensing";
+const seo = metadataForRoute("licensing", locale, canonicalPath);
 ---
-<BaseLayout title="Licensing" canonicalPath="/licensing"><LicensingContent /></BaseLayout>
+<BaseLayout title="Licensing" lang={locale} canonicalPath={canonicalPath} {...seo}><LicensingContent /></BaseLayout>

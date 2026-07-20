@@ -1,11 +1,15 @@
 ---
 import StationContent from "../../components/content/StationContent.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import { learningResourceJsonLd, metadataForRoute } from "../../lib/seo";
 import { getCatalog, getStation, type Locale } from "../../lib/method-data";
 export function getStaticPaths() { return getCatalog("en").stations.map((item) => ({ params: { station: item.id }, props: { locale: "en" as Locale } })); }
 const { locale } = Astro.props;
 const item = getStation(locale, Astro.params.station!);
 if (!item) throw new Error("Unknown station");
 const canonicalPath = `/stations/${item.id}`;
+const homePath = locale === "en" ? "/" : `/${locale}/`;
+const seo = metadataForRoute("station", locale, canonicalPath);
+const jsonLd = learningResourceJsonLd(item, locale, canonicalPath, [{ name: "APIOps Cycles", path: homePath }, { name: item.title, path: canonicalPath }]);
 ---
-<BaseLayout title={item.title} description={item.description} lang={locale} canonicalPath={canonicalPath}><StationContent station={item} locale={locale} /></BaseLayout>
+<BaseLayout title={item.title} description={item.description} lang={locale} canonicalPath={canonicalPath} {...seo} openGraphType="article" jsonLd={jsonLd}><StationContent station={item} locale={locale} /></BaseLayout>

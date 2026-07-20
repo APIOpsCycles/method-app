@@ -13,7 +13,14 @@ interface Props {
   lang?: string;
   canonicalPath?: string;
   languageAlternates?: { lang: Locale | string; path: string }[];
-  jsonLd?: Record<string, unknown>;
+  xDefaultPath?: string;
+  openGraphType?: string;
+  twitterCard?: "summary" | "summary_large_image" | "app" | "player";
+  twitterSite?: string;
+  twitterCreator?: string;
+  twitterImage?: string;
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[];
+  robots?: string;
 }
 
 const {
@@ -22,7 +29,14 @@ const {
   lang = "en",
   canonicalPath = Astro.url.pathname,
   languageAlternates = [],
+  xDefaultPath,
+  openGraphType = "website",
+  twitterCard = "summary_large_image",
+  twitterSite,
+  twitterCreator,
+  twitterImage,
   jsonLd,
+  robots,
 } = Astro.props;
 const pageTitle = title === "APIOps Cycles Knowledge Catalog" ? title : `${title} | APIOps Cycles`;
 const canonical = canonicalUrl(canonicalPath);
@@ -50,8 +64,9 @@ const locale = lang as Locale;
     <meta name="keywords" content={keywords.join(", ")} />
     <link rel="canonical" href={canonical} />
     {languageAlternates.map((alternate) => <link rel="alternate" hreflang={alternate.lang} href={canonicalUrl(alternate.path)} />)}
-    {languageAlternates.length > 0 && <link rel="alternate" hreflang="x-default" href={canonicalUrl(languageAlternates.find((alternate) => alternate.lang === "en")?.path ?? canonicalPath)} />}
+    {(xDefaultPath || languageAlternates.length > 0) && <link rel="alternate" hreflang="x-default" href={canonicalUrl(xDefaultPath ?? languageAlternates.find((alternate) => alternate.lang === "en")?.path ?? canonicalPath)} />}
     {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
+    {robots && <meta name="robots" content={robots} />}
     <link rel="icon" href={designSystemAssets.favicon} type="image/svg+xml" />
     <link rel="shortcut icon" href={designSystemAssets.favicon} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -59,8 +74,14 @@ const locale = lang as Locale;
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={description} />
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={openGraphType} />
     <meta property="og:url" content={canonical} />
+    <meta name="twitter:card" content={twitterCard} />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={description} />
+    {twitterSite && <meta name="twitter:site" content={twitterSite} />}
+    {twitterCreator && <meta name="twitter:creator" content={twitterCreator} />}
+    {twitterImage && <meta name="twitter:image" content={canonicalUrl(twitterImage)} />}
   </head>
   <body>
     <div class="global-site-shell">

@@ -1,5 +1,9 @@
 ---
 import PartnersContent from "../components/content/PartnersContent.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { metadataForRoute } from "../lib/seo";
+const locale = "en";
+const canonicalPath = "/partners";
+const seo = metadataForRoute("partners", locale, canonicalPath);
 ---
-<BaseLayout title="Partners" canonicalPath="/partners"><PartnersContent /></BaseLayout>
+<BaseLayout title="Partners" lang={locale} canonicalPath={canonicalPath} {...seo}><PartnersContent /></BaseLayout>

@@ -1,7 +1,13 @@
 ---
 import HomeContent from "../components/content/HomeContent.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { metadataForRoute, websiteJsonLd } from "../lib/seo";
+const locale = "en";
+const canonicalPath = "/";
+const seo = metadataForRoute("home", locale, canonicalPath);
+const title = "Stakeholder-Guided APIOps Cycles Method";
+const description = "Explore the stakeholder-guided APIOps Cycles method.";
 ---
-<BaseLayout title="Stakeholder-Guided APIOps Cycles Method" canonicalPath="/">
-  <HomeContent locale="en" />
+<BaseLayout title={title} description={description} lang={locale} canonicalPath={canonicalPath} {...seo} jsonLd={websiteJsonLd(locale, title, description, canonicalPath)}>
+  <HomeContent locale={locale} />
 </BaseLayout>

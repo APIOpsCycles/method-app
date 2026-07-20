@@ -1,6 +1,7 @@
 ---
 import StationContent from "../../../../../components/content/StationContent.astro";
 import BaseLayout from "../../../../../layouts/BaseLayout.astro";
+import { learningResourceJsonLd, metadataForRoute } from "../../../../../lib/seo";
 import { getCatalog, getCycle, localizedLocales, type Locale } from "../../../../../lib/method-data";
 
 export function getStaticPaths() {
@@ -15,7 +16,14 @@ const cycle = getCycle(locale, Astro.params.cycle!);
 const station = cycle?.stations.find((item) => item.id === Astro.params.station);
 if (!cycle || !station) throw new Error("Unknown cycle station");
 const canonicalPath = `/${locale}/cycles/${cycle.slug}/stations/${station.id}`;
+const prefix = locale === "en" ? "" : `/${locale}`;
+const seo = metadataForRoute("cycleStation", locale, canonicalPath);
+const jsonLd = learningResourceJsonLd(station, locale, canonicalPath, [
+  { name: "APIOps Cycles", path: `${prefix}/` },
+  { name: cycle.title, path: `${prefix}/cycles/${cycle.slug}` },
+  { name: station.title, path: canonicalPath },
+]);
 ---
-<BaseLayout title={`${station.title} · ${cycle.title}`} description={station.description} lang={locale} canonicalPath={canonicalPath}>
+<BaseLayout title={`${station.title} · ${cycle.title}`} description={station.description} lang={locale} canonicalPath={canonicalPath} {...seo} openGraphType="article" jsonLd={jsonLd}>
   <StationContent station={station} cycle={cycle} locale={locale} />
 </BaseLayout>
