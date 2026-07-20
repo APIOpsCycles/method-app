@@ -45,7 +45,7 @@ export default function SiteChrome({ children }: { children: React.ReactNode }) 
       </header>
       {children}
       <footer className="global-footer">
-        <section aria-labelledby="footer-partners"><h2 id="footer-partners">Our partners</h2><div className="global-footer__partners">{partners.items.map((partner) => <a key={partner.href} href={partner.href} target="_blank" rel="noreferrer"><img src={partner.logo} alt={`${partner.title} logo`} /><strong>{partner.title}</strong></a>)}</div></section>
+        <section aria-labelledby="footer-partners"><h2 id="footer-partners">Our partners</h2><div className="global-footer__partners">{partners.items.map((partner) => <a className="ds-partner-card" key={partner.href} href={partner.href} target="_blank" rel="noreferrer"><img src={partner.logo} alt={`${partner.title} logo`} /><strong>{partner.title}</strong></a>)}</div></section>
         <div className="global-footer__legal"><span>APIOps Cycles method content is community-maintained.</span><a href={localizedPath(locale, "/licensing")}>Licensing</a><a href={repository} target="_blank" rel="noreferrer">GitHub repository</a></div>
       </footer>
     </div>

@@ -8,7 +8,7 @@ const prefix = localePrefix(locale);
 <footer class="global-footer">
   <section aria-labelledby="footer-partners">
     <p class="section-kicker">Community</p><h2 id="footer-partners">Our partners</h2>
-    <div class="global-footer__partners">{partners.items.map((partner) => <a href={partner.href} target="_blank" rel="noreferrer"><img src={partner.logo} alt={`${partner.title} logo`} /><span><strong>{partner.title}</strong><small>{partner.description}</small></span></a>)}</div>
+    <div class="global-footer__partners">{partners.items.map((partner) => <a class="ds-partner-card" href={partner.href} target="_blank" rel="noreferrer"><img src={partner.logo} alt={`${partner.title} logo`} /><span><strong>{partner.title}</strong><small>{partner.description}</small></span></a>)}</div>
   </section>
   <div class="global-footer__legal"><span>APIOps Cycles method content is community-maintained.</span><a href={`${prefix}/licensing`}>Licensing</a><a href="https://github.com/APIOpsCycles/apiops-cycles-method-data" target="_blank" rel="noreferrer">GitHub repository</a></div>
 </footer>

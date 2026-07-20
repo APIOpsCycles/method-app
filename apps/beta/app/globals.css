@@ -61,8 +61,6 @@ a {
 .global-footer > section, .global-footer__legal { margin-inline: auto; max-width: 1400px; }
 .global-footer h2 { font-size: 1.15rem; margin: 0 0 16px; }
 .global-footer__partners { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit,minmax(160px,1fr)); }
-.global-footer__partners a { align-items: center; border: 1px solid var(--panel-border); border-radius: 10px; display: flex; gap: 12px; min-height: 74px; padding: 12px; text-decoration: none; }
-.global-footer__partners img { max-height: 34px; max-width: 90px; object-fit: contain; }
 .global-footer__legal { border-top: 1px solid var(--panel-border); display: flex; flex-wrap: wrap; gap: 12px 20px; margin-top: 24px; padding-top: 18px; }
 .global-footer__legal a { color: var(--blue); font-weight: 750; }
 @media (max-width: 760px) { .global-nav { align-items: flex-start; flex-direction: column; } .global-nav__links { width: 100%; } }

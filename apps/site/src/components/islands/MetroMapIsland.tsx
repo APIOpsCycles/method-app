@@ -468,8 +468,22 @@ export default function MetroMapIsland({ locale, labels, cycles, lines, stations
   const prefix = locale === "en" ? "" : `/${locale}`;
   const navigate = (path: string) => window.location.assign(`${prefix}${path}`);
   return <section className="island-panel" aria-labelledby="metro-map-title">
-    <header className="island-heading"><div><p className="public-kicker">{labels["map.methodKicker"]}</p><h2 id="metro-map-title">{labels["map.title"]}</h2></div><button type="button" onClick={exportSvg}>{labels["map.exportSvg"]}</button></header>
+    <header className="island-heading"><div><p className="public-kicker">{labels["map.methodKicker"]}</p><h2 id="metro-map-title">{labels["map.title"]}</h2></div><button className="is-button" type="button" onClick={exportSvg}>{labels["map.exportSvg"]}</button></header>
     <p>{labels["map.help"]}</p>
+        <div className="ds-cycle-selector" aria-label="Cycle selector">
+          {cycles.map((cycle) => (
+            <button
+              key={cycle.id}
+              type="button"
+              className={cycle.id === cycleId ? "is-active" : ""}
+              style={{ "--route-color": (colors[cycle.id] ?? "var(--color-cycle-api)") } as React.CSSProperties}
+              onClick={() => { setCycleId(cycle.id); navigate(`/cycles/${cycle.slug}`); }}
+            >
+              <i aria-hidden="true" />
+              {cycle.title}
+            </button>
+          ))}
+        </div>
     <div className="metro-controls"><StakeholderRoleSelector roles={roles} value={roleId} label={labels["controls.stakeholderInvolvement"]} placeholder={labels["controls.selectStakeholder"]} involvementLabels={{ lead: labels["involvement.lead"], core: labels["involvement.core"], consulted: labels["involvement.consulted"] }} onChange={(id) => { setRoleId(id); navigate(`/roles/${id}`); }} /></div>
     <MetroMapView cycles={cycles} lines={lines} stations={stations} selectedCycleId={cycleId} selectedStationId={stationId} selectedLineId={initialLineId} stakeholderInvolvementByStation={roles.find((role) => role.id === roleId)?.involvementByStation ?? {}} onSelectCycle={(id) => { setCycleId(id); const selected = cycles.find((cycle) => cycle.id === id); if (selected) navigate(`/cycles/${selected.slug}`); }} onSelectStation={(id) => { setStationId(id); const selectedCycle = cycles.find((cycle) => cycle.id === cycleId); const isCycleStation = selectedCycle?.stations.some((station) => station.id === id); navigate(isCycleStation ? `/cycles/${selectedCycle.slug}/stations/${id}` : `/stations/${id}`); }} uiLabels={labels} svgRef={svgRef} />
     <p className="island-selection" aria-live="polite">{labels["map.selectedStation"]} <strong>{stations.find((station) => station.id === stationId)?.title ?? labels["map.none"]}</strong></p>

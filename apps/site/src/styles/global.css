@@ -31,7 +31,6 @@ body {
 .global-footer > section, .global-footer__legal { margin-inline: auto; max-width: 1400px; }
 .global-footer h2 { font-size: 1.35rem; margin: 0 0 16px; }
 .global-footer__partners { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit,minmax(210px,1fr)); }
-.global-footer__partners a { align-items: center; border: 1px solid var(--panel-border); border-radius: 10px; display: flex; gap: 12px; min-height: 90px; padding: 14px; text-decoration: none; }
 .global-footer__partners img { max-height: 38px; max-width: 100px; object-fit: contain; }
 .global-footer__partners span { display: grid; gap: 3px; }
 .global-footer__partners small { color: var(--muted); line-height: 1.35; }
@@ -171,7 +170,7 @@ a {
 .island-panel { background: var(--panel-bg, #fff); border: 1px solid var(--panel-border, #d7dfed); border-radius: 1rem; padding: clamp(1rem, 3vw, 2rem); }
 .island-panel h2 { margin-top: .35rem; }
 .island-heading, .canvas-toolbar { align-items: center; display: flex; flex-wrap: wrap; gap: .75rem; justify-content: space-between; }
-.island-panel button { background: #071640; border: 1px solid #071640; border-radius: .45rem; color: #fff; padding: .65rem .9rem; }
+.island-panel .is-button { background: #071640; border: 1px solid #071640; border-radius: .45rem; color: #fff; padding: .65rem .9rem; }
 .island-field { display: grid; font-weight: 700; gap: .4rem; margin: 1rem 0; max-width: 38rem; }
 .island-field select, .canvas-metadata input, .canvas-zone input { border: 1px solid #aab6ca; border-radius: .4rem; min-height: 2.6rem; padding: .5rem; }
 .island-metro { border: 1px solid #d7dfed; border-radius: .75rem; height: auto; max-height: 42rem; width: 100%; }
