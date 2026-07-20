@@ -19,9 +19,17 @@ const steps = station.steps.map((step) => ({
     ? catalogResources.find((resource) => resource.id === step.resourceId && !resource.draft)
     : undefined,
 }));
-const stationCriterionIds = new Set(station.criteriaDetails.map((item) => item.id));
-const entryCriteria = selectedCycle?.entryCriteriaDetails.filter((item) => stationCriterionIds.has(item.id)) ?? [];
-const exitCriteria = selectedCycle?.exitCriteriaDetails.filter((item) => stationCriterionIds.has(item.id)) ?? [];
+const selectedCycleStationIndex = selectedCycle?.stations.findIndex((item) => item.id === station.id) ?? -1;
+const previousCycleStation = selectedCycleStationIndex > 0 ? selectedCycle?.stations[selectedCycleStationIndex - 1] : undefined;
+// Entering the first station requires the cycle's entry criteria. Later stations
+// inherit the completion criteria from the preceding station in that journey.
+const entryCriteria = selectedCycleStationIndex <= 0
+  ? selectedCycle?.entryCriteriaDetails ?? []
+  : previousCycleStation?.criteriaDetails ?? [];
+// A station's own criteria describe what must be true before moving onward.
+const exitCriteria = station.criteriaDetails.length
+  ? station.criteriaDetails
+  : selectedCycle?.exitCriteriaDetails ?? [];
 ---
 <main class="public-content">
   <nav class="public-breadcrumbs" aria-label={labels["chrome.breadcrumb"]}><a href={`${prefix}/`}>APIOps Cycles</a><span aria-hidden="true">/</span>{cycle && <><a href={`${prefix}/cycles/${cycle.slug}`}>{cycle.title}</a><span aria-hidden="true">/</span></>}<span>{station.title}</span></nav>
