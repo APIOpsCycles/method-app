@@ -456,10 +456,47 @@ export default function MetroMapIsland({ locale, labels, cycles, lines, stations
   const [stationId, setStationId] = useState(initialStationId ?? cycles[0]?.stations[0]?.id ?? stations[0]?.id ?? "");
   const [roleId, setRoleId] = useState(initialRoleId ?? "");
   const svgRef = useRef<SVGSVGElement>(null);
-  function exportSvg() {
+  async function inlineLogoForExport(clone: SVGSVGElement) {
+    for (const image of Array.from(clone.querySelectorAll("image"))) {
+      const href = image.getAttribute("href");
+      if (href === designSystemAssets.brand.cyclesLogoDark) {
+        const response = await fetch(href);
+        const logoText = await response.text();
+        const logo = new DOMParser().parseFromString(logoText, "image/svg+xml").documentElement;
+        const inlineLogo = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+        inlineLogo.setAttribute("x", image.getAttribute("x") ?? "0");
+        inlineLogo.setAttribute("y", image.getAttribute("y") ?? "0");
+        inlineLogo.setAttribute("width", image.getAttribute("width") ?? "60");
+        inlineLogo.setAttribute("height", image.getAttribute("height") ?? "60");
+        inlineLogo.setAttribute("viewBox", logo.getAttribute("viewBox") ?? "0 0 567 567");
+        inlineLogo.setAttribute("preserveAspectRatio", logo.getAttribute("preserveAspectRatio") ?? "xMidYMid meet");
+        inlineLogo.setAttribute("class", image.getAttribute("class") ?? "");
+        Array.from(logo.children).filter((child) => child.localName !== "namedview").forEach((child) => {
+          const importedChild = document.importNode(child, true);
+          (importedChild as Element).removeAttribute("xmlns:sodipodi");
+          (importedChild as Element).removeAttribute("sodipodi:nodetypes");
+          inlineLogo.appendChild(importedChild);
+        });
+        image.replaceWith(inlineLogo);
+      } else if (href?.startsWith("/")) {
+        image.setAttribute("href", `${window.location.origin}${href}`);
+      }
+    }
+  }
+
+  async function exportSvg() {
     if (!svgRef.current) return;
     const clone = svgRef.current.cloneNode(true) as SVGSVGElement;
+    await inlineLogoForExport(clone);
     inlineMetroMapExportColors(clone, colors[cycleId] ?? "#164e63");
+    // Remove sodipodi attributes from all elements
+    Array.from(clone.querySelectorAll("*")).forEach((element) => {
+      Array.from(element.attributes).forEach((attr) => {
+        if (attr.name.startsWith("xmlns:sodipodi") || attr.name.startsWith("sodipodi:")) {
+          element.removeAttribute(attr.name);
+        }
+      });
+    });
     clone.insertAdjacentHTML("afterbegin", `<style>${metroMapSvgStyles(colors[cycleId] ?? "#164e63")}</style>`);
     clone.setAttribute("xmlns", "http://www.w3.org/2000/svg");
     const url = URL.createObjectURL(new Blob([new XMLSerializer().serializeToString(clone)], { type: "image/svg+xml" }));
@@ -484,7 +521,7 @@ export default function MetroMapIsland({ locale, labels, cycles, lines, stations
             </button>
           ))}
         </div>
-    <div className="metro-controls"><StakeholderRoleSelector roles={roles} value={roleId} label={labels["controls.stakeholderInvolvement"]} placeholder={labels["controls.selectStakeholder"]} involvementLabels={{ lead: labels["involvement.lead"], core: labels["involvement.core"], consulted: labels["involvement.consulted"] }} onChange={(id) => { setRoleId(id); navigate(`/roles/${id}`); }} /></div>
+    <div className="metro-controls"><StakeholderRoleSelector roles={roles} value={roleId} label={labels["controls.stakeholderInvolvement"]} placeholder={labels["controls.selectStakeholder"]} involvementLabels={{ lead: labels["involvement.lead"], core: labels["involvement.core"], consulted: labels["involvement.consulted"] }} onChange={(id) => { setRoleId(id); }} /></div>
     <MetroMapView cycles={cycles} lines={lines} stations={stations} selectedCycleId={cycleId} selectedStationId={stationId} selectedLineId={initialLineId} stakeholderInvolvementByStation={roles.find((role) => role.id === roleId)?.involvementByStation ?? {}} onSelectCycle={(id) => { setCycleId(id); const selected = cycles.find((cycle) => cycle.id === id); if (selected) navigate(`/cycles/${selected.slug}`); }} onSelectStation={(id) => { setStationId(id); const selectedCycle = cycles.find((cycle) => cycle.id === cycleId); const isCycleStation = selectedCycle?.stations.some((station) => station.id === id); navigate(isCycleStation ? `/cycles/${selectedCycle.slug}/stations/${id}` : `/stations/${id}`); }} uiLabels={labels} svgRef={svgRef} />
     <p className="island-selection" aria-live="polite">{labels["map.selectedStation"]} <strong>{stations.find((station) => station.id === stationId)?.title ?? labels["map.none"]}</strong></p>
   </section>;
