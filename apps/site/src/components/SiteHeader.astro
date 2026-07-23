@@ -11,7 +11,13 @@ const localeNames: Record<Locale, string> = { en: "English", fi: "Suomi", fr: "F
 <header class="site-header">
   <nav class="site-navigation" aria-label="Main navigation">
     <a class="site-navigation__brand" href={`${prefix}/`}><img src={designSystemAssets.brand.cyclesLogo} alt="APIOps Cycles logo" /><img src={designSystemAssets.brand.cyclesLogoDark} alt="APIOps Cycles" /></a>
-    <div class="site-navigation__links">
+    <button class="site-navigation__toggle" type="button" aria-expanded="false" aria-controls="site-navigation-links">
+      <span class="sr-only">Toggle main navigation</span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </button>
+    <div class="site-navigation__links" id="site-navigation-links">
       <a href={`${prefix}/partners`}>Partners</a>
       <a href={repository} target="_blank" rel="noreferrer">GitHub</a>
       <a href="/design-system">Design system</a>
@@ -23,6 +29,26 @@ const localeNames: Record<Locale, string> = { en: "English", fi: "Suomi", fr: "F
   </nav>
 </header>
 <script is:inline>
+  const navigation = document.querySelector('.site-navigation');
+  const navigationToggle = navigation?.querySelector('.site-navigation__toggle');
+
+  const closeNavigation = () => {
+    navigation?.removeAttribute('data-open');
+    navigationToggle?.setAttribute('aria-expanded', 'false');
+  };
+
+  navigationToggle?.addEventListener('click', () => {
+    const open = navigation?.toggleAttribute('data-open');
+    navigationToggle.setAttribute('aria-expanded', String(Boolean(open)));
+  });
+  navigation?.querySelectorAll('.site-navigation__links a').forEach((link) => link.addEventListener('click', closeNavigation));
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      closeNavigation();
+      navigationToggle?.focus();
+    }
+  });
+
   document.querySelector('#site-language')?.addEventListener('change', (event) => {
     const select = event.currentTarget;
     const next = select.value;
