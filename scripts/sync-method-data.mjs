@@ -140,7 +140,6 @@ function copyBrandOverrides() {
     path.join(publicAssetRoot, "apiops-cycles-logo-white.svg"),
   );
   copyIfExists(
-    path.join(designGlyphRoot, "apiops-cycles-favicon.svg"),
     path.join(root, "public", "favicon.svg"),
   );
   for (const size of [16, 32, 64, 256, 512]) {

@@ -29,51 +29,6 @@
                                 ]
                    },
                    {
-                       "path":  "favicons/favicon-16.png",
-                       "kind":  "favicon",
-                       "tags":  [
-                                    "apiops",
-                                    "favicons",
-                                    "favicon 16"
-                                ]
-                   },
-                   {
-                       "path":  "favicons/favicon-256.png",
-                       "kind":  "favicon",
-                       "tags":  [
-                                    "apiops",
-                                    "favicons",
-                                    "favicon 256"
-                                ]
-                   },
-                   {
-                       "path":  "favicons/favicon-32.png",
-                       "kind":  "favicon",
-                       "tags":  [
-                                    "apiops",
-                                    "favicons",
-                                    "favicon 32"
-                                ]
-                   },
-                   {
-                       "path":  "favicons/favicon-512.png",
-                       "kind":  "favicon",
-                       "tags":  [
-                                    "apiops",
-                                    "favicons",
-                                    "favicon 512"
-                                ]
-                   },
-                   {
-                       "path":  "favicons/favicon-64.png",
-                       "kind":  "favicon",
-                       "tags":  [
-                                    "apiops",
-                                    "favicons",
-                                    "favicon 64"
-                                ]
-                   },
-                   {
                        "path":  "favicons/favicon.svg",
                        "kind":  "favicon",
                        "tags":  [
@@ -89,33 +44,6 @@
                                     "apiops",
                                     "glyphs",
                                     "check mark"
-                                ]
-                   },
-                   {
-                       "path":  "glyphs/apiops-cycles-favicon.svg",
-                       "kind":  "glyph",
-                       "tags":  [
-                                    "apiops",
-                                    "glyphs",
-                                    "cycles favicon"
-                                ]
-                   },
-                   {
-                       "path":  "glyphs/apiops-cycles-logo-white.svg",
-                       "kind":  "glyph",
-                       "tags":  [
-                                    "apiops",
-                                    "glyphs",
-                                    "cycles logo white"
-                                ]
-                   },
-                   {
-                       "path":  "glyphs/apiops-cycles-logo.svg",
-                       "kind":  "glyph",
-                       "tags":  [
-                                    "apiops",
-                                    "glyphs",
-                                    "cycles logo"
                                 ]
                    },
                    {
@@ -146,29 +74,29 @@
                                 ]
                    },
                    {
-                       "path":  "glyphs/apiops-logo.svg",
-                       "kind":  "glyph",
+                       "path":  "brand/apiops-logo.svg",
+                       "kind":  "brand",
                        "tags":  [
                                     "apiops",
-                                    "glyphs",
+                                    "brand",
                                     "logo"
                                 ]
                    },
                    {
-                       "path":  "glyphs/apiops-mark-white.svg",
-                       "kind":  "glyph",
+                       "path":  "brand/apiops-mark-white.svg",
+                       "kind":  "brand",
                        "tags":  [
                                     "apiops",
-                                    "glyphs",
+                                    "brand",
                                     "mark white"
                                 ]
                    },
                    {
-                       "path":  "glyphs/apiops-mark.svg",
-                       "kind":  "glyph",
+                       "path":  "brand/apiops-mark.svg",
+                       "kind":  "brand",
                        "tags":  [
                                     "apiops",
-                                    "glyphs",
+                                    "brand",
                                     "mark"
                                 ]
                    },
@@ -215,51 +143,6 @@
                                     "apiops",
                                     "glyphs",
                                     "stick figures stories"
-                                ]
-                   },
-                   {
-                       "path":  "glyphs/favicon-16.png",
-                       "kind":  "glyph",
-                       "tags":  [
-                                    "apiops",
-                                    "glyphs",
-                                    "favicon 16"
-                                ]
-                   },
-                   {
-                       "path":  "glyphs/favicon-256.png",
-                       "kind":  "glyph",
-                       "tags":  [
-                                    "apiops",
-                                    "glyphs",
-                                    "favicon 256"
-                                ]
-                   },
-                   {
-                       "path":  "glyphs/favicon-32.png",
-                       "kind":  "glyph",
-                       "tags":  [
-                                    "apiops",
-                                    "glyphs",
-                                    "favicon 32"
-                                ]
-                   },
-                   {
-                       "path":  "glyphs/favicon-512.png",
-                       "kind":  "glyph",
-                       "tags":  [
-                                    "apiops",
-                                    "glyphs",
-                                    "favicon 512"
-                                ]
-                   },
-                   {
-                       "path":  "glyphs/favicon-64.png",
-                       "kind":  "glyph",
-                       "tags":  [
-                                    "apiops",
-                                    "glyphs",
-                                    "favicon 64"
                                 ]
                    },
                    {
