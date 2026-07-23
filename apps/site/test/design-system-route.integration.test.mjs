@@ -4,6 +4,8 @@ import test from "node:test";
 
 const route = new URL("../src/pages/design-system.astro", import.meta.url);
 const source = readFileSync(route, "utf8");
+const layoutSource = readFileSync(new URL("../src/layouts/BaseLayout.astro", import.meta.url), "utf8");
+const globalStyles = readFileSync(new URL("../src/styles/global.css", import.meta.url), "utf8");
 
 test("the English-only design system static route documents its public contract", () => {
   assert.equal(existsSync(route), true);
@@ -21,6 +23,12 @@ test("the English-only design system static route documents its public contract"
 
 test("the design system route has no generated localized variant", () => {
   assert.equal(existsSync(new URL("../src/pages/[locale]/design-system.astro", import.meta.url)), false);
+});
+
+test("public pages use the full device width on narrow screens", () => {
+  assert.match(layoutSource, /name="viewport" content="width=device-width, initial-scale=1"/);
+  assert.match(globalStyles, /\.global-site-shell \{[^}]*min-width: 0;[^}]*width: 100%;[^}]*\}/);
+  assert.match(globalStyles, /\.global-site-shell > main \{[^}]*min-width: 0;[^}]*\}/);
 });
 
 test("standalone symbol downloads retain their sprite styles", () => {
