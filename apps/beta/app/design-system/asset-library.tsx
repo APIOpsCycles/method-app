@@ -41,6 +41,48 @@ function parseSizes(sizes: string) {
     .filter((size) => Number.isFinite(size) && size > 0);
 }
 
+function downloadSvg(contents: string, filename: string) {
+  const url = URL.createObjectURL(new Blob([contents], { type: "image/svg+xml;charset=utf-8" }));
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = `${filename.replace(/[^a-z0-9-_]+/gi, "-")}.svg`;
+  link.click();
+  window.setTimeout(() => URL.revokeObjectURL(url), 0);
+}
+
+function serializeMaterialIcon(card: HTMLElement, viewBox: string) {
+  const preview = card.querySelector<SVGSVGElement>(".ds-asset-preview svg");
+  if (!preview) throw new Error("The icon preview could not be exported.");
+
+  const svg = preview.cloneNode(true) as SVGSVGElement;
+  svg.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+  svg.setAttribute("viewBox", svg.getAttribute("viewBox") ?? viewBox);
+  svg.setAttribute("color", getComputedStyle(preview).color);
+  svg.removeAttribute("class");
+  svg.removeAttribute("aria-hidden");
+  return new XMLSerializer().serializeToString(svg);
+}
+
+async function serializeSpriteAsset(item: AssetItem, card: HTMLElement, viewBox: string) {
+  const response = await fetch(item.source);
+  if (!response.ok) throw new Error(`The asset source returned ${response.status}.`);
+
+  if (!item.symbolId) return response.text();
+
+  const document = new DOMParser().parseFromString(await response.text(), "image/svg+xml");
+  if (document.querySelector("parsererror") || !document.getElementById(item.symbolId)) {
+    throw new Error("The requested symbol was not found in its SVG source.");
+  }
+
+  const preview = card.querySelector<SVGSVGElement>(".ds-asset-preview svg");
+  const computed = preview ? getComputedStyle(preview) : null;
+  const variables = ["--apiops-accent", "--apiops-ink", "--apiops-muted"]
+    .map((name) => `${name}:${computed?.getPropertyValue(name).trim() || "currentColor"}`)
+    .join(";");
+  const sourceContents = document.documentElement.innerHTML;
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${viewBox}" style="${variables}"><defs>${sourceContents}</defs><use href="#${item.symbolId}" /></svg>`;
+}
+
 function AssetSizePreview({ item, sizes }: { item: AssetItem; sizes: number[] }) {
   const accent = assetAccentByColor[item.color] ?? "var(--apiops-accent-product)";
   const viewBox = item.viewBox ?? "0 0 96 96";
@@ -77,6 +119,8 @@ export default function AssetLibrary({ assets }: { assets: AssetItem[] }) {
   const [category, setCategory] = useState("All");
   const [color, setColor] = useState("All");
   const [copiedId, setCopiedId] = useState<string | null>(null);
+  const [exportingId, setExportingId] = useState<string | null>(null);
+  const [exportError, setExportError] = useState<string | null>(null);
 
   const filtered = useMemo(() => {
     const normalized = query.trim().toLowerCase();
@@ -102,15 +146,36 @@ export default function AssetLibrary({ assets }: { assets: AssetItem[] }) {
     }
   }
 
+  async function exportAsset(asset: AssetItem, card: HTMLElement) {
+    setExportingId(asset.id);
+    setExportError(null);
+    try {
+      const viewBox = asset.viewBox ?? "0 0 96 96";
+      const svg = asset.materialIcon
+        ? serializeMaterialIcon(card, viewBox)
+        : await serializeSpriteAsset(asset, card, viewBox);
+      downloadSvg(svg, asset.id);
+    } catch (error) {
+      setExportError(error instanceof Error ? error.message : "The SVG could not be exported.");
+    } finally {
+      setExportingId(null);
+    }
+  }
+
   return (
     <section className="ds-section" id="asset-library">
       <div className="ds-section__head">
         <p className="section-kicker">Asset Library</p>
         <h2>Search icons, glyphs, and human figures</h2>
         <p>
-          Previews reference the existing sprite files. Use the symbol ID and source path in product UI instead of
-          duplicating SVG geometry. Recommended sizes are rendered dimensions; the SVG viewBox stays the same.
+          Previews reference the existing sprite files. Download any asset as an individual SVG, or use the symbol ID
+          and source path in product UI. Recommended sizes are rendered dimensions; the SVG viewBox stays the same.
         </p>
+        {exportError ? (
+          <p className="ds-export-error" role="alert">
+            Export failed: {exportError}
+          </p>
+        ) : null}
       </div>
       <div className="ds-filterbar" role="search">
         <label>
@@ -188,6 +253,14 @@ export default function AssetLibrary({ assets }: { assets: AssetItem[] }) {
               <pre className="ds-usage-snippet ds-usage-snippet--print">{snippet}</pre>
               <button className="ds-copy-button" type="button" onClick={() => copySnippet(asset.id, snippet)}>
                 {copiedId === asset.id ? "Copied" : "Copy snippet"}
+              </button>
+              <button
+                className="ds-export-button"
+                type="button"
+                disabled={exportingId === asset.id}
+                onClick={(event) => exportAsset(asset, event.currentTarget.closest("article") as HTMLElement)}
+              >
+                {exportingId === asset.id ? "Preparing SVG…" : "Download SVG"}
               </button>
             </article>
           );

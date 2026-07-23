@@ -3228,13 +3228,29 @@ pre {
   display: none;
 }
 
-.ds-copy-button {
+.ds-copy-button,
+.ds-export-button {
   background: var(--control-bg);
   border: 1px solid var(--panel-border);
   border-radius: var(--control-radius);
   color: var(--apiops-accent-community);
   font-weight: var(--control-font-weight);
   min-height: var(--control-min-height);
+}
+
+.ds-export-button {
+  background: var(--apiops-accent-community);
+  color: var(--color-neutral-paper);
+}
+
+.ds-export-button:disabled {
+  cursor: wait;
+  opacity: 0.65;
+}
+
+.ds-export-error {
+  color: var(--color-line-design);
+  font-weight: 750;
 }
 
 @media (prefers-reduced-motion: reduce) {
