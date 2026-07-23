@@ -84,7 +84,7 @@
   --line: var(--panel-border);
   --muted: #64748b;
   --accent: var(--apiops-accent-community);
-  --blue: var(--color-cycle-integration);
+  --blue: var(--apiops-accent-community);
   --teal: var(--color-cycle-automation);
   --green: var(--color-cycle-capability);
   --gold: var(--color-line-delivery);
