@@ -3,6 +3,40 @@
 import { useState } from "react";
 import type { CSSProperties, KeyboardEvent, ReactNode } from "react";
 
+export function SvgAssetDownload({ source, filename, symbolId, viewBox }: { source: string; filename: string; symbolId?: string; viewBox?: string }) {
+  const [status, setStatus] = useState<"idle" | "loading" | "error">("idle");
+
+  async function download() {
+    setStatus("loading");
+    try {
+      const response = await fetch(source);
+      if (!response.ok) throw new Error(`Asset source returned ${response.status}`);
+      let contents = await response.text();
+      if (symbolId) {
+        const document = new DOMParser().parseFromString(contents, "image/svg+xml");
+        const symbol = document.getElementById(symbolId);
+        if (document.querySelector("parsererror") || !symbol) throw new Error("SVG symbol was not found");
+        const resolvedViewBox = viewBox ?? symbol.getAttribute("viewBox") ?? "0 0 96 96";
+        const embeddedStyles = Array.from(document.querySelectorAll("style"))
+          .map((style) => style.outerHTML)
+          .join("");
+        contents = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${resolvedViewBox}"><defs>${embeddedStyles}${symbol.outerHTML}</defs><use href="#${symbolId}" /></svg>`;
+      }
+      const url = URL.createObjectURL(new Blob([contents], { type: "image/svg+xml;charset=utf-8" }));
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = `${filename.replace(/[^a-z0-9-_]+/gi, "-")}.svg`;
+      link.click();
+      window.setTimeout(() => URL.revokeObjectURL(url), 0);
+      setStatus("idle");
+    } catch {
+      setStatus("error");
+    }
+  }
+
+  return <span className="ds-svg-download"><button type="button" disabled={status === "loading"} onClick={() => void download()}>{status === "loading" ? "Preparing SVG…" : "Download SVG"}</button>{status === "error" ? <small role="alert">The SVG could not be downloaded.</small> : null}</span>;
+}
+
 export type MetroPoint = { x: number; y: number };
 
 /** Presentation-only SVG frame for a metro diagram. Routing and data stay with the consumer. */

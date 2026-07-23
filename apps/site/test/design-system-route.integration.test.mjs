@@ -22,3 +22,9 @@ test("the English-only design system static route documents its public contract"
 test("the design system route has no generated localized variant", () => {
   assert.equal(existsSync(new URL("../src/pages/[locale]/design-system.astro", import.meta.url)), false);
 });
+
+test("standalone symbol downloads retain their sprite styles", () => {
+  const component = readFileSync(new URL("../../../packages/apiops-design-system/src/react/index.tsx", import.meta.url), "utf8");
+  assert.match(component, /document\.querySelectorAll\("style"\)/);
+  assert.match(component, /<defs>\$\{embeddedStyles\}\$\{symbol\.outerHTML\}<\/defs>/);
+});

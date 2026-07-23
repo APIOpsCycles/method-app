@@ -23,12 +23,7 @@
     "sync:method-data": "node scripts/sync-method-data.mjs",
     "db:generate": "drizzle-kit generate",
     "sync:design-system-assets": "node scripts/sync-design-system-assets.mjs",
-    "preview": "npm run preview --workspace @apiops/site",
-    "dev:beta": "npm run dev --workspace @apiops/beta",
-    "build:beta": "npm run build --workspace @apiops/beta",
-    "start:beta": "npm run start --workspace @apiops/beta",
-    "predev:beta": "npm run prepare:local-data",
-    "prebuild:beta": "npm run prepare:local-data"
+    "preview": "npm run preview --workspace @apiops/site"
   },
   "dependencies": {
     "drizzle-orm": "0.45.2"
