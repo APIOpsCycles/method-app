@@ -1,5 +1,10 @@
 /* APIOps design tokens and method-agnostic canvas system. */
 
+.ds-svg-download { display: grid; gap: .35rem; margin-top: .75rem; }
+.ds-svg-download button { background: var(--apiops-accent-community); border: 1px solid transparent; border-radius: var(--control-radius); color: var(--color-neutral-paper); cursor: pointer; font: inherit; font-weight: 700; min-height: var(--control-min-height); padding: .55rem .8rem; width: fit-content; }
+.ds-svg-download button:disabled { cursor: wait; opacity: .65; }
+.ds-svg-download small { color: var(--color-line-design); font-weight: 700; }
+
 /* Shared application patterns. Content and domain behavior are supplied by consumers. */
 .compact-section-head { align-items: center; display: flex; gap: 10px; justify-content: space-between; }
 .compact-section-head h3 { margin: 0; }

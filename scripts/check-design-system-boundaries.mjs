@@ -36,7 +36,7 @@ for (const file of await sourceFiles("apps")) {
   }
 }
 
-const layouts = ["apps/site/src/layouts/BaseLayout.astro", "apps/beta/app/layout.tsx"];
+const layouts = ["apps/site/src/layouts/BaseLayout.astro"];
 for (const file of layouts) {
   const source = await readFile(file, "utf8");
   const imports = source.match(/@apiops\/design-system\/styles\.css/g) ?? [];
