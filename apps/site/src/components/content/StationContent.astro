@@ -5,6 +5,8 @@ import MethodMap from "./MethodMap.astro";
 import { CyclesSection, JourneyCriteria, LinesSection } from "@apiops/design-system/react";
 import { metroLineColor } from "../../lib/line-colors";
 import { PublicPillList, PublicResourceSelector } from "../islands/PublicSelectors";
+import MethodContextStrip from "../islands/MethodContextStrip";
+import { getGoals, methodGraph } from "../../lib/method-graph";
 interface Props { station: Station; locale: Locale; cycle?: ReturnType<typeof getCatalog>["cycles"][number]; compatibilityAlias?: boolean }
 const { station, locale, cycle, compatibilityAlias = false } = Astro.props;
 const prefix = localePrefix(locale);
@@ -35,6 +37,7 @@ const relatedLines = getLinesForContext(getCatalog(locale), selectedCycle, stati
 ---
 <main class="public-content">
   <nav class="public-breadcrumbs" aria-label={labels["chrome.breadcrumb"]}><a href={`${prefix}/`}>APIOps Cycles</a><span aria-hidden="true">/</span>{cycle && <><a href={`${prefix}/cycles/${cycle.slug}`}>{cycle.title}</a><span aria-hidden="true">/</span></>}<span>{station.title}</span></nav>
+  <MethodContextStrip client:idle stakeholders={getCatalog(locale).routeProfiles.map((role) => ({ id: role.id, label: role.title }))} goals={getGoals(locale)} cycle={selectedCycle ? { label: selectedCycle.title, href: `${prefix}/cycles/${selectedCycle.slug}` } : undefined} here={{ label: station.title }} labels={{ context: labels["context.label"], viewAs: labels["controls.stakeholderInvolvement"], goal: labels["controls.goal"], cycle: labels["context.cycle"], here: labels["context.here"], notSelected: labels["context.notSelected"], reset: labels["controls.resetContext"] }} />
   <section class="public-hero"><p class="public-kicker">{labels["entity.station"]}</p><h1>{station.title}</h1><p>{station.description}</p>{station.whyItMatters && <p>{station.whyItMatters}</p>}{compatibilityAlias && <p class="alias-notice">This compatibility URL presents the canonical station content.</p>}</section>
   <section class="public-section" aria-label={labels["map.selectedStation"]}><MethodMap locale={locale} cycleId={selectedCycle?.id} stationId={station.id} /></section>
   <section class="public-section" aria-labelledby="roles"><h2 id="roles">{labels["section.people"]}</h2><PublicPillList client:load label={labels["section.people"]} items={station.stakeholders.map((role) => ({ id: role.id, label: role.title, href: `${prefix}/roles/${role.id}` }))} /></section>
@@ -44,5 +47,6 @@ const relatedLines = getLinesForContext(getCatalog(locale), selectedCycle, stati
   <section class="public-section" aria-labelledby="work"><h2 id="work">{labels["section.applyWork"]}</h2><p>{station.applyInWork}</p><ol>{steps.map(({ step, resource }) => <li>{step.text}{resource && <> — <a href={resourcePath(locale, resource)}>{step.resourceTitle || resource.title}</a></>}</li>)}</ol></section>
   <LinesSection title={labels["section.lines"]} items={relatedLines.map((line) => ({ id: line.id, title: line.title, description: line.description, icon: line.icon, color: metroLineColor(line.id), href: selectedCycle ? `${prefix}/cycle/${selectedCycle.slug}/lines/${line.slug}` : `${prefix}/` }))} />
   <EntityTools locale={locale} station={station} entityId={toolEntityId} />
+  {methodGraph.byStation[station.id as keyof typeof methodGraph.byStation]?.nextStationIds[0] && <aside class="public-section" aria-labelledby="suggested-next"><h2 id="suggested-next">Suggested next</h2><p><a href={`${prefix}/stations/${methodGraph.byStation[station.id as keyof typeof methodGraph.byStation].nextStationIds[0]}`}>{getCatalog(locale).stations.find((item) => item.id === methodGraph.byStation[station.id as keyof typeof methodGraph.byStation].nextStationIds[0])?.title}</a></p><p>It follows this station in the current cycle. Your selected perspective and goal can strengthen its emphasis on the method map.</p></aside>}
   <CyclesSection title={labels["section.relevantCycles"]} items={cycles.map((cycle) => ({ id: cycle.id, title: cycle.title, description: cycle.description, href: `${prefix}/cycles/${cycle.slug}` }))} />
 </main>

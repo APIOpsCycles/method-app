@@ -1,0 +1,9 @@
+# Method context and generated relationships
+
+Canonical method entities remain in the `apiops-cycles-method-data` package under `src/data/method`; `scripts/sync-method-data.mjs` localizes and copies that source into build-only catalogs. The small, canonical goal list is `data/method-goals.json`. Goal IDs are stable and their cycle/station references must use canonical method IDs.
+
+`npm run build:method-graph` reads the generated English catalog (relationships are language-independent), validates every cycle, station, stakeholder and resource reference, deduplicates and sorts adjacency, then writes `method-graph.json` and localized `method-goals.json` to `generated/method` and `public/data`. These outputs are generated and must not be edited. The normal data sync, development and production build pipelines regenerate them automatically. To add a relationship, change the upstream canonical method data; to add a goal, edit the canonical goal file and run the generator. Invalid references fail generation with the owning entity and missing ID.
+
+Astro uses `src/lib/method-graph.ts` for static page context and compact props. React islands consume only map-sized station adjacency, not content Markdown. `src/lib/method-context.ts` shares the selected stakeholder and goal between islands with React's external-store API. It persists only those selections under `apiops.methodContext.v1`, migrates the former `apiops.selectedStakeholder` and `selectedStakeholder` values, and never stores page-derived cycle/station arrays. Page context continues to come from route props.
+
+Map emphasis is deterministic: a station matching both selections is strong, either selection is medium, and every other station remains normally visible. Next-step candidates come only from generated cycle adjacency and are sorted by contextual emphasis and then canonical ID. This is explainable navigation, not an AI recommendation or runtime graph database.

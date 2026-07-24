@@ -194,7 +194,13 @@ a {
 .island-metro text { fill: #071640; font-size: 9px; font-weight: 700; }
 .metro-button { cursor: pointer; }
 .island-selection { background: #eef4ff; border-radius: .5rem; padding: .75rem; }
-.metro-controls { margin: 1.25rem 0; }
+.metro-controls { align-items: end; display: flex; flex-wrap: wrap; gap: 1rem; margin: 1.25rem 0; }
+.metro-station--context-medium .metro-node, .metro-station--context-medium .metro-support-node { filter: drop-shadow(0 0 3px currentColor); stroke-width: 5; }
+.metro-station--context-strong .metro-node, .metro-station--context-strong .metro-support-node { filter: drop-shadow(0 0 5px currentColor); stroke-width: 7; }
+.method-context-strip { align-items: stretch; background: #f2f5fa; border: 1px solid #d7dfed; border-radius: .75rem; display: flex; gap: .5rem; margin: 1rem 0; overflow-x: auto; padding: .5rem; }
+.method-context-strip > span, .method-context-strip > a { color: inherit; display: grid; min-width: 9rem; padding: .4rem .65rem; text-decoration: none; }
+.method-context-strip small { color: #516078; font-weight: 700; }
+.method-context-strip button { align-self: center; background: transparent; border: 0; color: #164e63; cursor: pointer; text-decoration: underline; white-space: nowrap; }
 .source-content, .prompt-preview pre, .export-grid pre { background: #f2f5fa; border-radius: .5rem; max-height: 24rem; overflow: auto; padding: 1rem; white-space: pre-wrap; }
 .export-grid, .canvas-grid { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
 .canvas-metadata { display: grid; gap: .75rem; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); margin: 1.5rem 0; }

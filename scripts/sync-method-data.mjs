@@ -215,8 +215,8 @@ function siteLabels(locale) {
     'map.selectedCycle': 'Selected cycle map',
     'map.selectedStation': 'Selected station:',
     'map.methodKicker': 'Method map',
-    'map.title': 'Metro map',
-    'map.help': 'Select a cycle, station, or stakeholder to open its permanent method page.',
+    'map.title': 'Navigate the method',
+    'map.help': 'Select a station, cycle, or stakeholder perspective to explore the method.',
     'map.none': 'None',
     'tools.aria': 'Tools for this page',
     'tools.interactive': 'Interactive method tools',
@@ -263,13 +263,20 @@ function siteLabels(locale) {
     "nav.designSystem": "Design system",
     "nav.menu": "Menu",
     "controls.currentRoute": "Current route",
-    "controls.stakeholderInvolvement": "Stakeholder involvement",
+    "controls.stakeholderInvolvement": "View as",
     "controls.recommendedCycle": "Recommended cycle",
     "controls.currentStation": "Current station",
     "controls.routeControls": "Route controls",
     "controls.workspaceModes": "Workspace modes",
     "controls.selectCycle": "Select cycle",
     "controls.selectStakeholder": "Select stakeholder",
+    "controls.goal": "What do you want to achieve today?",
+    "controls.selectGoal": "Select a goal",
+    "controls.resetContext": "Reset context",
+    "context.label": "Current method context",
+    "context.notSelected": "Not selected",
+    "context.cycle": "Cycle",
+    "context.here": "Here",
     "involvement.lead": "Lead",
     "involvement.core": "Core",
     "involvement.consulted": "Consulted",
@@ -1027,7 +1034,7 @@ function siteLabels(locale) {
     "section.people": "station.people", "section.resources": "station.relatedResources",
     "section.outcomes": "resources.expectedOutcomes", "section.howToUse": "resources.howToUse",
     "section.stakeholderGuides": "role.kicker", "section.roles": "role.kicker",
-    "map.methodKicker": "map.kicker", "map.title": "views.map",
+    "map.methodKicker": "map.kicker",
     "tools.reviewResources": "station.relatedResources",
     "resources.stationKicker": "resources.kicker", "resources.choose": "resources.select",
     "resources.expand": "actions.expandAll", "resources.collapse": "actions.collapseAll",
@@ -1038,6 +1045,12 @@ function siteLabels(locale) {
     "prompt.kicker": "ai.kicker", "prompt.title": "ai.facilitate",
   };
   const translatedSiteLabel = (key) => localized[key] ?? localized[siteLabelAliases[key]];
+  const navigationTranslations = {
+    fi: { "map.title": "Navigoi menetelmässä", "map.help": "Valitse asema, sykli tai sidosryhmän näkökulma tutustuaksesi menetelmään.", "controls.stakeholderInvolvement": "Näkökulma", "controls.goal": "Mitä haluat saavuttaa tänään?", "controls.selectGoal": "Valitse tavoite", "controls.resetContext": "Nollaa konteksti", "context.label": "Menetelmän nykyinen konteksti", "context.notSelected": "Ei valittu", "context.cycle": "Sykli", "context.here": "Tässä" },
+    fr: { "map.title": "Naviguer dans la méthode", "map.help": "Sélectionnez une station, un cycle ou un point de vue pour explorer la méthode.", "controls.stakeholderInvolvement": "Voir en tant que", "controls.goal": "Que voulez-vous accomplir aujourd’hui ?", "controls.selectGoal": "Choisir un objectif", "controls.resetContext": "Réinitialiser le contexte", "context.label": "Contexte actuel de la méthode", "context.notSelected": "Non sélectionné", "context.cycle": "Cycle", "context.here": "Ici" },
+    de: { "map.title": "Durch die Methode navigieren", "map.help": "Station, Zyklus oder Stakeholder-Perspektive auswählen, um die Methode zu erkunden.", "controls.stakeholderInvolvement": "Anzeigen als", "controls.goal": "Was möchten Sie heute erreichen?", "controls.selectGoal": "Ziel auswählen", "controls.resetContext": "Kontext zurücksetzen", "context.label": "Aktueller Methodenkontext", "context.notSelected": "Nicht ausgewählt", "context.cycle": "Zyklus", "context.here": "Hier" },
+    pt: { "map.title": "Navegar pelo método", "map.help": "Selecione uma estação, ciclo ou perspectiva para explorar o método.", "controls.stakeholderInvolvement": "Ver como", "controls.goal": "O que deseja alcançar hoje?", "controls.selectGoal": "Selecionar objetivo", "controls.resetContext": "Redefinir contexto", "context.label": "Contexto atual do método", "context.notSelected": "Não selecionado", "context.cycle": "Ciclo", "context.here": "Aqui" },
+  };
   if (locale === "en") {
     return Object.fromEntries(Object.entries(english).map(([key, value]) => {
       const sourceLabel = methodLabel("en", key);
@@ -1046,7 +1059,7 @@ function siteLabels(locale) {
   }
   return Object.fromEntries(Object.entries(english).flatMap(([key]) => {
     const sourceLabel = methodLabel(locale, key);
-    const translated = sourceLabel ?? translatedSiteLabel(key);
+    const translated = navigationTranslations[locale]?.[key] ?? sourceLabel ?? translatedSiteLabel(key);
     return translated === undefined ? [] : [[key, translated]];
   }));
 }
