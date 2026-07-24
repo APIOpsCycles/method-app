@@ -5,5 +5,5 @@
     "outDir": "dist", "rootDir": "src", "skipLibCheck": true,
     "resolveJsonModule": true
   },
-  "include": ["src/react/**/*.tsx", "src/assets/**/*.ts", "src/metadata/**/*.json"]
+  "include": ["src/react/**/*.tsx", "src/react/**/*.ts", "src/testing/**/*.tsx", "src/assets/**/*.ts", "src/cli/**/*.ts", "src/metadata/**/*.json"]
 }

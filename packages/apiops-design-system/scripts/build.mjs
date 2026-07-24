@@ -1,4 +1,4 @@
-import { cp, mkdir, rm } from "node:fs/promises";
+import { chmod, cp, mkdir, rm } from "node:fs/promises";
 import { spawn } from "node:child_process";
 import { fileURLToPath } from "node:url";
 import path from "node:path";
@@ -16,3 +16,4 @@ await new Promise((resolve, reject) => {
   child.on("error", reject);
   child.on("exit", (code) => code === 0 ? resolve() : reject(new Error(`tsc exited with ${code}`)));
 });
+await chmod(path.join(dist, "cli", "index.js"), 0o755);

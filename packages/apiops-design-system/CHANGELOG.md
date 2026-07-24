@@ -2,6 +2,13 @@
 
 All notable visual and API changes are documented here. This project follows Semantic Versioning.
 
+## Unreleased
+
+- Make clean npm packs build the complete distribution automatically.
+- Add configurable asset base paths and an installed-package asset-copy CLI.
+- Add focused canvas, metro, patterns, and testing entry points.
+- Add package-owned artifact, entry-point, CLI, and SVG asset tests.
+
 ## 0.1.0 - 2026-07-17
 
 - Extract shared design tokens and canvas CSS from the APIOps Cycles catalog.
