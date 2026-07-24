@@ -1,5 +1,5 @@
 import { useSyncExternalStore } from "react";
-import type { UserMethodContext } from "./method-graph";
+import { methodGraph, type UserMethodContext } from "./method-graph";
 
 export const METHOD_CONTEXT_KEY = "apiops.methodContext.v1";
 const LEGACY_STAKEHOLDER_KEYS = ["apiops.selectedStakeholder", "selectedStakeholder"];
@@ -8,11 +8,23 @@ const serverSnapshot: UserMethodContext = {};
 let initialized = false;
 const listeners = new Set<() => void>();
 const emit = () => listeners.forEach((listener) => listener());
+export function parseStoredMethodContext(value: string | null): UserMethodContext {
+  try {
+    const stored = JSON.parse(value ?? "{}") as Record<string, unknown>;
+    return {
+      ...(typeof stored.stakeholderId === "string" && stored.stakeholderId in methodGraph.byStakeholder ? { stakeholderId: stored.stakeholderId } : {}),
+      ...(typeof stored.goalId === "string" && stored.goalId in methodGraph.byGoal ? { goalId: stored.goalId } : {}),
+    };
+  } catch { return {}; }
+}
 export function initializeMethodContext(storage: Pick<Storage, "getItem" | "setItem" | "removeItem"> = localStorage) {
   if (initialized) return snapshot;
   initialized = true;
-  try { snapshot = JSON.parse(storage.getItem(METHOD_CONTEXT_KEY) ?? "{}") as UserMethodContext; } catch { storage.removeItem(METHOD_CONTEXT_KEY); snapshot = {}; }
+  const storedValue = storage.getItem(METHOD_CONTEXT_KEY);
+  snapshot = parseStoredMethodContext(storedValue);
+  if (storedValue && !Object.keys(snapshot).length) storage.removeItem(METHOD_CONTEXT_KEY);
   if (!snapshot.stakeholderId) for (const key of LEGACY_STAKEHOLDER_KEYS) { const value = storage.getItem(key); if (value) { snapshot = { ...snapshot, stakeholderId: value }; break; } }
+  // Rewriting strips obsolete derived fields from the previous schema.
   if (Object.keys(snapshot).length) storage.setItem(METHOD_CONTEXT_KEY, JSON.stringify(snapshot));
   emit(); return snapshot;
 }

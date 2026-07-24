@@ -1,3 +1,6 @@
+// This generator intentionally accepts the upstream package's evolving JSON
+// schema and performs runtime reference validation below.
+// @ts-nocheck
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 
@@ -19,10 +22,12 @@ for (const station of [...catalog.stations].sort((a, b) => a.id.localeCompare(b.
   for (const id of resources) check("resource", id, `station ${station.id}`);
   byStation[station.id] = { cycleIds: unique(cycles.map((cycle) => cycle.id)), lineIds: unique(catalog.lines.filter((line) => line.stations.includes(station.id)).map((line) => line.id)), stakeholders: [...(station.stakeholders ?? []).map(({ id, involvement }) => ({ id, involvement }))].sort((a, b) => a.id.localeCompare(b.id)), resourceIds: unique(resources), nextStationIds: unique(next), relatedStationIds: [] };
 }
-const byCycle = Object.fromEntries([...catalog.cycles].sort((a,b) => a.id.localeCompare(b.id)).map((cycle) => { for (const station of cycle.stations) check("station", station.id, `cycle ${cycle.id}`); return [cycle.id, { stationIds: unique(cycle.stations.map((station) => station.id)), lineIds: unique(catalog.lines.filter((line) => line.stations.some((id) => cycle.stations.some((station) => station.id === id))).map((line) => line.id)) }]; }));
+// Station order is canonical journey order and must not be alphabetized: it is
+// the stable final tie-breaker used by context resolution.
+const byCycle = Object.fromEntries(catalog.cycles.map((cycle) => { for (const station of cycle.stations) check("station", station.id, `cycle ${cycle.id}`); return [cycle.id, { stationIds: [...new Set(cycle.stations.map((station) => station.id))], lineIds: unique(catalog.lines.filter((line) => line.stations.some((id) => cycle.stations.some((station) => station.id === id))).map((line) => line.id)) }]; }));
 const byStakeholder = Object.fromEntries([...catalog.stakeholders].sort((a,b) => a.id.localeCompare(b.id)).map((stakeholder) => [stakeholder.id, { stationIds: unique(Object.entries(byStation).filter(([, value]) => value.stakeholders.some((item) => item.id === stakeholder.id)).map(([id]) => id)) }]));
 const byGoal = {};
-for (const goal of [...goals].sort((a,b) => a.id.localeCompare(b.id))) { for (const id of goal.recommendedCycleIds) check("cycle", id, `goal ${goal.id}`); for (const id of [...goal.entryStationIds, ...goal.recommendedStationIds]) check("station", id, `goal ${goal.id}`); byGoal[goal.id] = { recommendedCycleIds: unique(goal.recommendedCycleIds), entryStationIds: unique(goal.entryStationIds), stationIds: unique([...goal.entryStationIds, ...goal.recommendedStationIds, ...goal.recommendedCycleIds.flatMap((id) => byCycle[id]?.stationIds ?? [])]) }; }
+for (const goal of [...goals].sort((a,b) => a.id.localeCompare(b.id))) { for (const id of goal.recommendedCycleIds) check("cycle", id, `goal ${goal.id}`); for (const id of [...goal.entryStationIds, ...goal.recommendedStationIds]) check("station", id, `goal ${goal.id}`); byGoal[goal.id] = { recommendedCycleIds: unique(goal.recommendedCycleIds), entryStationIds: unique(goal.entryStationIds), stationIds: unique([...goal.entryStationIds, ...goal.recommendedStationIds]) }; }
 if (errors.length) throw new Error(`Method graph validation failed:\n- ${errors.join("\n- ")}`);
 const graph = { version: 1, byStation, byStakeholder, byCycle, byGoal };
 const localizedGoals = Object.fromEntries(["en", "fi", "fr", "de", "pt"].map((locale) => [locale, goals.map((goal) => ({ id: goal.id, label: goal.label[locale] ?? goal.label.en, description: goal.description[locale] ?? goal.description.en }))]));

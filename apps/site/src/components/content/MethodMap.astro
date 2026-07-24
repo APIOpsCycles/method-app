@@ -6,7 +6,7 @@ import MetroMapIsland from "../islands/MetroMapIsland";
 interface Props { locale: Locale; cycleId?: string; stationId?: string; roleId?: string; lineId?: string }
 const { locale, cycleId, stationId, roleId, lineId } = Astro.props;
 const data = getCatalog(locale);
-const labels = pickLabels(getLabels(locale), ["map.ariaLabel", "map.zoneStrategic", "map.zoneGovernance", "map.zoneConsumer", "map.zoneTechnical", "map.methodKicker", "map.title", "map.exportSvg", "map.help", "map.selectedStation", "map.none", "controls.stakeholderInvolvement", "controls.selectStakeholder", "controls.goal", "controls.selectGoal", "controls.resetContext", "involvement.lead", "involvement.core", "involvement.consulted"] as const);
+const labels = pickLabels(getLabels(locale), ["map.ariaLabel", "map.zoneStrategic", "map.zoneGovernance", "map.zoneConsumer", "map.zoneTechnical", "map.methodKicker", "map.title", "map.exportSvg", "map.help", "map.currentStation", "map.none", "map.recommendation", "map.startHere", "map.recommendationConsulted", "map.legendCurrent", "map.legendRecommended", "map.legendBoth", "controls.stakeholderInvolvement", "controls.selectStakeholder", "controls.goal", "controls.selectGoal", "controls.resetContext", "context.cycle", "involvement.lead", "involvement.core", "involvement.consulted"] as const);
 const mapStations = data.stations.map(({ id, title, description }) => ({ id, title, description }));
 const mapCycles = data.cycles.map(({ id, slug, title, stations }) => ({ id, slug, title, stations: stations.map(({ id: stationId, index, title: stationTitle, baseTitle }) => ({ id: stationId, index, title: stationTitle, baseTitle })) }));
 const mapLines = data.lines.map(({ id, title, stations }) => ({ id, title, color: metroLineColor(id), stations }));
