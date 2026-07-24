@@ -15,3 +15,11 @@ State has three deliberately separate layers. Only `stakeholderId` and `goalId` 
 `resolve-method-context.ts` owns all weights. A directly recommended goal cycle scores 100, a cycle containing a directly goal-related station scores 60, and the strongest role involvement adds 30 (lead), 20 (core), or 10 (consulted). A cycle with no role mapping scores -50. Equal scores retain generated canonical cycle order. Inside the winning cycle, a goal-and-role match ranks before a role-only match, then a goal-only match; involvement and canonical station order break ties. Thus the first journey station is only a final fallback, not the default personalized entry.
 
 The localStorage reader validates IDs and rewrites the v1 object with only the two supported fields, removing old route/recommendation fields. Change scoring only through the exported constants and resolver tests. When adding or changing stakeholder mappings upstream, regenerate the graph and add a resolver assertion covering the expected involvement and earliest meaningful station.
+
+## Quiet context interface
+
+The compact context strip is the sole editor for stakeholder and goal. A first visit gets a dismissible, non-blocking setup prompt; returning visitors get read-only values and a **Change context** button. That button expands an inline, keyboard-accessible editor containing only stakeholder, goal, reset, and close controls. Cycle and station remain route-derived links and are never offered as persistent preferences.
+
+The map consumes the shared store only for emphasis and derived actions. It deliberately contains no stakeholder selector, goal selector, or reset button. Compact cycle tabs remain because they are navigation. The redundant current-station footer and permanent contextual legend were removed; the selected map marker and top strip already communicate that state.
+
+`resolveContextualUiState` derives one of `no-context`, `start`, `on-path`, or `off-path`. A generic page offers the recommended start, an on-path station offers the next relevant station, and an off-path station offers a quiet return action. Current routes are never changed automatically. Add a new primary action by extending this pure resolver, adding localized `map.mode*` and `map.action*` labels in the sync script, and testing the route mode without putting navigation state in storage.

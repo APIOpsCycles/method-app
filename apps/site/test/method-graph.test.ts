@@ -4,6 +4,8 @@ import { getRecommendedNextStations, getStationEmphasis, methodGraph } from "../
 import { initializeMethodContext, METHOD_CONTEXT_KEY, resetMethodContext, setMethodContext } from "../src/lib/method-context";
 import { parseStoredMethodContext } from "../src/lib/method-context";
 import { INVOLVEMENT_WEIGHT, resolveMethodContext, scoreCycleForContext } from "../src/lib/resolve-method-context";
+import { resolveContextualUiState } from "../src/lib/resolve-method-context";
+import { readFileSync } from "node:fs";
 
 test("generated graph contains valid, deduplicated adjacency", () => {
   const stationIds = new Set(Object.keys(methodGraph.byStation));
@@ -54,4 +56,23 @@ test("consulted-only and invalid contexts are handled safely", () => {
   assert.equal(consulted.stationInvolvement[consulted.recommendedEntryStationId!], "consulted");
   assert.equal(resolveMethodContext({ stakeholderId: "missing", goalId: "missing" }).recommendedCycleId, undefined);
   assert.deepEqual(parseStoredMethodContext(JSON.stringify({ stakeholderId: "missing", goalId: "automate-process", recommendedCycleId: "automation-cycle", currentStationId: "api-design" })), { goalId: "automate-process" });
+});
+test("contextual page modes choose one route-aware action", () => {
+  assert.equal(resolveContextualUiState(resolveMethodContext({})).pageMode, "no-context");
+  assert.equal(resolveContextualUiState(resolveMethodContext({ stakeholderId: "automation-engineer", goalId: "automate-process" })).pageMode, "start");
+  const onPath = resolveContextualUiState(resolveMethodContext({ stakeholderId: "automation-engineer", goalId: "automate-process", preferredCycleId: "automation-cycle", currentStationId: "api-design" }));
+  assert.equal(onPath.pageMode, "on-path");
+  assert.equal(onPath.nextRelevantStationId, "api-delivery");
+  const offPath = resolveContextualUiState(resolveMethodContext({ stakeholderId: "automation-engineer", goalId: "automate-process", currentStationId: "ecosystem-vision" }));
+  assert.equal(offPath.pageMode, "off-path");
+  assert.equal(offPath.primaryStationId, "api-design");
+});
+test("the map is navigation, not a duplicate context form", () => {
+  const map = readFileSync(new URL("../src/components/islands/MetroMapIsland.tsx", import.meta.url), "utf8");
+  const strip = readFileSync(new URL("../src/components/islands/MethodContextStrip.tsx", import.meta.url), "utf8");
+  assert.doesNotMatch(map, /StakeholderRoleSelector|controls\.selectGoal|resetMethodContext/);
+  assert.match(map, /ds-cycle-selector/);
+  assert.match(strip, /aria-expanded=\{editing\}/);
+  assert.match(strip, /method-context-editor/);
+  assert.match(strip, /resetMethodContext/);
 });

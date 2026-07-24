@@ -5,9 +5,9 @@ import MethodMap from "./MethodMap.astro";
 import { CyclesSection, JourneyCriteria, LinesSection } from "@apiops/design-system/react";
 import { metroLineColor } from "../../lib/line-colors";
 import { PublicPillList, PublicResourceSelector } from "../islands/PublicSelectors";
-import MethodContextStrip from "../islands/MethodContextStrip";
-import { getGoals, methodGraph } from "../../lib/method-graph";
+import { methodGraph } from "../../lib/method-graph";
 import CurrentStationInvolvement from "../islands/CurrentStationInvolvement";
+import MethodContext from "./MethodContext.astro";
 interface Props { station: Station; locale: Locale; cycle?: ReturnType<typeof getCatalog>["cycles"][number]; compatibilityAlias?: boolean }
 const { station, locale, cycle, compatibilityAlias = false } = Astro.props;
 const prefix = localePrefix(locale);
@@ -38,7 +38,7 @@ const relatedLines = getLinesForContext(getCatalog(locale), selectedCycle, stati
 ---
 <main class="public-content">
   <nav class="public-breadcrumbs" aria-label={labels["chrome.breadcrumb"]}><a href={`${prefix}/`}>APIOps Cycles</a><span aria-hidden="true">/</span>{cycle && <><a href={`${prefix}/cycles/${cycle.slug}`}>{cycle.title}</a><span aria-hidden="true">/</span></>}<span>{station.title}</span></nav>
-  <MethodContextStrip client:idle stakeholders={getCatalog(locale).routeProfiles.map((role) => ({ id: role.id, label: role.title }))} goals={getGoals(locale)} cycle={selectedCycle ? { label: selectedCycle.title, href: `${prefix}/cycles/${selectedCycle.slug}` } : undefined} here={{ label: station.title }} labels={{ context: labels["context.label"], viewAs: labels["controls.stakeholderInvolvement"], goal: labels["controls.goal"], cycle: labels["context.cycle"], here: labels["context.here"], notSelected: labels["context.notSelected"], reset: labels["controls.resetContext"] }} />
+  <MethodContext locale={locale} cycle={selectedCycle} here={station.title} />
   <section class="public-hero"><p class="public-kicker">{labels["entity.station"]}</p><h1>{station.title}</h1><p>{station.description}</p>{station.whyItMatters && <p>{station.whyItMatters}</p>}{compatibilityAlias && <p class="alias-notice">This compatibility URL presents the canonical station content.</p>}</section>
   <CurrentStationInvolvement client:idle stationId={station.id} cycleId={selectedCycle?.id} labels={{ prefix, heading: labels["context.involvementHere"], leadLabel: labels["involvement.lead"], coreLabel: labels["involvement.core"], consultedLabel: labels["involvement.consulted"], lead: labels["context.involvementLead"], core: labels["context.involvementCore"], consulted: labels["context.involvementConsulted"], unmappedHeading: labels["context.involvementUnmappedHeading"], unmapped: labels["context.involvementUnmapped"], recommended: labels["map.viewRecommended"] }} />
   <section class="public-section" aria-label={labels["map.selectedStation"]}><MethodMap locale={locale} cycleId={selectedCycle?.id} stationId={station.id} /></section>

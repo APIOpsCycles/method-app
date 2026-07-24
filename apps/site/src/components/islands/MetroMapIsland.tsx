@@ -1,8 +1,8 @@
 import { type RefObject, useEffect, useRef, useState } from "react";
-import { initializeMethodContext, resetMethodContext, setMethodContext, useMethodContext } from "../../lib/method-context";
-import { resolveMethodContext } from "../../lib/resolve-method-context";
+import { initializeMethodContext, useMethodContext } from "../../lib/method-context";
+import { resolveContextualUiState, resolveMethodContext } from "../../lib/resolve-method-context";
 import RecommendedStart from "./RecommendedStart";
-import { MetroLegend, MetroLinePath, MetroMapShell, MetroStationButton, MetroStationMarker, StakeholderRoleSelector } from "@apiops/design-system/react";
+import { MetroLegend, MetroLinePath, MetroMapShell, MetroStationButton, MetroStationMarker } from "@apiops/design-system/react";
 import { designSystemAssets } from "@apiops/design-system/assets";
 
 export type MetroCycleStation = { id: string; index: number; title: string; baseTitle: string };
@@ -409,7 +409,7 @@ function MetroMapView({
         <g key={line.id}>
           <MetroLinePath id={line.id} points={linePathPoints(line)} color={line.color} strokeWidth={selectedLineId === line.id ? 10 : 5} opacity={selectedLineId && selectedLineId !== line.id ? 0.18 : 0.82} className="metro-line-path" />
           {line.points.filter((point) => point.support).map((point) => (
-            <MetroStationButton key={`${line.id}-${point.id}`} id={point.id} label={point.baseTitle} x={point.x} y={point.y} selected={point.id === selectedStationId} className={stationClassName(point.id)} onSelect={onSelectStation}>
+            <MetroStationButton key={`${line.id}-${point.id}`} id={point.id} label={`${point.baseTitle}${point.id === recommendedStationId ? ` — ${uiLabels["map.modeTitle.start"]}` : ""}`} x={point.x} y={point.y} selected={point.id === selectedStationId} className={stationClassName(point.id)} onSelect={onSelectStation}>
               {involvementFor(point.id) ? (
                 <circle cx={point.x} cy={point.y} r="10" className={`metro-involvement-ring metro-involvement-ring--${involvementFor(point.id)}`} />
               ) : null}
@@ -423,7 +423,7 @@ function MetroMapView({
         <MetroLinePath key={path.id} id={path.id} points={path.points} color={path.color} selected={path.id === selectedCycleId} onSelect={onSelectCycle} closed />
       ))}
       {corePoints.map((point) => (
-        <MetroStationButton key={point.id} id={point.id} label={point.baseTitle} x={point.x} y={point.y} selected={point.id === selectedStationId} selectionRadius={25} className={stationClassName(point.id)} onSelect={onSelectStation}>
+        <MetroStationButton key={point.id} id={point.id} label={`${point.baseTitle}${point.id === recommendedStationId ? ` — ${uiLabels["map.modeTitle.start"]}` : ""}`} x={point.x} y={point.y} selected={point.id === selectedStationId} selectionRadius={25} className={stationClassName(point.id)} onSelect={onSelectStation}>
           {involvementFor(point.id) ? (
             <circle cx={point.x} cy={point.y} r="20" className={`metro-involvement-ring metro-involvement-ring--${involvementFor(point.id)}`} />
           ) : null}
@@ -465,13 +465,14 @@ function MetroMapView({
 export default function MetroMapIsland({ locale, labels, cycles, lines, stations, roles, goals, initialCycleId, initialStationId, initialRoleId, initialLineId }: { locale: string; labels: Record<string, string>; cycles: MetroCycle[]; lines: MetroLine[]; stations: MetroStation[]; roles: MetroRole[]; goals: Array<{ id: string; label: string; description: string; stationIds: string[] }>; initialCycleId?: string; initialStationId?: string; initialRoleId?: string; initialLineId?: string }) {
   const [cycleId, setCycleId] = useState(initialCycleId ?? cycles[0]?.id ?? "");
   const [stationId, setStationId] = useState(initialStationId ?? cycles[0]?.stations[0]?.id ?? stations[0]?.id ?? "");
-  const [roleId, setRoleId] = useState(initialRoleId ?? "");
   const context = useMethodContext();
-  const effectiveRoleId = context.stakeholderId ?? roleId;
+  const effectiveRoleId = context.stakeholderId ?? initialRoleId ?? "";
   const resolved = resolveMethodContext({ stakeholderId: effectiveRoleId || undefined, goalId: context.goalId, preferredCycleId: initialCycleId, currentStationId: initialStationId });
-  const recommendedCycle = cycles.find((cycle) => cycle.id === resolved.recommendedCycleId);
-  const recommendedStation = stations.find((station) => station.id === resolved.recommendedEntryStationId);
-  useEffect(() => { const saved = initializeMethodContext(); if (!initialRoleId && saved.stakeholderId) setRoleId(saved.stakeholderId); }, [initialRoleId]);
+  const contextualUi = resolveContextualUiState(resolved);
+  const actionCycleId = contextualUi.pageMode === "on-path" ? resolved.currentCycleId : resolved.recommendedCycleId;
+  const actionCycle = cycles.find((cycle) => cycle.id === actionCycleId);
+  const actionStation = stations.find((station) => station.id === contextualUi.primaryStationId);
+  useEffect(() => { initializeMethodContext(); }, []);
   const svgRef = useRef<SVGSVGElement>(null);
   async function inlineLogoForExport(clone: SVGSVGElement) {
     for (const image of Array.from(clone.querySelectorAll("image"))) {
@@ -524,7 +525,7 @@ export default function MetroMapIsland({ locale, labels, cycles, lines, stations
   return <section className="island-panel" aria-labelledby="metro-map-title">
     <header className="island-heading"><div><p className="public-kicker">{labels["map.methodKicker"]}</p><h2 id="metro-map-title">{labels["map.title"]}</h2></div><button className="is-button" type="button" onClick={exportSvg}>{labels["map.exportSvg"]}</button></header>
     <p>{labels["map.help"]}</p>
-    {recommendedCycle && recommendedStation && <RecommendedStart station={recommendedStation.title} cycle={recommendedCycle.title} involvement={resolved.stationInvolvement[recommendedStation.id]} reasons={resolved.explanation.stationReasons} href={`${prefix}/cycles/${recommendedCycle.slug}/stations/${recommendedStation.id}`} labels={{ kicker: labels["map.recommendation"], cycle: labels["context.cycle"], action: labels["map.startHere"], consulted: labels["map.recommendationConsulted"] }} />}
+    {actionCycle && actionStation && <RecommendedStart station={actionStation.title} cycle={actionCycle.title} involvement={contextualUi.pageMode === "start" ? resolved.stationInvolvement[actionStation.id] : undefined} reasons={[labels[`map.mode.${contextualUi.pageMode}`]]} href={`${prefix}/cycles/${actionCycle.slug}/stations/${actionStation.id}`} labels={{ kicker: labels[`map.modeTitle.${contextualUi.pageMode}`], cycle: labels["context.cycle"], action: labels[`map.action.${contextualUi.pageMode}`], consulted: labels["map.recommendationConsulted"] }} />}
         <div className="ds-cycle-selector" aria-label="Cycle selector">
           {cycles.map((cycle) => (
             <button
@@ -539,9 +540,6 @@ export default function MetroMapIsland({ locale, labels, cycles, lines, stations
             </button>
           ))}
         </div>
-    <div className="metro-controls"><StakeholderRoleSelector roles={roles} value={effectiveRoleId} label={labels["controls.stakeholderInvolvement"]} placeholder={labels["controls.selectStakeholder"]} involvementLabels={{ lead: labels["involvement.lead"], core: labels["involvement.core"], consulted: labels["involvement.consulted"] }} onChange={(id) => { setRoleId(id); setMethodContext({ stakeholderId: id || undefined }); }} /><label className="ds-stakeholder-role-selector"><span className="ds-stakeholder-role-selector__label">{labels["controls.goal"]}</span><select value={context.goalId ?? ""} onChange={(event) => setMethodContext({ goalId: event.target.value || undefined })}><option value="">{labels["controls.selectGoal"]}</option>{goals.map((goal) => <option key={goal.id} value={goal.id}>{goal.label}</option>)}</select></label><button type="button" className="is-button" onClick={() => { resetMethodContext(); setRoleId(""); }}>{labels["controls.resetContext"]}</button></div>
-    <div className="metro-context-legend" aria-label="Map context legend"><span><i className="is-current" />{labels["map.legendCurrent"]}</span><span><i className="is-recommended" />{labels["map.legendRecommended"]}</span><span><i className="is-both" />{labels["map.legendBoth"]}</span></div>
     <MetroMapView cycles={cycles} lines={lines} stations={stations} selectedCycleId={cycleId} selectedStationId={stationId} selectedLineId={initialLineId} stakeholderInvolvementByStation={roles.find((role) => role.id === effectiveRoleId)?.involvementByStation ?? {}} goalStationIds={goals.find((goal) => goal.id === context.goalId)?.stationIds ?? []} recommendedStationId={resolved.recommendedEntryStationId} onSelectCycle={(id) => { setCycleId(id); const selected = cycles.find((cycle) => cycle.id === id); if (selected) navigate(`/cycles/${selected.slug}`); }} onSelectStation={(id) => { setStationId(id); const selectedCycle = cycles.find((cycle) => cycle.id === cycleId); const isCycleStation = selectedCycle?.stations.some((station) => station.id === id); navigate(isCycleStation && selectedCycle ? `/cycles/${selectedCycle.slug}/stations/${id}` : `/stations/${id}`); }} uiLabels={labels} svgRef={svgRef} />
-    <p className="island-selection" aria-live="polite">{labels["map.currentStation"]} <strong>{stations.find((station) => station.id === stationId)?.title ?? labels["map.none"]}</strong></p>
   </section>;
 }

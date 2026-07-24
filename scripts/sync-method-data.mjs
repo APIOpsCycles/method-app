@@ -222,6 +222,15 @@ function siteLabels(locale) {
     'map.legendCurrent': 'Current station',
     'map.legendRecommended': 'Recommended start',
     'map.legendBoth': 'Relevant to role and goal',
+    'map.mode.start': 'This is the strongest role and goal match at the beginning of your path.',
+    'map.mode.on-path': 'Continue to the next station that is relevant to your current context.',
+    'map.mode.off-path': 'You are exploring outside your recommended path. You can return whenever it is useful.',
+    'map.modeTitle.start': 'Recommended starting point',
+    'map.modeTitle.on-path': 'You are on your relevant path',
+    'map.modeTitle.off-path': 'Return to your path',
+    'map.action.start': 'Start here',
+    'map.action.on-path': 'Continue',
+    'map.action.off-path': 'Return to your path',
     'map.methodKicker': 'Method map',
     'map.title': 'Navigate the method',
     'map.help': 'Select a station, cycle, or stakeholder perspective to explore the method.',
@@ -291,6 +300,13 @@ function siteLabels(locale) {
     "context.involvementConsulted": "You are typically asked to provide input rather than lead the work.",
     "context.involvementUnmappedHeading": "This station is not mapped to your role",
     "context.involvementUnmapped": "You can still explore it; your current perspective has no recorded involvement here.",
+    "context.change": "Change context",
+    "context.close": "Close editor",
+    "context.done": "Done",
+    "context.findPath": "Find your path through the method",
+    "context.setupHelp": "Choose a perspective and goal to get a meaningful starting point.",
+    "context.choosePerspective": "Choose your perspective",
+    "context.dismiss": "Not now",
     "involvement.lead": "Lead",
     "involvement.core": "Core",
     "involvement.consulted": "Consulted",
@@ -1065,6 +1081,10 @@ function siteLabels(locale) {
     de: { "map.title": "Durch die Methode navigieren", "map.help": "Station, Zyklus oder Stakeholder-Perspektive auswählen, um die Methode zu erkunden.", "controls.stakeholderInvolvement": "Anzeigen als", "controls.goal": "Was möchten Sie heute erreichen?", "controls.selectGoal": "Ziel auswählen", "controls.resetContext": "Kontext zurücksetzen", "context.label": "Aktueller Methodenkontext", "context.notSelected": "Nicht ausgewählt", "context.cycle": "Zyklus", "context.here": "Hier" },
     pt: { "map.title": "Navegar pelo método", "map.help": "Selecione uma estação, ciclo ou perspectiva para explorar o método.", "controls.stakeholderInvolvement": "Ver como", "controls.goal": "O que deseja alcançar hoje?", "controls.selectGoal": "Selecionar objetivo", "controls.resetContext": "Redefinir contexto", "context.label": "Contexto atual do método", "context.notSelected": "Não selecionado", "context.cycle": "Ciclo", "context.here": "Aqui" },
   };
+  Object.assign(navigationTranslations.fi, { "context.change": "Muuta kontekstia", "context.close": "Sulje muokkaus", "context.done": "Valmis", "context.findPath": "Löydä polkusi menetelmässä", "context.setupHelp": "Valitse näkökulma ja tavoite saadaksesi sopivan aloituspisteen.", "context.choosePerspective": "Valitse näkökulmasi", "context.dismiss": "Ei nyt", "map.mode.start": "Tämä on polkusi alun vahvin rooli- ja tavoitevastaavuus.", "map.mode.on-path": "Jatka seuraavalle nykyiseen kontekstiisi liittyvälle asemalle.", "map.mode.off-path": "Tutkit suositellun polkusi ulkopuolta. Voit palata milloin tahansa.", "map.modeTitle.start": "Suositeltu aloituspiste", "map.modeTitle.on-path": "Olet olennaisella polullasi", "map.modeTitle.off-path": "Palaa polullesi", "map.action.start": "Aloita tästä", "map.action.on-path": "Jatka", "map.action.off-path": "Palaa polullesi" });
+  Object.assign(navigationTranslations.fr, { "context.change": "Modifier le contexte", "context.close": "Fermer l’éditeur", "context.done": "Terminé", "context.findPath": "Trouvez votre chemin dans la méthode", "context.setupHelp": "Choisissez un point de vue et un objectif pour obtenir un point de départ pertinent.", "context.choosePerspective": "Choisir votre point de vue", "context.dismiss": "Pas maintenant", "map.mode.start": "C’est la meilleure correspondance entre rôle et objectif au début de votre parcours.", "map.mode.on-path": "Continuez vers la prochaine station pertinente pour votre contexte.", "map.mode.off-path": "Vous explorez hors de votre parcours recommandé. Vous pouvez y revenir à tout moment.", "map.modeTitle.start": "Point de départ recommandé", "map.modeTitle.on-path": "Vous êtes sur votre parcours pertinent", "map.modeTitle.off-path": "Revenir à votre parcours", "map.action.start": "Commencer ici", "map.action.on-path": "Continuer", "map.action.off-path": "Revenir au parcours" });
+  Object.assign(navigationTranslations.de, { "context.change": "Kontext ändern", "context.close": "Editor schließen", "context.done": "Fertig", "context.findPath": "Finden Sie Ihren Weg durch die Methode", "context.setupHelp": "Perspektive und Ziel auswählen, um einen passenden Einstieg zu erhalten.", "context.choosePerspective": "Perspektive auswählen", "context.dismiss": "Nicht jetzt", "map.mode.start": "Dies ist die stärkste Rollen- und Zielübereinstimmung am Anfang Ihres Pfads.", "map.mode.on-path": "Gehen Sie zur nächsten für Ihren Kontext relevanten Station weiter.", "map.mode.off-path": "Sie erkunden außerhalb Ihres empfohlenen Pfads und können jederzeit zurückkehren.", "map.modeTitle.start": "Empfohlener Einstieg", "map.modeTitle.on-path": "Sie sind auf Ihrem relevanten Pfad", "map.modeTitle.off-path": "Zu Ihrem Pfad zurückkehren", "map.action.start": "Hier starten", "map.action.on-path": "Weiter", "map.action.off-path": "Zum Pfad zurück" });
+  Object.assign(navigationTranslations.pt, { "context.change": "Alterar contexto", "context.close": "Fechar editor", "context.done": "Concluído", "context.findPath": "Encontre seu caminho pelo método", "context.setupHelp": "Escolha uma perspectiva e um objetivo para obter um ponto inicial relevante.", "context.choosePerspective": "Escolher perspectiva", "context.dismiss": "Agora não", "map.mode.start": "Esta é a correspondência mais forte entre função e objetivo no início do caminho.", "map.mode.on-path": "Continue para a próxima estação relevante ao seu contexto.", "map.mode.off-path": "Você está explorando fora do caminho recomendado e pode voltar quando quiser.", "map.modeTitle.start": "Ponto inicial recomendado", "map.modeTitle.on-path": "Você está no seu caminho relevante", "map.modeTitle.off-path": "Voltar ao seu caminho", "map.action.start": "Começar aqui", "map.action.on-path": "Continuar", "map.action.off-path": "Voltar ao caminho" });
   if (locale === "en") {
     return Object.fromEntries(Object.entries(english).map(([key, value]) => {
       const sourceLabel = methodLabel("en", key);

@@ -4,6 +4,7 @@ import { metroLineColor } from "../../lib/line-colors";
 import { LinesSection } from "@apiops/design-system/react";
 import MethodMap from "./MethodMap.astro";
 import { PublicPillList } from "../islands/PublicSelectors";
+import MethodContext from "./MethodContext.astro";
 interface Props { locale: Locale }
 const { locale } = Astro.props;
 const data = getCatalog(locale);
@@ -11,6 +12,7 @@ const prefix = localePrefix(locale);
 const labels = getLabels(locale);
 ---
 <main class="public-content">
+  <MethodContext locale={locale} here="APIOps Cycles" />
   <section class="public-hero"><p class="public-kicker">{labels["home.kicker"]}</p><h1>{labels["home.title"]}</h1><p>{labels["home.description"]}</p></section>
   <section class="public-section island-stack" aria-label={labels["tools.interactive"]}>
     <MethodMap locale={locale} />

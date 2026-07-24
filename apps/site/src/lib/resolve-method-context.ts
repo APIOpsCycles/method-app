@@ -16,6 +16,8 @@ export type ResolvedMethodContext = UserMethodContext & {
   isCurrentStationRelevant: boolean;
   explanation: { cycleReasons: string[]; stationReasons: string[] };
 };
+export type ContextualPageMode = "no-context" | "start" | "on-path" | "off-path" | "explore";
+export type ContextualUiState = { pageMode: ContextualPageMode; involvement?: Involvement; nextRelevantStationId?: string; primaryStationId?: string };
 
 const involvementAt = (graph: MethodGraph, stakeholderId: string | undefined, stationId: string) =>
   stakeholderId ? graph.byStation[stationId as keyof typeof graph.byStation]?.stakeholders.find((item) => item.id === stakeholderId)?.involvement as Involvement | undefined : undefined;
@@ -63,4 +65,16 @@ export function resolveMethodContext(input: ResolveContextInput, graph: MethodGr
   const cycleReasons = recommendedCycleId ? [goalId && graph.byGoal[goalId as keyof typeof graph.byGoal].recommendedCycleIds.includes(recommendedCycleId) ? "The selected goal directly recommends this cycle." : "This cycle contains work mapped to the selected perspective."].filter(Boolean) as string[] : [];
   const stationReasons = recommendedEntryStationId ? [entryInvolvement ? `Your involvement at this station is ${entryInvolvement}.` : "This station directly supports the selected goal.", goalStations.includes(recommendedEntryStationId) && entryInvolvement ? "It also directly supports the selected goal." : ""].filter(Boolean) : [];
   return { stakeholderId, goalId, recommendedCycleId, recommendedEntryStationId, eligibleCycleIds, relevantStationIds, stationInvolvement, currentCycleId, currentStationId: input.currentStationId, isCurrentCycleRecommended: Boolean(currentCycleId && currentCycleId === recommendedCycleId), isCurrentStationRelevant: Boolean(input.currentStationId && relevantStationIds.includes(input.currentStationId)), explanation: { cycleReasons, stationReasons } };
+}
+
+export function resolveContextualUiState(resolved: ResolvedMethodContext, graph: MethodGraph = methodGraph): ContextualUiState {
+  if (!resolved.stakeholderId && !resolved.goalId) return { pageMode: "no-context" };
+  if (!resolved.currentStationId) return { pageMode: "start", primaryStationId: resolved.recommendedEntryStationId };
+  const involvement = resolved.stationInvolvement[resolved.currentStationId];
+  if (!resolved.isCurrentStationRelevant) return { pageMode: "off-path", involvement, primaryStationId: resolved.recommendedEntryStationId };
+  const cycleId = resolved.currentCycleId ?? resolved.recommendedCycleId;
+  const stations = cycleId ? graph.byCycle[cycleId]?.stationIds ?? [] : [];
+  const currentIndex = stations.indexOf(resolved.currentStationId);
+  const nextRelevantStationId = stations.slice(currentIndex + 1).find((id) => resolved.relevantStationIds.includes(id));
+  return { pageMode: "on-path", involvement, nextRelevantStationId, primaryStationId: nextRelevantStationId };
 }

@@ -1,0 +1,10 @@
+---
+import MethodContextStrip from "../islands/MethodContextStrip";
+import { getCatalog, getLabels, type Locale } from "../../lib/method-data";
+import { getGoals } from "../../lib/method-graph";
+interface Props { locale: Locale; cycle?: { title: string; slug: string }; here: string }
+const { locale, cycle, here } = Astro.props;
+const labels = getLabels(locale);
+const prefix = locale === "en" ? "" : `/${locale}`;
+---
+<MethodContextStrip client:idle stakeholders={getCatalog(locale).routeProfiles.map((role) => ({ id: role.id, label: role.title }))} goals={getGoals(locale)} cycle={cycle ? { label: cycle.title, href: `${prefix}/cycles/${cycle.slug}` } : undefined} here={{ label: here }} labels={{ context: labels["context.label"], viewAs: labels["controls.stakeholderInvolvement"], goal: labels["controls.goal"], cycle: labels["context.cycle"], here: labels["context.here"], notSelected: labels["context.notSelected"], reset: labels["controls.resetContext"], change: labels["context.change"], close: labels["context.close"], done: labels["context.done"], findPath: labels["context.findPath"], setupHelp: labels["context.setupHelp"], choosePerspective: labels["context.choosePerspective"], dismiss: labels["context.dismiss"], selectStakeholder: labels["controls.selectStakeholder"], selectGoal: labels["controls.selectGoal"] }} />
