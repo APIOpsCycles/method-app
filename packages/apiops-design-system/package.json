@@ -3,18 +3,32 @@
   "version": "0.1.0",
   "description": "Boring, reusable APIOps design tokens, CSS, assets, and React canvas primitives.",
   "type": "module",
+  "engines": { "node": ">=22.16.0" },
+  "publishConfig": { "access": "public", "provenance": true },
+  "keywords": ["apiops", "design-system", "react", "design-tokens"],
   "sideEffects": ["./dist/styles.css"],
   "files": ["dist", "README.md", "CHANGELOG.md"],
   "exports": {
     ".": { "types": "./dist/react/index.d.ts", "default": "./dist/react/index.js" },
     "./react": { "types": "./dist/react/index.d.ts", "default": "./dist/react/index.js" },
+    "./react/canvas": { "types": "./dist/react/canvas.d.ts", "default": "./dist/react/canvas.js" },
+    "./react/metro": { "types": "./dist/react/metro.d.ts", "default": "./dist/react/metro.js" },
+    "./react/patterns": { "types": "./dist/react/patterns.d.ts", "default": "./dist/react/patterns.js" },
+    "./testing": { "types": "./dist/testing/index.d.ts", "default": "./dist/testing/index.js" },
     "./styles.css": "./dist/styles.css",
     "./tokens.json": "./dist/tokens.json",
     "./assets": { "types": "./dist/assets/index.d.ts", "default": "./dist/assets/index.js" },
     "./assets/*": "./dist/assets/*",
     "./metadata/*": "./dist/metadata/*"
   },
-  "scripts": { "build": "node ./scripts/build.mjs", "typecheck": "tsc -p tsconfig.json --noEmit" },
+  "bin": { "apiops-design-system": "./dist/cli/index.js" },
+  "scripts": {
+    "build": "node ./scripts/build.mjs",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "pretest": "npm run build",
+    "test": "node --test test/*.test.mjs",
+    "prepack": "npm run build"
+  },
   "peerDependencies": { "react": ">=18" },
   "devDependencies": { "@types/react": "19.2.14", "typescript": "5.9.3" },
   "license": "MIT"

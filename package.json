@@ -19,10 +19,11 @@
     "check:design-system-boundaries": "node scripts/check-design-system-boundaries.mjs",
     "pretest:astro-integration": "npm run prepare:local-data",
     "test:astro-integration": "node --test apps/site/test/*.test.mjs",
+    "test:design-system": "npm test --workspace @apiops/design-system",
     "prepare:local-data": "node packages/apiops-design-system/scripts/build.mjs && npm run sync:design-system-assets && npm run sync:method-data",
     "sync:method-data": "node scripts/sync-method-data.mjs",
     "db:generate": "drizzle-kit generate",
-    "sync:design-system-assets": "node scripts/sync-design-system-assets.mjs",
+    "sync:design-system-assets": "node packages/apiops-design-system/dist/cli/index.js copy-assets --output public/design-system",
     "preview": "npm run preview --workspace @apiops/site"
   },
   "dependencies": {
