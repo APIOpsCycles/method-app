@@ -1,22 +1,24 @@
-<svg
-  xmlns="http://www.w3.org/2000/svg"
-  width="1440"
-  height="620"
-  viewBox="0 0 1440 620"
-  role="img"
-  aria-labelledby="title description"
->
+<?xml version='1.0' encoding='UTF-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:ns1="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:ns2="http://www.inkscape.org/namespaces/inkscape" width="1440" height="620" viewBox="0 0 1440 620" role="img" aria-labelledby="title description" version="1.1" id="svg258" ns1:docname="apiops-iconset.svg">
+  <ns1:namedview id="namedview260" pagecolor="#ffffff" bordercolor="#000000" borderopacity="0.25" ns2:showpageshadow="2" ns2:pageopacity="0.0" ns2:pagecheckerboard="0" ns2:deskcolor="#d1d1d1" />
   <title id="title">APIOps Icon Examples</title>
   <desc id="description">
     Twelve reusable APIOps visual-language icons based on smooth routes,
     structural circles, stations and connected journeys.
   </desc>
+  <defs id="defs110">
+    <style id="style4">
 
-  <defs>
-    <style>
-      .base {
+      :root, svg {
+        --apiops-ink: #10233f;
+        --apiops-muted: #647184;
+        --apiops-paper: #ffffff;
+        --apiops-border: #dfe5ec;
+        --apiops-accent: #67389b;
+      }
+.base {
         fill: none;
-        stroke: #10233f;
+        stroke: var(--apiops-ink, #10233f);
         stroke-width: 4;
         stroke-linecap: round;
         stroke-linejoin: round;
@@ -24,23 +26,23 @@
 
       .fine {
         fill: none;
-        stroke: #10233f;
+        stroke: var(--apiops-ink, #10233f);
         stroke-width: 3;
         stroke-linecap: round;
         stroke-linejoin: round;
       }
 
       .accent {
-        fill: none;
-        stroke: currentColor;
+        fill: var(--apiops-accent, currentColor);
+        stroke: none;
         stroke-width: 5;
         stroke-linecap: round;
         stroke-linejoin: round;
       }
 
       .station {
-        fill: #ffffff;
-        stroke: currentColor;
+        fill: var(--apiops-accent, currentColor);
+        stroke: none;
         stroke-width: 4;
       }
 
@@ -48,7 +50,7 @@
         font-family: Inter, Arial, sans-serif;
         font-size: 18px;
         font-weight: 700;
-        fill: #10233f;
+        fill: var(--apiops-ink, #10233f);
         text-anchor: middle;
       }
 
@@ -56,374 +58,202 @@
         font-family: Inter, Arial, sans-serif;
         font-size: 13px;
         font-weight: 400;
-        fill: #647184;
+        fill: var(--apiops-muted, #647184);
         text-anchor: middle;
       }
 
       .tile {
-        fill: #ffffff;
-        stroke: #dfe5ec;
+        fill: var(--apiops-paper, #ffffff);
+        stroke: var(--apiops-border, #dfe5ec);
         stroke-width: 1.5;
       }
     </style>
-
-    <!-- 1. Insight -->
     <symbol id="icon-insight" viewBox="0 0 120 120">
-      <path
-        d="M36 72
-           C27 64 23 54 23 43
-           C23 23 39 10 59 10
-           C79 10 95 23 95 43
-           C95 55 90 64 82 72
-           C76 78 73 83 73 90
-           H47
-           C47 83 43 78 36 72Z"
-        class="base"
-      />
-
-      <path d="M47 98 H73" class="base"/>
-      <path d="M52 106 H68" class="base"/>
-
-      <path d="M24 88 H96" class="base"/>
-
-      <circle
-        cx="60"
-        cy="88"
-        r="11"
-        class="station"
-      />
+      <path d="M36 72            C27 64 23 54 23 43            C23 23 39 10 59 10            C79 10 95 23 95 43            C95 55 90 64 82 72            C76 78 73 83 73 90            H47            C47 83 43 78 36 72Z" class="base" id="path6" />
+      <path d="M47 98 H73" class="base" id="path8" />
+      <path d="M52 106 H68" class="base" id="path10" />
+      <path d="M24 88 H96" class="base" id="path12" />
+      <circle cx="60" cy="88" r="11" id="accent-outline-1-interior" fill="var(--apiops-paper, #ffffff)" stroke="none" />
+      <path style="color:#000000" d="m 60,75 c -7.156005,0 -13,5.843995 -13,13 0,7.156005 5.843995,13 13,13 7.156005,0 13,-5.843995 13,-13 0,-7.156005 -5.843995,-13 -13,-13 z m 0,4 c 4.994247,0 9,4.005753 9,9 0,4.994247 -4.005753,9 -9,9 -4.994247,0 -9,-4.005753 -9,-9 0,-4.994247 4.005753,-9 9,-9 z" id="accent-outline-1" fill="#67389b" stroke="none" />
     </symbol>
-
-    <!-- 2. Decision -->
     <symbol id="icon-decision" viewBox="0 0 120 120">
-      <circle
-        cx="48"
-        cy="47"
-        r="31"
-        class="base"
-      />
-
-      <path
-        d="M33 47 L44 58 L65 35"
-        class="accent"
-      />
-
-      <path
-        d="M48 78
-           C48 88 55 94 65 94
-           H91"
-        class="base"
-      />
-
-      <circle
-        cx="98"
-        cy="94"
-        r="10"
-        class="station"
-      />
+      <circle cx="48" cy="47" r="31" class="base" id="circle16" />
+      <path style="color:#000000" d="m 66.685547,33.154297 a 2.5,2.5 0 0 0 -3.53125,0.160156 l -19.236328,21.068359 -9.150391,-9.15039 a 2.5,2.5 0 0 0 -3.535156,0 2.5,2.5 0 0 0 0,3.535156 l 11,11 a 2.50025,2.50025 0 0 0 3.613281,-0.08203 l 21,-23 a 2.5,2.5 0 0 0 -0.160156,-3.53125 z" id="accent-outline-2" fill="#67389b" stroke="none" />
+      <path d="M48 78            C48 88 55 94 65 94            H91" class="base" id="path19" />
+      <circle cx="98" cy="94" r="10" id="accent-outline-3-interior" fill="var(--apiops-paper, #ffffff)" stroke="none" />
+      <path style="color:#000000" d="m 98,82 c -6.603721,0 -12,5.396279 -12,12 0,6.60372 5.396279,12 12,12 6.60372,0 12,-5.39628 12,-12 0,-6.603721 -5.39628,-12 -12,-12 z m 0,4 c 4.44196,0 8,3.558037 8,8 0,4.441963 -3.55804,8 -8,8 -4.441963,0 -8,-3.558037 -8,-8 0,-4.441963 3.558037,-8 8,-8 z" id="accent-outline-3" fill="#67389b" stroke="none" />
     </symbol>
-
-    <!-- 3. Conversation -->
     <symbol id="icon-conversation" viewBox="0 0 140 120">
-      <path
-        d="M34 28
-           C34 16 43 10 55 10
-           H91
-           C103 10 112 16 112 28
-           V62
-           C112 74 103 80 91 80
-           H55
-           C43 80 34 74 34 62Z"
-        class="base"
-      />
-
-      <path d="M34 64 L22 79" class="base"/>
-
-      <circle cx="59" cy="44" r="3.5" fill="#10233f"/>
-      <circle cx="73" cy="44" r="3.5" fill="#10233f"/>
-      <circle cx="87" cy="44" r="3.5" fill="#10233f"/>
-
-      <path d="M20 94 H120" class="base"/>
-
-      <circle cx="20" cy="94" r="11" class="station"/>
-      <circle cx="120" cy="94" r="11" class="station"/>
+      <path d="M34 28            C34 16 43 10 55 10            H91            C103 10 112 16 112 28            V62            C112 74 103 80 91 80            H55            C43 80 34 74 34 62Z" class="base" id="path23" />
+      <path d="M34 64 L22 79" class="base" id="path25" />
+      <circle cx="59" cy="44" r="3.5" fill="var(--apiops-ink, #10233f)" id="circle27" />
+      <circle cx="73" cy="44" r="3.5" fill="var(--apiops-ink, #10233f)" id="circle29" />
+      <circle cx="87" cy="44" r="3.5" fill="var(--apiops-ink, #10233f)" id="circle31" />
+      <path d="M20 94 H120" class="base" id="path33" />
+      <circle cx="20" cy="94" r="11" id="accent-outline-4-interior" fill="var(--apiops-paper, #ffffff)" stroke="none" />
+      <path style="color:#000000" d="m 20,81 c -7.156005,0 -13,5.843995 -13,13 0,7.15601 5.843995,13 13,13 7.156005,0 13,-5.84399 13,-13 0,-7.156005 -5.843995,-13 -13,-13 z m 0,4 c 4.994247,0 9,4.005753 9,9 0,4.994247 -4.005753,9 -9,9 -4.994247,0 -9,-4.005753 -9,-9 0,-4.994247 4.005753,-9 9,-9 z" id="accent-outline-4" fill="#67389b" stroke="none" />
+      <circle cx="120" cy="94" r="11" id="accent-outline-5-interior" fill="var(--apiops-paper, #ffffff)" stroke="none" />
+      <path style="color:#000000" d="m 120,81 c -7.15601,0 -13,5.843995 -13,13 0,7.15601 5.84399,13 13,13 7.15601,0 13,-5.84399 13,-13 0,-7.156005 -5.84399,-13 -13,-13 z m 0,4 c 4.99425,0 9,4.005753 9,9 0,4.994247 -4.00575,9 -9,9 -4.99425,0 -9,-4.005753 -9,-9 0,-4.994247 4.00575,-9 9,-9 z" id="accent-outline-5" fill="#67389b" stroke="none" />
     </symbol>
-
-    <!-- 4. Opportunity -->
     <symbol id="icon-opportunity" viewBox="0 0 130 120">
-      <circle cx="25" cy="91" r="11" class="station"/>
-
-      <path
-        d="M36 87
-           C51 79 61 67 68 53
-           C75 39 82 27 96 18"
-        class="base"
-      />
-
-      <path
-        d="M48 83
-           C63 84 77 89 93 98"
-        class="base"
-      />
-
-      <circle cx="102" cy="14" r="11" class="station"/>
-      <circle cx="103" cy="103" r="11" class="station"/>
+      <circle cx="25" cy="91" r="11" id="accent-outline-6-interior" fill="var(--apiops-paper, #ffffff)" stroke="none" />
+      <path style="color:#000000" d="m 25,78 c -7.156005,0 -13,5.843995 -13,13 0,7.156005 5.843995,13 13,13 7.156005,0 13,-5.843995 13,-13 0,-7.156005 -5.843995,-13 -13,-13 z m 0,4 c 4.994247,0 9,4.005753 9,9 0,4.994247 -4.005753,9 -9,9 -4.994247,0 -9,-4.005753 -9,-9 0,-4.994247 4.005753,-9 9,-9 z" id="accent-outline-6" fill="#67389b" stroke="none" />
+      <path d="M36 87            C51 79 61 67 68 53            C75 39 82 27 96 18" class="base" id="path39" />
+      <path d="M48 83            C63 84 77 89 93 98" class="base" id="path41" />
+      <circle cx="102" cy="14" r="11" id="accent-outline-7-interior" fill="var(--apiops-paper, #ffffff)" stroke="none" />
+      <path style="color:#000000" d="m 102,1 c -7.156005,0 -13,5.8439947 -13,13 0,7.156005 5.843995,13 13,13 7.15601,0 13,-5.843995 13,-13 0,-7.1560053 -5.84399,-13 -13,-13 z m 0,4 c 4.99425,0 9,4.005753 9,9 0,4.994247 -4.00575,9 -9,9 -4.994247,0 -9,-4.005753 -9,-9 0,-4.994247 4.005753,-9 9,-9 z" id="accent-outline-7" fill="#67389b" stroke="none" />
+      <circle cx="103" cy="103" r="11" id="accent-outline-8-interior" fill="var(--apiops-paper, #ffffff)" stroke="none" />
+      <path style="color:#000000" d="m 103,90 c -7.156005,0 -13,5.843995 -13,13 0,7.15601 5.843995,13 13,13 7.15601,0 13,-5.84399 13,-13 0,-7.156005 -5.84399,-13 -13,-13 z m 0,4 c 4.99425,0 9,4.005753 9,9 0,4.99425 -4.00575,9 -9,9 -4.994247,0 -9,-4.00575 -9,-9 0,-4.994247 4.005753,-9 9,-9 z" id="accent-outline-8" fill="#67389b" stroke="none" />
     </symbol>
-
-    <!-- 5. Capability -->
     <symbol id="icon-capability" viewBox="0 0 140 120">
-      <path d="M22 61 H118" class="base"/>
-
-      <circle cx="22" cy="61" r="12" class="station"/>
-      <circle cx="70" cy="61" r="12" class="station"/>
-      <circle cx="118" cy="61" r="12" class="station"/>
+      <path d="M22 61 H118" class="base" id="path46" />
+      <circle cx="22" cy="61" r="12" id="accent-outline-9-interior" fill="var(--apiops-paper, #ffffff)" stroke="none" />
+      <path style="color:#000000" d="M 22,47 C 14.29171,47 8,53.29171 8,61 8,68.70829 14.29171,75 22,75 29.70829,75 36,68.70829 36,61 36,53.29171 29.70829,47 22,47 Z m 0,4 c 5.546531,0 10,4.453469 10,10 0,5.546531 -4.453469,10 -10,10 -5.546531,0 -10,-4.453469 -10,-10 0,-5.546531 4.453469,-10 10,-10 z" id="accent-outline-9" fill="#67389b" stroke="none" />
+      <circle cx="70" cy="61" r="12" id="accent-outline-10-interior" fill="var(--apiops-paper, #ffffff)" stroke="none" />
+      <path style="color:#000000" d="m 70,47 c -7.70829,0 -14,6.29171 -14,14 0,7.70829 6.29171,14 14,14 7.70829,0 14,-6.29171 14,-14 0,-7.70829 -6.29171,-14 -14,-14 z m 0,4 c 5.546531,0 10,4.453469 10,10 0,5.546531 -4.453469,10 -10,10 -5.546531,0 -10,-4.453469 -10,-10 0,-5.546531 4.453469,-10 10,-10 z" id="accent-outline-10" fill="#67389b" stroke="none" />
+      <circle cx="118" cy="61" r="12" id="accent-outline-11-interior" fill="var(--apiops-paper, #ffffff)" stroke="none" />
+      <path style="color:#000000" d="m 118,47 c -7.70829,0 -14,6.29171 -14,14 0,7.70829 6.29171,14 14,14 7.70829,0 14,-6.29171 14,-14 0,-7.70829 -6.29171,-14 -14,-14 z m 0,4 c 5.54653,0 10,4.453469 10,10 0,5.546531 -4.45347,10 -10,10 -5.54653,0 -10,-4.453469 -10,-10 0,-5.546531 4.45347,-10 10,-10 z" id="accent-outline-11" fill="#67389b" stroke="none" />
     </symbol>
-
-    <!-- 6. Value -->
     <symbol id="icon-value" viewBox="0 0 130 120">
-      <circle cx="37" cy="82" r="15" class="base"/>
-
-      <path
-        d="M50 77
-           C68 70 82 57 91 42
-           C97 32 101 23 104 14"
-        class="base"
-      />
-
-      <path
-        d="M90 25 L104 14 L108 31"
-        class="base"
-      />
-
-      <circle cx="107" cy="12" r="10" class="station"/>
+      <circle cx="37" cy="82" r="15" class="base" id="circle52" />
+      <path d="M50 77            C68 70 82 57 91 42            C97 32 101 23 104 14" class="base" id="path54" />
+      <path d="M90 25 L104 14 L108 31" class="base" id="path56" />
+      <circle cx="107" cy="12" r="10" id="accent-outline-12-interior" fill="var(--apiops-paper, #ffffff)" stroke="none" />
+      <path style="color:#000000" d="m 107,0 c -6.60372,0 -12,5.3962789 -12,12 0,6.603721 5.39628,12 12,12 6.60372,0 12,-5.396279 12,-12 0,-6.6037211 -5.39628,-12 -12,-12 z m 0,4 c 4.44196,0 8,3.5580372 8,8 0,4.441963 -3.55804,8 -8,8 -4.44196,0 -8,-3.558037 -8,-8 0,-4.4419628 3.55804,-8 8,-8 z" id="accent-outline-12" fill="#67389b" stroke="none" />
     </symbol>
-
-    <!-- 7. People -->
     <symbol id="icon-people" viewBox="0 0 150 120">
-      <circle cx="52" cy="31" r="13" class="base"/>
-      <circle cx="98" cy="31" r="13" class="base"/>
-
-      <path
-        d="M38 76
-           C40 58 45 49 52 49
-           C59 49 64 58 66 76
-           V91"
-        class="base"
-      />
-
-      <path
-        d="M84 76
-           C86 58 91 49 98 49
-           C105 49 110 58 112 76
-           V91"
-        class="base"
-      />
-
-      <path d="M28 92 H122" class="base"/>
-
-      <circle cx="28" cy="92" r="11" class="station"/>
-      <circle cx="122" cy="92" r="11" class="station"/>
+      <circle cx="52" cy="31" r="13" class="base" id="circle60" />
+      <circle cx="98" cy="31" r="13" class="base" id="circle62" />
+      <path d="M38 76            C40 58 45 49 52 49            C59 49 64 58 66 76            V91" class="base" id="path64" />
+      <path d="M84 76            C86 58 91 49 98 49            C105 49 110 58 112 76            V91" class="base" id="path66" />
+      <path d="M28 92 H122" class="base" id="path68" />
+      <circle cx="28" cy="92" r="11" id="accent-outline-13-interior" fill="var(--apiops-paper, #ffffff)" stroke="none" />
+      <path style="color:#000000" d="m 28,79 c -7.156005,0 -13,5.843995 -13,13 0,7.156005 5.843995,13 13,13 7.156005,0 13,-5.843995 13,-13 0,-7.156005 -5.843995,-13 -13,-13 z m 0,4 c 4.994247,0 9,4.005753 9,9 0,4.994247 -4.005753,9 -9,9 -4.994247,0 -9,-4.005753 -9,-9 0,-4.994247 4.005753,-9 9,-9 z" id="accent-outline-13" fill="#67389b" stroke="none" />
+      <circle cx="122" cy="92" r="11" id="accent-outline-14-interior" fill="var(--apiops-paper, #ffffff)" stroke="none" />
+      <path style="color:#000000" d="m 122,79 c -7.15601,0 -13,5.843995 -13,13 0,7.156005 5.84399,13 13,13 7.15601,0 13,-5.843995 13,-13 0,-7.156005 -5.84399,-13 -13,-13 z m 0,4 c 4.99425,0 9,4.005753 9,9 0,4.994247 -4.00575,9 -9,9 -4.99425,0 -9,-4.005753 -9,-9 0,-4.994247 4.00575,-9 9,-9 z" id="accent-outline-14" fill="#67389b" stroke="none" />
     </symbol>
-
-    <!-- 8. Alignment -->
     <symbol id="icon-alignment" viewBox="0 0 150 120">
-      <circle cx="75" cy="60" r="42" class="base"/>
-
-      <path d="M23 60 H127" class="base"/>
-
-      <circle cx="23" cy="60" r="11" class="station"/>
-      <circle cx="75" cy="60" r="11" class="station"/>
-      <circle cx="127" cy="60" r="11" class="station"/>
+      <circle cx="75" cy="60" r="42" class="base" id="circle73" />
+      <path d="M23 60 H127" class="base" id="path75" />
+      <circle cx="23" cy="60" r="11" id="accent-outline-15-interior" fill="var(--apiops-paper, #ffffff)" stroke="none" />
+      <path style="color:#000000" d="m 23,47 c -7.156005,0 -13,5.843995 -13,13 0,7.156005 5.843995,13 13,13 7.156005,0 13,-5.843995 13,-13 0,-7.156005 -5.843995,-13 -13,-13 z m 0,4 c 4.994247,0 9,4.005753 9,9 0,4.994247 -4.005753,9 -9,9 -4.994247,0 -9,-4.005753 -9,-9 0,-4.994247 4.005753,-9 9,-9 z" id="accent-outline-15" fill="#67389b" stroke="none" />
+      <circle cx="75" cy="60" r="11" id="accent-outline-16-interior" fill="var(--apiops-paper, #ffffff)" stroke="none" />
+      <path style="color:#000000" d="m 75,47 c -7.156005,0 -13,5.843995 -13,13 0,7.156005 5.843995,13 13,13 7.156005,0 13,-5.843995 13,-13 0,-7.156005 -5.843995,-13 -13,-13 z m 0,4 c 4.994247,0 9,4.005753 9,9 0,4.994247 -4.005753,9 -9,9 -4.994247,0 -9,-4.005753 -9,-9 0,-4.994247 4.005753,-9 9,-9 z" id="accent-outline-16" fill="#67389b" stroke="none" />
+      <circle cx="127" cy="60" r="11" id="accent-outline-17-interior" fill="var(--apiops-paper, #ffffff)" stroke="none" />
+      <path style="color:#000000" d="m 127,47 c -7.15601,0 -13,5.843995 -13,13 0,7.156005 5.84399,13 13,13 7.15601,0 13,-5.843995 13,-13 0,-7.156005 -5.84399,-13 -13,-13 z m 0,4 c 4.99425,0 9,4.005753 9,9 0,4.994247 -4.00575,9 -9,9 -4.99425,0 -9,-4.005753 -9,-9 0,-4.994247 4.00575,-9 9,-9 z" id="accent-outline-17" fill="#67389b" stroke="none" />
     </symbol>
-
-    <!-- 9. Risk -->
     <symbol id="icon-risk" viewBox="0 0 150 120">
-      <path
-        d="M14 61 H52"
-        class="base"
-        stroke-dasharray="10 10"
-      />
-
-      <path
-        d="M98 61 H136"
-        class="base"
-        stroke-dasharray="10 10"
-      />
-
-      <circle
-        cx="75"
-        cy="61"
-        r="22"
-        fill="#ffffff"
-        stroke="currentColor"
-        stroke-width="4"
-      />
-
-      <path
-        d="M65 51 L85 71
-           M85 51 L65 71"
-        class="accent"
-      />
+      <path d="M14 61 H52" class="base" stroke-dasharray="10 10" id="path81" />
+      <path d="M98 61 H136" class="base" stroke-dasharray="10 10" id="path83" />
+      <circle cx="75" cy="61" r="22" fill="#ffffff" stroke="currentColor" stroke-width="4" id="circle85" />
+      <path style="color:#000000" d="m 65,48.5 a 2.5,2.5 0 0 0 -1.767578,0.732422 2.5,2.5 0 0 0 0,3.535156 L 71.464844,61 63.232422,69.232422 a 2.5,2.5 0 0 0 0,3.535156 2.5,2.5 0 0 0 3.535156,0 L 75,64.535156 l 8.232422,8.232422 a 2.5,2.5 0 0 0 3.535156,0 2.5,2.5 0 0 0 0,-3.535156 L 78.535156,61 86.767578,52.767578 a 2.5,2.5 0 0 0 0,-3.535156 2.5,2.5 0 0 0 -3.535156,0 L 75,57.464844 66.767578,49.232422 A 2.5,2.5 0 0 0 65,48.5 Z" id="accent-outline-18" fill="#67389b" stroke="none" />
     </symbol>
-
-    <!-- 10. Quality -->
     <symbol id="icon-quality" viewBox="0 0 150 120">
-      <path d="M17 65 H42" class="base"/>
-
-      <circle cx="75" cy="60" r="36" class="base"/>
-
-      <path
-        d="M57 60 L69 72 L91 47"
-        class="accent"
-      />
-
-      <path d="M108 65 H133" class="base"/>
-
-      <circle cx="121" cy="65" r="11" class="station"/>
+      <path d="M17 65 H42" class="base" id="path89" />
+      <circle cx="75" cy="60" r="36" class="base" id="circle91" />
+      <path style="color:#000000" d="m 90.839844,44.505859 a 2.5,2.5 0 0 0 -1.716797,0.841797 l -20.240235,23 -10.115234,-10.115234 a 2.5,2.5 0 0 0 -3.535156,0 2.5,2.5 0 0 0 0,3.535156 l 12,12 a 2.50025,2.50025 0 0 0 3.644531,-0.115234 l 22,-25 a 2.5,2.5 0 0 0 -0.224609,-3.529297 2.5,2.5 0 0 0 -1.8125,-0.617188 z" id="accent-outline-19" fill="#67389b" stroke="none" />
+      <path d="M108 65 H133" class="base" id="path94" />
+      <circle cx="121" cy="65" r="11" id="accent-outline-20-interior" fill="var(--apiops-paper, #ffffff)" stroke="none" />
+      <path style="color:#000000" d="m 121,52 c -7.15601,0 -13,5.843995 -13,13 0,7.156005 5.84399,13 13,13 7.15601,0 13,-5.843995 13,-13 0,-7.156005 -5.84399,-13 -13,-13 z m 0,4 c 4.99425,0 9,4.005753 9,9 0,4.994247 -4.00575,9 -9,9 -4.99425,0 -9,-4.005753 -9,-9 0,-4.994247 4.00575,-9 9,-9 z" id="accent-outline-20" fill="#67389b" stroke="none" />
     </symbol>
-
-    <!-- 11. Flow -->
     <symbol id="icon-flow" viewBox="0 0 150 120">
-      <circle cx="22" cy="73" r="11" class="station"/>
-
-      <path
-        d="M33 73
-           C50 73 54 66 62 55
-           C70 44 78 37 94 37
-           H116"
-        class="base"
-      />
-
-      <circle cx="127" cy="37" r="11" class="station"/>
+      <circle cx="22" cy="73" r="11" id="accent-outline-21-interior" fill="var(--apiops-paper, #ffffff)" stroke="none" />
+      <path style="color:#000000" d="M 22,60 C 14.843995,60 9,65.843995 9,73 9,80.156005 14.843995,86 22,86 29.156005,86 35,80.156005 35,73 35,65.843995 29.156005,60 22,60 Z m 0,4 c 4.994247,0 9,4.005753 9,9 0,4.994247 -4.005753,9 -9,9 -4.994247,0 -9,-4.005753 -9,-9 0,-4.994247 4.005753,-9 9,-9 z" id="accent-outline-21" fill="#67389b" stroke="none" />
+      <path d="M33 73            C50 73 54 66 62 55            C70 44 78 37 94 37            H116" class="base" id="path99" />
+      <circle cx="127" cy="37" r="11" id="accent-outline-22-interior" fill="var(--apiops-paper, #ffffff)" stroke="none" />
+      <path style="color:#000000" d="m 127,24 c -7.15601,0 -13,5.843995 -13,13 0,7.156005 5.84399,13 13,13 7.15601,0 13,-5.843995 13,-13 0,-7.156005 -5.84399,-13 -13,-13 z m 0,4 c 4.99425,0 9,4.005753 9,9 0,4.994247 -4.00575,9 -9,9 -4.99425,0 -9,-4.005753 -9,-9 0,-4.994247 4.00575,-9 9,-9 z" id="accent-outline-22" fill="#67389b" stroke="none" />
     </symbol>
-
-    <!-- 12. Learn -->
     <symbol id="icon-learn" viewBox="0 0 140 120">
-      <path
-        d="M29 79
-           C17 68 15 50 24 36
-           C33 22 50 17 65 23
-           C79 29 86 44 82 58
-           C79 69 70 77 59 79"
-        class="base"
-      />
-
-      <path
-        d="M58 79
-           C69 80 82 82 94 87"
-        class="base"
-      />
-
-      <circle cx="101" cy="90" r="11" class="station"/>
-
-      <circle
-        cx="53"
-        cy="50"
-        r="11"
-        class="accent"
-      />
+      <path d="M29 79            C17 68 15 50 24 36            C33 22 50 17 65 23            C79 29 86 44 82 58            C79 69 70 77 59 79" class="base" id="path103" />
+      <path d="M58 79            C69 80 82 82 94 87" class="base" id="path105" />
+      <circle cx="101" cy="90" r="11" id="accent-outline-23-interior" fill="var(--apiops-paper, #ffffff)" stroke="none" />
+      <path style="color:#000000" d="m 101,77 c -7.156005,0 -13,5.843995 -13,13 0,7.156005 5.843995,13 13,13 7.15601,0 13,-5.843995 13,-13 0,-7.156005 -5.84399,-13 -13,-13 z m 0,4 c 4.99425,0 9,4.005753 9,9 0,4.994247 -4.00575,9 -9,9 -4.994247,0 -9,-4.005753 -9,-9 0,-4.994247 4.005753,-9 9,-9 z" id="accent-outline-23" fill="#67389b" stroke="none" />
+      <path style="color:#000000" d="m 53,36.5 c -7.426225,0 -13.5,6.073775 -13.5,13.5 0,7.426225 6.073775,13.5 13.5,13.5 7.426225,0 13.5,-6.073775 13.5,-13.5 0,-7.426225 -6.073775,-13.5 -13.5,-13.5 z m 0,5 c 4.724027,0 8.5,3.775973 8.5,8.5 0,4.724027 -3.775973,8.5 -8.5,8.5 -4.724027,0 -8.5,-3.775973 -8.5,-8.5 0,-4.724027 3.775973,-8.5 8.5,-8.5 z" id="accent-outline-24" fill="#67389b" stroke="none" />
     </symbol>
   </defs>
-
-  <rect width="1440" height="620" fill="#f7f8fa"/>
-
-  <!-- Row 1 -->
-
-  <g transform="translate(25 25)" color="#2F7D32">
-    <rect width="210" height="260" rx="18" class="tile"/>
-    <use href="#icon-insight" x="45" y="25" width="120" height="120"/>
-    <text x="105" y="178" class="label">Insight</text>
-    <text x="105" y="205" class="description">Understanding</text>
-    <text x="105" y="224" class="description">emerges</text>
+  <rect width="1440" height="620" fill="#f7f8fa" id="rect112" />
+  <g transform="translate(25 25)" color="#2F7D32" id="g124">
+    <rect width="210" height="260" rx="18" class="tile" id="rect114" />
+    <use href="#icon-insight" x="45" y="25" width="120" height="120" id="use116" />
+    <text x="105" y="178" class="label" id="text118">Insight</text>
+    <text x="105" y="205" class="description" id="text120">Understanding</text>
+    <text x="105" y="224" class="description" id="text122">emerges</text>
   </g>
-
-  <g transform="translate(260 25)" color="#67389B">
-    <rect width="210" height="260" rx="18" class="tile"/>
-    <use href="#icon-decision" x="45" y="25" width="120" height="120"/>
-    <text x="105" y="178" class="label">Decision</text>
-    <text x="105" y="205" class="description">Commit and</text>
-    <text x="105" y="224" class="description">move forward</text>
+  <g transform="translate(260 25)" color="#67389B" id="g136">
+    <rect width="210" height="260" rx="18" class="tile" id="rect126" />
+    <use href="#icon-decision" x="45" y="25" width="120" height="120" id="use128" />
+    <text x="105" y="178" class="label" id="text130">Decision</text>
+    <text x="105" y="205" class="description" id="text132">Commit and</text>
+    <text x="105" y="224" class="description" id="text134">move forward</text>
   </g>
-
-  <g transform="translate(495 25)" color="#00A6A6">
-    <rect width="210" height="260" rx="18" class="tile"/>
-    <use href="#icon-conversation" x="35" y="25" width="140" height="120"/>
-    <text x="105" y="178" class="label">Conversation</text>
-    <text x="105" y="205" class="description">Dialogue creates</text>
-    <text x="105" y="224" class="description">shared understanding</text>
+  <g transform="translate(495 25)" color="#00A6A6" id="g148">
+    <rect width="210" height="260" rx="18" class="tile" id="rect138" />
+    <use href="#icon-conversation" x="35" y="25" width="140" height="120" id="use140" />
+    <text x="105" y="178" class="label" id="text142">Conversation</text>
+    <text x="105" y="205" class="description" id="text144">Dialogue creates</text>
+    <text x="105" y="224" class="description" id="text146">shared understanding</text>
   </g>
-
-  <g transform="translate(730 25)" color="#E64C19">
-    <rect width="210" height="260" rx="18" class="tile"/>
-    <use href="#icon-opportunity" x="40" y="25" width="130" height="120"/>
-    <text x="105" y="178" class="label">Opportunity</text>
-    <text x="105" y="205" class="description">Explore and</text>
-    <text x="105" y="224" class="description">create options</text>
+  <g transform="translate(730 25)" color="#E64C19" id="g160">
+    <rect width="210" height="260" rx="18" class="tile" id="rect150" />
+    <use href="#icon-opportunity" x="40" y="25" width="130" height="120" id="use152" />
+    <text x="105" y="178" class="label" id="text154">Opportunity</text>
+    <text x="105" y="205" class="description" id="text156">Explore and</text>
+    <text x="105" y="224" class="description" id="text158">create options</text>
   </g>
-
-  <g transform="translate(965 25)" color="#1656B8">
-    <rect width="210" height="260" rx="18" class="tile"/>
-    <use href="#icon-capability" x="35" y="25" width="140" height="120"/>
-    <text x="105" y="178" class="label">Capability</text>
-    <text x="105" y="205" class="description">Build, integrate</text>
-    <text x="105" y="224" class="description">and reuse</text>
+  <g transform="translate(965 25)" color="#1656B8" id="g172">
+    <rect width="210" height="260" rx="18" class="tile" id="rect162" />
+    <use href="#icon-capability" x="35" y="25" width="140" height="120" id="use164" />
+    <text x="105" y="178" class="label" id="text166">Capability</text>
+    <text x="105" y="205" class="description" id="text168">Build, integrate</text>
+    <text x="105" y="224" class="description" id="text170">and reuse</text>
   </g>
-
-  <g transform="translate(1200 25)" color="#2F7D32">
-    <rect width="210" height="260" rx="18" class="tile"/>
-    <use href="#icon-value" x="40" y="25" width="130" height="120"/>
-    <text x="105" y="178" class="label">Value</text>
-    <text x="105" y="205" class="description">Deliver impact</text>
-    <text x="105" y="224" class="description">that matters</text>
+  <g transform="translate(1200 25)" color="#2F7D32" id="g184">
+    <rect width="210" height="260" rx="18" class="tile" id="rect174" />
+    <use href="#icon-value" x="40" y="25" width="130" height="120" id="use176" />
+    <text x="105" y="178" class="label" id="text178">Value</text>
+    <text x="105" y="205" class="description" id="text180">Deliver impact</text>
+    <text x="105" y="224" class="description" id="text182">that matters</text>
   </g>
-
-  <!-- Row 2 -->
-
-  <g transform="translate(25 315)" color="#00A6A6">
-    <rect width="210" height="260" rx="18" class="tile"/>
-    <use href="#icon-people" x="30" y="25" width="150" height="120"/>
-    <text x="105" y="178" class="label">People</text>
-    <text x="105" y="205" class="description">Involve the</text>
-    <text x="105" y="224" class="description">right people</text>
+  <g transform="translate(25 315)" color="#00A6A6" id="g196">
+    <rect width="210" height="260" rx="18" class="tile" id="rect186" />
+    <use href="#icon-people" x="30" y="25" width="150" height="120" id="use188" />
+    <text x="105" y="178" class="label" id="text190">People</text>
+    <text x="105" y="205" class="description" id="text192">Involve the</text>
+    <text x="105" y="224" class="description" id="text194">right people</text>
   </g>
-
-  <g transform="translate(260 315)" color="#2F7D32">
-    <rect width="210" height="260" rx="18" class="tile"/>
-    <use href="#icon-alignment" x="30" y="25" width="150" height="120"/>
-    <text x="105" y="178" class="label">Alignment</text>
-    <text x="105" y="205" class="description">Connect around</text>
-    <text x="105" y="224" class="description">shared goals</text>
+  <g transform="translate(260 315)" color="#2F7D32" id="g208">
+    <rect width="210" height="260" rx="18" class="tile" id="rect198" />
+    <use href="#icon-alignment" x="30" y="25" width="150" height="120" id="use200" />
+    <text x="105" y="178" class="label" id="text202">Alignment</text>
+    <text x="105" y="205" class="description" id="text204">Connect around</text>
+    <text x="105" y="224" class="description" id="text206">shared goals</text>
   </g>
-
-  <g transform="translate(495 315)" color="#E64C19">
-    <rect width="210" height="260" rx="18" class="tile"/>
-    <use href="#icon-risk" x="30" y="25" width="150" height="120"/>
-    <text x="105" y="178" class="label">Risk</text>
-    <text x="105" y="205" class="description">Identify and</text>
-    <text x="105" y="224" class="description">mitigate early</text>
+  <g transform="translate(495 315)" color="#E64C19" id="g220">
+    <rect width="210" height="260" rx="18" class="tile" id="rect210" />
+    <use href="#icon-risk" x="30" y="25" width="150" height="120" id="use212" />
+    <text x="105" y="178" class="label" id="text214">Risk</text>
+    <text x="105" y="205" class="description" id="text216">Identify and</text>
+    <text x="105" y="224" class="description" id="text218">mitigate early</text>
   </g>
-
-  <g transform="translate(730 315)" color="#00A6A6">
-    <rect width="210" height="260" rx="18" class="tile"/>
-    <use href="#icon-quality" x="30" y="25" width="150" height="120"/>
-    <text x="105" y="178" class="label">Quality</text>
-    <text x="105" y="205" class="description">Built in, not</text>
-    <text x="105" y="224" class="description">bolted on</text>
+  <g transform="translate(730 315)" color="#00A6A6" id="g232">
+    <rect width="210" height="260" rx="18" class="tile" id="rect222" />
+    <use href="#icon-quality" x="30" y="25" width="150" height="120" id="use224" />
+    <text x="105" y="178" class="label" id="text226">Quality</text>
+    <text x="105" y="205" class="description" id="text228">Built in, not</text>
+    <text x="105" y="224" class="description" id="text230">bolted on</text>
   </g>
-
-  <g transform="translate(965 315)" color="#67389B">
-    <rect width="210" height="260" rx="18" class="tile"/>
-    <use href="#icon-flow" x="30" y="25" width="150" height="120"/>
-    <text x="105" y="178" class="label">Flow</text>
-    <text x="105" y="205" class="description">Smooth handoffs,</text>
-    <text x="105" y="224" class="description">less friction</text>
+  <g transform="translate(965 315)" color="#67389B" id="g244">
+    <rect width="210" height="260" rx="18" class="tile" id="rect234" />
+    <use href="#icon-flow" x="30" y="25" width="150" height="120" id="use236" />
+    <text x="105" y="178" class="label" id="text238">Flow</text>
+    <text x="105" y="205" class="description" id="text240">Smooth handoffs,</text>
+    <text x="105" y="224" class="description" id="text242">less friction</text>
   </g>
-
-  <g transform="translate(1200 315)" color="#1656B8">
-    <rect width="210" height="260" rx="18" class="tile"/>
-    <use href="#icon-learn" x="35" y="25" width="140" height="120"/>
-    <text x="105" y="178" class="label">Learn</text>
-    <text x="105" y="205" class="description">Measure, learn</text>
-    <text x="105" y="224" class="description">and improve</text>
+  <g transform="translate(1200 315)" color="#1656B8" id="g256">
+    <rect width="210" height="260" rx="18" class="tile" id="rect246" />
+    <use href="#icon-learn" x="35" y="25" width="140" height="120" id="use248" />
+    <text x="105" y="178" class="label" id="text250">Learn</text>
+    <text x="105" y="205" class="description" id="text252">Measure, learn</text>
+    <text x="105" y="224" class="description" id="text254">and improve</text>
   </g>
 </svg>
