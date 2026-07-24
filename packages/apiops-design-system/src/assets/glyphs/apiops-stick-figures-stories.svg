@@ -1,49 +1,23 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg
-   width="1500"
-   height="500"
-   viewBox="0 0 1500 500"
-   role="img"
-   aria-labelledby="title description"
-   version="1.1"
-   id="svg83"
-   sodipodi:docname="apiops-stick-figures-stories.svg"
-   inkscape:version="1.4.3 (0d15f75, 2025-12-25)"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:svg="http://www.w3.org/2000/svg">
-  <sodipodi:namedview
-     id="namedview83"
-     pagecolor="#ffffff"
-     bordercolor="#000000"
-     borderopacity="0.25"
-     inkscape:showpageshadow="2"
-     inkscape:pageopacity="0.0"
-     inkscape:pagecheckerboard="0"
-     inkscape:deskcolor="#d1d1d1"
-     inkscape:zoom="1"
-     inkscape:cx="836.5"
-     inkscape:cy="202.5"
-     inkscape:window-width="3840"
-     inkscape:window-height="2054"
-     inkscape:window-x="-11"
-     inkscape:window-y="-11"
-     inkscape:window-maximized="1"
-     inkscape:current-layer="g44" />
-  <title
-     id="title">APIOps Mini Story Examples</title>
-  <desc
-     id="description">
+<?xml version='1.0' encoding='UTF-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:ns1="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:ns2="http://www.inkscape.org/namespaces/inkscape" width="1500" height="500" viewBox="0 0 1500 500" role="img" aria-labelledby="title description" version="1.1" id="svg83" ns1:docname="apiops-stick-figures-stories.svg" ns2:version="1.4.3 (0d15f75, 2025-12-25)">
+  <ns1:namedview id="namedview83" pagecolor="#ffffff" bordercolor="#000000" borderopacity="0.25" ns2:showpageshadow="2" ns2:pageopacity="0.0" ns2:pagecheckerboard="0" ns2:deskcolor="#d1d1d1" ns2:zoom="1" ns2:cx="836.5" ns2:cy="202.5" ns2:window-width="3840" ns2:window-height="2054" ns2:window-x="-11" ns2:window-y="-11" ns2:window-maximized="1" ns2:current-layer="g44" />
+  <title id="title">APIOps Mini Story Examples</title>
+  <desc id="description">
     Six small storytelling compositions using the compact APIOps human figure system.
   </desc>
-  <defs
-     id="defs52">
-    <style
-       id="style1">
-      .body {
+  <defs id="defs52">
+    <style id="style1">
+
+      :root, svg {
+        --apiops-ink: #10233f;
+        --apiops-muted: #647184;
+        --apiops-paper: #ffffff;
+        --apiops-border: #dfe5ec;
+        --apiops-accent: #67389b;
+      }
+.body {
         fill: none;
-        stroke: #10233f;
+        stroke: var(--apiops-ink, #10233f);
         stroke-width: 4;
         stroke-linecap: round;
         stroke-linejoin: round;
@@ -51,15 +25,15 @@
 
       .detail {
         fill: none;
-        stroke: #10233f;
+        stroke: var(--apiops-ink, #10233f);
         stroke-width: 3;
         stroke-linecap: round;
         stroke-linejoin: round;
       }
 
       .accent {
-        fill: none;
-        stroke: currentColor;
+        fill: var(--apiops-accent, currentColor);
+        stroke: none;
         stroke-width: 6;
         stroke-linecap: round;
         stroke-linejoin: round;
@@ -73,8 +47,8 @@
       }
 
       .tile {
-        fill: #ffffff;
-        stroke: #dfe5ec;
+        fill: var(--apiops-paper, #ffffff);
+        stroke: var(--apiops-border, #dfe5ec);
         stroke-width: 1.5;
       }
 
@@ -82,7 +56,7 @@
         font-family: Inter, Arial, sans-serif;
         font-size: 18px;
         font-weight: 700;
-        fill: #10233f;
+        fill: var(--apiops-ink, #10233f);
         text-anchor: middle;
       }
 
@@ -90,957 +64,219 @@
         font-family: Inter, Arial, sans-serif;
         font-size: 14px;
         font-weight: 400;
-        fill: #647184;
+        fill: var(--apiops-muted, #647184);
         text-anchor: middle;
       }
     </style>
-    <!-- Compact presenting actor -->
-    <symbol
-       id="actor-presenting"
-       viewBox="0 0 150 190">
-      <circle
-         cx="75"
-         cy="32"
-         r="22"
-         class="body"
-         id="circle1" />
-      <path
-         d="           M51 72           C55 59 64 53 75 53           C86 53 95 59 99 72           C104 89 104 107 100 126           C97 139 93 150 90 158         "
-         class="body"
-         id="path1" />
-      <path
-         d="           M51 72           C46 89 46 107 50 126           C53 139 57 150 60 158         "
-         class="body"
-         id="path2" />
-      <path
-         d="M60 158 L57 184"
-         class="body"
-         id="path3" />
-      <path
-         d="M90 158 L93 184"
-         class="body"
-         id="path4" />
-      <path
-         d="M49 87 C39 99 32 110 25 122"
-         class="body"
-         id="path5" />
-      <path
-         d="           M101 88           C112 95 122 100 132 102           C139 103 145 99 150 94         "
-         class="body"
-         id="path6" />
-      <path
-         d="M59 72 C67 77 83 77 91 72"
-         class="accent"
-         id="path7" />
+    <symbol id="actor-presenting" viewBox="0 0 150 190">
+      <circle cx="75" cy="32" r="22" class="body" id="circle1" />
+      <path d="           M51 72           C55 59 64 53 75 53           C86 53 95 59 99 72           C104 89 104 107 100 126           C97 139 93 150 90 158         " class="body" id="path1" />
+      <path d="           M51 72           C46 89 46 107 50 126           C53 139 57 150 60 158         " class="body" id="path2" />
+      <path d="M60 158 L57 184" class="body" id="path3" />
+      <path d="M90 158 L93 184" class="body" id="path4" />
+      <path d="M49 87 C39 99 32 110 25 122" class="body" id="path5" />
+      <path d="           M101 88           C112 95 122 100 132 102           C139 103 145 99 150 94         " class="body" id="path6" />
+      <path style="color:#000000" d="m 60.324219,69.880859 a 2.5,2.5 0 0 0 -3.44336,0.794922 2.5,2.5 0 0 0 0.794922,3.44336 C 62.310981,77.016141 68.652784,78.25 75,78.25 c 6.347216,0 12.689019,-1.233859 17.324219,-4.130859 a 2.5,2.5 0 0 0 0.794922,-3.44336 2.5,2.5 0 0 0 -3.44336,-0.794922 C 86.310989,71.983854 80.652772,73.25 75,73.25 c -5.652772,0 -11.310989,-1.266146 -14.675781,-3.369141 z" id="path7" fill="#67389b" stroke="none" />
     </symbol>
-    <!-- Compact listening actor -->
-    <symbol
-       id="actor-listening"
-       viewBox="0 0 150 190">
-      <circle
-         cx="75"
-         cy="32"
-         r="22"
-         class="body"
-         id="circle7" />
-      <path
-         d="           M51 72           C55 59 64 53 75 53           C86 53 95 59 99 72           C104 89 104 107 100 126           C97 139 93 150 90 158         "
-         class="body"
-         id="path8" />
-      <path
-         d="           M51 72           C46 89 46 107 50 126           C53 139 57 150 60 158         "
-         class="body"
-         id="path9" />
-      <path
-         d="M60 158 L57 184"
-         class="body"
-         id="path10" />
-      <path
-         d="M90 158 L93 184"
-         class="body"
-         id="path11" />
-      <path
-         d="           M50 88           C56 80 62 72 67 64           C70 59 71 54 71 50         "
-         class="body"
-         id="path12" />
-      <path
-         d="M101 88 C111 99 119 110 127 122"
-         class="body"
-         id="path13" />
-      <path
-         d="M59 72 C67 77 83 77 91 72"
-         class="accent"
-         id="path14" />
+    <symbol id="actor-listening" viewBox="0 0 150 190">
+      <circle cx="75" cy="32" r="22" class="body" id="circle7" />
+      <path d="           M51 72           C55 59 64 53 75 53           C86 53 95 59 99 72           C104 89 104 107 100 126           C97 139 93 150 90 158         " class="body" id="path8" />
+      <path d="           M51 72           C46 89 46 107 50 126           C53 139 57 150 60 158         " class="body" id="path9" />
+      <path d="M60 158 L57 184" class="body" id="path10" />
+      <path d="M90 158 L93 184" class="body" id="path11" />
+      <path d="           M50 88           C56 80 62 72 67 64           C70 59 71 54 71 50         " class="body" id="path12" />
+      <path d="M101 88 C111 99 119 110 127 122" class="body" id="path13" />
+      <path style="color:#000000" d="m 60.324219,69.880859 a 2.5,2.5 0 0 0 -3.44336,0.794922 2.5,2.5 0 0 0 0.794922,3.44336 C 62.310981,77.016141 68.652784,78.25 75,78.25 c 6.347216,0 12.689019,-1.233859 17.324219,-4.130859 a 2.5,2.5 0 0 0 0.794922,-3.44336 2.5,2.5 0 0 0 -3.44336,-0.794922 C 86.310989,71.983854 80.652772,73.25 75,73.25 c -5.652772,0 -11.310989,-1.266146 -14.675781,-3.369141 z" id="path14" fill="#67389b" stroke="none" />
     </symbol>
-    <!-- Compact walking actor -->
-    <symbol
-       id="actor-walking"
-       viewBox="0 0 160 190">
-      <circle
-         cx="70"
-         cy="32"
-         r="22"
-         class="body"
-         id="circle14" />
-      <path
-         d="           M46 72           C50 59 59 53 70 53           C81 53 90 59 94 72           C99 88 99 105 95 123           C92 135 88 146 85 154         "
-         class="body"
-         id="path15" />
-      <path
-         d="           M46 72           C41 88 41 105 45 123           C48 135 52 146 55 154         "
-         class="body"
-         id="path16" />
-      <path
-         d="M55 154 C47 166 39 176 30 186"
-         class="body"
-         id="path17" />
-      <path
-         d="M85 154 C96 164 107 174 120 184"
-         class="body"
-         id="path18" />
-      <path
-         d="M44 86 C35 96 27 105 18 112"
-         class="body"
-         id="path19" />
-      <path
-         d="M96 86 C107 91 118 98 129 106"
-         class="body"
-         id="path20" />
-      <path
-         d="M54 72 C62 77 78 77 86 72"
-         class="accent"
-         id="path21" />
+    <symbol id="actor-walking" viewBox="0 0 160 190">
+      <circle cx="70" cy="32" r="22" class="body" id="circle14" />
+      <path d="           M46 72           C50 59 59 53 70 53           C81 53 90 59 94 72           C99 88 99 105 95 123           C92 135 88 146 85 154         " class="body" id="path15" />
+      <path d="           M46 72           C41 88 41 105 45 123           C48 135 52 146 55 154         " class="body" id="path16" />
+      <path d="M55 154 C47 166 39 176 30 186" class="body" id="path17" />
+      <path d="M85 154 C96 164 107 174 120 184" class="body" id="path18" />
+      <path d="M44 86 C35 96 27 105 18 112" class="body" id="path19" />
+      <path d="M96 86 C107 91 118 98 129 106" class="body" id="path20" />
+      <path style="color:#000000" d="m 55.324219,69.880859 a 2.5,2.5 0 0 0 -3.44336,0.794922 2.5,2.5 0 0 0 0.794922,3.44336 C 57.310981,77.016141 63.652784,78.25 70,78.25 c 6.347216,0 12.689019,-1.233859 17.324219,-4.130859 a 2.5,2.5 0 0 0 0.794922,-3.44336 2.5,2.5 0 0 0 -3.44336,-0.794922 C 81.310989,71.983854 75.652772,73.25 70,73.25 c -5.652772,0 -11.310989,-1.266146 -14.675781,-3.369141 z" id="path21" fill="#67389b" stroke="none" />
     </symbol>
-    <!-- Compact standing actor -->
-    <symbol
-       id="actor-standing"
-       viewBox="0 0 150 190">
-      <circle
-         cx="75"
-         cy="32"
-         r="22"
-         class="body"
-         id="circle21" />
-      <path
-         d="           M51 72           C55 59 64 53 75 53           C86 53 95 59 99 72           C104 89 104 107 100 126           C97 139 93 150 90 158         "
-         class="body"
-         id="path22" />
-      <path
-         d="           M51 72           C46 89 46 107 50 126           C53 139 57 150 60 158         "
-         class="body"
-         id="path23" />
-      <path
-         d="M60 158 L57 184"
-         class="body"
-         id="path24" />
-      <path
-         d="M90 158 L93 184"
-         class="body"
-         id="path25" />
-      <path
-         d="M49 86 C39 96 31 106 23 118"
-         class="body"
-         id="path26" />
-      <path
-         d="M101 86 C111 96 119 106 127 118"
-         class="body"
-         id="path27" />
-      <path
-         d="M59 72 C67 77 83 77 91 72"
-         class="accent"
-         id="path28" />
+    <symbol id="actor-standing" viewBox="0 0 150 190">
+      <circle cx="75" cy="32" r="22" class="body" id="circle21" />
+      <path d="           M51 72           C55 59 64 53 75 53           C86 53 95 59 99 72           C104 89 104 107 100 126           C97 139 93 150 90 158         " class="body" id="path22" />
+      <path d="           M51 72           C46 89 46 107 50 126           C53 139 57 150 60 158         " class="body" id="path23" />
+      <path d="M60 158 L57 184" class="body" id="path24" />
+      <path d="M90 158 L93 184" class="body" id="path25" />
+      <path d="M49 86 C39 96 31 106 23 118" class="body" id="path26" />
+      <path d="M101 86 C111 96 119 106 127 118" class="body" id="path27" />
+      <path style="color:#000000" d="m 60.324219,69.880859 a 2.5,2.5 0 0 0 -3.44336,0.794922 2.5,2.5 0 0 0 0.794922,3.44336 C 62.310981,77.016141 68.652784,78.25 75,78.25 c 6.347216,0 12.689019,-1.233859 17.324219,-4.130859 a 2.5,2.5 0 0 0 0.794922,-3.44336 2.5,2.5 0 0 0 -3.44336,-0.794922 C 86.310989,71.983854 80.652772,73.25 75,73.25 c -5.652772,0 -11.310989,-1.266146 -14.675781,-3.369141 z" id="path28" fill="#67389b" stroke="none" />
     </symbol>
-    <!-- Compact facilitating actor -->
-    <symbol
-       id="actor-facilitating"
-       viewBox="0 0 190 190">
-      <circle
-         cx="95"
-         cy="32"
-         r="22"
-         class="body"
-         id="circle28" />
-      <path
-         d="           M71 72           C75 59 84 53 95 53           C106 53 115 59 119 72           C124 89 124 107 120 126           C117 139 113 150 110 158         "
-         class="body"
-         id="path29" />
-      <path
-         d="           M71 72           C66 89 66 107 70 126           C73 139 77 150 80 158         "
-         class="body"
-         id="path30" />
-      <path
-         d="M80 158 L77 184"
-         class="body"
-         id="path31" />
-      <path
-         d="M110 158 L113 184"
-         class="body"
-         id="path32" />
-      <path
-         d="M69 87 C52 92 37 99 22 110"
-         class="body"
-         id="path33" />
-      <path
-         d="M121 87 C138 92 153 99 168 110"
-         class="body"
-         id="path34" />
-      <path
-         d="M79 72 C87 77 103 77 111 72"
-         class="accent"
-         id="path35" />
+    <symbol id="actor-facilitating" viewBox="0 0 190 190">
+      <circle cx="95" cy="32" r="22" class="body" id="circle28" />
+      <path d="           M71 72           C75 59 84 53 95 53           C106 53 115 59 119 72           C124 89 124 107 120 126           C117 139 113 150 110 158         " class="body" id="path29" />
+      <path d="           M71 72           C66 89 66 107 70 126           C73 139 77 150 80 158         " class="body" id="path30" />
+      <path d="M80 158 L77 184" class="body" id="path31" />
+      <path d="M110 158 L113 184" class="body" id="path32" />
+      <path d="M69 87 C52 92 37 99 22 110" class="body" id="path33" />
+      <path d="M121 87 C138 92 153 99 168 110" class="body" id="path34" />
+      <path style="color:#000000" d="m 80.324219,69.880859 a 2.5,2.5 0 0 0 -3.44336,0.794922 2.5,2.5 0 0 0 0.794922,3.44336 C 82.310981,77.016141 88.652784,78.25 95,78.25 c 6.34722,0 12.68902,-1.233859 17.32422,-4.130859 a 2.5,2.5 0 0 0 0.79492,-3.44336 2.5,2.5 0 0 0 -3.44336,-0.794922 C 106.31099,71.983854 100.65277,73.25 95,73.25 c -5.652772,0 -11.310989,-1.266146 -14.675781,-3.369141 z" id="path35" fill="#67389b" stroke="none" />
     </symbol>
-    <!-- Compact observing actor -->
-    <symbol
-       id="actor-observing"
-       viewBox="0 0 180 190">
-      <circle
-         cx="67"
-         cy="32"
-         r="22"
-         class="body"
-         id="circle35" />
-      <path
-         d="           M43 72           C47 59 56 53 67 53           C78 53 87 59 91 72           C96 89 96 107 92 126           C89 139 85 150 82 158         "
-         class="body"
-         id="path36" />
-      <path
-         d="           M43 72           C38 89 38 107 42 126           C45 139 49 150 52 158         "
-         class="body"
-         id="path37" />
-      <path
-         d="M52 158 L49 184"
-         class="body"
-         id="path38" />
-      <path
-         d="M82 158 L85 184"
-         class="body"
-         id="path39" />
-      <path
-         d="M43 86 C50 74 57 63 63 54"
-         class="body"
-         id="path40" />
-      <path
-         d="M91 86 C102 79 111 71 119 62"
-         class="body"
-         id="path41" />
-      <path
-         d="           M65 49           L117 40           L145 30           L145 52           L117 45           L68 55           Z         "
-         class="detail"
-         id="path42" />
-      <path
-         d="M51 72 C59 77 75 77 83 72"
-         class="accent"
-         id="path43" />
+    <symbol id="actor-observing" viewBox="0 0 180 190">
+      <circle cx="67" cy="32" r="22" class="body" id="circle35" />
+      <path d="           M43 72           C47 59 56 53 67 53           C78 53 87 59 91 72           C96 89 96 107 92 126           C89 139 85 150 82 158         " class="body" id="path36" />
+      <path d="           M43 72           C38 89 38 107 42 126           C45 139 49 150 52 158         " class="body" id="path37" />
+      <path d="M52 158 L49 184" class="body" id="path38" />
+      <path d="M82 158 L85 184" class="body" id="path39" />
+      <path d="M43 86 C50 74 57 63 63 54" class="body" id="path40" />
+      <path d="M91 86 C102 79 111 71 119 62" class="body" id="path41" />
+      <path d="           M65 49           L117 40           L145 30           L145 52           L117 45           L68 55           Z         " class="detail" id="path42" />
+      <path style="color:#000000" d="m 52.324219,69.880859 a 2.5,2.5 0 0 0 -3.44336,0.794922 2.5,2.5 0 0 0 0.794922,3.44336 C 54.310981,77.016141 60.652784,78.25 67,78.25 c 6.347216,0 12.689019,-1.233859 17.324219,-4.130859 a 2.5,2.5 0 0 0 0.794922,-3.44336 2.5,2.5 0 0 0 -3.44336,-0.794922 C 78.310989,71.983854 72.652772,73.25 67,73.25 c -5.652772,0 -11.310989,-1.266146 -14.675781,-3.369141 z" id="path43" fill="#67389b" stroke="none" />
     </symbol>
-    <!-- Compact seated actor -->
-    <symbol
-       id="actor-seated"
-       viewBox="0 0 175 190">
-      <circle
-         cx="72"
-         cy="33"
-         r="21"
-         class="body"
-         id="circle43" />
-      <path
-         d="           M53 72           C58 60 65 54 74 54           C84 54 92 60 97 73           C101 84 103 96 103 108         "
-         class="body"
-         id="path44" />
-      <path
-         d="M53 75 C48 91 47 105 50 118"
-         class="body"
-         id="path45" />
-      <path
-         d="M50 118 C62 123 75 127 88 130"
-         class="body"
-         id="path46" />
-      <path
-         d="M88 130 C101 132 113 132 126 131"
-         class="body"
-         id="path47" />
-      <path
-         d="M126 131 C134 145 141 158 147 173"
-         class="body"
-         id="path48" />
-      <path
-         d="M103 108 C114 110 125 114 135 120"
-         class="body"
-         id="path49" />
-      <path
-         d="M50 118 C39 120 28 123 18 127"
-         class="body"
-         id="path50" />
-      <circle
-         cx="86"
-         cy="150"
-         r="36"
-         class="detail"
-         id="circle50" />
-      <path
-         d="M86 114 V150 H128"
-         class="detail"
-         id="path51" />
-      <path
-         d="M57 73 C65 77 82 77 90 73"
-         class="accent"
-         id="path52" />
+    <symbol id="actor-seated" viewBox="0 0 175 190">
+      <circle cx="72" cy="33" r="21" class="body" id="circle43" />
+      <path d="           M53 72           C58 60 65 54 74 54           C84 54 92 60 97 73           C101 84 103 96 103 108         " class="body" id="path44" />
+      <path d="M53 75 C48 91 47 105 50 118" class="body" id="path45" />
+      <path d="M50 118 C62 123 75 127 88 130" class="body" id="path46" />
+      <path d="M88 130 C101 132 113 132 126 131" class="body" id="path47" />
+      <path d="M126 131 C134 145 141 158 147 173" class="body" id="path48" />
+      <path d="M103 108 C114 110 125 114 135 120" class="body" id="path49" />
+      <path d="M50 118 C39 120 28 123 18 127" class="body" id="path50" />
+      <circle cx="86" cy="150" r="36" class="detail" id="circle50" />
+      <path d="M86 114 V150 H128" class="detail" id="path51" />
+      <path style="color:#000000" d="m 90.791016,70.628906 a 2.5,2.5 0 0 0 -1.908204,0.134766 C 85.516368,72.446894 79.483327,73.5 73.5,73.5 67.516673,73.5 61.483632,72.446894 58.117187,70.763672 a 2.5,2.5 0 0 0 -3.353515,1.11914 2.5,2.5 0 0 0 1.11914,3.353516 C 60.51636,77.553102 66.98334,78.5 73.5,78.5 c 6.51666,0 12.98364,-0.946898 17.617187,-3.263672 a 2.5,2.5 0 0 0 1.119141,-3.353516 2.5,2.5 0 0 0 -1.445312,-1.253906 z" id="path52" fill="#67389b" stroke="none" />
     </symbol>
   </defs>
-  <rect
-     width="1500"
-     height="500"
-     fill="#f7f8fa"
-     id="rect52"
-     x="0"
-     y="10" />
-  <!-- 1. Better conversations -->
-  <g
-     transform="translate(20 30)"
-     id="g59">
-    <rect
-       width="225"
-       height="410"
-       rx="20"
-       class="tile"
-       id="rect53" />
-    <g
-       transform="translate(15 45)"
-       color="#2F7D32"
-       id="g53">
-      <use
-         href="#actor-presenting"
-         width="105"
-         height="133"
-         id="use53" />
+  <rect width="1500" height="500" fill="#f7f8fa" id="rect52" x="0" y="10" />
+  <g transform="translate(20 30)" id="g59">
+    <rect width="225" height="410" rx="20" class="tile" id="rect53" />
+    <g transform="translate(15 45)" color="#2F7D32" id="g53">
+      <use href="#actor-presenting" width="105" height="133" id="use53" />
     </g>
-    <g
-       transform="translate(110 45)"
-       color="#67389B"
-       id="g54">
-      <use
-         href="#actor-listening"
-         width="105"
-         height="133"
-         id="use54" />
+    <g transform="translate(110 45)" color="#67389B" id="g54">
+      <use href="#actor-listening" width="105" height="133" id="use54" />
     </g>
-    <path
-       d="M48 198 H177"
-       class="journey"
-       stroke="#10233f"
-       id="path54" />
-    <circle
-       cx="48"
-       cy="198"
-       r="12"
-       fill="#fff"
-       stroke="#2F7D32"
-       stroke-width="4"
-       id="circle54" />
-    <circle
-       cx="177"
-       cy="198"
-       r="12"
-       fill="#fff"
-       stroke="#67389B"
-       stroke-width="4"
-       id="circle55" />
-    <path
-       d="m 86.412763,51.700615 h 53.801367 q 7.57766,0 7.57766,7.534005 v 21.848615 q 0,7.534005 -7.57766,7.534005 h -24.2485 L 104.59914,99.16485 V 88.61724 H 86.412763 q -7.577658,0 -7.577658,-7.534005 V 59.23462 q 0,-7.534005 7.577658,-7.534005 z"
-       fill="#ffffff"
-       stroke="#10233f"
-       stroke-width="2.26674"
-       stroke-linejoin="round"
-       id="path55" />
-    <circle
-       cx="92"
-       cy="72"
-       r="3"
-       fill="#10233f"
-       id="circle56" />
-    <circle
-       cx="112"
-       cy="72"
-       r="3"
-       fill="#10233f"
-       id="circle57" />
-    <circle
-       cx="132"
-       cy="72"
-       r="3"
-       fill="#10233f"
-       id="circle58" />
-    <text
-       x="112.5"
-       y="300"
-       class="title"
-       id="text58">Better conversations</text>
-    <text
-       x="112.5"
-       y="326"
-       class="subtitle"
-       id="text59">Start with listening</text>
+    <path d="M48 198 H177" class="journey" stroke="var(--apiops-ink, #10233f)" id="path54" />
+    <circle cx="48" cy="198" r="12" fill="#fff" stroke="none" stroke-width="4" id="circle54-interior" />
+    <path style="color:#000000" d="m 48,184 c -7.70829,0 -14,6.29171 -14,14 0,7.70829 6.29171,14 14,14 7.70829,0 14,-6.29171 14,-14 0,-7.70829 -6.29171,-14 -14,-14 z m 0,4 c 5.546531,0 10,4.45347 10,10 0,5.54653 -4.453469,10 -10,10 -5.546531,0 -10,-4.45347 -10,-10 0,-5.54653 4.453469,-10 10,-10 z" id="circle54" fill="#2F7D32" stroke="none" />
+    <circle cx="177" cy="198" r="12" fill="#fff" stroke="none" stroke-width="4" id="circle55-interior" />
+    <path style="color:#000000" d="m 177,184 c -7.70829,0 -14,6.29171 -14,14 0,7.70829 6.29171,14 14,14 7.70829,0 14,-6.29171 14,-14 0,-7.70829 -6.29171,-14 -14,-14 z m 0,4 c 5.54653,0 10,4.45347 10,10 0,5.54653 -4.45347,10 -10,10 -5.54653,0 -10,-4.45347 -10,-10 0,-5.54653 4.45347,-10 10,-10 z" id="circle55" fill="#67389B" stroke="none" />
+    <path d="m 86.412763,51.700615 h 53.801367 q 7.57766,0 7.57766,7.534005 v 21.848615 q 0,7.534005 -7.57766,7.534005 h -24.2485 L 104.59914,99.16485 V 88.61724 H 86.412763 q -7.577658,0 -7.577658,-7.534005 V 59.23462 q 0,-7.534005 7.577658,-7.534005 z" fill="#ffffff" stroke="var(--apiops-ink, #10233f)" stroke-width="2.26674" stroke-linejoin="round" id="path55" />
+    <circle cx="92" cy="72" r="3" fill="var(--apiops-ink, #10233f)" id="circle56" />
+    <circle cx="112" cy="72" r="3" fill="var(--apiops-ink, #10233f)" id="circle57" />
+    <circle cx="132" cy="72" r="3" fill="var(--apiops-ink, #10233f)" id="circle58" />
+    <text x="112.5" y="300" class="title" id="text58">Better conversations</text>
+    <text x="112.5" y="326" class="subtitle" id="text59">Start with listening</text>
   </g>
-  <!-- 2. Shared decisions -->
-  <g
-     transform="translate(265 30)"
-     id="g65">
-    <rect
-       width="225"
-       height="410"
-       rx="20"
-       class="tile"
-       id="rect59" />
-    <g
-       transform="translate(15 50)"
-       color="#E5640A"
-       id="g60">
-      <use
-         href="#actor-standing"
-         width="85"
-         height="108"
-         id="use59" />
+  <g transform="translate(265 30)" id="g65">
+    <rect width="225" height="410" rx="20" class="tile" id="rect59" />
+    <g transform="translate(15 50)" color="#E5640A" id="g60">
+      <use href="#actor-standing" width="85" height="108" id="use59" />
     </g>
-    <g
-       transform="translate(70 50)"
-       color="#67389B"
-       id="g61">
-      <use
-         href="#actor-standing"
-         width="85"
-         height="108"
-         id="use60" />
+    <g transform="translate(70 50)" color="#67389B" id="g61">
+      <use href="#actor-standing" width="85" height="108" id="use60" />
     </g>
-    <g
-       transform="translate(125 50)"
-       color="#00A6A6"
-       id="g62">
-      <use
-         href="#actor-standing"
-         width="85"
-         height="108"
-         id="use61" />
+    <g transform="translate(125 50)" color="#00A6A6" id="g62">
+      <use href="#actor-standing" width="85" height="108" id="use61" />
     </g>
-    <path
-       d="M42 200 H183"
-       class="journey"
-       stroke="#10233f"
-       id="path62" />
-    <circle
-       cx="42"
-       cy="200"
-       r="11"
-       fill="#fff"
-       stroke="#2F7D32"
-       stroke-width="4"
-       id="circle62" />
-    <circle
-       cx="183"
-       cy="200"
-       r="11"
-       fill="#fff"
-       stroke="#00A6A6"
-       stroke-width="4"
-       id="circle63" />
-    <circle
-       cx="112.5"
-       cy="200"
-       r="28"
-       fill="#fff"
-       stroke="#67389B"
-       stroke-width="5"
-       id="circle64" />
-    <path
-       d="M99 200 L109 210 L128 190"
-       fill="none"
-       stroke="#67389B"
-       stroke-width="5"
-       stroke-linecap="round"
-       stroke-linejoin="round"
-       id="path64" />
-    <text
-       x="112.5"
-       y="300"
-       class="title"
-       id="text64">Shared decisions</text>
-    <text
-       x="112.5"
-       y="326"
-       class="subtitle"
-       id="text65">Aligned across functions</text>
+    <path d="M42 200 H183" class="journey" stroke="var(--apiops-ink, #10233f)" id="path62" />
+    <circle cx="42" cy="200" r="11" fill="#fff" stroke="none" stroke-width="4" id="circle62-interior" />
+    <path style="color:#000000" d="m 42,187 c -7.156005,0 -13,5.84399 -13,13 0,7.15601 5.843995,13 13,13 7.156005,0 13,-5.84399 13,-13 0,-7.15601 -5.843995,-13 -13,-13 z m 0,4 c 4.994247,0 9,4.00575 9,9 0,4.99425 -4.005753,9 -9,9 -4.994247,0 -9,-4.00575 -9,-9 0,-4.99425 4.005753,-9 9,-9 z" id="circle62" fill="#2F7D32" stroke="none" />
+    <circle cx="183" cy="200" r="11" fill="#fff" stroke="none" stroke-width="4" id="circle63-interior" />
+    <path style="color:#000000" d="m 183,187 c -7.15601,0 -13,5.84399 -13,13 0,7.15601 5.84399,13 13,13 7.15601,0 13,-5.84399 13,-13 0,-7.15601 -5.84399,-13 -13,-13 z m 0,4 c 4.99425,0 9,4.00575 9,9 0,4.99425 -4.00575,9 -9,9 -4.99425,0 -9,-4.00575 -9,-9 0,-4.99425 4.00575,-9 9,-9 z" id="circle63" fill="#00A6A6" stroke="none" />
+    <circle cx="112.5" cy="200" r="28" fill="#fff" stroke="none" stroke-width="5" id="circle64-interior" />
+    <path style="color:#000000" d="M 112.5,169.5 C 95.684944,169.5 82,183.18494 82,200 c 0,16.81506 13.684944,30.5 30.5,30.5 16.81506,0 30.5,-13.68494 30.5,-30.5 0,-16.81506 -13.68494,-30.5 -30.5,-30.5 z m 0,5 c 14.11286,0 25.5,11.38714 25.5,25.5 0,14.11286 -11.38714,25.5 -25.5,25.5 C 98.387141,225.5 87,214.11286 87,200 c 0,-14.11286 11.387141,-25.5 25.5,-25.5 z" id="circle64" fill="#67389B" stroke="none" />
+    <path style="color:#000000" d="m 129.72266,188.1875 a 2.5,2.5 0 0 0 -3.53516,0.0898 l -17.23437,18.14063 -8.18555,-8.18555 a 2.5,2.5 0 0 0 -3.535158,0 2.5,2.5 0 0 0 0,3.53516 l 9.999998,10 a 2.50025,2.50025 0 0 0 3.58008,-0.0449 l 19,-20 a 2.5,2.5 0 0 0 -0.0898,-3.53516 z" id="path64" fill="#67389B" stroke="none" />
+    <text x="112.5" y="300" class="title" id="text64">Shared decisions</text>
+    <text x="112.5" y="326" class="subtitle" id="text65">Aligned across functions</text>
   </g>
-  <!-- 3. See the gaps -->
-  <!-- 4. Move forward -->
-  <!-- 5. Stronger together -->
-  <!-- 6. Shape the future -->
-  <g
-     transform="translate(1245 30)"
-     id="g83">
-    <rect
-       width="225"
-       height="410"
-       rx="20"
-       class="tile"
-       id="rect80" />
-    <g
-       transform="translate(18 48)"
-       color="#2F7D32"
-       id="g81">
-      <use
-         href="#actor-observing"
-         width="115"
-         height="121"
-         id="use80" />
+  <g transform="translate(1245 30)" id="g83">
+    <rect width="225" height="410" rx="20" class="tile" id="rect80" />
+    <g transform="translate(18 48)" color="#2F7D32" id="g81">
+      <use href="#actor-observing" width="115" height="121" id="use80" />
     </g>
-    <path
-       d="M91 203          C119 193 140 177 161 154          C173 141 183 129 196 117"
-       fill="none"
-       stroke="#647184"
-       stroke-width="4"
-       stroke-linecap="round"
-       stroke-dasharray="9 10"
-       id="path81" />
-    <circle
-       cx="91"
-       cy="203"
-       r="7"
-       fill="#fff"
-       stroke="#647184"
-       stroke-width="3"
-       id="circle81" />
-    <circle
-       cx="197"
-       cy="117"
-       r="15"
-       fill="#fff"
-       stroke="#67389B"
-       stroke-width="4"
-       id="circle82" />
-    <text
-       x="112.5"
-       y="300"
-       class="title"
-       id="text82">Shape the future</text>
-    <text
-       x="112.5"
-       y="326"
-       class="subtitle"
-       id="text83">Explore opportunities</text>
+    <path d="M91 203          C119 193 140 177 161 154          C173 141 183 129 196 117" fill="none" stroke="#647184" stroke-width="4" stroke-linecap="round" stroke-dasharray="9 10" id="path81" />
+    <circle cx="91" cy="203" r="7" fill="#fff" stroke="#647184" stroke-width="3" id="circle81" />
+    <circle cx="197" cy="117" r="15" fill="#fff" stroke="none" stroke-width="4" id="circle82-interior" />
+    <path style="color:#000000" d="m 197,100 c -9.36514,0 -17,7.63486 -17,17 0,9.36514 7.63486,17 17,17 9.36514,0 17,-7.63486 17,-17 0,-9.36514 -7.63486,-17 -17,-17 z m 0,4 c 7.20338,0 13,5.79662 13,13 0,7.20338 -5.79662,13 -13,13 -7.20338,0 -13,-5.79662 -13,-13 0,-7.20338 5.79662,-13 13,-13 z" id="circle82" fill="#67389B" stroke="none" />
+    <text x="112.5" y="300" class="title" id="text82">Shape the future</text>
+    <text x="112.5" y="326" class="subtitle" id="text83">Explore opportunities</text>
   </g>
-  <g
-     transform="matrix(0.90314856,0,0,0.90314856,497.69614,33.58409)"
-     id="g38">
-    <rect
-       width="226.56438"
-       height="444.25793"
-       rx="16.136633"
-       class="card"
-       id="rect35"
-       style="fill:#ffffff;stroke:#dfe5ec;stroke-width:1.20903"
-       x="14.824695"
-       y="-1.2527242"
-       ry="0" />
-    <g
-       transform="matrix(0.6210116,0,0,0.69832904,61.555823,39.172065)"
-       color="#00a6a6"
-       id="g35">
-      <g
-         id="use35"
-         transform="matrix(1.0434783,0,0,1.0434783,0.2173913,0)">
-        <circle
-           cx="93"
-           cy="37"
-           r="25"
-           class="body"
-           id="circle183"
-           style="fill:none;stroke:#10233f;stroke-width:4;stroke-linecap:round;stroke-linejoin:round" />
-        <!-- Curved compact torso -->
-        <path
-           d="m 68,80 c 5,-14 15,-21 27,-21 12,0 21,7 26,21 5,14 7,27 7,41"
-           class="body"
-           id="path184"
-           style="fill:none;stroke:#10233f;stroke-width:4;stroke-linecap:round;stroke-linejoin:round" />
-        <path
-           d="m 68,80 c -7,18 -10,36 -9,56 1,15 5,29 10,41"
-           class="body"
-           id="path185"
-           style="fill:none;stroke:#10233f;stroke-width:4;stroke-linecap:round;stroke-linejoin:round" />
-        <!-- Legs -->
-        <path
-           d="m 69,177 -5,38"
-           class="body"
-           id="path186"
-           style="fill:none;stroke:#10233f;stroke-width:4;stroke-linecap:round;stroke-linejoin:round" />
-        <path
-           d="m 96,169 5,46"
-           class="body"
-           id="path187"
-           style="fill:none;stroke:#10233f;stroke-width:4;stroke-linecap:round;stroke-linejoin:round" />
-        <!-- Bent inspecting arm -->
-        <path
-           d="m 121,88 c 11,11 18,23 21,36 2,8 8,12 18,12"
-           class="body"
-           id="path188"
-           style="fill:none;stroke:#10233f;stroke-width:4;stroke-linecap:round;stroke-linejoin:round" />
-        <path
-           d="m 68,91 c -7,15 -10,31 -9,47"
-           class="body"
-           id="path189"
-           style="fill:none;stroke:#10233f;stroke-width:4;stroke-linecap:round;stroke-linejoin:round" />
-        <!-- Magnifying glass -->
-        <circle
-           cx="176"
-           cy="120"
-           r="22"
-           class="body"
-           id="circle189"
-           style="fill:none;stroke:#10233f;stroke-width:4;stroke-linecap:round;stroke-linejoin:round" />
-        <path
-           d="m 160,136 -15,16"
-           class="body"
-           id="path190"
-           style="fill:none;stroke:#10233f;stroke-width:4;stroke-linecap:round;stroke-linejoin:round" />
-        <!-- Perspective accent -->
-        <path
-           d="m 75,78 c 11,-6 30,-6 41,0"
-           fill="none"
-           stroke="currentColor"
-           stroke-width="7"
-           stroke-linecap="round"
-           id="path191" />
+  <g transform="matrix(0.90314856,0,0,0.90314856,497.69614,33.58409)" id="g38">
+    <rect width="226.56438" height="444.25793" rx="16.136633" class="card" id="rect35" style="fill:#ffffff;stroke:#dfe5ec;stroke-width:1.20903" x="14.824695" y="-1.2527242" ry="0" />
+    <g transform="matrix(0.6210116,0,0,0.69832904,61.555823,39.172065)" color="#00a6a6" id="g35">
+      <g id="use35" transform="matrix(1.0434783,0,0,1.0434783,0.2173913,0)">
+        <circle cx="93" cy="37" r="25" class="body" id="circle183" style="fill:none;stroke:#10233f;stroke-width:4;stroke-linecap:round;stroke-linejoin:round" />
+        <path d="m 68,80 c 5,-14 15,-21 27,-21 12,0 21,7 26,21 5,14 7,27 7,41" class="body" id="path184" style="fill:none;stroke:#10233f;stroke-width:4;stroke-linecap:round;stroke-linejoin:round" />
+        <path d="m 68,80 c -7,18 -10,36 -9,56 1,15 5,29 10,41" class="body" id="path185" style="fill:none;stroke:#10233f;stroke-width:4;stroke-linecap:round;stroke-linejoin:round" />
+        <path d="m 69,177 -5,38" class="body" id="path186" style="fill:none;stroke:#10233f;stroke-width:4;stroke-linecap:round;stroke-linejoin:round" />
+        <path d="m 96,169 5,46" class="body" id="path187" style="fill:none;stroke:#10233f;stroke-width:4;stroke-linecap:round;stroke-linejoin:round" />
+        <path d="m 121,88 c 11,11 18,23 21,36 2,8 8,12 18,12" class="body" id="path188" style="fill:none;stroke:#10233f;stroke-width:4;stroke-linecap:round;stroke-linejoin:round" />
+        <path d="m 68,91 c -7,15 -10,31 -9,47" class="body" id="path189" style="fill:none;stroke:#10233f;stroke-width:4;stroke-linecap:round;stroke-linejoin:round" />
+        <circle cx="176" cy="120" r="22" class="body" id="circle189" style="fill:none;stroke:#10233f;stroke-width:4;stroke-linecap:round;stroke-linejoin:round" />
+        <path d="m 160,136 -15,16" class="body" id="path190" style="fill:none;stroke:#10233f;stroke-width:4;stroke-linecap:round;stroke-linejoin:round" />
+        <path style="color:#00a6a6" d="m 95.5,70 c -7.966659,0 -15.932093,1.522086 -22.175781,4.927734 a 3.5,3.5 0 0 0 -1.396485,4.748047 3.5,3.5 0 0 0 4.748047,1.396485 C 81.432082,78.47792 88.466674,77 95.5,77 c 7.03333,0 14.06792,1.47792 18.82422,4.072266 a 3.5,3.5 0 0 0 4.74805,-1.396485 3.5,3.5 0 0 0 -1.39649,-4.748047 C 111.43209,71.522086 103.46666,70 95.5,70 Z" id="path191" fill="#67389b" stroke="none" />
       </g>
     </g>
-    <!-- Broken journey line -->
-    <path
-       d="m 67.800583,251.82966 27.27626,0.0119"
-       fill="none"
-       stroke="#e64c19"
-       stroke-width="3.63025"
-       stroke-linecap="round"
-       stroke-dasharray="34, 18"
-       id="path35-3"
-       sodipodi:nodetypes="cc" />
-    <path
-       d="m 161.63142,251.84157 h 23.95962"
-       fill="none"
-       stroke="#10233f"
-       stroke-width="3.63025"
-       stroke-linecap="round"
-       stroke-dasharray="34, 18"
-       id="path36-3"
-       sodipodi:nodetypes="cc" />
-    <!-- Gap marker -->
-    <circle
-       cx="128.35414"
-       cy="251.84157"
-       r="22.991583"
-       fill="#ffffff"
-       stroke="#e64c19"
-       stroke-width="3.63025"
-       id="circle36" />
-    <path
-       d="m 118.67346,242.1609 19.36133,19.36133 m 0,-19.36133 -19.36133,19.36133"
-       fill="none"
-       stroke="#e64c19"
-       stroke-width="4.23529"
-       stroke-linecap="round"
-       id="path37-4" />
-    <text
-       x="126.9504"
-       y="324.92468"
-       class="story-title"
-       id="text37"
-       style="font-weight:700;font-size:18.1512px;font-family:Inter, Arial, sans-serif;text-anchor:middle;fill:#10233f;stroke-width:0.605042">See the gaps</text>
-    <text
-       x="126.9504"
-       y="347.31122"
-       class="story-subtitle"
-       id="text38"
-       style="font-weight:400;font-size:12.7059px;font-family:Inter, Arial, sans-serif;text-anchor:middle;fill:#647184;stroke-width:0.605042">Find issues early</text>
+    <path style="color:#000000" d="m 67.800781,250.01367 a 1.815125,1.815125 0 0 0 -1.814453,1.81445 1.815125,1.815125 0 0 0 1.8125,1.81641 l 27.277344,0.0117 a 1.815125,1.815125 0 0 0 1.816406,-1.81445 1.815125,1.815125 0 0 0 -1.814453,-1.81446 z" id="path35-3" fill="#e64c19" stroke="none" />
+    <path d="m 161.63142,251.84157 h 23.95962" fill="none" stroke="var(--apiops-ink, #10233f)" stroke-width="3.63025" stroke-linecap="round" stroke-dasharray="34, 18" id="path36-3" ns1:nodetypes="cc" />
+    <circle cx="128.35414" cy="251.84157" r="22.991583" fill="#ffffff" stroke="none" stroke-width="3.63025" id="circle36-interior" />
+    <path style="color:#000000" d="m 128.35352,227.03516 c -13.67886,0 -24.80664,11.12778 -24.80664,24.80664 0,13.67885 11.12778,24.80664 24.80664,24.80664 13.67885,0 24.80664,-11.12779 24.80664,-24.80664 0,-13.67886 -11.12779,-24.80664 -24.80664,-24.80664 z m 0,3.63086 c 11.71692,0 21.17773,9.45885 21.17773,21.17578 0,11.71692 -9.46081,21.17578 -21.17773,21.17578 -11.71693,0 -21.17579,-9.45886 -21.17579,-21.17578 0,-11.71693 9.45886,-21.17578 21.17579,-21.17578 z" id="circle36" fill="#e64c19" stroke="none" />
+    <path style="color:#000000" d="m 118.67383,240.04297 a 2.117645,2.117645 0 0 0 -1.49805,0.62109 2.117645,2.117645 0 0 0 0,2.99414 l 8.1836,8.1836 -8.1836,8.18359 a 2.117645,2.117645 0 0 0 0,2.99414 2.117645,2.117645 0 0 0 2.99414,0 l 8.1836,-8.18359 8.18359,8.18359 a 2.117645,2.117645 0 0 0 2.99414,0 2.117645,2.117645 0 0 0 0,-2.99414 l -8.18359,-8.18359 8.18359,-8.1836 a 2.117645,2.117645 0 0 0 0,-2.99414 2.117645,2.117645 0 0 0 -2.99414,0 l -8.18359,8.1836 -8.1836,-8.1836 a 2.117645,2.117645 0 0 0 -1.49609,-0.62109 z" id="path37-4" fill="#e64c19" stroke="none" />
+    <text x="126.9504" y="324.92468" class="story-title" id="text37" style="font-weight:700;font-size:18.1512px;font-family:Inter, Arial, sans-serif;text-anchor:middle;fill:#10233f;stroke-width:0.605042">See the gaps</text>
+    <text x="126.9504" y="347.31122" class="story-subtitle" id="text38" style="font-weight:400;font-size:12.7059px;font-family:Inter, Arial, sans-serif;text-anchor:middle;fill:#647184;stroke-width:0.605042">Find issues early</text>
   </g>
-  <g
-     transform="matrix(0.69287278,0,0,0.69287278,672.40769,62.384945)"
-     id="g42">
-    <rect
-       width="289.62585"
-       height="573.28796"
-       rx="24"
-       class="card"
-       id="rect38"
-       style="fill:#ffffff;stroke:#dfe5ec;stroke-width:1.5"
-       x="89.747704"
-       y="-38.908386"
-       ry="0" />
-    <g
-       transform="translate(100,20)"
-       color="#e64c19"
-       id="g39">
-      <g
-         id="use38">
-        <circle
-           cx="122"
-           cy="35"
-           class="body"
-           id="circle208"
-           style="fill:none;stroke:#10233f;stroke-width:4;stroke-linecap:round;stroke-linejoin:round"
-           r="25" />
-        <!-- Leaning torso -->
-        <path
-           d="m 95,77 c 6,-14 16,-20 28,-20 13,0 24,7 30,21 7,14 13,28 20,40"
-           class="body"
-           id="path209"
-           style="fill:none;stroke:#10233f;stroke-width:4;stroke-linecap:round;stroke-linejoin:round" />
-        <path
-           d="m 95,77 c -7,14 -12,29 -17,45 -4,12 -8,23 -14,32"
-           class="body"
-           id="path210"
-           style="fill:none;stroke:#10233f;stroke-width:4;stroke-linecap:round;stroke-linejoin:round" />
-        <!-- Forward arm -->
-        <path
-           d="m 151,84 c 17,8 32,12 48,12 11,0 19,-5 26,-12"
-           class="body"
-           id="path211"
-           style="fill:none;stroke:#10233f;stroke-width:4;stroke-linecap:round;stroke-linejoin:round" />
-        <!-- Rear arm -->
-        <path
-           d="M 94,88 C 82,98 71,110 61,123"
-           class="body"
-           id="path212"
-           style="fill:none;stroke:#10233f;stroke-width:4;stroke-linecap:round;stroke-linejoin:round" />
-        <!-- Running legs -->
-        <path
-           d="m 118,135 c -15,11 -27,24 -40,39 L 56,164"
-           class="body"
-           id="path213"
-           style="fill:none;stroke:#10233f;stroke-width:4;stroke-linecap:round;stroke-linejoin:round" />
-        <path
-           d="m 133,137 c 13,14 25,28 34,44 l -3,30"
-           class="body"
-           id="path214"
-           style="fill:none;stroke:#10233f;stroke-width:4;stroke-linecap:round;stroke-linejoin:round" />
-        <path
-           d="M 56,164 42,176"
-           class="body"
-           id="path215"
-           style="fill:none;stroke:#10233f;stroke-width:4;stroke-linecap:round;stroke-linejoin:round" />
-        <path
-           d="m 164,211 h 17"
-           class="body"
-           id="path216"
-           style="fill:none;stroke:#10233f;stroke-width:4;stroke-linecap:round;stroke-linejoin:round" />
-        <!-- Perspective accent -->
-        <path
-           d="m 102,76 c 13,-6 34,-5 47,2"
-           fill="none"
-           stroke="currentColor"
-           stroke-width="7"
-           stroke-linecap="round"
-           id="path217" />
+  <g transform="matrix(0.69287278,0,0,0.69287278,672.40769,62.384945)" id="g42">
+    <rect width="289.62585" height="573.28796" rx="24" class="card" id="rect38" style="fill:#ffffff;stroke:#dfe5ec;stroke-width:1.5" x="89.747704" y="-38.908386" ry="0" />
+    <g transform="translate(100,20)" color="#e64c19" id="g39">
+      <g id="use38">
+        <circle cx="122" cy="35" class="body" id="circle208" style="fill:none;stroke:#10233f;stroke-width:4;stroke-linecap:round;stroke-linejoin:round" r="25" />
+        <path d="m 95,77 c 6,-14 16,-20 28,-20 13,0 24,7 30,21 7,14 13,28 20,40" class="body" id="path209" style="fill:none;stroke:#10233f;stroke-width:4;stroke-linecap:round;stroke-linejoin:round" />
+        <path d="m 95,77 c -7,14 -12,29 -17,45 -4,12 -8,23 -14,32" class="body" id="path210" style="fill:none;stroke:#10233f;stroke-width:4;stroke-linecap:round;stroke-linejoin:round" />
+        <path d="m 151,84 c 17,8 32,12 48,12 11,0 19,-5 26,-12" class="body" id="path211" style="fill:none;stroke:#10233f;stroke-width:4;stroke-linecap:round;stroke-linejoin:round" />
+        <path d="M 94,88 C 82,98 71,110 61,123" class="body" id="path212" style="fill:none;stroke:#10233f;stroke-width:4;stroke-linecap:round;stroke-linejoin:round" />
+        <path d="m 118,135 c -15,11 -27,24 -40,39 L 56,164" class="body" id="path213" style="fill:none;stroke:#10233f;stroke-width:4;stroke-linecap:round;stroke-linejoin:round" />
+        <path d="m 133,137 c 13,14 25,28 34,44 l -3,30" class="body" id="path214" style="fill:none;stroke:#10233f;stroke-width:4;stroke-linecap:round;stroke-linejoin:round" />
+        <path d="M 56,164 42,176" class="body" id="path215" style="fill:none;stroke:#10233f;stroke-width:4;stroke-linecap:round;stroke-linejoin:round" />
+        <path d="m 164,211 h 17" class="body" id="path216" style="fill:none;stroke:#10233f;stroke-width:4;stroke-linecap:round;stroke-linejoin:round" />
+        <path style="color:#e64c19" d="m 125.66211,68.492187 c -8.94409,-0.396929 -17.91067,0.998583 -25.12891,4.330079 a 3.5,3.5 0 0 0 -1.710934,4.644531 3.5,3.5 0 0 0 4.644534,1.710937 c 11.56349,-5.336997 32.13587,-4.415718 43.87304,1.904297 a 3.5,3.5 0 0 0 4.74219,-1.421875 3.5,3.5 0 0 0 -1.42187,-4.742187 c -7.1314,-3.839985 -16.05396,-6.028852 -24.99805,-6.425782 z" id="path217" fill="#67389b" stroke="none" />
       </g>
     </g>
-    <!-- Journey line -->
-    <g
-       id="g217">
-      <path
-         d="M 115.84409,284.1948 H 340.29874"
-         fill="none"
-         stroke="#10233f"
-         stroke-width="6"
-         stroke-linecap="round"
-         id="path39-1"
-         sodipodi:nodetypes="cc" />
-      <circle
-         cx="153.20772"
-         cy="279.80521"
-         fill="#ffffff"
-         stroke="#2f7d32"
-         stroke-width="6"
-         id="circle39"
-         r="24" />
-      <circle
-         cx="226.33763"
-         cy="282"
-         fill="#ffffff"
-         stroke="#00a6a6"
-         stroke-width="6"
-         id="circle40"
-         r="24" />
-      <circle
-         cx="299.66235"
-         cy="279.80521"
-         fill="#ffffff"
-         stroke="#1656b8"
-         stroke-width="6"
-         id="circle41"
-         r="24" />
-      <path
-         d="m 344.68835,284.1948 h 26 m -15,-15 15,15 -15,15"
-         fill="none"
-         stroke="#10233f"
-         stroke-width="6"
-         stroke-linecap="round"
-         stroke-linejoin="round"
-         id="path41-1"
-         sodipodi:nodetypes="ccccc" />
+    <g id="g217">
+      <path d="M 115.84409,284.1948 H 340.29874" fill="none" stroke="var(--apiops-ink, #10233f)" stroke-width="6" stroke-linecap="round" id="path39-1" ns1:nodetypes="cc" />
+      <circle cx="153.20772" cy="279.80521" fill="#ffffff" stroke="none" stroke-width="6" id="circle39-interior" r="24" />
+      <path style="color:#000000" d="m 153.20703,252.80469 c -14.87614,0 -27,12.12386 -27,27 0,14.87614 12.12386,27 27,27 14.87614,0 27,-12.12386 27,-27 0,-14.87614 -12.12386,-27 -27,-27 z m 0,6 c 11.6335,0 21,9.3665 21,21 0,11.6335 -9.3665,21 -21,21 -11.6335,0 -21,-9.3665 -21,-21 0,-11.6335 9.3665,-21 21,-21 z" id="circle39" fill="#2f7d32" stroke="none" />
+      <circle cx="226.33763" cy="282" fill="#ffffff" stroke="none" stroke-width="6" id="circle40-interior" r="24" />
+      <path style="color:#000000" d="m 226.33789,255 c -14.87614,0 -27,12.12386 -27,27 0,14.87614 12.12386,27 27,27 14.87614,0 27,-12.12386 27,-27 0,-14.87614 -12.12386,-27 -27,-27 z m 0,6 c 11.6335,0 21,9.3665 21,21 0,11.6335 -9.3665,21 -21,21 -11.6335,0 -21,-9.3665 -21,-21 0,-11.6335 9.3665,-21 21,-21 z" id="circle40" fill="#00a6a6" stroke="none" />
+      <circle cx="299.66235" cy="279.80521" fill="#ffffff" stroke="none" stroke-width="6" id="circle41-interior" r="24" />
+      <path style="color:#000000" d="m 299.66211,252.80469 c -14.87614,0 -27,12.12386 -27,27 0,14.87614 12.12386,27 27,27 14.87614,0 27,-12.12386 27,-27 0,-14.87614 -12.12386,-27 -27,-27 z m 0,6 c 11.6335,0 21,9.3665 21,21 0,11.6335 -9.3665,21 -21,21 -11.6335,0 -21,-9.3665 -21,-21 0,-11.6335 9.3665,-21 21,-21 z" id="circle41" fill="#1656b8" stroke="none" />
+      <path d="m 344.68835,284.1948 h 26 m -15,-15 15,15 -15,15" fill="none" stroke="var(--apiops-ink, #10233f)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" id="path41-1" ns1:nodetypes="ccccc" />
     </g>
-    <text
-       x="224.32985"
-       y="393.13135"
-       class="story-title"
-       id="text41"
-       style="font-weight:700;font-size:29.0853px;font-family:Inter, Arial, sans-serif;text-anchor:middle;fill:#10233f;stroke-width:0.969509"
-       transform="scale(1.0158621,0.98438556)">Move forward</text>
-    <text
-       x="224.32985"
-       y="429.00317"
-       class="story-subtitle"
-       id="text42"
-       style="font-weight:400;font-size:20.3597px;font-family:Inter, Arial, sans-serif;text-anchor:middle;fill:#647184;stroke-width:0.969509"
-       transform="scale(1.0158621,0.98438556)">Take action together</text>
+    <text x="224.32985" y="393.13135" class="story-title" id="text41" style="font-weight:700;font-size:29.0853px;font-family:Inter, Arial, sans-serif;text-anchor:middle;fill:#10233f;stroke-width:0.969509" transform="scale(1.0158621,0.98438556)">Move forward</text>
+    <text x="224.32985" y="429.00317" class="story-subtitle" id="text42" style="font-weight:400;font-size:20.3597px;font-family:Inter, Arial, sans-serif;text-anchor:middle;fill:#647184;stroke-width:0.969509" transform="scale(1.0158621,0.98438556)">Take action together</text>
   </g>
-  <g
-     transform="matrix(0.87229325,0,0,0.87229325,891.73795,32.731925)"
-     id="g44">
-    <rect
-       width="324.89621"
-       height="452.80518"
-       rx="24"
-       class="card"
-       id="rect42"
-       style="fill:#ffffff;stroke:#dfe5ec;stroke-width:1.5"
-       x="63.649288"
-       y="4.389606" />
-    <g
-       transform="translate(65,35)"
-       id="g43">
-      <g
-         id="use42">
-        <!-- Left person -->
-        <circle
-           cx="83"
-           cy="39"
-           r="24"
-           class="body"
-           id="circle191"
-           style="fill:none;stroke:#10233f;stroke-width:4;stroke-linecap:round;stroke-linejoin:round" />
-        <path
-           d="m 59,79 c 5,-14 14,-20 25,-20 11,0 20,6 25,20 5,17 5,35 1,53 -3,14 -7,26 -10,36"
-           class="body"
-           id="path192"
-           style="fill:none;stroke:#10233f;stroke-width:4;stroke-linecap:round;stroke-linejoin:round" />
-        <path
-           d="m 59,79 c -6,17 -6,35 -2,53 3,14 7,26 10,36"
-           class="body"
-           id="path193"
-           style="fill:none;stroke:#10233f;stroke-width:4;stroke-linecap:round;stroke-linejoin:round" />
-        <path
-           d="m 67,168 -4,43"
-           class="body"
-           id="path194"
-           style="fill:none;stroke:#10233f;stroke-width:4;stroke-linecap:round;stroke-linejoin:round" />
-        <path
-           d="m 100,168 4,43"
-           class="body"
-           id="path195"
-           style="fill:none;stroke:#10233f;stroke-width:4;stroke-linecap:round;stroke-linejoin:round" />
-        <!-- Left raised arm -->
-        <path
-           d="m 108,87 c 17,-7 30,-18 40,-32 5,-8 9,-17 12,-26"
-           class="body"
-           id="path196"
-           style="fill:none;stroke:#10233f;stroke-width:4;stroke-linecap:round;stroke-linejoin:round" />
-        <!-- Left lower arm -->
-        <path
-           d="M 57,91 C 47,105 41,119 36,134"
-           class="body"
-           id="path197"
-           style="fill:none;stroke:#10233f;stroke-width:4;stroke-linecap:round;stroke-linejoin:round" />
-        <!-- Right person -->
-        <circle
-           cx="237"
-           cy="39"
-           r="24"
-           class="body"
-           id="circle197"
-           style="fill:none;stroke:#10233f;stroke-width:4;stroke-linecap:round;stroke-linejoin:round" />
-        <path
-           d="m 213,79 c 5,-14 14,-20 25,-20 11,0 20,6 25,20 5,17 5,35 1,53 -3,14 -7,26 -10,36"
-           class="body"
-           id="path198"
-           style="fill:none;stroke:#10233f;stroke-width:4;stroke-linecap:round;stroke-linejoin:round" />
-        <path
-           d="m 213,79 c -6,17 -6,35 -2,53 3,14 7,26 10,36"
-           class="body"
-           id="path199"
-           style="fill:none;stroke:#10233f;stroke-width:4;stroke-linecap:round;stroke-linejoin:round" />
-        <path
-           d="m 221,168 -4,43"
-           class="body"
-           id="path200"
-           style="fill:none;stroke:#10233f;stroke-width:4;stroke-linecap:round;stroke-linejoin:round" />
-        <path
-           d="m 254,168 4,43"
-           class="body"
-           id="path201"
-           style="fill:none;stroke:#10233f;stroke-width:4;stroke-linecap:round;stroke-linejoin:round" />
-        <!-- Right raised arm -->
-        <path
-           d="M 212,87 C 195,80 182,69 172,55 167,47 163,38 160,29"
-           class="body"
-           id="path202"
-           style="fill:none;stroke:#10233f;stroke-width:4;stroke-linecap:round;stroke-linejoin:round" />
-        <!-- Right lower arm -->
-        <path
-           d="m 263,91 c 10,14 16,28 21,43"
-           class="body"
-           id="path203"
-           style="fill:none;stroke:#10233f;stroke-width:4;stroke-linecap:round;stroke-linejoin:round" />
-        <!-- Perspective accents -->
-        <path
-           d="m 67,78 c 9,-4 25,-4 34,0"
-           fill="none"
-           stroke="#00a6a6"
-           stroke-width="7"
-           stroke-linecap="round"
-           id="path204" />
-        <path
-           d="m 221,78 c 9,-4 25,-4 34,0"
-           fill="none"
-           stroke="#1656b8"
-           stroke-width="7"
-           stroke-linecap="round"
-           id="path205" />
-        <!-- High-five emphasis -->
-        <path
-           d="M 160,13 V 2"
-           stroke="#67389b"
-           stroke-width="5"
-           stroke-linecap="round"
-           id="path206" />
-        <path
-           d="M 146,18 138,8"
-           stroke="#67389b"
-           stroke-width="5"
-           stroke-linecap="round"
-           id="path207" />
-        <path
-           d="M 174,18 182,8"
-           stroke="#67389b"
-           stroke-width="5"
-           stroke-linecap="round"
-           id="path208" />
+  <g transform="matrix(0.87229325,0,0,0.87229325,891.73795,32.731925)" id="g44">
+    <rect width="324.89621" height="452.80518" rx="24" class="card" id="rect42" style="fill:#ffffff;stroke:#dfe5ec;stroke-width:1.5" x="63.649288" y="4.389606" />
+    <g transform="translate(65,35)" id="g43">
+      <g id="use42">
+        <circle cx="83" cy="39" r="24" class="body" id="circle191" style="fill:none;stroke:#10233f;stroke-width:4;stroke-linecap:round;stroke-linejoin:round" />
+        <path d="m 59,79 c 5,-14 14,-20 25,-20 11,0 20,6 25,20 5,17 5,35 1,53 -3,14 -7,26 -10,36" class="body" id="path192" style="fill:none;stroke:#10233f;stroke-width:4;stroke-linecap:round;stroke-linejoin:round" />
+        <path d="m 59,79 c -6,17 -6,35 -2,53 3,14 7,26 10,36" class="body" id="path193" style="fill:none;stroke:#10233f;stroke-width:4;stroke-linecap:round;stroke-linejoin:round" />
+        <path d="m 67,168 -4,43" class="body" id="path194" style="fill:none;stroke:#10233f;stroke-width:4;stroke-linecap:round;stroke-linejoin:round" />
+        <path d="m 100,168 4,43" class="body" id="path195" style="fill:none;stroke:#10233f;stroke-width:4;stroke-linecap:round;stroke-linejoin:round" />
+        <path d="m 108,87 c 17,-7 30,-18 40,-32 5,-8 9,-17 12,-26" class="body" id="path196" style="fill:none;stroke:#10233f;stroke-width:4;stroke-linecap:round;stroke-linejoin:round" />
+        <path d="M 57,91 C 47,105 41,119 36,134" class="body" id="path197" style="fill:none;stroke:#10233f;stroke-width:4;stroke-linecap:round;stroke-linejoin:round" />
+        <circle cx="237" cy="39" r="24" class="body" id="circle197" style="fill:none;stroke:#10233f;stroke-width:4;stroke-linecap:round;stroke-linejoin:round" />
+        <path d="m 213,79 c 5,-14 14,-20 25,-20 11,0 20,6 25,20 5,17 5,35 1,53 -3,14 -7,26 -10,36" class="body" id="path198" style="fill:none;stroke:#10233f;stroke-width:4;stroke-linecap:round;stroke-linejoin:round" />
+        <path d="m 213,79 c -6,17 -6,35 -2,53 3,14 7,26 10,36" class="body" id="path199" style="fill:none;stroke:#10233f;stroke-width:4;stroke-linecap:round;stroke-linejoin:round" />
+        <path d="m 221,168 -4,43" class="body" id="path200" style="fill:none;stroke:#10233f;stroke-width:4;stroke-linecap:round;stroke-linejoin:round" />
+        <path d="m 254,168 4,43" class="body" id="path201" style="fill:none;stroke:#10233f;stroke-width:4;stroke-linecap:round;stroke-linejoin:round" />
+        <path d="M 212,87 C 195,80 182,69 172,55 167,47 163,38 160,29" class="body" id="path202" style="fill:none;stroke:#10233f;stroke-width:4;stroke-linecap:round;stroke-linejoin:round" />
+        <path d="m 263,91 c 10,14 16,28 21,43" class="body" id="path203" style="fill:none;stroke:#10233f;stroke-width:4;stroke-linecap:round;stroke-linejoin:round" />
+        <path style="color:#000000" d="m 84,71.332031 c -6.609028,0 -13.218465,1.156124 -18.421875,3.46875 a 3.5,3.5 0 0 0 -1.777344,4.621094 3.5,3.5 0 0 0 4.621094,1.777344 c 7.593162,-3.374739 23.563088,-3.374739 31.15625,0 a 3.5,3.5 0 0 0 4.621095,-1.777344 3.5,3.5 0 0 0 -1.77734,-4.621094 C 97.218465,72.488155 90.609028,71.332031 84,71.332031 Z" id="path204" fill="#00a6a6" stroke="none" />
+        <path style="color:#000000" d="m 238,71.332031 c -6.60903,0 -13.21847,1.156124 -18.42188,3.46875 a 3.5,3.5 0 0 0 -1.77734,4.621094 3.5,3.5 0 0 0 4.62109,1.777344 c 7.59317,-3.374739 23.56309,-3.374739 31.15625,0 a 3.5,3.5 0 0 0 4.6211,-1.777344 3.5,3.5 0 0 0 -1.77735,-4.621094 C 251.21847,72.488155 244.60903,71.332031 238,71.332031 Z" id="path205" fill="#1656b8" stroke="none" />
+        <path style="color:#000000" d="M 160,-0.5 A 2.5,2.5 0 0 0 157.5,2 v 11 a 2.5,2.5 0 0 0 2.5,2.5 2.5,2.5 0 0 0 2.5,-2.5 V 2 A 2.5,2.5 0 0 0 160,-0.5 Z" id="path206" fill="#67389b" stroke="none" />
+        <path style="color:#000000" d="m 138.27539,5.515625 a 2.5,2.5 0 0 0 -1.83789,0.53125 2.5,2.5 0 0 0 -0.39063,3.515625 l 8,10 a 2.5,2.5 0 0 0 3.51563,0.390625 2.5,2.5 0 0 0 0.39062,-3.515625 l -8,-10 a 2.5,2.5 0 0 0 -1.67773,-0.921875 z" id="path207" fill="#67389b" stroke="none" />
+        <path style="color:#000000" d="M 181.72461,5.515625 A 2.5,2.5 0 0 0 180.04687,6.4375 l -8,10 a 2.5,2.5 0 0 0 0.39063,3.515625 2.5,2.5 0 0 0 3.51562,-0.390625 l 8,-10 a 2.5,2.5 0 0 0 -0.39062,-3.515625 2.5,2.5 0 0 0 -1.83789,-0.53125 z" id="path208" fill="#67389b" stroke="none" />
       </g>
     </g>
-    <text
-       x="225"
-       y="375"
-       class="story-title"
-       id="text43"
-       style="font-weight:700;font-size:30px;font-family:Inter, Arial, sans-serif;text-anchor:middle;fill:#10233f">Stronger together</text>
-    <text
-       x="225"
-       y="412"
-       class="story-subtitle"
-       id="text44"
-       style="font-weight:400;font-size:21px;font-family:Inter, Arial, sans-serif;text-anchor:middle;fill:#647184">Better outcomes</text>
+    <text x="225" y="375" class="story-title" id="text43" style="font-weight:700;font-size:30px;font-family:Inter, Arial, sans-serif;text-anchor:middle;fill:#10233f">Stronger together</text>
+    <text x="225" y="412" class="story-subtitle" id="text44" style="font-weight:400;font-size:21px;font-family:Inter, Arial, sans-serif;text-anchor:middle;fill:#647184">Better outcomes</text>
   </g>
 </svg>
