@@ -26,7 +26,7 @@ test("the installed CLI copies assets without relying on a monorepo layout", () 
   try {
     execFileSync(
       process.execPath,
-      [path.join(packageRoot, manifest.bin["apiops-design-system"]), "copy-assets", "--output", "public/ui", "--public-base", "/ui"],
+      [path.join(packageRoot, manifest.bin["apiops-design-system"]), "copy-assets", "--output", "public/ui"],
       { cwd: temporaryRoot },
     );
     assert.equal(existsSync(path.join(temporaryRoot, "public/ui/brand/apiops-cycles-logo.svg")), true);

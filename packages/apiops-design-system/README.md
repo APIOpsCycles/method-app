@@ -41,7 +41,7 @@ path to `designSystemAssetPath(path, basePath)`.
 Copy the complete asset catalog from an installed package with:
 
 ```bash
-apiops-design-system copy-assets --output public/design-system --public-base /design-system
+apiops-design-system copy-assets --output public/design-system
 ```
 
 The CLI resolves its source relative to the installed module, so consumers do not

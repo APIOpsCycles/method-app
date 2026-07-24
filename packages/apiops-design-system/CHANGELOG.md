@@ -8,6 +8,7 @@ All notable visual and API changes are documented here. This project follows Sem
 - Add configurable asset base paths and an installed-package asset-copy CLI.
 - Add focused canvas, metro, patterns, and testing entry points.
 - Add package-owned artifact, entry-point, CLI, and SVG asset tests.
+- Make workspace builds invoke the built CLI directly so clean npm installs do not depend on workspace bin linking.
 
 ## 0.1.0 - 2026-07-17
 
