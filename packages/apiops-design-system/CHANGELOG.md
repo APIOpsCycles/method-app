@@ -4,6 +4,7 @@ All notable visual and API changes are documented here. This project follows Sem
 
 ## Unreleased
 
+- Add `MethodContextBar`, `MethodContextEditor`, and `ContextGuidance` patterns for persistent context and route-aware guidance.
 - Make clean npm packs build the complete distribution automatically.
 - Add configurable asset base paths and an installed-package asset-copy CLI.
 - Add focused canvas, metro, patterns, and testing entry points.

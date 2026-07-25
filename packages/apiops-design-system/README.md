@@ -12,6 +12,10 @@ Focused React entry points are available at `/react/canvas`, `/react/metro`, and
 `/react/patterns`. Visual-contract fixtures live under `/testing` so production
 consumers do not need to make demonstration utilities part of their public API.
 
+### Method context patterns
+
+`MethodContextBar` renders the persistent stakeholder, goal, cycle, and location summary with existing method and metro icons. `MethodContextEditor` supplies the progressively disclosed editor surface, while `ContextGuidance` provides success, warning, and neutral route guidance. Applications retain ownership of method data, state, localization, and navigation behavior.
+
 The React entry point includes the canvas shell, grid, zones, notes, and metadata
 controls. `CanvasSystemFixture` renders every mode and the complete canvas visual-state
 contract for regression and accessibility review.

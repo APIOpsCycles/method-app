@@ -1,5 +1,6 @@
 import type { Involvement } from "../../lib/method-graph";
+import { ContextGuidance } from "@apiops/design-system/react";
 
-export default function RecommendedStart({ station, cycle, involvement, reasons, href, labels }: { station: string; cycle: string; involvement?: Involvement; reasons: string[]; href: string; labels: Record<string, string> }) {
-  return <aside className="recommended-start" aria-labelledby="recommended-start-title"><div><small>{labels.kicker}</small><h3 id="recommended-start-title">{station}</h3><p><strong>{labels.cycle}:</strong> {cycle}</p><p>{reasons.join(" ")}</p>{involvement === "consulted" && <p>{labels.consulted}</p>}</div><a className="is-button" href={href}>{labels.action}</a></aside>;
+export default function RecommendedStart({ station, cycle, involvement, reasons, href, tone, labels }: { station: string; cycle: string; involvement?: Involvement; reasons: string[]; href: string; tone: "success" | "warning" | "neutral"; labels: Record<string, string> }) {
+  return <div className="recommended-start"><ContextGuidance tone={tone} title={labels.kicker}><strong id="recommended-start-title">{station}</strong> · {cycle}. {reasons.join(" ")} {involvement === "consulted" ? labels.consulted : ""}</ContextGuidance><a className="is-button" href={href}>{labels.action}</a></div>;
 }

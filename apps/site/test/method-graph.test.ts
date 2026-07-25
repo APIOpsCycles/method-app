@@ -70,9 +70,11 @@ test("contextual page modes choose one route-aware action", () => {
 test("the map is navigation, not a duplicate context form", () => {
   const map = readFileSync(new URL("../src/components/islands/MetroMapIsland.tsx", import.meta.url), "utf8");
   const strip = readFileSync(new URL("../src/components/islands/MethodContextStrip.tsx", import.meta.url), "utf8");
+  const designSystem = readFileSync(new URL("../../../packages/apiops-design-system/src/react/index.tsx", import.meta.url), "utf8");
   assert.doesNotMatch(map, /StakeholderRoleSelector|controls\.selectGoal|resetMethodContext/);
   assert.match(map, /ds-cycle-selector/);
-  assert.match(strip, /aria-expanded=\{editing\}/);
-  assert.match(strip, /method-context-editor/);
+  assert.match(strip, /MethodContextBar/);
+  assert.match(designSystem, /aria-expanded=\{expanded\}/);
+  assert.match(designSystem, /MethodContextEditor/);
   assert.match(strip, /resetMethodContext/);
 });
