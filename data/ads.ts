@@ -24,7 +24,7 @@ export const ads: Record<string, Ad> = {
       src: designSystemAssets.humans.poses,
       alt: 'APIOps people collaborating in a workshop'
     },
-    groups: ['getting-started', 'resources'],
+    groups: ['resources'],
     bgcolor: '#21ce94ff' // Light background color for the ad
   },
   community: {
@@ -36,7 +36,7 @@ export const ads: Record<string, Ad> = {
       src: designSystemAssets.humans.stories,
       alt: 'APIOps community members sharing ideas'
     },
-    groups: ['method', 'lines', 'sub-stations'],
+    groups: ['stations', 'lines'],
         bgcolor: 'var(--color-accent-600)' // Light background color for the ad
   }
 };
@@ -48,8 +48,12 @@ export const ads: Record<string, Ad> = {
 export function selectAd(entry?: any, pathname?: string): Ad | undefined {
   const groups = pageGroups(entry, pathname);
   let best: { ad: Ad; score: number } | undefined;
+  let fallback: Ad | undefined;
   for (const ad of Object.values(ads)) {
-    if (!ad.groups) continue;
+    if (!ad.groups) {
+      fallback ??= ad;
+      continue;
+    }
     for (const tag of ad.groups) {
       if (groups.includes(tag)) {
         const score = tag.split('/').length;
@@ -59,7 +63,7 @@ export function selectAd(entry?: any, pathname?: string): Ad | undefined {
       }
     }
   }
-  return best?.ad;
+  return best?.ad ?? fallback;
 }
 
 function pageGroups(entry?: any, pathname?: string): string[] {
