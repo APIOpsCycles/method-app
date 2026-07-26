@@ -187,6 +187,8 @@ function siteLabels(locale) {
     'section.cycles': 'Cycles',
     'section.stations': 'Stations',
     'section.lines': 'Metro lines',
+    'section.supportingLineStations': 'Supporting line stations',
+    'line.supportingStationExplanation': 'This station belongs to this metro line but is not part of the currently selected cycle, so the link opens its cycle-neutral station page.',
     'section.stationCycles': 'Cycles containing this station',
     'line.previous': 'Previous',
     'line.next': 'Next',
@@ -452,6 +454,8 @@ function siteLabels(locale) {
   const translations = {
     fi: {
       "section.journeyCriteria": "Matkan kriteerit",
+      "section.supportingLineStations": "Linjaa tukevat asemat",
+      "line.supportingStationExplanation": "Tämä asema kuuluu tähän metrolinjaan, mutta ei tällä hetkellä valittuun sykliin, joten linkki avaa aseman syklistä riippumattoman sivun.",
       "nav.workflows": "Työnkulut",
       "nav.data": "Data",
       "nav.language": "Kieli",
@@ -604,6 +608,8 @@ function siteLabels(locale) {
     },
     fr: {
       "section.journeyCriteria": "Critères du parcours",
+      "section.supportingLineStations": "Stations complémentaires de la ligne",
+      "line.supportingStationExplanation": "Cette station appartient à cette ligne de métro, mais ne fait pas partie du cycle actuellement sélectionné ; le lien ouvre donc sa page de station indépendante de tout cycle.",
       "nav.workflows": "Flux de travail",
       "nav.data": "Données",
       "nav.language": "Langue",
@@ -755,6 +761,8 @@ function siteLabels(locale) {
     },
     de: {
       "section.journeyCriteria": "Ablaufkriterien",
+      "section.supportingLineStations": "Ergänzende Stationen der Linie",
+      "line.supportingStationExplanation": "Diese Station gehört zu dieser Metrolinie, ist aber nicht Teil des aktuell ausgewählten Zyklus. Daher öffnet der Link ihre zyklusneutrale Stationsseite.",
       "nav.workflows": "Workflows",
       "nav.data": "Daten",
       "nav.language": "Sprache",
@@ -1283,6 +1291,8 @@ function siteLabels(locale) {
       "context.involvementUnmapped": "Sie können sie trotzdem erkunden; für Ihre aktuelle Perspektive ist hier keine Beteiligung erfasst.",
     },
     pt: {
+      "section.supportingLineStations": "Estações complementares da linha",
+      "line.supportingStationExplanation": "Esta estação pertence a esta linha de metrô, mas não faz parte do ciclo selecionado atualmente; por isso, o link abre a página da estação independente de ciclo.",
       "chrome.breadcrumb": "Trilha de navegação",
       "entity.cycle": "Ciclo",
       "entity.station": "Estação",
