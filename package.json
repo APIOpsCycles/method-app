@@ -17,7 +17,7 @@
     "start": "npm run preview --workspace @apiops/site",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next",
     "check:design-system-boundaries": "node scripts/check-design-system-boundaries.mjs",
-    "pretest:astro-integration": "npm run prepare:local-data",
+    "pretest:astro-integration": "npm run build",
     "test:astro-integration": "node --test apps/site/test/*.test.mjs",
     "test:method-graph": "tsx --test apps/site/test/method-graph.test.ts",
     "test:design-system": "npm test --workspace @apiops/design-system",

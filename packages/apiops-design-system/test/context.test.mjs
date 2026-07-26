@@ -30,3 +30,14 @@ test("role participation table exposes cycle, station, involvement, and resource
   assert.match(table, /apiops-iconset\.svg#icon-decision/);
   assert.match(table, /Customer Journey Canvas/);
 });
+
+test("resource selectors expose links when resources have destinations", async () => {
+  const { ResourceSelector } = await import("../dist/react/index.js");
+  const selector = renderToStaticMarkup(React.createElement(ResourceSelector, {
+    emptyLabel: "No resources",
+    items: [{ id: "journey", type: "Canvas", title: "Customer Journey Canvas", description: "Map the customer journey.", href: "/resources/customer-journey-canvas" }],
+  }));
+
+  assert.match(selector, /<a class="side-resource-card" href="\/resources\/customer-journey-canvas">/);
+  assert.doesNotMatch(selector, /<button/);
+});

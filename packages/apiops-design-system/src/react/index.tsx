@@ -135,19 +135,23 @@ export function PillList({ items, label, onSelect }: { items: PillListItem[]; la
   );
 }
 
-export type ResourceSelectorItem = { id: string; type: string; title: string; description: string; icon?: ReactNode };
+export type ResourceSelectorItem = { id: string; type: string; title: string; description: string; href?: string; icon?: ReactNode };
 
-export function ResourceSelector({ items, value, emptyLabel, onChange }: { items: ResourceSelectorItem[]; value?: string; emptyLabel: string; onChange: (id: string) => void }) {
+export function ResourceSelector({ items, value, emptyLabel, onChange }: { items: ResourceSelectorItem[]; value?: string; emptyLabel: string; onChange?: (id: string) => void }) {
   if (!items.length) return <span className="side-resource-card side-resource-card--empty">{emptyLabel}</span>;
   return (
     <div className="side-resource-grid">
-      {items.map((item) => (
-        <button className={`side-resource-card${item.id === value ? " is-active" : ""}`} key={item.id} type="button" onClick={() => onChange(item.id)}>
+      {items.map((item) => {
+        const content = <>
           <span className="side-resource-card__meta">{item.icon}{item.type}</span>
           <strong>{item.title}</strong>
           <small>{item.description}</small>
-        </button>
-      ))}
+        </>;
+        const className = `side-resource-card${item.id === value ? " is-active" : ""}`;
+        return item.href
+          ? <a className={className} href={item.href} key={item.id}>{content}</a>
+          : <button className={className} key={item.id} type="button" onClick={() => onChange?.(item.id)}>{content}</button>;
+      })}
     </div>
   );
 }
