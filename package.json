@@ -21,6 +21,7 @@
     "test:astro-integration": "node --test apps/site/test/*.test.mjs",
     "test:method-graph": "tsx --test apps/site/test/method-graph.test.ts",
     "test:design-system": "npm test --workspace @apiops/design-system",
+    "test:e2e": "playwright test",
     "prepare:local-data": "node packages/apiops-design-system/scripts/build.mjs && npm run sync:design-system-assets && npm run sync:method-data",
     "sync:method-data": "node scripts/sync-method-data.mjs && tsx scripts/build-method-graph.ts",
     "build:method-graph": "tsx scripts/build-method-graph.ts",
@@ -33,6 +34,7 @@
   },
   "devDependencies": {
     "@iconify-json/material-symbols-light": "^1.2.85",
+    "@playwright/test": "^1.62.0",
     "@svgr/core": "^8.1.0",
     "@svgr/plugin-jsx": "^8.1.0",
     "@tailwindcss/postcss": "4.2.1",
