@@ -293,6 +293,7 @@ export function StakeholderRoleSelector({
   label,
   placeholder,
   involvementLabels,
+  disabled = false,
   onChange,
 }: {
   roles: StakeholderRoleOption[];
@@ -300,12 +301,13 @@ export function StakeholderRoleSelector({
   label: string;
   placeholder: string;
   involvementLabels: InvolvementLabels;
+  disabled?: boolean;
   onChange: (roleId: string) => void;
 }) {
   return (
     <label className="ds-stakeholder-role-selector">
       <span className="ds-stakeholder-role-selector__label">{label}</span>
-      <select value={value} onChange={(event) => onChange(event.target.value)}>
+      <select value={value} disabled={disabled} onChange={(event) => onChange(event.target.value)}>
         <option value="">{placeholder}</option>
         {roles.map((role) => <option key={role.id} value={role.id}>{role.title}</option>)}
       </select>

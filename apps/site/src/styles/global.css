@@ -204,7 +204,8 @@ a {
 .cycle-context-navigation__current { border: 1px solid var(--panel-border); border-radius: .5rem; padding: .6rem .75rem; }
 .cycle-context-navigation__others button { background: transparent; border: 0; color: var(--apiops-accent-community); cursor: pointer; font: inherit; font-weight: 700; padding: .25rem; }
 .metro-map-with-legend { position: relative; }
-.metro-map-with-legend > .ds-involvement-legend { background: color-mix(in srgb, var(--panel-bg, #fff) 94%, transparent); border: 1px solid var(--panel-border, #d7dfed); border-radius: .5rem; inset: .75rem .75rem auto auto; padding: .5rem .65rem; position: absolute; z-index: 1; }
+.metro-map-with-legend > .ds-stakeholder-role-selector { background: color-mix(in srgb, var(--panel-bg, #fff) 94%, transparent); border: 1px solid var(--panel-border, #d7dfed); border-radius: .5rem; inset: .75rem .75rem auto auto; padding: .65rem; position: absolute; width: min(20rem, calc(100% - 1.5rem)); z-index: 1; }
+.metro-map-with-legend > .ds-stakeholder-role-selector select:disabled { cursor: not-allowed; opacity: .8; }
 .method-context-surface { margin: .75rem 0 1rem; }
 .ds-method-context-editor label { display: grid; font-weight: 700; gap: .3rem; }
 .ds-method-context-editor select { border: 1px solid #aab6ca; border-radius: .4rem; min-height: 2.6rem; padding: .5rem; }
