@@ -116,7 +116,7 @@ a {
 
 .public-section {
   border-top: 1px solid var(--panel-border, #d7dfed);
-  margin-top: clamp(3rem, 7vw, 6rem);
+  margin-top: clamp(.5rem, 1vw, 1rem);
   padding-top: clamp(2rem, 5vw, 4rem);
 }
 
