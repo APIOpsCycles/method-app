@@ -44,5 +44,8 @@ test("focused entry points expose the documented API", async () => {
   assert.equal(typeof canvas.CanvasSystemShell, "function");
   assert.equal(typeof metro.MetroMapShell, "function");
   assert.equal(typeof patterns.PartnerCard, "function");
+  assert.equal(typeof patterns.MethodContextBar, "function");
+  assert.equal(typeof patterns.MethodContextEditor, "function");
+  assert.equal(typeof patterns.ContextGuidance, "function");
   assert.equal(typeof testing.CanvasSystemFixture, "function");
 });

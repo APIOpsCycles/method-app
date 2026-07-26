@@ -1,14 +1,15 @@
 ---
 import { getCatalog, getLabels, pickLabels, type Locale } from "../../lib/method-data";
+import { getGoals, methodGraph } from "../../lib/method-graph";
 import { metroLineColor } from "../../lib/line-colors";
 import MetroMapIsland from "../islands/MetroMapIsland";
 interface Props { locale: Locale; cycleId?: string; stationId?: string; roleId?: string; lineId?: string }
 const { locale, cycleId, stationId, roleId, lineId } = Astro.props;
 const data = getCatalog(locale);
-const labels = pickLabels(getLabels(locale), ["map.ariaLabel", "map.zoneStrategic", "map.zoneGovernance", "map.zoneConsumer", "map.zoneTechnical", "map.methodKicker", "map.title", "map.exportSvg", "map.help", "map.selectedStation", "map.none", "controls.stakeholderInvolvement", "controls.selectStakeholder", "involvement.lead", "involvement.core", "involvement.consulted"] as const);
+const labels = pickLabels(getLabels(locale), ["map.ariaLabel", "map.zoneStrategic", "map.zoneGovernance", "map.zoneConsumer", "map.zoneTechnical", "map.methodKicker", "map.title", "map.exportSvg", "map.help", "map.modeTitle.start", "map.cycleNavigation", "map.viewingCycle", "map.otherCycles"] as const);
 const mapStations = data.stations.map(({ id, title, description }) => ({ id, title, description }));
 const mapCycles = data.cycles.map(({ id, slug, title, stations }) => ({ id, slug, title, stations: stations.map(({ id: stationId, index, title: stationTitle, baseTitle }) => ({ id: stationId, index, title: stationTitle, baseTitle })) }));
 const mapLines = data.lines.map(({ id, title, stations }) => ({ id, title, color: metroLineColor(id), stations }));
 const mapRoles = data.routeProfiles.map(({ id, title, stakeholderId }) => ({ id, title, involvementByStation: Object.fromEntries(data.stations.flatMap((station) => { const involvement = station.stakeholders.find((stakeholder) => stakeholder.id === stakeholderId)?.involvement; return involvement ? [[station.id, involvement]] : []; })) }));
 ---
-<MetroMapIsland labels={labels} locale={locale} cycles={mapCycles} stations={mapStations} lines={mapLines} roles={mapRoles} initialCycleId={cycleId} initialStationId={stationId} initialRoleId={roleId} initialLineId={lineId} client:idle />
+<MetroMapIsland labels={labels} locale={locale} cycles={mapCycles} stations={mapStations} lines={mapLines} roles={mapRoles} goals={getGoals(locale).map((goal) => ({ ...goal, stationIds: methodGraph.byGoal[goal.id as keyof typeof methodGraph.byGoal].stationIds }))} initialCycleId={cycleId} initialStationId={stationId} initialRoleId={roleId} initialLineId={lineId} client:idle />

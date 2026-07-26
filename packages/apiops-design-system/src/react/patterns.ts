@@ -3,6 +3,9 @@ export {
   CompactSection,
   CyclesSection,
   JourneyCriteria,
+  MethodContextBar,
+  MethodContextEditor,
+  ContextGuidance,
   LinesSection,
   PartnerCard,
   PillList,
@@ -15,6 +18,7 @@ export {
 export type {
   EntitySectionItem,
   JourneyCriterion,
+  MethodContextItem,
   LineSectionItem,
   PillListItem,
   ResourceSelectorItem,

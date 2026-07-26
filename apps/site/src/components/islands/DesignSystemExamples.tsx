@@ -3,6 +3,9 @@ import {
   AnnouncementToast,
   CanvasSystemFixture,
   CompactSection,
+  ContextGuidance,
+  MethodContextBar,
+  MethodContextEditor,
   MetroLegend,
   MetroLinePath,
   MetroMapShell,
@@ -50,6 +53,12 @@ export function MetroDesignSystemExample() {
       </MetroMapShell>
     </div>
   );
+}
+
+export function ContextDesignSystemExample() {
+  const [editing, setEditing] = useState(false);
+  const items = [{ id: "stakeholder" as const, label: "Who", value: "API Product Owner" }, { id: "goal" as const, label: "Why", value: "Create or improve an API" }, { id: "cycle" as const, label: "Cycle", value: "API Productization Cycle", href: "#context-patterns" }, { id: "here" as const, label: "Where", value: "API Audit" }];
+  return <div className="ds-example-stack"><MethodContextBar items={items} expanded={editing} changeLabel="Change context" closeLabel="Close" onToggle={() => setEditing(!editing)} />{editing && <MethodContextEditor><label>View as<select defaultValue="owner"><option value="owner">API Product Owner</option></select></label><label>Goal<select defaultValue="api"><option value="api">Create or improve an API</option></select></label><button type="button" onClick={() => setEditing(false)}>Done</button></MethodContextEditor>}<div className="ds-example-grid"><ContextGuidance tone="success" title="You are on your relevant path">Current: API Audit · Next: Publishing &amp; Enablement</ContextGuidance><ContextGuidance tone="warning" title="You are exploring outside your recommended path">Recommended start: API Product Strategy</ContextGuidance><ContextGuidance tone="neutral" title="Choose your perspective and goal">We will recommend a starting point for you.</ContextGuidance></div></div>;
 }
 
 export function CanvasDesignSystemExample() { return <CanvasSystemFixture />; }

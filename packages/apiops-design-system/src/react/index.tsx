@@ -2,6 +2,29 @@
 
 import { useState } from "react";
 import type { CSSProperties, KeyboardEvent, ReactNode } from "react";
+import { designSystemAssets } from "../assets/index.js";
+
+export type MethodContextItem = { id: "stakeholder" | "goal" | "cycle" | "here"; label: string; value: string; href?: string; muted?: boolean };
+const methodContextIcons = { stakeholder: [designSystemAssets.icons.method, "icon-people"], goal: [designSystemAssets.icons.method, "icon-alignment"], cycle: [designSystemAssets.icons.metro, "glyph-iterate"], here: [designSystemAssets.icons.metro, "glyph-station"] } as const;
+
+function MethodContextIcon({ item }: { item: MethodContextItem }) {
+  if (item.id === "here") return <span className="ds-method-context__icon is-here" aria-hidden="true"><i /></span>;
+  const [sheet, symbol] = methodContextIcons[item.id];
+  return <span className={`ds-method-context__icon is-${item.id}`} aria-hidden="true"><svg viewBox="0 0 120 120"><use href={`${sheet}#${symbol}`} /></svg></span>;
+}
+
+/** Persistent context summary. Editing state and method data remain application-owned. */
+export function MethodContextBar({ items, expanded, changeLabel, closeLabel, onToggle, toggleRef }: { items: MethodContextItem[]; expanded: boolean; changeLabel: string; closeLabel: string; onToggle: () => void; toggleRef?: React.RefObject<HTMLButtonElement | null> }) {
+  return <div className="ds-method-context"><div className="ds-method-context__items">{items.map((item) => { const content = <><MethodContextIcon item={item} /><span><small>{item.label}</small><strong title={item.value} className={item.muted ? "is-muted" : ""}>{item.value}</strong></span></>; return item.href ? <a key={item.id} href={item.href}>{content}</a> : <span key={item.id} className="ds-method-context__item">{content}</span>; })}</div><button ref={toggleRef} className="ds-method-context__toggle" type="button" aria-expanded={expanded} aria-controls="method-context-editor" onClick={onToggle}>{expanded ? closeLabel : changeLabel}<span aria-hidden="true">⌄</span></button></div>;
+}
+
+/** Compact progressive editor container; consumers provide their own labeled controls. */
+export function MethodContextEditor({ children }: { children: ReactNode }) { return <div id="method-context-editor" className="ds-method-context-editor">{children}</div>; }
+
+export function ContextGuidance({ tone, title, children }: { tone: "success" | "warning" | "neutral"; title: string; children: ReactNode }) {
+  const symbol = tone === "success" ? "icon-decision" : tone === "warning" ? "icon-risk" : "icon-insight";
+  return <aside className={`ds-context-guidance is-${tone}`}><span className="ds-context-guidance__icon" aria-hidden="true"><svg viewBox="0 0 120 120"><use href={`${designSystemAssets.icons.method}#${symbol}`} /></svg></span><div><strong>{title}</strong><p>{children}</p></div></aside>;
+}
 
 export function SvgAssetDownload({ source, filename, symbolId, viewBox }: { source: string; filename: string; symbolId?: string; viewBox?: string }) {
   const [status, setStatus] = useState<"idle" | "loading" | "error">("idle");
