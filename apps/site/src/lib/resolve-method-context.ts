@@ -16,6 +16,8 @@ export type ResolvedMethodContext = UserMethodContext & {
   currentStationId?: string;
   contextStationIds: string[];
   isCurrentCycleRecommended: boolean;
+  /** Whether the current station is on the selected path within the recommended cycle. */
+  recommendedCycleContainsCurrentStation: boolean;
   isCurrentStationRelevant: boolean;
   explanation: { cycleReasons: string[]; stationReasons: string[] };
 };
@@ -68,13 +70,16 @@ export function resolveMethodContext(input: ResolveContextInput, graph: MethodGr
     return { id, order, score: group * 100 + (involvement ? INVOLVEMENT_WEIGHT[involvement] : 0) };
   });
   const recommendedEntryStationId = (stakeholderId || goalId) ? rankedStations.sort((a, b) => b.score - a.score || a.order - b.order)[0]?.id : undefined;
-  const currentCycleId = input.preferredCycleId && graph.byCycle[input.preferredCycleId as keyof typeof graph.byCycle] ? input.preferredCycleId : input.currentStationId ? cycleIds.find((id) => graph.byCycle[id as keyof typeof graph.byCycle].stationIds.includes(input.currentStationId!)) : undefined;
+  // Route context must remain explicit: a shared station cannot identify which
+  // of its cycles the visitor is currently viewing.
+  const currentCycleId = input.preferredCycleId && graph.byCycle[input.preferredCycleId as keyof typeof graph.byCycle] ? input.preferredCycleId : undefined;
   const entryInvolvement = recommendedEntryStationId ? stationInvolvement[recommendedEntryStationId] : undefined;
   const cycleReasons = recommendedCycleId ? [goalId && graph.byGoal[goalId as keyof typeof graph.byGoal].recommendedCycleIds.includes(recommendedCycleId) ? "The selected goal directly recommends this cycle." : "This cycle contains work mapped to the selected perspective."].filter(Boolean) as string[] : [];
   const stationReasons = recommendedEntryStationId ? [entryInvolvement ? `Your involvement at this station is ${entryInvolvement}.` : "This station directly supports the selected goal.", goalStations.includes(recommendedEntryStationId) && entryInvolvement ? "It also directly supports the selected goal." : ""].filter(Boolean) : [];
   const isCurrentCycleRecommended = Boolean(currentCycleId && currentCycleId === recommendedCycleId);
+  const recommendedCycleContainsCurrentStation = Boolean(input.currentStationId && cycleStations.includes(input.currentStationId) && pathStationIds.includes(input.currentStationId));
   const contextStationIds = [...new Set(input.contextStationIds ?? [])].filter((id) => Boolean(graph.byStation[id]));
-  return { stakeholderId, goalId, recommendedCycleId, recommendedEntryStationId, eligibleCycleIds, relevantStationIds, pathStationIds, stationInvolvement, currentCycleId, currentStationId: input.currentStationId, contextStationIds, isCurrentCycleRecommended, isCurrentStationRelevant: Boolean(input.currentStationId && pathStationIds.includes(input.currentStationId) && (!currentCycleId || isCurrentCycleRecommended)), explanation: { cycleReasons, stationReasons } };
+  return { stakeholderId, goalId, recommendedCycleId, recommendedEntryStationId, eligibleCycleIds, relevantStationIds, pathStationIds, stationInvolvement, currentCycleId, currentStationId: input.currentStationId, contextStationIds, isCurrentCycleRecommended, recommendedCycleContainsCurrentStation, isCurrentStationRelevant: Boolean(input.currentStationId && (currentCycleId ? isCurrentCycleRecommended && pathStationIds.includes(input.currentStationId) : recommendedCycleContainsCurrentStation)), explanation: { cycleReasons, stationReasons } };
 }
 
 export function resolveContextualUiState(resolved: ResolvedMethodContext, graph: MethodGraph = methodGraph): ContextualUiState {

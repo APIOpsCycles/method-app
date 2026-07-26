@@ -142,6 +142,29 @@ test("contextual page modes choose one route-aware action", () => {
   assert.equal(offPath.pageMode, "off-path");
   assert.equal(offPath.primaryStationId, "api-design");
 });
+test("shared station pages derive relevance without manufacturing route cycle context", () => {
+  const stationId = "api-design";
+  assert.ok(methodGraph.byStation[stationId].cycleIds.length > 1);
+
+  const generic = resolveMethodContext({ currentStationId: stationId });
+  assert.equal(generic.currentCycleId, undefined);
+  assert.equal(generic.recommendedCycleContainsCurrentStation, false);
+  assert.equal(resolveContextualUiState(generic).pageMode, "no-context");
+
+  // Automation is not the first cycle in catalog order, so this also guards
+  // against classifying the shared station against methodGraph.byCycle[0].
+  const goalStation = resolveMethodContext({ goalId: "automate-process", currentStationId: stationId });
+  assert.equal(goalStation.recommendedCycleId, "automation-cycle");
+  assert.equal(goalStation.currentCycleId, undefined);
+  assert.equal(goalStation.recommendedCycleContainsCurrentStation, true);
+  assert.equal(goalStation.isCurrentStationRelevant, true);
+  assert.equal(resolveContextualUiState(goalStation).pageMode, "on-path");
+
+  const explicitCycleStation = resolveMethodContext({ goalId: "automate-process", preferredCycleId: "automation-cycle", currentStationId: stationId });
+  assert.equal(explicitCycleStation.currentCycleId, "automation-cycle");
+  assert.equal(explicitCycleStation.recommendedCycleContainsCurrentStation, true);
+  assert.equal(resolveContextualUiState(explicitCycleStation).pageMode, "on-path");
+});
 test("generic entity context links to its first use on the role path", () => {
   const resourceStations = methodGraph.byResource.customerJourneyCanvas.stationIds;
   const resolved = resolveMethodContext({ stakeholderId: "api-designer", goalId: "create-or-improve-api", contextStationIds: [...resourceStations, "missing"] });
