@@ -6,6 +6,8 @@ import { canonicalUrl } from "../env";
 import type { Locale } from "../lib/method-data";
 import SiteHeader from "../components/SiteHeader.astro";
 import SiteFooter from "../components/SiteFooter.astro";
+import Advertisement from "../components/Advertisement.astro";
+import { selectAd } from "../../../../data/ads";
 
 interface Props {
   title?: string;
@@ -51,6 +53,7 @@ const keywords = [
   "capability productization",
 ];
 const locale = lang as Locale;
+const ad = selectAd(undefined, Astro.url.pathname);
 ---
 <!doctype html>
 <html lang={lang}>
@@ -85,7 +88,10 @@ const locale = lang as Locale;
   <body>
     <div class="global-site-shell">
       <SiteHeader locale={locale} />
-      <slot />
+      <div class:list={["page-with-ad", { "page-with-ad--active": ad }]}>
+        <slot />
+        {ad && <Advertisement ad={ad} />}
+      </div>
       <SiteFooter locale={locale} />
     </div>
   </body>

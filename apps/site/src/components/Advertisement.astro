@@ -1,0 +1,43 @@
+---
+import type { Ad } from "../../../../data/ads";
+
+interface Props {
+  ad: Ad;
+}
+
+const { ad } = Astro.props;
+---
+<aside class="advertisement-rail" aria-label="Community notice" style={`--advertisement-color: ${ad.bgcolor ?? "var(--color-accent-600)"}`}>
+  <article class="advertisement-card">
+    {ad.visual && <img class="advertisement-card__visual" src={ad.visual.src} alt={ad.visual.alt} loading="lazy" />}
+    <div class="advertisement-card__copy">
+      <p class="advertisement-card__label">From the APIOps community</p>
+      <h2>{ad.headline}</h2>
+      <p>{ad.text}</p>
+      <a class="advertisement-card__cta" href={ad.ctaHref}>{ad.ctaText}<span aria-hidden="true"> →</span></a>
+    </div>
+  </article>
+</aside>
+
+<script is:inline>
+  (() => {
+    const script = document.currentScript;
+    const rail = script?.previousElementSibling;
+    const shell = rail?.parentElement;
+    const content = shell?.querySelector(":scope > .public-content");
+    const mobileQuery = window.matchMedia("(max-width: 83.999rem)");
+    if (!rail || !shell || !content) return;
+
+    const placeAdvertisement = () => {
+      if (mobileQuery.matches) {
+        const firstSection = content.querySelector(":scope > .public-section");
+        content.insertBefore(rail, firstSection ?? null);
+      } else {
+        shell.insertBefore(rail, script);
+      }
+    };
+
+    placeAdvertisement();
+    mobileQuery.addEventListener("change", placeAdvertisement);
+  })();
+</script>
