@@ -1,49 +1,38 @@
 ---
 import { getCatalog, getLabels, getLinesForContext, getStationResources, localePrefix, resourcePath, type Locale, type Station } from "../../lib/method-data";
-import EntityTools from "./EntityTools.astro";
 import MethodMap from "./MethodMap.astro";
 import { CyclesSection, JourneyCriteria, LinesSection } from "@apiops/design-system/react";
 import { metroLineColor } from "../../lib/line-colors";
 import { PublicPillList, PublicResourceSelector } from "../islands/PublicSelectors";
-import { methodGraph } from "../../lib/method-graph";
 import MethodContext from "./MethodContext.astro";
 interface Props { station: Station; locale: Locale; cycle?: ReturnType<typeof getCatalog>["cycles"][number]; compatibilityAlias?: boolean }
 const { station, locale, cycle, compatibilityAlias = false } = Astro.props;
 const prefix = localePrefix(locale);
 const labels = getLabels(locale);
 const cycles = getCatalog(locale).cycles.filter((cycle) => cycle.stations.some((item) => item.id === station.id));
-const selectedCycle = cycle ?? cycles[0];
-const toolEntityId = cycle ? `${cycle.id}:${station.id}` : station.id;
 const resources = getStationResources(locale, station);
-const catalogResources = getCatalog(locale).resources;
-const steps = station.steps.map((step) => ({
-  step,
-  resource: step.resourceId
-    ? catalogResources.find((resource) => resource.id === step.resourceId && !resource.draft)
-    : undefined,
-}));
-const selectedCycleStationIndex = selectedCycle?.stations.findIndex((item) => item.id === station.id) ?? -1;
-const previousCycleStation = selectedCycleStationIndex > 0 ? selectedCycle?.stations[selectedCycleStationIndex - 1] : undefined;
+const selectedCycleStationIndex = cycle?.stations.findIndex((item) => item.id === station.id) ?? -1;
+const previousCycleStation = selectedCycleStationIndex > 0 ? cycle?.stations[selectedCycleStationIndex - 1] : undefined;
 // Entering the first station requires the cycle's entry criteria. Later stations
 // inherit the completion criteria from the preceding station in that journey.
 const entryCriteria = selectedCycleStationIndex <= 0
-  ? selectedCycle?.entryCriteriaDetails ?? []
+  ? cycle?.entryCriteriaDetails ?? []
   : previousCycleStation?.criteriaDetails ?? [];
 // A station's own criteria describe what must be true before moving onward.
 const exitCriteria = station.criteriaDetails.length
   ? station.criteriaDetails
-  : selectedCycle?.exitCriteriaDetails ?? [];
-const relatedLines = getLinesForContext(getCatalog(locale), selectedCycle, station);
+  : cycle?.exitCriteriaDetails ?? [];
+const relatedLines = cycle ? getLinesForContext(getCatalog(locale), cycle, station) : [];
 ---
 <main class="public-content">
   <nav class="public-breadcrumbs" aria-label={labels["chrome.breadcrumb"]}><a href={`${prefix}/`}>APIOps Cycles</a><span aria-hidden="true">/</span>{cycle && <><a href={`${prefix}/cycles/${cycle.slug}`}>{cycle.title}</a><span aria-hidden="true">/</span></>}<span>{station.title}</span></nav>
-  <MethodContext locale={locale} cycle={selectedCycle} stationId={station.id} here={selectedCycle?.stations.find((item) => item.id === station.id)?.title ?? station.title} />
+  <MethodContext locale={locale} cycle={cycle} stationId={station.id} here={station.title} />
   <section class="public-hero"><p class="public-kicker">{labels["entity.station"]}</p><h1>{station.title}</h1><p>{station.description}</p>{station.whyItMatters && <p>{station.whyItMatters}</p>}{compatibilityAlias && <p class="alias-notice">This compatibility URL presents the canonical station content.</p>}</section>
-  <section class="public-section" aria-label={labels["map.selectedStation"]}><MethodMap locale={locale} cycleId={selectedCycle?.id} stationId={station.id} /></section>
+  <section class="public-section" aria-label={labels["map.selectedStation"]}><MethodMap locale={locale} cycleId={cycle?.id} stationId={station.id} /></section>
   <section class="public-section" aria-labelledby="outcomes"><h2 id="outcomes">{labels["section.outcomes"]}</h2><ul>{station.outcomes.map((item) => <li>{item}</li>)}</ul></section>
-  <section class="public-section" aria-labelledby="criteria"><h2 id="criteria">{labels["section.journeyCriteria"]}</h2><JourneyCriteria entryLabel={labels["section.entryCriteria"]} exitLabel={labels["section.exitCriteria"]} entryCriteria={entryCriteria} exitCriteria={exitCriteria} /></section>
+  {cycle && <section class="public-section" aria-labelledby="criteria"><h2 id="criteria">{labels["section.journeyCriteria"]}</h2><JourneyCriteria entryLabel={labels["section.entryCriteria"]} exitLabel={labels["section.exitCriteria"]} entryCriteria={entryCriteria} exitCriteria={exitCriteria} /></section>}
   <section class="public-section" aria-labelledby="roles"><h2 id="roles">{labels["section.people"]}</h2><PublicPillList client:load label={labels["section.people"]} items={station.stakeholders.map((role) => ({ id: role.id, label: role.title, href: `${prefix}/roles/${role.id}` }))} /></section>
   <section class="public-section" aria-labelledby="resources"><h2 id="resources">{labels["section.resources"]}</h2><PublicResourceSelector client:load emptyLabel={labels["resources.emptyLinked"]} items={resources.map((resource) => ({ id: resource.id, type: resource.category, title: resource.title, description: resource.description, href: resourcePath(locale, resource) }))} /></section>
-  <LinesSection title={labels["section.lines"]} items={relatedLines.map((line) => ({ id: line.id, title: line.title, description: line.description, icon: line.icon, color: metroLineColor(line.id), href: selectedCycle ? `${prefix}/cycle/${selectedCycle.slug}/lines/${line.slug}` : `${prefix}/` }))} />
-  <CyclesSection title={labels["section.relevantCycles"]} items={cycles.map((cycle) => ({ id: cycle.id, title: cycle.title, description: cycle.description, href: `${prefix}/cycles/${cycle.slug}` }))} />
+  {cycle && <LinesSection title={labels["section.lines"]} items={relatedLines.map((line) => ({ id: line.id, title: line.title, description: line.description, icon: line.icon, color: metroLineColor(line.id), href: `${prefix}/cycle/${cycle.slug}/lines/${line.slug}` }))} />}
+  {!cycle && <CyclesSection title={labels["section.relevantCycles"]} items={cycles.map((item) => ({ id: item.id, title: item.title, description: item.description, href: `${prefix}/cycles/${item.slug}/stations/${station.id}` }))} />}
 </main>
