@@ -67,6 +67,16 @@ test("contextual page modes choose one route-aware action", () => {
   assert.equal(offPath.pageMode, "off-path");
   assert.equal(offPath.primaryStationId, "api-design");
 });
+test("a goal-only station is outside a stakeholder's combined path", () => {
+  const resolved = resolveMethodContext({ stakeholderId: "api-designer", goalId: "create-or-improve-api", preferredCycleId: "api-productization-cycle", currentStationId: "api-publishing" });
+  assert.equal(resolved.recommendedEntryStationId, "api-design");
+  assert.equal(resolved.relevantStationIds.includes("api-publishing"), true);
+  assert.equal(resolved.pathStationIds.includes("api-publishing"), false);
+  assert.equal(resolved.isCurrentStationRelevant, false);
+  const ui = resolveContextualUiState(resolved);
+  assert.equal(ui.pageMode, "off-path");
+  assert.equal(ui.primaryStationId, "api-design");
+});
 test("the map is navigation, not a duplicate context form", () => {
   const map = readFileSync(new URL("../src/components/islands/MetroMapIsland.tsx", import.meta.url), "utf8");
   const strip = readFileSync(new URL("../src/components/islands/MethodContextStrip.tsx", import.meta.url), "utf8");

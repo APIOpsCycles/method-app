@@ -24,6 +24,8 @@ The map consumes the shared store only for emphasis and derived actions. It deli
 
 `resolveContextualUiState` derives one of `no-context`, `start`, `on-path`, or `off-path`. A generic page offers the recommended start, an on-path station offers the next relevant station, and an off-path station offers a quiet return action. Current routes are never changed automatically. Add a new primary action by extending this pure resolver, adding localized `map.mode*` and `map.action*` labels in the sync script, and testing the route mode without putting navigation state in storage.
 
+Map emphasis uses the union of role and goal relevance, while the recommended path uses their intersection when both are selected. This distinction keeps goal-only stations highlighted without incorrectly describing them as part of the selected stakeholder's path. With only one selection, that selection alone defines the path.
+
 The context surface also owns the compact route guidance that was previously split between station-involvement and recommended-start islands. Its four stable headings are **Who**, **Why**, **Where**, and **Cycle**. On station routes it combines the current role involvement with either the next relevant station or a return to the recommended path. Station labels are resolved from the selected cycle's localized station entries, so both the current and next station use cycle-specific naming.
 
 Cycle navigation on the map is route-aware rather than a row of equal selectors. It identifies the cycle currently being viewed and presents the remaining cycles as secondary “Other views” links. On a page without an explicit cycle, the graph-recommended cycle becomes the map view after context hydration; it is never persisted as user context.
