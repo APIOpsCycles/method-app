@@ -30,3 +30,11 @@ test("role participation table exposes cycle, station, involvement, and resource
   assert.match(table, /apiops-iconset\.svg#icon-decision/);
   assert.match(table, /Customer Journey Canvas/);
 });
+
+test("involvement legend exposes labeled lead, core, and consulted markers", async () => {
+  const { InvolvementLegend } = await import("../dist/react/index.js");
+  const legend = renderToStaticMarkup(React.createElement(InvolvementLegend, { label: "Stakeholder involvement", labels: { lead: "Lead", core: "Core", consulted: "Consulted" } }));
+  assert.match(legend, /class="ds-involvement-legend"/);
+  assert.match(legend, /aria-label="Stakeholder involvement"/);
+  assert.match(legend, /is-lead.*Lead.*is-core.*Core.*is-consulted.*Consulted/);
+});

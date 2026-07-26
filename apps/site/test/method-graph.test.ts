@@ -233,6 +233,7 @@ test("the map is navigation, not a duplicate context form", () => {
   const strip = readFileSync(new URL("../src/components/islands/MethodContextStrip.tsx", import.meta.url), "utf8");
   const designSystem = readFileSync(new URL("../../../packages/apiops-design-system/src/react/index.tsx", import.meta.url), "utf8");
   assert.doesNotMatch(map, /StakeholderRoleSelector|controls\.selectGoal|resetMethodContext/);
+  assert.match(map, /effectiveRoleId \? <InvolvementLegend/);
   assert.match(map, /cycle-context-navigation/);
   assert.match(map, /map\.viewingCycle/);
   assert.match(map, /map\.otherCycles/);

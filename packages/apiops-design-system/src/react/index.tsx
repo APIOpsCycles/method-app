@@ -199,6 +199,8 @@ export type RoleParticipationRow = {
   resources: Array<{ id: string; title: string; href: string }>;
 };
 
+export type InvolvementLabels = { lead: string; core: string; consulted: string };
+
 const involvementIcons = {
   lead: "icon-decision",
   core: "icon-alignment",
@@ -276,6 +278,15 @@ export function AnnouncementToast({ children, dismissLabel, onDismiss, className
   );
 }
 
+/** Key for the stakeholder involvement markers used on method maps and controls. */
+export function InvolvementLegend({ label, labels }: { label: string; labels: InvolvementLabels }) {
+  return <span className="ds-involvement-legend" aria-label={label}>
+    <i className="is-lead" aria-hidden="true" />{labels.lead}
+    <i className="is-core" aria-hidden="true" />{labels.core}
+    <i className="is-consulted" aria-hidden="true" />{labels.consulted}
+  </span>;
+}
+
 export function StakeholderRoleSelector({
   roles,
   value,
@@ -288,7 +299,7 @@ export function StakeholderRoleSelector({
   value: string;
   label: string;
   placeholder: string;
-  involvementLabels: { lead: string; core: string; consulted: string };
+  involvementLabels: InvolvementLabels;
   onChange: (roleId: string) => void;
 }) {
   return (
@@ -298,11 +309,7 @@ export function StakeholderRoleSelector({
         <option value="">{placeholder}</option>
         {roles.map((role) => <option key={role.id} value={role.id}>{role.title}</option>)}
       </select>
-      <span className="ds-involvement-legend" aria-label={label}>
-        <i className="is-lead" aria-hidden="true" />{involvementLabels.lead}
-        <i className="is-core" aria-hidden="true" />{involvementLabels.core}
-        <i className="is-consulted" aria-hidden="true" />{involvementLabels.consulted}
-      </span>
+      <InvolvementLegend label={label} labels={involvementLabels} />
     </label>
   );
 }
