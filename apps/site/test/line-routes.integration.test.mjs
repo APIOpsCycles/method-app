@@ -8,8 +8,12 @@ const root = path.resolve(import.meta.dirname, "../../..");
 
 for (const locale of locales) {
   test(`${locale} exposes every canonical line slug and valid internal links`, async () => {
-    const artifact = (await import(`../../../generated/method/method-catalog.${locale}.json`, { with: { type: "json" } })).default;
+    const [artifact, labelsArtifact] = await Promise.all([
+      import(`../../../generated/method/method-catalog.${locale}.json`, { with: { type: "json" } }).then(({ default: value }) => value),
+      import(`../../../generated/method/site-labels.${locale}.json`, { with: { type: "json" } }).then(({ default: value }) => value),
+    ]);
     const catalog = artifact.translations[locale];
+    const labels = labelsArtifact.translations[locale];
     const prefix = locale === "en" ? "" : `/${locale}`;
     const homeHtml = await readFile(path.join(root, "dist", prefix.replace(/^\//, ""), "index.html"), "utf8");
     const homeLineLinks = [...homeHtml.matchAll(/href="([^"#?]*\/lines\/[^/"]+)"/g)].map((match) => match[1]);
@@ -54,8 +58,14 @@ for (const locale of locales) {
 
         const supportingStationIds = line.stations.filter((stationId) => !cycleStationIds.has(stationId));
         if (supportingStationIds.length > 0) {
-          assert.match(html, /<h2 id="supporting-line-stations">Supporting line stations<\/h2>/);
-          assert.match(html, /This station is outside the current cycle/);
+          assert.ok(
+            html.includes(`<h2 id="supporting-line-stations">${labels["section.supportingLineStations"]}</h2>`),
+            "supporting-station heading is localized",
+          );
+          assert.ok(
+            html.includes(labels["line.supportingStationExplanation"]),
+            "supporting-station explanation is localized",
+          );
           for (const stationId of supportingStationIds) {
             assert.match(html, new RegExp(`href="${prefix}/stations/${stationId}"`));
             assert.doesNotMatch(html, new RegExp(`${prefix}/cycles/${cycle.slug}/stations/${stationId}`));

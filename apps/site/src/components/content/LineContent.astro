@@ -47,11 +47,11 @@ const applicableCycles = (methodGraph.byLine[line.id]?.cycleIds ?? []).flatMap((
     lineColors: stationLineColors(station.id),
   }))} />
   {!cycle && <section class="public-section" aria-labelledby="line-cycles"><h2 id="line-cycles">{labels["section.cycles"]}</h2><ul>{applicableCycles.map((candidate) => <li><a href={`${prefix}/cycle/${candidate.slug}/lines/${line.slug}`}>{candidate.title}</a></li>)}</ul></section>}
-  {supportingStations.length > 0 && <StationsSection id="supporting-line-stations" ordered title="Supporting line stations" items={supportingStations.map((station) => ({
+  {supportingStations.length > 0 && <StationsSection id="supporting-line-stations" ordered title={labels["section.supportingLineStations"]} items={supportingStations.map((station) => ({
     id: station.id, title: station.title, description: station.description,
     href: `${prefix}/stations/${station.id}`,
     lineColors: stationLineColors(station.id),
-    supportingText: `This station is outside the current cycle, so its general station page is shown.`,
+    supportingText: labels["line.supportingStationExplanation"],
   }))} />}
 </main>
 <style>
