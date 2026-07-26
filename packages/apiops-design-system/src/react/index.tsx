@@ -199,6 +199,8 @@ export type RoleParticipationRow = {
   resources: Array<{ id: string; title: string; href: string }>;
 };
 
+export type InvolvementLabels = { lead: string; core: string; consulted: string };
+
 const involvementIcons = {
   lead: "icon-decision",
   core: "icon-alignment",
@@ -276,33 +278,40 @@ export function AnnouncementToast({ children, dismissLabel, onDismiss, className
   );
 }
 
+/** Key for the stakeholder involvement markers used on method maps and controls. */
+export function InvolvementLegend({ label, labels }: { label: string; labels: InvolvementLabels }) {
+  return <span className="ds-involvement-legend" aria-label={label}>
+    <i className="is-lead" aria-hidden="true" />{labels.lead}
+    <i className="is-core" aria-hidden="true" />{labels.core}
+    <i className="is-consulted" aria-hidden="true" />{labels.consulted}
+  </span>;
+}
+
 export function StakeholderRoleSelector({
   roles,
   value,
   label,
   placeholder,
   involvementLabels,
+  disabled = false,
   onChange,
 }: {
   roles: StakeholderRoleOption[];
   value: string;
   label: string;
   placeholder: string;
-  involvementLabels: { lead: string; core: string; consulted: string };
+  involvementLabels: InvolvementLabels;
+  disabled?: boolean;
   onChange: (roleId: string) => void;
 }) {
   return (
     <label className="ds-stakeholder-role-selector">
       <span className="ds-stakeholder-role-selector__label">{label}</span>
-      <select value={value} onChange={(event) => onChange(event.target.value)}>
+      <select value={value} disabled={disabled} onChange={(event) => onChange(event.target.value)}>
         <option value="">{placeholder}</option>
         {roles.map((role) => <option key={role.id} value={role.id}>{role.title}</option>)}
       </select>
-      <span className="ds-involvement-legend" aria-label={label}>
-        <i className="is-lead" aria-hidden="true" />{involvementLabels.lead}
-        <i className="is-core" aria-hidden="true" />{involvementLabels.core}
-        <i className="is-consulted" aria-hidden="true" />{involvementLabels.consulted}
-      </span>
+      <InvolvementLegend label={label} labels={involvementLabels} />
     </label>
   );
 }

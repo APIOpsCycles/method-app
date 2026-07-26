@@ -6,6 +6,7 @@ export {
   MethodContextBar,
   MethodContextEditor,
   ContextGuidance,
+  InvolvementLegend,
   LinesSection,
   PartnerCard,
   PillList,
@@ -18,6 +19,7 @@ export {
 export type {
   EntitySectionItem,
   JourneyCriterion,
+  InvolvementLabels,
   MethodContextItem,
   LineSectionItem,
   PillListItem,
