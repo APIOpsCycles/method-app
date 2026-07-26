@@ -212,7 +212,7 @@ a {
 .method-context-surface .is-button, .method-context-setup .is-button { background: #071640; border: 1px solid #071640; border-radius: .45rem; color: #fff; padding: .55rem .8rem; }
 .context-link { background: transparent; border: 0; color: #164e63; cursor: pointer; text-decoration: underline; }
 @media (max-width: 700px) { .method-context-setup { align-items: flex-start; flex-direction: column; } .cycle-context-navigation { align-items: flex-start; flex-direction: column; gap: .35rem; } }
-.source-content, .prompt-preview pre, .export-grid pre { background: #f2f5fa; border-radius: .5rem; max-height: 24rem; overflow: auto; padding: 1rem; white-space: pre-wrap; }
+.source-content, .export-grid pre { background: #f2f5fa; border-radius: .5rem; max-height: 24rem; overflow: auto; padding: 1rem; white-space: pre-wrap; }
 .export-grid, .canvas-grid { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
 .canvas-metadata { display: grid; gap: .75rem; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); margin: 1.5rem 0; }
 .canvas-metadata label { display: grid; gap: .3rem; text-transform: capitalize; }
