@@ -230,9 +230,14 @@ test("a matching station is off-path in a non-recommended cycle", () => {
 });
 test("the map is navigation, not a duplicate context form", () => {
   const map = readFileSync(new URL("../src/components/islands/MetroMapIsland.tsx", import.meta.url), "utf8");
+  const methodMap = readFileSync(new URL("../src/components/content/MethodMap.astro", import.meta.url), "utf8");
   const strip = readFileSync(new URL("../src/components/islands/MethodContextStrip.tsx", import.meta.url), "utf8");
   const designSystem = readFileSync(new URL("../../../packages/apiops-design-system/src/react/index.tsx", import.meta.url), "utf8");
-  assert.doesNotMatch(map, /StakeholderRoleSelector|controls\.selectGoal|resetMethodContext/);
+  assert.doesNotMatch(map, /controls\.selectGoal|resetMethodContext/);
+  assert.match(map, /<StakeholderRoleSelector/);
+  assert.match(map, /disabled=\{Boolean\(effectiveRoleId\)\}/);
+  assert.match(map, /<\/div>\s*<MetroMapView/);
+  assert.match(methodMap, /"involvement\.lead", "involvement\.core", "involvement\.consulted"/);
   assert.match(map, /cycle-context-navigation/);
   assert.match(map, /map\.viewingCycle/);
   assert.match(map, /map\.otherCycles/);
