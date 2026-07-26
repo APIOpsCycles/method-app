@@ -1,6 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { CanvasDesignSystemExample, ContextDesignSystemExample, GeneralDesignSystemExamples, MetroDesignSystemExample } from "../components/islands/DesignSystemExamples";
+import { CanvasDesignSystemExample, ContextDesignSystemExample, GeneralDesignSystemExamples, MetroDesignSystemExample, RoleParticipationDesignSystemExample } from "../components/islands/DesignSystemExamples";
 import { SvgAssetDownload } from "@apiops/design-system/react";
 import tokens from "@apiops/design-system/tokens.json";
 import { designSystemAssetManifest, designSystemAssetPath } from "@apiops/design-system/assets";
@@ -47,7 +47,7 @@ const symbolSheets = [
   { title: "Human poses", description: "Individual people for method-neutral workshop scenes.", symbols: symbols(humanPoses, "humans/apiops-stick-figures-poses.svg") },
   { title: "Human stories", description: "Small, reusable storytelling compositions.", symbols: symbols(humanStories, "humans/apiops-stick-figures-stories.svg") },
 ];
-const componentExports = ["CompactSection", "PillList", "ResourceSelector", "JourneyCriteria", "PartnerCard", "AnnouncementToast", "StakeholderRoleSelector", "MethodContextBar", "MethodContextEditor", "ContextGuidance", "MetroMapShell", "MetroLinePath", "MetroSelectionRing", "MetroStationButton", "MetroStationMarker", "MetroLegend", "CanvasSystemShell", "CanvasSystemGrid", "CanvasSystemZone", "CanvasSystemNoteView", "CanvasSystemMetadataEditor", "CanvasSystemMetadataReadOnly", "CanvasSystemFixture"];
+const componentExports = ["CompactSection", "PillList", "ResourceSelector", "JourneyCriteria", "PartnerCard", "AnnouncementToast", "StakeholderRoleSelector", "RoleParticipationTable", "MethodContextBar", "MethodContextEditor", "ContextGuidance", "MetroMapShell", "MetroLinePath", "MetroSelectionRing", "MetroStationButton", "MetroStationMarker", "MetroLegend", "CanvasSystemShell", "CanvasSystemGrid", "CanvasSystemZone", "CanvasSystemNoteView", "CanvasSystemMetadataEditor", "CanvasSystemMetadataReadOnly", "CanvasSystemFixture"];
 ---
 <BaseLayout title="Design system reference" description="English reference for APIOps design tokens, assets, React components, metro primitives, and canvas states." lang="en" canonicalPath="/design-system">
   <main class="public-content design-system-page">
@@ -68,6 +68,8 @@ const componentExports = ["CompactSection", "PillList", "ResourceSelector", "Jou
     <section class="public-section" aria-labelledby="components"><h2 id="components">General React components and controls</h2><p>These hydrated, method-neutral fixtures demonstrate CompactSection, interactive PillList buttons, ResourceSelector cards, PartnerCard with a logo, AnnouncementToast, StakeholderRoleSelector, buttons, and a drop-down menu.</p><GeneralDesignSystemExamples client:load /><h3>React export inventory</h3><p>The public React entry point also exposes the lower-level canvas and metro composition primitives:</p><ul class="export-list">{componentExports.map((name) => <li><code>{name}</code></li>)}</ul></section>
 
     <section class="public-section" id="context-patterns" aria-labelledby="context-patterns-title"><h2 id="context-patterns-title">Method context patterns</h2><p>The persistent strip, progressive editor, and success, warning, and neutral guidance states use package tokens and existing icon sheets. Applications supply localized values and route-aware behavior.</p><ContextDesignSystemExample client:load /></section>
+
+    <section class="public-section" id="role-participation" aria-labelledby="role-participation-title"><h2 id="role-participation-title">Role participation table</h2><p><code>RoleParticipationTable</code> presents one role’s stations, involvement, and explicitly linked resources within a single cycle. Applications provide localized labels, links, and method data; the design system owns the semantic table, involvement icons, resource chips, and responsive presentation.</p><ul><li><strong>Desktop:</strong> rows remain in a compact table inside a context-strip-style surface.</li><li><strong>Narrow screens:</strong> rows become labelled cards without horizontal scrolling; the table header remains available to assistive technology.</li><li><strong>Involvement:</strong> Lead, Core, and Consulted use different icons and colors while retaining visible text, so meaning never depends on color alone.</li><li><strong>Resources:</strong> pass only resources associated with this role and station; an empty-state label is required.</li></ul><RoleParticipationDesignSystemExample /></section>
 
     <section class="public-section" id="metro" aria-labelledby="metro-title"><h2 id="metro-title">Metro components</h2><p>This example composes MetroMapShell, MetroLinePath, MetroStationButton, MetroStationMarker, MetroSelectionRing, and MetroLegend without importing the generated method catalog. It includes keyboard operation and selected-state behavior; route and station data remain application-owned.</p><MetroDesignSystemExample client:load /></section>
 

@@ -15,3 +15,18 @@ test("method context patterns expose labeled, non-color state", async () => {
   assert.match(guidance, /is-warning/);
   assert.match(guidance, /Outside your path/);
 });
+
+test("role participation table exposes cycle, station, involvement, and resources", async () => {
+  const { RoleParticipationTable } = await import("../dist/react/index.js");
+  const table = renderToStaticMarkup(React.createElement(RoleParticipationTable, {
+    cycle: { id: "api", title: "API Productization", href: "/cycles/api" },
+    rows: [{ station: { id: "strategy", title: "API Product Strategy", href: "/stations/strategy" }, involvement: { value: "lead", label: "Lead" }, resources: [{ id: "journey", title: "Customer Journey Canvas", href: "/resources/journey" }] }],
+    labels: { station: "Station", involvement: "Involvement", resources: "Resources", noResources: "None linked" },
+  }));
+  assert.match(table, /<table>/);
+  assert.match(table, /scope="row"/);
+  assert.match(table, /data-label="Station"/);
+  assert.match(table, /is-lead/);
+  assert.match(table, /apiops-iconset\.svg#icon-decision/);
+  assert.match(table, /Customer Journey Canvas/);
+});

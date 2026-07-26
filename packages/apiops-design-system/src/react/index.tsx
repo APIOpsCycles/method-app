@@ -193,6 +193,39 @@ export type StationSectionItem = EntitySectionItem & {
 
 export type LineSectionItem = EntitySectionItem & { color: string; icon?: string };
 
+export type RoleParticipationRow = {
+  station: { id: string; title: string; href: string };
+  involvement: { label: string; value: "lead" | "core" | "consulted" };
+  resources: Array<{ id: string; title: string; href: string }>;
+};
+
+const involvementIcons = {
+  lead: "icon-decision",
+  core: "icon-alignment",
+  consulted: "icon-insight",
+} as const;
+
+/** Accessible, responsive presentation for one role's participation in a cycle. */
+export function RoleParticipationTable({ cycle, rows, labels }: {
+  cycle: { id: string; title: string; href: string };
+  rows: RoleParticipationRow[];
+  labels: { station: string; involvement: string; resources: string; noResources: string };
+}) {
+  return <section className="ds-role-participation" aria-labelledby={`role-cycle-${cycle.id}`}>
+    <h3 id={`role-cycle-${cycle.id}`}><a href={cycle.href}>{cycle.title}</a></h3>
+    <div className="ds-role-participation__surface">
+      <table>
+        <thead><tr><th scope="col">{labels.station}</th><th scope="col">{labels.involvement}</th><th scope="col">{labels.resources}</th></tr></thead>
+        <tbody>{rows.map((row) => <tr key={row.station.id}>
+          <th scope="row" data-label={labels.station}><a href={row.station.href}>{row.station.title}</a></th>
+          <td data-label={labels.involvement}><span className={`ds-involvement-badge is-${row.involvement.value}`}><span className="ds-involvement-badge__icon" aria-hidden="true"><svg viewBox="0 0 120 120"><use href={`${designSystemAssets.icons.method}#${involvementIcons[row.involvement.value]}`} /></svg></span>{row.involvement.label}</span></td>
+          <td data-label={labels.resources}>{row.resources.length ? <ul className="ds-role-resource-list">{row.resources.map((resource) => <li key={resource.id}><a href={resource.href}>{resource.title}</a></li>)}</ul> : <span className="ds-table-empty">{labels.noResources}</span>}</td>
+        </tr>)}</tbody>
+      </table>
+    </div>
+  </section>;
+}
+
 function EntityHeading({ id, title, href }: Pick<EntitySectionItem, "id" | "title" | "href">) {
   return <h3><a href={href} data-entity-id={id}>{title}</a></h3>;
 }

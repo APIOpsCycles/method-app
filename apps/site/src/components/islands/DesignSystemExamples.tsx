@@ -14,6 +14,7 @@ import {
   PartnerCard,
   PillList,
   ResourceSelector,
+  RoleParticipationTable,
   StakeholderRoleSelector,
 } from "@apiops/design-system/react";
 import { designSystemAssets } from "@apiops/design-system/assets";
@@ -59,6 +60,18 @@ export function ContextDesignSystemExample() {
   const [editing, setEditing] = useState(false);
   const items = [{ id: "stakeholder" as const, label: "Who", value: "API Product Owner" }, { id: "goal" as const, label: "Why", value: "Create or improve an API" }, { id: "cycle" as const, label: "Cycle", value: "API Productization Cycle", href: "#context-patterns" }, { id: "here" as const, label: "Where", value: "API Audit" }];
   return <div className="ds-example-stack"><MethodContextBar items={items} expanded={editing} changeLabel="Change context" closeLabel="Close" onToggle={() => setEditing(!editing)} />{editing && <MethodContextEditor><label>View as<select defaultValue="owner"><option value="owner">API Product Owner</option></select></label><label>Goal<select defaultValue="api"><option value="api">Create or improve an API</option></select></label><button type="button" onClick={() => setEditing(false)}>Done</button></MethodContextEditor>}<div className="ds-example-grid"><ContextGuidance tone="success" title="You are on your relevant path">Current: API Audit · Next: Publishing &amp; Enablement</ContextGuidance><ContextGuidance tone="warning" title="You are exploring outside your recommended path">Recommended start: API Product Strategy</ContextGuidance><ContextGuidance tone="neutral" title="Choose your perspective and goal">We will recommend a starting point for you.</ContextGuidance></div></div>;
+}
+
+export function RoleParticipationDesignSystemExample() {
+  return <RoleParticipationTable
+    cycle={{ id: "example-cycle", title: "Productization cycle", href: "#role-participation" }}
+    rows={[
+      { station: { id: "strategy", title: "Product strategy", href: "#role-participation" }, involvement: { value: "lead", label: "Lead" }, resources: [{ id: "value", title: "Value proposition canvas", href: "#role-participation" }] },
+      { station: { id: "design", title: "Interface design", href: "#role-participation" }, involvement: { value: "core", label: "Core" }, resources: [{ id: "interaction", title: "Interaction canvas", href: "#role-participation" }] },
+      { station: { id: "review", title: "Readiness review", href: "#role-participation" }, involvement: { value: "consulted", label: "Consulted" }, resources: [] },
+    ]}
+    labels={{ station: "Station", involvement: "Involvement", resources: "Role resources", noResources: "No role-specific resources linked." }}
+  />;
 }
 
 export function CanvasDesignSystemExample() { return <CanvasSystemFixture />; }
