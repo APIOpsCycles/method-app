@@ -5,6 +5,7 @@ import { CyclesSection, JourneyCriteria, LinesSection } from "@apiops/design-sys
 import { metroLineColor } from "../../lib/line-colors";
 import { PublicPillList, PublicResourceSelector } from "../islands/PublicSelectors";
 import MethodContext from "./MethodContext.astro";
+import { getPageMethodContext } from "../../lib/method-graph";
 interface Props { station: Station; locale: Locale; cycle?: ReturnType<typeof getCatalog>["cycles"][number]; compatibilityAlias?: boolean }
 const { station, locale, cycle, compatibilityAlias = false } = Astro.props;
 const prefix = localePrefix(locale);
@@ -26,7 +27,7 @@ const relatedLines = cycle ? getLinesForContext(getCatalog(locale), cycle, stati
 ---
 <main class="public-content">
   <nav class="public-breadcrumbs" aria-label={labels["chrome.breadcrumb"]}><a href={`${prefix}/`}>APIOps Cycles</a><span aria-hidden="true">/</span>{cycle && <><a href={`${prefix}/cycles/${cycle.slug}`}>{cycle.title}</a><span aria-hidden="true">/</span></>}<span>{station.title}</span></nav>
-  <MethodContext locale={locale} cycle={cycle} stationId={station.id} here={station.title} />
+  <MethodContext locale={locale} pageContext={getPageMethodContext("station", station.id, cycle?.id)} here={station.title} />
   <section class="public-hero"><p class="public-kicker">{labels["entity.station"]}</p><h1>{station.title}</h1><p>{station.description}</p>{station.whyItMatters && <p>{station.whyItMatters}</p>}{compatibilityAlias && <p class="alias-notice">This compatibility URL presents the canonical station content.</p>}</section>
   <section class="public-section" aria-label={labels["map.selectedStation"]}><MethodMap locale={locale} cycleId={cycle?.id} stationId={station.id} /></section>
   <section class="public-section" aria-labelledby="outcomes"><h2 id="outcomes">{labels["section.outcomes"]}</h2><ul>{station.outcomes.map((item) => <li>{item}</li>)}</ul></section>

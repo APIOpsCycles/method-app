@@ -6,6 +6,7 @@ import { JourneyCriteria, StationsSection } from "@apiops/design-system/react";
 import { metroLineColor } from "../../lib/line-colors";
 import { PublicPillList, PublicResourceSelector } from "../islands/PublicSelectors";
 import MethodContext from "./MethodContext.astro";
+import { getPageMethodContext } from "../../lib/method-graph";
 interface Props { cycle: Cycle; locale: Locale }
 const { cycle, locale } = Astro.props;
 const prefix = localePrefix(locale);
@@ -15,7 +16,7 @@ const roles = uniqueById(cycle.audienceStakeholders.length ? cycle.audienceStake
 const catalog = getCatalog(locale);
 ---
 <main class="public-content">
-  <MethodContext locale={locale} cycle={cycle} here={cycle.title} />
+  <MethodContext locale={locale} pageContext={getPageMethodContext("cycle", cycle.id, cycle.id)} here={cycle.title} />
   <nav class="public-breadcrumbs" aria-label={labels["chrome.breadcrumb"]}><a href={`${prefix}/`}>APIOps Cycles</a><span aria-hidden="true">/</span><span>{cycle.title}</span></nav>
   <section class="public-hero"><p class="public-kicker">{labels["entity.cycle"]}</p><h1>{cycle.title}</h1><p>{cycle.description}</p>{cycle.purpose && <p>{cycle.purpose}</p>}</section>
   <section class="public-section" aria-label={labels["map.selectedCycle"]}><MethodMap locale={locale} cycleId={cycle.id} /></section>

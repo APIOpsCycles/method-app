@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { getRecommendedNextStations, getStationEmphasis, methodGraph } from "../src/lib/method-graph";
+import { getPageMethodContext, getRecommendedNextStations, getStationEmphasis, methodGraph } from "../src/lib/method-graph";
 import { initializeMethodContext, METHOD_CONTEXT_KEY, resetMethodContext, setMethodContext } from "../src/lib/method-context";
 import { parseStoredMethodContext } from "../src/lib/method-context";
 import { INVOLVEMENT_WEIGHT, resolveMethodContext, scoreCycleForContext } from "../src/lib/resolve-method-context";
@@ -198,8 +198,8 @@ test("role entity context without a selected-path intersection uses the recommen
 test("role pages pass graph stations for the route profile's stakeholder", () => {
   const roleContent = readFileSync(new URL("../src/components/content/RoleContent.astro", import.meta.url), "utf8");
 
-  assert.match(roleContent, /methodGraph\.byStakeholder\[role\.stakeholderId\]\?\.stationIds \?\? methodGraph\.byStakeholder\[role\.id\]\?\.stationIds \?\? \[\]/);
-  assert.match(roleContent, /contextStationIds=\{roleStationIds\}/);
+  assert.match(roleContent, /getPageMethodContext\("stakeholder", role\.stakeholderId \?\? role\.id\)/);
+  assert.doesNotMatch(roleContent, /contextStationIds/);
 });
 test("a goal-only station is outside the stakeholder path", () => {
   const resolved = resolveMethodContext({ stakeholderId: "api-designer", goalId: "create-or-improve-api", preferredCycleId: "api-productization-cycle", currentStationId: "api-publishing" });
@@ -245,4 +245,47 @@ test("the map is navigation, not a duplicate context form", () => {
   assert.match(strip, /labels\.who/);
   assert.match(strip, /labels\.where/);
   assert.match(strip, /pageMode === "explore" \? labels\.where/);
+});
+
+test("page method context resolves and validates every supported entity type", () => {
+  const cycleId = Object.keys(methodGraph.byCycle)[0];
+  const lineId = methodGraph.byCycle[cycleId].lineIds[0];
+  const stationId = methodGraph.byLine[lineId].stationIds.find((id) => methodGraph.byStation[id].cycleIds.includes(cycleId))!;
+  const stakeholderId = methodGraph.byStation[stationId].stakeholders[0].id;
+  const resourceId = Object.keys(methodGraph.byResource).find((id) => methodGraph.byResource[id].stationIds.length)!;
+
+  const cycle = getPageMethodContext("cycle", cycleId)!;
+  assert.deepEqual(cycle.cycleIds, [cycleId]);
+  assert.equal(cycle.currentStationId, undefined);
+  assert.ok(cycle.stationIds.length && cycle.lineIds.length);
+
+  const line = getPageMethodContext("line", lineId)!;
+  assert.deepEqual(line.lineIds, [lineId]);
+  assert.ok(line.cycleIds.length && line.stationIds.length);
+
+  const station = getPageMethodContext("station", stationId)!;
+  assert.equal(station.currentStationId, stationId);
+  assert.deepEqual(station.stationIds, [stationId]);
+
+  const stakeholder = getPageMethodContext("stakeholder", stakeholderId)!;
+  assert.equal(stakeholder.entityId, stakeholderId);
+  assert.ok(stakeholder.stationIds.every((id) => methodGraph.byStakeholder[stakeholderId].stationIds.includes(id)));
+
+  const resource = getPageMethodContext("resource", resourceId)!;
+  assert.equal(resource.entityId, resourceId);
+  assert.deepEqual(getPageMethodContext("canvas", resourceId)?.stationIds, resource.stationIds);
+
+  for (const type of ["cycle", "line", "station", "stakeholder", "resource", "canvas"] as const) {
+    assert.equal(getPageMethodContext(type, "missing"), undefined);
+  }
+});
+
+test("explicit route cycle is validated and takes precedence", () => {
+  const stationId = Object.keys(methodGraph.byStation).find((id) => methodGraph.byStation[id].cycleIds.length > 1)!;
+  const relatedCycles = methodGraph.byStation[stationId].cycleIds;
+  const explicitCycleId = relatedCycles.at(-1)!;
+  const context = getPageMethodContext("station", stationId, explicitCycleId)!;
+  assert.equal(context.explicitCycleId, explicitCycleId);
+  assert.equal(context.cycleIds[0], explicitCycleId);
+  assert.equal(getPageMethodContext("station", stationId, "missing")?.explicitCycleId, undefined);
 });
