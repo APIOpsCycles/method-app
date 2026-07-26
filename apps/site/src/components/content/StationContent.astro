@@ -6,7 +6,6 @@ import { CyclesSection, JourneyCriteria, LinesSection } from "@apiops/design-sys
 import { metroLineColor } from "../../lib/line-colors";
 import { PublicPillList, PublicResourceSelector } from "../islands/PublicSelectors";
 import { methodGraph } from "../../lib/method-graph";
-import CurrentStationInvolvement from "../islands/CurrentStationInvolvement";
 import MethodContext from "./MethodContext.astro";
 interface Props { station: Station; locale: Locale; cycle?: ReturnType<typeof getCatalog>["cycles"][number]; compatibilityAlias?: boolean }
 const { station, locale, cycle, compatibilityAlias = false } = Astro.props;
@@ -38,9 +37,8 @@ const relatedLines = getLinesForContext(getCatalog(locale), selectedCycle, stati
 ---
 <main class="public-content">
   <nav class="public-breadcrumbs" aria-label={labels["chrome.breadcrumb"]}><a href={`${prefix}/`}>APIOps Cycles</a><span aria-hidden="true">/</span>{cycle && <><a href={`${prefix}/cycles/${cycle.slug}`}>{cycle.title}</a><span aria-hidden="true">/</span></>}<span>{station.title}</span></nav>
-  <MethodContext locale={locale} cycle={selectedCycle} here={station.title} />
+  <MethodContext locale={locale} cycle={selectedCycle} stationId={station.id} here={selectedCycle?.stations.find((item) => item.id === station.id)?.title ?? station.title} />
   <section class="public-hero"><p class="public-kicker">{labels["entity.station"]}</p><h1>{station.title}</h1><p>{station.description}</p>{station.whyItMatters && <p>{station.whyItMatters}</p>}{compatibilityAlias && <p class="alias-notice">This compatibility URL presents the canonical station content.</p>}</section>
-  <CurrentStationInvolvement client:idle stationId={station.id} cycleId={selectedCycle?.id} labels={{ prefix, heading: labels["context.involvementHere"], leadLabel: labels["involvement.lead"], coreLabel: labels["involvement.core"], consultedLabel: labels["involvement.consulted"], lead: labels["context.involvementLead"], core: labels["context.involvementCore"], consulted: labels["context.involvementConsulted"], unmappedHeading: labels["context.involvementUnmappedHeading"], unmapped: labels["context.involvementUnmapped"], recommended: labels["map.viewRecommended"] }} />
   <section class="public-section" aria-label={labels["map.selectedStation"]}><MethodMap locale={locale} cycleId={selectedCycle?.id} stationId={station.id} /></section>
   <section class="public-section" aria-labelledby="roles"><h2 id="roles">{labels["section.people"]}</h2><PublicPillList client:load label={labels["section.people"]} items={station.stakeholders.map((role) => ({ id: role.id, label: role.title, href: `${prefix}/roles/${role.id}` }))} /></section>
   <section class="public-section" aria-labelledby="resources"><h2 id="resources">{labels["section.resources"]}</h2><PublicResourceSelector client:load emptyLabel={labels["resources.emptyLinked"]} items={resources.map((resource) => ({ id: resource.id, type: resource.category, title: resource.title, description: resource.description, href: resourcePath(locale, resource) }))} /></section>

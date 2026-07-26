@@ -5,7 +5,7 @@ import { renderToStaticMarkup } from "react-dom/server";
 
 test("method context patterns expose labeled, non-color state", async () => {
   const { ContextGuidance, MethodContextBar, MethodContextEditor } = await import("../dist/react/index.js");
-  const bar = renderToStaticMarkup(React.createElement(MethodContextBar, { items: [{ id: "stakeholder", label: "View as", value: "API Product Owner" }, { id: "goal", label: "Goal", value: "Create an API" }, { id: "cycle", label: "Cycle", value: "API Productization", href: "/cycles/api" }, { id: "here", label: "Here", value: "API Audit" }], expanded: false, changeLabel: "Change context", closeLabel: "Close", onToggle() {} }));
+  const bar = renderToStaticMarkup(React.createElement(MethodContextBar, { items: [{ id: "stakeholder", label: "Who", value: "API Product Owner" }, { id: "goal", label: "Why", value: "Create an API" }, { id: "cycle", label: "Cycle", value: "API Productization", href: "/cycles/api" }, { id: "here", label: "Where", value: "API Audit" }], expanded: false, changeLabel: "Change context", closeLabel: "Close", onToggle() {} }));
   assert.match(bar, /aria-expanded="false"/);
   assert.match(bar, /apiops-iconset\.svg#icon-people/);
   assert.match(bar, />API Audit</);

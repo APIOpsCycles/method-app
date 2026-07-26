@@ -6,7 +6,7 @@ import MetroMapIsland from "../islands/MetroMapIsland";
 interface Props { locale: Locale; cycleId?: string; stationId?: string; roleId?: string; lineId?: string }
 const { locale, cycleId, stationId, roleId, lineId } = Astro.props;
 const data = getCatalog(locale);
-const labels = pickLabels(getLabels(locale), ["map.ariaLabel", "map.zoneStrategic", "map.zoneGovernance", "map.zoneConsumer", "map.zoneTechnical", "map.methodKicker", "map.title", "map.exportSvg", "map.help", "map.recommendationConsulted", "map.mode.start", "map.mode.on-path", "map.mode.off-path", "map.modeTitle.start", "map.modeTitle.on-path", "map.modeTitle.off-path", "map.action.start", "map.action.on-path", "map.action.off-path", "context.cycle"] as const);
+const labels = pickLabels(getLabels(locale), ["map.ariaLabel", "map.zoneStrategic", "map.zoneGovernance", "map.zoneConsumer", "map.zoneTechnical", "map.methodKicker", "map.title", "map.exportSvg", "map.help", "map.modeTitle.start", "map.cycleNavigation", "map.viewingCycle", "map.otherCycles"] as const);
 const mapStations = data.stations.map(({ id, title, description }) => ({ id, title, description }));
 const mapCycles = data.cycles.map(({ id, slug, title, stations }) => ({ id, slug, title, stations: stations.map(({ id: stationId, index, title: stationTitle, baseTitle }) => ({ id: stationId, index, title: stationTitle, baseTitle })) }));
 const mapLines = data.lines.map(({ id, title, stations }) => ({ id, title, color: metroLineColor(id), stations }));
