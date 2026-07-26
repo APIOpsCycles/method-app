@@ -1,6 +1,6 @@
 import { defaultLocale, getCatalog, locales, localePrefix, publicResources, resourcePath, type Locale } from "./method-data";
 
-export type RouteKind = "home" | "cycle" | "station" | "cycleStation" | "role" | "resource" | "line" | "cycleLine" | "partners" | "licensing" | "data" | "designSystem";
+export type RouteKind = "home" | "cycle" | "station" | "cycleStation" | "role" | "resource" | "line" | "cycleLine" | "partners" | "faq" | "licensing" | "data" | "designSystem";
 export type PublicRoute = { kind: RouteKind; locale: Locale; path: string; alternateKey?: string };
 
 /** One indexing policy shared by sitemap and future route discovery surfaces. */
@@ -11,6 +11,7 @@ export function publicRouteInventory(): PublicRoute[] {
     return [
       { kind: "home", locale, path: `${prefix}/`, alternateKey: "home" },
       { kind: "partners", locale, path: `${prefix}/partners`, alternateKey: "partners" },
+      { kind: "faq", locale, path: `${prefix}/faq`, alternateKey: "faq" },
       { kind: "licensing", locale, path: `${prefix}/licensing`, alternateKey: "licensing" },
       { kind: "data", locale, path: `${prefix}/data`, alternateKey: "data" },
       ...data.cycles.map((cycle) => ({ kind: "cycle" as const, locale, path: `${prefix}/cycles/${cycle.slug}`, alternateKey: `cycle:${cycle.id}` })),
