@@ -76,13 +76,13 @@ test("contextual page modes choose one route-aware action", () => {
   assert.equal(offPath.pageMode, "off-path");
   assert.equal(offPath.primaryStationId, "api-design");
 });
-test("generic entity context links to its first use in the recommended journey", () => {
+test("generic entity context links to its first use on the role path", () => {
   const resourceStations = methodGraph.byResource.customerJourneyCanvas.stationIds;
   const resolved = resolveMethodContext({ stakeholderId: "api-designer", goalId: "create-or-improve-api", contextStationIds: [...resourceStations, "missing"] });
   const ui = resolveContextualUiState(resolved);
   assert.deepEqual(resolved.contextStationIds, resourceStations);
   assert.equal(ui.pageMode, "explore");
-  assert.equal(ui.primaryStationId, "api-product-strategy");
+  assert.equal(ui.primaryStationId, "api-consumer-experience");
 });
 test("a goal-only station is outside the stakeholder path", () => {
   const resolved = resolveMethodContext({ stakeholderId: "api-designer", goalId: "create-or-improve-api", preferredCycleId: "api-productization-cycle", currentStationId: "api-publishing" });
@@ -127,4 +127,5 @@ test("the map is navigation, not a duplicate context form", () => {
   assert.match(strip, /routeCycle \?\? cycles\.find/);
   assert.match(strip, /labels\.who/);
   assert.match(strip, /labels\.where/);
+  assert.match(strip, /pageMode === "explore" \? labels\.where/);
 });

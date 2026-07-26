@@ -81,10 +81,11 @@ export function resolveContextualUiState(resolved: ResolvedMethodContext, graph:
   if (!resolved.currentStationId) {
     if (resolved.currentCycleId && !resolved.isCurrentCycleRecommended) return { pageMode: "off-path", primaryStationId: resolved.recommendedEntryStationId };
     const stations = resolved.recommendedCycleId ? graph.byCycle[resolved.recommendedCycleId]?.stationIds ?? [] : [];
-    // Entity pages should lead to the first place that entity is used in the
-    // recommended journey. Requiring a stakeholder mapping here can skip the
-    // resource's actual entry point when that role participates only later.
-    const contextualStationId = stations.find((id) => resolved.contextStationIds.includes(id));
+    // Entity pages lead to the first place the entity is useful on the
+    // selected role's path, rather than to an earlier station where that role
+    // has no mapped involvement. With goal-only context, pathStationIds is the
+    // goal path and follows the same rule.
+    const contextualStationId = stations.find((id) => resolved.contextStationIds.includes(id) && resolved.pathStationIds.includes(id));
     if (contextualStationId) return { pageMode: "explore", primaryStationId: contextualStationId };
     return { pageMode: "start", primaryStationId: resolved.recommendedEntryStationId };
   }
