@@ -10,6 +10,7 @@ import {
 import { createRequire } from "node:module";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
+import { validateStationStepResourceReferences } from "./lib/resource-reference-validation.mjs";
 
 const root = process.cwd();
 const require = createRequire(import.meta.url);
@@ -2224,31 +2225,16 @@ function validate() {
   const resourceIds = new Set(resourcesRaw.map((resource) => resource.id));
   const criterionIds = new Set(criteriaRaw.map((criterion) => criterion.id));
   const stakeholderIds = new Set(stakeholdersRaw.map((stakeholder) => stakeholder.id));
-  const publicResourceById = new Map(
-    resourcesRaw
-      .filter((resource) => resource.draft !== "true" && resource.daft !== "true")
-      .map((resource) => [resource.id, resource]),
-  );
-  const publicResourceRoutes = new Set();
-  for (const resource of publicResourceById.values()) {
-    if (!resource.slug?.startsWith("resources/") || resource.slug === "resources/") {
-      throw new Error(`Public resource ${resource.id} has no Astro resource route: ${resource.slug ?? "(missing slug)"}`);
-    }
-    const href = `/${resource.slug}`;
-    if (publicResourceRoutes.has(href)) throw new Error(`Duplicate public resource Astro route ${href}`);
-    publicResourceRoutes.add(href);
-  }
-  const invalidStepReferences = [];
-  for (const station of stationsRawList) {
-    for (const step of stationStepItems(station)) {
-      if (!step.resource) continue;
-      const resource = publicResourceById.get(step.resource);
-      const href = resource ? `/${resource.slug}` : null;
-      if (!resource || !publicResourceRoutes.has(href)) invalidStepReferences.push(`${station.id} -> ${step.resource}`);
-    }
-  }
-  if (invalidStepReferences.length) {
-    console.warn(`[resource-routes] ${invalidStepReferences.length} station step reference(s) do not resolve to a public Astro route: ${invalidStepReferences.join(", ")}`);
+  const classifiedStepReferences = validateStationStepResourceReferences({
+    stations: stationsRawList,
+    stationStepItems,
+    resources: resourcesRaw,
+  });
+  if (classifiedStepReferences.length) {
+    console.warn(
+      `[resource-routes] ${classifiedStepReferences.length} explicitly classified non-public station/resource reference(s): ` +
+      classifiedStepReferences.map(({ pair, status }) => `${pair} (${status})`).join(", "),
+    );
   }
   for (const cycle of cyclesRaw) {
     if (!cycleIds.has(cycle.id)) throw new Error(`Missing cycle ${cycle.id}`);
