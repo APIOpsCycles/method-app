@@ -5,7 +5,7 @@ import { ContextGuidance, MethodContextBar, MethodContextEditor, type MethodCont
 
 type Option = { id: string; label: string };
 type ContextCycle = Option & { slug: string; stations: Option[] };
-export default function MethodContextStrip({ stakeholders, goals, cycles, cycleId, stationId, prefix, here, labels }: { stakeholders: Option[]; goals: Option[]; cycles: ContextCycle[]; cycleId?: string; stationId?: string; prefix: string; here: string; labels: Record<string, string> }) {
+export default function MethodContextStrip({ stakeholders, goals, cycles, cycleId, stationId, contextStationIds, prefix, here, labels }: { stakeholders: Option[]; goals: Option[]; cycles: ContextCycle[]; cycleId?: string; stationId?: string; contextStationIds?: string[]; prefix: string; here: string; labels: Record<string, string> }) {
   const context = useMethodContext();
   const [editing, setEditing] = useState(false);
   const [dismissed, setDismissed] = useState(true);
@@ -16,7 +16,7 @@ export default function MethodContextStrip({ stakeholders, goals, cycles, cycleI
   const routeCycle = cycles.find((item) => item.id === cycleId);
   const noContext = !stakeholder && !goal;
   const close = () => { setEditing(false); requestAnimationFrame(() => changeButton.current?.focus()); };
-  const resolved = resolveMethodContext({ ...context, preferredCycleId: cycleId, currentStationId: stationId });
+  const resolved = resolveMethodContext({ ...context, preferredCycleId: cycleId, currentStationId: stationId, contextStationIds });
   const contextualUi = resolveContextualUiState(resolved);
   const resolvedCycleId = contextualUi.pageMode === "on-path" ? resolved.currentCycleId : resolved.recommendedCycleId;
   const resolvedCycle = cycles.find((item) => item.id === resolvedCycleId);

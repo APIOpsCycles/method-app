@@ -11,6 +11,7 @@ export type MethodGraph = {
   version: number;
   byStation: Record<string, { cycleIds: string[]; lineIds: string[]; stakeholders: Array<{ id: string; involvement: Involvement }>; resourceIds: string[]; nextStationIds: string[]; relatedStationIds: string[] }>;
   byStakeholder: Record<string, { stationIds: string[] }>;
+  byResource: Record<string, { stationIds: string[] }>;
   byCycle: Record<string, { stationIds: string[]; lineIds: string[] }>;
   byGoal: Record<string, { recommendedCycleIds: string[]; entryStationIds: string[]; stationIds: string[] }>;
 };
