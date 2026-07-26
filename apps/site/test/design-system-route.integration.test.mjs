@@ -18,6 +18,9 @@ test("the English-only design system static route documents its public contract"
   assert.match(source, /apiops-metro-icons\.svg\?raw/);
   assert.match(source, /apiops-stick-figures-poses\.svg\?raw/);
   assert.match(source, /React export inventory/);
+  assert.match(source, /Role participation table/);
+  assert.match(source, /RoleParticipationDesignSystemExample/);
+  assert.match(source, /meaning never depends on color alone/);
   assert.ok(source.indexOf("Metro components") < source.indexOf("<MetroDesignSystemExample"), "metro guidance precedes its colocated example");
 });
 
