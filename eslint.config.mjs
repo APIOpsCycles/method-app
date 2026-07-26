@@ -1,18 +1,60 @@
+import eslint from "@eslint/js";
 import { defineConfig, globalIgnores } from "eslint/config";
-import nextVitals from "eslint-config-next/core-web-vitals";
-import nextTs from "eslint-config-next/typescript";
+import astro from "eslint-plugin-astro";
+import react from "eslint-plugin-react";
+import reactHooks from "eslint-plugin-react-hooks";
+import globals from "globals";
+import tseslint from "typescript-eslint";
 
-const eslintConfig = defineConfig([
-  ...nextVitals,
-  ...nextTs,
-  // Override default ignores of eslint-config-next.
-  globalIgnores([
-    // Default ignores of eslint-config-next:
-    ".next/**",
-    "out/**",
-    "build/**",
-    "next-env.d.ts",
-  ]),
+export default defineConfig([
+  globalIgnores(["**/dist/**", "**/.astro/**", "**/node_modules/**"]),
+  eslint.configs.recommended,
+  ...tseslint.configs.recommended,
+  ...astro.configs["flat/recommended"],
+  {
+    files: ["**/*.{js,mjs,cjs,ts,tsx,jsx}", "**/*.astro"],
+    languageOptions: {
+      globals: {
+        ...globals.browser,
+        ...globals.node,
+      },
+    },
+  },
+  {
+    files: ["**/*.{jsx,tsx}"],
+    ...react.configs.flat.recommended,
+    languageOptions: {
+      ...react.configs.flat.recommended.languageOptions,
+      globals: globals.browser,
+    },
+    settings: {
+      react: { version: "detect" },
+    },
+  },
+  {
+    files: ["**/*.{jsx,tsx}"],
+    ...react.configs.flat["jsx-runtime"],
+  },
+  {
+    files: ["**/*.{jsx,tsx}"],
+    ...reactHooks.configs.flat.recommended,
+    rules: {
+      ...reactHooks.configs.flat.recommended.rules,
+      // These islands hydrate state from browser storage after mounting.
+      "react-hooks/set-state-in-effect": "off",
+    },
+  },
+  {
+    files: ["**/*.d.{ts,mts,cts}"],
+    rules: {
+      "@typescript-eslint/no-explicit-any": "off",
+    },
+  },
+  {
+    files: ["scripts/build-method-graph.ts"],
+    rules: {
+      // The generator intentionally consumes an evolving external JSON schema.
+      "@typescript-eslint/ban-ts-comment": "off",
+    },
+  },
 ]);
-
-export default eslintConfig;
