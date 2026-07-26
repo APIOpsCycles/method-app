@@ -44,6 +44,7 @@
       ],
       "recommendedLineIds": [
         "business-opportunities-line",
+        "platform-architecture-line",
         "api-design-line",
         "delivery-line",
         "publishing-and-adoption-line"
@@ -99,23 +100,116 @@
       ]
     },
     {
-      "id": "explore-method",
+      "id": "explore-capability-method",
       "label": {
-        "en": "Explore the method",
-        "fi": "Tutustu menetelmään",
-        "fr": "Explorer la méthode",
-        "de": "Die Methode erkunden",
-        "pt": "Explorar o método"
+        "en": "Explore the capability method",
+        "fi": "Tutustu kyvykkyysmenetelmään",
+        "fr": "Explorer la méthode des capacités",
+        "de": "Die Fähigkeitsmethode erkunden",
+        "pt": "Explorar o método de capacidades"
       },
       "description": {
-        "en": "Browse every cycle and choose your own starting point.",
-        "fi": "Selaa kaikkia syklejä ja valitse oma aloituspisteesi.",
-        "fr": "Parcourez tous les cycles et choisissez votre point de départ.",
-        "de": "Alle Zyklen durchsuchen und einen eigenen Einstieg wählen.",
-        "pt": "Explore todos os ciclos e escolha seu ponto de partida."
+        "en": "Browse every line in this cycle and choose your own starting point.",
+        "fi": "Selaa tämän syklin kaikkia linjoja ja valitse oma aloituspisteesi.",
+        "fr": "Parcourez toutes les lignes de ce cycle et choisissez votre point de départ.",
+        "de": "Alle Linien dieses Zyklus durchsuchen und einen eigenen Einstieg wählen.",
+        "pt": "Explore todas as linhas deste ciclo e escolha seu ponto de partida."
       },
-      "recommendedCycleIds": [],
-      "recommendedLineIds": []
+      "recommendedCycleIds": [
+        "capability-productization-cycle"
+      ],
+      "recommendedLineIds": [
+        "business-opportunities-line",
+        "platform-architecture-line",
+        "api-design-line",
+        "delivery-line",
+        "publishing-and-adoption-line",
+        "operating-model-line"
+      ]
+    },
+    {
+      "id": "explore-api-method",
+      "label": {
+        "en": "Explore the API method",
+        "fi": "Tutustu API-menetelmään",
+        "fr": "Explorer la méthode API",
+        "de": "Die API-Methode erkunden",
+        "pt": "Explorar o método de API"
+      },
+      "description": {
+        "en": "Browse every line in this cycle and choose your own starting point.",
+        "fi": "Selaa tämän syklin kaikkia linjoja ja valitse oma aloituspisteesi.",
+        "fr": "Parcourez toutes les lignes de ce cycle et choisissez votre point de départ.",
+        "de": "Alle Linien dieses Zyklus durchsuchen und einen eigenen Einstieg wählen.",
+        "pt": "Explore todas as linhas deste ciclo e escolha seu ponto de partida."
+      },
+      "recommendedCycleIds": [
+        "api-productization-cycle"
+      ],
+      "recommendedLineIds": [
+        "business-opportunities-line",
+        "platform-architecture-line",
+        "api-design-line",
+        "delivery-line",
+        "publishing-and-adoption-line",
+        "operating-model-line"
+      ]
+    },
+    {
+      "id": "explore-integration-method",
+      "label": {
+        "en": "Explore the integration method",
+        "fi": "Tutustu integraatiomenetelmään",
+        "fr": "Explorer la méthode d’intégration",
+        "de": "Die Integrationsmethode erkunden",
+        "pt": "Explorar o método de integração"
+      },
+      "description": {
+        "en": "Browse every line in this cycle and choose your own starting point.",
+        "fi": "Selaa tämän syklin kaikkia linjoja ja valitse oma aloituspisteesi.",
+        "fr": "Parcourez toutes les lignes de ce cycle et choisissez votre point de départ.",
+        "de": "Alle Linien dieses Zyklus durchsuchen und einen eigenen Einstieg wählen.",
+        "pt": "Explore todas as linhas deste ciclo e escolha seu ponto de partida."
+      },
+      "recommendedCycleIds": [
+        "integration-productization-cycle"
+      ],
+      "recommendedLineIds": [
+        "business-opportunities-line",
+        "platform-architecture-line",
+        "api-design-line",
+        "delivery-line",
+        "publishing-and-adoption-line",
+        "operating-model-line"
+      ]
+    },
+    {
+      "id": "explore-automation-method",
+      "label": {
+        "en": "Explore the automation method",
+        "fi": "Tutustu automaatiomenetelmään",
+        "fr": "Explorer la méthode d’automatisation",
+        "de": "Die Automatisierungsmethode erkunden",
+        "pt": "Explorar o método de automação"
+      },
+      "description": {
+        "en": "Browse every line in this cycle and choose your own starting point.",
+        "fi": "Selaa tämän syklin kaikkia linjoja ja valitse oma aloituspisteesi.",
+        "fr": "Parcourez toutes les lignes de ce cycle et choisissez votre point de départ.",
+        "de": "Alle Linien dieses Zyklus durchsuchen und einen eigenen Einstieg wählen.",
+        "pt": "Explore todas as linhas deste ciclo e escolha seu ponto de partida."
+      },
+      "recommendedCycleIds": [
+        "automation-cycle"
+      ],
+      "recommendedLineIds": [
+        "business-opportunities-line",
+        "platform-architecture-line",
+        "api-design-line",
+        "delivery-line",
+        "publishing-and-adoption-line",
+        "operating-model-line"
+      ]
     }
   ]
 }

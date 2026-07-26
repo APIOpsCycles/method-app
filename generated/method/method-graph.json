@@ -1560,12 +1560,14 @@
       ],
       "recommendedLineIds": [
         "business-opportunities-line",
+        "platform-architecture-line",
         "api-design-line",
         "delivery-line",
         "publishing-and-adoption-line"
       ],
       "stationIds": [
         "api-product-strategy",
+        "api-consumer-experience",
         "api-platform-architecture",
         "api-design",
         "api-delivery",
@@ -1592,10 +1594,97 @@
         "api-audit"
       ]
     },
-    "explore-method": {
-      "recommendedCycleIds": [],
-      "recommendedLineIds": [],
-      "stationIds": []
+    "explore-api-method": {
+      "recommendedCycleIds": [
+        "api-productization-cycle"
+      ],
+      "recommendedLineIds": [
+        "business-opportunities-line",
+        "platform-architecture-line",
+        "api-design-line",
+        "delivery-line",
+        "publishing-and-adoption-line",
+        "operating-model-line"
+      ],
+      "stationIds": [
+        "api-product-strategy",
+        "api-consumer-experience",
+        "api-platform-architecture",
+        "api-design",
+        "api-delivery",
+        "api-audit",
+        "api-publishing",
+        "monitoring-and-improving"
+      ]
+    },
+    "explore-automation-method": {
+      "recommendedCycleIds": [
+        "automation-cycle"
+      ],
+      "recommendedLineIds": [
+        "business-opportunities-line",
+        "platform-architecture-line",
+        "api-design-line",
+        "delivery-line",
+        "publishing-and-adoption-line",
+        "operating-model-line"
+      ],
+      "stationIds": [
+        "api-product-strategy",
+        "api-consumer-experience",
+        "api-platform-architecture",
+        "api-design",
+        "api-delivery",
+        "api-audit",
+        "api-publishing",
+        "monitoring-and-improving"
+      ]
+    },
+    "explore-capability-method": {
+      "recommendedCycleIds": [
+        "capability-productization-cycle"
+      ],
+      "recommendedLineIds": [
+        "business-opportunities-line",
+        "platform-architecture-line",
+        "api-design-line",
+        "delivery-line",
+        "publishing-and-adoption-line",
+        "operating-model-line"
+      ],
+      "stationIds": [
+        "api-product-strategy",
+        "api-consumer-experience",
+        "api-platform-architecture",
+        "api-design",
+        "api-delivery",
+        "api-audit",
+        "api-publishing",
+        "monitoring-and-improving"
+      ]
+    },
+    "explore-integration-method": {
+      "recommendedCycleIds": [
+        "integration-productization-cycle"
+      ],
+      "recommendedLineIds": [
+        "business-opportunities-line",
+        "platform-architecture-line",
+        "api-design-line",
+        "delivery-line",
+        "publishing-and-adoption-line",
+        "operating-model-line"
+      ],
+      "stationIds": [
+        "api-product-strategy",
+        "api-consumer-experience",
+        "api-platform-architecture",
+        "api-design",
+        "api-delivery",
+        "api-audit",
+        "api-publishing",
+        "monitoring-and-improving"
+      ]
     },
     "improve-reusable-capability": {
       "recommendedCycleIds": [

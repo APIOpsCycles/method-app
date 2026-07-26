@@ -29,6 +29,8 @@ const byStakeholder = Object.fromEntries([...catalog.stakeholders].sort((a,b) =>
 const byResource = Object.fromEntries([...catalog.resources].sort((a,b) => a.id.localeCompare(b.id)).map((resource) => [resource.id, { stationIds: unique(Object.entries(byStation).filter(([, value]) => value.resourceIds.includes(resource.id)).map(([id]) => id)) }]));
 const byGoal = {};
 for (const goal of [...goals].sort((a,b) => a.id.localeCompare(b.id))) {
+  if (!goal.recommendedCycleIds.length) errors.push(`goal ${goal.id} must select at least one cycle`);
+  if (!goal.recommendedLineIds.length) errors.push(`goal ${goal.id} must select at least one line`);
   for (const id of goal.recommendedCycleIds) check("cycle", id, `goal ${goal.id}`);
   for (const id of goal.recommendedLineIds) check("line", id, `goal ${goal.id}`);
   const selectedLines = new Set(goal.recommendedLineIds);

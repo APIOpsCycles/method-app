@@ -32,6 +32,23 @@ test("goals use valid cycle-line combinations in canonical cycle order", () => {
   }
 });
 
+test("API product owner advances through consumer experience on the API journey", () => {
+  const resolved = resolveMethodContext({ stakeholderId: "api-product-owner", goalId: "create-or-improve-api", preferredCycleId: "api-productization-cycle", currentStationId: "api-product-strategy" });
+  assert.equal(resolveContextualUiState(resolved).nextRelevantStationId, "api-consumer-experience");
+});
+
+test("each explore goal explicitly selects its cycle and all lines", () => {
+  const exploreGoals = Object.entries(methodGraph.byGoal).filter(([id]) => id.startsWith("explore-"));
+  assert.equal(exploreGoals.length, 4);
+  for (const [goalId, goal] of exploreGoals) {
+    assert.equal(goal.recommendedCycleIds.length, 1);
+    assert.equal(goal.recommendedLineIds.length, 6);
+    const resolved = resolveMethodContext({ stakeholderId: "api-product-owner", goalId });
+    assert.equal(resolved.recommendedCycleId, goal.recommendedCycleIds[0]);
+    assert.equal(resolved.pathStationIds.length, methodGraph.byCycle[goal.recommendedCycleIds[0]].stationIds.length);
+  }
+});
+
 test("goal and stakeholder paths are derived from the selected combination", () => {
   const goalOnly = resolveMethodContext({ goalId: "design-integration" });
   assert.equal(goalOnly.recommendedEntryStationId, goalOnly.pathStationIds[0]);
@@ -106,8 +123,8 @@ test("generic entity context links to its first use on the role path", () => {
   const resolved = resolveMethodContext({ stakeholderId: "api-designer", goalId: "create-or-improve-api", contextStationIds: [...resourceStations, "missing"] });
   const ui = resolveContextualUiState(resolved);
   assert.deepEqual(resolved.contextStationIds, resourceStations);
-  assert.equal(ui.pageMode, "start");
-  assert.equal(ui.primaryStationId, "api-design");
+  assert.equal(ui.pageMode, "explore");
+  assert.equal(ui.primaryStationId, "api-consumer-experience");
 });
 test("a goal-only station is outside the stakeholder path", () => {
   const resolved = resolveMethodContext({ stakeholderId: "api-designer", goalId: "create-or-improve-api", preferredCycleId: "api-productization-cycle", currentStationId: "api-publishing" });
