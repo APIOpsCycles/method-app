@@ -40,4 +40,18 @@ test("resource selectors expose links when resources have destinations", async (
 
   assert.match(selector, /<a class="side-resource-card" href="\/resources\/customer-journey-canvas">/);
   assert.doesNotMatch(selector, /<button/);
+test("involvement legend exposes labeled lead, core, and consulted markers", async () => {
+  const { InvolvementLegend } = await import("../dist/react/index.js");
+  const legend = renderToStaticMarkup(React.createElement(InvolvementLegend, { label: "Stakeholder involvement", labels: { lead: "Lead", core: "Core", consulted: "Consulted" } }));
+  assert.match(legend, /class="ds-involvement-legend"/);
+  assert.match(legend, /aria-label="Stakeholder involvement"/);
+  assert.match(legend, /is-lead.*Lead.*is-core.*Core.*is-consulted.*Consulted/);
+});
+
+test("stakeholder selector can display a locked contextual stakeholder", async () => {
+  const { StakeholderRoleSelector } = await import("../dist/react/index.js");
+  const selector = renderToStaticMarkup(React.createElement(StakeholderRoleSelector, { roles: [{ id: "designer", title: "API Designer" }], value: "designer", label: "Stakeholder", placeholder: "Select", involvementLabels: { lead: "Lead", core: "Core", consulted: "Consulted" }, disabled: true, onChange() {} }));
+  assert.match(selector, /<select disabled=""/);
+  assert.match(selector, /<option value="designer" selected="">API Designer<\/option>/);
+  assert.match(selector, /is-lead.*Lead.*is-core.*Core.*is-consulted.*Consulted/);
 });
