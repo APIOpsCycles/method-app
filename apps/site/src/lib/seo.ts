@@ -43,3 +43,16 @@ export function itemListJsonLd(line: Line, cycle: Cycle, locale: Locale, path: s
     breadcrumbs([{ name: "APIOps Cycles", path: locale === "en" ? "/" : `/${locale}/` }, { name: cycle.title, path: `${locale === "en" ? "" : `/${locale}`}/cycles/${cycle.slug}` }, { name: line.title, path }]),
   ];
 }
+
+/** Structured data for a line viewed without selecting a journey cycle. */
+export function genericLineJsonLd(line: Line, stations: Station[], locale: Locale, path: string, stationPath: (station: Station) => string) {
+  const lineStations = line.stations.flatMap((id) => stations.filter((station) => station.id === id));
+  return [
+    {
+      "@context": "https://schema.org", "@type": "ItemList", name: line.title, description: line.description,
+      inLanguage: locale, url: canonicalUrl(path),
+      itemListElement: lineStations.map((station, index) => ({ "@type": "ListItem", position: index + 1, name: station.title, url: canonicalUrl(stationPath(station)) })),
+    },
+    breadcrumbs([{ name: "APIOps Cycles", path: locale === "en" ? "/" : `/${locale}/` }, { name: line.title, path }]),
+  ];
+}

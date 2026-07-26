@@ -15,6 +15,16 @@ test("generated graph contains valid, deduplicated adjacency", () => {
   }
 });
 
+test("generated graph indexes every line's stations and intersecting cycles", () => {
+  const stationIds = new Set(Object.keys(methodGraph.byStation));
+  for (const [lineId, line] of Object.entries(methodGraph.byLine)) {
+    assert.equal(line.stationIds.length, new Set(line.stationIds).size, `${lineId} stations are unique`);
+    assert.equal(line.cycleIds.length, new Set(line.cycleIds).size, `${lineId} cycles are unique`);
+    line.stationIds.forEach((id) => assert.ok(stationIds.has(id)));
+    line.cycleIds.forEach((cycleId) => assert.ok(methodGraph.byCycle[cycleId].stationIds.some((id) => line.stationIds.includes(id))));
+  }
+});
+
 test("goals use valid cycle-line combinations in canonical cycle order", () => {
   const configured = JSON.parse(readFileSync(new URL("../../../data/method-goals.json", import.meta.url), "utf8")).goals as Array<{ id: string; recommendedCycleIds: string[]; recommendedLineIds: string[] }>;
   for (const goal of configured) {

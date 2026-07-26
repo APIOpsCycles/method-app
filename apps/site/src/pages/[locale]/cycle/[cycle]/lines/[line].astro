@@ -9,7 +9,7 @@ const cycle = getCycle(locale, Astro.params.cycle!); const line = getLine(locale
 if (!cycle || !line) throw new Error("Unknown cycle or line");
 const canonicalPath = `/${locale}/cycle/${cycle.slug}/lines/${line.slug}`;
 const prefix = locale === "en" ? "" : `/${locale}`;
-const seo = metadataForRoute("line", locale, canonicalPath);
+const seo = metadataForRoute("cycleLine", locale, canonicalPath);
 const jsonLd = itemListJsonLd(line, cycle, locale, canonicalPath, (station) => `${prefix}/cycles/${cycle.slug}/stations/${station.id}`);
 ---
 <BaseLayout title={line.title} description={line.description} lang={locale} canonicalPath={canonicalPath} {...seo} openGraphType="article" jsonLd={jsonLd}><LineContent cycle={cycle} line={line} locale={locale} /></BaseLayout>

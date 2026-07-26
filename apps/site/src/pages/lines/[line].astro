@@ -1,0 +1,14 @@
+---
+import LineContent from "../../components/content/LineContent.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { genericLineJsonLd, metadataForRoute } from "../../lib/seo";
+import { getCatalog, getLine, type Locale } from "../../lib/method-data";
+export function getStaticPaths() { return getCatalog("en").lines.map((line) => ({ params: { line: line.slug }, props: { locale: "en" as Locale } })); }
+const { locale } = Astro.props;
+const catalog = getCatalog(locale); const line = getLine(locale, Astro.params.line!);
+if (!line) throw new Error("Unknown line");
+const canonicalPath = `/lines/${line.slug}`;
+const seo = metadataForRoute("line", locale, canonicalPath);
+const jsonLd = genericLineJsonLd(line, catalog.stations, locale, canonicalPath, (station) => `/stations/${station.id}`);
+---
+<BaseLayout title={line.title} description={line.description} lang={locale} canonicalPath={canonicalPath} {...seo} openGraphType="article" jsonLd={jsonLd}><LineContent line={line} locale={locale} /></BaseLayout>

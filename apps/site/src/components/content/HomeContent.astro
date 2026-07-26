@@ -18,6 +18,6 @@ const labels = getLabels(locale);
     <MethodMap locale={locale} />
     <noscript><p class="no-script-note">Use the cycle, station, and stakeholder links above to open permanent method pages without JavaScript.</p></noscript>
   </section>
-  <LinesSection title={labels["section.lines"]} items={data.lines.flatMap((line) => { const cycle = data.cycles.find((candidate) => line.stations.some((id) => candidate.stations.some((station) => station.id === id))); return cycle ? [{ id: line.id, title: line.title, description: line.description, href: `${prefix}/cycle/${cycle.slug}/lines/${line.slug}`, color: metroLineColor(line.id), icon: line.icon }] : []; })} />
+  <LinesSection title={labels["section.lines"]} items={data.lines.map((line) => ({ id: line.id, title: line.title, description: line.description, href: `${prefix}/lines/${line.slug}`, color: metroLineColor(line.id), icon: line.icon }))} />
   <section class="public-section" aria-labelledby="roles"><h2 id="roles">{labels["section.stakeholderGuides"]}</h2><PublicPillList client:load label={labels["section.stakeholderGuides"]} items={data.routeProfiles.map((role) => ({ id: role.id, label: role.title, href: `${prefix}/roles/${role.id}` }))} /></section>
 </main>

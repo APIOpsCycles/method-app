@@ -1,6 +1,6 @@
 import { defaultLocale, getCatalog, locales, localePrefix, publicResources, resourcePath, type Locale } from "./method-data";
 
-export type RouteKind = "home" | "cycle" | "station" | "cycleStation" | "role" | "resource" | "line" | "partners" | "licensing" | "data" | "designSystem";
+export type RouteKind = "home" | "cycle" | "station" | "cycleStation" | "role" | "resource" | "line" | "cycleLine" | "partners" | "licensing" | "data" | "designSystem";
 export type PublicRoute = { kind: RouteKind; locale: Locale; path: string; alternateKey?: string };
 
 /** One indexing policy shared by sitemap and future route discovery surfaces. */
@@ -18,7 +18,8 @@ export function publicRouteInventory(): PublicRoute[] {
       ...data.cycles.flatMap((cycle) => cycle.stations.map((station) => ({ kind: "cycleStation" as const, locale, path: `${prefix}/cycles/${cycle.slug}/stations/${station.id}`, alternateKey: `cycleStation:${cycle.id}:${station.id}` }))),
       ...data.routeProfiles.map((role) => ({ kind: "role" as const, locale, path: `${prefix}/roles/${role.id}`, alternateKey: `role:${role.id}` })),
       ...publicResources(locale).map((resource) => ({ kind: "resource" as const, locale, path: resourcePath(locale, resource), alternateKey: `resource:${resource.id}` })),
-      ...data.cycles.flatMap((cycle) => data.lines.filter((line) => line.stations.some((id) => cycle.stations.some((station) => station.id === id))).map((line) => ({ kind: "line" as const, locale, path: `${prefix}/cycle/${cycle.slug}/lines/${line.slug}`, alternateKey: `line:${cycle.id}:${line.id}` }))),
+      ...data.lines.map((line) => ({ kind: "line" as const, locale, path: `${prefix}/lines/${line.slug}`, alternateKey: `line:${line.id}` })),
+      ...data.cycles.flatMap((cycle) => data.lines.filter((line) => line.stations.some((id) => cycle.stations.some((station) => station.id === id))).map((line) => ({ kind: "cycleLine" as const, locale, path: `${prefix}/cycle/${cycle.slug}/lines/${line.slug}`, alternateKey: `cycleLine:${cycle.id}:${line.id}` }))),
     ] satisfies PublicRoute[];
   });
   // Compatibility /method routes are deliberately absent. This English-only route has no alternates.

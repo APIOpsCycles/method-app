@@ -1,23 +1,25 @@
 ---
 import { getCatalog, getLabels, localePrefix, type Cycle, type Line, type Locale } from "../../lib/method-data";
+import { methodGraph } from "../../lib/method-graph";
 import { metroLineColor } from "../../lib/line-colors";
 import MethodMap from "./MethodMap.astro";
 import { StationsSection } from "@apiops/design-system/react";
 import MethodContext from "./MethodContext.astro";
-interface Props { cycle: Cycle; line: Line; locale: Locale }
+interface Props { cycle?: Cycle; line: Line; locale: Locale }
 const { cycle, line, locale } = Astro.props;
 const prefix = localePrefix(locale);
 const labels = getLabels(locale);
 const catalog = getCatalog(locale);
-const cycleStationsById = new Map(cycle.stations.map((station) => [station.id, station]));
+const cycleStationsById = new Map((cycle?.stations ?? []).map((station) => [station.id, station]));
 // Preserve the line's travel order while keeping the selected journey distinct
 // from stations that only provide wider line context.
-const cycleStations = line.stations.flatMap((stationId) => {
+const lineStations = line.stations.flatMap((stationId) => {
+  if (!cycle) return catalog.stations.filter((station) => station.id === stationId);
   const station = cycleStationsById.get(stationId);
   return station ? [station] : [];
 });
 const supportingStations = line.stations.flatMap((stationId) => {
-  if (cycleStationsById.has(stationId)) return [];
+  if (!cycle || cycleStationsById.has(stationId)) return [];
   const station = catalog.stations.find((candidate) => candidate.id === stationId);
   return station ? [station] : [];
 });
@@ -25,21 +27,26 @@ const lineColor = metroLineColor(line.id);
 const stationLineColors = (stationId: string) => catalog.lines
   .filter((candidate) => candidate.stations.includes(stationId))
   .map((candidate) => metroLineColor(candidate.id));
+const applicableCycles = (methodGraph.byLine[line.id]?.cycleIds ?? []).flatMap((cycleId) => {
+  const candidate = catalog.cycles.find((item) => item.id === cycleId);
+  return candidate ? [candidate] : [];
+});
 ---
 <main class="public-content">
-  <nav class="public-breadcrumbs" aria-label={labels["chrome.breadcrumb"]}><a href={`${prefix}/`}>APIOps Cycles</a><span aria-hidden="true">/</span><a href={`${prefix}/cycles/${cycle.slug}`}>{cycle.title}</a><span aria-hidden="true">/</span><span>{line.title}</span></nav>
+  <nav class="public-breadcrumbs" aria-label={labels["chrome.breadcrumb"]}><a href={`${prefix}/`}>APIOps Cycles</a><span aria-hidden="true">/</span>{cycle && <><a href={`${prefix}/cycles/${cycle.slug}`}>{cycle.title}</a><span aria-hidden="true">/</span></>}<span>{line.title}</span></nav>
   <MethodContext locale={locale} cycle={cycle} lineId={line.id} here={line.title} />
   <section class="public-hero" style={`--line-color: ${lineColor}`}>
     <p class="public-kicker">{labels["entity.line"]}</p>
     <div class="line-heading"><span class="line-icon" aria-hidden="true">{line.icon || "●"}</span><h1>{line.title}</h1></div>
     <p>{line.description}</p><span class="line-color"><span aria-hidden="true"></span></span>
   </section>
-  <section class="public-section" aria-label={line.title}><MethodMap locale={locale} cycleId={cycle.id} stationId={cycleStations[0]?.id} lineId={line.id} /></section>
-  <StationsSection id="line-stations" ordered title={labels["section.stations"]} items={cycleStations.map((station) => ({
+  <section class="public-section" aria-label={line.title}><MethodMap locale={locale} cycleId={cycle?.id} stationId={lineStations[0]?.id} lineId={line.id} /></section>
+  <StationsSection id="line-stations" ordered title={labels["section.stations"]} items={lineStations.map((station) => ({
     id: station.id, title: station.title, description: station.description,
-    href: `${prefix}/cycles/${cycle.slug}/stations/${station.id}`,
+    href: cycle ? `${prefix}/cycles/${cycle.slug}/stations/${station.id}` : `${prefix}/stations/${station.id}`,
     lineColors: stationLineColors(station.id),
   }))} />
+  {!cycle && <section class="public-section" aria-labelledby="line-cycles"><h2 id="line-cycles">{labels["section.cycles"]}</h2><ul>{applicableCycles.map((candidate) => <li><a href={`${prefix}/cycle/${candidate.slug}/lines/${line.slug}`}>{candidate.title}</a></li>)}</ul></section>}
   {supportingStations.length > 0 && <StationsSection id="supporting-line-stations" ordered title="Supporting line stations" items={supportingStations.map((station) => ({
     id: station.id, title: station.title, description: station.description,
     href: `${prefix}/stations/${station.id}`,

@@ -25,6 +25,14 @@ for (const station of [...catalog.stations].sort((a, b) => a.id.localeCompare(b.
 // Station order is canonical journey order and must not be alphabetized: it is
 // the stable final tie-breaker used by context resolution.
 const byCycle = Object.fromEntries(catalog.cycles.map((cycle) => { for (const station of cycle.stations) check("station", station.id, `cycle ${cycle.id}`); return [cycle.id, { stationIds: [...new Set(cycle.stations.map((station) => station.id))], lineIds: unique(catalog.lines.filter((line) => line.stations.some((id) => cycle.stations.some((station) => station.id === id))).map((line) => line.id)) }]; }));
+const byLine = Object.fromEntries([...catalog.lines].sort((a, b) => a.id.localeCompare(b.id)).map((line) => {
+  for (const stationId of line.stations) check("station", stationId, `line ${line.id}`);
+  const stationIds = [...new Set(line.stations)];
+  const intersectingCycleIds = unique(catalog.cycles.filter((cycle) =>
+    cycle.stations.some((station) => stationIds.includes(station.id))
+  ).map((cycle) => cycle.id));
+  return [line.id, { stationIds, cycleIds: intersectingCycleIds }];
+}));
 const byStakeholder = Object.fromEntries([...catalog.stakeholders].sort((a,b) => a.id.localeCompare(b.id)).map((stakeholder) => [stakeholder.id, { stationIds: unique(Object.entries(byStation).filter(([, value]) => value.stakeholders.some((item) => item.id === stakeholder.id)).map(([id]) => id)) }]));
 const byResource = Object.fromEntries([...catalog.resources].sort((a,b) => a.id.localeCompare(b.id)).map((resource) => [resource.id, { stationIds: unique(Object.entries(byStation).filter(([, value]) => value.resourceIds.includes(resource.id)).map(([id]) => id)) }]));
 const byGoal = {};
@@ -42,7 +50,7 @@ for (const goal of [...goals].sort((a,b) => a.id.localeCompare(b.id))) {
   byGoal[goal.id] = { recommendedCycleIds: [...new Set(goal.recommendedCycleIds)], recommendedLineIds: [...new Set(goal.recommendedLineIds)], stationIds: derivedStationIds };
 }
 if (errors.length) throw new Error(`Method graph validation failed:\n- ${errors.join("\n- ")}`);
-const graph = { version: 1, byStation, byStakeholder, byResource, byCycle, byGoal };
+const graph = { version: 1, byStation, byStakeholder, byResource, byCycle, byLine, byGoal };
 const localizedGoals = Object.fromEntries(["en", "fi", "fr", "de", "pt"].map((locale) => [locale, goals.map((goal) => ({ id: goal.id, label: goal.label[locale] ?? goal.label.en, description: goal.description[locale] ?? goal.description.en }))]));
 for (const directory of ["generated/method", "public/data"]) { mkdirSync(path.join(root, directory), { recursive: true }); writeFileSync(path.join(root, directory, "method-graph.json"), `${JSON.stringify(graph, null, 2)}\n`); writeFileSync(path.join(root, directory, "method-goals.json"), `${JSON.stringify({ version: 1, translations: localizedGoals }, null, 2)}\n`); }
 console.log(`Generated method graph: ${Object.keys(byStation).length} stations, ${Object.keys(byStakeholder).length} stakeholders, ${Object.keys(byGoal).length} goals`);
