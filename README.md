@@ -22,4 +22,6 @@ npm run dev          # Astro development server
 npm run prepare:local-data # build and sync local package data
 npm run build        # static Astro production artifact in dist/
 npm start            # preview the built Astro site locally
+npx playwright install chromium # install the browser used by end-to-end tests
+npm run test:e2e     # run Playwright end-to-end tests
 ```
