@@ -395,7 +395,6 @@ function siteLabels(locale) {
     "canvas.jsonImported": "Canvas JSON imported.",
     "canvas.invalidImport": "Invalid canvas import/export template",
     "canvas.removeNote": "Remove note",
-    "canvas.addStickyNote": "Add note",
     "category_canvas": "Canvas",
     "category_guideline": "Guideline",
     "category_checklist": "Checklist",
@@ -1431,7 +1430,6 @@ function allStations() {
 const stationsRawList = allStations();
 const resourceById = Object.fromEntries(resourcesRaw.map((item) => [item.id, item]));
 const stationById = Object.fromEntries(stationsRawList.map((item) => [item.id, item]));
-const cycleById = Object.fromEntries(cyclesRaw.map((item) => [item.id, item]));
 const criterionById = Object.fromEntries(criteriaRaw.map((item) => [item.id, item]));
 const sourceStakeholderById = Object.fromEntries(stakeholdersRaw.map((item) => [item.id, item]));
 const stationStakeholdersByCycle = stationStakeholdersRaw.stationStakeholdersByCycle ?? null;
@@ -2002,7 +2000,9 @@ try {
     ["-c", `safe.directory=${sourceRoot}`, "-C", sourceRoot, "rev-parse", "HEAD"],
     { encoding: "utf8" },
   ).trim();
-} catch {}
+} catch {
+  // Source metadata remains "unknown" when the package is not a Git checkout.
+}
 
 const source = {
   repository: "https://github.com/APIOpsCycles/apiops-cycles-method-data",

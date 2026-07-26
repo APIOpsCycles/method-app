@@ -1,8 +1,7 @@
 ---
-import { defaultLocale, localePrefix, type Locale } from "../../lib/method-data";
+import { defaultLocale, type Locale } from "../../lib/method-data";
 interface Props { locale?: Locale }
 const locale = Astro.props.locale ?? defaultLocale;
-const prefix = localePrefix(locale);
 const localizedFiles = ["method-catalog", "site-labels", "canvas-manifest", "export-templates", "prompt-packs"];
 const sharedFiles = ["route-index.json", "mcp-method-manifest.json", "partners.json", "announcement.json"];
 ---

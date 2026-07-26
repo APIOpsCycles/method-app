@@ -1,6 +1,6 @@
 import { canonicalUrl } from "../env";
 import type { Cycle, Line, Locale, Resource, Role, Station } from "./method-data";
-import { publicRouteInventory, routeAlternates, type PublicRoute, type RouteKind } from "./public-routes";
+import { publicRouteInventory, routeAlternates, type RouteKind } from "./public-routes";
 
 const inventory = publicRouteInventory();
 
