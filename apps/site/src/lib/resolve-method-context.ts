@@ -81,11 +81,12 @@ export function resolveContextualUiState(resolved: ResolvedMethodContext, graph:
   if (!resolved.currentStationId) {
     if (resolved.currentCycleId && !resolved.isCurrentCycleRecommended) return { pageMode: "off-path", primaryStationId: resolved.recommendedEntryStationId };
     const stations = resolved.recommendedCycleId ? graph.byCycle[resolved.recommendedCycleId]?.stationIds ?? [] : [];
-    const contextualStationId = stations.find((id) => resolved.contextStationIds.includes(id) && resolved.pathStationIds.includes(id));
+    // Entity pages should lead to the first place that entity is used in the
+    // recommended journey. Requiring a stakeholder mapping here can skip the
+    // resource's actual entry point when that role participates only later.
+    const contextualStationId = stations.find((id) => resolved.contextStationIds.includes(id));
     if (contextualStationId) return { pageMode: "explore", primaryStationId: contextualStationId };
-    const entryIndex = resolved.recommendedEntryStationId ? stations.indexOf(resolved.recommendedEntryStationId) : -1;
-    const nextRelevantStationId = entryIndex >= 0 ? stations.slice(entryIndex + 1).find((id) => resolved.pathStationIds.includes(id)) : undefined;
-    return { pageMode: "start", nextRelevantStationId, primaryStationId: nextRelevantStationId ?? resolved.recommendedEntryStationId };
+    return { pageMode: "start", primaryStationId: resolved.recommendedEntryStationId };
   }
   const involvement = resolved.stationInvolvement[resolved.currentStationId];
   if (!resolved.isCurrentStationRelevant) return { pageMode: "off-path", involvement, primaryStationId: resolved.recommendedEntryStationId };
