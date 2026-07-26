@@ -173,6 +173,34 @@ test("generic entity context links to its first use on the role path", () => {
   assert.equal(ui.pageMode, "explore");
   assert.equal(ui.primaryStationId, "api-consumer-experience");
 });
+test("role entity context explores the earliest viewed-role station on the selected path", () => {
+  const viewedRoleStations = methodGraph.byStakeholder["api-designer"].stationIds;
+  const resolved = resolveMethodContext({ stakeholderId: "api-designer", goalId: "create-or-improve-api", contextStationIds: viewedRoleStations });
+  const ui = resolveContextualUiState(resolved);
+  const expected = methodGraph.byCycle[resolved.recommendedCycleId!].stationIds.find((stationId) =>
+    viewedRoleStations.includes(stationId) && resolved.pathStationIds.includes(stationId),
+  );
+
+  assert.equal(ui.pageMode, "explore");
+  assert.equal(ui.primaryStationId, expected);
+  assert.equal(ui.primaryStationId, "api-consumer-experience");
+});
+test("role entity context without a selected-path intersection uses the recommended entry", () => {
+  const viewedRoleStations = methodGraph.byStakeholder["api-designer"].stationIds;
+  const resolved = resolveMethodContext({ stakeholderId: "api-architect", goalId: "automate-process", contextStationIds: viewedRoleStations });
+  const ui = resolveContextualUiState(resolved);
+
+  assert.equal(resolved.pathStationIds.some((stationId) => viewedRoleStations.includes(stationId)), false);
+  assert.equal(ui.pageMode, "start");
+  assert.equal(ui.primaryStationId, resolved.recommendedEntryStationId);
+  assert.equal(ui.primaryStationId, "api-platform-architecture");
+});
+test("role pages pass graph stations for the route profile's stakeholder", () => {
+  const roleContent = readFileSync(new URL("../src/components/content/RoleContent.astro", import.meta.url), "utf8");
+
+  assert.match(roleContent, /methodGraph\.byStakeholder\[role\.stakeholderId\]\?\.stationIds \?\? methodGraph\.byStakeholder\[role\.id\]\?\.stationIds \?\? \[\]/);
+  assert.match(roleContent, /contextStationIds=\{roleStationIds\}/);
+});
 test("a goal-only station is outside the stakeholder path", () => {
   const resolved = resolveMethodContext({ stakeholderId: "api-designer", goalId: "create-or-improve-api", preferredCycleId: "api-productization-cycle", currentStationId: "api-publishing" });
   assert.equal(resolved.recommendedEntryStationId, "api-design");
