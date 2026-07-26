@@ -58,9 +58,6 @@
   },
   "overrides": {
     "brace-expansion": "5.0.8",
-    "minimatch@3.1.5": {
-      "brace-expansion": "2.0.2"
-    },
     "postcss": "8.5.18",
     "ws": "8.21.0",
     "esbuild": "0.25.12"
