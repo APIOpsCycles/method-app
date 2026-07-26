@@ -2,11 +2,16 @@ import { useEffect, useRef, useState } from "react";
 import { dismissContextPrompt, initializeMethodContext, isContextPromptDismissed, resetMethodContext, setMethodContext, useMethodContext } from "../../lib/method-context";
 import { resolveContextualUiState, resolveMethodContext } from "../../lib/resolve-method-context";
 import { ContextGuidance, MethodContextBar, MethodContextEditor, type MethodContextItem } from "@apiops/design-system/react";
+import type { PageMethodContext } from "../../lib/method-graph";
 
 type Option = { id: string; label: string };
 type ContextCycle = Option & { slug: string; stations: Option[] };
 type ContextLine = Option & { slug: string; stationIds: string[]; color: string };
-export default function MethodContextStrip({ stakeholders, goals, cycles, lines, cycleId, lineId, stationId, contextStationIds, prefix, here, labels }: { stakeholders: Option[]; goals: Option[]; cycles: ContextCycle[]; lines: ContextLine[]; cycleId?: string; lineId?: string; stationId?: string; contextStationIds?: string[]; prefix: string; here: string; labels: Record<string, string> }) {
+export default function MethodContextStrip({ stakeholders, goals, cycles, lines, pageContext, prefix, here, labels }: { stakeholders: Option[]; goals: Option[]; cycles: ContextCycle[]; lines: ContextLine[]; pageContext?: PageMethodContext; prefix: string; here: string; labels: Record<string, string> }) {
+  const cycleId = pageContext?.explicitCycleId ?? (pageContext?.entityType === "cycle" ? pageContext.entityId : undefined);
+  const lineId = pageContext?.entityType === "line" ? pageContext.entityId : pageContext?.lineIds[0];
+  const stationId = pageContext?.currentStationId;
+  const contextStationIds = pageContext?.stationIds;
   const context = useMethodContext();
   const [editing, setEditing] = useState(false);
   const [dismissed, setDismissed] = useState(true);
