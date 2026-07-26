@@ -12,5 +12,5 @@ export function PublicPillList({ items, label }: { items: Array<LinkedItem & { l
 }
 
 export function PublicResourceSelector({ items, emptyLabel }: { items: Array<LinkedItem & { type: string; title: string; description: string }>; emptyLabel: string }) {
-  return <ResourceSelector items={items} emptyLabel={emptyLabel} onChange={(id) => navigate(items, id)} />;
+  return <ResourceSelector items={items} emptyLabel={emptyLabel} />;
 }

@@ -909,6 +909,7 @@ a {
   gap: 5px;
   padding: 10px;
   text-align: left;
+  text-decoration: none;
 }
 
 .side-resource-card__meta {
