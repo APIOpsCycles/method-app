@@ -12,14 +12,27 @@ for (const locale of locales) {
     const catalog = artifact.translations[locale];
     const prefix = locale === "en" ? "" : `/${locale}`;
     const homeHtml = await readFile(path.join(root, "dist", prefix.replace(/^\//, ""), "index.html"), "utf8");
-    const homeLineLinks = [...homeHtml.matchAll(/href="([^"#?]*\/cycle\/[^/]+\/lines\/[^/"]+)"/g)].map((match) => match[1]);
+    const homeLineLinks = [...homeHtml.matchAll(/href="([^"#?]*\/lines\/[^/"]+)"/g)].map((match) => match[1]);
 
     assert.equal(homeLineLinks.length, catalog.lines.length, "the home page links every line");
     assert.doesNotMatch(homeHtml, /href="[^"\s]*\/cycle[^/\s"]+\/lines\//, "the home page has no malformed line URLs");
     for (const href of homeLineLinks) {
+      assert.match(href, new RegExp(`^${prefix}/lines/`), "home links are context-free");
       const linkedHtml = await readFile(path.join(root, "dist", href.replace(/^\//, ""), "index.html"), "utf8");
       assert.match(linkedHtml, new RegExp(`<link rel="canonical" href="[^"]+${href}"`));
     }
+    assert.match(homeHtml, /component-url="\/_astro\/ContextualLinesSection\.[^"]+\.js"/, "line cards hydrate to preserve a stored method perspective");
+
+    const sharedLine = catalog.lines.find((line) => catalog.cycles.filter((cycle) => line.stations.some((id) => cycle.stations.some((station) => station.id === id))).length > 1);
+    assert.ok(sharedLine, "fixture includes a line shared by multiple cycles");
+    const sharedCycles = catalog.cycles.filter((cycle) => sharedLine.stations.some((id) => cycle.stations.some((station) => station.id === id)));
+    const genericRoute = `${prefix}/lines/${sharedLine.slug}`;
+    const genericHtml = await readFile(path.join(root, "dist", genericRoute.replace(/^\//, ""), "index.html"), "utf8");
+    assert.doesNotMatch(genericHtml, /data-initial-cycle-id=/, "generic page does not select a cycle");
+    for (const cycle of sharedCycles) {
+      assert.match(genericHtml, new RegExp(`href="${prefix}/cycle/${cycle.slug}/lines/${sharedLine.slug}"`), "every cycle is an explicit choice");
+    }
+    assert.match(genericHtml, new RegExp(`href="${prefix}/stations/${sharedLine.stations[0]}"`), "stations use neutral routes");
 
     for (const cycle of catalog.cycles) {
       const cycleStationIds = new Set(cycle.stations.map((station) => station.id));

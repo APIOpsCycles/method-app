@@ -13,6 +13,7 @@ export type MethodGraph = {
   byStakeholder: Record<string, { stationIds: string[] }>;
   byResource: Record<string, { stationIds: string[] }>;
   byCycle: Record<string, { stationIds: string[]; lineIds: string[] }>;
+  byLine: Record<string, { stationIds: string[]; cycleIds: string[] }>;
   byGoal: Record<string, { recommendedCycleIds: string[]; recommendedLineIds: string[]; stationIds: string[] }>;
 };
 export const methodGraph = graph as MethodGraph;

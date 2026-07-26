@@ -6,6 +6,7 @@ import { parseStoredMethodContext } from "../src/lib/method-context";
 import { INVOLVEMENT_WEIGHT, resolveMethodContext, scoreCycleForContext } from "../src/lib/resolve-method-context";
 import { resolveContextualUiState } from "../src/lib/resolve-method-context";
 import { readFileSync } from "node:fs";
+import { linePathForContext } from "../src/lib/line-routes";
 
 test("generated graph contains valid, deduplicated adjacency", () => {
   const stationIds = new Set(Object.keys(methodGraph.byStation));
@@ -13,6 +14,29 @@ test("generated graph contains valid, deduplicated adjacency", () => {
     assert.equal(station.nextStationIds.length, new Set(station.nextStationIds).size);
     station.nextStationIds.forEach((id) => assert.ok(stationIds.has(id)));
   }
+});
+
+test("generated graph indexes every line's stations and intersecting cycles", () => {
+  const stationIds = new Set(Object.keys(methodGraph.byStation));
+  for (const [lineId, line] of Object.entries(methodGraph.byLine)) {
+    assert.equal(line.stationIds.length, new Set(line.stationIds).size, `${lineId} stations are unique`);
+    assert.equal(line.cycleIds.length, new Set(line.cycleIds).size, `${lineId} cycles are unique`);
+    line.stationIds.forEach((id) => assert.ok(stationIds.has(id)));
+    line.cycleIds.forEach((cycleId) => assert.ok(methodGraph.byCycle[cycleId].stationIds.some((id) => line.stationIds.includes(id))));
+  }
+});
+
+test("home line destinations preserve an explicit perspective without inventing one", () => {
+  const line = { id: "api-design-line", slug: "api-design-line" };
+  const cycles = [
+    { id: "capability-productization-cycle", slug: "capability-productization-cycle" },
+    { id: "api-productization-cycle", slug: "api-productization-cycle" },
+  ];
+  assert.equal(linePathForContext("", line, cycles, {}), "/lines/api-design-line");
+  assert.equal(
+    linePathForContext("/fi", line, cycles, { goalId: "create-or-improve-api" }),
+    "/fi/cycle/api-productization-cycle/lines/api-design-line",
+  );
 });
 
 test("goals use valid cycle-line combinations in canonical cycle order", () => {

@@ -1536,6 +1536,107 @@
       ]
     }
   },
+  "byLine": {
+    "api-design-line": {
+      "stationIds": [
+        "api-platform-architecture",
+        "api-design",
+        "api-delivery",
+        "api-audit"
+      ],
+      "cycleIds": [
+        "api-productization-cycle",
+        "automation-cycle",
+        "capability-productization-cycle",
+        "integration-productization-cycle"
+      ]
+    },
+    "business-opportunities-line": {
+      "stationIds": [
+        "monitoring-and-improving",
+        "api-product-strategy",
+        "user-experience",
+        "market-insights",
+        "business-goals",
+        "competitive-analysis",
+        "ecosystem-vision"
+      ],
+      "cycleIds": [
+        "api-productization-cycle",
+        "automation-cycle",
+        "capability-productization-cycle",
+        "integration-productization-cycle"
+      ]
+    },
+    "delivery-line": {
+      "stationIds": [
+        "api-delivery",
+        "contract-design",
+        "development",
+        "ci-cd",
+        "test-automation",
+        "release-management"
+      ],
+      "cycleIds": [
+        "api-productization-cycle",
+        "automation-cycle",
+        "capability-productization-cycle",
+        "integration-productization-cycle"
+      ]
+    },
+    "operating-model-line": {
+      "stationIds": [
+        "api-product-strategy",
+        "api-mindset",
+        "roles-and-responsibilities",
+        "upskilling",
+        "operating-guidelines",
+        "portfolio-management",
+        "budget-and-resource-management"
+      ],
+      "cycleIds": [
+        "api-productization-cycle",
+        "automation-cycle",
+        "capability-productization-cycle",
+        "integration-productization-cycle"
+      ]
+    },
+    "platform-architecture-line": {
+      "stationIds": [
+        "api-product-strategy",
+        "api-consumer-experience",
+        "api-platform-architecture",
+        "scalable-infrastructure",
+        "legal-and-compliance",
+        "security-and-privacy",
+        "design-standards",
+        "vendor-management"
+      ],
+      "cycleIds": [
+        "api-productization-cycle",
+        "automation-cycle",
+        "capability-productization-cycle",
+        "integration-productization-cycle"
+      ]
+    },
+    "publishing-and-adoption-line": {
+      "stationIds": [
+        "api-audit",
+        "api-publishing",
+        "monitoring-and-improving",
+        "service-agreements",
+        "api-consumer-adoption",
+        "api-promotion",
+        "partner-integration"
+      ],
+      "cycleIds": [
+        "api-productization-cycle",
+        "automation-cycle",
+        "capability-productization-cycle",
+        "integration-productization-cycle"
+      ]
+    }
+  },
   "byGoal": {
     "automate-process": {
       "recommendedCycleIds": [
