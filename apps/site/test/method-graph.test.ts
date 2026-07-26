@@ -67,7 +67,7 @@ test("contextual page modes choose one route-aware action", () => {
   assert.equal(offPath.pageMode, "off-path");
   assert.equal(offPath.primaryStationId, "api-design");
 });
-test("a goal-only station is outside a stakeholder's combined path", () => {
+test("a goal-only station is outside the stakeholder path", () => {
   const resolved = resolveMethodContext({ stakeholderId: "api-designer", goalId: "create-or-improve-api", preferredCycleId: "api-productization-cycle", currentStationId: "api-publishing" });
   assert.equal(resolved.recommendedEntryStationId, "api-design");
   assert.equal(resolved.relevantStationIds.includes("api-publishing"), true);
@@ -76,6 +76,23 @@ test("a goal-only station is outside a stakeholder's combined path", () => {
   const ui = resolveContextualUiState(resolved);
   assert.equal(ui.pageMode, "off-path");
   assert.equal(ui.primaryStationId, "api-design");
+});
+test("the stakeholder path includes later role stops in the recommended cycle", () => {
+  const resolved = resolveMethodContext({ stakeholderId: "api-designer", goalId: "create-or-improve-api", preferredCycleId: "api-productization-cycle", currentStationId: "api-audit" });
+  assert.equal(resolved.goalId, "create-or-improve-api");
+  assert.equal(resolved.pathStationIds.includes("api-audit"), true);
+  assert.equal(resolved.isCurrentStationRelevant, true);
+  assert.equal(resolved.stationInvolvement["api-audit"], "core");
+  assert.equal(resolveContextualUiState(resolved).pageMode, "on-path");
+});
+test("a matching station is off-path in a non-recommended cycle", () => {
+  const cyclePage = resolveMethodContext({ stakeholderId: "api-designer", goalId: "create-or-improve-api", preferredCycleId: "capability-productization-cycle" });
+  assert.equal(cyclePage.isCurrentCycleRecommended, false);
+  assert.equal(resolveContextualUiState(cyclePage).pageMode, "off-path");
+  const stationPage = resolveMethodContext({ stakeholderId: "api-designer", goalId: "create-or-improve-api", preferredCycleId: "capability-productization-cycle", currentStationId: "api-design" });
+  assert.equal(stationPage.pathStationIds.includes("api-design"), true);
+  assert.equal(stationPage.isCurrentStationRelevant, false);
+  assert.equal(resolveContextualUiState(stationPage).pageMode, "off-path");
 });
 test("the map is navigation, not a duplicate context form", () => {
   const map = readFileSync(new URL("../src/components/islands/MetroMapIsland.tsx", import.meta.url), "utf8");

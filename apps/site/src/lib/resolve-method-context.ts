@@ -9,7 +9,7 @@ export type ResolvedMethodContext = UserMethodContext & {
   recommendedEntryStationId?: string;
   eligibleCycleIds: string[];
   relevantStationIds: string[];
-  /** Stations that satisfy every selected context dimension. */
+  /** Stations that form the selected perspective's path. */
   pathStationIds: string[];
   stationInvolvement: Record<string, Involvement | undefined>;
   currentCycleId?: string;
@@ -46,12 +46,10 @@ export function resolveMethodContext(input: ResolveContextInput, graph: MethodGr
   const goalStations = goalId ? graph.byGoal[goalId as keyof typeof graph.byGoal].stationIds : [];
   const stakeholderStations = stakeholderId ? graph.byStakeholder[stakeholderId as keyof typeof graph.byStakeholder].stationIds : [];
   const relevantStationIds = [...new Set([...goalStations, ...stakeholderStations])];
-  // The relevance union remains useful for map emphasis, but a personalized
-  // path must satisfy both dimensions when both were selected. Otherwise a
-  // goal-only station could incorrectly be described as role-relevant.
-  const pathStationIds = stakeholderId && goalId
-    ? goalStations.filter((id) => stakeholderStations.includes(id))
-    : stakeholderId ? stakeholderStations : goalStations;
+  // A goal chooses and scores the journey cycle, while the stakeholder
+  // mapping defines their stops within that journey. Goal-only stations still
+  // receive map emphasis but are not presented as role-relevant path stops.
+  const pathStationIds = stakeholderId ? stakeholderStations : goalStations;
   const cycleIds = Object.keys(graph.byCycle);
   const eligibleCycleIds = (stakeholderId || goalId) ? cycleIds.filter((id) => {
     const cycle = graph.byCycle[id as keyof typeof graph.byCycle];
@@ -72,12 +70,15 @@ export function resolveMethodContext(input: ResolveContextInput, graph: MethodGr
   const entryInvolvement = recommendedEntryStationId ? stationInvolvement[recommendedEntryStationId] : undefined;
   const cycleReasons = recommendedCycleId ? [goalId && graph.byGoal[goalId as keyof typeof graph.byGoal].recommendedCycleIds.includes(recommendedCycleId) ? "The selected goal directly recommends this cycle." : "This cycle contains work mapped to the selected perspective."].filter(Boolean) as string[] : [];
   const stationReasons = recommendedEntryStationId ? [entryInvolvement ? `Your involvement at this station is ${entryInvolvement}.` : "This station directly supports the selected goal.", goalStations.includes(recommendedEntryStationId) && entryInvolvement ? "It also directly supports the selected goal." : ""].filter(Boolean) : [];
-  return { stakeholderId, goalId, recommendedCycleId, recommendedEntryStationId, eligibleCycleIds, relevantStationIds, pathStationIds, stationInvolvement, currentCycleId, currentStationId: input.currentStationId, isCurrentCycleRecommended: Boolean(currentCycleId && currentCycleId === recommendedCycleId), isCurrentStationRelevant: Boolean(input.currentStationId && pathStationIds.includes(input.currentStationId)), explanation: { cycleReasons, stationReasons } };
+  const isCurrentCycleRecommended = Boolean(currentCycleId && currentCycleId === recommendedCycleId);
+  return { stakeholderId, goalId, recommendedCycleId, recommendedEntryStationId, eligibleCycleIds, relevantStationIds, pathStationIds, stationInvolvement, currentCycleId, currentStationId: input.currentStationId, isCurrentCycleRecommended, isCurrentStationRelevant: Boolean(input.currentStationId && pathStationIds.includes(input.currentStationId) && (!currentCycleId || isCurrentCycleRecommended)), explanation: { cycleReasons, stationReasons } };
 }
 
 export function resolveContextualUiState(resolved: ResolvedMethodContext, graph: MethodGraph = methodGraph): ContextualUiState {
   if (!resolved.stakeholderId && !resolved.goalId) return { pageMode: "no-context" };
-  if (!resolved.currentStationId) return { pageMode: "start", primaryStationId: resolved.recommendedEntryStationId };
+  if (!resolved.currentStationId) return resolved.currentCycleId && !resolved.isCurrentCycleRecommended
+    ? { pageMode: "off-path", primaryStationId: resolved.recommendedEntryStationId }
+    : { pageMode: "start", primaryStationId: resolved.recommendedEntryStationId };
   const involvement = resolved.stationInvolvement[resolved.currentStationId];
   if (!resolved.isCurrentStationRelevant) return { pageMode: "off-path", involvement, primaryStationId: resolved.recommendedEntryStationId };
   const cycleId = resolved.currentCycleId ?? resolved.recommendedCycleId;
