@@ -1,28 +1,29 @@
 ---
 import { designSystemAssets } from "@apiops/design-system/assets";
-import { defaultLocale, locales, localePrefix, type Locale } from "../lib/method-data";
+import { defaultLocale, getLabels, locales, localePrefix, type Locale } from "../lib/method-data";
 
 interface Props { locale?: Locale }
 const locale = Astro.props.locale ?? defaultLocale;
 const prefix = localePrefix(locale);
+const labels = getLabels(locale);
 const repository = "https://github.com/APIOpsCycles/apiops-cycles-method-data";
 const localeNames: Record<Locale, string> = { en: "English", fi: "Suomi", fr: "Français", de: "Deutsch", pt: "Português" };
 ---
 <header class="site-header">
-  <nav class="site-navigation" aria-label="Main navigation">
+  <nav class="site-navigation" aria-label={labels["nav.primary"]}>
     <a class="site-navigation__brand" href={`${prefix}/`}><img src={designSystemAssets.brand.cyclesLogo} alt="APIOps Cycles logo" /><img src={designSystemAssets.brand.cyclesLogoDark} alt="APIOps Cycles" /></a>
     <button class="site-navigation__toggle" type="button" aria-expanded="false" aria-controls="site-navigation-links">
-      <span class="sr-only">Toggle main navigation</span>
+      <span class="sr-only">{labels["nav.menu"]}</span>
       <span aria-hidden="true"></span>
       <span aria-hidden="true"></span>
       <span aria-hidden="true"></span>
     </button>
     <div class="site-navigation__links" id="site-navigation-links">
-      <a href={`${prefix}/partners`}>Partners</a>
-      <a href={repository} target="_blank" rel="noreferrer">GitHub</a>
-      <a href="/design-system">Design system</a>
-      <a href={`${prefix}/data`}>Data</a>
-      <label><span class="sr-only">Language</span><select id="site-language" aria-label="Language" data-default-locale={defaultLocale}>
+      <a href={`${prefix}/partners`}>{labels["nav.partners"]}</a>
+      <a href={repository} target="_blank" rel="noreferrer">{labels["nav.github"]}</a>
+      <a href="/design-system">{labels["nav.designSystem"]}</a>
+      <a href={`${prefix}/data`}>{labels["nav.data"]}</a>
+      <label><span class="sr-only">{labels["nav.language"]}</span><select id="site-language" aria-label={labels["nav.language"]} data-default-locale={defaultLocale}>
         {locales.map((item) => <option value={item} selected={item === locale}>{localeNames[item]}</option>)}
       </select></label>
     </div>
