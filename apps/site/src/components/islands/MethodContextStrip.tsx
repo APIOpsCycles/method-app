@@ -5,7 +5,8 @@ import { ContextGuidance, MethodContextBar, MethodContextEditor, type MethodCont
 
 type Option = { id: string; label: string };
 type ContextCycle = Option & { slug: string; stations: Option[] };
-export default function MethodContextStrip({ stakeholders, goals, cycles, cycleId, stationId, contextStationIds, prefix, here, labels }: { stakeholders: Option[]; goals: Option[]; cycles: ContextCycle[]; cycleId?: string; stationId?: string; contextStationIds?: string[]; prefix: string; here: string; labels: Record<string, string> }) {
+type ContextLine = Option & { slug: string; stationIds: string[]; color: string };
+export default function MethodContextStrip({ stakeholders, goals, cycles, lines, cycleId, lineId, stationId, contextStationIds, prefix, here, labels }: { stakeholders: Option[]; goals: Option[]; cycles: ContextCycle[]; lines: ContextLine[]; cycleId?: string; lineId?: string; stationId?: string; contextStationIds?: string[]; prefix: string; here: string; labels: Record<string, string> }) {
   const context = useMethodContext();
   const [editing, setEditing] = useState(false);
   const [dismissed, setDismissed] = useState(true);
@@ -23,6 +24,7 @@ export default function MethodContextStrip({ stakeholders, goals, cycles, cycleI
   const displayCycle = routeCycle ?? cycles.find((item) => item.id === resolved.recommendedCycleId);
   const actionStationId = contextualUi.primaryStationId;
   const actionStation = resolvedCycle?.stations.find((item) => item.id === actionStationId);
+  const displayLine = lines.find((item) => item.id === lineId) ?? lines.find((item) => item.stationIds.includes(stationId ?? actionStationId ?? ""));
   const actionHref = resolvedCycle && actionStation ? `${prefix}/cycles/${resolvedCycle.slug}/stations/${actionStation.id}` : undefined;
   const involvement = stationId ? resolved.stationInvolvement[stationId] : undefined;
   const involvementDetail = involvement ? labels[`involvement${involvement[0].toUpperCase()}${involvement.slice(1)}`] : labels.involvementUnmapped;
@@ -30,7 +32,7 @@ export default function MethodContextStrip({ stakeholders, goals, cycles, cycleI
     { id: "stakeholder", label: labels.who, value: stakeholder ?? labels.notSelected, muted: !stakeholder },
     { id: "goal", label: labels.why, value: goal ?? labels.notSelected, muted: !goal },
     { id: "here", label: labels.where, value: here },
-    { id: "cycle", label: labels.cycle, value: displayCycle?.label ?? labels.notSelected, href: displayCycle ? `${prefix}/cycles/${displayCycle.slug}` : undefined, muted: !displayCycle },
+    { id: "cycle", label: labels.cycle, value: displayCycle?.label ?? labels.notSelected, href: displayCycle ? `${prefix}/cycles/${displayCycle.slug}` : undefined, muted: !displayCycle, detail: displayLine ? { value: displayLine.label, color: displayLine.color } : undefined },
   ];
   const hasNext = Boolean(contextualUi.nextRelevantStationId);
   const guidanceTitle = involvement ? `${labels[involvement]}: ${involvementDetail}` : contextualUi.pageMode === "off-path" ? labels.offPath : contextualUi.pageMode === "explore" ? labels.where : hasNext ? labels.onPath : labels.recommended;
