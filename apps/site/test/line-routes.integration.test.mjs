@@ -32,8 +32,23 @@ for (const locale of locales) {
         assert.match(route, new RegExp(`/lines/${line.slug}$`));
         await assert.rejects(readFile(path.join(root, "dist", malformedRoute.replace(/^\//, ""), "index.html"), "utf8"), { code: "ENOENT" });
         for (const station of cycle.stations.filter((item) => line.stations.includes(item.id))) {
-          assert.match(html, new RegExp(`href="${prefix}/stations/${station.id}"`));
-          await readFile(path.join(root, "dist", prefix.replace(/^\//, ""), "stations", station.id, "index.html"), "utf8");
+          const cycleStationRoute = `${prefix}/cycles/${cycle.slug}/stations/${station.id}`;
+          assert.match(html, new RegExp(`href="${cycleStationRoute}"`));
+          assert.doesNotMatch(html, new RegExp(`href="${prefix}/stations/${station.id}"`), "a current-cycle station has no competing generic link");
+          assert.match(html, new RegExp(`"url":"[^"]+${cycleStationRoute}"`), "structured data uses the visible cycle station route");
+          await readFile(path.join(root, "dist", cycleStationRoute.replace(/^\//, ""), "index.html"), "utf8");
+        }
+
+        const supportingStationIds = line.stations.filter((stationId) => !cycleStationIds.has(stationId));
+        if (supportingStationIds.length > 0) {
+          assert.match(html, /<h2 id="supporting-line-stations">Supporting line stations<\/h2>/);
+          assert.match(html, /This station is outside the current cycle/);
+          for (const stationId of supportingStationIds) {
+            assert.match(html, new RegExp(`href="${prefix}/stations/${stationId}"`));
+            assert.doesNotMatch(html, new RegExp(`${prefix}/cycles/${cycle.slug}/stations/${stationId}`));
+          }
+        } else {
+          assert.doesNotMatch(html, /id="supporting-line-stations"/);
         }
       }
     }
