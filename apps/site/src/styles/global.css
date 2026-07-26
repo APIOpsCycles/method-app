@@ -89,6 +89,117 @@ a {
   width: 100%;
 }
 
+.page-with-ad {
+  width: 100%;
+}
+
+.advertisement-rail {
+  margin: 2rem 0;
+}
+
+.advertisement-card {
+  background: color-mix(in srgb, var(--advertisement-color) 12%, white);
+  border: 1px solid color-mix(in srgb, var(--advertisement-color) 55%, #d7dfed);
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.advertisement-card__visual {
+  display: block;
+  height: 9rem;
+  object-fit: cover;
+  object-position: center 30%;
+  width: 100%;
+}
+
+.advertisement-card__copy {
+  padding: 1.25rem;
+}
+
+.advertisement-card__label {
+  color: color-mix(in srgb, var(--advertisement-color) 75%, #10203b);
+  font-size: .72rem;
+  font-weight: 800;
+  letter-spacing: .08em;
+  margin: 0 0 .65rem;
+  text-transform: uppercase;
+}
+
+.advertisement-card h2 {
+  font-family: var(--font-heading, "Urbanist", sans-serif);
+  font-size: 1.35rem;
+  line-height: 1.15;
+  margin: 0 0 .75rem;
+}
+
+.advertisement-card__copy > p:not(.advertisement-card__label) {
+  font-size: .92rem;
+  line-height: 1.55;
+  margin: 0 0 1rem;
+}
+
+.advertisement-card__cta {
+  background: var(--advertisement-color);
+  border-radius: 999px;
+  color: #07152c;
+  display: inline-block;
+  font-size: .86rem;
+  font-weight: 800;
+  padding: .65rem 1rem;
+  text-decoration: none;
+}
+
+@media (min-width: 84rem) {
+  .page-with-ad--active {
+    display: grid;
+    gap: clamp(1.5rem, 3vw, 3rem);
+    grid-template-columns: minmax(0, 70rem) minmax(13rem, 17rem);
+    justify-content: center;
+    padding-inline: 1.5rem;
+  }
+
+  .page-with-ad--active > .public-content {
+    margin-inline: 0;
+  }
+
+  .page-with-ad--active > .advertisement-rail {
+    align-self: start;
+    margin-top: clamp(3rem, 8vw, 7rem);
+    position: sticky;
+    top: 5.5rem;
+  }
+}
+
+@media (max-width: 83.999rem) {
+  .public-content > .advertisement-rail {
+    border-top: 1px solid var(--panel-border, #d7dfed);
+    margin: clamp(2rem, 5vw, 4rem) 0 0;
+    padding-top: clamp(2rem, 5vw, 4rem);
+  }
+
+  .advertisement-card {
+    align-items: center;
+    display: grid;
+    grid-template-columns: minmax(8rem, 34%) 1fr;
+  }
+
+  .advertisement-card__visual {
+    height: 100%;
+    min-height: 13rem;
+  }
+}
+
+@media (max-width: 36rem) {
+  .advertisement-card {
+    display: block;
+  }
+
+  .advertisement-card__visual {
+    height: 8rem;
+    min-height: 0;
+  }
+}
+
 .public-hero {
   max-width: 760px;
 }

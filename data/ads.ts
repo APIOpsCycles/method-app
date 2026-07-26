@@ -1,16 +1,11 @@
-import type { ImageMetadata } from 'astro';
-
-import logo from '../assets/apiops-cycles-logo2025-blue.svg';
-import person from '../assets/apiopscycles-users-2025-nobg.png';
-import apiopsWS from '../assets/ads/accelerate-your-apis-with-apiops-cycles.png';
-import apiops from '../assets/apiops-logo.png';
+import { designSystemAssets } from '@apiops/design-system/assets';
 
 export interface Ad {
   headline: string;
   text: string;
   ctaHref: string;
   ctaText: string;
-  images?: { src: ImageMetadata; alt: string }[];
+  visual?: { src: string; alt: string };
   bgcolor?: string; // Optional color for the ad, e.g., `#ff0000` used in border and button background
   /**
    * Optional folder groups that this ad should automatically appear on.
@@ -25,9 +20,10 @@ export const ads: Record<string, Ad> = {
     text: 'A compact, high-impact 2-hour online or onsite workshop for API product owners, architects, platform teams, and IT leaders. ',
     ctaHref: 'https://www.osaango.com/services/accelerate-your-apis-with-apiops-cycles/',
     ctaText: 'Learn more',
-    images: [
-      { src: apiopsWS, alt: 'APIOps Cycles Workshop' }
-    ],
+    visual: {
+      src: designSystemAssets.humans.poses,
+      alt: 'APIOps people collaborating in a workshop'
+    },
     groups: ['getting-started', 'resources'],
     bgcolor: '#21ce94ff' // Light background color for the ad
   },
@@ -36,7 +32,10 @@ export const ads: Record<string, Ad> = {
     text: 'Connect with practitioners and get the latest updates.',
     ctaHref: 'https://apiops.info/',
     ctaText: 'See meetups and more',
-    images: [{ src: logo, alt: 'APIOps Cycles logo' }, { src: apiops, alt: 'APIOps logo' }],
+    visual: {
+      src: designSystemAssets.humans.stories,
+      alt: 'APIOps community members sharing ideas'
+    },
     groups: ['method', 'lines', 'sub-stations'],
         bgcolor: 'var(--color-accent-600)' // Light background color for the ad
   }
@@ -84,4 +83,3 @@ function pageGroups(entry?: any, pathname?: string): string[] {
   }
   return Array.from(set);
 }
-
