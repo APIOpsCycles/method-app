@@ -34,7 +34,7 @@ const applicableCycles = (methodGraph.byLine[line.id]?.cycleIds ?? []).flatMap((
 ---
 <main class="public-content">
   <nav class="public-breadcrumbs" aria-label={labels["chrome.breadcrumb"]}><a href={`${prefix}/`}>APIOps Cycles</a><span aria-hidden="true">/</span>{cycle && <><a href={`${prefix}/cycles/${cycle.slug}`}>{cycle.title}</a><span aria-hidden="true">/</span></>}<span>{line.title}</span></nav>
-  <MethodContext locale={locale} cycle={cycle} lineId={line.id} here={line.title} />
+  <MethodContext locale={locale} cycle={cycle} lineId={line.id} contextStationIds={line.stations} here={line.title} />
   <section class="public-hero" style={`--line-color: ${lineColor}`}>
     <p class="public-kicker">{labels["entity.line"]}</p>
     <div class="line-heading"><span class="line-icon" aria-hidden="true">{line.icon || "●"}</span><h1>{line.title}</h1></div>

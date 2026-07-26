@@ -21,6 +21,7 @@ for (const locale of locales) {
       const linkedHtml = await readFile(path.join(root, "dist", href.replace(/^\//, ""), "index.html"), "utf8");
       assert.match(linkedHtml, new RegExp(`<link rel="canonical" href="[^"]+${href}"`));
     }
+    assert.match(homeHtml, /component-url="\/_astro\/ContextualLinesSection\.[^"]+\.js"/, "line cards hydrate to preserve a stored method perspective");
 
     const sharedLine = catalog.lines.find((line) => catalog.cycles.filter((cycle) => line.stations.some((id) => cycle.stations.some((station) => station.id === id))).length > 1);
     assert.ok(sharedLine, "fixture includes a line shared by multiple cycles");

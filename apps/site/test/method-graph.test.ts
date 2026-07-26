@@ -6,6 +6,7 @@ import { parseStoredMethodContext } from "../src/lib/method-context";
 import { INVOLVEMENT_WEIGHT, resolveMethodContext, scoreCycleForContext } from "../src/lib/resolve-method-context";
 import { resolveContextualUiState } from "../src/lib/resolve-method-context";
 import { readFileSync } from "node:fs";
+import { linePathForContext } from "../src/lib/line-routes";
 
 test("generated graph contains valid, deduplicated adjacency", () => {
   const stationIds = new Set(Object.keys(methodGraph.byStation));
@@ -23,6 +24,19 @@ test("generated graph indexes every line's stations and intersecting cycles", ()
     line.stationIds.forEach((id) => assert.ok(stationIds.has(id)));
     line.cycleIds.forEach((cycleId) => assert.ok(methodGraph.byCycle[cycleId].stationIds.some((id) => line.stationIds.includes(id))));
   }
+});
+
+test("home line destinations preserve an explicit perspective without inventing one", () => {
+  const line = { id: "api-design-line", slug: "api-design-line" };
+  const cycles = [
+    { id: "capability-productization-cycle", slug: "capability-productization-cycle" },
+    { id: "api-productization-cycle", slug: "api-productization-cycle" },
+  ];
+  assert.equal(linePathForContext("", line, cycles, {}), "/lines/api-design-line");
+  assert.equal(
+    linePathForContext("/fi", line, cycles, { goalId: "create-or-improve-api" }),
+    "/fi/cycle/api-productization-cycle/lines/api-design-line",
+  );
 });
 
 test("goals use valid cycle-line combinations in canonical cycle order", () => {
