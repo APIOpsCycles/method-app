@@ -143,6 +143,7 @@ function MetroMapView({
   selectedLineId,
   stakeholderInvolvementByStation,
   goalStationIds,
+  goalLineIds,
   recommendedStationId,
   onSelectCycle,
   onSelectStation,
@@ -157,6 +158,7 @@ function MetroMapView({
   selectedLineId?: string;
   stakeholderInvolvementByStation: Record<string, string>;
   goalStationIds: string[];
+  goalLineIds: string[];
   recommendedStationId?: string;
   onSelectCycle: (id: string) => void;
   onSelectStation: (id: string) => void;
@@ -214,7 +216,7 @@ function MetroMapView({
     7: { x: 270, y: 500 },
     8: { x: 330, y: 380 },
   };
-  const lineLegend = lines.map((line, index) => ({ ...line, x: 220, y: 700 + index * 28 }));
+  const lineLegend = [...lines].sort((a, b) => Number(goalLineIds.includes(b.id)) - Number(goalLineIds.includes(a.id))).map((line, index) => ({ ...line, x: 220, y: 700 + index * 28 }));
   const stationClassName = (id: string) => {
     const involvement = stakeholderInvolvementByStation[id];
     const goal = goalStationIds.includes(id);
@@ -461,7 +463,7 @@ function MetroMapView({
   );
 }
 
-export default function MetroMapIsland({ locale, labels, cycles, lines, stations, roles, goals, initialCycleId, initialStationId, initialRoleId, initialLineId }: { locale: string; labels: Record<string, string>; cycles: MetroCycle[]; lines: MetroLine[]; stations: MetroStation[]; roles: MetroRole[]; goals: Array<{ id: string; label: string; description: string; stationIds: string[] }>; initialCycleId?: string; initialStationId?: string; initialRoleId?: string; initialLineId?: string }) {
+export default function MetroMapIsland({ locale, labels, cycles, lines, stations, roles, goals, initialCycleId, initialStationId, initialRoleId, initialLineId }: { locale: string; labels: Record<string, string>; cycles: MetroCycle[]; lines: MetroLine[]; stations: MetroStation[]; roles: MetroRole[]; goals: Array<{ id: string; label: string; description: string; stationIds: string[]; lineIds: string[] }>; initialCycleId?: string; initialStationId?: string; initialRoleId?: string; initialLineId?: string }) {
   const [cycleId, setCycleId] = useState(initialCycleId ?? cycles[0]?.id ?? "");
   const [stationId, setStationId] = useState(initialStationId ?? cycles[0]?.stations[0]?.id ?? stations[0]?.id ?? "");
   const context = useMethodContext();
@@ -525,6 +527,6 @@ export default function MetroMapIsland({ locale, labels, cycles, lines, stations
       <span className="cycle-context-navigation__current">{labels["map.viewingCycle"]}: <strong>{cycles.find((cycle) => cycle.id === cycleId)?.title}</strong></span>
       <span className="cycle-context-navigation__others">{labels["map.otherCycles"]}: {cycles.filter((cycle) => cycle.id !== cycleId).map((cycle, index) => <span key={cycle.id}>{index > 0 && <b aria-hidden="true"> · </b>}<button type="button" onClick={() => navigate(`/cycles/${cycle.slug}`)}>{cycle.title}</button></span>)}</span>
     </nav>
-    <MetroMapView cycles={cycles} lines={lines} stations={stations} selectedCycleId={cycleId} selectedStationId={stationId} selectedLineId={initialLineId} stakeholderInvolvementByStation={roles.find((role) => role.id === effectiveRoleId)?.involvementByStation ?? {}} goalStationIds={goals.find((goal) => goal.id === context.goalId)?.stationIds ?? []} recommendedStationId={resolved.recommendedEntryStationId} onSelectCycle={(id) => { setCycleId(id); const selected = cycles.find((cycle) => cycle.id === id); if (selected) navigate(`/cycles/${selected.slug}`); }} onSelectStation={(id) => { setStationId(id); const selectedCycle = cycles.find((cycle) => cycle.id === cycleId); const isCycleStation = selectedCycle?.stations.some((station) => station.id === id); navigate(isCycleStation && selectedCycle ? `/cycles/${selectedCycle.slug}/stations/${id}` : `/stations/${id}`); }} uiLabels={labels} svgRef={svgRef} />
+    <MetroMapView cycles={cycles} lines={lines} stations={stations} selectedCycleId={cycleId} selectedStationId={stationId} selectedLineId={initialLineId} stakeholderInvolvementByStation={roles.find((role) => role.id === effectiveRoleId)?.involvementByStation ?? {}} goalStationIds={goals.find((goal) => goal.id === context.goalId)?.stationIds ?? []} goalLineIds={goals.find((goal) => goal.id === context.goalId)?.lineIds ?? []} recommendedStationId={resolved.recommendedEntryStationId} onSelectCycle={(id) => { setCycleId(id); const selected = cycles.find((cycle) => cycle.id === id); if (selected) navigate(`/cycles/${selected.slug}`); }} onSelectStation={(id) => { setStationId(id); const selectedCycle = cycles.find((cycle) => cycle.id === cycleId); const isCycleStation = selectedCycle?.stations.some((station) => station.id === id); navigate(isCycleStation && selectedCycle ? `/cycles/${selectedCycle.slug}/stations/${id}` : `/stations/${id}`); }} uiLabels={labels} svgRef={svgRef} />
   </section>;
 }

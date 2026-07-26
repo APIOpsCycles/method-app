@@ -13,14 +13,15 @@ export type MethodGraph = {
   byStakeholder: Record<string, { stationIds: string[] }>;
   byResource: Record<string, { stationIds: string[] }>;
   byCycle: Record<string, { stationIds: string[]; lineIds: string[] }>;
-  byGoal: Record<string, { recommendedCycleIds: string[]; entryStationIds: string[]; stationIds: string[] }>;
+  byGoal: Record<string, { recommendedCycleIds: string[]; recommendedLineIds: string[]; stationIds: string[] }>;
 };
 export const methodGraph = graph as MethodGraph;
 export const getGoals = (locale: Locale) => goals.translations[locale];
 export function getStationEmphasis(stationId: string, context: UserMethodContext): StationEmphasis {
   const station = methodGraph.byStation[stationId];
-  const stakeholder = context.stakeholderId ? station?.stakeholders.some((item) => item.id === context.stakeholderId) : false;
-  const goal = context.goalId ? methodGraph.byGoal[context.goalId]?.stationIds.includes(stationId) : false;
+  const goalPath = context.goalId ? methodGraph.byGoal[context.goalId]?.stationIds : undefined;
+  const goal = goalPath?.includes(stationId) ?? false;
+  const stakeholder = context.stakeholderId ? station?.stakeholders.some((item) => item.id === context.stakeholderId) && (!goalPath || goal) : false;
   return stakeholder && goal ? "strong" : stakeholder || goal ? "medium" : "normal";
 }
 export function getRecommendedNextStations(stationId: string, context: UserMethodContext) {

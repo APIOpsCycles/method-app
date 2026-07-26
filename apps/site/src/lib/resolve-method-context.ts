@@ -50,17 +50,18 @@ export function resolveMethodContext(input: ResolveContextInput, graph: MethodGr
   // A goal chooses and scores the journey cycle, while the stakeholder
   // mapping defines their stops within that journey. Goal-only stations still
   // receive map emphasis but are not presented as role-relevant path stops.
-  const pathStationIds = stakeholderId ? stakeholderStations : goalStations;
+  const pathStationIds = stakeholderId && goalId ? goalStations.filter((id) => stakeholderStations.includes(id)) : stakeholderId ? stakeholderStations : goalStations;
   const cycleIds = Object.keys(graph.byCycle);
   const eligibleCycleIds = (stakeholderId || goalId) ? cycleIds.filter((id) => {
     const cycle = graph.byCycle[id as keyof typeof graph.byCycle];
-    return (goalId && (graph.byGoal[goalId as keyof typeof graph.byGoal].recommendedCycleIds.includes(id) || goalStations.some((station) => cycle.stationIds.includes(station)))) || stakeholderStations.some((station) => cycle.stationIds.includes(station));
+    const goal = goalId ? graph.byGoal[goalId as keyof typeof graph.byGoal] : undefined;
+    return goal ? (goal.recommendedCycleIds.length === 0 ? stakeholderStations.some((station) => cycle.stationIds.includes(station)) : goal.recommendedCycleIds.includes(id)) : stakeholderStations.some((station) => cycle.stationIds.includes(station));
   }) : [];
   const recommendedCycleId = eligibleCycleIds.map((id, order) => ({ id, order, score: scoreCycleForContext(id, clean, graph) })).sort((a, b) => b.score - a.score || a.order - b.order)[0]?.id;
   const cycleStations = recommendedCycleId ? graph.byCycle[recommendedCycleId as keyof typeof graph.byCycle].stationIds : [];
   const rankedStations = cycleStations.map((id, order) => {
-    const involvement = stationInvolvement[id];
     const goalMatch = goalStations.includes(id);
+    const involvement = goalId && !goalMatch ? undefined : stationInvolvement[id];
     // Both dimensions dominate either dimension; within each group role
     // involvement ranks lead > core > consulted, then canonical journey order.
     const group = goalMatch && involvement ? 3 : involvement ? 2 : goalMatch ? 1 : 0;

@@ -28,7 +28,19 @@ const byCycle = Object.fromEntries(catalog.cycles.map((cycle) => { for (const st
 const byStakeholder = Object.fromEntries([...catalog.stakeholders].sort((a,b) => a.id.localeCompare(b.id)).map((stakeholder) => [stakeholder.id, { stationIds: unique(Object.entries(byStation).filter(([, value]) => value.stakeholders.some((item) => item.id === stakeholder.id)).map(([id]) => id)) }]));
 const byResource = Object.fromEntries([...catalog.resources].sort((a,b) => a.id.localeCompare(b.id)).map((resource) => [resource.id, { stationIds: unique(Object.entries(byStation).filter(([, value]) => value.resourceIds.includes(resource.id)).map(([id]) => id)) }]));
 const byGoal = {};
-for (const goal of [...goals].sort((a,b) => a.id.localeCompare(b.id))) { for (const id of goal.recommendedCycleIds) check("cycle", id, `goal ${goal.id}`); for (const id of [...goal.entryStationIds, ...goal.recommendedStationIds]) check("station", id, `goal ${goal.id}`); byGoal[goal.id] = { recommendedCycleIds: unique(goal.recommendedCycleIds), entryStationIds: unique(goal.entryStationIds), stationIds: unique([...goal.entryStationIds, ...goal.recommendedStationIds]) }; }
+for (const goal of [...goals].sort((a,b) => a.id.localeCompare(b.id))) {
+  if (!goal.recommendedCycleIds.length) errors.push(`goal ${goal.id} must select at least one cycle`);
+  if (!goal.recommendedLineIds.length) errors.push(`goal ${goal.id} must select at least one line`);
+  for (const id of goal.recommendedCycleIds) check("cycle", id, `goal ${goal.id}`);
+  for (const id of goal.recommendedLineIds) check("line", id, `goal ${goal.id}`);
+  const selectedLines = new Set(goal.recommendedLineIds);
+  // A goal path is the union of its selected lines within each selected cycle.
+  // Iterating cycles and their stations retains canonical journey order.
+  const derivedStationIds = [...new Set(goal.recommendedCycleIds.flatMap((cycleId) =>
+    (byCycle[cycleId]?.stationIds ?? []).filter((stationId) => byStation[stationId].lineIds.some((lineId) => selectedLines.has(lineId)))
+  ))];
+  byGoal[goal.id] = { recommendedCycleIds: [...new Set(goal.recommendedCycleIds)], recommendedLineIds: [...new Set(goal.recommendedLineIds)], stationIds: derivedStationIds };
+}
 if (errors.length) throw new Error(`Method graph validation failed:\n- ${errors.join("\n- ")}`);
 const graph = { version: 1, byStation, byStakeholder, byResource, byCycle, byGoal };
 const localizedGoals = Object.fromEntries(["en", "fi", "fr", "de", "pt"].map((locale) => [locale, goals.map((goal) => ({ id: goal.id, label: goal.label[locale] ?? goal.label.en, description: goal.description[locale] ?? goal.description.en }))]));

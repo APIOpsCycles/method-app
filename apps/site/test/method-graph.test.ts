@@ -14,6 +14,48 @@ test("generated graph contains valid, deduplicated adjacency", () => {
     station.nextStationIds.forEach((id) => assert.ok(stationIds.has(id)));
   }
 });
+
+test("goals use valid cycle-line combinations in canonical cycle order", () => {
+  const configured = JSON.parse(readFileSync(new URL("../../../data/method-goals.json", import.meta.url), "utf8")).goals as Array<{ id: string; recommendedCycleIds: string[]; recommendedLineIds: string[] }>;
+  for (const goal of configured) {
+    const generated = methodGraph.byGoal[goal.id];
+    assert.ok(generated);
+    goal.recommendedCycleIds.forEach((id) => assert.ok(methodGraph.byCycle[id], `${goal.id} cycle ${id}`));
+    const knownLineIds = new Set(Object.values(methodGraph.byStation).flatMap((station) => station.lineIds));
+    goal.recommendedLineIds.forEach((id) => assert.ok(knownLineIds.has(id), `${goal.id} line ${id}`));
+    generated.stationIds.forEach((id) => {
+      assert.ok(goal.recommendedCycleIds.some((cycleId) => methodGraph.byCycle[cycleId].stationIds.includes(id)));
+      assert.ok(goal.recommendedLineIds.some((lineId) => methodGraph.byStation[id].lineIds.includes(lineId)));
+    });
+    const canonical = goal.recommendedCycleIds.flatMap((cycleId) => methodGraph.byCycle[cycleId].stationIds).filter((id, index, all) => generated.stationIds.includes(id) && all.indexOf(id) === index);
+    assert.deepEqual(generated.stationIds, canonical);
+  }
+});
+
+test("API product owner advances through consumer experience on the API journey", () => {
+  const resolved = resolveMethodContext({ stakeholderId: "api-product-owner", goalId: "create-or-improve-api", preferredCycleId: "api-productization-cycle", currentStationId: "api-product-strategy" });
+  assert.equal(resolveContextualUiState(resolved).nextRelevantStationId, "api-consumer-experience");
+});
+
+test("each explore goal explicitly selects its cycle and all lines", () => {
+  const exploreGoals = Object.entries(methodGraph.byGoal).filter(([id]) => id.startsWith("explore-"));
+  assert.equal(exploreGoals.length, 4);
+  for (const [goalId, goal] of exploreGoals) {
+    assert.equal(goal.recommendedCycleIds.length, 1);
+    assert.equal(goal.recommendedLineIds.length, 6);
+    const resolved = resolveMethodContext({ stakeholderId: "api-product-owner", goalId });
+    assert.equal(resolved.recommendedCycleId, goal.recommendedCycleIds[0]);
+    assert.equal(resolved.pathStationIds.length, methodGraph.byCycle[goal.recommendedCycleIds[0]].stationIds.length);
+  }
+});
+
+test("goal and stakeholder paths are derived from the selected combination", () => {
+  const goalOnly = resolveMethodContext({ goalId: "design-integration" });
+  assert.equal(goalOnly.recommendedEntryStationId, goalOnly.pathStationIds[0]);
+  const combined = resolveMethodContext({ stakeholderId: "api-designer", goalId: "create-or-improve-api" });
+  const expected = methodGraph.byGoal["create-or-improve-api"].stationIds.filter((id) => methodGraph.byStakeholder["api-designer"].stationIds.includes(id));
+  assert.deepEqual(combined.pathStationIds, expected);
+});
 test("generated graph exposes resource-to-station context", () => {
   for (const [resourceId, resource] of Object.entries(methodGraph.byResource)) {
     assert.equal(resource.stationIds.length, new Set(resource.stationIds).size);

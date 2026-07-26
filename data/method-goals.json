@@ -1,9 +1,215 @@
 {
   "goals": [
-    { "id": "improve-reusable-capability", "label": { "en": "Define or improve a reusable capability", "fi": "Määritä tai paranna uudelleenkäytettävää kyvykkyyttä", "fr": "Définir ou améliorer une capacité réutilisable", "de": "Eine wiederverwendbare Fähigkeit definieren oder verbessern", "pt": "Definir ou melhorar uma capacidade reutilizável" }, "description": { "en": "Start with business value and shape a reusable capability.", "fi": "Aloita liiketoiminta-arvosta ja muotoile uudelleenkäytettävä kyvykkyys.", "fr": "Commencez par la valeur métier et façonnez une capacité réutilisable.", "de": "Mit dem Geschäftswert beginnen und eine wiederverwendbare Fähigkeit gestalten.", "pt": "Comece pelo valor de negócio e modele uma capacidade reutilizável." }, "recommendedCycleIds": ["capability-productization-cycle"], "entryStationIds": ["api-product-strategy"], "recommendedStationIds": ["api-product-strategy", "api-consumer-experience"] },
-    { "id": "create-or-improve-api", "label": { "en": "Create or improve an API", "fi": "Luo tai paranna APIa", "fr": "Créer ou améliorer une API", "de": "Eine API erstellen oder verbessern", "pt": "Criar ou melhorar uma API" }, "description": { "en": "Follow the API product journey from strategy to improvement.", "fi": "Seuraa API-tuotteen matkaa strategiasta jatkuvaan parantamiseen.", "fr": "Suivez le parcours produit API de la stratégie à l’amélioration.", "de": "Der API-Produktreise von der Strategie bis zur Verbesserung folgen.", "pt": "Siga a jornada do produto API da estratégia à melhoria." }, "recommendedCycleIds": ["api-productization-cycle"], "entryStationIds": ["api-product-strategy"], "recommendedStationIds": ["api-design", "api-delivery", "api-publishing"] },
-    { "id": "design-integration", "label": { "en": "Design an integration", "fi": "Suunnittele integraatio", "fr": "Concevoir une intégration", "de": "Eine Integration entwerfen", "pt": "Projetar uma integração" }, "description": { "en": "Shape and deliver an integration as a managed product.", "fi": "Muotoile ja toimita integraatio hallittuna tuotteena.", "fr": "Concevez et livrez une intégration comme un produit géré.", "de": "Eine Integration als verwaltetes Produkt gestalten und liefern.", "pt": "Modele e entregue uma integração como produto gerenciado." }, "recommendedCycleIds": ["integration-productization-cycle"], "entryStationIds": ["api-product-strategy"], "recommendedStationIds": ["api-platform-architecture", "api-design", "api-delivery"] },
-    { "id": "automate-process", "label": { "en": "Automate a process", "fi": "Automatisoi prosessi", "fr": "Automatiser un processus", "de": "Einen Prozess automatisieren", "pt": "Automatizar um processo" }, "description": { "en": "Create a governed automation or AI-enabled workflow.", "fi": "Luo hallittu automaatio tai tekoälyä hyödyntävä työnkulku.", "fr": "Créez une automatisation gouvernée ou un flux de travail assisté par l’IA.", "de": "Eine gesteuerte Automatisierung oder einen KI-gestützten Ablauf erstellen.", "pt": "Crie uma automação governada ou fluxo habilitado por IA." }, "recommendedCycleIds": ["automation-cycle"], "entryStationIds": ["api-product-strategy"], "recommendedStationIds": ["api-design", "api-delivery", "api-audit"] },
-    { "id": "explore-method", "label": { "en": "Explore the method", "fi": "Tutustu menetelmään", "fr": "Explorer la méthode", "de": "Die Methode erkunden", "pt": "Explorar o método" }, "description": { "en": "Browse every cycle and choose your own starting point.", "fi": "Selaa kaikkia syklejä ja valitse oma aloituspisteesi.", "fr": "Parcourez tous les cycles et choisissez votre point de départ.", "de": "Alle Zyklen durchsuchen und einen eigenen Einstieg wählen.", "pt": "Explore todos os ciclos e escolha seu ponto de partida." }, "recommendedCycleIds": [], "entryStationIds": [], "recommendedStationIds": [] }
+    {
+      "id": "improve-reusable-capability",
+      "label": {
+        "en": "Define or improve a reusable capability",
+        "fi": "Määritä tai paranna uudelleenkäytettävää kyvykkyyttä",
+        "fr": "Définir ou améliorer une capacité réutilisable",
+        "de": "Eine wiederverwendbare Fähigkeit definieren oder verbessern",
+        "pt": "Definir ou melhorar uma capacidade reutilizável"
+      },
+      "description": {
+        "en": "Start with business value and shape a reusable capability.",
+        "fi": "Aloita liiketoiminta-arvosta ja muotoile uudelleenkäytettävä kyvykkyys.",
+        "fr": "Commencez par la valeur métier et façonnez une capacité réutilisable.",
+        "de": "Mit dem Geschäftswert beginnen und eine wiederverwendbare Fähigkeit gestalten.",
+        "pt": "Comece pelo valor de negócio e modele uma capacidade reutilizável."
+      },
+      "recommendedCycleIds": [
+        "capability-productization-cycle"
+      ],
+      "recommendedLineIds": [
+        "platform-architecture-line"
+      ]
+    },
+    {
+      "id": "create-or-improve-api",
+      "label": {
+        "en": "Create or improve an API",
+        "fi": "Luo tai paranna APIa",
+        "fr": "Créer ou améliorer une API",
+        "de": "Eine API erstellen oder verbessern",
+        "pt": "Criar ou melhorar uma API"
+      },
+      "description": {
+        "en": "Follow the API product journey from strategy to improvement.",
+        "fi": "Seuraa API-tuotteen matkaa strategiasta jatkuvaan parantamiseen.",
+        "fr": "Suivez le parcours produit API de la stratégie à l’amélioration.",
+        "de": "Der API-Produktreise von der Strategie bis zur Verbesserung folgen.",
+        "pt": "Siga a jornada do produto API da estratégia à melhoria."
+      },
+      "recommendedCycleIds": [
+        "api-productization-cycle"
+      ],
+      "recommendedLineIds": [
+        "business-opportunities-line",
+        "platform-architecture-line",
+        "api-design-line",
+        "delivery-line",
+        "publishing-and-adoption-line"
+      ]
+    },
+    {
+      "id": "design-integration",
+      "label": {
+        "en": "Design an integration",
+        "fi": "Suunnittele integraatio",
+        "fr": "Concevoir une intégration",
+        "de": "Eine Integration entwerfen",
+        "pt": "Projetar uma integração"
+      },
+      "description": {
+        "en": "Shape and deliver an integration as a managed product.",
+        "fi": "Muotoile ja toimita integraatio hallittuna tuotteena.",
+        "fr": "Concevez et livrez une intégration comme un produit géré.",
+        "de": "Eine Integration als verwaltetes Produkt gestalten und liefern.",
+        "pt": "Modele e entregue uma integração como produto gerenciado."
+      },
+      "recommendedCycleIds": [
+        "integration-productization-cycle"
+      ],
+      "recommendedLineIds": [
+        "platform-architecture-line",
+        "api-design-line",
+        "delivery-line"
+      ]
+    },
+    {
+      "id": "automate-process",
+      "label": {
+        "en": "Automate a process",
+        "fi": "Automatisoi prosessi",
+        "fr": "Automatiser un processus",
+        "de": "Einen Prozess automatisieren",
+        "pt": "Automatizar um processo"
+      },
+      "description": {
+        "en": "Create a governed automation or AI-enabled workflow.",
+        "fi": "Luo hallittu automaatio tai tekoälyä hyödyntävä työnkulku.",
+        "fr": "Créez une automatisation gouvernée ou un flux de travail assisté par l’IA.",
+        "de": "Eine gesteuerte Automatisierung oder einen KI-gestützten Ablauf erstellen.",
+        "pt": "Crie uma automação governada ou fluxo habilitado por IA."
+      },
+      "recommendedCycleIds": [
+        "automation-cycle"
+      ],
+      "recommendedLineIds": [
+        "business-opportunities-line",
+        "api-design-line"
+      ]
+    },
+    {
+      "id": "explore-capability-method",
+      "label": {
+        "en": "Explore the capability method",
+        "fi": "Tutustu kyvykkyysmenetelmään",
+        "fr": "Explorer la méthode des capacités",
+        "de": "Die Fähigkeitsmethode erkunden",
+        "pt": "Explorar o método de capacidades"
+      },
+      "description": {
+        "en": "Browse every line in this cycle and choose your own starting point.",
+        "fi": "Selaa tämän syklin kaikkia linjoja ja valitse oma aloituspisteesi.",
+        "fr": "Parcourez toutes les lignes de ce cycle et choisissez votre point de départ.",
+        "de": "Alle Linien dieses Zyklus durchsuchen und einen eigenen Einstieg wählen.",
+        "pt": "Explore todas as linhas deste ciclo e escolha seu ponto de partida."
+      },
+      "recommendedCycleIds": [
+        "capability-productization-cycle"
+      ],
+      "recommendedLineIds": [
+        "business-opportunities-line",
+        "platform-architecture-line",
+        "api-design-line",
+        "delivery-line",
+        "publishing-and-adoption-line",
+        "operating-model-line"
+      ]
+    },
+    {
+      "id": "explore-api-method",
+      "label": {
+        "en": "Explore the API method",
+        "fi": "Tutustu API-menetelmään",
+        "fr": "Explorer la méthode API",
+        "de": "Die API-Methode erkunden",
+        "pt": "Explorar o método de API"
+      },
+      "description": {
+        "en": "Browse every line in this cycle and choose your own starting point.",
+        "fi": "Selaa tämän syklin kaikkia linjoja ja valitse oma aloituspisteesi.",
+        "fr": "Parcourez toutes les lignes de ce cycle et choisissez votre point de départ.",
+        "de": "Alle Linien dieses Zyklus durchsuchen und einen eigenen Einstieg wählen.",
+        "pt": "Explore todas as linhas deste ciclo e escolha seu ponto de partida."
+      },
+      "recommendedCycleIds": [
+        "api-productization-cycle"
+      ],
+      "recommendedLineIds": [
+        "business-opportunities-line",
+        "platform-architecture-line",
+        "api-design-line",
+        "delivery-line",
+        "publishing-and-adoption-line",
+        "operating-model-line"
+      ]
+    },
+    {
+      "id": "explore-integration-method",
+      "label": {
+        "en": "Explore the integration method",
+        "fi": "Tutustu integraatiomenetelmään",
+        "fr": "Explorer la méthode d’intégration",
+        "de": "Die Integrationsmethode erkunden",
+        "pt": "Explorar o método de integração"
+      },
+      "description": {
+        "en": "Browse every line in this cycle and choose your own starting point.",
+        "fi": "Selaa tämän syklin kaikkia linjoja ja valitse oma aloituspisteesi.",
+        "fr": "Parcourez toutes les lignes de ce cycle et choisissez votre point de départ.",
+        "de": "Alle Linien dieses Zyklus durchsuchen und einen eigenen Einstieg wählen.",
+        "pt": "Explore todas as linhas deste ciclo e escolha seu ponto de partida."
+      },
+      "recommendedCycleIds": [
+        "integration-productization-cycle"
+      ],
+      "recommendedLineIds": [
+        "business-opportunities-line",
+        "platform-architecture-line",
+        "api-design-line",
+        "delivery-line",
+        "publishing-and-adoption-line",
+        "operating-model-line"
+      ]
+    },
+    {
+      "id": "explore-automation-method",
+      "label": {
+        "en": "Explore the automation method",
+        "fi": "Tutustu automaatiomenetelmään",
+        "fr": "Explorer la méthode d’automatisation",
+        "de": "Die Automatisierungsmethode erkunden",
+        "pt": "Explorar o método de automação"
+      },
+      "description": {
+        "en": "Browse every line in this cycle and choose your own starting point.",
+        "fi": "Selaa tämän syklin kaikkia linjoja ja valitse oma aloituspisteesi.",
+        "fr": "Parcourez toutes les lignes de ce cycle et choisissez votre point de départ.",
+        "de": "Alle Linien dieses Zyklus durchsuchen und einen eigenen Einstieg wählen.",
+        "pt": "Explore todas as linhas deste ciclo e escolha seu ponto de partida."
+      },
+      "recommendedCycleIds": [
+        "automation-cycle"
+      ],
+      "recommendedLineIds": [
+        "business-opportunities-line",
+        "platform-architecture-line",
+        "api-design-line",
+        "delivery-line",
+        "publishing-and-adoption-line",
+        "operating-model-line"
+      ]
+    }
   ]
 }
