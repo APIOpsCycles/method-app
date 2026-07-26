@@ -1,0 +1,17 @@
+---
+import FaqContent from "../../components/content/FaqContent.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getFaq } from "../../content/faq";
+import { localizedLocales, type Locale } from "../../lib/method-data";
+import { metadataForRoute } from "../../lib/seo";
+
+export function getStaticPaths() { return localizedLocales.map((locale) => ({ params: { locale }, props: { locale } })); }
+const { locale } = Astro.props as { locale: Locale };
+const canonicalPath = `/${locale}/faq`;
+const content = getFaq(locale);
+const seo = metadataForRoute("faq", locale, canonicalPath);
+const jsonLd = { "@context": "https://schema.org", "@type": "FAQPage", inLanguage: locale, mainEntity: content.items.map(({ question, answer }) => ({ "@type": "Question", name: question, acceptedAnswer: { "@type": "Answer", text: answer } })) };
+---
+<BaseLayout title={content.title} description={content.description} lang={locale} canonicalPath={canonicalPath} jsonLd={jsonLd} {...seo}>
+  <FaqContent locale={locale} />
+</BaseLayout>

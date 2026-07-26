@@ -1,0 +1,23 @@
+---
+import type { Locale } from "../../lib/method-data";
+import { getFaq } from "../../content/faq";
+
+const { locale } = Astro.props as { locale: Locale };
+const content = getFaq(locale);
+---
+<main class="public-content faq-page">
+  <section class="public-hero faq-hero">
+    <p class="public-kicker">{content.kicker}</p>
+    <h1>{content.title}</h1>
+    <p>{content.description}</p>
+    <p class="faq-prompt">{content.prompt}</p>
+  </section>
+  <section class="faq-list" aria-label={content.title}>
+    {content.items.map((item) => (
+      <details class="faq-item">
+        <summary><span>{item.question}</span><span class="faq-icon" aria-hidden="true"></span></summary>
+        <div class="faq-answer"><p>{item.answer}</p></div>
+      </details>
+    ))}
+  </section>
+</main>

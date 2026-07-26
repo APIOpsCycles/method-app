@@ -1,0 +1,15 @@
+---
+import FaqContent from "../components/content/FaqContent.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { metadataForRoute } from "../lib/seo";
+import { getFaq } from "../content/faq";
+
+const locale = "en";
+const canonicalPath = "/faq";
+const content = getFaq(locale);
+const seo = metadataForRoute("faq", locale, canonicalPath);
+const jsonLd = { "@context": "https://schema.org", "@type": "FAQPage", inLanguage: locale, mainEntity: content.items.map(({ question, answer }) => ({ "@type": "Question", name: question, acceptedAnswer: { "@type": "Answer", text: answer } })) };
+---
+<BaseLayout title={content.title} description={content.description} lang={locale} canonicalPath={canonicalPath} jsonLd={jsonLd} {...seo}>
+  <FaqContent locale={locale} />
+</BaseLayout>
