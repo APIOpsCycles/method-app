@@ -25,6 +25,8 @@ test("role participation table exposes cycle, station, involvement, and resource
   }));
   assert.match(table, /<table>/);
   assert.match(table, /scope="row"/);
+  assert.match(table, /data-label="Station"/);
   assert.match(table, /is-lead/);
+  assert.match(table, /apiops-iconset\.svg#icon-decision/);
   assert.match(table, /Customer Journey Canvas/);
 });

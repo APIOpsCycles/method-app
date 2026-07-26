@@ -52,20 +52,36 @@
 
 /* Role participation tables keep method relationships legible without owning method data. */
 .ds-role-participation + .ds-role-participation { margin-top: 2rem; }
-.ds-role-participation h3 { margin-bottom: .75rem; }
-.ds-table-scroll { max-width: 100%; overflow-x: auto; }
-.ds-role-participation table { border-collapse: collapse; min-width: 42rem; width: 100%; }
-.ds-role-participation th, .ds-role-participation td { border-bottom: 1px solid var(--panel-border, #d8dee6); padding: .8rem .75rem; text-align: left; vertical-align: top; }
-.ds-role-participation thead th { background: var(--color-neutral-cloud, #f5f7fa); color: var(--color-neutral-charcoal, #263238); font-size: .82rem; letter-spacing: .02em; text-transform: uppercase; }
+.ds-role-participation h3 { margin: 0 0 .75rem .25rem; }
+.ds-role-participation__surface { background: var(--color-neutral-paper); border: 1px solid var(--panel-border); border-radius: 12px; box-shadow: 0 5px 18px color-mix(in srgb, var(--color-neutral-graphite) 8%, transparent); max-width: 100%; overflow: hidden; }
+.ds-role-participation table { border-collapse: collapse; width: 100%; }
+.ds-role-participation th, .ds-role-participation td { border-bottom: 1px solid var(--panel-border, #d8dee6); padding: .9rem 1rem; text-align: left; vertical-align: middle; }
+.ds-role-participation tbody tr:last-child > * { border-bottom: 0; }
+.ds-role-participation tbody tr:hover { background: color-mix(in srgb, var(--apiops-accent-community) 3%, var(--color-neutral-paper)); }
+.ds-role-participation thead th { background: var(--color-neutral-cloud, #f5f7fa); color: var(--muted, #64748b); font-size: .72rem; letter-spacing: .05em; text-transform: uppercase; }
 .ds-role-participation tbody th { font-weight: 650; width: 34%; }
-.ds-involvement-badge { align-items: center; display: inline-flex; font-size: .9rem; font-weight: 650; gap: .4rem; white-space: nowrap; }
-.ds-involvement-badge::before { background: var(--involvement-color); border-radius: 50%; content: ""; height: .65rem; width: .65rem; }
-.ds-involvement-badge.is-lead { --involvement-color: #0f766e; }
-.ds-involvement-badge.is-core { --involvement-color: #2563eb; }
-.ds-involvement-badge.is-consulted { --involvement-color: #7c3aed; }
-.ds-role-resource-list { display: flex; flex-wrap: wrap; gap: .35rem .8rem; list-style: none; margin: 0; padding: 0; }
+.ds-involvement-badge { align-items: center; display: inline-flex; font-size: .86rem; font-weight: 700; gap: .45rem; white-space: nowrap; }
+.ds-involvement-badge__icon { align-items: center; background: var(--involvement-background); border-radius: 999px; color: var(--involvement-color); display: inline-flex; height: 2rem; justify-content: center; width: 2rem; }
+.ds-involvement-badge__icon svg { height: 1.2rem; width: 1.2rem; }
+.ds-involvement-badge.is-lead { --involvement-background: color-mix(in srgb, var(--color-cycle-capability) 14%, var(--color-neutral-paper)); --involvement-color: var(--color-cycle-capability); }
+.ds-involvement-badge.is-core { --involvement-background: color-mix(in srgb, var(--color-cycle-api) 12%, var(--color-neutral-paper)); --involvement-color: var(--color-cycle-api); }
+.ds-involvement-badge.is-consulted { --involvement-background: color-mix(in srgb, var(--color-cycle-integration) 12%, var(--color-neutral-paper)); --involvement-color: var(--color-cycle-integration); }
+.ds-role-resource-list { display: flex; flex-wrap: wrap; gap: .4rem; list-style: none; margin: 0; padding: 0; }
 .ds-role-resource-list li { margin: 0; }
+.ds-role-resource-list a { background: var(--color-neutral-cloud); border: 1px solid var(--panel-border); border-radius: 999px; display: inline-flex; font-size: .82rem; font-weight: 650; padding: .35rem .6rem; text-decoration: none; }
+.ds-role-resource-list a:hover { border-color: currentColor; text-decoration: underline; }
 .ds-table-empty { color: var(--muted, #64748b); }
+@media (max-width: 700px) {
+  .ds-role-participation__surface { background: transparent; border: 0; box-shadow: none; overflow: visible; }
+  .ds-role-participation table, .ds-role-participation tbody { display: block; }
+  .ds-role-participation thead { clip: rect(0 0 0 0); clip-path: inset(50%); height: 1px; overflow: hidden; position: absolute; white-space: nowrap; width: 1px; }
+  .ds-role-participation tbody { display: grid; gap: .75rem; }
+  .ds-role-participation tbody tr { background: var(--color-neutral-paper); border: 1px solid var(--panel-border); border-radius: 12px; box-shadow: 0 4px 14px color-mix(in srgb, var(--color-neutral-graphite) 7%, transparent); display: grid; overflow: hidden; }
+  .ds-role-participation th, .ds-role-participation td { align-items: start; border-bottom: 1px solid var(--panel-border); display: grid; gap: .35rem; padding: .75rem 1rem; width: auto; }
+  .ds-role-participation th::before, .ds-role-participation td::before { color: var(--muted); content: attr(data-label); font-size: .68rem; font-weight: 750; letter-spacing: .05em; text-transform: uppercase; }
+  .ds-role-participation tbody th { background: var(--color-neutral-cloud); width: auto; }
+  .ds-role-participation tbody tr > :last-child { border-bottom: 0; }
+}
 @media (max-width: 800px) { .ds-method-context { align-items: flex-start; } .ds-method-context__items { grid-template-columns: 1fr 1fr; } .ds-method-context__item, .ds-method-context__items > a { border-right: 0; padding: 6px; } .ds-method-context__icon { flex-basis: 34px; height: 34px; width: 34px; } .ds-method-context__item small, .ds-method-context__items a small { display: none; } .ds-method-context__toggle { font-size: 0; margin-left: 4px; padding: 8px; } .ds-method-context__toggle span { font-size: 1rem; } .ds-method-context-editor { grid-template-columns: 1fr; padding: 16px; } }
 :root {
   --color-neutral-graphite: #0F172A;
