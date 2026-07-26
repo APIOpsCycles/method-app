@@ -3,7 +3,7 @@ import { methodGraph, type Involvement, type MethodGraph, type UserMethodContext
 export const INVOLVEMENT_WEIGHT = { lead: 30, core: 20, consulted: 10, unmapped: 0 } as const;
 export const CYCLE_SCORE = { goalCycle: 100, goalStation: 60, stakeholderUnmapped: -50 } as const;
 
-export type ResolveContextInput = UserMethodContext & { preferredCycleId?: string; currentStationId?: string };
+export type ResolveContextInput = UserMethodContext & { preferredCycleId?: string; currentStationId?: string; contextStationIds?: string[] };
 export type ResolvedMethodContext = UserMethodContext & {
   recommendedCycleId?: string;
   recommendedEntryStationId?: string;
@@ -14,6 +14,7 @@ export type ResolvedMethodContext = UserMethodContext & {
   stationInvolvement: Record<string, Involvement | undefined>;
   currentCycleId?: string;
   currentStationId?: string;
+  contextStationIds: string[];
   isCurrentCycleRecommended: boolean;
   isCurrentStationRelevant: boolean;
   explanation: { cycleReasons: string[]; stationReasons: string[] };
@@ -71,7 +72,8 @@ export function resolveMethodContext(input: ResolveContextInput, graph: MethodGr
   const cycleReasons = recommendedCycleId ? [goalId && graph.byGoal[goalId as keyof typeof graph.byGoal].recommendedCycleIds.includes(recommendedCycleId) ? "The selected goal directly recommends this cycle." : "This cycle contains work mapped to the selected perspective."].filter(Boolean) as string[] : [];
   const stationReasons = recommendedEntryStationId ? [entryInvolvement ? `Your involvement at this station is ${entryInvolvement}.` : "This station directly supports the selected goal.", goalStations.includes(recommendedEntryStationId) && entryInvolvement ? "It also directly supports the selected goal." : ""].filter(Boolean) : [];
   const isCurrentCycleRecommended = Boolean(currentCycleId && currentCycleId === recommendedCycleId);
-  return { stakeholderId, goalId, recommendedCycleId, recommendedEntryStationId, eligibleCycleIds, relevantStationIds, pathStationIds, stationInvolvement, currentCycleId, currentStationId: input.currentStationId, isCurrentCycleRecommended, isCurrentStationRelevant: Boolean(input.currentStationId && pathStationIds.includes(input.currentStationId) && (!currentCycleId || isCurrentCycleRecommended)), explanation: { cycleReasons, stationReasons } };
+  const contextStationIds = [...new Set(input.contextStationIds ?? [])].filter((id) => Boolean(graph.byStation[id]));
+  return { stakeholderId, goalId, recommendedCycleId, recommendedEntryStationId, eligibleCycleIds, relevantStationIds, pathStationIds, stationInvolvement, currentCycleId, currentStationId: input.currentStationId, contextStationIds, isCurrentCycleRecommended, isCurrentStationRelevant: Boolean(input.currentStationId && pathStationIds.includes(input.currentStationId) && (!currentCycleId || isCurrentCycleRecommended)), explanation: { cycleReasons, stationReasons } };
 }
 
 export function resolveContextualUiState(resolved: ResolvedMethodContext, graph: MethodGraph = methodGraph): ContextualUiState {
@@ -79,9 +81,13 @@ export function resolveContextualUiState(resolved: ResolvedMethodContext, graph:
   if (!resolved.currentStationId) {
     if (resolved.currentCycleId && !resolved.isCurrentCycleRecommended) return { pageMode: "off-path", primaryStationId: resolved.recommendedEntryStationId };
     const stations = resolved.recommendedCycleId ? graph.byCycle[resolved.recommendedCycleId]?.stationIds ?? [] : [];
-    const entryIndex = resolved.recommendedEntryStationId ? stations.indexOf(resolved.recommendedEntryStationId) : -1;
-    const nextRelevantStationId = entryIndex >= 0 ? stations.slice(entryIndex + 1).find((id) => resolved.pathStationIds.includes(id)) : undefined;
-    return { pageMode: "start", nextRelevantStationId, primaryStationId: nextRelevantStationId ?? resolved.recommendedEntryStationId };
+    // Entity pages lead to the first place the entity is useful on the
+    // selected role's path, rather than to an earlier station where that role
+    // has no mapped involvement. With goal-only context, pathStationIds is the
+    // goal path and follows the same rule.
+    const contextualStationId = stations.find((id) => resolved.contextStationIds.includes(id) && resolved.pathStationIds.includes(id));
+    if (contextualStationId) return { pageMode: "explore", primaryStationId: contextualStationId };
+    return { pageMode: "start", primaryStationId: resolved.recommendedEntryStationId };
   }
   const involvement = resolved.stationInvolvement[resolved.currentStationId];
   if (!resolved.isCurrentStationRelevant) return { pageMode: "off-path", involvement, primaryStationId: resolved.recommendedEntryStationId };

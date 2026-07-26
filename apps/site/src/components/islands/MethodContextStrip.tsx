@@ -5,7 +5,7 @@ import { ContextGuidance, MethodContextBar, MethodContextEditor, type MethodCont
 
 type Option = { id: string; label: string };
 type ContextCycle = Option & { slug: string; stations: Option[] };
-export default function MethodContextStrip({ stakeholders, goals, cycles, cycleId, stationId, prefix, here, labels }: { stakeholders: Option[]; goals: Option[]; cycles: ContextCycle[]; cycleId?: string; stationId?: string; prefix: string; here: string; labels: Record<string, string> }) {
+export default function MethodContextStrip({ stakeholders, goals, cycles, cycleId, stationId, contextStationIds, prefix, here, labels }: { stakeholders: Option[]; goals: Option[]; cycles: ContextCycle[]; cycleId?: string; stationId?: string; contextStationIds?: string[]; prefix: string; here: string; labels: Record<string, string> }) {
   const context = useMethodContext();
   const [editing, setEditing] = useState(false);
   const [dismissed, setDismissed] = useState(true);
@@ -16,7 +16,7 @@ export default function MethodContextStrip({ stakeholders, goals, cycles, cycleI
   const routeCycle = cycles.find((item) => item.id === cycleId);
   const noContext = !stakeholder && !goal;
   const close = () => { setEditing(false); requestAnimationFrame(() => changeButton.current?.focus()); };
-  const resolved = resolveMethodContext({ ...context, preferredCycleId: cycleId, currentStationId: stationId });
+  const resolved = resolveMethodContext({ ...context, preferredCycleId: cycleId, currentStationId: stationId, contextStationIds });
   const contextualUi = resolveContextualUiState(resolved);
   const resolvedCycleId = contextualUi.pageMode === "on-path" ? resolved.currentCycleId : resolved.recommendedCycleId;
   const resolvedCycle = cycles.find((item) => item.id === resolvedCycleId);
@@ -33,8 +33,10 @@ export default function MethodContextStrip({ stakeholders, goals, cycles, cycleI
     { id: "cycle", label: labels.cycle, value: displayCycle?.label ?? labels.notSelected, href: displayCycle ? `${prefix}/cycles/${displayCycle.slug}` : undefined, muted: !displayCycle },
   ];
   const hasNext = Boolean(contextualUi.nextRelevantStationId);
-  const guidance = !noContext && (stationId || actionStation) ? <ContextGuidance tone={contextualUi.pageMode === "off-path" ? "warning" : "success"} title={involvement ? `${labels[involvement]}: ${involvementDetail}` : contextualUi.pageMode === "off-path" ? labels.offPath : hasNext ? labels.onPath : labels.recommended}>
-    {contextualUi.pageMode === "off-path" ? <>{involvement ? labels.offPath : null}{involvement && actionStation && actionHref ? <br /> : null}{actionStation && actionHref ? <>{labels.recommended}: <a href={actionHref}>{actionStation.label}</a></> : null}</> : <>{involvement ? <strong>{labels.onPath}</strong> : null}{involvement && actionStation && actionHref ? <br /> : null}{actionStation && actionHref ? <>{hasNext ? labels.next : labels.recommended}: <a href={actionHref}>{actionStation.label}</a></> : null}</>}
+  const guidanceTitle = involvement ? `${labels[involvement]}: ${involvementDetail}` : contextualUi.pageMode === "off-path" ? labels.offPath : contextualUi.pageMode === "explore" ? labels.where : hasNext ? labels.onPath : labels.recommended;
+  const actionPrefix = hasNext ? labels.next : contextualUi.pageMode === "start" ? undefined : labels.recommended;
+  const guidance = !noContext && (stationId || actionStation) ? <ContextGuidance tone={contextualUi.pageMode === "off-path" ? "warning" : "success"} title={guidanceTitle}>
+    {contextualUi.pageMode === "off-path" ? <>{involvement ? labels.offPath : null}{involvement && actionStation && actionHref ? <br /> : null}{actionStation && actionHref ? <>{labels.recommended}: <a href={actionHref}>{actionStation.label}</a></> : null}</> : <>{involvement ? <strong>{labels.onPath}</strong> : null}{involvement && actionStation && actionHref ? <br /> : null}{actionStation && actionHref ? <>{actionPrefix ? `${actionPrefix}: ` : null}<a href={actionHref}>{actionStation.label}</a></> : null}</>}
   </ContextGuidance> : null;
   return <section className="method-context-surface" aria-label={labels.context}>
     <MethodContextBar items={items} expanded={editing} changeLabel={labels.change} closeLabel={labels.close} toggleRef={changeButton} onToggle={() => editing ? close() : setEditing(true)} />

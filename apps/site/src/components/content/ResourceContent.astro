@@ -12,6 +12,7 @@ import { createMarkdownProcessor } from "@astrojs/markdown-remark";
 import remarkGfm from "remark-gfm";
 import rehypeSanitize from "rehype-sanitize";
 import MethodContext from "./MethodContext.astro";
+import { methodGraph } from "../../lib/method-graph";
 interface Props { resource: Resource; locale: Locale }
 const { resource, locale } = Astro.props;
 const prefix = localePrefix(locale);
@@ -55,7 +56,7 @@ const missingSource = {
 ---
 <main class="public-content">
   <nav class="public-breadcrumbs" aria-label={labels["chrome.breadcrumb"]}><a href={`${prefix}/`}>APIOps Cycles</a><span aria-hidden="true">/</span><span>{resource.title}</span></nav>
-  <MethodContext locale={locale} here={resource.title} />
+  <MethodContext locale={locale} here={resource.title} contextStationIds={methodGraph.byResource[resource.id]?.stationIds ?? []} />
   <section class="public-hero"><p class="public-kicker">{resource.category}</p><h1>{resource.title}</h1><p>{resource.description}</p></section>
   <section class="public-section" aria-labelledby="outcomes"><h2 id="outcomes">{labels["section.outcomes"]}</h2><ul>{resource.outcomes.map((item) => <li>{item}</li>)}</ul></section>
   <section class="public-section" aria-labelledby="steps"><h2 id="steps">{labels["section.howToUse"]}</h2><ol>{resource.steps.map((item) => <li>{item}</li>)}</ol></section>

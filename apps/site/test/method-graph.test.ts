@@ -14,6 +14,12 @@ test("generated graph contains valid, deduplicated adjacency", () => {
     station.nextStationIds.forEach((id) => assert.ok(stationIds.has(id)));
   }
 });
+test("generated graph exposes resource-to-station context", () => {
+  for (const [resourceId, resource] of Object.entries(methodGraph.byResource)) {
+    assert.equal(resource.stationIds.length, new Set(resource.stationIds).size);
+    resource.stationIds.forEach((stationId) => assert.ok(methodGraph.byStation[stationId]?.resourceIds.includes(resourceId)));
+  }
+});
 test("stakeholder and goal relevance combine deterministically", () => {
   assert.equal(getStationEmphasis("api-design", { stakeholderId: "api-designer" }), "medium");
   assert.equal(getStationEmphasis("api-design", { goalId: "create-or-improve-api" }), "medium");
@@ -61,14 +67,22 @@ test("contextual page modes choose one route-aware action", () => {
   assert.equal(resolveContextualUiState(resolveMethodContext({})).pageMode, "no-context");
   const start = resolveContextualUiState(resolveMethodContext({ stakeholderId: "api-designer", goalId: "create-or-improve-api" }));
   assert.equal(start.pageMode, "start");
-  assert.equal(start.nextRelevantStationId, "api-delivery");
-  assert.equal(start.primaryStationId, "api-delivery");
+  assert.equal(start.nextRelevantStationId, undefined);
+  assert.equal(start.primaryStationId, "api-design");
   const onPath = resolveContextualUiState(resolveMethodContext({ stakeholderId: "automation-engineer", goalId: "automate-process", preferredCycleId: "automation-cycle", currentStationId: "api-design" }));
   assert.equal(onPath.pageMode, "on-path");
   assert.equal(onPath.nextRelevantStationId, "api-delivery");
   const offPath = resolveContextualUiState(resolveMethodContext({ stakeholderId: "automation-engineer", goalId: "automate-process", currentStationId: "ecosystem-vision" }));
   assert.equal(offPath.pageMode, "off-path");
   assert.equal(offPath.primaryStationId, "api-design");
+});
+test("generic entity context links to its first use on the role path", () => {
+  const resourceStations = methodGraph.byResource.customerJourneyCanvas.stationIds;
+  const resolved = resolveMethodContext({ stakeholderId: "api-designer", goalId: "create-or-improve-api", contextStationIds: [...resourceStations, "missing"] });
+  const ui = resolveContextualUiState(resolved);
+  assert.deepEqual(resolved.contextStationIds, resourceStations);
+  assert.equal(ui.pageMode, "explore");
+  assert.equal(ui.primaryStationId, "api-consumer-experience");
 });
 test("a goal-only station is outside the stakeholder path", () => {
   const resolved = resolveMethodContext({ stakeholderId: "api-designer", goalId: "create-or-improve-api", preferredCycleId: "api-productization-cycle", currentStationId: "api-publishing" });
@@ -113,4 +127,5 @@ test("the map is navigation, not a duplicate context form", () => {
   assert.match(strip, /routeCycle \?\? cycles\.find/);
   assert.match(strip, /labels\.who/);
   assert.match(strip, /labels\.where/);
+  assert.match(strip, /pageMode === "explore" \? labels\.where/);
 });
