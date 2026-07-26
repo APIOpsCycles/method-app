@@ -3,6 +3,7 @@ import { initializeMethodContext, useMethodContext } from "../../lib/method-cont
 import { resolveMethodContext } from "../../lib/resolve-method-context";
 import { MetroLegend, MetroLinePath, MetroMapShell, MetroStationButton, MetroStationMarker } from "@apiops/design-system/react";
 import { designSystemAssets } from "@apiops/design-system/assets";
+import { initializeMetroMap, metroStationPath } from "../../lib/metro-map-initialization";
 
 export type MetroCycleStation = { id: string; index: number; title: string; baseTitle: string };
 export type MetroCycle = { id: string; slug: string; title: string; stations: MetroCycleStation[] };
@@ -463,14 +464,17 @@ function MetroMapView({
   );
 }
 
-export default function MetroMapIsland({ locale, labels, cycles, lines, stations, roles, goals, initialCycleId, initialStationId, initialRoleId, initialLineId }: { locale: string; labels: Record<string, string>; cycles: MetroCycle[]; lines: MetroLine[]; stations: MetroStation[]; roles: MetroRole[]; goals: Array<{ id: string; label: string; description: string; stationIds: string[]; lineIds: string[] }>; initialCycleId?: string; initialStationId?: string; initialRoleId?: string; initialLineId?: string }) {
-  const [cycleId, setCycleId] = useState(initialCycleId ?? cycles[0]?.id ?? "");
-  const [stationId, setStationId] = useState(initialStationId ?? cycles[0]?.stations[0]?.id ?? stations[0]?.id ?? "");
+export default function MetroMapIsland({ locale, labels, cycles, lines, stations, roles, goals, initialCycleId, initialStationId, initialRoleId, initialLineId, initializationMode = "route" }: { locale: string; labels: Record<string, string>; cycles: MetroCycle[]; lines: MetroLine[]; stations: MetroStation[]; roles: MetroRole[]; goals: Array<{ id: string; label: string; description: string; stationIds: string[]; lineIds: string[] }>; initialCycleId?: string; initialStationId?: string; initialRoleId?: string; initialLineId?: string; initializationMode?: "route" | "neutral-line" }) {
+  const neutralLineMode = initializationMode === "neutral-line";
+  const initialMap = initializeMetroMap(cycles, initialCycleId, initialStationId, neutralLineMode);
+  const [cycleId, setCycleId] = useState(initialMap.cycleId);
+  const [stationId, setStationId] = useState(initialMap.stationId);
+  const [hasSelectedCycle, setHasSelectedCycle] = useState(initialMap.hasSelectedCycle);
   const context = useMethodContext();
   const effectiveRoleId = context.stakeholderId ?? initialRoleId ?? "";
-  const resolved = resolveMethodContext({ stakeholderId: effectiveRoleId || undefined, goalId: context.goalId, preferredCycleId: initialCycleId, currentStationId: initialStationId });
+  const resolved = resolveMethodContext({ stakeholderId: effectiveRoleId || undefined, goalId: context.goalId, preferredCycleId: neutralLineMode ? undefined : initialCycleId, currentStationId: initialMap.stationId || undefined });
   useEffect(() => { initializeMethodContext(); }, []);
-  useEffect(() => { if (!initialCycleId && resolved.recommendedCycleId) setCycleId(resolved.recommendedCycleId); }, [initialCycleId, resolved.recommendedCycleId]);
+  useEffect(() => { if (!initialCycleId && !hasSelectedCycle && resolved.recommendedCycleId) setCycleId(resolved.recommendedCycleId); }, [hasSelectedCycle, initialCycleId, resolved.recommendedCycleId]);
   const svgRef = useRef<SVGSVGElement>(null);
   async function inlineLogoForExport(clone: SVGSVGElement) {
     for (const image of Array.from(clone.querySelectorAll("image"))) {
@@ -525,8 +529,8 @@ export default function MetroMapIsland({ locale, labels, cycles, lines, stations
     <p>{labels["map.help"]}</p>
     <nav className="cycle-context-navigation" aria-label={labels["map.cycleNavigation"]}>
       <span className="cycle-context-navigation__current">{labels["map.viewingCycle"]}: <strong>{cycles.find((cycle) => cycle.id === cycleId)?.title}</strong></span>
-      <span className="cycle-context-navigation__others">{labels["map.otherCycles"]}: {cycles.filter((cycle) => cycle.id !== cycleId).map((cycle, index) => <span key={cycle.id}>{index > 0 && <b aria-hidden="true"> · </b>}<button type="button" onClick={() => navigate(`/cycles/${cycle.slug}`)}>{cycle.title}</button></span>)}</span>
+      <span className="cycle-context-navigation__others">{labels["map.otherCycles"]}: {cycles.filter((cycle) => cycle.id !== cycleId).map((cycle, index) => <span key={cycle.id}>{index > 0 && <b aria-hidden="true"> · </b>}<button type="button" onClick={() => { setCycleId(cycle.id); setStationId(""); setHasSelectedCycle(true); }}>{cycle.title}</button></span>)}</span>
     </nav>
-    <MetroMapView cycles={cycles} lines={lines} stations={stations} selectedCycleId={cycleId} selectedStationId={stationId} selectedLineId={initialLineId} stakeholderInvolvementByStation={roles.find((role) => role.id === effectiveRoleId)?.involvementByStation ?? {}} goalStationIds={goals.find((goal) => goal.id === context.goalId)?.stationIds ?? []} goalLineIds={goals.find((goal) => goal.id === context.goalId)?.lineIds ?? []} recommendedStationId={resolved.recommendedEntryStationId} onSelectCycle={(id) => { setCycleId(id); const selected = cycles.find((cycle) => cycle.id === id); if (selected) navigate(`/cycles/${selected.slug}`); }} onSelectStation={(id) => { setStationId(id); const selectedCycle = cycles.find((cycle) => cycle.id === cycleId); const isCycleStation = selectedCycle?.stations.some((station) => station.id === id); navigate(isCycleStation && selectedCycle ? `/cycles/${selectedCycle.slug}/stations/${id}` : `/stations/${id}`); }} uiLabels={labels} svgRef={svgRef} />
+    <MetroMapView cycles={cycles} lines={lines} stations={stations} selectedCycleId={cycleId} selectedStationId={stationId} selectedLineId={initialLineId} stakeholderInvolvementByStation={roles.find((role) => role.id === effectiveRoleId)?.involvementByStation ?? {}} goalStationIds={goals.find((goal) => goal.id === context.goalId)?.stationIds ?? []} goalLineIds={goals.find((goal) => goal.id === context.goalId)?.lineIds ?? []} recommendedStationId={resolved.recommendedEntryStationId} onSelectCycle={(id) => { setCycleId(id); setStationId(""); setHasSelectedCycle(true); }} onSelectStation={(id) => { setStationId(id); navigate(metroStationPath(cycles, cycleId, id, hasSelectedCycle)); }} uiLabels={labels} svgRef={svgRef} />
   </section>;
 }
