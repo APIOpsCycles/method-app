@@ -76,9 +76,13 @@ export function resolveMethodContext(input: ResolveContextInput, graph: MethodGr
 
 export function resolveContextualUiState(resolved: ResolvedMethodContext, graph: MethodGraph = methodGraph): ContextualUiState {
   if (!resolved.stakeholderId && !resolved.goalId) return { pageMode: "no-context" };
-  if (!resolved.currentStationId) return resolved.currentCycleId && !resolved.isCurrentCycleRecommended
-    ? { pageMode: "off-path", primaryStationId: resolved.recommendedEntryStationId }
-    : { pageMode: "start", primaryStationId: resolved.recommendedEntryStationId };
+  if (!resolved.currentStationId) {
+    if (resolved.currentCycleId && !resolved.isCurrentCycleRecommended) return { pageMode: "off-path", primaryStationId: resolved.recommendedEntryStationId };
+    const stations = resolved.recommendedCycleId ? graph.byCycle[resolved.recommendedCycleId]?.stationIds ?? [] : [];
+    const entryIndex = resolved.recommendedEntryStationId ? stations.indexOf(resolved.recommendedEntryStationId) : -1;
+    const nextRelevantStationId = entryIndex >= 0 ? stations.slice(entryIndex + 1).find((id) => resolved.pathStationIds.includes(id)) : undefined;
+    return { pageMode: "start", nextRelevantStationId, primaryStationId: nextRelevantStationId ?? resolved.recommendedEntryStationId };
+  }
   const involvement = resolved.stationInvolvement[resolved.currentStationId];
   if (!resolved.isCurrentStationRelevant) return { pageMode: "off-path", involvement, primaryStationId: resolved.recommendedEntryStationId };
   const cycleId = resolved.currentCycleId ?? resolved.recommendedCycleId;

@@ -59,7 +59,10 @@ test("consulted-only and invalid contexts are handled safely", () => {
 });
 test("contextual page modes choose one route-aware action", () => {
   assert.equal(resolveContextualUiState(resolveMethodContext({})).pageMode, "no-context");
-  assert.equal(resolveContextualUiState(resolveMethodContext({ stakeholderId: "automation-engineer", goalId: "automate-process" })).pageMode, "start");
+  const start = resolveContextualUiState(resolveMethodContext({ stakeholderId: "api-designer", goalId: "create-or-improve-api" }));
+  assert.equal(start.pageMode, "start");
+  assert.equal(start.nextRelevantStationId, "api-delivery");
+  assert.equal(start.primaryStationId, "api-delivery");
   const onPath = resolveContextualUiState(resolveMethodContext({ stakeholderId: "automation-engineer", goalId: "automate-process", preferredCycleId: "automation-cycle", currentStationId: "api-design" }));
   assert.equal(onPath.pageMode, "on-path");
   assert.equal(onPath.nextRelevantStationId, "api-delivery");
@@ -107,6 +110,7 @@ test("the map is navigation, not a duplicate context form", () => {
   assert.match(designSystem, /MethodContextEditor/);
   assert.match(strip, /resetMethodContext/);
   assert.match(strip, /resolvedCycle\?\.stations\.find/);
+  assert.match(strip, /routeCycle \?\? cycles\.find/);
   assert.match(strip, /labels\.who/);
   assert.match(strip, /labels\.where/);
 });
