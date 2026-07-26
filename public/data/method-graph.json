@@ -1,0 +1,1614 @@
+{
+  "version": 1,
+  "byStation": {
+    "api-audit": {
+      "cycleIds": [
+        "api-productization-cycle",
+        "automation-cycle",
+        "capability-productization-cycle",
+        "integration-productization-cycle"
+      ],
+      "lineIds": [
+        "api-design-line",
+        "publishing-and-adoption-line"
+      ],
+      "stakeholders": [
+        {
+          "id": "api-designer",
+          "involvement": "core"
+        },
+        {
+          "id": "api-engineer",
+          "involvement": "core"
+        },
+        {
+          "id": "api-product-owner",
+          "involvement": "consulted"
+        },
+        {
+          "id": "automation-engineer",
+          "involvement": "consulted"
+        },
+        {
+          "id": "automation-owner",
+          "involvement": "core"
+        },
+        {
+          "id": "business-owner",
+          "involvement": "consulted"
+        },
+        {
+          "id": "capability-owner",
+          "involvement": "core"
+        },
+        {
+          "id": "compliance-specialist",
+          "involvement": "core"
+        },
+        {
+          "id": "governance-specialist",
+          "involvement": "lead"
+        },
+        {
+          "id": "integration-architect",
+          "involvement": "core"
+        },
+        {
+          "id": "operations-specialist",
+          "involvement": "core"
+        },
+        {
+          "id": "platform-architect",
+          "involvement": "consulted"
+        },
+        {
+          "id": "process-owner",
+          "involvement": "core"
+        },
+        {
+          "id": "security-specialist",
+          "involvement": "core"
+        }
+      ],
+      "resourceIds": [
+        "api-audit-checklist",
+        "api-compliance-best-practices"
+      ],
+      "nextStationIds": [
+        "api-publishing"
+      ],
+      "relatedStationIds": []
+    },
+    "api-consumer-adoption": {
+      "cycleIds": [],
+      "lineIds": [
+        "publishing-and-adoption-line"
+      ],
+      "stakeholders": [],
+      "resourceIds": [
+        "api-community-engagement-strategies",
+        "api-onboarding-best-practices"
+      ],
+      "nextStationIds": [],
+      "relatedStationIds": []
+    },
+    "api-consumer-experience": {
+      "cycleIds": [
+        "api-productization-cycle",
+        "automation-cycle",
+        "capability-productization-cycle",
+        "integration-productization-cycle"
+      ],
+      "lineIds": [
+        "platform-architecture-line"
+      ],
+      "stakeholders": [
+        {
+          "id": "api-consumer-specialist",
+          "involvement": "lead"
+        },
+        {
+          "id": "api-designer",
+          "involvement": "consulted"
+        },
+        {
+          "id": "api-devrel-specialist",
+          "involvement": "core"
+        },
+        {
+          "id": "api-product-owner",
+          "involvement": "lead"
+        },
+        {
+          "id": "automation-owner",
+          "involvement": "core"
+        },
+        {
+          "id": "business-owner",
+          "involvement": "consulted"
+        },
+        {
+          "id": "capability-owner",
+          "involvement": "core"
+        },
+        {
+          "id": "compliance-specialist",
+          "involvement": "consulted"
+        },
+        {
+          "id": "customer-specialist",
+          "involvement": "lead"
+        },
+        {
+          "id": "domain-specialist",
+          "involvement": "core"
+        },
+        {
+          "id": "integration-architect",
+          "involvement": "core"
+        },
+        {
+          "id": "operations-specialist",
+          "involvement": "consulted"
+        },
+        {
+          "id": "partner-specialist",
+          "involvement": "consulted"
+        },
+        {
+          "id": "process-owner",
+          "involvement": "lead"
+        }
+      ],
+      "resourceIds": [
+        "api-onboarding-best-practices",
+        "apiValuePropositionCanvas",
+        "customerJourneyCanvas"
+      ],
+      "nextStationIds": [
+        "api-platform-architecture"
+      ],
+      "relatedStationIds": []
+    },
+    "api-delivery": {
+      "cycleIds": [
+        "api-productization-cycle",
+        "automation-cycle",
+        "capability-productization-cycle",
+        "integration-productization-cycle"
+      ],
+      "lineIds": [
+        "api-design-line",
+        "delivery-line"
+      ],
+      "stakeholders": [
+        {
+          "id": "api-designer",
+          "involvement": "core"
+        },
+        {
+          "id": "api-engineer",
+          "involvement": "lead"
+        },
+        {
+          "id": "api-product-owner",
+          "involvement": "consulted"
+        },
+        {
+          "id": "automation-engineer",
+          "involvement": "lead"
+        },
+        {
+          "id": "automation-owner",
+          "involvement": "core"
+        },
+        {
+          "id": "business-owner",
+          "involvement": "consulted"
+        },
+        {
+          "id": "capability-owner",
+          "involvement": "consulted"
+        },
+        {
+          "id": "compliance-specialist",
+          "involvement": "consulted"
+        },
+        {
+          "id": "integration-architect",
+          "involvement": "core"
+        },
+        {
+          "id": "operations-specialist",
+          "involvement": "core"
+        },
+        {
+          "id": "partner-specialist",
+          "involvement": "consulted"
+        },
+        {
+          "id": "platform-architect",
+          "involvement": "core"
+        },
+        {
+          "id": "process-owner",
+          "involvement": "consulted"
+        },
+        {
+          "id": "security-specialist",
+          "involvement": "core"
+        }
+      ],
+      "resourceIds": [
+        "api-audit-checklist",
+        "api-development-best-practices",
+        "api-security-best-practices",
+        "api-testing-best-practices",
+        "apiops-CI-CD-for-apis"
+      ],
+      "nextStationIds": [
+        "api-audit"
+      ],
+      "relatedStationIds": []
+    },
+    "api-design": {
+      "cycleIds": [
+        "api-productization-cycle",
+        "automation-cycle",
+        "capability-productization-cycle",
+        "integration-productization-cycle"
+      ],
+      "lineIds": [
+        "api-design-line"
+      ],
+      "stakeholders": [
+        {
+          "id": "api-consumer-specialist",
+          "involvement": "core"
+        },
+        {
+          "id": "api-designer",
+          "involvement": "lead"
+        },
+        {
+          "id": "api-devrel-specialist",
+          "involvement": "consulted"
+        },
+        {
+          "id": "api-engineer",
+          "involvement": "consulted"
+        },
+        {
+          "id": "api-product-owner",
+          "involvement": "core"
+        },
+        {
+          "id": "automation-engineer",
+          "involvement": "lead"
+        },
+        {
+          "id": "automation-owner",
+          "involvement": "core"
+        },
+        {
+          "id": "business-owner",
+          "involvement": "consulted"
+        },
+        {
+          "id": "capability-owner",
+          "involvement": "core"
+        },
+        {
+          "id": "compliance-specialist",
+          "involvement": "core"
+        },
+        {
+          "id": "domain-specialist",
+          "involvement": "core"
+        },
+        {
+          "id": "integration-architect",
+          "involvement": "lead"
+        },
+        {
+          "id": "platform-architect",
+          "involvement": "core"
+        },
+        {
+          "id": "process-owner",
+          "involvement": "core"
+        },
+        {
+          "id": "security-specialist",
+          "involvement": "core"
+        }
+      ],
+      "resourceIds": [
+        "api-audit-checklist",
+        "api-design-principles",
+        "contract-first-design",
+        "domainCanvas",
+        "eventCanvas",
+        "graphqlCanvas",
+        "interactionCanvas",
+        "restCanvas"
+      ],
+      "nextStationIds": [
+        "api-delivery"
+      ],
+      "relatedStationIds": []
+    },
+    "api-mindset": {
+      "cycleIds": [],
+      "lineIds": [
+        "operating-model-line"
+      ],
+      "stakeholders": [],
+      "resourceIds": [
+        "api-training-programs",
+        "cross-functional-collaboration-best-practices",
+        "ecosystem-vision-template"
+      ],
+      "nextStationIds": [],
+      "relatedStationIds": []
+    },
+    "api-platform-architecture": {
+      "cycleIds": [
+        "api-productization-cycle",
+        "automation-cycle",
+        "capability-productization-cycle",
+        "integration-productization-cycle"
+      ],
+      "lineIds": [
+        "api-design-line",
+        "platform-architecture-line"
+      ],
+      "stakeholders": [
+        {
+          "id": "api-architect",
+          "involvement": "core"
+        },
+        {
+          "id": "api-consumer-specialist",
+          "involvement": "consulted"
+        },
+        {
+          "id": "api-engineer",
+          "involvement": "consulted"
+        },
+        {
+          "id": "api-product-owner",
+          "involvement": "core"
+        },
+        {
+          "id": "automation-engineer",
+          "involvement": "core"
+        },
+        {
+          "id": "automation-owner",
+          "involvement": "core"
+        },
+        {
+          "id": "business-owner",
+          "involvement": "consulted"
+        },
+        {
+          "id": "capability-owner",
+          "involvement": "core"
+        },
+        {
+          "id": "compliance-specialist",
+          "involvement": "core"
+        },
+        {
+          "id": "domain-specialist",
+          "involvement": "core"
+        },
+        {
+          "id": "integration-architect",
+          "involvement": "core"
+        },
+        {
+          "id": "operations-specialist",
+          "involvement": "core"
+        },
+        {
+          "id": "platform-architect",
+          "involvement": "lead"
+        },
+        {
+          "id": "platform-owner",
+          "involvement": "lead"
+        },
+        {
+          "id": "security-specialist",
+          "involvement": "core"
+        }
+      ],
+      "resourceIds": [
+        "api-metrics-and-analytics",
+        "businessImpactCanvas",
+        "capacityCanvas",
+        "locationsCanvas"
+      ],
+      "nextStationIds": [
+        "api-design"
+      ],
+      "relatedStationIds": []
+    },
+    "api-product-strategy": {
+      "cycleIds": [
+        "api-productization-cycle",
+        "automation-cycle",
+        "capability-productization-cycle",
+        "integration-productization-cycle"
+      ],
+      "lineIds": [
+        "business-opportunities-line",
+        "operating-model-line",
+        "platform-architecture-line"
+      ],
+      "stakeholders": [
+        {
+          "id": "api-consumer-specialist",
+          "involvement": "consulted"
+        },
+        {
+          "id": "api-product-owner",
+          "involvement": "lead"
+        },
+        {
+          "id": "api-program-owner",
+          "involvement": "consulted"
+        },
+        {
+          "id": "automation-engineer",
+          "involvement": "consulted"
+        },
+        {
+          "id": "automation-owner",
+          "involvement": "lead"
+        },
+        {
+          "id": "business-owner",
+          "involvement": "core"
+        },
+        {
+          "id": "capability-owner",
+          "involvement": "lead"
+        },
+        {
+          "id": "compliance-specialist",
+          "involvement": "consulted"
+        },
+        {
+          "id": "customer-specialist",
+          "involvement": "core"
+        },
+        {
+          "id": "domain-specialist",
+          "involvement": "core"
+        },
+        {
+          "id": "integration-architect",
+          "involvement": "lead"
+        },
+        {
+          "id": "partner-specialist",
+          "involvement": "consulted"
+        },
+        {
+          "id": "platform-architect",
+          "involvement": "consulted"
+        },
+        {
+          "id": "platform-owner",
+          "involvement": "core"
+        },
+        {
+          "id": "process-owner",
+          "involvement": "core"
+        },
+        {
+          "id": "security-specialist",
+          "involvement": "consulted"
+        }
+      ],
+      "resourceIds": [
+        "apiBusinessModelCanvas",
+        "apiValuePropositionCanvas",
+        "customerJourneyCanvas",
+        "domainCanvas"
+      ],
+      "nextStationIds": [
+        "api-consumer-experience"
+      ],
+      "relatedStationIds": []
+    },
+    "api-promotion": {
+      "cycleIds": [],
+      "lineIds": [
+        "publishing-and-adoption-line"
+      ],
+      "stakeholders": [],
+      "resourceIds": [
+        "api-community-engagement-strategies"
+      ],
+      "nextStationIds": [],
+      "relatedStationIds": []
+    },
+    "api-publishing": {
+      "cycleIds": [
+        "api-productization-cycle",
+        "automation-cycle",
+        "capability-productization-cycle",
+        "integration-productization-cycle"
+      ],
+      "lineIds": [
+        "publishing-and-adoption-line"
+      ],
+      "stakeholders": [
+        {
+          "id": "api-consumer-specialist",
+          "involvement": "core"
+        },
+        {
+          "id": "api-devrel-specialist",
+          "involvement": "core"
+        },
+        {
+          "id": "api-engineer",
+          "involvement": "consulted"
+        },
+        {
+          "id": "api-product-owner",
+          "involvement": "lead"
+        },
+        {
+          "id": "automation-engineer",
+          "involvement": "consulted"
+        },
+        {
+          "id": "automation-owner",
+          "involvement": "lead"
+        },
+        {
+          "id": "business-owner",
+          "involvement": "consulted"
+        },
+        {
+          "id": "capability-owner",
+          "involvement": "lead"
+        },
+        {
+          "id": "compliance-specialist",
+          "involvement": "core"
+        },
+        {
+          "id": "integration-architect",
+          "involvement": "lead"
+        },
+        {
+          "id": "operations-specialist",
+          "involvement": "core"
+        },
+        {
+          "id": "partner-specialist",
+          "involvement": "core"
+        },
+        {
+          "id": "process-owner",
+          "involvement": "core"
+        },
+        {
+          "id": "security-specialist",
+          "involvement": "core"
+        }
+      ],
+      "resourceIds": [
+        "api-audit-checklist",
+        "api-onboarding-best-practices",
+        "apiops-CI-CD-for-apis"
+      ],
+      "nextStationIds": [
+        "monitoring-and-improving"
+      ],
+      "relatedStationIds": []
+    },
+    "budget-and-resource-management": {
+      "cycleIds": [],
+      "lineIds": [
+        "operating-model-line"
+      ],
+      "stakeholders": [],
+      "resourceIds": [
+        "api-portfolio-management-guidelines"
+      ],
+      "nextStationIds": [],
+      "relatedStationIds": []
+    },
+    "business-goals": {
+      "cycleIds": [],
+      "lineIds": [
+        "business-opportunities-line"
+      ],
+      "stakeholders": [],
+      "resourceIds": [
+        "api-metrics-and-analytics",
+        "apiBusinessModelCanvas",
+        "stakeholder-engagement-best-practices"
+      ],
+      "nextStationIds": [],
+      "relatedStationIds": []
+    },
+    "ci-cd": {
+      "cycleIds": [],
+      "lineIds": [
+        "delivery-line"
+      ],
+      "stakeholders": [],
+      "resourceIds": [
+        "api-security-best-practices",
+        "api-testing-best-practices",
+        "apiops-CI-CD-for-apis"
+      ],
+      "nextStationIds": [],
+      "relatedStationIds": []
+    },
+    "competitive-analysis": {
+      "cycleIds": [],
+      "lineIds": [
+        "business-opportunities-line"
+      ],
+      "stakeholders": [],
+      "resourceIds": [
+        "competitor-analysis-template",
+        "ecosystem-vision-template"
+      ],
+      "nextStationIds": [],
+      "relatedStationIds": []
+    },
+    "contract-design": {
+      "cycleIds": [],
+      "lineIds": [
+        "delivery-line"
+      ],
+      "stakeholders": [],
+      "resourceIds": [
+        "api-audit-checklist",
+        "contract-first-design"
+      ],
+      "nextStationIds": [],
+      "relatedStationIds": []
+    },
+    "design-standards": {
+      "cycleIds": [],
+      "lineIds": [
+        "platform-architecture-line"
+      ],
+      "stakeholders": [],
+      "resourceIds": [
+        "api-audit-checklist",
+        "api-design-principles"
+      ],
+      "nextStationIds": [],
+      "relatedStationIds": []
+    },
+    "development": {
+      "cycleIds": [],
+      "lineIds": [
+        "delivery-line"
+      ],
+      "stakeholders": [],
+      "resourceIds": [
+        "api-development-best-practices",
+        "contract-first-design"
+      ],
+      "nextStationIds": [],
+      "relatedStationIds": []
+    },
+    "ecosystem-vision": {
+      "cycleIds": [],
+      "lineIds": [
+        "business-opportunities-line"
+      ],
+      "stakeholders": [],
+      "resourceIds": [
+        "ecosystem-vision-template"
+      ],
+      "nextStationIds": [],
+      "relatedStationIds": []
+    },
+    "legal-and-compliance": {
+      "cycleIds": [],
+      "lineIds": [
+        "platform-architecture-line"
+      ],
+      "stakeholders": [],
+      "resourceIds": [
+        "api-compliance-best-practices"
+      ],
+      "nextStationIds": [],
+      "relatedStationIds": []
+    },
+    "market-insights": {
+      "cycleIds": [],
+      "lineIds": [
+        "business-opportunities-line"
+      ],
+      "stakeholders": [],
+      "resourceIds": [
+        "competitor-analysis-template",
+        "ecosystem-vision-template",
+        "industry-standards-and-best-practices"
+      ],
+      "nextStationIds": [],
+      "relatedStationIds": []
+    },
+    "monitoring-and-improving": {
+      "cycleIds": [
+        "api-productization-cycle",
+        "automation-cycle",
+        "capability-productization-cycle",
+        "integration-productization-cycle"
+      ],
+      "lineIds": [
+        "business-opportunities-line",
+        "publishing-and-adoption-line"
+      ],
+      "stakeholders": [
+        {
+          "id": "api-consumer-specialist",
+          "involvement": "core"
+        },
+        {
+          "id": "api-devrel-specialist",
+          "involvement": "core"
+        },
+        {
+          "id": "api-engineer",
+          "involvement": "core"
+        },
+        {
+          "id": "api-product-owner",
+          "involvement": "lead"
+        },
+        {
+          "id": "automation-engineer",
+          "involvement": "core"
+        },
+        {
+          "id": "automation-owner",
+          "involvement": "lead"
+        },
+        {
+          "id": "business-owner",
+          "involvement": "core"
+        },
+        {
+          "id": "capability-owner",
+          "involvement": "lead"
+        },
+        {
+          "id": "compliance-specialist",
+          "involvement": "consulted"
+        },
+        {
+          "id": "domain-specialist",
+          "involvement": "consulted"
+        },
+        {
+          "id": "integration-architect",
+          "involvement": "lead"
+        },
+        {
+          "id": "operations-specialist",
+          "involvement": "core"
+        },
+        {
+          "id": "platform-architect",
+          "involvement": "consulted"
+        },
+        {
+          "id": "platform-owner",
+          "involvement": "core"
+        },
+        {
+          "id": "process-owner",
+          "involvement": "core"
+        },
+        {
+          "id": "security-specialist",
+          "involvement": "consulted"
+        }
+      ],
+      "resourceIds": [
+        "api-community-engagement-strategies",
+        "api-metrics-and-analytics",
+        "apiops-CI-CD-for-apis"
+      ],
+      "nextStationIds": [],
+      "relatedStationIds": []
+    },
+    "operating-guidelines": {
+      "cycleIds": [],
+      "lineIds": [
+        "operating-model-line"
+      ],
+      "stakeholders": [],
+      "resourceIds": [
+        "api-metrics-and-analytics"
+      ],
+      "nextStationIds": [],
+      "relatedStationIds": []
+    },
+    "partner-integration": {
+      "cycleIds": [],
+      "lineIds": [
+        "publishing-and-adoption-line"
+      ],
+      "stakeholders": [],
+      "resourceIds": [
+        "ecosystem-vision-template",
+        "partner-integration-guidelines"
+      ],
+      "nextStationIds": [],
+      "relatedStationIds": []
+    },
+    "portfolio-management": {
+      "cycleIds": [],
+      "lineIds": [
+        "operating-model-line"
+      ],
+      "stakeholders": [],
+      "resourceIds": [
+        "api-portfolio-management-guidelines"
+      ],
+      "nextStationIds": [],
+      "relatedStationIds": []
+    },
+    "release-management": {
+      "cycleIds": [],
+      "lineIds": [
+        "delivery-line"
+      ],
+      "stakeholders": [],
+      "resourceIds": [
+        "api-versioning-best-practices",
+        "apiops-CI-CD-for-apis"
+      ],
+      "nextStationIds": [],
+      "relatedStationIds": []
+    },
+    "roles-and-responsibilities": {
+      "cycleIds": [],
+      "lineIds": [
+        "operating-model-line"
+      ],
+      "stakeholders": [],
+      "resourceIds": [
+        "api-team-structure-guidelines",
+        "role-communication-best-practices"
+      ],
+      "nextStationIds": [],
+      "relatedStationIds": []
+    },
+    "scalable-infrastructure": {
+      "cycleIds": [],
+      "lineIds": [
+        "platform-architecture-line"
+      ],
+      "stakeholders": [],
+      "resourceIds": [
+        "capacityCanvas",
+        "scalable-infrastructure-best-practices"
+      ],
+      "nextStationIds": [],
+      "relatedStationIds": []
+    },
+    "security-and-privacy": {
+      "cycleIds": [],
+      "lineIds": [
+        "platform-architecture-line"
+      ],
+      "stakeholders": [],
+      "resourceIds": [
+        "api-security-best-practices",
+        "data-privacy-guidelines"
+      ],
+      "nextStationIds": [],
+      "relatedStationIds": []
+    },
+    "service-agreements": {
+      "cycleIds": [],
+      "lineIds": [
+        "publishing-and-adoption-line"
+      ],
+      "stakeholders": [],
+      "resourceIds": [
+        "service-agreement-template"
+      ],
+      "nextStationIds": [],
+      "relatedStationIds": []
+    },
+    "test-automation": {
+      "cycleIds": [],
+      "lineIds": [
+        "delivery-line"
+      ],
+      "stakeholders": [],
+      "resourceIds": [
+        "api-testing-best-practices",
+        "apiops-CI-CD-for-apis"
+      ],
+      "nextStationIds": [],
+      "relatedStationIds": []
+    },
+    "upskilling": {
+      "cycleIds": [],
+      "lineIds": [
+        "operating-model-line"
+      ],
+      "stakeholders": [],
+      "resourceIds": [
+        "api-training-programs"
+      ],
+      "nextStationIds": [],
+      "relatedStationIds": []
+    },
+    "user-experience": {
+      "cycleIds": [],
+      "lineIds": [
+        "business-opportunities-line"
+      ],
+      "stakeholders": [],
+      "resourceIds": [
+        "customerJourneyCanvas"
+      ],
+      "nextStationIds": [],
+      "relatedStationIds": []
+    },
+    "vendor-management": {
+      "cycleIds": [],
+      "lineIds": [
+        "platform-architecture-line"
+      ],
+      "stakeholders": [],
+      "resourceIds": [
+        "vendor-management-best-practices"
+      ],
+      "nextStationIds": [],
+      "relatedStationIds": []
+    }
+  },
+  "byStakeholder": {
+    "api-architect": {
+      "stationIds": [
+        "api-platform-architecture"
+      ]
+    },
+    "api-consumer-specialist": {
+      "stationIds": [
+        "api-consumer-experience",
+        "api-design",
+        "api-platform-architecture",
+        "api-product-strategy",
+        "api-publishing",
+        "monitoring-and-improving"
+      ]
+    },
+    "api-designer": {
+      "stationIds": [
+        "api-audit",
+        "api-consumer-experience",
+        "api-delivery",
+        "api-design"
+      ]
+    },
+    "api-devrel-specialist": {
+      "stationIds": [
+        "api-consumer-experience",
+        "api-design",
+        "api-publishing",
+        "monitoring-and-improving"
+      ]
+    },
+    "api-engineer": {
+      "stationIds": [
+        "api-audit",
+        "api-delivery",
+        "api-design",
+        "api-platform-architecture",
+        "api-publishing",
+        "monitoring-and-improving"
+      ]
+    },
+    "api-product-owner": {
+      "stationIds": [
+        "api-audit",
+        "api-consumer-experience",
+        "api-delivery",
+        "api-design",
+        "api-platform-architecture",
+        "api-product-strategy",
+        "api-publishing",
+        "monitoring-and-improving"
+      ]
+    },
+    "api-program-owner": {
+      "stationIds": [
+        "api-product-strategy"
+      ]
+    },
+    "automation-engineer": {
+      "stationIds": [
+        "api-audit",
+        "api-delivery",
+        "api-design",
+        "api-platform-architecture",
+        "api-product-strategy",
+        "api-publishing",
+        "monitoring-and-improving"
+      ]
+    },
+    "automation-owner": {
+      "stationIds": [
+        "api-audit",
+        "api-consumer-experience",
+        "api-delivery",
+        "api-design",
+        "api-platform-architecture",
+        "api-product-strategy",
+        "api-publishing",
+        "monitoring-and-improving"
+      ]
+    },
+    "business-owner": {
+      "stationIds": [
+        "api-audit",
+        "api-consumer-experience",
+        "api-delivery",
+        "api-design",
+        "api-platform-architecture",
+        "api-product-strategy",
+        "api-publishing",
+        "monitoring-and-improving"
+      ]
+    },
+    "capability-owner": {
+      "stationIds": [
+        "api-audit",
+        "api-consumer-experience",
+        "api-delivery",
+        "api-design",
+        "api-platform-architecture",
+        "api-product-strategy",
+        "api-publishing",
+        "monitoring-and-improving"
+      ]
+    },
+    "compliance-specialist": {
+      "stationIds": [
+        "api-audit",
+        "api-consumer-experience",
+        "api-delivery",
+        "api-design",
+        "api-platform-architecture",
+        "api-product-strategy",
+        "api-publishing",
+        "monitoring-and-improving"
+      ]
+    },
+    "customer-specialist": {
+      "stationIds": [
+        "api-consumer-experience",
+        "api-product-strategy"
+      ]
+    },
+    "domain-specialist": {
+      "stationIds": [
+        "api-consumer-experience",
+        "api-design",
+        "api-platform-architecture",
+        "api-product-strategy",
+        "monitoring-and-improving"
+      ]
+    },
+    "governance-specialist": {
+      "stationIds": [
+        "api-audit"
+      ]
+    },
+    "integration-architect": {
+      "stationIds": [
+        "api-audit",
+        "api-consumer-experience",
+        "api-delivery",
+        "api-design",
+        "api-platform-architecture",
+        "api-product-strategy",
+        "api-publishing",
+        "monitoring-and-improving"
+      ]
+    },
+    "operations-specialist": {
+      "stationIds": [
+        "api-audit",
+        "api-consumer-experience",
+        "api-delivery",
+        "api-platform-architecture",
+        "api-publishing",
+        "monitoring-and-improving"
+      ]
+    },
+    "partner-specialist": {
+      "stationIds": [
+        "api-consumer-experience",
+        "api-delivery",
+        "api-product-strategy",
+        "api-publishing"
+      ]
+    },
+    "platform-architect": {
+      "stationIds": [
+        "api-audit",
+        "api-delivery",
+        "api-design",
+        "api-platform-architecture",
+        "api-product-strategy",
+        "monitoring-and-improving"
+      ]
+    },
+    "platform-owner": {
+      "stationIds": [
+        "api-platform-architecture",
+        "api-product-strategy",
+        "monitoring-and-improving"
+      ]
+    },
+    "process-owner": {
+      "stationIds": [
+        "api-audit",
+        "api-consumer-experience",
+        "api-delivery",
+        "api-design",
+        "api-product-strategy",
+        "api-publishing",
+        "monitoring-and-improving"
+      ]
+    },
+    "security-specialist": {
+      "stationIds": [
+        "api-audit",
+        "api-delivery",
+        "api-design",
+        "api-platform-architecture",
+        "api-product-strategy",
+        "api-publishing",
+        "monitoring-and-improving"
+      ]
+    }
+  },
+  "byResource": {
+    "api-audit-checklist": {
+      "stationIds": [
+        "api-audit",
+        "api-delivery",
+        "api-design",
+        "api-publishing",
+        "contract-design",
+        "design-standards"
+      ]
+    },
+    "api-community-engagement-strategies": {
+      "stationIds": [
+        "api-consumer-adoption",
+        "api-promotion",
+        "monitoring-and-improving"
+      ]
+    },
+    "api-compliance-best-practices": {
+      "stationIds": [
+        "api-audit",
+        "legal-and-compliance"
+      ]
+    },
+    "api-design-principles": {
+      "stationIds": [
+        "api-design",
+        "design-standards"
+      ]
+    },
+    "api-development-best-practices": {
+      "stationIds": [
+        "api-delivery",
+        "development"
+      ]
+    },
+    "api-metrics-and-analytics": {
+      "stationIds": [
+        "api-platform-architecture",
+        "business-goals",
+        "monitoring-and-improving",
+        "operating-guidelines"
+      ]
+    },
+    "api-onboarding-best-practices": {
+      "stationIds": [
+        "api-consumer-adoption",
+        "api-consumer-experience",
+        "api-publishing"
+      ]
+    },
+    "api-portfolio-management-guidelines": {
+      "stationIds": [
+        "budget-and-resource-management",
+        "portfolio-management"
+      ]
+    },
+    "api-security-best-practices": {
+      "stationIds": [
+        "api-delivery",
+        "ci-cd",
+        "security-and-privacy"
+      ]
+    },
+    "api-team-structure-guidelines": {
+      "stationIds": [
+        "roles-and-responsibilities"
+      ]
+    },
+    "api-testing-best-practices": {
+      "stationIds": [
+        "api-delivery",
+        "ci-cd",
+        "test-automation"
+      ]
+    },
+    "api-training-programs": {
+      "stationIds": [
+        "api-mindset",
+        "upskilling"
+      ]
+    },
+    "api-versioning-best-practices": {
+      "stationIds": [
+        "release-management"
+      ]
+    },
+    "apiBusinessModelCanvas": {
+      "stationIds": [
+        "api-product-strategy",
+        "business-goals"
+      ]
+    },
+    "apiops-CI-CD-for-apis": {
+      "stationIds": [
+        "api-delivery",
+        "api-publishing",
+        "ci-cd",
+        "monitoring-and-improving",
+        "release-management",
+        "test-automation"
+      ]
+    },
+    "apiValuePropositionCanvas": {
+      "stationIds": [
+        "api-consumer-experience",
+        "api-product-strategy"
+      ]
+    },
+    "automation-operational-ownership-guide": {
+      "stationIds": []
+    },
+    "automation-readiness-checklist": {
+      "stationIds": []
+    },
+    "automation-rollback-supervision-guide": {
+      "stationIds": []
+    },
+    "automation-rollout-enablement-guide": {
+      "stationIds": []
+    },
+    "automation-testing-guide": {
+      "stationIds": []
+    },
+    "automation-trigger-handoff-exception-guide": {
+      "stationIds": []
+    },
+    "businessImpactCanvas": {
+      "stationIds": [
+        "api-platform-architecture"
+      ]
+    },
+    "capabilityBusinessModelCanvas": {
+      "stationIds": []
+    },
+    "capabilityValuePropositionCanvas": {
+      "stationIds": []
+    },
+    "capacityCanvas": {
+      "stationIds": [
+        "api-platform-architecture",
+        "scalable-infrastructure"
+      ]
+    },
+    "competitor-analysis-template": {
+      "stationIds": [
+        "competitive-analysis",
+        "market-insights"
+      ]
+    },
+    "consumerExperienceRequirementsCanvas": {
+      "stationIds": []
+    },
+    "contract-first-design": {
+      "stationIds": [
+        "api-design",
+        "contract-design",
+        "development"
+      ]
+    },
+    "cross-functional-collaboration-best-practices": {
+      "stationIds": [
+        "api-mindset"
+      ]
+    },
+    "customerJourneyCanvas": {
+      "stationIds": [
+        "api-consumer-experience",
+        "api-product-strategy",
+        "user-experience"
+      ]
+    },
+    "data-privacy-guidelines": {
+      "stationIds": [
+        "security-and-privacy"
+      ]
+    },
+    "decision-business-rules-guide": {
+      "stationIds": []
+    },
+    "domainCanvas": {
+      "stationIds": [
+        "api-design",
+        "api-product-strategy"
+      ]
+    },
+    "ecosystem-vision-template": {
+      "stationIds": [
+        "api-mindset",
+        "competitive-analysis",
+        "ecosystem-vision",
+        "market-insights",
+        "partner-integration"
+      ]
+    },
+    "eventCanvas": {
+      "stationIds": [
+        "api-design"
+      ]
+    },
+    "graphqlCanvas": {
+      "stationIds": [
+        "api-design"
+      ]
+    },
+    "industry-standards-and-best-practices": {
+      "stationIds": [
+        "market-insights"
+      ]
+    },
+    "integration-style-selection-guide": {
+      "stationIds": []
+    },
+    "interactionCanvas": {
+      "stationIds": [
+        "api-design"
+      ]
+    },
+    "locationsCanvas": {
+      "stationIds": [
+        "api-platform-architecture"
+      ]
+    },
+    "partner-integration-guidelines": {
+      "stationIds": [
+        "partner-integration"
+      ]
+    },
+    "process-workflow-design-guide": {
+      "stationIds": []
+    },
+    "restCanvas": {
+      "stationIds": [
+        "api-design"
+      ]
+    },
+    "role-communication-best-practices": {
+      "stationIds": [
+        "roles-and-responsibilities"
+      ]
+    },
+    "scalable-infrastructure-best-practices": {
+      "stationIds": [
+        "scalable-infrastructure"
+      ]
+    },
+    "service-agreement-template": {
+      "stationIds": [
+        "service-agreements"
+      ]
+    },
+    "stakeholder-engagement-best-practices": {
+      "stationIds": [
+        "business-goals"
+      ]
+    },
+    "test-automation-frameworks": {
+      "stationIds": []
+    },
+    "vendor-management-best-practices": {
+      "stationIds": [
+        "vendor-management"
+      ]
+    }
+  },
+  "byCycle": {
+    "capability-productization-cycle": {
+      "stationIds": [
+        "api-product-strategy",
+        "api-consumer-experience",
+        "api-platform-architecture",
+        "api-design",
+        "api-delivery",
+        "api-audit",
+        "api-publishing",
+        "monitoring-and-improving"
+      ],
+      "lineIds": [
+        "api-design-line",
+        "business-opportunities-line",
+        "delivery-line",
+        "operating-model-line",
+        "platform-architecture-line",
+        "publishing-and-adoption-line"
+      ]
+    },
+    "api-productization-cycle": {
+      "stationIds": [
+        "api-product-strategy",
+        "api-consumer-experience",
+        "api-platform-architecture",
+        "api-design",
+        "api-delivery",
+        "api-audit",
+        "api-publishing",
+        "monitoring-and-improving"
+      ],
+      "lineIds": [
+        "api-design-line",
+        "business-opportunities-line",
+        "delivery-line",
+        "operating-model-line",
+        "platform-architecture-line",
+        "publishing-and-adoption-line"
+      ]
+    },
+    "integration-productization-cycle": {
+      "stationIds": [
+        "api-product-strategy",
+        "api-consumer-experience",
+        "api-platform-architecture",
+        "api-design",
+        "api-delivery",
+        "api-audit",
+        "api-publishing",
+        "monitoring-and-improving"
+      ],
+      "lineIds": [
+        "api-design-line",
+        "business-opportunities-line",
+        "delivery-line",
+        "operating-model-line",
+        "platform-architecture-line",
+        "publishing-and-adoption-line"
+      ]
+    },
+    "automation-cycle": {
+      "stationIds": [
+        "api-product-strategy",
+        "api-consumer-experience",
+        "api-platform-architecture",
+        "api-design",
+        "api-delivery",
+        "api-audit",
+        "api-publishing",
+        "monitoring-and-improving"
+      ],
+      "lineIds": [
+        "api-design-line",
+        "business-opportunities-line",
+        "delivery-line",
+        "operating-model-line",
+        "platform-architecture-line",
+        "publishing-and-adoption-line"
+      ]
+    }
+  },
+  "byGoal": {
+    "automate-process": {
+      "recommendedCycleIds": [
+        "automation-cycle"
+      ],
+      "recommendedLineIds": [
+        "business-opportunities-line",
+        "api-design-line"
+      ],
+      "stationIds": [
+        "api-product-strategy",
+        "api-platform-architecture",
+        "api-design",
+        "api-delivery",
+        "api-audit",
+        "monitoring-and-improving"
+      ]
+    },
+    "create-or-improve-api": {
+      "recommendedCycleIds": [
+        "api-productization-cycle"
+      ],
+      "recommendedLineIds": [
+        "business-opportunities-line",
+        "api-design-line",
+        "delivery-line",
+        "publishing-and-adoption-line"
+      ],
+      "stationIds": [
+        "api-product-strategy",
+        "api-platform-architecture",
+        "api-design",
+        "api-delivery",
+        "api-audit",
+        "api-publishing",
+        "monitoring-and-improving"
+      ]
+    },
+    "design-integration": {
+      "recommendedCycleIds": [
+        "integration-productization-cycle"
+      ],
+      "recommendedLineIds": [
+        "platform-architecture-line",
+        "api-design-line",
+        "delivery-line"
+      ],
+      "stationIds": [
+        "api-product-strategy",
+        "api-consumer-experience",
+        "api-platform-architecture",
+        "api-design",
+        "api-delivery",
+        "api-audit"
+      ]
+    },
+    "explore-method": {
+      "recommendedCycleIds": [],
+      "recommendedLineIds": [],
+      "stationIds": []
+    },
+    "improve-reusable-capability": {
+      "recommendedCycleIds": [
+        "capability-productization-cycle"
+      ],
+      "recommendedLineIds": [
+        "platform-architecture-line"
+      ],
+      "stationIds": [
+        "api-product-strategy",
+        "api-consumer-experience",
+        "api-platform-architecture"
+      ]
+    }
+  }
+}
