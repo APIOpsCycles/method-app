@@ -161,6 +161,12 @@
   --font-code: "JetBrains Mono", "SFMono-Regular", Consolas, monospace;
 }
 
+.ds-example-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
 .ds-canvas-system {
   display: grid;
   gap: 14px;
@@ -770,7 +776,7 @@
 }
 
 .ds-stakeholder-role-selector {
-  display: grid;
+  display: flex;
   gap: 8px;
   max-width: 430px;
   width: 100%;
@@ -788,7 +794,7 @@
   border-radius: 6px;
   color: inherit;
   min-height: 42px;
-  padding: 8px 10px;
+  padding: 2px 4px;
   width: 100%;
 }
 
