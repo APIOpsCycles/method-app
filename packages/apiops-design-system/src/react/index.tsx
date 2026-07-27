@@ -37,13 +37,13 @@ export function SvgAssetDownload({ source, filename, symbolId, viewBox }: { sour
       let contents = await response.text();
       if (symbolId) {
         const document = new DOMParser().parseFromString(contents, "image/svg+xml");
-        const symbol = document.getElementById(symbolId);
-        if (document.querySelector("parsererror") || !symbol) throw new Error("SVG symbol was not found");
-        const resolvedViewBox = viewBox ?? symbol.getAttribute("viewBox") ?? "0 0 96 96";
+        const extractedNode = document.getElementById(symbolId);
+        if (document.querySelector("parsererror") || !extractedNode) throw new Error("SVG fragment was not found");
+        const resolvedViewBox = viewBox ?? extractedNode.getAttribute("viewBox") ?? "0 0 96 96";
         const embeddedDefinitions = Array.from(document.querySelectorAll("defs"))
           .map((definitions) => definitions.innerHTML)
           .join("");
-        contents = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${resolvedViewBox}"><defs>${embeddedDefinitions}${symbol.outerHTML}</defs><use href="#${symbolId}" /></svg>`;
+        contents = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${resolvedViewBox}"><defs>${embeddedDefinitions}${extractedNode.outerHTML}</defs><use href="#${symbolId}" /></svg>`;
       }
       const url = URL.createObjectURL(new Blob([contents], { type: "image/svg+xml;charset=utf-8" }));
       const link = document.createElement("a");
