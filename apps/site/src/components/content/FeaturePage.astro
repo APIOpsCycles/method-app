@@ -1,0 +1,17 @@
+---
+interface Detail { title: string; text: string }
+interface Props { kicker: string; title: string; lead: string; sectionKicker: string; sectionTitle: string; sectionIntro: string; details: Detail[]; calloutTitle: string; calloutText: string; ctaHref: string; ctaLabel: string; technical?: boolean }
+const { kicker, title, lead, sectionKicker, sectionTitle, sectionIntro, details, calloutTitle, calloutText, ctaHref, ctaLabel, technical = false } = Astro.props;
+---
+<main class:list={["public-content", "feature-page", { "feature-page--technical": technical }]}>
+  <nav class="feature-page__back" aria-label="Feature navigation"><a href="/#features">← All features</a></nav>
+  <section class="public-hero">
+    <p class="public-kicker">{kicker}</p><h1>{title}</h1><p>{lead}</p>
+    <a class="feature-page__cta" href={ctaHref}>{ctaLabel}</a>
+  </section>
+  <section class="public-section feature-page__overview" aria-labelledby="feature-detail-heading">
+    <div><p class="public-kicker">{sectionKicker}</p><h2 id="feature-detail-heading">{sectionTitle}</h2><p>{sectionIntro}</p></div>
+    <div class="feature-page__details">{details.map((detail) => <article><h3>{detail.title}</h3><p>{detail.text}</p></article>)}</div>
+  </section>
+  <section class="public-section feature-page__try"><p class="public-kicker">Put it to work</p><h2>{calloutTitle}</h2><p>{calloutText}</p><a class="feature-page__cta feature-page__cta--light" href={ctaHref}>{ctaLabel}</a></section>
+</main>

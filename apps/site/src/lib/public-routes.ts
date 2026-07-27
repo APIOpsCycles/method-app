@@ -1,6 +1,6 @@
 import { defaultLocale, getCatalog, locales, localePrefix, publicResources, resourcePath, type Locale } from "./method-data";
 
-export type RouteKind = "home" | "cycle" | "station" | "cycleStation" | "role" | "resource" | "line" | "cycleLine" | "partners" | "faq" | "licensing" | "data" | "designSystem" | "contextualNavigation";
+export type RouteKind = "home" | "cycle" | "station" | "cycleStation" | "role" | "resource" | "line" | "cycleLine" | "partners" | "faq" | "licensing" | "data" | "designSystem" | "feature";
 export type PublicRoute = { kind: RouteKind; locale: Locale; path: string; alternateKey?: string };
 
 /** One indexing policy shared by sitemap and future route discovery surfaces. */
@@ -27,7 +27,7 @@ export function publicRouteInventory(): PublicRoute[] {
   return [
     ...localized,
     { kind: "designSystem", locale: defaultLocale, path: "/design-system" },
-    { kind: "contextualNavigation", locale: defaultLocale, path: "/features/contextual-navigation" },
+    ...["contextual-navigation", "semantic-knowledge-graph", "multi-cycle-method", "ai-ready-method", "open-json-data", "canvas-workspace"].map((slug) => ({ kind: "feature" as const, locale: defaultLocale, path: `/features/${slug}` })),
   ];
 }
 
