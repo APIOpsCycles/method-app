@@ -50,7 +50,25 @@ for (const goal of [...goals].sort((a,b) => a.id.localeCompare(b.id))) {
   byGoal[goal.id] = { recommendedCycleIds: [...new Set(goal.recommendedCycleIds)], recommendedLineIds: [...new Set(goal.recommendedLineIds)], stationIds: derivedStationIds };
 }
 if (errors.length) throw new Error(`Method graph validation failed:\n- ${errors.join("\n- ")}`);
-const graph = { version: 1, byStation, byStakeholder, byResource, byCycle, byLine, byGoal };
+const graph = {
+  version: 2,
+  metadata: {
+    defaultLocale: "en",
+    locales: ["en", "fi", "fr", "de", "pt"],
+    companionFiles: {
+      catalog: "/data/method-catalog.{locale}.json",
+      goals: "/data/method-goals.json",
+      routes: "/data/route-index.json",
+    },
+    usage: "Resolve graph keys against entity ids in the localized method catalog; resolve byGoal keys against method-goals.json.",
+  },
+  byStation,
+  byStakeholder,
+  byResource,
+  byCycle,
+  byLine,
+  byGoal,
+};
 const localizedGoals = Object.fromEntries(["en", "fi", "fr", "de", "pt"].map((locale) => [locale, goals.map((goal) => ({ id: goal.id, label: goal.label[locale] ?? goal.label.en, description: goal.description[locale] ?? goal.description.en }))]));
 for (const directory of ["generated/method", "public/data"]) { mkdirSync(path.join(root, directory), { recursive: true }); writeFileSync(path.join(root, directory, "method-graph.json"), `${JSON.stringify(graph, null, 2)}\n`); writeFileSync(path.join(root, directory, "method-goals.json"), `${JSON.stringify({ version: 1, translations: localizedGoals }, null, 2)}\n`); }
 console.log(`Generated method graph: ${Object.keys(byStation).length} stations, ${Object.keys(byStakeholder).length} stakeholders, ${Object.keys(byGoal).length} goals`);

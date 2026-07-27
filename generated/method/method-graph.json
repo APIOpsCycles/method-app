@@ -1,5 +1,21 @@
 {
-  "version": 1,
+  "version": 2,
+  "metadata": {
+    "defaultLocale": "en",
+    "locales": [
+      "en",
+      "fi",
+      "fr",
+      "de",
+      "pt"
+    ],
+    "companionFiles": {
+      "catalog": "/data/method-catalog.{locale}.json",
+      "goals": "/data/method-goals.json",
+      "routes": "/data/route-index.json"
+    },
+    "usage": "Resolve graph keys against entity ids in the localized method catalog; resolve byGoal keys against method-goals.json."
+  },
   "byStation": {
     "api-audit": {
       "cycleIds": [

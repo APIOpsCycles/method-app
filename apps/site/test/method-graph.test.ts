@@ -16,6 +16,21 @@ test("generated graph contains valid, deduplicated adjacency", () => {
   }
 });
 
+test("published graph documents how its locale-neutral ids join to companion data", () => {
+  assert.equal(methodGraph.version, 2);
+  assert.equal(methodGraph.metadata.defaultLocale, "en");
+  assert.equal(methodGraph.metadata.companionFiles.catalog, "/data/method-catalog.{locale}.json");
+  assert.equal(methodGraph.metadata.companionFiles.goals, "/data/method-goals.json");
+});
+
+test("MCP manifest includes the graph and every file required to interpret it", () => {
+  const manifest = JSON.parse(readFileSync(new URL("../../../generated/method/mcp-method-manifest.json", import.meta.url), "utf8"));
+  assert.ok(manifest.dataFiles.includes(manifest.graph.file));
+  assert.ok(manifest.dataFiles.includes(manifest.graph.goals));
+  assert.equal(manifest.graph.labels, "/data/method-catalog.{locale}.json");
+  assert.equal(manifest.graph.joinKey, "id");
+});
+
 test("generated graph indexes every line's stations and intersecting cycles", () => {
   const stationIds = new Set(Object.keys(methodGraph.byStation));
   for (const [lineId, line] of Object.entries(methodGraph.byLine)) {
