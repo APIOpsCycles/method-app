@@ -1,7 +1,6 @@
 import eslint from "@eslint/js";
 import { defineConfig, globalIgnores } from "eslint/config";
 import astro from "eslint-plugin-astro";
-import react from "eslint-plugin-react";
 import reactHooks from "eslint-plugin-react-hooks";
 import globals from "globals";
 import tseslint from "typescript-eslint";
@@ -19,21 +18,6 @@ export default defineConfig([
         ...globals.node,
       },
     },
-  },
-  {
-    files: ["**/*.{jsx,tsx}"],
-    ...react.configs.flat.recommended,
-    languageOptions: {
-      ...react.configs.flat.recommended.languageOptions,
-      globals: globals.browser,
-    },
-    settings: {
-      react: { version: "detect" },
-    },
-  },
-  {
-    files: ["**/*.{jsx,tsx}"],
-    ...react.configs.flat["jsx-runtime"],
   },
   {
     files: ["**/*.{jsx,tsx}"],
