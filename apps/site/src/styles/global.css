@@ -2447,6 +2447,10 @@ pre {
   transform: translateY(-1px);
 }
 
+.ds-partner-card:last-child {
+  border: 3px solid var(--apiops-accent-community);
+}
+
 .ds-partner-card img {
   display: block;
   max-height: 34px;
