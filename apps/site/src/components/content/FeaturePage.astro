@@ -1,0 +1,20 @@
+---
+interface Detail { title: string; text: string }
+import { featureUi } from "../../content/features";
+import { defaultLocale, localePrefix, type Locale } from "../../lib/method-data";
+interface Props { locale?: Locale; kicker: string; title: string; lead: string; sectionKicker: string; sectionTitle: string; sectionIntro: string; details: Detail[]; calloutTitle: string; calloutText: string; ctaHref: string; ctaLabel: string; technical?: boolean }
+const { locale = defaultLocale, kicker, title, lead, sectionKicker, sectionTitle, sectionIntro, details, calloutTitle, calloutText, ctaHref, ctaLabel, technical = false } = Astro.props;
+---
+<main class:list={["public-content", "feature-page", { "feature-page--technical": technical }]}>
+  <nav class="feature-page__back" aria-label={featureUi[locale].kicker}><a href={`${localePrefix(locale)}/#features`}>← {featureUi[locale].all}</a></nav>
+  <section class="public-hero">
+    <p class="public-kicker">{kicker}</p><h1>{title}</h1><p>{lead}</p>
+    <a class="feature-page__cta" href={ctaHref}>{ctaLabel}</a>
+  </section>
+  <section class="public-section feature-page__overview" aria-labelledby="feature-detail-heading">
+    <div><p class="public-kicker">{sectionKicker}</p><h2 id="feature-detail-heading">{sectionTitle}</h2><p>{sectionIntro}</p></div>
+    <div class="feature-page__details">{details.map((detail) => <article><h3>{detail.title}</h3><p>{detail.text}</p></article>)}</div>
+  </section>
+  <slot />
+  <section class="public-section feature-page__try"><p class="public-kicker">{featureUi[locale].work}</p><h2>{calloutTitle}</h2><p>{calloutText}</p><a class="feature-page__cta feature-page__cta--light" href={ctaHref}>{ctaLabel}</a></section>
+</main>

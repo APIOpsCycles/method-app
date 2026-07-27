@@ -1,0 +1,18 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import FeaturePage from "../../components/content/FeaturePage.astro";
+import { metadataForRoute } from "../../lib/seo";
+const canonicalPath = "/features/semantic-knowledge-graph";
+const description = "A technical guide to the typed, validated APIOps Cycles method graph and its deterministic context resolution.";
+const seo = metadataForRoute("feature", "en", canonicalPath);
+---
+<BaseLayout title="Semantic Knowledge Graph" description={description} lang="en" canonicalPath={canonicalPath} {...seo}>
+  <FeaturePage technical kicker="Graph architecture" title="The method, as a queryable graph" lead="APIOps Cycles compiles its catalog into typed adjacency indexes. Cycles, lines, stations, stakeholders, goals, and resources retain stable identities while their relationships become directly traversable." sectionKicker="For implementers" sectionTitle="Deterministic context, built ahead of time" sectionIntro="The build step validates references, deduplicates edges, and emits a static graph. The browser can resolve context and rank routes without a database, opaque recommendation service, or network round trip." details={[
+    { title: "Typed nodes and edges", text: "Station indexes expose cycle and line membership, stakeholder involvement, attached resources, and next-station edges. Reverse indexes make stakeholder, resource, cycle, line, and goal lookups direct." },
+    { title: "Validated compilation", text: "The generator rejects dangling station, cycle, line, stakeholder, and resource references. Stable sorting makes generated output reviewable, cacheable, and suitable for version control." },
+    { title: "Order has semantics", text: "Cycle station order remains canonical journey order. Goal paths are derived from the intersection of recommended cycles and lines, preserving that order as the final resolution tie-breaker." },
+    { title: "Explainable ranking", text: "A station is strongly emphasized when it matches both role and goal, moderately emphasized when it matches either, and otherwise left unchanged. Recommended next stations use the same explicit score." },
+    { title: "Route-aware identity", text: "The same station may occur in several cycles. An explicit cycle in the URL is promoted only when the graph confirms membership, so shared content keeps its journey context." },
+    { title: "Portable artifact", text: "The versioned method-graph.json output is published with the open data, allowing search, visualization, agents, and other clients to share the site's relationship model." },
+  ]} calloutTitle="Inspect the graph as data" calloutText="Download the generated graph, compare its indexes, and build a traversal that fits your own toolchain." ctaHref="/data/method-graph.json" ctaLabel="Open method-graph.json" />
+</BaseLayout>

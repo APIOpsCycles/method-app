@@ -1,0 +1,24 @@
+---
+import { featurePath, featureUi, getFeatures } from "../../content/features";
+import { defaultLocale, type Locale } from "../../lib/method-data";
+interface Props { locale?: Locale; heading?: string; intro?: string }
+const { locale = defaultLocale, heading = featureUi[locale].heading, intro = featureUi[locale].intro } = Astro.props;
+const features = getFeatures(locale);
+---
+<section class="feature-showcase" id="features" aria-labelledby="feature-showcase-heading">
+  <div class="feature-showcase__intro">
+    <p class="public-kicker">{featureUi[locale].kicker}</p>
+    <h2 id="feature-showcase-heading">{heading}</h2>
+    <p>{intro}</p>
+  </div>
+  <div class="feature-showcase__grid">
+    {features.map((feature) => (
+      <a class="feature-card" href={featurePath(locale, feature.slug)}>
+        <span class="feature-card__marker" aria-hidden="true">{feature.marker}</span>
+        <h3>{feature.title}</h3>
+        <p>{feature.summary}</p>
+        <span class="feature-card__link">{featureUi[locale].explore} <span aria-hidden="true">→</span></span>
+      </a>
+    ))}
+  </div>
+</section>

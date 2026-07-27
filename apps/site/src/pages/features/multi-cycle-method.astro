@@ -1,0 +1,40 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import FeaturePage from "../../components/content/FeaturePage.astro";
+import { metadataForRoute } from "../../lib/seo";
+import { metroLineColor } from "../../lib/line-colors";
+
+const canonicalPath = "/features/multi-cycle-method";
+const seo = metadataForRoute("feature", "en", canonicalPath);
+const cycles = [
+  { title: "Capability Productization", href: "/cycles/capability-productization-cycle", description: "Turn a business capability into a reusable digital capability before choosing its implementation style." },
+  { title: "API Productization", href: "/cycles/api-productization-cycle", description: "Productize, design, deliver, publish, and continuously improve an API." },
+  { title: "Integration Productization", href: "/cycles/integration-productization-cycle", description: "Shape reusable integration capabilities before selecting how they will be implemented." },
+  { title: "Automation", href: "/cycles/automation-cycle", description: "Identify, design, deliver, enable, and improve automation opportunities." },
+];
+const lines = [
+  { title: "Business Opportunities", slug: "business-opportunities-line" },
+  { title: "Platform Architecture", slug: "platform-architecture-line" },
+  { title: "Design", slug: "api-design-line" },
+  { title: "Delivery", slug: "delivery-line" },
+  { title: "Publishing and Adoption", slug: "publishing-and-adoption-line" },
+  { title: "Operating Model", slug: "operating-model-line" },
+];
+---
+<BaseLayout title="Multi-cycle Method" description="Use connected APIOps Cycles journeys without reducing product work to one linear process." lang="en" canonicalPath={canonicalPath} {...seo}>
+  <FeaturePage kicker="Connected journeys" title="One method. Multiple cycles." lead="API and integration products do not move through a single funnel. Choose the cycle that matches the outcome in front of you, then cross into another journey when the work changes." sectionKicker="Method structure" sectionTitle="Journeys overlap where the work overlaps" sectionIntro="Cycles supply goal-oriented sequences, while metro lines connect related practices across those sequences. Shared stations make handoffs explicit rather than duplicating guidance." details={[
+    { title: "Start with the outcome", text: "Select a cycle for the current initiative instead of treating every station as a mandatory maturity ladder." },
+    { title: "Keep canonical order", text: "Each cycle provides a deliberate station sequence, giving teams a coherent path while leaving room to enter where their work actually begins." },
+    { title: "Cross cycle boundaries", text: "Metro lines reveal the same practice in different journeys, making it easy to continue a concern such as design, governance, or operations." },
+    { title: "Reuse shared stations", text: "A station can participate in multiple cycles. Its decisions and resources stay consistent while the surrounding journey context changes." },
+  ]} calloutTitle="Choose your current journey" calloutText="Open a cycle to follow its ordered journey, or choose a metro line to trace one practice across cycle boundaries." ctaHref="/#method-context-controls" ctaLabel="Explore the complete method map">
+    <section class="public-section cycle-showcase" aria-labelledby="included-cycles-heading">
+      <div class="cycle-showcase__heading"><p class="public-kicker">Four connected cycles</p><h2 id="included-cycles-heading">Choose the journey that fits the work</h2><p>Every cycle offers its own ordered route through shared method stations. The metro lines below are the cross-cutting practices that connect them.</p></div>
+      <div class="cycle-showcase__map" aria-label="Four method cycles connected by six metro lines">
+        <div class="cycle-showcase__tracks" aria-hidden="true">{lines.map((line) => <span style={`--track-color:${metroLineColor(line.slug)}`}></span>)}</div>
+        <div class="cycle-showcase__cycles">{cycles.map((cycle, index) => <a class="cycle-showcase__node" href={cycle.href}><span>{String(index + 1).padStart(2, "0")}</span><strong>{cycle.title}</strong><small>{cycle.description}</small></a>)}</div>
+      </div>
+      <nav class="cycle-showcase__lines" aria-label="Metro lines">{lines.map((line) => <a href={`/lines/${line.slug}`} style={`--line-color:${metroLineColor(line.slug)}`}><span aria-hidden="true"></span>{line.title} Line</a>)}</nav>
+    </section>
+  </FeaturePage>
+</BaseLayout>

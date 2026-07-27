@@ -5,6 +5,7 @@ import MethodMap from "./MethodMap.astro";
 import { PublicPillList } from "../islands/PublicSelectors";
 import ContextualLinesSection from "../islands/ContextualLinesSection";
 import MethodContext from "./MethodContext.astro";
+import FeatureShowcase from "./FeatureShowcase.astro";
 interface Props { locale: Locale }
 const { locale } = Astro.props;
 const data = getCatalog(locale);
@@ -14,6 +15,7 @@ const labels = getLabels(locale);
 <main class="public-content">
   <MethodContext locale={locale} here="APIOps Cycles" />
   <section class="public-hero"><p class="public-kicker">{labels["home.kicker"]}</p><h1>{labels["home.title"]}</h1><p>{labels["home.description"]}</p></section>
+  <FeatureShowcase locale={locale} />
   <section class="public-section island-stack" aria-label={labels["tools.interactive"]}>
     <MethodMap locale={locale} />
     <noscript><p class="no-script-note">Use the cycle, station, and stakeholder links above to open permanent method pages without JavaScript.</p></noscript>

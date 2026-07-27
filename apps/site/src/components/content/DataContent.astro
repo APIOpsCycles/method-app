@@ -2,11 +2,12 @@
 import { defaultLocale, type Locale } from "../../lib/method-data";
 interface Props { locale?: Locale }
 const locale = Astro.props.locale ?? defaultLocale;
-const localizedFiles = ["method-catalog", "site-labels", "canvas-manifest", "export-templates", "prompt-packs"];
-const sharedFiles = ["route-index.json", "mcp-method-manifest.json", "partners.json", "announcement.json"];
+const localizedFiles = ["method-catalog", "canvas-manifest", "export-templates", "prompt-packs"];
+const integrationFiles = ["method-graph.json", "mcp-method-manifest.json"];
 ---
 <main class="public-content">
   <section class="public-hero"><p class="public-kicker">Open data</p><h1>Static method data</h1><p>Download generated JSON for the {locale.toUpperCase()} catalog, integrations, and offline tools.</p></section>
   <section class="public-section"><h2>Localized files</h2><ul class="public-link-list">{localizedFiles.map((name) => <li><a href={`/data/${name}.${locale}.json`} download>{name}.{locale}.json</a></li>)}</ul></section>
-  <section class="public-section"><h2>Shared files</h2><ul class="public-link-list">{sharedFiles.map((name) => <li><a href={`/data/${name}`} download>{name}</a></li>)}</ul></section>
+  <section class="public-section"><h2>Method structure and integrations</h2><p>The knowledge graph contains the relationships that connect method entities. The MCP manifest describes the method surfaces available to AI tooling.</p><ul class="public-link-list">{integrationFiles.map((name) => <li><a href={`/data/${name}`} download>{name}</a></li>)}</ul></section>
+  <section class="public-section"><h2>Canonical source data</h2><p>These files are generated from the open <a href="https://github.com/APIOpsCycles/apiops-cycles-method-data" target="_blank" rel="noreferrer">apiops-cycles-method-data repository</a>. Use the repository to inspect history, propose method changes, or integrate from the canonical source.</p></section>
 </main>
