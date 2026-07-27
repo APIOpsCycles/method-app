@@ -2156,6 +2156,7 @@ const partners = {
     ? readJson(partnerDataFile).map((partner) => ({
         ...partner,
         logo: partner.logo === "/favicon.svg" ? "/design-system/favicons/favicon.svg" : partner.logo,
+        href: partner.href ?? "https://tally.so/r/3yQEpp" ? "https://www.apiops.info/" : partner.href,
       }))
     : [],
 };
