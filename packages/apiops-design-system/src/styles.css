@@ -20,7 +20,9 @@
 .ds-partner-card img { display: block; max-height: 34px; max-width: 170px; }
 .ds-partner-card h3, .ds-partner-card p { color: var(--ds-muted); }
 .ds-announcement { align-items: center; background: linear-gradient(135deg, #174ee6, #8a2be2); border-radius: 14px; display: flex; gap: 14px; max-width: min(480px, calc(100vw - 44px)); padding: 14px 16px; z-index: 60; }
-.ds-announcement p, .ds-announcement button { color: #fff; }
+.ds-announcement p { color: #fff; }
+.ds-announcement button { align-items: center; appearance: none; background: rgba(0, 0, 0, .18); border: 1px solid rgba(255, 255, 255, .5); border-radius: 6px; color: #fff; display: inline-flex; flex: 0 0 36px; height: 36px; justify-content: center; padding: 0; }
+.ds-announcement button:hover { background: rgba(0, 0, 0, .28); }
 
 /* Persistent method context: summary, progressive editor, and route guidance. */
 .ds-method-context { align-items: stretch; background: var(--color-neutral-paper); border: 1px solid var(--panel-border); border-radius: 12px; box-shadow: 0 5px 18px color-mix(in srgb, var(--color-neutral-graphite) 8%, transparent); display: flex; justify-content: space-between; min-height: 76px; padding: 10px 14px; }
