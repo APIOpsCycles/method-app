@@ -5,7 +5,7 @@ const site =
   process.env.PUBLIC_SITE_ORIGIN ??
   process.env.NEXT_PUBLIC_SITE_ORIGIN ??
   process.env.SITE_ORIGIN ??
-  "https://beta.apiopscycles.com";
+  "https://apiopscycles.com";
 
 export default defineConfig({
   output: "static",

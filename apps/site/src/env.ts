@@ -2,7 +2,7 @@ const configuredOrigin =
   import.meta.env.PUBLIC_SITE_ORIGIN ??
   import.meta.env.NEXT_PUBLIC_SITE_ORIGIN ??
   import.meta.env.SITE_ORIGIN ??
-  "https://beta.apiopscycles.com";
+  "https://apiopscycles.com";
 
 export const siteOrigin = configuredOrigin.replace(/\/$/, "");
 

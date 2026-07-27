@@ -1,6 +1,6 @@
 import { defaultLocale, getCatalog, locales, localePrefix, publicResources, resourcePath, type Locale } from "./method-data";
 
-export type RouteKind = "home" | "cycle" | "station" | "cycleStation" | "role" | "resource" | "line" | "cycleLine" | "partners" | "faq" | "licensing" | "data" | "designSystem";
+export type RouteKind = "home" | "cycle" | "station" | "cycleStation" | "role" | "resource" | "line" | "cycleLine" | "partners" | "faq" | "licensing" | "data" | "designSystem" | "contextualNavigation";
 export type PublicRoute = { kind: RouteKind; locale: Locale; path: string; alternateKey?: string };
 
 /** One indexing policy shared by sitemap and future route discovery surfaces. */
@@ -24,7 +24,11 @@ export function publicRouteInventory(): PublicRoute[] {
     ] satisfies PublicRoute[];
   });
   // Compatibility /method routes are deliberately absent. This English-only route has no alternates.
-  return [...localized, { kind: "designSystem", locale: defaultLocale, path: "/design-system" }];
+  return [
+    ...localized,
+    { kind: "designSystem", locale: defaultLocale, path: "/design-system" },
+    { kind: "contextualNavigation", locale: defaultLocale, path: "/features/contextual-navigation" },
+  ];
 }
 
 export function routeAlternates(route: PublicRoute, inventory: PublicRoute[]) {

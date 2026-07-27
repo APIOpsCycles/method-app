@@ -1,31 +1,31 @@
 {
-  "id": "announcement_v3_live_2026_07_16e",
-  "href": "#community",
+  "id": "announcement_personalized_navigation_2026_07_27",
+  "href": "/features/contextual-navigation",
   "defaultLocale": "en",
   "translations": {
     "en": {
-      "message": "Version 2.0 is live with faster loading times!",
-      "linkLabel": "See what's new",
+      "message": "Make the method your own! Select a role and goal, then transit to more cycles.",
+      "linkLabel": "Explore contextual navigation",
       "dismissLabel": "Dismiss announcement"
     },
     "fi": {
-      "message": "Versio 2.0 on julkaistu nopeammilla latausajoilla!",
-      "linkLabel": "Katso, mikä on uutta",
+      "message": "Tee menetelmästä omasi! Valitse rooli ja tavoite ja siirry uusiin sykleihin.",
+      "linkLabel": "Tutustu kontekstuaaliseen navigointiin",
       "dismissLabel": "Sulje ilmoitus"
     },
     "fr": {
-      "message": "La version 2.0 est disponible avec des temps de chargement plus rapides !",
-      "linkLabel": "Voir les nouveautés",
+      "message": "Appropriez-vous la méthode ! Sélectionnez un rôle et un objectif, puis passez à d'autres cycles.",
+      "linkLabel": "Découvrir la navigation contextuelle",
       "dismissLabel": "Fermer l'annonce"
     },
     "de": {
-      "message": "Version 2.0 ist live mit schnelleren Ladezeiten!",
-      "linkLabel": "Neuigkeiten ansehen",
+      "message": "Machen Sie die Methode zu Ihrer eigenen! Wählen Sie Rolle und Ziel und wechseln Sie zu weiteren Zyklen.",
+      "linkLabel": "Kontextnavigation entdecken",
       "dismissLabel": "Ankündigung schließen"
     },
     "pt": {
-      "message": "A versão 2.0 está no ar com tempos de carregamento mais rápidos!",
-      "linkLabel": "Ver novidades",
+      "message": "Adapte o método a você! Selecione uma função e um objetivo e avance para mais ciclos.",
+      "linkLabel": "Explorar a navegação contextual",
       "dismissLabel": "Fechar anúncio"
     }
   }

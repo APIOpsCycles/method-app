@@ -20,6 +20,7 @@ interface Props {
   twitterCard?: "summary" | "summary_large_image" | "app" | "player";
   twitterSite?: string;
   twitterCreator?: string;
+  socialImage?: string;
   twitterImage?: string;
   jsonLd?: Record<string, unknown> | Record<string, unknown>[];
   robots?: string;
@@ -36,7 +37,8 @@ const {
   twitterCard = "summary_large_image",
   twitterSite,
   twitterCreator,
-  twitterImage,
+  socialImage = "/apiops-cycles-2026-card.jpg",
+  twitterImage = socialImage,
   jsonLd,
   robots,
 } = Astro.props;
@@ -78,12 +80,15 @@ const ad = selectAd(undefined, Astro.url.pathname);
     <meta property="og:description" content={description} />
     <meta property="og:type" content={openGraphType} />
     <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={canonicalUrl(socialImage)} />
+    <meta property="og:image:alt" content="APIOps Cycles method overview" />
     <meta name="twitter:card" content={twitterCard} />
     <meta name="twitter:title" content={pageTitle} />
     <meta name="twitter:description" content={description} />
     {twitterSite && <meta name="twitter:site" content={twitterSite} />}
     {twitterCreator && <meta name="twitter:creator" content={twitterCreator} />}
     {twitterImage && <meta name="twitter:image" content={canonicalUrl(twitterImage)} />}
+    {twitterImage && <meta name="twitter:image:alt" content="APIOps Cycles method overview" />}
   </head>
   <body>
     <div class="global-site-shell">

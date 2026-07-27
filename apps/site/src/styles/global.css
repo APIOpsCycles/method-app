@@ -212,6 +212,66 @@ a {
   text-transform: uppercase;
 }
 
+.feature-page__cta {
+  background: var(--apiops-accent-community, #0069c0);
+  border-radius: 999px;
+  color: #fff;
+  display: inline-block;
+  font-weight: 800;
+  margin-top: 1rem;
+  padding: .8rem 1.2rem;
+  text-decoration: none;
+}
+
+.feature-page__flow,
+.feature-page__graph {
+  display: grid;
+  gap: clamp(2rem, 5vw, 4rem);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.feature-page__steps {
+  display: grid;
+  gap: 1rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.feature-page__steps li {
+  background: var(--panel, #fff);
+  border: 1px solid var(--panel-border, #d7dfed);
+  border-radius: 1rem;
+  display: grid;
+  gap: .35rem;
+  padding: 1.25rem;
+}
+
+.feature-page__graph-visual {
+  background: linear-gradient(145deg, #eef5ff, #f7efff);
+  border: 1px solid var(--panel-border, #d7dfed);
+  border-radius: 1.5rem;
+  min-height: 330px;
+  overflow: hidden;
+  position: relative;
+}
+
+.feature-page__graph-visual svg { height: 100%; inset: 0; position: absolute; width: 100%; }
+.feature-page__graph-visual path { fill: none; stroke: #617291; stroke-width: 5; }
+.feature-node { background: #fff; border: 3px solid #174ee6; border-radius: 999px; font-size: .82rem; font-weight: 800; padding: .65rem .8rem; position: absolute; text-align: center; transform: translate(-50%, -50%); z-index: 1; }
+.feature-node--role { left: 21%; top: 21%; }
+.feature-node--goal { border-color: #8a2be2; left: 21%; top: 79%; }
+.feature-node--station { background: #07152c; border-color: #07152c; color: #fff; left: 58%; top: 50%; }
+.feature-node--cycle-one { border-color: #00a878; left: 87%; top: 24%; }
+.feature-node--cycle-two { border-color: #f47c20; left: 87%; top: 77%; }
+.feature-page__try { background: linear-gradient(135deg, #07152c, #173b73); border-radius: 1.5rem; color: #fff; padding: clamp(1.5rem, 5vw, 3rem); }
+.feature-page__try .public-kicker { color: #90c7ff; }
+
+@media (max-width: 48rem) {
+  .feature-page__flow,
+  .feature-page__graph { grid-template-columns: 1fr; }
+}
+
 .public-hero h1 {
   font-family: var(--font-heading, "Urbanist", sans-serif);
   font-size: clamp(2.5rem, 7vw, 5rem);
