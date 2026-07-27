@@ -3272,6 +3272,11 @@ pre {
   margin: 0;
 }
 
+.ds-announcement p a {
+  color: inherit;
+  font-weight: 700;
+}
+
 
 .ds-announcement button {
   color: #ffffff;
