@@ -6,6 +6,7 @@ const route = new URL("../src/pages/design-system.astro", import.meta.url);
 const source = readFileSync(route, "utf8");
 const layoutSource = readFileSync(new URL("../src/layouts/BaseLayout.astro", import.meta.url), "utf8");
 const globalStyles = readFileSync(new URL("../src/styles/global.css", import.meta.url), "utf8");
+const humanStories = readFileSync(new URL("../../../packages/apiops-design-system/src/assets/humans/apiops-stick-figures-stories.svg", import.meta.url), "utf8");
 
 test("the English-only design system static route documents its public contract", () => {
   assert.equal(existsSync(route), true);
@@ -17,11 +18,20 @@ test("the English-only design system static route documents its public contract"
   assert.match(source, /Individual SVG symbols/);
   assert.match(source, /apiops-metro-icons\.svg\?raw/);
   assert.match(source, /apiops-stick-figures-poses\.svg\?raw/);
+  assert.match(source, /import humanStories from "@apiops\/design-system\/assets\/humans\/apiops-stick-figures-stories\.svg\?raw"/);
+  assert.match(source, /title: "Human stories"[^\n]*symbols: storySymbols\(humanStories, "humans\/apiops-stick-figures-stories\.svg"\)/);
   assert.match(source, /React export inventory/);
   assert.match(source, /Role participation table/);
   assert.match(source, /RoleParticipationDesignSystemExample/);
   assert.match(source, /meaning never depends on color alone/);
   assert.ok(source.indexOf("Metro components") < source.indexOf("<MetroDesignSystemExample"), "metro guidance precedes its colocated example");
+});
+
+test("the Human stories inventory splits the story compositions, not their figure poses", () => {
+  const storyIds = [...humanStories.matchAll(/data-symbol-view-box="[^"]+"/g)];
+  assert.equal(storyIds.length, 6);
+  assert.match(humanStories, /id="story-better-conversations"/);
+  assert.match(humanStories, /id="story-stronger-together"/);
 });
 
 test("the design system route has no generated localized variant", () => {

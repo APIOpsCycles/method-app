@@ -41,11 +41,14 @@ const supportedGroups = ["color", "typography", "spacing", "radius", "shadow", "
 function symbols(source: string, path: string) {
   return [...source.matchAll(/<symbol\b[^>]*\bid=["']([^"']+)["'][^>]*\bviewBox=["']([^"']+)["']/g)].map((match) => ({ id: match[1], viewBox: match[2], path }));
 }
+function storySymbols(source: string, path: string) {
+  return [...source.matchAll(/<g\b[^>]*\bid=["'](story-[^"']+)["'][^>]*\bdata-symbol-view-box=["']([^"']+)["']/g)].map((match) => ({ id: match[1], viewBox: match[2], path }));
+}
 const symbolSheets = [
   { title: "Method glyphs", description: "Concept icons for labelled supporting content.", symbols: symbols(methodIcons, "icons/apiops-iconset.svg") },
   { title: "Metro icons", description: "Journey, station, actor, and event symbols for diagrams.", symbols: symbols(metroIcons, "icons/apiops-metro-icons.svg") },
   { title: "Human poses", description: "Individual people for method-neutral workshop scenes.", symbols: symbols(humanPoses, "humans/apiops-stick-figures-poses.svg") },
-  { title: "Human stories", description: "Small, reusable storytelling compositions.", symbols: symbols(humanStories, "humans/apiops-stick-figures-stories.svg") },
+  { title: "Human stories", description: "Small, reusable storytelling compositions.", symbols: storySymbols(humanStories, "humans/apiops-stick-figures-stories.svg") },
 ];
 const componentExports = ["CompactSection", "PillList", "ResourceSelector", "JourneyCriteria", "PartnerCard", "AnnouncementToast", "StakeholderRoleSelector", "RoleParticipationTable", "MethodContextBar", "MethodContextEditor", "ContextGuidance", "MetroMapShell", "MetroLinePath", "MetroSelectionRing", "MetroStationButton", "MetroStationMarker", "MetroLegend", "CanvasSystemShell", "CanvasSystemGrid", "CanvasSystemZone", "CanvasSystemNoteView", "CanvasSystemMetadataEditor", "CanvasSystemMetadataReadOnly", "CanvasSystemFixture"];
 ---
