@@ -8,7 +8,7 @@ The production site is a statically generated Astro application.
 
 ## Configuration
 
-Set `PUBLIC_SITE_ORIGIN` to the public origin used for Astro canonical URLs and the static host's `site` setting. During migration, `NEXT_PUBLIC_SITE_ORIGIN` and `SITE_ORIGIN` remain supported as fallbacks. The default is `https://beta.apiopscycles.com`.
+Set `PUBLIC_SITE_ORIGIN` to the public origin used for Astro canonical URLs and the static host's `site` setting. During migration, `NEXT_PUBLIC_SITE_ORIGIN` and `SITE_ORIGIN` remain supported as fallbacks. The default is `https://apiopscycles.com`.
 
 ## Generated method data
 

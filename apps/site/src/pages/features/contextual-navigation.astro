@@ -1,0 +1,60 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { metadataForRoute } from "../../lib/seo";
+
+const canonicalPath = "/features/contextual-navigation";
+const title = "Contextual navigation and the method graph";
+const description = "Make APIOps Cycles your own by selecting a role and goal, following contextual recommendations, and moving between connected cycles.";
+const seo = metadataForRoute("contextualNavigation", "en", canonicalPath);
+---
+<BaseLayout title={title} description={description} lang="en" canonicalPath={canonicalPath} {...seo}>
+  <main class="public-content feature-page">
+    <section class="public-hero">
+      <p class="public-kicker">Navigate in context</p>
+      <h1>Make the method your own</h1>
+      <p>Select your role and the goal you want to achieve. APIOps Cycles uses that context to highlight a useful starting point, clarify your involvement, and help you transit to more cycles without losing your place.</p>
+      <a class="feature-page__cta" href="/#method-context-controls">Personalize the method</a>
+    </section>
+
+    <section class="public-section feature-page__flow" aria-labelledby="contextual-navigation-heading">
+      <div>
+        <p class="public-kicker">Contextual navigation</p>
+        <h2 id="contextual-navigation-heading">One method, shaped around your task</h2>
+        <p>The context controls turn a large catalog into a route that is relevant now. Your selections stay with you as you open cycles, lines, and stations.</p>
+      </div>
+      <ol class="feature-page__steps">
+        <li><strong>Choose a role.</strong><span>See where you lead, join the core group, or contribute as a consulted stakeholder.</span></li>
+        <li><strong>Set a goal.</strong><span>Tell the method what outcome you are working toward and get a recommended place to begin.</span></li>
+        <li><strong>Follow the context.</strong><span>Use the current-context strip, recommendations, and related links to move through the method.</span></li>
+      </ol>
+    </section>
+
+    <section class="public-section feature-page__graph" aria-labelledby="graph-heading">
+      <div class="feature-page__graph-copy">
+        <p class="public-kicker">The method graph</p>
+        <h2 id="graph-heading">Connections, not dead ends</h2>
+        <p>Behind every page is a graph of cycles, stations, metro lines, roles, goals, and reusable resources. It keeps relationships explicit so you can see both the focused journey and the wider method.</p>
+        <ul>
+          <li><strong>Cycles</strong> provide goal-oriented journeys through selected stations.</li>
+          <li><strong>Metro lines</strong> connect related practices across cycle boundaries.</li>
+          <li><strong>Stations</strong> bring decisions, outputs, participants, and practical resources together.</li>
+        </ul>
+      </div>
+      <div class="feature-page__graph-visual" role="img" aria-label="A role and goal connect to a recommended station, which branches into multiple APIOps Cycles journeys">
+        <span class="feature-node feature-node--role">Your role</span>
+        <span class="feature-node feature-node--goal">Your goal</span>
+        <span class="feature-node feature-node--station">Recommended station</span>
+        <span class="feature-node feature-node--cycle-one">Cycle journey</span>
+        <span class="feature-node feature-node--cycle-two">Next cycle</span>
+        <svg viewBox="0 0 600 330" aria-hidden="true"><path d="M125 70 C210 70 210 165 292 165 M125 260 C210 260 210 165 292 165 M410 165 C470 165 470 78 525 78 M410 165 C470 165 470 255 525 255" /></svg>
+      </div>
+    </section>
+
+    <section class="public-section feature-page__try" aria-labelledby="try-heading">
+      <p class="public-kicker">Start exploring</p>
+      <h2 id="try-heading">Your route can change as your work changes</h2>
+      <p>Reset or update your role and goal at any time. The underlying content stays stable and linkable while the navigation responds to the perspective you choose.</p>
+      <a class="feature-page__cta" href="/#method-context-controls">Select a role and goal</a>
+    </section>
+  </main>
+</BaseLayout>
