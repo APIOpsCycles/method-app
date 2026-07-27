@@ -33,7 +33,7 @@
     "drizzle-orm": "0.45.2"
   },
   "devDependencies": {
-    "@eslint/js": "9.39.4",
+    "@eslint/js": "10.0.1",
     "@playwright/test": "^1.62.0",
     "@svgr/core": "^8.1.0",
     "@svgr/plugin-jsx": "^8.1.0",
@@ -44,9 +44,8 @@
     "apiops-cycles-method-data": "^4.0.0",
     "canvascreator": "^1.8.0",
     "drizzle-kit": "0.31.10",
-    "eslint": "9.39.4",
+    "eslint": "10.0.0",
     "eslint-plugin-astro": "^1.7.0",
-    "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^7.1.1",
     "globals": "^17.8.0",
     "rehype-sanitize": "^6.0.0",
@@ -58,6 +57,7 @@
   },
   "overrides": {
     "brace-expansion": "5.0.8",
+    "minimatch": "10.2.5",
     "postcss": "8.5.18",
     "ws": "8.21.0",
     "esbuild": "0.25.12"

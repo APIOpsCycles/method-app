@@ -14,6 +14,10 @@ export interface Ad {
   groups?: string[];
 }
 
+interface AdPageEntry {
+  id?: string;
+}
+
 export const ads: Record<string, Ad> = {
   apiopsWS: {
     headline: 'Accelerate Your APIs with APIOps Cycles Workshop',
@@ -45,7 +49,7 @@ export const ads: Record<string, Ad> = {
  * Determine which ad (if any) should be shown for the current page based on
  * the directory groups the page belongs to.
  */
-export function selectAd(entry?: any, pathname?: string): Ad | undefined {
+export function selectAd(entry?: AdPageEntry, pathname?: string): Ad | undefined {
   const groups = pageGroups(entry, pathname);
   let best: { ad: Ad; score: number } | undefined;
   let fallback: Ad | undefined;
@@ -66,9 +70,9 @@ export function selectAd(entry?: any, pathname?: string): Ad | undefined {
   return best?.ad ?? fallback;
 }
 
-function pageGroups(entry?: any, pathname?: string): string[] {
+function pageGroups(entry?: AdPageEntry, pathname?: string): string[] {
   let parts: string[] | undefined;
-  const id = entry?.id as string | undefined;
+  const id = entry?.id;
   if (id) {
     parts = id.split('/');
     parts.pop(); // remove filename

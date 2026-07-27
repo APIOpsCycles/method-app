@@ -40,6 +40,8 @@ test("resource selectors expose links when resources have destinations", async (
 
   assert.match(selector, /<a class="side-resource-card" href="\/resources\/customer-journey-canvas">/);
   assert.doesNotMatch(selector, /<button/);
+});
+
 test("involvement legend exposes labeled lead, core, and consulted markers", async () => {
   const { InvolvementLegend } = await import("../dist/react/index.js");
   const legend = renderToStaticMarkup(React.createElement(InvolvementLegend, { label: "Stakeholder involvement", labels: { lead: "Lead", core: "Core", consulted: "Consulted" } }));
