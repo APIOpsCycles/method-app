@@ -2,12 +2,28 @@
 import { defaultLocale, type Locale } from "../../lib/method-data";
 interface Props { locale?: Locale }
 const locale = Astro.props.locale ?? defaultLocale;
-const localizedFiles = ["method-catalog", "canvas-manifest", "export-templates", "prompt-packs"];
-const integrationFiles = ["method-graph.json", "mcp-method-manifest.json"];
+const localizedFiles = [
+  { name: "method-catalog", description: "Localized method entities and the labels used to resolve ids in the graph." },
+  { name: "canvas-manifest", description: "Canvas definitions, sections, prompts, and localized guidance." },
+  { name: "prompt-packs", description: "Reusable localized prompts for method activities." },
+  { name: "export-templates", description: "Localized templates for offline exports." },
+  { name: "site-labels", description: "Localized interface labels used by the published site." },
+];
+const integrationFiles = [
+  { name: "method-graph.json", description: "Locale-neutral relationship indexes keyed by canonical entity ids." },
+  { name: "method-goals.json", description: "Localized goal labels referenced by the graph's byGoal index." },
+  { name: "route-index.json", description: "Published routes for method entities in every locale." },
+  { name: "mcp-method-manifest.json", description: "Machine-readable inventory, identifiers, graph join guidance, and prospective MCP tools." },
+];
+const supportingFiles = [
+  { name: "partners.json", description: "Partner records displayed by the site." },
+  { name: "announcement.json", description: "The current localized site announcement." },
+];
 ---
 <main class="public-content">
   <section class="public-hero"><p class="public-kicker">Open data</p><h1>Static method data</h1><p>Download generated JSON for the {locale.toUpperCase()} catalog, integrations, and offline tools.</p></section>
-  <section class="public-section"><h2>Localized files</h2><ul class="public-link-list">{localizedFiles.map((name) => <li><a href={`/data/${name}.${locale}.json`} download>{name}.{locale}.json</a></li>)}</ul></section>
-  <section class="public-section"><h2>Method structure and integrations</h2><p>The knowledge graph contains the relationships that connect method entities. The MCP manifest describes the method surfaces available to AI tooling.</p><ul class="public-link-list">{integrationFiles.map((name) => <li><a href={`/data/${name}`} download>{name}</a></li>)}</ul></section>
+  <section class="public-section"><h2>Localized files</h2><p>Choose files with the same locale suffix when combining localized content.</p><ul class="public-link-list">{localizedFiles.map((file) => <li><a href={`/data/${file.name}.${locale}.json`} download>{file.name}.{locale}.json</a><span>{file.description}</span></li>)}</ul></section>
+  <section class="public-section"><h2>Method structure and integrations</h2><p><strong>Start with method-catalog.{locale}.json and method-graph.json.</strong> The graph is locale-neutral: join its keys and referenced IDs to matching <code>id</code> fields in the catalog. Goal IDs join to method-goals.json. Use route-index.json when a client also needs public URLs.</p><ul class="public-link-list">{integrationFiles.map((file) => <li><a href={`/data/${file.name}`} download>{file.name}</a><span>{file.description}</span></li>)}</ul></section>
+  <section class="public-section"><h2>Supporting site data</h2><ul class="public-link-list">{supportingFiles.map((file) => <li><a href={`/data/${file.name}`} download>{file.name}</a><span>{file.description}</span></li>)}</ul></section>
   <section class="public-section"><h2>Canonical source data</h2><p>These files are generated from the open <a href="https://github.com/APIOpsCycles/apiops-cycles-method-data" target="_blank" rel="noreferrer">apiops-cycles-method-data repository</a>. Use the repository to inspect history, propose method changes, or integrate from the canonical source.</p></section>
 </main>

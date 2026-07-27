@@ -2181,6 +2181,8 @@ const mcpManifest = {
   version: 1,
   description: "Static APIOps Cycles manifest for a future MCP server.",
   dataFiles: [
+    "/data/method-graph.json",
+    "/data/method-goals.json",
     "/data/route-index.json",
     "/data/partners.json",
     "/data/announcement.json",
@@ -2207,6 +2209,13 @@ const mcpManifest = {
     canvases: Object.keys(canvasDataRaw),
     stakeholders: allStakeholders("en").map((stakeholder) => stakeholder.id),
     routeProfiles: routeProfiles("en").map((route) => route.id),
+  },
+  graph: {
+    file: "/data/method-graph.json",
+    labels: "/data/method-catalog.{locale}.json",
+    goals: "/data/method-goals.json",
+    joinKey: "id",
+    description: "The graph is locale-neutral. Its object keys and referenced ids join to entity ids in a localized catalog; goal ids join to method-goals.json.",
   },
 };
 
