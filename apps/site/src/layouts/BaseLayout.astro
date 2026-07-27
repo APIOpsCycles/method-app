@@ -7,7 +7,9 @@ import type { Locale } from "../lib/method-data";
 import SiteHeader from "../components/SiteHeader.astro";
 import SiteFooter from "../components/SiteFooter.astro";
 import Advertisement from "../components/Advertisement.astro";
+import SiteAnnouncement from "../components/islands/SiteAnnouncement";
 import { selectAd } from "../../../../data/ads";
+import announcement from "../../../../data/announcement.json";
 
 interface Props {
   title?: string;
@@ -56,6 +58,10 @@ const keywords = [
 ];
 const locale = lang as Locale;
 const ad = selectAd(undefined, Astro.url.pathname);
+const announcementLabels = announcement.translations[locale] ?? announcement.translations[announcement.defaultLocale];
+const announcementHref = locale === announcement.defaultLocale
+  ? announcement.href
+  : `/${locale}${announcement.href}`;
 ---
 <!doctype html>
 <html lang={lang}>
@@ -98,6 +104,14 @@ const ad = selectAd(undefined, Astro.url.pathname);
         {ad && <Advertisement ad={ad} />}
       </div>
       <SiteFooter locale={locale} />
+      <SiteAnnouncement
+        id={announcement.id}
+        href={announcementHref}
+        message={announcementLabels.message}
+        linkLabel={announcementLabels.linkLabel}
+        dismissLabel={announcementLabels.dismissLabel}
+        client:load
+      />
     </div>
   </body>
 </html>

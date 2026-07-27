@@ -21,6 +21,13 @@ test("every public package export exists in the built artifact", () => {
   assert.equal(existsSync(path.join(packageRoot, manifest.bin["apiops-design-system"])), true);
 });
 
+test("announcement dismiss controls own their contrast-critical styles", () => {
+  const styles = readFileSync(path.join(packageRoot, "dist/styles.css"), "utf8");
+  assert.match(styles, /\.ds-announcement button \{[^}]*background: rgba\(0, 0, 0, \.18\);/);
+  assert.match(styles, /\.ds-announcement button \{[^}]*border: 1px solid rgba\(255, 255, 255, \.5\);/);
+  assert.match(styles, /\.ds-announcement button \{[^}]*color: #fff;/);
+});
+
 test("the installed CLI copies assets without relying on a monorepo layout", () => {
   const temporaryRoot = mkdtempSync(path.join(tmpdir(), "apiops-design-system-"));
   try {
