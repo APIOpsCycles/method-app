@@ -144,7 +144,7 @@
     </symbol>
   </defs>
   <rect width="1500" height="500" fill="#f7f8fa" id="rect52" x="0" y="10" />
-  <g transform="translate(20 30)" id="g59">
+  <g transform="translate(20 30)" id="story-better-conversations" data-symbol-view-box="0 0 265 410">
     <rect width="225" height="410" rx="20" class="tile" id="rect53" />
     <g transform="translate(15 45)" color="#2F7D32" id="g53">
       <use href="#actor-presenting" width="105" height="133" id="use53" />
@@ -164,7 +164,7 @@
     <text x="112.5" y="300" class="title" id="text58">Better conversations</text>
     <text x="112.5" y="326" class="subtitle" id="text59">Start with listening</text>
   </g>
-  <g transform="translate(265 30)" id="g65">
+  <g transform="translate(265 30)" id="story-shared-decisions" data-symbol-view-box="245 0 265 410">
     <rect width="225" height="410" rx="20" class="tile" id="rect59" />
     <g transform="translate(15 50)" color="#E5640A" id="g60">
       <use href="#actor-standing" width="85" height="108" id="use59" />
@@ -186,7 +186,7 @@
     <text x="112.5" y="300" class="title" id="text64">Shared decisions</text>
     <text x="112.5" y="326" class="subtitle" id="text65">Aligned across functions</text>
   </g>
-  <g transform="translate(1245 30)" id="g83">
+  <g transform="translate(1245 30)" id="story-shape-the-future" data-symbol-view-box="1225 0 275 410">
     <rect width="225" height="410" rx="20" class="tile" id="rect80" />
     <g transform="translate(18 48)" color="#2F7D32" id="g81">
       <use href="#actor-observing" width="115" height="121" id="use80" />
@@ -198,7 +198,7 @@
     <text x="112.5" y="300" class="title" id="text82">Shape the future</text>
     <text x="112.5" y="326" class="subtitle" id="text83">Explore opportunities</text>
   </g>
-  <g transform="matrix(0.90314856,0,0,0.90314856,497.69614,33.58409)" id="g38">
+  <g transform="matrix(0.90314856,0,0,0.90314856,497.69614,33.58409)" id="story-see-the-gaps" data-symbol-view-box="490 0 275 410">
     <rect width="226.56438" height="444.25793" rx="16.136633" class="card" id="rect35" style="fill:#ffffff;stroke:#dfe5ec;stroke-width:1.20903" x="14.824695" y="-1.2527242" ry="0" />
     <g transform="matrix(0.6210116,0,0,0.69832904,61.555823,39.172065)" color="#00a6a6" id="g35">
       <g id="use35" transform="matrix(1.0434783,0,0,1.0434783,0.2173913,0)">
@@ -222,7 +222,7 @@
     <text x="126.9504" y="324.92468" class="story-title" id="text37" style="font-weight:700;font-size:18.1512px;font-family:Inter, Arial, sans-serif;text-anchor:middle;fill:#10233f;stroke-width:0.605042">See the gaps</text>
     <text x="126.9504" y="347.31122" class="story-subtitle" id="text38" style="font-weight:400;font-size:12.7059px;font-family:Inter, Arial, sans-serif;text-anchor:middle;fill:#647184;stroke-width:0.605042">Find issues early</text>
   </g>
-  <g transform="matrix(0.69287278,0,0,0.69287278,672.40769,62.384945)" id="g42">
+  <g transform="matrix(0.69287278,0,0,0.69287278,672.40769,62.384945)" id="story-move-forward" data-symbol-view-box="665 20 325 410">
     <rect width="289.62585" height="573.28796" rx="24" class="card" id="rect38" style="fill:#ffffff;stroke:#dfe5ec;stroke-width:1.5" x="89.747704" y="-38.908386" ry="0" />
     <g transform="translate(100,20)" color="#e64c19" id="g39">
       <g id="use38">
@@ -251,7 +251,7 @@
     <text x="224.32985" y="393.13135" class="story-title" id="text41" style="font-weight:700;font-size:29.0853px;font-family:Inter, Arial, sans-serif;text-anchor:middle;fill:#10233f;stroke-width:0.969509" transform="scale(1.0158621,0.98438556)">Move forward</text>
     <text x="224.32985" y="429.00317" class="story-subtitle" id="text42" style="font-weight:400;font-size:20.3597px;font-family:Inter, Arial, sans-serif;text-anchor:middle;fill:#647184;stroke-width:0.969509" transform="scale(1.0158621,0.98438556)">Take action together</text>
   </g>
-  <g transform="matrix(0.87229325,0,0,0.87229325,891.73795,32.731925)" id="g44">
+  <g transform="matrix(0.87229325,0,0,0.87229325,891.73795,32.731925)" id="story-stronger-together" data-symbol-view-box="885 20 410 410">
     <rect width="324.89621" height="452.80518" rx="24" class="card" id="rect42" style="fill:#ffffff;stroke:#dfe5ec;stroke-width:1.5" x="63.649288" y="4.389606" />
     <g transform="translate(65,35)" id="g43">
       <g id="use42">
