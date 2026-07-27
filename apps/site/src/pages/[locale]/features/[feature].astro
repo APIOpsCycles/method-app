@@ -1,0 +1,22 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import FeaturePage from "../../../components/content/FeaturePage.astro";
+import { featurePath, featureSlugs, featureUi, getFeatures, type FeatureSlug } from "../../../content/features";
+import { localizedLocales, localePrefix, type Locale } from "../../../lib/method-data";
+import { metadataForRoute } from "../../../lib/seo";
+
+export function getStaticPaths() {
+  return localizedLocales.flatMap((locale) => featureSlugs.map((feature) => ({ params: { locale, feature }, props: { locale, feature } })));
+}
+const { locale, feature: slug } = Astro.props as { locale: Locale; feature: FeatureSlug };
+const feature = getFeatures(locale).find((item) => item.slug === slug)!;
+const canonicalPath = featurePath(locale, slug);
+const seo = metadataForRoute("feature", locale, canonicalPath);
+const home = `${localePrefix(locale)}/#method-context-controls`;
+---
+<BaseLayout title={feature.title} description={feature.summary} lang={locale} canonicalPath={canonicalPath} {...seo}>
+  <FeaturePage locale={locale} kicker={featureUi[locale].kicker} title={feature.title} lead={feature.summary} sectionKicker={featureUi[locale].overview} sectionTitle={feature.title} sectionIntro={featureUi[locale].source} details={[
+    { title: featureUi[locale].overview, text: feature.summary },
+    { title: featureUi[locale].kicker, text: featureUi[locale].source },
+  ]} calloutTitle={feature.title} calloutText={featureUi[locale].source} ctaHref={home} ctaLabel={featureUi[locale].open} />
+</BaseLayout>

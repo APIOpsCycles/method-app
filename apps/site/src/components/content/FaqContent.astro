@@ -13,7 +13,7 @@ const content = getFaq(locale);
     <p>{content.description}</p>
     <p class="faq-prompt">{content.prompt}</p>
   </section>
-  <FeatureShowcase heading="See the method in action" intro="Before diving into the answers, explore the six capabilities that shape how the method works." />
+  <FeatureShowcase locale={locale} />
   <section class="faq-list" aria-label={content.title}>
     {content.items.map((item) => (
       <details class="faq-item">

@@ -1,4 +1,5 @@
 import { defaultLocale, getCatalog, locales, localePrefix, publicResources, resourcePath, type Locale } from "./method-data";
+import { featureSlugs } from "../content/features";
 
 export type RouteKind = "home" | "cycle" | "station" | "cycleStation" | "role" | "resource" | "line" | "cycleLine" | "partners" | "faq" | "licensing" | "data" | "designSystem" | "feature";
 export type PublicRoute = { kind: RouteKind; locale: Locale; path: string; alternateKey?: string };
@@ -14,6 +15,7 @@ export function publicRouteInventory(): PublicRoute[] {
       { kind: "faq", locale, path: `${prefix}/faq`, alternateKey: "faq" },
       { kind: "licensing", locale, path: `${prefix}/licensing`, alternateKey: "licensing" },
       { kind: "data", locale, path: `${prefix}/data`, alternateKey: "data" },
+      ...featureSlugs.map((slug) => ({ kind: "feature" as const, locale, path: `${prefix}/features/${slug}`, alternateKey: `feature:${slug}` })),
       ...data.cycles.map((cycle) => ({ kind: "cycle" as const, locale, path: `${prefix}/cycles/${cycle.slug}`, alternateKey: `cycle:${cycle.id}` })),
       ...data.stations.map((station) => ({ kind: "station" as const, locale, path: `${prefix}/stations/${station.id}`, alternateKey: `station:${station.id}` })),
       ...data.cycles.flatMap((cycle) => cycle.stations.map((station) => ({ kind: "cycleStation" as const, locale, path: `${prefix}/cycles/${cycle.slug}/stations/${station.id}`, alternateKey: `cycleStation:${cycle.id}:${station.id}` }))),
@@ -27,7 +29,6 @@ export function publicRouteInventory(): PublicRoute[] {
   return [
     ...localized,
     { kind: "designSystem", locale: defaultLocale, path: "/design-system" },
-    ...["contextual-navigation", "semantic-knowledge-graph", "multi-cycle-method", "ai-ready-method", "open-json-data", "canvas-workspace"].map((slug) => ({ kind: "feature" as const, locale: defaultLocale, path: `/features/${slug}` })),
   ];
 }
 

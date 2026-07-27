@@ -1,13 +1,14 @@
 ---
 import partners from "../../../../generated/method/partners.json";
 import { defaultLocale, localePrefix, type Locale } from "../lib/method-data";
-import { features } from "../content/features";
+import { featurePath, featureUi, getFeatures } from "../content/features";
 interface Props { locale?: Locale }
 const locale = Astro.props.locale ?? defaultLocale;
 const prefix = localePrefix(locale);
+const features = getFeatures(locale);
 ---
 <footer class="global-footer">
-  <section class="global-footer__features" aria-labelledby="footer-features"><p class="section-kicker">Explore</p><h2 id="footer-features">Method features</h2><nav aria-label="Method features">{features.map((feature) => <a href={`/features/${feature.slug}`}>{feature.title}</a>)}</nav></section>
+  <section class="global-footer__features" aria-labelledby="footer-features"><p class="section-kicker">{featureUi[locale].explore}</p><h2 id="footer-features">{featureUi[locale].kicker}</h2><nav aria-label={featureUi[locale].kicker}>{features.map((feature) => <a href={featurePath(locale, feature.slug)}>{feature.title}</a>)}</nav></section>
   <section aria-labelledby="footer-partners">
     <p class="section-kicker">Community</p><h2 id="footer-partners">Our partners</h2>
     <div class="global-footer__partners">{partners.items.map((partner) => <a class="ds-partner-card" href={partner.href} target="_blank" rel="noreferrer"><img src={partner.logo} alt={`${partner.title} logo`} /><span><strong>{partner.title}</strong><small>{partner.description}</small></span></a>)}</div>
