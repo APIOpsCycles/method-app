@@ -17,6 +17,8 @@ test("the English-only design system static route documents its public contract"
   assert.match(source, /Individual SVG symbols/);
   assert.match(source, /apiops-metro-icons\.svg\?raw/);
   assert.match(source, /apiops-stick-figures-poses\.svg\?raw/);
+  assert.match(source, /import humanStories from "@apiops\/design-system\/assets\/humans\/apiops-stick-figures-stories\.svg\?raw"/);
+  assert.match(source, /title: "Human stories"[^\n]*symbols: symbols\(humanStories, "humans\/apiops-stick-figures-stories\.svg"\)/);
   assert.match(source, /React export inventory/);
   assert.match(source, /Role participation table/);
   assert.match(source, /RoleParticipationDesignSystemExample/);
