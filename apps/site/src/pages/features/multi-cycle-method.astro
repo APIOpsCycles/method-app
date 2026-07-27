@@ -2,6 +2,7 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import FeaturePage from "../../components/content/FeaturePage.astro";
 import { metadataForRoute } from "../../lib/seo";
+import { metroLineColor } from "../../lib/line-colors";
 
 const canonicalPath = "/features/multi-cycle-method";
 const seo = metadataForRoute("feature", "en", canonicalPath);
@@ -12,12 +13,12 @@ const cycles = [
   { title: "Automation", href: "/cycles/automation-cycle", description: "Identify, design, deliver, enable, and improve automation opportunities." },
 ];
 const lines = [
-  { title: "Business Opportunities", slug: "business-opportunities-line", color: "#d92d7a" },
-  { title: "Platform Architecture", slug: "platform-architecture-line", color: "#7653c7" },
-  { title: "Design", slug: "api-design-line", color: "#1677c8" },
-  { title: "Delivery", slug: "delivery-line", color: "#008b70" },
-  { title: "Publishing and Adoption", slug: "publishing-and-adoption-line", color: "#d96820" },
-  { title: "Operating Model", slug: "operating-model-line", color: "#697386" },
+  { title: "Business Opportunities", slug: "business-opportunities-line" },
+  { title: "Platform Architecture", slug: "platform-architecture-line" },
+  { title: "Design", slug: "api-design-line" },
+  { title: "Delivery", slug: "delivery-line" },
+  { title: "Publishing and Adoption", slug: "publishing-and-adoption-line" },
+  { title: "Operating Model", slug: "operating-model-line" },
 ];
 ---
 <BaseLayout title="Multi-cycle Method" description="Use connected APIOps Cycles journeys without reducing product work to one linear process." lang="en" canonicalPath={canonicalPath} {...seo}>
@@ -30,10 +31,10 @@ const lines = [
     <section class="public-section cycle-showcase" aria-labelledby="included-cycles-heading">
       <div class="cycle-showcase__heading"><p class="public-kicker">Four connected cycles</p><h2 id="included-cycles-heading">Choose the journey that fits the work</h2><p>Every cycle offers its own ordered route through shared method stations. The metro lines below are the cross-cutting practices that connect them.</p></div>
       <div class="cycle-showcase__map" aria-label="Four method cycles connected by six metro lines">
-        <div class="cycle-showcase__tracks" aria-hidden="true">{lines.map((line) => <span style={`--track-color:${line.color}`}></span>)}</div>
+        <div class="cycle-showcase__tracks" aria-hidden="true">{lines.map((line) => <span style={`--track-color:${metroLineColor(line.slug)}`}></span>)}</div>
         <div class="cycle-showcase__cycles">{cycles.map((cycle, index) => <a class="cycle-showcase__node" href={cycle.href}><span>{String(index + 1).padStart(2, "0")}</span><strong>{cycle.title}</strong><small>{cycle.description}</small></a>)}</div>
       </div>
-      <nav class="cycle-showcase__lines" aria-label="Metro lines">{lines.map((line) => <a href={`/lines/${line.slug}`} style={`--line-color:${line.color}`}><span aria-hidden="true"></span>{line.title} Line</a>)}</nav>
+      <nav class="cycle-showcase__lines" aria-label="Metro lines">{lines.map((line) => <a href={`/lines/${line.slug}`} style={`--line-color:${metroLineColor(line.slug)}`}><span aria-hidden="true"></span>{line.title} Line</a>)}</nav>
     </section>
   </FeaturePage>
 </BaseLayout>

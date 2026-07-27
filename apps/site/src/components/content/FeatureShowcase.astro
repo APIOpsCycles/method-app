@@ -3,7 +3,7 @@ import { features } from "../../content/features";
 interface Props { heading?: string; intro?: string }
 const { heading = "A method built to be used", intro = "Explore the capabilities that make APIOps Cycles navigable, interoperable, and practical for people and machines." } = Astro.props;
 ---
-<section class="feature-showcase" aria-labelledby="feature-showcase-heading">
+<section class="feature-showcase" id="features" aria-labelledby="feature-showcase-heading">
   <div class="feature-showcase__intro">
     <p class="public-kicker">Method features</p>
     <h2 id="feature-showcase-heading">{heading}</h2>
