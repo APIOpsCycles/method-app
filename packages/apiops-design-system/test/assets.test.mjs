@@ -31,8 +31,8 @@ test("downloadable human and icon symbols use fill-only accent outlines", () => 
   }
 });
 
-test("SVG downloads retain embedded sprite definitions", () => {
+test("SVG downloads retain embedded sprite styles", () => {
   const component = readFileSync(new URL("../src/react/index.tsx", import.meta.url), "utf8");
-  assert.match(component, /document\.querySelectorAll\("defs"\)/);
-  assert.match(component, /<defs>\$\{embeddedDefinitions\}\$\{symbol\.outerHTML\}<\/defs>/);
+  assert.match(component, /document\.querySelectorAll\("style"\)/);
+  assert.match(component, /<defs>\$\{embeddedStyles\}\$\{symbol\.outerHTML\}<\/defs>/);
 });
