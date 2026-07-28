@@ -26,6 +26,48 @@ export function ContextGuidance({ tone, title, children }: { tone: "success" | "
   return <aside className={`ds-context-guidance is-${tone}`}><span className="ds-context-guidance__icon" aria-hidden="true"><svg viewBox="0 0 120 120"><use href={`${designSystemAssets.icons.method}#${symbol}`} /></svg></span><div><strong>{title}</strong><p>{children}</p></div></aside>;
 }
 
+function inlineSpriteStyles(source: Document, target: Element) {
+  const styles = Array.from(source.querySelectorAll("style")).map((style) => style.textContent ?? "").join("\n");
+  const variables = new Map<string, string>();
+  for (const match of styles.matchAll(/(--[\w-]+)\s*:\s*([^;}{]+)/g)) variables.set(match[1], match[2].trim());
+  const resolveVariables = (value: string) => value.replace(/var\(\s*(--[\w-]+)\s*(?:,\s*([^)]*))?\)/g, (_match, name: string, fallback: string | undefined) => variables.get(name) ?? fallback?.trim() ?? "currentColor");
+  const rules = [...styles.matchAll(/\.([\w-]+)\s*\{([^}]+)\}/g)].map((match) => ({
+    className: match[1],
+    declarations: [...match[2].matchAll(/([\w-]+)\s*:\s*([^;]+)/g)].map((declaration) => [declaration[1], resolveVariables(declaration[2].trim())] as const),
+  }));
+
+  for (const element of [target, ...Array.from(target.querySelectorAll("*"))]) {
+    for (const rule of rules) {
+      if (!element.classList.contains(rule.className)) continue;
+      for (const [property, value] of rule.declarations) element.setAttribute(property, value);
+    }
+    element.removeAttribute("class");
+  }
+}
+
+function standaloneSymbol(source: Document, symbol: Element, resolvedViewBox: string) {
+  const output = source.implementation.createDocument("http://www.w3.org/2000/svg", "svg");
+  const svg = output.documentElement;
+  svg.setAttribute("viewBox", resolvedViewBox);
+
+  const definitions = output.createElementNS("http://www.w3.org/2000/svg", "defs");
+  for (const sourceDefinitions of Array.from(source.querySelectorAll("defs"))) {
+    for (const child of Array.from(sourceDefinitions.children)) {
+      if (child.localName !== "style" && child !== symbol) definitions.append(output.importNode(child, true));
+    }
+  }
+  if (definitions.children.length) {
+    inlineSpriteStyles(source, definitions);
+    svg.append(definitions);
+  }
+
+  const artwork = output.importNode(symbol, true);
+  inlineSpriteStyles(source, artwork);
+  if (symbol.localName === "symbol") svg.append(...Array.from(artwork.childNodes));
+  else svg.append(artwork);
+  return new XMLSerializer().serializeToString(output);
+}
+
 export function SvgAssetDownload({ source, filename, symbolId, viewBox }: { source: string; filename: string; symbolId?: string; viewBox?: string }) {
   const [status, setStatus] = useState<"idle" | "loading" | "error">("idle");
 
@@ -40,10 +82,7 @@ export function SvgAssetDownload({ source, filename, symbolId, viewBox }: { sour
         const symbol = document.getElementById(symbolId);
         if (document.querySelector("parsererror") || !symbol) throw new Error("SVG symbol was not found");
         const resolvedViewBox = viewBox ?? symbol.getAttribute("viewBox") ?? "0 0 96 96";
-        const embeddedStyles = Array.from(document.querySelectorAll("style"))
-          .map((style) => style.outerHTML)
-          .join("");
-        contents = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${resolvedViewBox}"><defs>${embeddedStyles}${symbol.outerHTML}</defs><use href="#${symbolId}" /></svg>`;
+        contents = standaloneSymbol(document, symbol, resolvedViewBox);
       }
       const url = URL.createObjectURL(new Blob([contents], { type: "image/svg+xml;charset=utf-8" }));
       const link = document.createElement("a");
