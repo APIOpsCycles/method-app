@@ -5,6 +5,7 @@ import path from "node:path";
 
 const packageRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const dist = path.join(packageRoot, "dist");
+await import("./build-character-scenes.mjs");
 await rm(dist, { recursive: true, force: true });
 await mkdir(dist, { recursive: true });
 for (const entry of ["styles.css", "tokens.json", "assets", "metadata"]) {

@@ -42,6 +42,10 @@ The default named asset inventory uses `/design-system`. Applications deployed a
 subpath or behind a CDN can call `createDesignSystemAssets(basePath)` or pass a base
 path to `designSystemAssetPath(path, basePath)`.
 
+The human illustration assets follow the [APIOps Character Grammar](docs/apiops-character-grammar.md),
+which defines poses, expressions, symbols, colors, connections, scene recipes, and
+the missing building blocks needed for the API Chaos campaign compositions.
+
 Copy the complete asset catalog from an installed package with:
 
 ```bash
