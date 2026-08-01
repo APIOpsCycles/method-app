@@ -98,15 +98,15 @@ async function readJson(filePath) {
 }
 
 function renderSceneSymbol(scene) {
-  const layers = scene.layers.map(renderLayer).join("\n");
+  const layers = scene.layers.map((layer, index) => renderLayer(layer, scene.id, index)).join("\n");
   return `    <symbol id="${escapeAttr(scene.id)}" viewBox="${escapeAttr(scene.viewBox)}">\n      <title>${escapeText(scene.title)}</title>\n${layers}\n    </symbol>`;
 }
 
-function renderLayer(layer) {
+function renderLayer(layer, sceneId, index) {
   switch (layer.type) {
     case "actor":
       if (!registry.poses[layer.pose]) throw new Error(`Unknown character pose "${layer.pose}"`);
-      return renderActorLayer(layer);
+      return renderActorLayer(layer, `${sceneId}-actor-${index}`);
     case "symbol": {
       const symbolId = getRegistrySymbolId(layer.symbol);
       const accentClass = layer.accent === true ? "" : " class=\"no-accent\"";
@@ -125,19 +125,27 @@ function renderLayer(layer) {
   }
 }
 
-function renderActorLayer(layer) {
+function renderActorLayer(layer, clipId) {
   const actorColor = resolveColor(layer.scarfColor ?? layer.color);
+
+  if (layer.crop === "torso") {
+    const scaleX = layer.width / 180;
+    const scaleY = layer.height / 132;
+    const transform = layer.flipX
+      ? `translate(${number(layer.x + layer.width)} ${number(layer.y)}) scale(${number(-scaleX)} ${number(scaleY)})`
+      : `translate(${number(layer.x)} ${number(layer.y)}) scale(${number(scaleX)} ${number(scaleY)})`;
+
+    return `      <clipPath id="${escapeAttr(clipId)}">
+        <rect x="0" y="0" width="180" height="132" />
+      </clipPath>
+      <g color="${escapeAttr(actorColor)}" transform="${transform}" clip-path="url(#${escapeAttr(clipId)})">
+        <use href="#scene-actor-${escapeAttr(layer.pose)}" width="180" height="205" />
+      </g>`;
+  }
+
   const transform = layer.flipX
     ? `translate(${number(layer.x)} ${number(layer.y)}) scale(-1 1) translate(-${number(layer.width)} 0)`
     : `translate(${number(layer.x)} ${number(layer.y)})`;
-
-  if (layer.crop === "torso") {
-    return `      <g color="${escapeAttr(actorColor)}" transform="${transform}">
-        <svg width="${number(layer.width)}" height="${number(layer.height)}" viewBox="0 0 180 132" preserveAspectRatio="xMidYMin meet">
-          <use href="#scene-actor-${escapeAttr(layer.pose)}" width="180" height="205" />
-        </svg>
-      </g>`;
-  }
 
   return `      <g color="${escapeAttr(actorColor)}" transform="${transform}">\n        <use href="#scene-actor-${escapeAttr(layer.pose)}" width="${number(layer.width)}" height="${number(layer.height)}" />\n      </g>`;
 }

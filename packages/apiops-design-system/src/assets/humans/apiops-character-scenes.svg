@@ -931,10 +931,11 @@
 
     <symbol id="scene-consumers-capabilities" viewBox="0 0 420 240">
       <title>Consumers do not care about your org chart.</title>
-      <g color="#00a6a6" transform="translate(154 0)">
-        <svg width="112" height="96" viewBox="0 0 180 132" preserveAspectRatio="xMidYMin meet">
-          <use href="#scene-actor-thinking" width="180" height="205" />
-        </svg>
+      <clipPath id="scene-consumers-capabilities-actor-0">
+        <rect x="0" y="0" width="180" height="132" />
+      </clipPath>
+      <g color="#00a6a6" transform="translate(154 0) scale(0.622 0.727)" clip-path="url(#scene-consumers-capabilities-actor-0)">
+        <use href="#scene-actor-thinking" width="180" height="205" />
       </g>
       <path d="M210 92 C156 104 104 126 72 156" class="dash" />
       <path d="M210 92 C210 118 210 140 210 156" class="dash" />
@@ -959,10 +960,10 @@
     <symbol id="scene-governance-vs-innovation" viewBox="0 0 420 220">
       <title>Governance vs innovation.</title>
       <g color="#8b5cf6" transform="translate(26 58)">
-        <use href="#scene-actor-holding" width="118" height="142" />
+        <use href="#scene-actor-pointing" width="118" height="142" />
       </g>
-      <text x="50" y="54" class="label" fill="#8b5cf6">?</text>
-      <g color="#ef4444" class="no-accent" transform="translate(166 48)">
+      <text x="50" y="54" class="label" fill="#8b5cf6">!</text>
+      <g color="#ef4444" class="no-accent" transform="translate(100 48)">
         <use href="#scene-symbol-stop" width="62" height="62" />
       </g>
       <path d="M158 140 H258" class="dash" />
@@ -1020,37 +1021,41 @@
 
     <symbol id="scene-standards-without-conversation" viewBox="0 0 420 240">
       <title>Standards do not solve communication.</title>
-      <g color="#8b5cf6" transform="translate(20 65)">
-        <svg width="128" height="138" viewBox="0 0 180 132" preserveAspectRatio="xMidYMin meet">
-          <use href="#scene-actor-holding-up" width="180" height="205" />
-        </svg>
+      <clipPath id="scene-standards-without-conversation-actor-0">
+        <rect x="0" y="0" width="180" height="132" />
+      </clipPath>
+      <g color="#8b5cf6" transform="translate(20 65) scale(0.733 0.879)" clip-path="url(#scene-standards-without-conversation-actor-0)">
+        <use href="#scene-actor-holding-up" width="180" height="205" />
       </g>
       <g color="#8b5cf6" class="no-accent" transform="translate(30 0)">
         <use href="#scene-symbol-standard-placard-blank" width="100" height="116" />
       </g>
       <text x="83" y="60" class="tiny" fill="#8b5cf6">OpenAPI</text>
-      <g color="#00a6a6" transform="translate(180 65)">
-        <svg width="128" height="138" viewBox="0 0 180 132" preserveAspectRatio="xMidYMin meet">
-          <use href="#scene-actor-holding-up" width="180" height="205" />
-        </svg>
+      <clipPath id="scene-standards-without-conversation-actor-3">
+        <rect x="0" y="0" width="180" height="132" />
+      </clipPath>
+      <g color="#00a6a6" transform="translate(180 65) scale(0.733 0.879)" clip-path="url(#scene-standards-without-conversation-actor-3)">
+        <use href="#scene-actor-holding-up" width="180" height="205" />
       </g>
-      <g color="#00a6a6" class="no-accent" transform="translate(185 5)">
+      <g color="#00a6a6" class="no-accent" transform="translate(190 0)">
         <use href="#scene-symbol-standard-placard-blank" width="100" height="116" />
       </g>
-      <text x="245" y="60" class="tiny" fill="#00a6a6">AsyncAPI</text>
-      <g color="#10b981" transform="translate(324 65)">
-        <svg width="128" height="138" viewBox="0 0 180 132" preserveAspectRatio="xMidYMin meet">
-          <use href="#scene-actor-holding-up" width="180" height="205" />
-        </svg>
+      <text x="240" y="60" class="tiny" fill="#00a6a6">AsyncAPI</text>
+      <clipPath id="scene-standards-without-conversation-actor-6">
+        <rect x="0" y="0" width="180" height="132" />
+      </clipPath>
+      <g color="#10b981" transform="translate(324 65) scale(0.733 0.879)" clip-path="url(#scene-standards-without-conversation-actor-6)">
+        <use href="#scene-actor-holding-up" width="180" height="205" />
       </g>
-      <g color="#10b981" class="no-accent" transform="translate(330 5)">
+      <g color="#10b981" class="no-accent" transform="translate(335 0)">
         <use href="#scene-symbol-standard-placard-blank" width="100" height="116" />
       </g>
-      <text x="375" y="60" class="tiny" fill="#10b981">GraphQL</text>
-      <g color="#00a6a6" transform="translate(220 154)">
-        <svg width="128" height="138" viewBox="0 0 180 132" preserveAspectRatio="xMidYMin meet">
-          <use href="#scene-actor-amazed" width="180" height="205" />
-        </svg>
+      <text x="385" y="60" class="tiny" fill="#10b981">GraphQL</text>
+      <clipPath id="scene-standards-without-conversation-actor-9">
+        <rect x="0" y="0" width="180" height="132" />
+      </clipPath>
+      <g color="#00a6a6" transform="translate(220 125) scale(0.733 0.879)" clip-path="url(#scene-standards-without-conversation-actor-9)">
+        <use href="#scene-actor-amazed" width="180" height="205" />
       </g>
     </symbol>
 

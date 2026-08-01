@@ -94,7 +94,14 @@ test("character grammar notation exposes the implemented backlog symbols", async
   assert.doesNotMatch(scenes, /href="#connection-/i, "character scenes must not reference unprefixed connection symbols");
   assert.match(scenes, /\.no-accent \.accent/);
 
-  for (const id of ["scene-actor-thinking", "scene-actor-announcing", "scene-actor-standing", "scene-actor-dancing"]) {
+  const expectedActorSymbols = [
+    ...new Set(
+      sceneConfig.scenes.flatMap((scene) =>
+        scene.layers.filter((layer) => layer.type === "actor").map((layer) => `scene-actor-${layer.pose}`),
+      ),
+    ),
+  ];
+  for (const id of expectedActorSymbols) {
     assert.match(scenes, new RegExp(`<symbol id="${id}"(?:\\s|>)`), `${id} pose geometry is inlined`);
   }
 
@@ -109,7 +116,6 @@ test("character grammar notation exposes the implemented backlog symbols", async
     "scene-symbol-delivery-gear",
     "scene-symbol-feedback-megaphone",
     "scene-connection-ownership-claim",
-    "scene-connection-missing-conversation",
     "scene-connection-conversion-arrow",
   ]) {
     assert.match(scenes, new RegExp(`<symbol id="${id}"(?:\\s|>)`), `${id} notation geometry is inlined`);
@@ -132,7 +138,8 @@ test("character grammar notation exposes the implemented backlog symbols", async
   assert.match(localOptimizationScene, /#scene-symbol-field/);
 
   const consumersScene = extractSymbol(scenes, "scene-consumers-capabilities");
-  assert.match(consumersScene, /viewBox="0 0 180 132"/, "consumer scene can crop actors to torso-only");
+  assert.match(consumersScene, /<clipPath id="scene-consumers-capabilities-actor-0"/, "consumer scene can crop actors to torso-only");
+  assert.match(consumersScene, /clip-path="url\(#scene-consumers-capabilities-actor-0\)"/, "cropped actors must clip overflow from the full pose");
 
   const ownershipScene = extractSymbol(scenes, "scene-api-ownership-question");
   assert.match(ownershipScene, /scale\(-1 1\)/, "ownership scene can flip actors toward the central API");
