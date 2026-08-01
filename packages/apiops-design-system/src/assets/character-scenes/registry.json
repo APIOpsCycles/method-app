@@ -52,6 +52,9 @@
     "connection-ownership-claim": "icons/apiops-character-notation.svg#connection-ownership-claim",
     "connection-missing-conversation": "icons/apiops-character-notation.svg#connection-missing-conversation",
     "connection-gap": "icons/apiops-character-notation.svg#connection-gap",
-    "connection-conversion-arrow": "icons/apiops-character-notation.svg#connection-conversion-arrow"
+    "connection-conversion-arrow": "icons/apiops-character-notation.svg#connection-conversion-arrow",
+    "apiops-stationblue": "glyphs/apiops-station-circle-blue.svg#apiops-station-circle-blue",
+    "apiops-station-circle": "glyphs/apiops-station-circle.svg#apiops-station-circle",
+    "apiops-cycles-logo": "brand/apiops-cycles-logo.svg#apiops-logo"
   }
 }

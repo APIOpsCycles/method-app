@@ -23,11 +23,11 @@ for (const scene of scenesConfig.scenes) {
   }
 }
 
-const notationSources = new Map();
-const notationIds = new Set();
+const assetSymbolSources = new Map();
+const assetSymbolRefs = new Map();
+const assetSymbolIds = [];
 for (const alias of usedSymbolAliases) {
-  const symbolId = getRegistrySymbolId(alias);
-  await collectNotationSymbol(symbolId);
+  await collectAssetSymbol(getRegistrySymbolRef(alias));
 }
 
 const poseDefinitions = await Promise.all(
@@ -42,11 +42,12 @@ const poseDefinitions = await Promise.all(
   }),
 );
 
-const notationDefinitions = [...notationIds]
-  .map((symbolId) => {
-    const source = notationSources.get(symbolId);
-    if (!source) throw new Error(`Missing notation source for ${symbolId}`);
-    return indent(rewriteNotationSymbol(source), 4);
+const assetSymbolDefinitions = assetSymbolIds
+  .map((key) => {
+    const source = assetSymbolSources.get(key);
+    const ref = assetSymbolRefs.get(key);
+    if (!source || !ref) throw new Error(`Missing asset symbol source for ${key}`);
+    return indent(rewriteAssetSymbol(source, ref), 4);
   })
   .join("\n\n");
 
@@ -82,7 +83,7 @@ const svg = `<?xml version="1.0" encoding="UTF-8"?>
 
 ${poseDefinitions.join("\n\n")}
 
-${notationDefinitions}
+${assetSymbolDefinitions}
 
 ${sceneDefinitions}
   </defs>
@@ -108,7 +109,7 @@ function renderLayer(layer, sceneId, index) {
       if (!registry.poses[layer.pose]) throw new Error(`Unknown character pose "${layer.pose}"`);
       return renderActorLayer(layer, `${sceneId}-actor-${index}`);
     case "symbol": {
-      const symbolId = getRegistrySymbolId(layer.symbol);
+      const { symbolId } = getRegistrySymbolRef(layer.symbol);
       const accentClass = layer.accent === true ? "" : " class=\"no-accent\"";
       return `      <g color="${escapeAttr(resolveColor(layer.color))}"${accentClass} transform="translate(${number(layer.x)} ${number(layer.y)})">\n        <use href="#${escapeAttr(prefixSymbolId(symbolId))}" width="${number(layer.width)}" height="${number(layer.height)}" />\n      </g>`;
     }
@@ -173,30 +174,70 @@ function renderPreviewCard(card) {
   </g>`;
 }
 
-async function collectNotationSymbol(symbolId) {
-  if (notationIds.has(symbolId)) return;
-  const symbol = await readNotationSymbol(symbolId);
-  notationIds.add(symbolId);
-  notationSources.set(symbolId, symbol);
+async function collectAssetSymbol(ref) {
+  const key = assetSymbolKey(ref);
+  if (assetSymbolSources.has(key)) return;
 
-  const dependencies = [...symbol.matchAll(/href="#((?:symbol|connection)-[^"]+)"/g)].map((match) => match[1]);
+  const symbol = await readAssetSymbol(ref);
+  assetSymbolSources.set(key, symbol);
+  assetSymbolRefs.set(key, ref);
+  assetSymbolIds.push(key);
+
+  const dependencies = [...symbol.matchAll(/\b(?:href|xlink:href)=["']#([^"']+)["']/g)].map((match) => match[1]);
   for (const dependency of dependencies) {
-    await collectNotationSymbol(dependency);
+    await collectAssetSymbol({ source: ref.source, symbolId: dependency });
   }
 }
 
-async function readNotationSymbol(symbolId) {
-  const notationPath = path.join(assetsRoot, "icons", "apiops-character-notation.svg");
-  const notation = await readFile(notationPath, "utf8");
-  const match = notation.match(new RegExp(`<symbol\\s+id="${escapeRegExp(symbolId)}"(?:\\s|>)[\\s\\S]*?<\\/symbol>`));
-  if (!match) throw new Error(`Missing notation symbol "${symbolId}"`);
-  return match[0];
+async function readAssetSymbol(ref) {
+  const sourcePath = path.join(assetsRoot, ref.source);
+  const svg = await readFile(sourcePath, "utf8");
+  const symbolMatch = svg.match(new RegExp(`<symbol\\b[^>]*\\bid=["']${escapeRegExp(ref.symbolId)}["'][^>]*>[\\s\\S]*?<\\/symbol>`));
+  if (symbolMatch) return symbolMatch[0];
+
+  const groupMatch = svg.match(new RegExp(`<g\\b[^>]*\\bid=["']${escapeRegExp(ref.symbolId)}["'][^>]*>[\\s\\S]*?<\\/g>`));
+  if (groupMatch) {
+    const viewBox = getViewBox(svg, ref.source);
+    return `<symbol id="${escapeAttr(ref.symbolId)}" viewBox="${escapeAttr(viewBox)}">\n${indent(stripSvgMetadata(groupMatch[0]), 2)}\n</symbol>`;
+  }
+
+  if (!svg.includes("<symbol")) {
+    const viewBox = getViewBox(svg, ref.source);
+    const body = stripSvgMetadata(extractSvgBody(svg, ref.source, { stripDefs: false }), {
+      preserveIds: true,
+      recolorScarf: false,
+    });
+    return `<symbol id="${escapeAttr(ref.symbolId)}" viewBox="${escapeAttr(viewBox)}">\n${indent(body, 2)}\n</symbol>`;
+  }
+
+  throw new Error(`Missing SVG fragment "${ref.symbolId}" in ${ref.source}`);
 }
 
-function rewriteNotationSymbol(symbol) {
-  return removeNotationAccents(symbol)
-    .replace(/<symbol\s+id="((?:symbol|connection)-[^"]+)"/, (_, id) => `<symbol id="${prefixSymbolId(id)}"`)
-    .replace(/href="#((?:symbol|connection)-[^"]+)"/g, (_, id) => `href="#${prefixSymbolId(id)}"`);
+function rewriteAssetSymbol(symbol, ref) {
+  const source = shouldSuppressNotationAccents(ref) ? removeNotationAccents(symbol) : symbol;
+  return source
+    .replace(/(<symbol\b[^>]*\bid=)["'][^"']+["']/, (_, prefix) => `${prefix}"${prefixSymbolId(ref.symbolId)}"`)
+    .replace(/\b(?:href|xlink:href)=["']#([^"']+)["']/g, (_, id) => `href="#${prefixSymbolId(id)}"`);
+}
+
+function shouldSuppressNotationAccents(ref) {
+  return ref.source.replaceAll("\\", "/") === "icons/apiops-character-notation.svg";
+}
+
+function getRegistrySymbolRef(alias) {
+  const source = registry.symbols[alias];
+  if (!source) throw new Error(`Unknown scene symbol "${alias}"`);
+  const [sourcePath, symbolId] = source.split("#");
+  if (!sourcePath || !symbolId) throw new Error(`Scene symbol "${alias}" must use "path/to/file.svg#fragment-id"`);
+  return { source: sourcePath.replaceAll("\\", "/"), symbolId };
+}
+
+function assetSymbolKey(ref) {
+  return `${ref.source}#${ref.symbolId}`;
+}
+
+function prefixSymbolId(symbolId) {
+  return `scene-${symbolId}`;
 }
 
 function removeNotationAccents(symbol) {
@@ -205,37 +246,43 @@ function removeNotationAccents(symbol) {
     .replace(/\s*<([a-zA-Z]+)\b[^>]*class="accent"[^>]*>[\s\S]*?<\/\1>/g, "");
 }
 
-function getRegistrySymbolId(alias) {
-  const source = registry.symbols[alias];
-  if (!source) throw new Error(`Unknown notation symbol "${alias}"`);
-  const [, symbolId] = source.split("#");
-  if (!symbolId) throw new Error(`Notation symbol "${alias}" must include a fragment id`);
-  return symbolId;
-}
-
-function prefixSymbolId(symbolId) {
-  return `scene-${symbolId}`;
-}
-
 function getViewBox(svg, source) {
   const match = svg.match(/\bviewBox="([^"]+)"/);
   if (!match) throw new Error(`Missing viewBox in ${source}`);
   return match[1];
 }
 
-function extractSvgBody(svg, source) {
+function extractSvgBody(svg, source, options = {}) {
+  const { stripDefs = true } = options;
   const body = svg.match(/<svg\b[^>]*>([\s\S]*)<\/svg>/)?.[1];
   if (!body) throw new Error(`Unable to read SVG body for ${source}`);
-  return body.replace(/<sodipodi:namedview\b[\s\S]*?\/>/g, "").replace(/<defs\b[\s\S]*?<\/defs>/g, "").trim();
+  let result = body
+    .replace(/<sodipodi:namedview\b[\s\S]*?\/>/g, "")
+    .replace(/<title\b[\s\S]*?<\/title>/g, "")
+    .replace(/<desc\b[\s\S]*?<\/desc>/g, "")
+    .replace(/<metadata\b[\s\S]*?<\/metadata>/g, "")
+    .trim();
+
+  if (stripDefs) {
+    result = result.replace(/<defs\b[\s\S]*?<\/defs>/g, "").replace(/<defs\b[^>]*\/>/g, "").trim();
+  }
+
+  return result;
 }
 
-function stripSvgMetadata(svg) {
-  return svg
+function stripSvgMetadata(svg, options = {}) {
+  const { preserveIds = false, recolorScarf = true } = options;
+  let result = svg
     .replace(/\s(?:sodipodi|inkscape):[a-zA-Z0-9-]+="[^"]*"/g, "")
     .replace(/\sxmlns(?::[a-zA-Z0-9-]+)?="[^"]*"/g, "")
-    .replace(/\sid="[^"]*"/g, "")
-    .replace(/#1656b8/gi, "currentColor")
+    .replace(/#1656b8/gi, recolorScarf ? "currentColor" : "#1656b8")
     .trim();
+
+  if (!preserveIds) {
+    result = result.replace(/\sid="[^"]*"/g, "");
+  }
+
+  return result;
 }
 
 function resolveColor(value) {

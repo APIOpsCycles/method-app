@@ -22,7 +22,7 @@
     },
     {
       "scene": "scene-shared-picture-missing",
-      "title": "01 Everyone has APIs",
+      "title": "Everyone has APIs",
       "x": 624,
       "y": 42,
       "width": 540,
@@ -37,7 +37,7 @@
     },
     {
       "scene": "scene-local-optimization",
-      "title": "02 Local optimization",
+      "title": "Local optimization",
       "x": 1212,
       "y": 42,
       "width": 540,
@@ -52,7 +52,7 @@
     },
     {
       "scene": "scene-consumers-capabilities",
-      "title": "03 Consumers want capabilities",
+      "title": "Consumers want capabilities",
       "x": 1800,
       "y": 42,
       "width": 540,
@@ -67,7 +67,7 @@
     },
     {
       "scene": "scene-governance-vs-innovation",
-      "title": "04 Governance vs innovation",
+      "title": "Governance vs innovation",
       "x": 36,
       "y": 430,
       "width": 540,
@@ -82,7 +82,7 @@
     },
     {
       "scene": "scene-api-first-not-enough",
-      "title": "05 API-first isn't enough",
+      "title": "API-first isn't enough",
       "x": 624,
       "y": 430,
       "width": 540,
@@ -96,23 +96,8 @@
       "color": "publishing"
     },
     {
-      "scene": "scene-api-lifecycle-loop",
-      "title": "06 API lifecycle loop",
-      "x": 1212,
-      "y": 430,
-      "width": 540,
-      "height": 360,
-      "sceneX": 96,
-      "sceneY": 32,
-      "sceneWidth": 348,
-      "sceneHeight": 252,
-      "titleX": 270,
-      "titleY": 336,
-      "color": "architecture"
-    },
-    {
       "scene": "scene-api-ownership-question",
-      "title": "07 Who owns the API?",
+      "title": "Who owns the API?",
       "x": 1800,
       "y": 430,
       "width": 540,
@@ -127,7 +112,7 @@
     },
     {
       "scene": "scene-standards-without-conversation",
-      "title": "08 Standards need communication",
+      "title": "Standards need communication",
       "x": 36,
       "y": 818,
       "width": 540,
@@ -347,27 +332,9 @@
       "viewBox": "0 0 420 240",
       "layers": [
           { "type": "symbol", "symbol": "workshop-board", "x": 210, "y": 44, "width": 164, "height": 142, "color": "community" },
+          { "type": "symbol", "symbol": "apiops-stationblue", "x": 255, "y": 72, "width": 68, "height": 68, "color": "community"},
           { "type": "actor", "pose": "pointing", "x": 145, "y": 68, "width": 118, "height": 142, "scarfColor": "architecture" }
               
-      ]
-    },
-    {
-      "id": "scene-api-lifecycle-loop",
-      "title": "API lifecycle loop",
-      "viewBox": "0 0 360 260",
-      "layers": [
-        { "type": "path", "kind": "dash", "d": "M175 38 C252 38 303 82 304 139 C305 202 237 230 166 224 C92 218 50 174 56 122 C61 76 102 47 151 40" },
-        { "type": "path", "kind": "fine", "d": "M143 34 L154 44 L140 51" },
-        { "type": "symbol", "symbol": "consumer-group", "x": 140, "y": 12, "width": 88, "height": 70, "color": "business" },
-        { "type": "text", "text": "Consumers", "x": 184, "y": 100, "class": "tiny", "color": "business" },
-        { "type": "symbol", "symbol": "architecture-cube", "x": 68, "y": 64, "width": 92, "height": 92, "color": "architecture" },
-        { "type": "text", "text": "Architecture", "x": 114, "y": 174, "class": "tiny", "color": "architecture" },
-        { "type": "symbol", "symbol": "code-design", "x": 220, "y": 64, "width": 92, "height": 92, "color": "design" },
-        { "type": "text", "text": "Design", "x": 266, "y": 174, "class": "tiny", "color": "design" },
-        { "type": "symbol", "symbol": "delivery-gear", "x": 218, "y": 158, "width": 78, "height": 78, "color": "delivery" },
-        { "type": "text", "text": "Delivery", "x": 257, "y": 252, "class": "tiny", "color": "delivery" },
-        { "type": "symbol", "symbol": "feedback-megaphone", "x": 66, "y": 158, "width": 96, "height": 82, "color": "publishing" },
-        { "type": "text", "text": "Feedback", "x": 114, "y": 254, "class": "tiny", "color": "publishing" }
       ]
     },
     {

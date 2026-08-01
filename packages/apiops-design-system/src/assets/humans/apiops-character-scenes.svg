@@ -796,40 +796,124 @@
 
     <symbol id="scene-symbol-board" viewBox="0 0 140 120">
           <rect x="22" y="18" width="96" height="72" rx="7" class="paper" />
-          <path d="M40 40 C55 24 82 31 91 47 C100 66 78 81 58 72 C43 65 45 49 59 46" class="dash" />
           <path d="M70 90 V108" class="base" />
           <path d="M45 108 H95" class="base" />
         </symbol>
 
-    <symbol id="scene-symbol-consumer-group" viewBox="0 0 150 120">
-          <circle cx="50" cy="34" r="12" class="base" />
-          <circle cx="91" cy="34" r="12" class="base" />
-          <path d="M35 88 C37 62 43 52 50 52 C57 52 63 62 65 88" class="base" />
-          <path d="M76 88 C78 62 84 52 91 52 C98 52 104 62 106 88" class="base" />
-          <path d="M25 90 H116" class="base" />
-        </symbol>
-
-    <symbol id="scene-symbol-architecture-cube" viewBox="0 0 120 120">
-          <use href="#scene-symbol-product-cube" x="8" y="8" width="104" height="104" />
-          <path d="M38 56 H82" class="fine" />
-          <path d="M60 36 V82" class="fine" />
-        </symbol>
-
-    <symbol id="scene-symbol-code-design" viewBox="0 0 120 120">
-          <use href="#scene-symbol-code-brackets" x="0" y="0" width="120" height="120" />
-          <path d="M29 96 C44 86 63 86 78 96" class="fine" />
-        </symbol>
-
-    <symbol id="scene-symbol-code-brackets" viewBox="0 0 120 120">
-          <path d="M47 30 L22 60 L47 90" class="base" />
-          <path d="M73 30 L98 60 L73 90" class="base" />
-          <path d="M66 26 L54 94" class="fine" />
-        </symbol>
-
-    <symbol id="scene-symbol-delivery-gear" viewBox="0 0 120 120">
-          <circle cx="60" cy="60" r="21" class="paper" />
-          <path d="M60 22 V36 M60 84 V98 M22 60 H36 M84 60 H98 M33 33 L43 43 M77 77 L87 87 M87 33 L77 43 M43 77 L33 87" class="base" />
-        </symbol>
+    <symbol id="scene-apiops-station-circle-blue" viewBox="0 0 800 800">
+      <defs
+           id="defs11" />
+  
+  
+        <!-- Transparent background -->
+        <g
+           fill="none"
+           stroke-linecap="round"
+           stroke-linejoin="round"
+           id="g11">
+          <!-- Ring segments -->
+          <!-- Stations -->
+          <g
+             id="g2">
+            <path
+               d="m 400,120 c 100.0354,-0.001 192.4723,53.36681 242.49,140"
+               stroke="#2F7D32"
+               stroke-width="22"
+               id="path1"
+               style="stroke:#1656b8;stroke-width:30;stroke-dasharray:none;stroke-opacity:1"
+               />
+            <path
+               d="m 642.49,260 c 50.01718,86.6323 50.01718,193.3677 0,280"
+               stroke="#0A8F8F"
+               stroke-width="22"
+               id="path2"
+               style="stroke:#1656b8;stroke-width:30;stroke-dasharray:none;stroke-opacity:1"
+               />
+            <path
+               d="M 642.49,540 C 592.4723,626.63319 500.0354,680.00103 400,680"
+               stroke="#1656b8"
+               stroke-width="22"
+               id="path3"
+               style="stroke:#1656b8;stroke-width:30;stroke-dasharray:none;stroke-opacity:1"
+               />
+            <path
+               d="M 400,680 C 299.9646,680.00103 207.5277,626.63319 157.51,540"
+               stroke="#666A70"
+               stroke-width="22"
+               id="path4"
+               style="stroke:#1656b8;stroke-width:30;stroke-dasharray:none;stroke-opacity:1"
+               />
+            <path
+               d="m 157.51,540 c -50.01718,-86.6323 -50.01718,-193.3677 0,-280"
+               stroke="#E5640A"
+               stroke-width="22"
+               id="path5"
+               style="stroke:#1656b8;stroke-width:30;stroke-dasharray:none;stroke-opacity:1"
+               />
+            <path
+               d="M 157.51,260 C 207.5277,173.36681 299.9646,119.99897 400,120"
+               stroke="#67389B"
+               stroke-width="22"
+               id="path6"
+               style="stroke:#1656b8;stroke-width:30;stroke-dasharray:none;stroke-opacity:1"
+               />
+            <circle
+               cx="400"
+               cy="120"
+               r="30"
+               fill="#F7F8FA"
+               stroke="#2F7D32"
+               stroke-width="12"
+               id="circle6"
+               style="stroke:#1656b8;stroke-opacity:1;fill:#ffffff;fill-opacity:1;stroke-width:20;stroke-dasharray:none" />
+            <circle
+               cx="642.49"
+               cy="260"
+               r="30"
+               fill="#F7F8FA"
+               stroke="#0A8F8F"
+               stroke-width="12"
+               id="circle7"
+               style="stroke:#1656b8;stroke-opacity:1;fill:#ffffff;fill-opacity:1;stroke-width:20;stroke-dasharray:none" />
+            <circle
+               cx="642.49"
+               cy="540"
+               r="30"
+               fill="#F7F8FA"
+               stroke="#1656b8"
+               stroke-width="12"
+               id="circle8"
+               style="stroke:#1656b8;stroke-opacity:1;fill:#ffffff;fill-opacity:1;stroke-width:20;stroke-dasharray:none" />
+            <circle
+               cx="400"
+               cy="680"
+               r="30"
+               fill="#F7F8FA"
+               stroke="#666A70"
+               stroke-width="12"
+               id="circle9"
+               style="stroke:#1656b8;stroke-opacity:1;fill:#ffffff;fill-opacity:1;stroke-width:20;stroke-dasharray:none" />
+            <circle
+               cx="157.51"
+               cy="540"
+               r="30"
+               fill="#F7F8FA"
+               stroke="#E5640A"
+               stroke-width="12"
+               id="circle10"
+               style="stroke:#1656b8;stroke-opacity:1;fill:#ffffff;fill-opacity:1;stroke-width:20;stroke-dasharray:none" />
+            <circle
+               cx="157.51"
+               cy="260"
+               r="30"
+               fill="#F7F8FA"
+               stroke="#67389B"
+               stroke-width="12"
+               id="circle11"
+               style="stroke:#1656b8;stroke-opacity:1;fill:#ffffff;fill-opacity:1;stroke-width:20;stroke-dasharray:none" />
+          </g>
+        </g>
+    </symbol>
 
     <symbol id="scene-chaos-to-capabilities" viewBox="0 0 560 300">
       <title>Chaos to reusable capabilities</title>
@@ -1076,35 +1160,12 @@
       <g color="#1656b8" class="no-accent" transform="translate(210 44)">
         <use href="#scene-symbol-workshop-board" width="164" height="142" />
       </g>
+      <g color="#1656b8" class="no-accent" transform="translate(255 72)">
+        <use href="#scene-apiops-station-circle-blue" width="68" height="68" />
+      </g>
       <g color="#8b5cf6" transform="translate(145 68)">
         <use href="#scene-actor-pointing" width="118" height="142" />
       </g>
-    </symbol>
-
-    <symbol id="scene-api-lifecycle-loop" viewBox="0 0 360 260">
-      <title>API lifecycle loop</title>
-      <path d="M175 38 C252 38 303 82 304 139 C305 202 237 230 166 224 C92 218 50 174 56 122 C61 76 102 47 151 40" class="dash" />
-      <path d="M143 34 L154 44 L140 51" class="fine" />
-      <g color="#10b981" class="no-accent" transform="translate(140 12)">
-        <use href="#scene-symbol-consumer-group" width="88" height="70" />
-      </g>
-      <text x="184" y="100" class="tiny" fill="#10b981">Consumers</text>
-      <g color="#8b5cf6" class="no-accent" transform="translate(68 64)">
-        <use href="#scene-symbol-architecture-cube" width="92" height="92" />
-      </g>
-      <text x="114" y="174" class="tiny" fill="#8b5cf6">Architecture</text>
-      <g color="#ef4444" class="no-accent" transform="translate(220 64)">
-        <use href="#scene-symbol-code-design" width="92" height="92" />
-      </g>
-      <text x="266" y="174" class="tiny" fill="#ef4444">Design</text>
-      <g color="#f5b30b" class="no-accent" transform="translate(218 158)">
-        <use href="#scene-symbol-delivery-gear" width="78" height="78" />
-      </g>
-      <text x="257" y="252" class="tiny" fill="#f5b30b">Delivery</text>
-      <g color="#00a6a6" class="no-accent" transform="translate(66 158)">
-        <use href="#scene-symbol-feedback-megaphone" width="96" height="82" />
-      </g>
-      <text x="114" y="254" class="tiny" fill="#00a6a6">Feedback</text>
     </symbol>
 
     <symbol id="scene-team-celebration" viewBox="0 0 420 180">
@@ -1140,7 +1201,7 @@
     <g transform="translate(40 70)">
       <use href="#scene-shared-picture-missing" width="460" height="230" />
     </g>
-    <text x="270" y="336" class="label" fill="#10b981">01 Everyone has APIs</text>
+    <text x="270" y="336" class="label" fill="#10b981">Everyone has APIs</text>
   </g>
 
   <g transform="translate(1212 42)">
@@ -1148,7 +1209,7 @@
     <g transform="translate(70 58)">
       <use href="#scene-local-optimization" width="432" height="236" />
     </g>
-    <text x="270" y="336" class="label" fill="#1656b8">02 Local optimization</text>
+    <text x="270" y="336" class="label" fill="#1656b8">Local optimization</text>
   </g>
 
   <g transform="translate(1800 42)">
@@ -1156,7 +1217,7 @@
     <g transform="translate(60 58)">
       <use href="#scene-consumers-capabilities" width="420" height="240" />
     </g>
-    <text x="270" y="336" class="label" fill="#ef4444">03 Consumers want capabilities</text>
+    <text x="270" y="336" class="label" fill="#ef4444">Consumers want capabilities</text>
   </g>
 
   <g transform="translate(36 430)">
@@ -1164,7 +1225,7 @@
     <g transform="translate(48 76)">
       <use href="#scene-governance-vs-innovation" width="444" height="220" />
     </g>
-    <text x="270" y="336" class="label" fill="#f5b30b">04 Governance vs innovation</text>
+    <text x="270" y="336" class="label" fill="#f5b30b">Governance vs innovation</text>
   </g>
 
   <g transform="translate(624 430)">
@@ -1172,15 +1233,7 @@
     <g transform="translate(56 80)">
       <use href="#scene-api-first-not-enough" width="428" height="220" />
     </g>
-    <text x="270" y="336" class="label" fill="#00a6a6">05 API-first isn't enough</text>
-  </g>
-
-  <g transform="translate(1212 430)">
-    <rect width="540" height="360" rx="12" class="soft" />
-    <g transform="translate(96 32)">
-      <use href="#scene-api-lifecycle-loop" width="348" height="252" />
-    </g>
-    <text x="270" y="336" class="label" fill="#8b5cf6">06 API lifecycle loop</text>
+    <text x="270" y="336" class="label" fill="#00a6a6">API-first isn't enough</text>
   </g>
 
   <g transform="translate(1800 430)">
@@ -1188,7 +1241,7 @@
     <g transform="translate(58 62)">
       <use href="#scene-api-ownership-question" width="424" height="244" />
     </g>
-    <text x="270" y="336" class="label" fill="#ef4444">07 Who owns the API?</text>
+    <text x="270" y="336" class="label" fill="#ef4444">Who owns the API?</text>
   </g>
 
   <g transform="translate(36 818)">
@@ -1196,7 +1249,7 @@
     <g transform="translate(46 62)">
       <use href="#scene-standards-without-conversation" width="448" height="244" />
     </g>
-    <text x="270" y="336" class="label" fill="#1656b8">08 Standards need communication</text>
+    <text x="270" y="336" class="label" fill="#1656b8">Standards need communication</text>
   </g>
 
   <g transform="translate(624 818)">

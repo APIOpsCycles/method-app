@@ -117,8 +117,9 @@ test("character grammar notation exposes the implemented backlog symbols", async
     "scene-symbol-feedback-megaphone",
     "scene-connection-ownership-claim",
     "scene-connection-conversion-arrow",
+    "scene-apiops-station-circle-blue",
   ]) {
-    assert.match(scenes, new RegExp(`<symbol id="${id}"(?:\\s|>)`), `${id} notation geometry is inlined`);
+    assert.match(scenes, new RegExp(`<symbol id="${id}"(?:\\s|>)`), `${id} scene asset geometry is inlined`);
   }
 
   const chaosScene = extractSymbol(scenes, "scene-chaos-to-capabilities");
@@ -143,6 +144,9 @@ test("character grammar notation exposes the implemented backlog symbols", async
 
   const ownershipScene = extractSymbol(scenes, "scene-api-ownership-question");
   assert.match(ownershipScene, /scale\(-1 1\)/, "ownership scene can flip actors toward the central API");
+
+  const workshopScene = extractSymbol(scenes, "scene-workshop-invitation");
+  assert.match(workshopScene, /href="#scene-apiops-station-circle-blue"/, "scene recipes can use glyph and brand assets from registry paths");
 
   const lifecycleScene = extractSymbol(scenes, "scene-api-lifecycle-loop");
   for (const id of [

@@ -50,9 +50,10 @@ Edit these files instead:
 | File | Purpose |
 | --- | --- |
 | `src/assets/character-scenes/scenes.json` | Scene canvas size, preview cards, and ordered layer recipes. |
-| `src/assets/character-scenes/registry.json` | Stable pose, symbol, connection, and color aliases used by scene recipes. |
+| `src/assets/character-scenes/registry.json` | Stable pose, symbol, connection, glyph, brand, and color aliases used by scene recipes. |
 | `src/assets/humans/pose-with-scarf-*.svg` | Source pose geometry. |
 | `src/assets/icons/apiops-character-notation.svg` | Source notation symbols and connection symbols. |
+| `src/assets/glyphs/*.svg`, `src/assets/brand/*.svg` | Optional glyph and brand assets that can be referenced from `registry.json`. |
 
 After editing `scenes.json` or `registry.json`, regenerate the SVG:
 
@@ -84,9 +85,25 @@ Before committing scene changes, run:
 npm.cmd test --workspace @apiops/design-system
 ```
 
-The tests check that generated scenes keep stable IDs, inline pose and notation geometry, avoid `<image>` tags, avoid unresolved `href="#symbol-*"` or `href="#connection-*"` references, and render as a valid SVG sheet.
+The tests check that generated scenes keep stable IDs, inline pose, notation, glyph, and brand geometry, avoid `<image>` tags, avoid unresolved `href="#symbol-*"` or `href="#connection-*"` references, and render as a valid SVG sheet.
 
 Scene recipes use explicit coordinates in V1. Add or tune a scene by changing JSON layers, then regenerate the SVG. Keep reusable IDs semantic, for example `scene-api-ownership-question`, rather than tying IDs to a campaign slide number.
+
+### Registry Symbol References
+
+`registry.json` symbol aliases use package-local SVG references:
+
+```json
+{
+  "symbols": {
+    "api": "icons/apiops-character-notation.svg#symbol-api",
+    "apiops-stationblue": "glyphs/apiops-station-circle-blue.svg#apiops-station-circle-blue",
+    "apiops-cycles-logo": "brand/apiops-cycles-logo.svg#apiops-logo"
+  }
+}
+```
+
+For sprite-style files, the fragment must match a `<symbol id="...">` or `<g id="...">`. For standalone exported SVGs, the fragment ID becomes the generated scene symbol ID, so a layer can still use a stable alias even if the source file is not a sprite. The source file still controls the actual geometry and colors, so a blue-only station must point to `apiops-station-circle-blue.svg`, not the multicolor station file. The generator inlines only aliases referenced by `scenes.json` and prefixes the generated IDs with `scene-`, for example `scene-apiops-station-circle-blue`.
 
 ### Scene Actor Controls
 

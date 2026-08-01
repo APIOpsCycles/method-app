@@ -77,7 +77,6 @@
 
     <symbol id="symbol-board" viewBox="0 0 140 120">
       <rect x="22" y="18" width="96" height="72" rx="7" class="paper" />
-      <path d="M40 40 C55 24 82 31 91 47 C100 66 78 81 58 72 C43 65 45 49 59 46" class="dash" />
       <circle cx="42" cy="77" r="6" class="accent" />
       <path d="M70 90 V108" class="base" />
       <path d="M45 108 H95" class="base" />
