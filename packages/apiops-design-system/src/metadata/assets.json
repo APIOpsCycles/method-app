@@ -107,11 +107,6 @@
       "tags": ["apiops", "humans", "character grammar", "scarf", "amazed", "discovery"]
     },
     {
-      "path": "humans/pose-with-scarf-announcing.svg",
-      "kind": "human",
-      "tags": ["apiops", "humans", "character grammar", "scarf", "announcing", "publishing"]
-    },
-    {
       "path": "humans/pose-with-scarf-dancing.svg",
       "kind": "human",
       "tags": ["apiops", "humans", "character grammar", "scarf", "celebrating", "momentum"]
@@ -122,24 +117,9 @@
       "tags": ["apiops", "humans", "character grammar", "scarf", "holding", "ownership"]
     },
     {
-      "path": "humans/pose-with-scarf-holding-AI.svg",
+      "path": "humans/pose-with-scarf-holding-up.svg",
       "kind": "human",
-      "tags": ["apiops", "humans", "character grammar", "scarf", "holding ai", "automation"]
-    },
-    {
-      "path": "humans/pose-with-scarf-holding-box.svg",
-      "kind": "human",
-      "tags": ["apiops", "humans", "character grammar", "scarf", "holding box", "capability package"]
-    },
-    {
-      "path": "humans/pose-with-scarf-holding-computer.svg",
-      "kind": "human",
-      "tags": ["apiops", "humans", "character grammar", "scarf", "holding computer", "delivery"]
-    },
-    {
-      "path": "humans/pose-with-scarf-holding-interface.svg",
-      "kind": "human",
-      "tags": ["apiops", "humans", "character grammar", "scarf", "holding interface", "api surface"]
+      "tags": ["apiops", "humans", "character grammar", "scarf", "holding up", "standards"]
     },
     {
       "path": "humans/pose-with-scarf-listening.svg",
@@ -147,9 +127,9 @@
       "tags": ["apiops", "humans", "character grammar", "scarf", "listening", "consumer"]
     },
     {
-      "path": "humans/pose-with-scarf-presenting.svg",
+      "path": "humans/pose-with-scarf-pointing.svg",
       "kind": "human",
-      "tags": ["apiops", "humans", "character grammar", "scarf", "presenting", "explaining"]
+      "tags": ["apiops", "humans", "character grammar", "scarf", "pointing", "attention"]
     },
     {
       "path": "humans/pose-with-scarf-standing.svg",
@@ -165,6 +145,16 @@
       "path": "humans/pose-with-scarf-walking.svg",
       "kind": "human",
       "tags": ["apiops", "humans", "character grammar", "scarf", "walking", "adoption"]
+    },
+    {
+      "path": "humans/pose-with-scarf-watching-hand-down.svg",
+      "kind": "human",
+      "tags": ["apiops", "humans", "character grammar", "scarf", "watching hand down", "ownership"]
+    },
+    {
+      "path": "humans/pose-with-scarf-watching-hand-up.svg",
+      "kind": "human",
+      "tags": ["apiops", "humans", "character grammar", "scarf", "watching hand up", "ownership"]
     },
     {
       "path": "icons/apiops-character-notation.svg",

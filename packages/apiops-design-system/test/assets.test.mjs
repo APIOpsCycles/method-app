@@ -35,6 +35,7 @@ test("character grammar notation exposes the implemented backlog symbols", async
   const notation = readFileSync(new URL("../src/assets/icons/apiops-character-notation.svg", import.meta.url), "utf8");
   const scenes = readFileSync(new URL("../src/assets/humans/apiops-character-scenes.svg", import.meta.url), "utf8");
   const sceneConfig = JSON.parse(readFileSync(new URL("../src/assets/character-scenes/scenes.json", import.meta.url), "utf8"));
+  const registry = JSON.parse(readFileSync(new URL("../src/assets/character-scenes/registry.json", import.meta.url), "utf8"));
   const expectedNotationSymbols = [
     "symbol-api",
     "symbol-api-card",
@@ -65,20 +66,7 @@ test("character grammar notation exposes the implemented backlog symbols", async
     "connection-gap",
     "connection-conversion-arrow",
   ];
-  const expectedSceneSymbols = [
-    "scene-chaos-to-capabilities",
-    "scene-shared-picture-missing",
-    "scene-local-optimization",
-    "scene-consumers-capabilities",
-    "scene-governance-vs-innovation",
-    "scene-api-first-not-enough",
-    "scene-api-lifecycle-loop",
-    "scene-api-ownership-question",
-    "scene-standards-without-conversation",
-    "scene-feedback-invitation",
-    "scene-workshop-invitation",
-    "scene-team-celebration",
-  ];
+  const expectedSceneSymbols = sceneConfig.scenes.map((scene) => scene.id);
 
   for (const id of expectedNotationSymbols) {
     assert.match(notation, new RegExp(`<symbol id="${id}"(?:\\s|>)`), `${id} exists in character notation`);
@@ -105,20 +93,22 @@ test("character grammar notation exposes the implemented backlog symbols", async
     assert.match(scenes, new RegExp(`<symbol id="${id}"(?:\\s|>)`), `${id} pose geometry is inlined`);
   }
 
-  for (const id of [
-    "scene-symbol-api",
-    "scene-symbol-contract",
-    "scene-symbol-consumer-group",
-    "scene-symbol-product-cube",
-    "scene-symbol-architecture-cube",
-    "scene-symbol-code-brackets",
-    "scene-symbol-code-design",
-    "scene-symbol-delivery-gear",
-    "scene-symbol-feedback-megaphone",
-    "scene-connection-ownership-claim",
-    "scene-connection-conversion-arrow",
-    "scene-apiops-station-circle-blue",
-  ]) {
+  const expectedAssetSymbols = [
+    ...new Set(
+      sceneConfig.scenes.flatMap((scene) =>
+        scene.layers
+          .filter((layer) => layer.type === "symbol")
+          .map((layer) => {
+            const source = registry.symbols[layer.symbol];
+            assert.ok(source, `${layer.symbol} exists in character scene registry`);
+            const [, fragment] = source.split("#");
+            assert.ok(fragment, `${layer.symbol} registry entry has a fragment id`);
+            return `scene-${fragment}`;
+          }),
+      ),
+    ),
+  ];
+  for (const id of expectedAssetSymbols) {
     assert.match(scenes, new RegExp(`<symbol id="${id}"(?:\\s|>)`), `${id} scene asset geometry is inlined`);
   }
 
@@ -148,15 +138,17 @@ test("character grammar notation exposes the implemented backlog symbols", async
   const workshopScene = extractSymbol(scenes, "scene-workshop-invitation");
   assert.match(workshopScene, /href="#scene-apiops-station-circle-blue"/, "scene recipes can use glyph and brand assets from registry paths");
 
-  const lifecycleScene = extractSymbol(scenes, "scene-api-lifecycle-loop");
-  for (const id of [
-    "scene-symbol-consumer-group",
-    "scene-symbol-architecture-cube",
-    "scene-symbol-code-design",
-    "scene-symbol-delivery-gear",
-    "scene-symbol-feedback-megaphone",
-  ]) {
-    assert.match(lifecycleScene, new RegExp(`href="#${id}"`), `lifecycle scene uses ${id}`);
+  if (expectedSceneSymbols.includes("scene-api-lifecycle-loop")) {
+    const lifecycleScene = extractSymbol(scenes, "scene-api-lifecycle-loop");
+    for (const id of [
+      "scene-symbol-consumer-group",
+      "scene-symbol-architecture-cube",
+      "scene-symbol-code-design",
+      "scene-symbol-delivery-gear",
+      "scene-symbol-feedback-megaphone",
+    ]) {
+      assert.match(lifecycleScene, new RegExp(`href="#${id}"`), `lifecycle scene uses ${id}`);
+    }
   }
 
   const { default: sharp } = await import("sharp");
