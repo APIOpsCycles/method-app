@@ -6,8 +6,8 @@ import tokens from "@apiops/design-system/tokens.json";
 import { designSystemAssetManifest, designSystemAssetPath } from "@apiops/design-system/assets";
 import methodIcons from "@apiops/design-system/assets/icons/apiops-iconset.svg?raw";
 import metroIcons from "@apiops/design-system/assets/icons/apiops-metro-icons.svg?raw";
-import humanPoses from "@apiops/design-system/assets/humans/apiops-stick-figures-poses.svg?raw";
-import humanStories from "@apiops/design-system/assets/humans/apiops-stick-figures-stories.svg?raw";
+import characterNotation from "@apiops/design-system/assets/icons/apiops-character-notation.svg?raw";
+import characterScenes from "@apiops/design-system/assets/humans/apiops-character-scenes.svg?raw";
 
 type TokenLeaf = { $type: string; $value: unknown };
 type TokenRow = { name: string; sourceName: string; group: string; type: string; value: unknown; declared: string };
@@ -35,20 +35,28 @@ const assetGuidance: Record<string, string> = {
   favicon: "Reference from document metadata; its neighboring page title supplies the accessible name.",
   glyph: "Treat decorative glyphs as hidden; label an action when a glyph is its only visible content.",
   icon: "Metro and method icon sheets are supporting visuals, not a substitute for text labels.",
-  human: "Describe an illustration only when it adds information; otherwise use an empty alt attribute.",
 };
 const supportedGroups = ["color", "typography", "spacing", "radius", "shadow", "focus", "control", "canvas", "metro"];
 function symbols(source: string, path: string) {
   return [...source.matchAll(/<symbol\b[^>]*\bid=["']([^"']+)["'][^>]*\bviewBox=["']([^"']+)["']/g)].map((match) => ({ id: match[1], viewBox: match[2], path }));
 }
-function storySymbols(source: string, path: string) {
-  return [...source.matchAll(/<g\b[^>]*\bid=["'](story-[^"']+)["'][^>]*\bdata-symbol-view-box=["']([^"']+)["']/g)].map((match) => ({ id: match[1], viewBox: match[2], path }));
-}
+const visibleAssetManifest = designSystemAssetManifest.assets.filter((asset) => !asset.tags.includes("legacy"));
+const characterPoseAssets = visibleAssetManifest
+  .filter((asset) => asset.kind === "human" && asset.path.startsWith("humans/pose-with-scarf") && asset.tags.includes("character grammar"))
+  .sort((a, b) => a.path.localeCompare(b.path));
+const characterSceneSymbols = symbols(characterScenes, "humans/apiops-character-scenes.svg").filter(
+  (symbol) =>
+    symbol.id.startsWith("scene-") &&
+    !symbol.id.startsWith("scene-actor-") &&
+    !symbol.id.startsWith("scene-symbol-") &&
+    !symbol.id.startsWith("scene-connection-") &&
+    !symbol.id.startsWith("scene-apiops-"),
+);
 const symbolSheets = [
   { title: "Method glyphs", description: "Concept icons for labelled supporting content.", symbols: symbols(methodIcons, "icons/apiops-iconset.svg") },
   { title: "Metro icons", description: "Journey, station, actor, and event symbols for diagrams.", symbols: symbols(metroIcons, "icons/apiops-metro-icons.svg") },
-  { title: "Human poses", description: "Individual people for method-neutral workshop scenes.", symbols: symbols(humanPoses, "humans/apiops-stick-figures-poses.svg") },
-  { title: "Human stories", description: "Small, reusable storytelling compositions.", symbols: storySymbols(humanStories, "humans/apiops-stick-figures-stories.svg") },
+  { title: "Character notation", description: "APIOps Character Grammar nouns and connection marks for composing scenes.", symbols: symbols(characterNotation, "icons/apiops-character-notation.svg") },
+  { title: "Character scenes", description: "Generated APIOps Character Grammar scene recipes based on the scarf pose assets.", symbols: characterSceneSymbols },
 ];
 const componentExports = ["CompactSection", "PillList", "ResourceSelector", "JourneyCriteria", "PartnerCard", "AnnouncementToast", "StakeholderRoleSelector", "RoleParticipationTable", "MethodContextBar", "MethodContextEditor", "ContextGuidance", "MetroMapShell", "MetroLinePath", "MetroSelectionRing", "MetroStationButton", "MetroStationMarker", "MetroLegend", "CanvasSystemShell", "CanvasSystemGrid", "CanvasSystemZone", "CanvasSystemNoteView", "CanvasSystemMetadataEditor", "CanvasSystemMetadataReadOnly", "CanvasSystemFixture"];
 ---
@@ -63,7 +71,8 @@ const componentExports = ["CompactSection", "PillList", "ResourceSelector", "Jou
       <div class="token-table-wrap"><table><thead><tr><th>CSS token</th><th>Declared value</th><th>Usage guidance</th><th>Visual sample</th></tr></thead><tbody>{tokenRows.map((token) => <tr><th scope="row"><code>{token.name}</code><small class="token-source-name">Source: {token.sourceName}</small></th><td><code>{token.declared}</code></td><td>{groupGuidance[token.group]}</td><td>{token.type === "color" ? <span class="token-color" style={`--sample: ${token.declared}`}><span class="sr-only">Color sample</span></span> : token.type === "fontFamily" ? <span style={`font-family: ${token.declared}`}>Aa</span> : <span class="token-size" style={`--sample-size: ${token.declared}`}><span class="sr-only">Dimension sample</span></span>}</td></tr>)}</tbody></table></div>
     </section>
 
-    <section class="public-section" aria-labelledby="assets"><h2 id="assets">Brand and supporting assets</h2><p>The package asset metadata manifest is the source of this inventory. Download a standalone SVG, copy the supported package import, or use the public path example.</p><div class="asset-grid">{designSystemAssetManifest.assets.filter((asset) => !["icon", "human"].includes(asset.kind)).map((asset) => <article class="asset-card"><img src={designSystemAssetPath(asset.path)} alt="" loading="lazy" /><div><h3>{asset.tags.at(-1)}</h3><p><strong>{asset.kind}</strong> — {assetGuidance[asset.kind]}</p><code>@apiops/design-system/assets/{asset.path}</code><code>{designSystemAssetPath(asset.path)}</code><SvgAssetDownload source={designSystemAssetPath(asset.path)} filename={asset.tags.at(-1) ?? asset.kind} client:load /></div></article>)}</div>
+    <section class="public-section" aria-labelledby="assets"><h2 id="assets">Brand and supporting assets</h2><p>The package asset metadata manifest is the source of this inventory. Download a standalone SVG, copy the supported package import, or use the public path example.</p><div class="asset-grid">{visibleAssetManifest.filter((asset) => !["icon", "human"].includes(asset.kind)).map((asset) => <article class="asset-card"><img src={designSystemAssetPath(asset.path)} alt="" loading="lazy" /><div><h3>{asset.tags.at(-1)}</h3><p><strong>{asset.kind}</strong> — {assetGuidance[asset.kind]}</p><code>@apiops/design-system/assets/{asset.path}</code><code>{designSystemAssetPath(asset.path)}</code><SvgAssetDownload source={designSystemAssetPath(asset.path)} filename={asset.tags.at(-1) ?? asset.kind} client:load /></div></article>)}</div>
+      <h3>Character grammar poses</h3><p>Use these scarf poses as the current human standard. The legacy stick-figure pose and story sheets are intentionally not shown here.</p><div class="asset-grid">{characterPoseAssets.map((asset) => <article class="asset-card"><img src={designSystemAssetPath(asset.path)} alt="" loading="lazy" /><div><h3>{asset.tags.at(-1)}</h3><p><strong>{asset.kind}</strong></p><code>@apiops/design-system/assets/{asset.path}</code><code>{designSystemAssetPath(asset.path)}</code><SvgAssetDownload source={designSystemAssetPath(asset.path)} filename={asset.tags.at(-1) ?? asset.kind} client:load /></div></article>)}</div>
       <h3>Individual SVG symbols</h3><p>SVG sheets contain individually addressable symbols. Download a symbol as its own SVG, or reference it through an accessible inline SVG: give the SVG a name when it conveys meaning, or add <code>aria-hidden="true"</code> when decorative.</p>
       {symbolSheets.map((sheet) => <section class="symbol-section" aria-labelledby={`symbols-${sheet.title.toLowerCase().replaceAll(" ", "-")}`}><h4 id={`symbols-${sheet.title.toLowerCase().replaceAll(" ", "-")}`}>{sheet.title}</h4><p>{sheet.description}</p><div class="symbol-grid">{sheet.symbols.map((symbol) => <article class="symbol-card"><svg viewBox={symbol.viewBox} role="img" aria-label={symbol.id.replaceAll("-", " ")}><use href={`${designSystemAssetPath(symbol.path)}#${symbol.id}`}></use></svg><strong>{symbol.id}</strong><code>{`${designSystemAssetPath(symbol.path)}#${symbol.id}`}</code><code>{`<svg viewBox="${symbol.viewBox}" role="img" aria-label="…"><use href="${designSystemAssetPath(symbol.path)}#${symbol.id}" /></svg>`}</code><SvgAssetDownload source={designSystemAssetPath(symbol.path)} filename={symbol.id} symbolId={symbol.id} viewBox={symbol.viewBox} client:load /></article>)}</div></section>)}
     </section>

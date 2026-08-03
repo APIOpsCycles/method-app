@@ -1,185 +1,175 @@
 {
-    "schemaVersion":  1,
-    "assets":  [
-                   {
-                       "path":  "brand/apiops-cycles-logo-dark.svg",
-                       "kind":  "brand",
-                       "tags":  [
-                                    "apiops",
-                                    "brand",
-                                    "cycles logo dark"
-                                ]
-                   },
-                   {
-                       "path":  "brand/apiops-cycles-logo-white.svg",
-                       "kind":  "brand",
-                       "tags":  [
-                                    "apiops",
-                                    "brand",
-                                    "cycles logo white"
-                                ]
-                   },
-                   {
-                       "path":  "brand/apiops-cycles-logo.svg",
-                       "kind":  "brand",
-                       "tags":  [
-                                    "apiops",
-                                    "brand",
-                                    "cycles logo"
-                                ]
-                   },
-                   {
-                       "path":  "favicons/favicon.svg",
-                       "kind":  "favicon",
-                       "tags":  [
-                                    "apiops",
-                                    "favicons",
-                                    "favicon"
-                                ]
-                   },
-                   {
-                       "path":  "glyphs/apiops-check-mark.svg",
-                       "kind":  "glyph",
-                       "tags":  [
-                                    "apiops",
-                                    "glyphs",
-                                    "check mark"
-                                ]
-                   },
-                   {
-                       "path":  "glyphs/apiops-flow-en-text.svg",
-                       "kind":  "glyph",
-                       "tags":  [
-                                    "apiops",
-                                    "glyphs",
-                                    "flow en text"
-                                ]
-                   },
-                   {
-                       "path":  "glyphs/apiops-flow.svg",
-                       "kind":  "glyph",
-                       "tags":  [
-                                    "apiops",
-                                    "glyphs",
-                                    "flow"
-                                ]
-                   },
-                   {
-                       "path":  "glyphs/apiops-iconset.svg",
-                       "kind":  "glyph",
-                       "tags":  [
-                                    "apiops",
-                                    "glyphs",
-                                    "iconset"
-                                ]
-                   },
-                   {
-                       "path":  "brand/apiops-logo.svg",
-                       "kind":  "brand",
-                       "tags":  [
-                                    "apiops",
-                                    "brand",
-                                    "logo"
-                                ]
-                   },
-                   {
-                       "path":  "brand/apiops-mark-white.svg",
-                       "kind":  "brand",
-                       "tags":  [
-                                    "apiops",
-                                    "brand",
-                                    "mark white"
-                                ]
-                   },
-                   {
-                       "path":  "brand/apiops-mark.svg",
-                       "kind":  "brand",
-                       "tags":  [
-                                    "apiops",
-                                    "brand",
-                                    "mark"
-                                ]
-                   },
-                   {
-                       "path":  "glyphs/apiops-metro-icons.svg",
-                       "kind":  "glyph",
-                       "tags":  [
-                                    "apiops",
-                                    "glyphs",
-                                    "metro icons"
-                                ]
-                   },
-                   {
-                       "path":  "glyphs/apiops-station-circle-blue.svg",
-                       "kind":  "glyph",
-                       "tags":  [
-                                    "apiops",
-                                    "glyphs",
-                                    "station circle blue"
-                                ]
-                   },
-                   {
-                       "path":  "glyphs/apiops-station-circle.svg",
-                       "kind":  "glyph",
-                       "tags":  [
-                                    "apiops",
-                                    "glyphs",
-                                    "station circle"
-                                ]
-                   },
-                   {
-                       "path":  "glyphs/apiops-stick-figures-poses.svg",
-                       "kind":  "glyph",
-                       "tags":  [
-                                    "apiops",
-                                    "glyphs",
-                                    "stick figures poses"
-                                ]
-                   },
-                   {
-                       "path":  "glyphs/apiops-stick-figures-stories.svg",
-                       "kind":  "glyph",
-                       "tags":  [
-                                    "apiops",
-                                    "glyphs",
-                                    "stick figures stories"
-                                ]
-                   },
-                   {
-                       "path":  "humans/apiops-stick-figures-poses.svg",
-                       "kind":  "human",
-                       "tags":  [
-                                    "apiops",
-                                    "humans",
-                                    "stick figures poses"
-                                ]
-                   },
-                   {
-                       "path":  "humans/apiops-stick-figures-stories.svg",
-                       "kind":  "human",
-                       "tags":  [
-                                    "apiops",
-                                    "humans",
-                                    "stick figures stories"
-                                ]
-                   },
-                   {
-                       "path":  "icons/apiops-iconset.svg",
-                       "kind":  "icon",
-                       "tags":  [
-                                    "apiops",
-                                    "icons",
-                                    "iconset"
-                                ]
-                   },
-                   {
-                       "path":  "icons/apiops-metro-icons.svg",
-                       "kind":  "icon",
-                       "tags":  [
-                                    "apiops",
-                                    "icons",
-                                    "metro icons"
-                                ]
-                   }
-               ]
+  "schemaVersion": 1,
+  "assets": [
+    {
+      "path": "brand/apiops-cycles-logo-dark.svg",
+      "kind": "brand",
+      "tags": ["apiops", "brand", "cycles logo dark"]
+    },
+    {
+      "path": "brand/apiops-cycles-logo-white.svg",
+      "kind": "brand",
+      "tags": ["apiops", "brand", "cycles logo white"]
+    },
+    {
+      "path": "brand/apiops-cycles-logo.svg",
+      "kind": "brand",
+      "tags": ["apiops", "brand", "cycles logo"]
+    },
+    {
+      "path": "favicons/favicon.svg",
+      "kind": "favicon",
+      "tags": ["apiops", "favicons", "favicon"]
+    },
+    {
+      "path": "glyphs/apiops-check-mark.svg",
+      "kind": "glyph",
+      "tags": ["apiops", "glyphs", "check mark"]
+    },
+    {
+      "path": "glyphs/apiops-flow-en-text.svg",
+      "kind": "glyph",
+      "tags": ["apiops", "glyphs", "flow en text"]
+    },
+    {
+      "path": "glyphs/apiops-flow.svg",
+      "kind": "glyph",
+      "tags": ["apiops", "glyphs", "flow"]
+    },
+    {
+      "path": "glyphs/apiops-iconset.svg",
+      "kind": "glyph",
+      "tags": ["apiops", "glyphs", "iconset"]
+    },
+    {
+      "path": "glyphs/apiops-metro-icons.svg",
+      "kind": "glyph",
+      "tags": ["apiops", "glyphs", "metro icons"]
+    },
+    {
+      "path": "glyphs/apiops-station-circle-blue.svg",
+      "kind": "glyph",
+      "tags": ["apiops", "glyphs", "station circle blue"]
+    },
+    {
+      "path": "glyphs/apiops-station-circle.svg",
+      "kind": "glyph",
+      "tags": ["apiops", "glyphs", "station circle"]
+    },
+    {
+      "path": "glyphs/apiops-stick-figures-poses.svg",
+      "kind": "glyph",
+      "tags": ["apiops", "glyphs", "stick figures poses", "legacy"]
+    },
+    {
+      "path": "glyphs/apiops-stick-figures-stories.svg",
+      "kind": "glyph",
+      "tags": ["apiops", "glyphs", "stick figures stories", "legacy"]
+    },
+    {
+      "path": "brand/apiops-logo.svg",
+      "kind": "brand",
+      "tags": ["apiops", "brand", "logo"]
+    },
+    {
+      "path": "brand/apiops-mark-white.svg",
+      "kind": "brand",
+      "tags": ["apiops", "brand", "mark white"]
+    },
+    {
+      "path": "brand/apiops-mark.svg",
+      "kind": "brand",
+      "tags": ["apiops", "brand", "mark"]
+    },
+    {
+      "path": "humans/apiops-character-scenes.svg",
+      "kind": "human",
+      "tags": ["apiops", "humans", "character grammar", "scene recipes", "api chaos"]
+    },
+    {
+      "path": "humans/apiops-stick-figures-poses.svg",
+      "kind": "human",
+      "tags": ["apiops", "humans", "stick figures poses", "legacy"]
+    },
+    {
+      "path": "humans/apiops-stick-figures-stories.svg",
+      "kind": "human",
+      "tags": ["apiops", "humans", "stick figures stories", "legacy"]
+    },
+    {
+      "path": "humans/pose-with-scarf.svg",
+      "kind": "human",
+      "tags": ["apiops", "humans", "character grammar", "scarf", "standing", "neutral"]
+    },
+    {
+      "path": "humans/pose-with-scarf-amazed.svg",
+      "kind": "human",
+      "tags": ["apiops", "humans", "character grammar", "scarf", "amazed", "discovery"]
+    },
+    {
+      "path": "humans/pose-with-scarf-dancing.svg",
+      "kind": "human",
+      "tags": ["apiops", "humans", "character grammar", "scarf", "celebrating", "momentum"]
+    },
+    {
+      "path": "humans/pose-with-scarf-holding.svg",
+      "kind": "human",
+      "tags": ["apiops", "humans", "character grammar", "scarf", "holding", "ownership"]
+    },
+    {
+      "path": "humans/pose-with-scarf-holding-up.svg",
+      "kind": "human",
+      "tags": ["apiops", "humans", "character grammar", "scarf", "holding up", "standards"]
+    },
+    {
+      "path": "humans/pose-with-scarf-listening.svg",
+      "kind": "human",
+      "tags": ["apiops", "humans", "character grammar", "scarf", "listening", "consumer"]
+    },
+    {
+      "path": "humans/pose-with-scarf-pointing.svg",
+      "kind": "human",
+      "tags": ["apiops", "humans", "character grammar", "scarf", "pointing", "attention"]
+    },
+    {
+      "path": "humans/pose-with-scarf-standing.svg",
+      "kind": "human",
+      "tags": ["apiops", "humans", "character grammar", "scarf", "standing", "neutral"]
+    },
+    {
+      "path": "humans/pose-with-scarf-thinking.svg",
+      "kind": "human",
+      "tags": ["apiops", "humans", "character grammar", "scarf", "thinking", "diagnosis"]
+    },
+    {
+      "path": "humans/pose-with-scarf-walking.svg",
+      "kind": "human",
+      "tags": ["apiops", "humans", "character grammar", "scarf", "walking", "adoption"]
+    },
+    {
+      "path": "humans/pose-with-scarf-watching-hand-down.svg",
+      "kind": "human",
+      "tags": ["apiops", "humans", "character grammar", "scarf", "watching hand down", "ownership"]
+    },
+    {
+      "path": "humans/pose-with-scarf-watching-hand-up.svg",
+      "kind": "human",
+      "tags": ["apiops", "humans", "character grammar", "scarf", "watching hand up", "ownership"]
+    },
+    {
+      "path": "icons/apiops-character-notation.svg",
+      "kind": "icon",
+      "tags": ["apiops", "icons", "character grammar", "notation", "api chaos", "connections"]
+    },
+    {
+      "path": "icons/apiops-iconset.svg",
+      "kind": "icon",
+      "tags": ["apiops", "icons", "iconset"]
+    },
+    {
+      "path": "icons/apiops-metro-icons.svg",
+      "kind": "icon",
+      "tags": ["apiops", "icons", "metro icons"]
+    }
+  ]
 }

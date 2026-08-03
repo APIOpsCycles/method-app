@@ -1,0 +1,353 @@
+{
+  "canvas": { "width": 2376, "height": 1220 },
+  "defs": {
+    "title": "APIOps Character Grammar Scene Recipes",
+    "description": "Reusable API Chaos scene compositions based on the new APIOps character grammar."
+  },
+  "preview": [
+    {
+      "scene": "scene-chaos-to-capabilities",
+      "title": "Chaos to reusable capabilities",
+      "x": 36,
+      "y": 42,
+      "width": 540,
+      "height": 360,
+      "sceneX": 0,
+      "sceneY": 25,
+      "sceneWidth": 540,
+      "sceneHeight": 290,
+      "titleX": 270,
+      "titleY": 336,
+      "color": "community"
+    },
+    {
+      "scene": "scene-shared-picture-missing",
+      "title": "Everyone has APIs",
+      "x": 624,
+      "y": 42,
+      "width": 540,
+      "height": 360,
+      "sceneX": 40,
+      "sceneY": 70,
+      "sceneWidth": 460,
+      "sceneHeight": 230,
+      "titleX": 270,
+      "titleY": 336,
+      "color": "business"
+    },
+    {
+      "scene": "scene-local-optimization",
+      "title": "Local optimization",
+      "x": 1212,
+      "y": 42,
+      "width": 540,
+      "height": 360,
+      "sceneX": 70,
+      "sceneY": 58,
+      "sceneWidth": 432,
+      "sceneHeight": 236,
+      "titleX": 270,
+      "titleY": 336,
+      "color": "community"
+    },
+    {
+      "scene": "scene-consumers-capabilities",
+      "title": "Consumers want capabilities",
+      "x": 1800,
+      "y": 42,
+      "width": 540,
+      "height": 360,
+      "sceneX": 60,
+      "sceneY": 58,
+      "sceneWidth": 420,
+      "sceneHeight": 240,
+      "titleX": 270,
+      "titleY": 336,
+      "color": "design"
+    },
+    {
+      "scene": "scene-governance-vs-innovation",
+      "title": "Governance vs innovation",
+      "x": 36,
+      "y": 430,
+      "width": 540,
+      "height": 360,
+      "sceneX": 48,
+      "sceneY": 76,
+      "sceneWidth": 444,
+      "sceneHeight": 220,
+      "titleX": 270,
+      "titleY": 336,
+      "color": "delivery"
+    },
+    {
+      "scene": "scene-api-first-not-enough",
+      "title": "API-first isn't enough",
+      "x": 624,
+      "y": 430,
+      "width": 540,
+      "height": 360,
+      "sceneX": 56,
+      "sceneY": 80,
+      "sceneWidth": 428,
+      "sceneHeight": 220,
+      "titleX": 270,
+      "titleY": 336,
+      "color": "publishing"
+    },
+    {
+      "scene": "scene-api-ownership-question",
+      "title": "Who owns the API?",
+      "x": 1800,
+      "y": 430,
+      "width": 540,
+      "height": 360,
+      "sceneX": 58,
+      "sceneY": 62,
+      "sceneWidth": 424,
+      "sceneHeight": 244,
+      "titleX": 270,
+      "titleY": 336,
+      "color": "design"
+    },
+    {
+      "scene": "scene-standards-without-conversation",
+      "title": "Standards need communication",
+      "x": 36,
+      "y": 818,
+      "width": 540,
+      "height": 360,
+      "sceneX": 46,
+      "sceneY": 62,
+      "sceneWidth": 448,
+      "sceneHeight": 244,
+      "titleX": 270,
+      "titleY": 336,
+      "color": "community"
+    },
+    {
+      "scene": "scene-feedback-invitation",
+      "title": "Show the right capabilities",
+      "x": 624,
+      "y": 818,
+      "width": 540,
+      "height": 360,
+      "sceneX": 64,
+      "sceneY": 62,
+      "sceneWidth": 412,
+      "sceneHeight": 244,
+      "titleX": 270,
+      "titleY": 336,
+      "color": "publishing"
+    },
+    {
+      "scene": "scene-workshop-invitation",
+      "title": "Join the workshop",
+      "x": 1212,
+      "y": 818,
+      "width": 540,
+      "height": 360,
+      "sceneX": 60,
+      "sceneY": 62,
+      "sceneWidth": 420,
+      "sceneHeight": 244,
+      "titleX": 270,
+      "titleY": 336,
+      "color": "architecture"
+    },
+    {
+      "scene": "scene-team-celebration",
+      "title": "Let's fix API Chaos together",
+      "x": 1800,
+      "y": 818,
+      "width": 540,
+      "height": 360,
+      "sceneX": 58,
+      "sceneY": 78,
+      "sceneWidth": 424,
+      "sceneHeight": 204,
+      "titleX": 270,
+      "titleY": 336,
+      "color": "design"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "scene-chaos-to-capabilities",
+      "title": "Chaos to reusable capabilities",
+      "viewBox": "0 0 560 300",
+      "layers": [
+        { "type": "path", "kind": "dash", "d": "M88 106 C126 58 166 52 204 82" },
+        { "type": "path", "kind": "dash", "d": "M224 82 C262 45 327 45 374 78" },
+        { "type": "path", "kind": "dash", "d": "M120 136 C190 180 307 176 402 120" },
+        { "type": "path", "kind": "dash", "d": "M198 55 C239 22 320 24 360 52" },
+        { "type": "actor", "pose": "thinking", "x": 5, "y": 23, "width": 106, "height": 120, "color": "design" },
+        { "type": "text", "text": "?", "x": 101, "y": 42, "class": "label", "color": "design" },
+        { "type": "actor", "pose": "pointing", "x": 391, "y": 20, "width": 106, "height": 120, "color": "architecture" },
+        { "type": "text", "text": "!", "x": 487, "y": 39, "class": "label", "color": "architecture" },
+        { "type": "actor", "pose": "standing", "x": 220, "y": 4, "width": 122, "height": 138, "color": "publishing" },
+        { "type": "symbol", "symbol": "api", "x": 148, "y": 49, "width": 104, "height": 104, "color": "community" },
+        { "type": "symbol", "symbol": "contract", "x": 310, "y": 47, "width": 104, "height": 104, "color": "design" },
+        { "type": "symbol", "symbol": "api", "x": 233, "y": 103, "width": 104, "height": 104, "color": "community" },
+        { "type": "path", "kind": "body", "d": "M280 194 V236" },
+        { "type": "path", "kind": "body", "d": "M264 220 L280 238 L296 220" },
+        {
+          "type": "stationLine",
+          "x1": 78,
+          "x2": 482,
+          "y": 264,
+          "stations": [
+            { "x": 108, "label": "Understand", "color": "business" },
+            { "x": 194, "label": "Define", "color": "architecture" },
+            { "x": 280, "label": "Design", "color": "design" },
+            { "x": 366, "label": "Build", "color": "delivery" },
+            { "x": 452, "label": "Enable", "color": "publishing" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "scene-shared-picture-missing",
+      "title": "Everyone has APIs. Nobody has a shared picture.",
+      "viewBox": "0 0 420 220",
+      "layers": [
+        { "type": "actor", "pose": "standing", "x": 10, "y": 72, "width": 96, "height": 126, "scarfColor": "design" },
+        { "type": "text", "text": "?", "x": 42, "y": 68, "class": "label", "color": "design" },
+        { "type": "actor", "pose": "standing", "x": 324, "y": 72, "width": 96, "height": 126, "scarfColor": "architecture", "flipX": true },
+        { "type": "text", "text": "?", "x": 378, "y": 68, "class": "label", "color": "architecture" },
+        { "type": "path", "kind": "dash", "d": "M92 116 C118 90 148 92 166 112" },
+        { "type": "path", "kind": "dash", "d": "M250 88 C286 94 314 104 332 126" },
+        { "type": "path", "kind": "dash", "d": "M208 122 C250 138 286 138 314 116" },
+        { "type": "path", "kind": "dash", "d": "M112 148 C154 170 206 170 244 142" },
+        { "type": "path", "kind": "dash", "d": "M234 134 C266 150 264 184 232 190 C202 190 194 158 218 144" },
+        { "type": "symbol", "symbol": "api", "x": 164, "y": 54, "width": 80, "height": 80, "color": "community" },
+        { "type": "symbol", "symbol": "contract", "x": 130, "y": 130, "width": 76, "height": 76, "color": "design" }
+      ]
+    },
+    {
+      "id": "scene-local-optimization",
+      "title": "Every team optimizes locally.",
+      "viewBox": "0 0 420 220",
+      "layers": [
+        { "type": "text", "text": "Right locally.", "x": 58, "y": 24, "class": "tiny", "color": "community" },
+        { "type": "text", "text": "Wrong globally.", "x": 58, "y": 42, "class": "tiny", "color": "design" },
+        { "type": "symbol", "symbol": "api", "x": 28, "y": 142, "width": 70, "height": 70, "color": "publishing" },
+        { "type": "symbol", "symbol": "contract", "x": 174, "y": 142, "width": 70, "height": 70, "color": "architecture" },
+        { "type": "symbol", "symbol": "field", "x": 320, "y": 142, "width": 70, "height": 70, "color": "delivery" },
+        { "type": "actor", "pose": "standing", "x": 22, "y": 56, "width": 82, "height": 116, "scarfColor": "publishing" },
+        { "type": "actor", "pose": "standing", "x": 168, "y": 56, "width": 82, "height": 116, "scarfColor": "architecture" },
+        { "type": "actor", "pose": "standing", "x": 314, "y": 56, "width": 82, "height": 116, "scarfColor": "delivery" }
+      ]
+    },
+    {
+      "id": "scene-consumers-capabilities",
+      "title": "Consumers do not care about your org chart.",
+      "viewBox": "0 0 420 240",
+      "layers": [
+        { "type": "actor", "pose": "thinking", "x": 154, "y": 0, "width": 112, "height": 96, "scarfColor": "publishing", "crop": "torso" },
+        { "type": "path", "kind": "dash", "d": "M210 92 C156 104 104 126 72 156" },
+        { "type": "path", "kind": "dash", "d": "M210 92 C210 118 210 140 210 156" },
+        { "type": "path", "kind": "dash", "d": "M210 92 C264 104 316 126 348 156" },
+        { "type": "path", "kind": "fine", "d": "M64 143 L72 156 L84 147" },
+        { "type": "path", "kind": "fine", "d": "M200 144 L210 156 L220 144" },
+        { "type": "path", "kind": "fine", "d": "M336 147 L348 156 L356 143" },
+        { "type": "symbol", "symbol": "api-card", "x": 28, "y": 154, "width": 88, "height": 70, "color": "community" },
+        { "type": "text", "text": "API A", "x": 72, "y": 194, "class": "tiny", "color": "community" },
+        { "type": "symbol", "symbol": "api-card", "x": 166, "y": 154, "width": 88, "height": 70, "color": "community" },
+        { "type": "text", "text": "API B", "x": 210, "y": 194, "class": "tiny", "color": "community" },
+        { "type": "symbol", "symbol": "api-card", "x": 304, "y": 154, "width": 88, "height": 70, "color": "community" },
+        { "type": "text", "text": "API C", "x": 348, "y": 194, "class": "tiny", "color": "community" }
+      ]
+    },
+    {
+      "id": "scene-governance-vs-innovation",
+      "title": "Governance vs innovation.",
+      "viewBox": "0 0 420 220",
+      "layers": [
+        { "type": "actor", "pose": "pointing", "x": 26, "y": 58, "width": 118, "height": 142, "scarfColor": "architecture" },
+        { "type": "text", "text": "!", "x": 50, "y": 54, "class": "label", "color": "architecture" },
+        { "type": "symbol", "symbol": "stop", "x": 100, "y": 48, "width": 62, "height": 62, "color": "design" },
+        { "type": "path", "kind": "dash", "d": "M158 140 H258" },
+        { "type": "actor", "pose": "holding", "x": 282, "y": 58, "width": 118, "height": 142, "scarfColor": "publishing" },
+        { "type": "symbol", "symbol": "rocket", "x": 350, "y": 24, "width": 78, "height": 78, "color": "delivery" }
+      ]
+    },
+    {
+      "id": "scene-api-first-not-enough",
+      "title": "API-first is not enough.",
+      "viewBox": "0 0 420 220",
+      "layers": [
+        { "type": "actor", "pose": "amazed", "x": 8, "y": 46, "width": 112, "height": 132, "scarfColor": "publishing" },
+        { "type": "symbol", "symbol": "api", "x": 74, "y": 72, "width": 100, "height": 100, "color": "community" },
+        { "type": "symbol", "symbol": "connection-conversion-arrow", "x": 148, "y": 88, "width": 132, "height": 48, "color": "community" },
+        { "type": "actor", "pose": "holding", "x": 270, "y": 42, "width": 124, "height": 148, "scarfColor": "architecture", "flipX": false },
+        { "type": "symbol", "symbol": "product-cube", "x": 330, "y": 48, "width": 72, "height": 72, "color": "publishing" }
+      ]
+    },
+    {
+      "id": "scene-api-ownership-question",
+      "title": "Who owns the API?",
+      "viewBox": "0 0 420 240",
+      "layers": [
+        { "type": "symbol", "symbol": "connection-ownership-claim", "x": 100, "y": 52, "width": 220, "height": 140, "color": "architecture" },
+        { "type": "symbol", "symbol": "ownership-api", "x": 140, "y": 58, "width": 140, "height": 120, "color": "community" },
+        { "type": "actor", "pose": "watching-hand-up", "x": 24, "y": 84, "width": 82, "height": 104, "scarfColor": "design" },
+        { "type": "actor", "pose": "watching-hand-down", "x": 170, "y": 0, "width": 82, "height": 104, "scarfColor": "architecture" },
+        { "type": "actor", "pose": "watching-hand-up", "x": 314, "y": 84, "width": 82, "height": 104, "scarfColor": "architecture", "flipX": true },
+        { "type": "actor", "pose": "watching-hand-up", "x": 82, "y": 150, "width": 76, "height": 96, "scarfColor": "publishing" },
+        { "type": "actor", "pose": "watching-hand-down", "x": 262, "y": 150, "width": 76, "height": 96, "scarfColor": "delivery", "flipX": true }
+      ]
+    },
+    {
+      "id": "scene-standards-without-conversation",
+      "title": "Standards do not solve communication.",
+      "viewBox": "0 0 420 240",
+      "layers": [
+        { "type": "actor", "pose": "holding-up", "x": 20, "y": 65, "width": 132, "height": 116, "color": "architecture", "crop": "torso"  },
+        { "type": "symbol", "symbol": "standard-placard-blank", "x": 30, "y": 0, "width": 100, "height": 116, "color": "architecture"},
+        { "type": "text", "text": "OpenAPI", "x": 83, "y": 60, "class": "tiny", "color": "architecture" },
+        { "type": "actor", "pose": "holding-up", "x": 180, "y": 65,  "width": 132, "height": 116, "color": "publishing", "crop": "torso" },
+        { "type": "symbol", "symbol": "standard-placard-blank", "x": 190, "y": 0, "width": 100, "height": 116, "color": "publishing" },
+        { "type": "text", "text": "AsyncAPI", "x": 240, "y": 60, "class": "tiny", "color": "publishing" },
+        { "type": "actor", "pose": "holding-up", "x": 324, "y": 65, "width": 132, "height": 116, "color": "business", "crop": "torso" },
+        { "type": "symbol", "symbol": "standard-placard-blank", "x": 335, "y": 0, "width": 100, "height": 116, "color": "business" },
+        { "type": "text", "text": "GraphQL", "x": 385, "y": 60, "class": "tiny", "color": "business" },
+        { "type": "actor", "pose": "amazed", "x": 220, "y": 125,  "width": 132, "height": 116, "scarfColor": "publishing", "crop": "torso" }
+      ]
+    },
+    {
+      "id": "scene-feedback-invitation",
+      "title": "It is about the right capabilities.",
+      "viewBox": "0 0 420 240",
+      "layers": [
+        { "type": "actor", "pose": "pointing", "x": 22, "y": 58, "width": 132, "height": 156, "scarfColor": "publishing" },
+        { "type": "symbol", "symbol": "megaphone", "x": 100, "y": 35, "width": 122, "height": 104, "color": "publishing" },
+        { "type": "text", "text": "right capabilities", "x": 278, "y": 96, "class": "callout", "color": "publishing" },
+        { "type": "text", "text": "right outcomes", "x": 278, "y": 124, "class": "callout", "color": "business" }
+      ]
+    },
+    {
+      "id": "scene-workshop-invitation",
+      "title": "Join the workshop.",
+      "viewBox": "0 0 420 240",
+      "layers": [
+          { "type": "symbol", "symbol": "workshop-board", "x": 210, "y": 44, "width": 164, "height": 142, "color": "community" },
+          { "type": "symbol", "symbol": "apiops-stationblue", "x": 255, "y": 72, "width": 68, "height": 68, "color": "community"},
+          { "type": "actor", "pose": "pointing", "x": 145, "y": 68, "width": 118, "height": 142, "scarfColor": "architecture" }
+              
+      ]
+    },
+    {
+      "id": "scene-team-celebration",
+      "title": "Team celebration",
+      "viewBox": "0 0 420 180",
+      "layers": [
+        { "type": "actor", "pose": "dancing", "x": 18, "y": 24, "width": 100, "height": 114, "scarfColor": "business" },
+        { "type": "actor", "pose": "dancing", "x": 92, "y": 22, "width": 100, "height": 114, "scarfColor": "architecture", "flipX": true },
+        { "type": "actor", "pose": "dancing", "x": 166, "y": 24, "width": 100, "height": 114, "scarfColor": "design" },
+        { "type": "actor", "pose": "dancing", "x": 240, "y": 22, "width": 100, "height": 114, "scarfColor": "delivery", "flipX": true },
+        { "type": "actor", "pose": "dancing", "x": 314, "y": 24, "width": 100, "height": 114, "scarfColor": "publishing" }
+      ]
+    }
+  ]
+}

@@ -7,7 +7,7 @@
   "publishConfig": { "access": "public", "provenance": true },
   "keywords": ["apiops", "design-system", "react", "design-tokens"],
   "sideEffects": ["./dist/styles.css"],
-  "files": ["dist", "README.md", "CHANGELOG.md"],
+  "files": ["dist", "docs", "README.md", "CHANGELOG.md"],
   "exports": {
     ".": { "types": "./dist/react/index.d.ts", "default": "./dist/react/index.js" },
     "./react": { "types": "./dist/react/index.d.ts", "default": "./dist/react/index.js" },
