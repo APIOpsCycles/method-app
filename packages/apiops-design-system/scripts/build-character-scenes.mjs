@@ -221,14 +221,9 @@ async function readAssetSymbol(ref) {
 }
 
 function rewriteAssetSymbol(symbol, ref) {
-  const source = shouldSuppressNotationAccents(ref) ? removeNotationAccents(symbol) : symbol;
-  return source
+  return symbol
     .replace(/(<symbol\b[^>]*\bid=)["'][^"']+["']/, (_, prefix) => `${prefix}"${prefixSymbolId(ref.symbolId)}"`)
     .replace(/\b(?:href|xlink:href)=["']#([^"']+)["']/g, (_, id) => `href="#${prefixSymbolId(id)}"`);
-}
-
-function shouldSuppressNotationAccents(ref) {
-  return ref.source.replaceAll("\\", "/") === "icons/apiops-character-notation.svg";
 }
 
 function getRegistrySymbolRef(alias) {
@@ -245,20 +240,6 @@ function assetSymbolKey(ref) {
 
 function prefixSymbolId(symbolId) {
   return `scene-${symbolId}`;
-}
-
-function removeNotationAccents(symbol) {
-  const selfClosingAccent = /\s*<[^>]+class="accent"[^>]*\/>/g;
-  const pairedAccent = /\s*<([a-zA-Z]+)\b[^>]*class="accent"[^>]*>[\s\S]*?<\/\1>/g;
-
-  let previous;
-  let current = symbol;
-  do {
-    previous = current;
-    current = current.replace(selfClosingAccent, "").replace(pairedAccent, "");
-  } while (current !== previous);
-
-  return current;
 }
 
 function assertSafeSvgFragment(fragment, source) {

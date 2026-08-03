@@ -120,8 +120,7 @@ test("character grammar notation exposes the implemented backlog symbols", async
   assert.match(chaosScene, /Understand/);
   assert.match(chaosScene, /Enable/);
 
-  const apiSymbol = extractSymbol(scenes, "scene-symbol-api");
-  assert.doesNotMatch(apiSymbol, /class="accent"/, "generated scene notation suppresses source accent dots");
+  assert.match(chaosScene, /class="no-accent"/, "generated scene notation hides source accent dots at scene placement");
 
   const localOptimizationScene = extractSymbol(scenes, "scene-local-optimization");
   assert.match(localOptimizationScene, /#scene-symbol-api/);
