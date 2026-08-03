@@ -241,9 +241,17 @@ function prefixSymbolId(symbolId) {
 }
 
 function removeNotationAccents(symbol) {
-  return symbol
-    .replace(/\s*<[^>]+class="accent"[^>]*\/>/g, "")
-    .replace(/\s*<([a-zA-Z]+)\b[^>]*class="accent"[^>]*>[\s\S]*?<\/\1>/g, "");
+  const selfClosingAccent = /\s*<[^>]+class="accent"[^>]*\/>/g;
+  const pairedAccent = /\s*<([a-zA-Z]+)\b[^>]*class="accent"[^>]*>[\s\S]*?<\/\1>/g;
+
+  let previous;
+  let current = symbol;
+  do {
+    previous = current;
+    current = current.replace(selfClosingAccent, "").replace(pairedAccent, "");
+  } while (current !== previous);
+
+  return current;
 }
 
 function getViewBox(svg, source) {
