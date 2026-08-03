@@ -243,7 +243,7 @@ function prefixSymbolId(symbolId) {
 function removeNotationAccents(symbol) {
   const selfClosingAccent = /\s*<[^>]+class="accent"[^>]*\/>/g;
   const pairedAccent = /\s*<([a-zA-Z]+)\b[^>]*class="accent"[^>]*>[\s\S]*?<\/\1>/g;
-  const pairedScript = /<script\b[^>]*>[\s\S]*?<\/script\b[^>]*>/gi;
+  const pairedScript = /<script\b[^>]*>[\s\S]*?<\/script\s*>/gi;
   const selfClosingScript = /<script\b[^>]*\/>/gi;
   const inlineEventHandler = /\son[a-z]+\s*=\s*(".*?"|'.*?'|[^\s>]+)/gi;
 
@@ -262,7 +262,10 @@ function removeNotationAccents(symbol) {
       .replace(inlineEventHandler, "");
   } while (current !== previous);
 
-  return current.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  return current
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
 }
 
 function getViewBox(svg, source) {
