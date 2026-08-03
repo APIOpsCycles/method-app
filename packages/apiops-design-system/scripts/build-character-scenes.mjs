@@ -35,9 +35,10 @@ const poseDefinitions = await Promise.all(
     const source = registry.poses[pose];
     if (!source) throw new Error(`Unknown character pose "${pose}"`);
 
-    const svg = await readFile(path.join(assetsRoot, source), "utf8");
+    const svg = await readFile(assetPath(source), "utf8");
     const viewBox = getViewBox(svg, source);
     const body = stripSvgMetadata(extractSvgBody(svg, source));
+    assertSafeSvgFragment(body, source);
     return `    <symbol id="scene-actor-${escapeAttr(pose)}" viewBox="${escapeAttr(viewBox)}">\n${indent(body, 6)}\n    </symbol>`;
   }),
 );
@@ -190,15 +191,20 @@ async function collectAssetSymbol(ref) {
 }
 
 async function readAssetSymbol(ref) {
-  const sourcePath = path.join(assetsRoot, ref.source);
+  const sourcePath = assetPath(ref.source);
   const svg = await readFile(sourcePath, "utf8");
   const symbolMatch = svg.match(new RegExp(`<symbol\\b[^>]*\\bid=["']${escapeRegExp(ref.symbolId)}["'][^>]*>[\\s\\S]*?<\\/symbol>`));
-  if (symbolMatch) return symbolMatch[0];
+  if (symbolMatch) {
+    assertSafeSvgFragment(symbolMatch[0], ref.source);
+    return symbolMatch[0];
+  }
 
   const groupMatch = svg.match(new RegExp(`<g\\b[^>]*\\bid=["']${escapeRegExp(ref.symbolId)}["'][^>]*>[\\s\\S]*?<\\/g>`));
   if (groupMatch) {
     const viewBox = getViewBox(svg, ref.source);
-    return `<symbol id="${escapeAttr(ref.symbolId)}" viewBox="${escapeAttr(viewBox)}">\n${indent(stripSvgMetadata(groupMatch[0]), 2)}\n</symbol>`;
+    const body = stripSvgMetadata(groupMatch[0]);
+    assertSafeSvgFragment(body, ref.source);
+    return `<symbol id="${escapeAttr(ref.symbolId)}" viewBox="${escapeAttr(viewBox)}">\n${indent(body, 2)}\n</symbol>`;
   }
 
   if (!svg.includes("<symbol")) {
@@ -207,6 +213,7 @@ async function readAssetSymbol(ref) {
       preserveIds: true,
       recolorScarf: false,
     });
+    assertSafeSvgFragment(body, ref.source);
     return `<symbol id="${escapeAttr(ref.symbolId)}" viewBox="${escapeAttr(viewBox)}">\n${indent(body, 2)}\n</symbol>`;
   }
 
@@ -243,9 +250,6 @@ function prefixSymbolId(symbolId) {
 function removeNotationAccents(symbol) {
   const selfClosingAccent = /\s*<[^>]+class="accent"[^>]*\/>/g;
   const pairedAccent = /\s*<([a-zA-Z]+)\b[^>]*class="accent"[^>]*>[\s\S]*?<\/\1>/g;
-  const pairedScript = /<script\b[^>]*>[\s\S]*?<\/script\b[^>]*>/gi;
-  const selfClosingScript = /<script\b[^>]*\/>/gi;
-  const inlineEventHandler = /\son[a-z]+\s*=\s*(".*?"|'.*?'|[^\s>]+)/gi;
 
   let previous;
   let current = symbol;
@@ -254,18 +258,36 @@ function removeNotationAccents(symbol) {
     current = current.replace(selfClosingAccent, "").replace(pairedAccent, "");
   } while (current !== previous);
 
-  do {
-    previous = current;
-    current = current
-      .replace(pairedScript, "")
-      .replace(selfClosingScript, "")
-      .replace(inlineEventHandler, "");
-  } while (current !== previous);
+  return current;
+}
 
-  return current
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;");
+function assertSafeSvgFragment(fragment, source) {
+  const lower = String(fragment).toLowerCase();
+  const forbiddenTokens = [
+    "<script",
+    "<foreignobject",
+    "javascript:",
+    " onabort=",
+    " onanimationend=",
+    " onanimationiteration=",
+    " onanimationstart=",
+    " onclick=",
+    " onerror=",
+    " onfocus=",
+    " onload=",
+    " onmouseenter=",
+    " onmouseleave=",
+    " onmouseover=",
+    " onpointerdown=",
+    " onpointerenter=",
+    " onpointerleave=",
+    " onpointermove=",
+    " onpointerover=",
+    " onpointerup=",
+    " onsubmit=",
+  ];
+  const forbiddenToken = forbiddenTokens.find((token) => lower.includes(token));
+  if (forbiddenToken) throw new Error(`Refusing to inline active SVG content from ${source}`);
 }
 
 function getViewBox(svg, source) {
@@ -322,6 +344,15 @@ function escapeAttr(value) {
 
 function escapeRegExp(value) {
   return String(value).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+function assetPath(source) {
+  const resolved = path.resolve(assetsRoot, source);
+  const relative = path.relative(assetsRoot, resolved);
+  if (relative.startsWith("..") || path.isAbsolute(relative)) {
+    throw new Error(`Asset source escapes the package asset root: ${source}`);
+  }
+  return resolved;
 }
 
 function indent(value, spaces) {

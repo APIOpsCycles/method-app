@@ -12,8 +12,8 @@ for (const entry of ["styles.css", "tokens.json", "assets", "metadata"]) {
   await cp(path.join(packageRoot, "src", entry), path.join(dist, entry), { recursive: true });
 }
 await new Promise((resolve, reject) => {
-  const executable = process.platform === "win32" ? "tsc.cmd" : "tsc";
-  const child = spawn(executable, ["-p", "tsconfig.json"], { cwd: packageRoot, stdio: "inherit", shell: process.platform === "win32" });
+  const tscCli = path.resolve(packageRoot, "..", "..", "node_modules", "typescript", "bin", "tsc");
+  const child = spawn(process.execPath, [tscCli, "-p", "tsconfig.json"], { cwd: packageRoot, stdio: "inherit" });
   child.on("error", reject);
   child.on("exit", (code) => code === 0 ? resolve() : reject(new Error(`tsc exited with ${code}`)));
 });
