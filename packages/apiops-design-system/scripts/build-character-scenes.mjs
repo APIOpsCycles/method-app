@@ -243,12 +243,23 @@ function prefixSymbolId(symbolId) {
 function removeNotationAccents(symbol) {
   const selfClosingAccent = /\s*<[^>]+class="accent"[^>]*\/>/g;
   const pairedAccent = /\s*<([a-zA-Z]+)\b[^>]*class="accent"[^>]*>[\s\S]*?<\/\1>/g;
+  const pairedScript = /<script\b[^>]*>[\s\S]*?<\/script>/gi;
+  const selfClosingScript = /<script\b[^>]*\/>/gi;
+  const inlineEventHandler = /\son[a-z]+\s*=\s*(".*?"|'.*?'|[^\s>]+)/gi;
 
   let previous;
   let current = symbol;
   do {
     previous = current;
     current = current.replace(selfClosingAccent, "").replace(pairedAccent, "");
+  } while (current !== previous);
+
+  do {
+    previous = current;
+    current = current
+      .replace(pairedScript, "")
+      .replace(selfClosingScript, "")
+      .replace(inlineEventHandler, "");
   } while (current !== previous);
 
   return current;
