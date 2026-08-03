@@ -26,6 +26,81 @@ export function ContextGuidance({ tone, title, children }: { tone: "success" | "
   return <aside className={`ds-context-guidance is-${tone}`}><span className="ds-context-guidance__icon" aria-hidden="true"><svg viewBox="0 0 120 120"><use href={`${designSystemAssets.icons.method}#${symbol}`} /></svg></span><div><strong>{title}</strong><p>{children}</p></div></aside>;
 }
 
+function localHref(element: Element) {
+  const href = element.getAttribute("href") ?? element.getAttribute("xlink:href");
+  return href?.startsWith("#") ? href.slice(1) : null;
+}
+
+function numericAttribute(element: Element, name: string) {
+  const value = element.getAttribute(name);
+  return value === null ? null : Number.parseFloat(value);
+}
+
+function symbolScaleTransform(useElement: SVGUseElement, referenced: Element) {
+  const x = numericAttribute(useElement, "x") ?? 0;
+  const y = numericAttribute(useElement, "y") ?? 0;
+  const width = numericAttribute(useElement, "width");
+  const height = numericAttribute(useElement, "height");
+  const viewBox = referenced.getAttribute("viewBox")?.trim().split(/\s+/).map(Number);
+  if (referenced.tagName.toLowerCase() === "symbol" && viewBox?.length === 4 && width && height) {
+    const [, , viewBoxWidth, viewBoxHeight] = viewBox;
+    return `translate(${x} ${y}) scale(${width / viewBoxWidth} ${height / viewBoxHeight})`;
+  }
+  return x || y ? `translate(${x} ${y})` : "";
+}
+
+function copyPresentationAttributes(from: Element, to: Element) {
+  for (const attribute of Array.from(from.attributes)) {
+    if (["href", "xlink:href", "x", "y", "width", "height"].includes(attribute.name)) continue;
+    to.setAttribute(attribute.name, attribute.value);
+  }
+}
+
+function expandLocalUses(root: Element, document: XMLDocument) {
+  for (const useElement of Array.from(root.querySelectorAll("use"))) {
+    const referenceId = localHref(useElement);
+    const referenced = referenceId ? document.getElementById(referenceId) : null;
+    if (!referenced) continue;
+
+    const replacement = document.createElementNS("http://www.w3.org/2000/svg", "g");
+    copyPresentationAttributes(useElement, replacement);
+    const transform = [useElement.getAttribute("transform"), symbolScaleTransform(useElement as SVGUseElement, referenced)].filter(Boolean).join(" ");
+    if (transform) replacement.setAttribute("transform", transform);
+
+    const children = referenced.tagName.toLowerCase() === "symbol" ? Array.from(referenced.childNodes) : [referenced];
+    for (const child of children) replacement.appendChild(child.cloneNode(true));
+    useElement.replaceWith(replacement);
+  }
+}
+
+function makePortableSvg(contents: string, symbolId: string, viewBox?: string) {
+  const document = new DOMParser().parseFromString(contents, "image/svg+xml");
+  const symbol = document.getElementById(symbolId);
+  if (document.querySelector("parsererror") || !symbol) throw new Error("SVG symbol was not found");
+
+  const resolvedViewBox = viewBox ?? symbol.getAttribute("viewBox") ?? "0 0 96 96";
+  const portableDocument = document.implementation.createDocument("http://www.w3.org/2000/svg", "svg");
+  const svg = portableDocument.documentElement;
+  svg.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+  svg.setAttribute("viewBox", resolvedViewBox);
+
+  const definitions = portableDocument.createElementNS("http://www.w3.org/2000/svg", "defs");
+  for (const style of Array.from(document.querySelectorAll("style"))) definitions.appendChild(portableDocument.importNode(style, true));
+  if (definitions.childNodes.length) svg.appendChild(definitions);
+
+  const group = portableDocument.createElementNS("http://www.w3.org/2000/svg", "g");
+  for (const child of Array.from(symbol.childNodes)) group.appendChild(portableDocument.importNode(child, true));
+  svg.appendChild(group);
+
+  expandLocalUses(group, document);
+  expandLocalUses(group, document);
+
+  return new XMLSerializer()
+    .serializeToString(svg)
+    .replace(/var\(--[^,()]+,\s*([^)]+)\)/g, "$1")
+    .replace(/\s+xmlns=""/g, "");
+}
+
 export function SvgAssetDownload({ source, filename, symbolId, viewBox }: { source: string; filename: string; symbolId?: string; viewBox?: string }) {
   const [status, setStatus] = useState<"idle" | "loading" | "error">("idle");
 
@@ -35,16 +110,7 @@ export function SvgAssetDownload({ source, filename, symbolId, viewBox }: { sour
       const response = await fetch(source);
       if (!response.ok) throw new Error(`Asset source returned ${response.status}`);
       let contents = await response.text();
-      if (symbolId) {
-        const document = new DOMParser().parseFromString(contents, "image/svg+xml");
-        const symbol = document.getElementById(symbolId);
-        if (document.querySelector("parsererror") || !symbol) throw new Error("SVG symbol was not found");
-        const resolvedViewBox = viewBox ?? symbol.getAttribute("viewBox") ?? "0 0 96 96";
-        const embeddedDefinitions = Array.from(document.querySelectorAll("defs"))
-          .map((definitions) => definitions.innerHTML)
-          .join("");
-        contents = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${resolvedViewBox}"><defs>${embeddedDefinitions}${symbol.outerHTML}</defs><use href="#${symbolId}" /></svg>`;
-      }
+      if (symbolId) contents = makePortableSvg(contents, symbolId, viewBox);
       const url = URL.createObjectURL(new Blob([contents], { type: "image/svg+xml;charset=utf-8" }));
       const link = document.createElement("a");
       link.href = url;

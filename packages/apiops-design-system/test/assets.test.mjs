@@ -157,10 +157,12 @@ test("character grammar notation exposes the implemented backlog symbols", async
   assert.equal(metadata.height, sceneConfig.canvas.height);
 });
 
-test("SVG downloads retain embedded sprite definitions", () => {
+test("SVG downloads expand symbols into portable standalone SVGs", () => {
   const component = readFileSync(new URL("../src/react/index.tsx", import.meta.url), "utf8");
-  assert.match(component, /document\.querySelectorAll\("defs"\)/);
-  assert.match(component, /<defs>\$\{embeddedDefinitions\}\$\{symbol\.outerHTML\}<\/defs>/);
+  assert.match(component, /function makePortableSvg/);
+  assert.match(component, /function expandLocalUses/);
+  assert.match(component, /if \(symbolId\) contents = makePortableSvg\(contents, symbolId, viewBox\);/);
+  assert.doesNotMatch(component, /<use href="#\$\{symbolId\}" \/>/);
 });
 
 function extractSymbol(svg, id) {

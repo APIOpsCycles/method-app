@@ -9,7 +9,7 @@
         --apiops-muted: #647184;
         --apiops-paper: #ffffff;
         --apiops-border: #dfe5ec;
-        --apiops-accent: #1656b8;
+        --apiops-accent: transparent;
       }
       .base { fill: none; stroke: var(--apiops-ink, #10233f); stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
       .fine { fill: none; stroke: var(--apiops-ink, #10233f); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
