@@ -73,6 +73,99 @@ function expandLocalUses(root: Element, document: XMLDocument) {
   }
 }
 
+function cssDeclarations(value: string) {
+  return Object.fromEntries(value.split(";")
+    .map((part) => part.trim())
+    .filter((part) => part.includes(":"))
+    .map((part) => {
+      const index = part.indexOf(":");
+      return [part.slice(0, index).trim(), part.slice(index + 1).trim()];
+    }));
+}
+
+function resolveColorValue(value: string, currentColor: string) {
+  return value
+    .replace(/var\(--[^,()]+,\s*([^)]+)\)/g, "$1")
+    .replace(/\bcurrentColor\b/g, currentColor);
+}
+
+function classList(element: Element) {
+  return (element.getAttribute("class") ?? "").split(/\s+/).filter(Boolean);
+}
+
+function hasAncestorClass(element: Element, className: string) {
+  for (let current = element.parentElement; current; current = current.parentElement) {
+    if (classList(current).includes(className)) return true;
+  }
+  return false;
+}
+
+function svgClassRules(document: XMLDocument) {
+  const rules = new Map<string, Record<string, string>>();
+  const descendantRules: Array<{ ancestor: string; target: string; targetType: "class" | "tag"; declarations: Record<string, string> }> = [];
+  for (const style of Array.from(document.querySelectorAll("style"))) {
+    for (const match of style.textContent?.matchAll(/([^{}]+)\{([^{}]+)\}/g) ?? []) {
+      const selectors = match[1].split(",").map((selector) => selector.trim());
+      const declarations = cssDeclarations(match[2]);
+      for (const selector of selectors) {
+        const classMatch = selector.match(/^\.([\w-]+)$/);
+        if (classMatch) rules.set(classMatch[1], { ...(rules.get(classMatch[1]) ?? {}), ...declarations });
+        const descendantMatch = selector.match(/^\.([\w-]+)\s+\.([\w-]+)$/);
+        if (descendantMatch) descendantRules.push({ ancestor: descendantMatch[1], target: descendantMatch[2], targetType: "class", declarations });
+        const descendantTagMatch = selector.match(/^\.([\w-]+)\s+([a-z][\w-]*)$/i);
+        if (descendantTagMatch) descendantRules.push({ ancestor: descendantTagMatch[1], target: descendantTagMatch[2].toLowerCase(), targetType: "tag", declarations });
+      }
+    }
+  }
+  return { rules, descendantRules };
+}
+
+function applySvgDeclarations(element: Element, declarations: Record<string, string>, currentColor: string) {
+  for (const [name, rawValue] of Object.entries(declarations)) {
+    element.setAttribute(name, resolveColorValue(rawValue, currentColor));
+  }
+}
+
+export function makeCanvaSafeSvg(contents: string) {
+  const document = new DOMParser().parseFromString(contents, "image/svg+xml");
+  if (document.querySelector("parsererror")) return contents;
+  const { rules, descendantRules } = svgClassRules(document);
+  const paintAttributes = ["fill", "stroke", "color", "stop-color", "flood-color", "lighting-color"];
+
+  function visit(element: Element, inheritedColor: string) {
+    const inlineStyle = cssDeclarations(element.getAttribute("style") ?? "");
+    const elementColor = resolveColorValue(element.getAttribute("color") ?? inlineStyle.color ?? inheritedColor, inheritedColor);
+
+    for (const className of classList(element)) {
+      const declarations = rules.get(className);
+      if (declarations) applySvgDeclarations(element, declarations, elementColor);
+    }
+    for (const rule of descendantRules) {
+      const isTarget = rule.targetType === "class" ? classList(element).includes(rule.target) : element.localName.toLowerCase() === rule.target;
+      if (isTarget && hasAncestorClass(element, rule.ancestor)) applySvgDeclarations(element, rule.declarations, elementColor);
+    }
+    applySvgDeclarations(element, inlineStyle, elementColor);
+
+    for (const attribute of paintAttributes) {
+      const value = element.getAttribute(attribute);
+      if (value?.includes("var(") || value?.includes("currentColor")) element.setAttribute(attribute, resolveColorValue(value, elementColor));
+    }
+
+    element.removeAttribute("class");
+    element.removeAttribute("style");
+    element.removeAttribute("color");
+    for (const child of Array.from(element.children)) visit(child, elementColor);
+  }
+
+  visit(document.documentElement, "#10233f");
+  for (const style of Array.from(document.querySelectorAll("style"))) style.remove();
+  for (const defs of Array.from(document.querySelectorAll("defs"))) {
+    if (!defs.children.length) defs.remove();
+  }
+
+  return new XMLSerializer().serializeToString(document.documentElement).replace(/\s+xmlns=""/g, "");
+}
+
 function makePortableSvg(contents: string, symbolId: string, viewBox?: string) {
   const document = new DOMParser().parseFromString(contents, "image/svg+xml");
   const symbol = document.getElementById(symbolId);
@@ -111,6 +204,7 @@ export function SvgAssetDownload({ source, filename, symbolId, viewBox }: { sour
       if (!response.ok) throw new Error(`Asset source returned ${response.status}`);
       let contents = await response.text();
       if (symbolId) contents = makePortableSvg(contents, symbolId, viewBox);
+      contents = makeCanvaSafeSvg(contents);
       const url = URL.createObjectURL(new Blob([contents], { type: "image/svg+xml;charset=utf-8" }));
       const link = document.createElement("a");
       link.href = url;

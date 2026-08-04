@@ -71,6 +71,7 @@ test("character grammar notation exposes the implemented backlog symbols", async
   for (const id of expectedNotationSymbols) {
     assert.match(notation, new RegExp(`<symbol id="${id}"(?:\\s|>)`), `${id} exists in character notation`);
   }
+  assert.doesNotMatch(notation, /class="accent"/, "character notation symbols must not use accent dots");
 
   for (const id of expectedSceneSymbols) {
     assert.match(scenes, new RegExp(`<symbol id="${id}"(?:\\s|>)`), `${id} exists in character scenes`);
@@ -161,7 +162,18 @@ test("SVG downloads expand symbols into portable standalone SVGs", () => {
   assert.match(component, /function makePortableSvg/);
   assert.match(component, /function expandLocalUses/);
   assert.match(component, /if \(symbolId\) contents = makePortableSvg\(contents, symbolId, viewBox\);/);
+  assert.match(component, /export function makeCanvaSafeSvg/);
+  assert.match(component, /contents = makeCanvaSafeSvg\(contents\);/);
   assert.doesNotMatch(component, /<use href="#\$\{symbolId\}" \/>/);
+});
+
+test("SVG download sanitizer removes Canva-hostile paint indirection", () => {
+  const component = readFileSync(new URL("../src/react/index.tsx", import.meta.url), "utf8");
+  assert.match(component, /querySelectorAll\("style"\)/);
+  assert.match(component, /element\.removeAttribute\("class"\)/);
+  assert.match(component, /element\.removeAttribute\("style"\)/);
+  assert.match(component, /element\.removeAttribute\("color"\)/);
+  assert.match(component, /currentColor/);
 });
 
 function extractSymbol(svg, id) {

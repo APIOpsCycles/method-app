@@ -1,7 +1,7 @@
 import { type RefObject, useEffect, useRef, useState } from "react";
 import { initializeMethodContext, setMethodContext, useMethodContext } from "../../lib/method-context";
 import { resolveMethodContext } from "../../lib/resolve-method-context";
-import { MetroLegend, MetroLinePath, MetroMapShell, MetroStationButton, MetroStationMarker, StakeholderRoleSelector } from "@apiops/design-system/react";
+import { MetroLegend, MetroLinePath, MetroMapShell, MetroStationButton, MetroStationMarker, StakeholderRoleSelector, makeCanvaSafeSvg } from "@apiops/design-system/react";
 import { designSystemAssets } from "@apiops/design-system/assets";
 
 export type MetroCycleStation = { id: string; index: number; title: string; baseTitle: string };
@@ -515,7 +515,7 @@ export default function MetroMapIsland({ locale, labels, cycles, lines, stations
     });
     clone.insertAdjacentHTML("afterbegin", `<style>${metroMapSvgStyles(colors[cycleId] ?? "#164e63")}</style>`);
     clone.setAttribute("xmlns", "http://www.w3.org/2000/svg");
-    const url = URL.createObjectURL(new Blob([new XMLSerializer().serializeToString(clone)], { type: "image/svg+xml" }));
+    const url = URL.createObjectURL(new Blob([makeCanvaSafeSvg(new XMLSerializer().serializeToString(clone))], { type: "image/svg+xml" }));
     const link = document.createElement("a"); link.href = url; link.download = `apiops-metro-${locale}.svg`; link.click(); URL.revokeObjectURL(url);
   }
   const prefix = locale === "en" ? "" : `/${locale}`;

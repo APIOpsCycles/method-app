@@ -714,14 +714,12 @@
           <rect x="18" y="28" width="84" height="64" rx="8" class="paper" />
           <path d="M52 48 L38 60 L52 72" class="base" />
           <path d="M68 48 L82 60 L68 72" class="base" />
-          <circle cx="92" cy="38" r="5" class="accent" />
         </symbol>
 
     <symbol id="scene-symbol-contract" viewBox="0 0 120 120">
           <rect x="18" y="28" width="84" height="64" rx="8" class="paper" />
           <path d="M48 49 C40 49 42 58 35 60 C42 62 40 71 48 71" class="base" />
           <path d="M72 49 C80 49 78 58 85 60 C78 62 80 71 72 71" class="base" />
-          <circle cx="60" cy="38" r="5" class="accent" />
         </symbol>
 
     <symbol id="scene-symbol-field" viewBox="0 0 120 120">
@@ -729,7 +727,6 @@
           <path d="M60 43 V77" class="base" />
           <path d="M48 43 H72" class="fine" />
           <path d="M48 77 H72" class="fine" />
-          <circle cx="91" cy="37" r="5" class="accent" />
         </symbol>
 
     <symbol id="scene-symbol-api-card" viewBox="0 0 150 100">
@@ -752,7 +749,6 @@
     <symbol id="scene-connection-conversion-arrow" viewBox="0 0 220 80">
           <path d="M20 40 H184" class="base" />
           <path d="M166 22 L188 40 L166 58" class="base" />
-          <circle cx="104" cy="40" r="8" class="accent" />
         </symbol>
 
     <symbol id="scene-symbol-product-cube" viewBox="0 0 120 120">
@@ -761,7 +757,6 @@
           <path d="M60 59 V102" class="base" />
           <path d="M60 18 V39" class="fine" />
           <path d="M43 28 L78 49" class="fine" />
-          <circle cx="95" cy="38" r="6" class="accent" />
         </symbol>
 
     <symbol id="scene-connection-ownership-claim" viewBox="0 0 220 140">
@@ -770,21 +765,18 @@
           <path d="M44 124 C73 99 91 83 110 70" class="dash" />
           <path d="M176 124 C147 99 129 83 110 70" class="dash" />
           <path d="M99 62 L110 70 L98 77" class="fine" />
-          <circle cx="110" cy="70" r="7" class="accent" />
         </symbol>
 
     <symbol id="scene-symbol-ownership-api" viewBox="0 0 140 120">
           <use href="#scene-symbol-api" x="10" y="0" width="120" height="120" />
           <circle cx="106" cy="26" r="16" fill="var(--apiops-paper, #ffffff)" stroke="var(--apiops-ink, #10233f)" stroke-width="4" />
           <path d="M99 26 L104 31 L114 19" class="fine" />
-          <circle cx="106" cy="26" r="4" class="accent" />
         </symbol>
 
     <symbol id="scene-symbol-standard-placard-blank" viewBox="0 0 160 120">
           <rect x="15" y="24" width="130" height="58" rx="7" class="paper" />
           <path d="M45 82 L37 108" class="base" />
           <path d="M115 82 L123 108" class="base" />
-          <circle cx="28" cy="36" r="5" class="accent" />
         </symbol>
 
     <symbol id="scene-symbol-megaphone" viewBox="0 0 140 120">
@@ -796,7 +788,6 @@
           <path d="M48 66 L58 98 H42 L35 66" class="base" />
           <path d="M104 47 C114 53 118 61 116 71" class="fine" />
           <path d="M112 32 C130 44 136 61 130 82" class="fine" />
-          <circle cx="24" cy="66" r="7" class="accent" />
         </symbol>
 
     <symbol id="scene-symbol-workshop-board" viewBox="0 0 140 120">
@@ -805,7 +796,6 @@
 
     <symbol id="scene-symbol-board" viewBox="0 0 140 120">
           <rect x="22" y="18" width="96" height="72" rx="7" class="paper" />
-          <circle cx="42" cy="77" r="6" class="accent" />
           <path d="M70 90 V108" class="base" />
           <path d="M45 108 H95" class="base" />
         </symbol>
