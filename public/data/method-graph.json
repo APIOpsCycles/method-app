@@ -136,6 +136,10 @@
           "involvement": "lead"
         },
         {
+          "id": "automation-engineer",
+          "involvement": "consulted"
+        },
+        {
           "id": "automation-owner",
           "involvement": "core"
         },
@@ -165,7 +169,7 @@
         },
         {
           "id": "operations-specialist",
-          "involvement": "consulted"
+          "involvement": "core"
         },
         {
           "id": "partner-specialist",
@@ -174,6 +178,10 @@
         {
           "id": "process-owner",
           "involvement": "lead"
+        },
+        {
+          "id": "security-specialist",
+          "involvement": "consulted"
         }
       ],
       "resourceIds": [
@@ -434,7 +442,11 @@
         },
         {
           "id": "platform-owner",
-          "involvement": "lead"
+          "involvement": "core"
+        },
+        {
+          "id": "process-owner",
+          "involvement": "consulted"
         },
         {
           "id": "security-specialist",
@@ -598,6 +610,10 @@
         },
         {
           "id": "compliance-specialist",
+          "involvement": "core"
+        },
+        {
+          "id": "customer-specialist",
           "involvement": "core"
         },
         {
@@ -1059,6 +1075,7 @@
     "automation-engineer": {
       "stationIds": [
         "api-audit",
+        "api-consumer-experience",
         "api-delivery",
         "api-design",
         "api-platform-architecture",
@@ -1118,7 +1135,8 @@
     "customer-specialist": {
       "stationIds": [
         "api-consumer-experience",
-        "api-product-strategy"
+        "api-product-strategy",
+        "api-publishing"
       ]
     },
     "domain-specialist": {
@@ -1188,6 +1206,7 @@
         "api-consumer-experience",
         "api-delivery",
         "api-design",
+        "api-platform-architecture",
         "api-product-strategy",
         "api-publishing",
         "monitoring-and-improving"
@@ -1196,6 +1215,7 @@
     "security-specialist": {
       "stationIds": [
         "api-audit",
+        "api-consumer-experience",
         "api-delivery",
         "api-design",
         "api-platform-architecture",
@@ -1314,6 +1334,9 @@
         "api-product-strategy"
       ]
     },
+    "automation-monitoring-value-metrics": {
+      "stationIds": []
+    },
     "automation-operational-ownership-guide": {
       "stationIds": []
     },
@@ -1330,6 +1353,18 @@
       "stationIds": []
     },
     "automation-trigger-handoff-exception-guide": {
+      "stationIds": []
+    },
+    "automationArchitectureDecisionCanvas": {
+      "stationIds": []
+    },
+    "automationOpportunityCanvas": {
+      "stationIds": []
+    },
+    "automationReadinessOperationsCanvas": {
+      "stationIds": []
+    },
+    "automationWorkflowCanvas": {
       "stationIds": []
     },
     "businessImpactCanvas": {
@@ -1410,6 +1445,9 @@
         "api-design"
       ]
     },
+    "humanAutomationResponsibilityCanvas": {
+      "stationIds": []
+    },
     "industry-standards-and-best-practices": {
       "stationIds": [
         "market-insights"
@@ -1462,6 +1500,9 @@
       ]
     },
     "test-automation-frameworks": {
+      "stationIds": []
+    },
+    "userOperatorExperienceRequirementsCanvas": {
       "stationIds": []
     },
     "vendor-management-best-practices": {

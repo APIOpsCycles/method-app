@@ -40,10 +40,19 @@ const supportedGroups = ["color", "typography", "spacing", "radius", "shadow", "
 function symbols(source: string, path: string) {
   return [...source.matchAll(/<symbol\b[^>]*\bid=["']([^"']+)["'][^>]*\bviewBox=["']([^"']+)["']/g)].map((match) => ({ id: match[1], viewBox: match[2], path }));
 }
+function poseName(path: string) {
+  return path
+    .split("/")
+    .at(-1)!
+    .replace(/^pose-with-scarf-?/, "")
+    .replace(/\.svg$/, "")
+    .replaceAll("-", " ") || "standing";
+}
 const visibleAssetManifest = designSystemAssetManifest.assets.filter((asset) => !asset.tags.includes("legacy"));
 const characterPoseAssets = visibleAssetManifest
-  .filter((asset) => asset.kind === "human" && asset.path.startsWith("humans/pose-with-scarf") && asset.tags.includes("character grammar"))
-  .sort((a, b) => a.path.localeCompare(b.path));
+  .filter((asset) => asset.kind === "human" && asset.path.startsWith("humans/pose-with-scarf-") && asset.tags.includes("character grammar"))
+  .map((asset) => ({ ...asset, label: poseName(asset.path) }))
+  .sort((a, b) => a.label.localeCompare(b.label));
 const characterSceneSymbols = symbols(characterScenes, "humans/apiops-character-scenes.svg").filter(
   (symbol) =>
     symbol.id.startsWith("scene-") &&
@@ -72,7 +81,7 @@ const componentExports = ["CompactSection", "PillList", "ResourceSelector", "Jou
     </section>
 
     <section class="public-section" aria-labelledby="assets"><h2 id="assets">Brand and supporting assets</h2><p>The package asset metadata manifest is the source of this inventory. Download a standalone SVG, copy the supported package import, or use the public path example.</p><div class="asset-grid">{visibleAssetManifest.filter((asset) => !["icon", "human"].includes(asset.kind)).map((asset) => <article class="asset-card"><img src={designSystemAssetPath(asset.path)} alt="" loading="lazy" /><div><h3>{asset.tags.at(-1)}</h3><p><strong>{asset.kind}</strong> — {assetGuidance[asset.kind]}</p><code>@apiops/design-system/assets/{asset.path}</code><code>{designSystemAssetPath(asset.path)}</code><SvgAssetDownload source={designSystemAssetPath(asset.path)} filename={asset.tags.at(-1) ?? asset.kind} client:load /></div></article>)}</div>
-      <h3>Character grammar poses</h3><p>Use these scarf poses as the current human standard. The legacy stick-figure pose and story sheets are intentionally not shown here.</p><div class="asset-grid">{characterPoseAssets.map((asset) => <article class="asset-card"><img src={designSystemAssetPath(asset.path)} alt="" loading="lazy" /><div><h3>{asset.tags.at(-1)}</h3><p><strong>{asset.kind}</strong></p><code>@apiops/design-system/assets/{asset.path}</code><code>{designSystemAssetPath(asset.path)}</code><SvgAssetDownload source={designSystemAssetPath(asset.path)} filename={asset.tags.at(-1) ?? asset.kind} client:load /></div></article>)}</div>
+      <h3>Character grammar poses</h3><p>Use these scarf poses as the current human standard. The legacy stick-figure pose and story sheets are intentionally not shown here.</p><div class="asset-grid">{characterPoseAssets.map((asset) => <article class="asset-card"><img src={designSystemAssetPath(asset.path)} alt="" loading="lazy" /><div><h3>{asset.label}</h3><p><strong>{asset.kind}</strong></p><code>@apiops/design-system/assets/{asset.path}</code><code>{designSystemAssetPath(asset.path)}</code><SvgAssetDownload source={designSystemAssetPath(asset.path)} filename={asset.label} client:load /></div></article>)}</div>
       <h3>Individual SVG symbols</h3><p>SVG sheets contain individually addressable symbols. Download a symbol as its own SVG, or reference it through an accessible inline SVG: give the SVG a name when it conveys meaning, or add <code>aria-hidden="true"</code> when decorative.</p>
       {symbolSheets.map((sheet) => <section class="symbol-section" aria-labelledby={`symbols-${sheet.title.toLowerCase().replaceAll(" ", "-")}`}><h4 id={`symbols-${sheet.title.toLowerCase().replaceAll(" ", "-")}`}>{sheet.title}</h4><p>{sheet.description}</p><div class="symbol-grid">{sheet.symbols.map((symbol) => <article class="symbol-card"><svg viewBox={symbol.viewBox} role="img" aria-label={symbol.id.replaceAll("-", " ")}><use href={`${designSystemAssetPath(symbol.path)}#${symbol.id}`}></use></svg><strong>{symbol.id}</strong><code>{`${designSystemAssetPath(symbol.path)}#${symbol.id}`}</code><code>{`<svg viewBox="${symbol.viewBox}" role="img" aria-label="…"><use href="${designSystemAssetPath(symbol.path)}#${symbol.id}" /></svg>`}</code><SvgAssetDownload source={designSystemAssetPath(symbol.path)} filename={symbol.id} symbolId={symbol.id} viewBox={symbol.viewBox} client:load /></article>)}</div></section>)}
     </section>
