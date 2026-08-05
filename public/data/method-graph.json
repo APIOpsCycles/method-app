@@ -1756,14 +1756,20 @@
       ],
       "recommendedLineIds": [
         "business-opportunities-line",
-        "api-design-line"
+        "platform-architecture-line",
+        "api-design-line",
+        "delivery-line",
+        "publishing-and-adoption-line",
+        "operating-model-line"
       ],
       "stationIds": [
         "api-product-strategy",
+        "api-consumer-experience",
         "api-platform-architecture",
         "api-design",
         "api-delivery",
         "api-audit",
+        "api-publishing",
         "monitoring-and-improving"
       ]
     },
@@ -1776,7 +1782,8 @@
         "platform-architecture-line",
         "api-design-line",
         "delivery-line",
-        "publishing-and-adoption-line"
+        "publishing-and-adoption-line",
+        "operating-model-line"
       ],
       "stationIds": [
         "api-product-strategy",
@@ -1796,7 +1803,9 @@
       "recommendedLineIds": [
         "platform-architecture-line",
         "api-design-line",
-        "delivery-line"
+        "delivery-line",
+        "publishing-and-adoption-line",
+        "operating-model-line"
       ],
       "stationIds": [
         "api-product-strategy",
@@ -1804,7 +1813,9 @@
         "api-platform-architecture",
         "api-design",
         "api-delivery",
-        "api-audit"
+        "api-audit",
+        "api-publishing",
+        "monitoring-and-improving"
       ]
     },
     "explore-api-method": {
@@ -1904,12 +1915,22 @@
         "capability-productization-cycle"
       ],
       "recommendedLineIds": [
-        "platform-architecture-line"
+        "business-opportunities-line",
+        "platform-architecture-line",
+        "api-design-line",
+        "delivery-line",
+        "publishing-and-adoption-line",
+        "operating-model-line"
       ],
       "stationIds": [
         "api-product-strategy",
         "api-consumer-experience",
-        "api-platform-architecture"
+        "api-platform-architecture",
+        "api-design",
+        "api-delivery",
+        "api-audit",
+        "api-publishing",
+        "monitoring-and-improving"
       ]
     }
   }
