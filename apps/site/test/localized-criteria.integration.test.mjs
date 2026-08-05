@@ -13,6 +13,7 @@ for (const locale of locales) {
     const labels = labelsArtifact.translations[locale];
     const details = [
       ...catalog.cycles.flatMap((cycle) => [...cycle.entryCriteriaDetails, ...cycle.exitCriteriaDetails]),
+      ...catalog.cycles.flatMap((cycle) => cycle.stations.flatMap((station) => station.criteriaDetails)),
       ...catalog.stations.flatMap((station) => station.criteriaDetails),
     ];
 

@@ -1404,6 +1404,21 @@ const canvasDataRaw = readJson(path.join(canvasRoot, "canvasData.json"));
 const canvasLabelsRaw = readJson(path.join(canvasRoot, "localizedData.json"));
 const labelsByLocale = Object.fromEntries(locales.map((locale) => [locale, readLabels(locale)]));
 
+function normalizeStationCriteria(source) {
+  if (!source || typeof source !== "object" || Array.isArray(source)) {
+    return { default: {}, byCycle: {} };
+  }
+  if ("default" in source || "byCycle" in source) {
+    return {
+      default: source.default ?? {},
+      byCycle: source.byCycle ?? {},
+    };
+  }
+  return { default: source, byCycle: {} };
+}
+
+const stationCriteria = normalizeStationCriteria(stationCriteriaRaw);
+
 function catalogLabels(locale) {
   return Object.fromEntries(
     Object.entries(labelsByLocale[locale] ?? {}).filter(([key]) =>
@@ -1576,7 +1591,7 @@ function translateStation(locale, station) {
     station.apply_in_work,
     station.why_it_matters,
   ]);
-  const criteria = stationCriteriaRaw[station.id] ?? station.stationCriteria ?? [];
+  const criteria = stationCriteria.default[station.id] ?? station.stationCriteria ?? [];
   return {
     id: station.id,
     slug: station.slug,
@@ -1633,7 +1648,7 @@ function translateCycleStation(locale, cycle, stationId, index) {
     .map((id) => resourceById[id])
     .filter(Boolean)
     .map((resource) => translateResource(locale, resource));
-  const stationCriteria = stationCriteriaRaw[stationId] ?? station?.stationCriteria ?? [];
+  const stationCriteriaIds = stationCriteria.byCycle[cycle.id]?.[stationId] ?? stationCriteria.default[stationId] ?? station?.stationCriteria ?? [];
   const translatedOutcomes = outcomeKeys.map((key, outcomeIndex) => {
     const fallback = station?.outcomes?.[outcomeIndex];
     return hasLabel(locale, key) ? t(locale, key) : t(locale, fallback);
@@ -1662,8 +1677,8 @@ function translateCycleStation(locale, cycle, stationId, index) {
       station?.apply_in_work,
       station?.why_it_matters,
     ]),
-    criteria: stationCriteria,
-    criteriaDetails: stationCriteria.map((id) => translateCriterion(locale, id)),
+    criteria: stationCriteriaIds,
+    criteriaDetails: stationCriteriaIds.map((id) => translateCriterion(locale, id)),
     baseTitle: station ? t(locale, station.title) : stationId,
     group: station ? t(locale, station.groupTitle) : "",
     lifecycleStage: station?.lifecycleStage ?? station?.type ?? "supporting",
@@ -2264,9 +2279,16 @@ function validate() {
       }
     }
   }
-  for (const [stationId, criteria] of Object.entries(stationCriteriaRaw)) {
-    if (!stationIds.has(stationId)) throw new Error(`Missing station criteria station ${stationId}`);
-    for (const id of criteria) if (!criterionIds.has(id)) throw new Error(`Missing criterion ${id}`);
+  const criteriaGraphs = [
+    ["default", stationCriteria.default],
+    ...Object.entries(stationCriteria.byCycle ?? {}),
+  ];
+  for (const [cycleId, stations] of criteriaGraphs) {
+    if (cycleId !== "default" && !cycleIds.has(cycleId)) throw new Error(`Missing station criteria cycle ${cycleId}`);
+    for (const [stationId, criteria] of Object.entries(stations ?? {})) {
+      if (!stationIds.has(stationId)) throw new Error(`Missing station criteria station ${stationId}`);
+      for (const id of criteria) if (!criterionIds.has(id)) throw new Error(`Missing criterion ${id}`);
+    }
   }
 }
 
