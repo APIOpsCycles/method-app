@@ -20,7 +20,12 @@
         "capability-productization-cycle"
       ],
       "recommendedLineIds": [
-        "platform-architecture-line"
+        "business-opportunities-line",
+        "platform-architecture-line",
+        "api-design-line",
+        "delivery-line",
+        "publishing-and-adoption-line",
+        "operating-model-line"
       ]
     },
     {
@@ -47,13 +52,14 @@
         "platform-architecture-line",
         "api-design-line",
         "delivery-line",
-        "publishing-and-adoption-line"
+        "publishing-and-adoption-line",
+        "operating-model-line"
       ]
     },
     {
       "id": "design-integration",
       "label": {
-        "en": "Design an integration",
+        "en": "Create or improve a managed integration",
         "fi": "Suunnittele integraatio",
         "fr": "Concevoir une intégration",
         "de": "Eine Integration entwerfen",
@@ -72,20 +78,22 @@
       "recommendedLineIds": [
         "platform-architecture-line",
         "api-design-line",
-        "delivery-line"
+        "delivery-line",
+        "publishing-and-adoption-line",
+        "operating-model-line"
       ]
     },
     {
       "id": "automate-process",
       "label": {
-        "en": "Automate a process",
+        "en": "Decide what to automate and create a governed workflow",
         "fi": "Automatisoi prosessi",
         "fr": "Automatiser un processus",
         "de": "Einen Prozess automatisieren",
         "pt": "Automatizar um processo"
       },
       "description": {
-        "en": "Create a governed automation or AI-enabled workflow.",
+        "en": "Validate the automation opportunity, then design, deliver, operate, and enable the workflow.",
         "fi": "Luo hallittu automaatio tai tekoälyä hyödyntävä työnkulku.",
         "fr": "Créez une automatisation gouvernée ou un flux de travail assisté par l’IA.",
         "de": "Eine gesteuerte Automatisierung oder einen KI-gestützten Ablauf erstellen.",
@@ -96,7 +104,11 @@
       ],
       "recommendedLineIds": [
         "business-opportunities-line",
-        "api-design-line"
+        "platform-architecture-line",
+        "api-design-line",
+        "delivery-line",
+        "publishing-and-adoption-line",
+        "operating-model-line"
       ]
     },
     {

@@ -71,6 +71,28 @@ test("goals use valid cycle-line combinations in canonical cycle order", () => {
   }
 });
 
+test("goal mappings include the governance lines promised by their labels", () => {
+  assert.deepEqual(methodGraph.byGoal["improve-reusable-capability"].recommendedLineIds, [
+    "business-opportunities-line",
+    "platform-architecture-line",
+    "api-design-line",
+    "delivery-line",
+    "publishing-and-adoption-line",
+    "operating-model-line",
+  ]);
+  assert.ok(methodGraph.byGoal["create-or-improve-api"].recommendedLineIds.includes("operating-model-line"));
+  assert.ok(methodGraph.byGoal["design-integration"].recommendedLineIds.includes("publishing-and-adoption-line"));
+  assert.ok(methodGraph.byGoal["design-integration"].recommendedLineIds.includes("operating-model-line"));
+  assert.deepEqual(methodGraph.byGoal["automate-process"].recommendedLineIds, [
+    "business-opportunities-line",
+    "platform-architecture-line",
+    "api-design-line",
+    "delivery-line",
+    "publishing-and-adoption-line",
+    "operating-model-line",
+  ]);
+});
+
 test("API product owner advances through consumer experience on the API journey", () => {
   const resolved = resolveMethodContext({ stakeholderId: "api-product-owner", goalId: "create-or-improve-api", preferredCycleId: "api-productization-cycle", currentStationId: "api-product-strategy" });
   assert.equal(resolveContextualUiState(resolved).nextRelevantStationId, "api-consumer-experience");
@@ -180,13 +202,13 @@ test("shared station pages derive relevance without manufacturing route cycle co
   assert.equal(explicitCycleStation.recommendedCycleContainsCurrentStation, true);
   assert.equal(resolveContextualUiState(explicitCycleStation).pageMode, "on-path");
 });
-test("generic entity context links to its first use on the role path", () => {
+test("generic entity context falls back when its stations are outside the selected path", () => {
   const resourceStations = methodGraph.byResource.customerJourneyCanvas.stationIds;
   const resolved = resolveMethodContext({ stakeholderId: "api-designer", goalId: "create-or-improve-api", contextStationIds: [...resourceStations, "missing"] });
   const ui = resolveContextualUiState(resolved);
   assert.deepEqual(resolved.contextStationIds, resourceStations);
-  assert.equal(ui.pageMode, "explore");
-  assert.equal(ui.primaryStationId, "api-consumer-experience");
+  assert.equal(ui.pageMode, "start");
+  assert.equal(ui.primaryStationId, "api-design");
 });
 test("role entity context explores the earliest viewed-role station on the selected path", () => {
   const viewedRoleStations = methodGraph.byStakeholder["api-designer"].stationIds;
