@@ -86,10 +86,7 @@
           "involvement": "core"
         }
       ],
-      "resourceIds": [
-        "api-audit-checklist",
-        "api-compliance-best-practices"
-      ],
+      "resourceIds": [],
       "nextStationIds": [
         "api-publishing"
       ],
@@ -184,11 +181,7 @@
           "involvement": "consulted"
         }
       ],
-      "resourceIds": [
-        "api-onboarding-best-practices",
-        "apiValuePropositionCanvas",
-        "customerJourneyCanvas"
-      ],
+      "resourceIds": [],
       "nextStationIds": [
         "api-platform-architecture"
       ],
@@ -263,13 +256,7 @@
           "involvement": "core"
         }
       ],
-      "resourceIds": [
-        "api-audit-checklist",
-        "api-development-best-practices",
-        "api-security-best-practices",
-        "api-testing-best-practices",
-        "apiops-CI-CD-for-apis"
-      ],
+      "resourceIds": [],
       "nextStationIds": [
         "api-audit"
       ],
@@ -347,16 +334,7 @@
           "involvement": "core"
         }
       ],
-      "resourceIds": [
-        "api-audit-checklist",
-        "api-design-principles",
-        "contract-first-design",
-        "domainCanvas",
-        "eventCanvas",
-        "graphqlCanvas",
-        "interactionCanvas",
-        "restCanvas"
-      ],
+      "resourceIds": [],
       "nextStationIds": [
         "api-delivery"
       ],
@@ -453,12 +431,7 @@
           "involvement": "core"
         }
       ],
-      "resourceIds": [
-        "api-metrics-and-analytics",
-        "businessImpactCanvas",
-        "capacityCanvas",
-        "locationsCanvas"
-      ],
+      "resourceIds": [],
       "nextStationIds": [
         "api-design"
       ],
@@ -542,12 +515,7 @@
           "involvement": "consulted"
         }
       ],
-      "resourceIds": [
-        "apiBusinessModelCanvas",
-        "apiValuePropositionCanvas",
-        "customerJourneyCanvas",
-        "domainCanvas"
-      ],
+      "resourceIds": [],
       "nextStationIds": [
         "api-consumer-experience"
       ],
@@ -637,11 +605,7 @@
           "involvement": "core"
         }
       ],
-      "resourceIds": [
-        "api-audit-checklist",
-        "api-onboarding-best-practices",
-        "apiops-CI-CD-for-apis"
-      ],
+      "resourceIds": [],
       "nextStationIds": [
         "monitoring-and-improving"
       ],
@@ -854,11 +818,7 @@
           "involvement": "consulted"
         }
       ],
-      "resourceIds": [
-        "api-community-engagement-strategies",
-        "api-metrics-and-analytics",
-        "apiops-CI-CD-for-apis"
-      ],
+      "resourceIds": [],
       "nextStationIds": [],
       "relatedStationIds": []
     },
@@ -1228,10 +1188,6 @@
   "byResource": {
     "api-audit-checklist": {
       "stationIds": [
-        "api-audit",
-        "api-delivery",
-        "api-design",
-        "api-publishing",
         "contract-design",
         "design-standards"
       ]
@@ -1239,41 +1195,33 @@
     "api-community-engagement-strategies": {
       "stationIds": [
         "api-consumer-adoption",
-        "api-promotion",
-        "monitoring-and-improving"
+        "api-promotion"
       ]
     },
     "api-compliance-best-practices": {
       "stationIds": [
-        "api-audit",
         "legal-and-compliance"
       ]
     },
     "api-design-principles": {
       "stationIds": [
-        "api-design",
         "design-standards"
       ]
     },
     "api-development-best-practices": {
       "stationIds": [
-        "api-delivery",
         "development"
       ]
     },
     "api-metrics-and-analytics": {
       "stationIds": [
-        "api-platform-architecture",
         "business-goals",
-        "monitoring-and-improving",
         "operating-guidelines"
       ]
     },
     "api-onboarding-best-practices": {
       "stationIds": [
-        "api-consumer-adoption",
-        "api-consumer-experience",
-        "api-publishing"
+        "api-consumer-adoption"
       ]
     },
     "api-portfolio-management-guidelines": {
@@ -1284,7 +1232,6 @@
     },
     "api-security-best-practices": {
       "stationIds": [
-        "api-delivery",
         "ci-cd",
         "security-and-privacy"
       ]
@@ -1296,7 +1243,6 @@
     },
     "api-testing-best-practices": {
       "stationIds": [
-        "api-delivery",
         "ci-cd",
         "test-automation"
       ]
@@ -1314,25 +1260,18 @@
     },
     "apiBusinessModelCanvas": {
       "stationIds": [
-        "api-product-strategy",
         "business-goals"
       ]
     },
     "apiops-CI-CD-for-apis": {
       "stationIds": [
-        "api-delivery",
-        "api-publishing",
         "ci-cd",
-        "monitoring-and-improving",
         "release-management",
         "test-automation"
       ]
     },
     "apiValuePropositionCanvas": {
-      "stationIds": [
-        "api-consumer-experience",
-        "api-product-strategy"
-      ]
+      "stationIds": []
     },
     "automation-monitoring-value-metrics": {
       "stationIds": []
@@ -1368,11 +1307,81 @@
       "stationIds": []
     },
     "businessImpactCanvas": {
-      "stationIds": [
-        "api-platform-architecture"
-      ]
+      "stationIds": []
+    },
+    "capability-adoption-reuse-guide": {
+      "stationIds": []
+    },
+    "capability-ci-cd-release-guide": {
+      "stationIds": []
+    },
+    "capability-compliance-governance-guide": {
+      "stationIds": []
+    },
+    "capability-consumer-feedback-guide": {
+      "stationIds": []
+    },
+    "capability-consumer-onboarding-guide": {
+      "stationIds": []
+    },
+    "capability-delivery-guide": {
+      "stationIds": []
+    },
+    "capability-lifecycle-management-guide": {
+      "stationIds": []
+    },
+    "capability-monitoring-value-metrics": {
+      "stationIds": []
+    },
+    "capability-operational-ownership-guide": {
+      "stationIds": []
+    },
+    "capability-ownership-producer-responsibilities-guide": {
+      "stationIds": []
+    },
+    "capability-publishing-discovery-guide": {
+      "stationIds": []
+    },
+    "capability-readiness-checklist": {
+      "stationIds": []
+    },
+    "capability-security-access-guide": {
+      "stationIds": []
+    },
+    "capability-service-agreement-template": {
+      "stationIds": []
+    },
+    "capability-service-expectations-guide": {
+      "stationIds": []
+    },
+    "capability-service-quality-checklist": {
+      "stationIds": []
+    },
+    "capability-support-lifecycle-guide": {
+      "stationIds": []
+    },
+    "capability-testing-validation-guide": {
+      "stationIds": []
+    },
+    "capability-versioning-lifecycle-guide": {
+      "stationIds": []
+    },
+    "capabilityArchitectureDecisionCanvas": {
+      "stationIds": []
     },
     "capabilityBusinessModelCanvas": {
+      "stationIds": []
+    },
+    "capabilityConsumerProducerRequirementsCanvas": {
+      "stationIds": []
+    },
+    "capabilityHypothesisCanvas": {
+      "stationIds": []
+    },
+    "capabilityReadinessOperationsCanvas": {
+      "stationIds": []
+    },
+    "capabilitySolutionDesignCanvas": {
       "stationIds": []
     },
     "capabilityValuePropositionCanvas": {
@@ -1380,7 +1389,6 @@
     },
     "capacityCanvas": {
       "stationIds": [
-        "api-platform-architecture",
         "scalable-infrastructure"
       ]
     },
@@ -1395,7 +1403,6 @@
     },
     "contract-first-design": {
       "stationIds": [
-        "api-design",
         "contract-design",
         "development"
       ]
@@ -1407,8 +1414,6 @@
     },
     "customerJourneyCanvas": {
       "stationIds": [
-        "api-consumer-experience",
-        "api-product-strategy",
         "user-experience"
       ]
     },
@@ -1421,10 +1426,7 @@
       "stationIds": []
     },
     "domainCanvas": {
-      "stationIds": [
-        "api-design",
-        "api-product-strategy"
-      ]
+      "stationIds": []
     },
     "ecosystem-vision-template": {
       "stationIds": [
@@ -1436,16 +1438,9 @@
       ]
     },
     "eventCanvas": {
-      "stationIds": [
-        "api-design"
-      ]
+      "stationIds": []
     },
     "graphqlCanvas": {
-      "stationIds": [
-        "api-design"
-      ]
-    },
-    "humanAutomationResponsibilityCanvas": {
       "stationIds": []
     },
     "industry-standards-and-best-practices": {
@@ -1453,18 +1448,80 @@
         "market-insights"
       ]
     },
+    "integration-access-environment-checklist": {
+      "stationIds": []
+    },
+    "integration-ci-cd-deployment-guide": {
+      "stationIds": []
+    },
+    "integration-compliance-data-governance-guide": {
+      "stationIds": []
+    },
+    "integration-consumer-feedback-adoption-guide": {
+      "stationIds": []
+    },
+    "integration-consumer-onboarding-guide": {
+      "stationIds": []
+    },
+    "integration-development-best-practices": {
+      "stationIds": []
+    },
+    "integration-lifecycle-management-guide": {
+      "stationIds": []
+    },
+    "integration-monitoring-value-metrics": {
+      "stationIds": []
+    },
+    "integration-publishing-discovery-guide": {
+      "stationIds": []
+    },
+    "integration-readiness-checklist": {
+      "stationIds": []
+    },
+    "integration-recovery-reconciliation-guide": {
+      "stationIds": []
+    },
+    "integration-reliability-data-quality-metrics": {
+      "stationIds": []
+    },
+    "integration-security-guide": {
+      "stationIds": []
+    },
+    "integration-service-agreement-template": {
+      "stationIds": []
+    },
+    "integration-style-design-guide": {
+      "stationIds": []
+    },
     "integration-style-selection-guide": {
       "stationIds": []
     },
+    "integration-testing-guide": {
+      "stationIds": []
+    },
+    "integration-versioning-deprecation-guide": {
+      "stationIds": []
+    },
+    "integrationArchitectureDecisionCanvas": {
+      "stationIds": []
+    },
+    "integrationCapabilityHypothesisCanvas": {
+      "stationIds": []
+    },
+    "integrationConsumerProviderRequirementsCanvas": {
+      "stationIds": []
+    },
+    "integrationReadinessOperationsCanvas": {
+      "stationIds": []
+    },
+    "integrationSolutionDesignCanvas": {
+      "stationIds": []
+    },
     "interactionCanvas": {
-      "stationIds": [
-        "api-design"
-      ]
+      "stationIds": []
     },
     "locationsCanvas": {
-      "stationIds": [
-        "api-platform-architecture"
-      ]
+      "stationIds": []
     },
     "partner-integration-guidelines": {
       "stationIds": [
@@ -1475,9 +1532,7 @@
       "stationIds": []
     },
     "restCanvas": {
-      "stationIds": [
-        "api-design"
-      ]
+      "stationIds": []
     },
     "role-communication-best-practices": {
       "stationIds": [
