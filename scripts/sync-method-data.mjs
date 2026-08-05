@@ -1912,8 +1912,11 @@ function renderCycleQuestionMarkdown(locale, cycle) {
     "Use this template to gather answers and evidence station by station. Canvas section prompts are listed first, followed by other related resources.",
     "",
   ];
-  for (const station of cycle.stations) {
+  for (const [stationIndex, station] of cycle.stations.entries()) {
     lines.push(`## ${station.index}. ${station.title}`, "", station.description, "");
+    const previousStation = cycle.stations[stationIndex - 1];
+    const entryCriteria = stationIndex === 0 ? cycle.entryCriteriaDetails : previousStation?.criteriaDetails ?? [];
+    const exitCriteria = station.criteriaDetails?.length ? station.criteriaDetails : cycle.exitCriteriaDetails;
     const canvasResources = (station.resources ?? []).filter((resource) => resource.canvasId && canvasDataRaw[resource.canvasId]);
     const otherResources = (station.resources ?? []).filter((resource) => !resource.canvasId);
     if (canvasResources.length) {
@@ -1933,16 +1936,14 @@ function renderCycleQuestionMarkdown(locale, cycle) {
       for (const question of station.questions) lines.push(`- ${question}`);
       lines.push("");
     }
-    const entry = station.criteriaDetails?.flatMap((criterion) => criterion.entry ?? []) ?? [];
-    if (entry.length) {
+    if (entryCriteria.length) {
       lines.push("### Before this station");
-      for (const criterion of entry) lines.push(`- [ ] ${criterion}`);
+      for (const criterion of entryCriteria) lines.push(`- [ ] ${criterion.title}`);
       lines.push("");
     }
-    const exit = station.criteriaDetails?.flatMap((criterion) => criterion.exit ?? []) ?? [];
-    if (exit.length) {
+    if (exitCriteria.length) {
       lines.push("### Ready to leave when");
-      for (const criterion of exit) lines.push(`- [ ] ${criterion}`);
+      for (const criterion of exitCriteria) lines.push(`- [ ] ${criterion.title}`);
       lines.push("");
     }
     if (otherResources.length) {
@@ -1965,8 +1966,11 @@ function renderCycleQuestionConfluenceWiki(locale, cycle) {
     "Use this template to gather answers and evidence station by station. Canvas section prompts are listed first, followed by other related resources.",
     "",
   ];
-  for (const station of cycle.stations) {
+  for (const [stationIndex, station] of cycle.stations.entries()) {
     lines.push(`h2. ${station.index}. ${station.title}`, "", station.description, "");
+    const previousStation = cycle.stations[stationIndex - 1];
+    const entryCriteria = stationIndex === 0 ? cycle.entryCriteriaDetails : previousStation?.criteriaDetails ?? [];
+    const exitCriteria = station.criteriaDetails?.length ? station.criteriaDetails : cycle.exitCriteriaDetails;
     const canvasResources = (station.resources ?? []).filter((resource) => resource.canvasId && canvasDataRaw[resource.canvasId]);
     const otherResources = (station.resources ?? []).filter((resource) => !resource.canvasId);
     if (canvasResources.length) {
@@ -1986,16 +1990,14 @@ function renderCycleQuestionConfluenceWiki(locale, cycle) {
       for (const question of station.questions) lines.push(`* ${question}`);
       lines.push("");
     }
-    const entry = station.criteriaDetails?.flatMap((criterion) => criterion.entry ?? []) ?? [];
-    if (entry.length) {
+    if (entryCriteria.length) {
       lines.push("h3. Before this station");
-      for (const criterion of entry) lines.push(`* [ ] ${criterion}`);
+      for (const criterion of entryCriteria) lines.push(`* [ ] ${criterion.title}`);
       lines.push("");
     }
-    const exit = station.criteriaDetails?.flatMap((criterion) => criterion.exit ?? []) ?? [];
-    if (exit.length) {
+    if (exitCriteria.length) {
       lines.push("h3. Ready to leave when");
-      for (const criterion of exit) lines.push(`* [ ] ${criterion}`);
+      for (const criterion of exitCriteria) lines.push(`* [ ] ${criterion.title}`);
       lines.push("");
     }
     if (otherResources.length) {

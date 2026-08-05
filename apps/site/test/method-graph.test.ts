@@ -7,6 +7,7 @@ import { INVOLVEMENT_WEIGHT, resolveMethodContext, scoreCycleForContext } from "
 import { resolveContextualUiState } from "../src/lib/resolve-method-context";
 import { readFileSync } from "node:fs";
 import { linePathForContext } from "../src/lib/line-routes";
+import { groupPurposes } from "../src/components/islands/ConfluenceExportIsland";
 
 test("generated graph contains valid, deduplicated adjacency", () => {
   const stationIds = new Set(Object.keys(methodGraph.byStation));
@@ -331,3 +332,49 @@ test("explicit route cycle is validated and takes precedence", () => {
   assert.equal(context.cycleIds[0], explicitCycleId);
   assert.equal(getPageMethodContext("station", stationId, "missing")?.explicitCycleId, undefined);
 });
+
+test("cycle exports pair Markdown and Confluence bodies for one purpose", () => {
+  const exportsData = JSON.parse(readFileSync(new URL("../../../generated/method/export-templates.en.json", import.meta.url), "utf8")).translations.en;
+  const cycleTemplates = exportsData.filter((template: { cycleId?: string }) => template.cycleId === "api-productization-cycle");
+  const purposes = groupPurposes(cycleTemplates);
+
+  assert.equal(purposes.length, 1);
+  assert.match(purposes[0].markdown, /^# API Productization Cycle question template/);
+  assert.match(purposes[0].wiki, /^h1\. API Productization Cycle question template/);
+  assert.doesNotMatch(purposes[0].markdown, /^h1\./);
+  assert.doesNotMatch(purposes[0].wiki, /^# /);
+});
+
+test("cycle exports use cycle-specific station criteria and canvas resources", () => {
+  const catalog = JSON.parse(readFileSync(new URL("../../../generated/method/method-catalog.en.json", import.meta.url), "utf8")).translations.en;
+  const exportsData = JSON.parse(readFileSync(new URL("../../../generated/method/export-templates.en.json", import.meta.url), "utf8")).translations.en;
+
+  for (const cycle of catalog.cycles) {
+    const markdown = exportsData.find((template: { cycleId: string; format: string }) => template.cycleId === cycle.id && template.format === "markdown")?.body;
+    const wiki = exportsData.find((template: { cycleId: string; format: string }) => template.cycleId === cycle.id && template.format === "confluence-wiki")?.body;
+    assert.ok(markdown, `${cycle.id} has a Markdown export`);
+    assert.ok(wiki, `${cycle.id} has a Confluence-wiki export`);
+
+    for (const [stationIndex, station] of cycle.stations.entries()) {
+      assert.match(markdown, new RegExp(`## ${station.index}\\. ${escapeRegExp(station.title)}`));
+      assert.match(wiki, new RegExp(`h2\\. ${station.index}\\. ${escapeRegExp(station.title)}`));
+
+      const previousStation = cycle.stations[stationIndex - 1];
+      const entryCriteria = stationIndex === 0 ? cycle.entryCriteriaDetails : previousStation?.criteriaDetails ?? [];
+      const exitCriteria = station.criteriaDetails.length ? station.criteriaDetails : cycle.exitCriteriaDetails;
+      for (const criterion of [...entryCriteria, ...exitCriteria]) {
+        assert.match(markdown, new RegExp(escapeRegExp(criterion.title)), `${cycle.id}/${station.id} includes ${criterion.id} in Markdown`);
+        assert.match(wiki, new RegExp(escapeRegExp(criterion.title)), `${cycle.id}/${station.id} includes ${criterion.id} in Confluence-wiki`);
+      }
+
+      for (const resource of station.resources.filter((item: { canvasId?: string }) => item.canvasId)) {
+        assert.match(markdown, new RegExp(`#### ${escapeRegExp(resource.title)}`), `${cycle.id}/${station.id} includes canvas ${resource.id} in Markdown`);
+        assert.match(wiki, new RegExp(`h4\\. ${escapeRegExp(resource.title)}`), `${cycle.id}/${station.id} includes canvas ${resource.id} in Confluence-wiki`);
+      }
+    }
+  }
+});
+
+function escapeRegExp(value: string) {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
