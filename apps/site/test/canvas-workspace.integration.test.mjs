@@ -15,11 +15,25 @@ test("production canvas definition persists under stable entity and metadata key
 
 test("production canvas definition round-trips notes and metadata through JSON", () => {
   const metadata = { title: canvas.title, owner: "API team", context: "Launch", date: "2026-07-19" };
-  const notes = { [canvas.sections[0].id]: [{ content: "Observed need", color: "#fff399", size: 80 }] };
+  const notes = { [canvas.sections[0].id]: [{ content: "Observed  need\nwith spacing", color: "#fff399", size: 80 }] };
   const serialized = JSON.stringify(createCanvasExport(canvas, "en", metadata, notes));
   const expectedNotes = Object.fromEntries(canvas.sections.map((section) => [section.id, notes[section.id] ?? []]));
   assert.deepEqual(parseCanvasExport(serialized, canvas), { notes: expectedNotes, metadata });
   assert.throws(() => parseCanvasExport(serialized.replace(canvas.importExportTemplate.templateId, "other-template"), canvas), /Invalid canvas JSON/);
+});
+
+test("canvas JSON import preserves note whitespace and accepts notes without size", () => {
+  const content = "Keep  internal   spaces";
+  const serialized = JSON.stringify({
+    ...canvas.importExportTemplate,
+    canvasMetadata: { title: canvas.title, owner: "", context: "", date: "" },
+    sections: [{ sectionId: canvas.sections[0].id, stickyNotes: [{ content, color: "#fff399" }] }],
+  });
+
+  const parsed = parseCanvasExport(serialized, canvas);
+
+  assert.equal(parsed.notes[canvas.sections[0].id][0].content, content);
+  assert.equal(parsed.notes[canvas.sections[0].id][0].size, 80);
 });
 
 test("focus selection preserves section identity, order, and specialized grid semantics", () => {

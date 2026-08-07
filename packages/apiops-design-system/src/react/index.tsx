@@ -641,7 +641,7 @@ export function CanvasSystemZone({
 }) {
   const focusable = mode === "interactive" && Boolean(onActivate);
   const handleKeyDown = (event: KeyboardEvent<HTMLElement>) => {
-    if (focusable && (event.key === "Enter" || event.key === " ")) {
+    if (focusable && event.target === event.currentTarget && (event.key === "Enter" || event.key === " ")) {
       event.preventDefault();
       onActivate?.();
     }

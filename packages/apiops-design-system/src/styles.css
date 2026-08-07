@@ -451,6 +451,7 @@
   font-weight: 650;
   line-height: 1.4;
   margin: 0;
+  white-space: pre-wrap;
 }
 
 .ds-canvas-note textarea {
