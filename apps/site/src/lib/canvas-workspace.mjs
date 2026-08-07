@@ -21,10 +21,10 @@ export function parseCanvasExport(text, canvas) {
       throw new Error("Invalid canvas JSON or section.");
     }
     notes[section.sectionId] = section.stickyNotes.map((note) => {
-      if (!isRecord(note) || typeof note.content !== "string" || typeof note.color !== "string" || typeof note.size !== "number") {
+      if (!isRecord(note) || typeof note.content !== "string" || typeof note.color !== "string" || (note.size !== undefined && typeof note.size !== "number")) {
         throw new Error("Invalid canvas JSON or sticky note.");
       }
-      return { content: note.content, color: note.color, size: note.size };
+      return { content: note.content, color: note.color, size: note.size ?? 80 };
     });
   }
   const metadata = value.canvasMetadata;
@@ -39,7 +39,10 @@ export function createCanvasExport(canvas, locale, metadata, notes) {
     ...canvas.importExportTemplate,
     locale,
     canvasMetadata: metadata,
-    sections: canvas.sections.map((section) => ({ sectionId: section.id, stickyNotes: notes[section.id] ?? [] })),
+    sections: canvas.sections.map((section) => ({
+      sectionId: section.id,
+      stickyNotes: (notes[section.id] ?? []).map((note) => ({ ...note, size: note.size ?? 80 })),
+    })),
   };
 }
 
