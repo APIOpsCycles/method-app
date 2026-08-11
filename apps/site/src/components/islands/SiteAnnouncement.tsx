@@ -1,4 +1,4 @@
-import { AnnouncementToast } from "@apiops/design-system/react";
+import { AnnouncementToast } from "apiops-design-system/react";
 import { useEffect, useState } from "react";
 
 interface Props {

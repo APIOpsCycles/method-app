@@ -1,10 +1,10 @@
 # Canvas application and design-system boundary
 
 Canvas definitions are generated method content. The application passes a definition and
-application state into `@apiops/design-system`; it must not reproduce the design system's
+application state into `apiops-design-system`; it must not reproduce the design system's
 grid, notes, metadata controls, or state styling.
 
-| Concern | Application / framework-neutral utility | `@apiops/design-system` |
+| Concern | Application / framework-neutral utility | `apiops-design-system` |
 | --- | --- | --- |
 | Sections | Select the method-specific canvas and retain its IDs, prompts, order, attribution, and import/export template. | Place sections on the grid; render numbering, anchor (`highlight`) and journey treatments, active state, and prompts. |
 | Notes | Own note values, stable persistence, schema validation, add/update/delete commands, and confirmation before destructive actions. | Present empty/populated note areas, editable and read-only notes, add/delete controls, colors, and note intent. |

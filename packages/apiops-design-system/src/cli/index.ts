@@ -26,4 +26,4 @@ const destination = path.resolve(process.cwd(), output);
 await rm(destination, { recursive: true, force: true });
 await mkdir(path.dirname(destination), { recursive: true });
 await cp(source, destination, { recursive: true });
-console.log(`Copied @apiops/design-system assets to ${destination}`);
+console.log(`Copied apiops-design-system assets to ${destination}`);

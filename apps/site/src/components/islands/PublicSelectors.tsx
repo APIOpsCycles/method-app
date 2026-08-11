@@ -1,4 +1,4 @@
-import { PillList, ResourceSelector } from "@apiops/design-system/react";
+import { PillList, ResourceSelector } from "apiops-design-system/react";
 
 type LinkedItem = { id: string; href: string };
 

@@ -32,7 +32,7 @@ for (const file of packageFiles) {
 for (const file of await sourceFiles("apps")) {
   const source = await readFile(file, "utf8");
   if (source.includes('"/design-system/') || source.includes("'/design-system/") || source.includes("`/design-system/")) {
-    violations.push(`${file}: use @apiops/design-system/assets instead of a hard-coded asset path`);
+    violations.push(`${file}: use apiops-design-system/assets instead of a hard-coded asset path`);
   }
 }
 

@@ -16,8 +16,8 @@ import {
   ResourceSelector,
   RoleParticipationTable,
   StakeholderRoleSelector,
-} from "@apiops/design-system/react";
-import { designSystemAssets } from "@apiops/design-system/assets";
+} from "apiops-design-system/react";
+import { designSystemAssets } from "apiops-design-system/assets";
 
 export function GeneralDesignSystemExamples() {
   const [expanded, setExpanded] = useState(true);

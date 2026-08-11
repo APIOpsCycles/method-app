@@ -7,7 +7,7 @@ import {
   CanvasSystemZone,
   type CanvasSystemMetadata,
   type CanvasSystemSection,
-} from "@apiops/design-system/react";
+} from "apiops-design-system/react";
 import { canvasStorageKeys, createCanvasExport, parseCanvasExport } from "../../lib/canvas-workspace.mjs";
 import { visibleCanvasSections } from "../../lib/canvas-focus.mjs";
 
