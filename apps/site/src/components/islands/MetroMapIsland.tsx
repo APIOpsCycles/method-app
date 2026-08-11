@@ -1,8 +1,8 @@
 import { type RefObject, useEffect, useRef, useState } from "react";
 import { initializeMethodContext, setMethodContext, useMethodContext } from "../../lib/method-context";
 import { resolveMethodContext } from "../../lib/resolve-method-context";
-import { MetroLegend, MetroLinePath, MetroMapShell, MetroStationButton, MetroStationMarker, StakeholderRoleSelector, makeCanvaSafeSvg } from "@apiops/design-system/react";
-import { designSystemAssets } from "@apiops/design-system/assets";
+import { MetroLegend, MetroLinePath, MetroMapShell, MetroStationButton, MetroStationMarker, StakeholderRoleSelector, makeCanvaSafeSvg } from "apiops-design-system/react";
+import { designSystemAssets } from "apiops-design-system/assets";
 
 export type MetroCycleStation = { id: string; index: number; title: string; baseTitle: string };
 export type MetroCycle = { id: string; slug: string; title: string; stations: MetroCycleStation[] };

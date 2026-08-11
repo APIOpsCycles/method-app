@@ -1,11 +1,11 @@
-# @apiops/design-system
+# apiops-design-system
 
 The deliberately small APIOps visual foundation: tokens, CSS, assets, metadata, and reusable React canvas primitives.
 
 ```tsx
-import "@apiops/design-system/styles.css";
-import { CanvasSystemShell, StakeholderRoleSelector } from "@apiops/design-system/react";
-import { designSystemAssets, designSystemAssetManifest } from "@apiops/design-system/assets";
+import "apiops-design-system/styles.css";
+import { CanvasSystemShell, StakeholderRoleSelector } from "apiops-design-system/react";
+import { designSystemAssets, designSystemAssetManifest } from "apiops-design-system/assets";
 ```
 
 Focused React entry points are available at `/react/canvas`, `/react/metro`, and
@@ -33,8 +33,7 @@ Applications import `styles.css` once in their root layout and use the asset ent
 point for public paths and inventory metadata. They should not copy assets or repeat
 the `/design-system` mount convention. The React components accept all method and
 localized content through props; this package must not import generated catalogs.
-Run `npm run check:design-system-boundaries` from the repository root to verify
-these ownership and integration rules.
+Run `npm test` before publishing to verify the package contract.
 
 ## Assets
 
@@ -60,6 +59,12 @@ need to reproduce this repository's workspace layout.
 `npm pack` and `npm publish` run the package build through `prepack`. Validate a
 release candidate with `npm test` and inspect `npm pack --dry-run --json`; all public
 exports and the asset-copy CLI must be present in the resulting tarball.
+
+The public npm package name is unscoped:
+
+```bash
+npm publish
+```
 
 ## Versioning
 

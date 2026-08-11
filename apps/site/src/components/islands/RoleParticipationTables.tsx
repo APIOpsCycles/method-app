@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { RoleParticipationTable, type RoleParticipationRow } from "@apiops/design-system/react";
+import { RoleParticipationTable, type RoleParticipationRow } from "apiops-design-system/react";
 import { initializeMethodContext, useMethodContext } from "../../lib/method-context";
 import { resolveMethodContext } from "../../lib/resolve-method-context";
 

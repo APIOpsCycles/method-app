@@ -1,10 +1,10 @@
 {
-  "name": "@apiops/design-system",
+  "name": "apiops-design-system",
   "version": "0.1.0",
   "description": "Boring, reusable APIOps design tokens, CSS, assets, and React canvas primitives.",
   "type": "module",
   "engines": { "node": ">=22.16.0" },
-  "publishConfig": { "access": "public", "provenance": true },
+  "publishConfig": { "provenance": true },
   "keywords": ["apiops", "design-system", "react", "design-tokens"],
   "sideEffects": ["./dist/styles.css"],
   "files": ["dist", "docs", "README.md", "CHANGELOG.md"],

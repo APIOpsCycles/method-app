@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { dismissContextPrompt, initializeMethodContext, isContextPromptDismissed, resetMethodContext, setMethodContext, useMethodContext } from "../../lib/method-context";
 import { resolveContextualUiState, resolveMethodContext } from "../../lib/resolve-method-context";
-import { ContextGuidance, MethodContextBar, MethodContextEditor, type MethodContextItem } from "@apiops/design-system/react";
+import { ContextGuidance, MethodContextBar, MethodContextEditor, type MethodContextItem } from "apiops-design-system/react";
 import type { PageMethodContext } from "../../lib/method-graph";
 
 type Option = { id: string; label: string };

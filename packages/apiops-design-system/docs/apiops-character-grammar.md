@@ -58,19 +58,19 @@ Edit these files instead:
 After editing `scenes.json` or `registry.json`, regenerate the SVG:
 
 ```powershell
-node packages\apiops-design-system\scripts\build-character-scenes.mjs
+node scripts\build-character-scenes.mjs
 ```
 
 This updates:
 
 ```text
-packages/apiops-design-system/src/assets/humans/apiops-character-scenes.svg
+src/assets/humans/apiops-character-scenes.svg
 ```
 
 For the full package build, run:
 
 ```powershell
-npm.cmd run build --workspace @apiops/design-system
+npm.cmd run build
 ```
 
 The full build runs `build-character-scenes.mjs` before copying `src/assets` to `dist`, so package consumers continue to use the unchanged public path:
@@ -82,7 +82,7 @@ designSystemAssets.humans.characterScenes
 Before committing scene changes, run:
 
 ```powershell
-npm.cmd test --workspace @apiops/design-system
+npm.cmd test
 ```
 
 The tests check that generated scenes keep stable IDs, inline pose, notation, glyph, and brand geometry, avoid `<image>` tags, avoid unresolved `href="#symbol-*"` or `href="#connection-*"` references, and render as a valid SVG sheet.

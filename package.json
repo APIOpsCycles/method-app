@@ -20,7 +20,7 @@
     "pretest:astro-integration": "npm run build",
     "test:astro-integration": "node --test apps/site/test/*.test.mjs",
     "test:method-graph": "tsx --test apps/site/test/method-graph.test.ts",
-    "test:design-system": "npm test --workspace @apiops/design-system",
+    "test:design-system": "npm test --workspace apiops-design-system",
     "test:e2e": "playwright test",
     "prepare:local-data": "node packages/apiops-design-system/scripts/build.mjs && npm run sync:design-system-assets && npm run sync:method-data",
     "sync:method-data": "node scripts/sync-method-data.mjs && tsx scripts/build-method-graph.ts",

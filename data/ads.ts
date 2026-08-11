@@ -1,4 +1,4 @@
-import { designSystemAssets } from '@apiops/design-system/assets';
+import { designSystemAssets } from 'apiops-design-system/assets';
 
 export interface Ad {
   headline: string;
