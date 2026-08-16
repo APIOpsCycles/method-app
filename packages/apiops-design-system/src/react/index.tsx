@@ -122,6 +122,7 @@ function svgClassRules(document: XMLDocument) {
 
 function applySvgDeclarations(element: Element, declarations: Record<string, string>, currentColor: string) {
   for (const [name, rawValue] of Object.entries(declarations)) {
+    if (!/^[A-Za-z_][\w:.-]*$/.test(name) || name.startsWith("--")) continue;
     element.setAttribute(name, resolveColorValue(rawValue, currentColor));
   }
 }
@@ -131,8 +132,14 @@ export function makeCanvaSafeSvg(contents: string) {
   if (document.querySelector("parsererror")) return contents;
   const { rules, descendantRules } = svgClassRules(document);
   const paintAttributes = ["fill", "stroke", "color", "stop-color", "flood-color", "lighting-color"];
+  const removableElementNames = new Set(["desc", "metadata", "title"]);
 
   function visit(element: Element, inheritedColor: string) {
+    if (removableElementNames.has(element.localName)) {
+      element.remove();
+      return;
+    }
+
     const inlineStyle = cssDeclarations(element.getAttribute("style") ?? "");
     const elementColor = resolveColorValue(element.getAttribute("color") ?? inlineStyle.color ?? inheritedColor, inheritedColor);
 

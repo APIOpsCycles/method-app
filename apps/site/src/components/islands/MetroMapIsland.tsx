@@ -75,12 +75,12 @@ function metroMapSvgStyles(activeColor: string) {
     .metro-selection-ring { fill: none; pointer-events: none; stroke: ${activeColor}; stroke-width: 4; }
     .metro-support-node--active,
     .metro-node--active { fill: ${activeColor}; stroke: ${activeColor}; }
-    .metro-node-number { fill: #071640; font-family: Inter, sans-serif; font-size: 10px; font-weight: 900; pointer-events: none; }
+    .metro-node-number { fill: #071640; font-family: Arial, sans-serif; font-size: 10px; font-weight: 900; pointer-events: none; }
     .metro-node-number--active { fill: #ffffff; }
     .metro-brand { opacity: 0.45; }
     .metro-core-label rect  { fill: #ffffff;  fill-opacity: 0.95; stroke: currentColor; }
-    .metro-core-label text { fill: currentColor; font-family: Inter, sans-serif; font-size: 10px; font-weight: 850; pointer-events: none; }
-    .metro-line-legend text { font-family: Inter, sans-serif; font-size: 10px; font-weight: 700; }
+    .metro-core-label text { fill: currentColor; font-family: Arial, sans-serif; font-size: 10px; font-weight: 850; pointer-events: none; }
+    .metro-line-legend text { font-family: Arial, sans-serif; font-size: 10px; font-weight: 700; }
   `;
 }
 
@@ -117,14 +117,20 @@ function inlineMetroMapExportColors(svg: SVGSVGElement, activeColor: string) {
   for (const label of Array.from(svg.querySelectorAll<SVGGElement>(".metro-core-label"))) {
     const rect = label.querySelector("rect");
     if (rect) {
-      rect.setAttribute("fill", "rgba(255, 255, 255, 0.95)");
+      rect.setAttribute("fill", "#ffffff");
+      rect.setAttribute("fill-opacity", "0.95");
       rect.setAttribute("stroke", resolvedActiveColor);
       rect.setAttribute("stroke-width", "2");
     }
     for (const text of Array.from(label.querySelectorAll("text"))) {
       text.setAttribute("fill", resolvedActiveColor);
+      text.setAttribute("font-family", "Arial, sans-serif");
     }
     label.removeAttribute("style");
+  }
+
+  for (const text of Array.from(svg.querySelectorAll<SVGTextElement>(".metro-legend text, .metro-line-legend text"))) {
+    text.setAttribute("font-family", "Arial, sans-serif");
   }
 
   for (const ring of Array.from(svg.querySelectorAll<SVGElement>(".metro-involvement-ring, .metro-selection-ring"))) {
@@ -132,6 +138,29 @@ function inlineMetroMapExportColors(svg: SVGSVGElement, activeColor: string) {
   }
 
   return resolvedActiveColor;
+}
+
+function sanitizeMetroMapExportSvg(svg: SVGSVGElement) {
+  const removableElementNames = new Set(["desc", "metadata", "title"]);
+  for (const element of [svg, ...Array.from(svg.querySelectorAll("*"))]) {
+    if (removableElementNames.has(element.localName)) {
+      element.remove();
+      continue;
+    }
+
+    for (const attr of Array.from(element.attributes)) {
+      if (
+        attr.name.startsWith("-") ||
+        attr.name.startsWith("aria-") ||
+        attr.name.startsWith("sodipodi:") ||
+        attr.name === "role" ||
+        attr.name === "tabindex" ||
+        attr.name === "xmlns:sodipodi"
+      ) {
+        element.removeAttribute(attr.name);
+      }
+    }
+  }
 }
 
 function MetroMapView({
@@ -487,10 +516,8 @@ export default function MetroMapIsland({ locale, labels, cycles, lines, stations
         inlineLogo.setAttribute("viewBox", logo.getAttribute("viewBox") ?? "0 0 567 567");
         inlineLogo.setAttribute("preserveAspectRatio", logo.getAttribute("preserveAspectRatio") ?? "xMidYMid meet");
         inlineLogo.setAttribute("class", image.getAttribute("class") ?? "");
-        Array.from(logo.children).filter((child) => child.localName !== "namedview").forEach((child) => {
+        Array.from(logo.children).filter((child) => !["desc", "metadata", "namedview", "title"].includes(child.localName)).forEach((child) => {
           const importedChild = document.importNode(child, true);
-          (importedChild as Element).removeAttribute("xmlns:sodipodi");
-          (importedChild as Element).removeAttribute("sodipodi:nodetypes");
           inlineLogo.appendChild(importedChild);
         });
         image.replaceWith(inlineLogo);
@@ -505,14 +532,7 @@ export default function MetroMapIsland({ locale, labels, cycles, lines, stations
     const clone = svgRef.current.cloneNode(true) as SVGSVGElement;
     await inlineLogoForExport(clone);
     inlineMetroMapExportColors(clone, colors[cycleId] ?? "#164e63");
-    // Remove sodipodi attributes from all elements
-    Array.from(clone.querySelectorAll("*")).forEach((element) => {
-      Array.from(element.attributes).forEach((attr) => {
-        if (attr.name.startsWith("xmlns:sodipodi") || attr.name.startsWith("sodipodi:")) {
-          element.removeAttribute(attr.name);
-        }
-      });
-    });
+    sanitizeMetroMapExportSvg(clone);
     clone.insertAdjacentHTML("afterbegin", `<style>${metroMapSvgStyles(colors[cycleId] ?? "#164e63")}</style>`);
     clone.setAttribute("xmlns", "http://www.w3.org/2000/svg");
     const url = URL.createObjectURL(new Blob([makeCanvaSafeSvg(new XMLSerializer().serializeToString(clone))], { type: "image/svg+xml" }));
