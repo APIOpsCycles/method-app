@@ -4,6 +4,7 @@ import { designSystemAssets } from "apiops-design-system/assets";
 import "../styles/global.css";
 import { canonicalUrl } from "../env";
 import type { Locale } from "../lib/method-data";
+import { methodDocuments, markdownPath } from "../lib/method-markdown";
 import SiteHeader from "../components/SiteHeader.astro";
 import SiteFooter from "../components/SiteFooter.astro";
 import Advertisement from "../components/Advertisement.astro";
@@ -57,6 +58,7 @@ const keywords = [
   "capability productization",
 ];
 const locale = lang as Locale;
+const markdownDocument = methodDocuments(locale).find((document) => document.canonicalPath === canonicalPath);
 const ad = selectAd(undefined, Astro.url.pathname);
 const announcementLabels = announcement.translations[locale] ?? announcement.translations[announcement.defaultLocale];
 const announcementHref = locale === announcement.defaultLocale
@@ -73,6 +75,8 @@ const announcementHref = locale === announcement.defaultLocale
     <meta name="description" content={description} />
     <meta name="keywords" content={keywords.join(", ")} />
     <link rel="canonical" href={canonical} />
+    <link rel="describedby" href={canonicalUrl("/llms.txt")} type="text/plain" />
+    {markdownDocument && <link rel="alternate" type="text/markdown" href={canonicalUrl(markdownPath(canonicalPath))} />}
     {languageAlternates.map((alternate) => <link rel="alternate" hreflang={alternate.lang} href={canonicalUrl(alternate.path)} />)}
     {(xDefaultPath || languageAlternates.length > 0) && <link rel="alternate" hreflang="x-default" href={canonicalUrl(xDefaultPath ?? languageAlternates.find((alternate) => alternate.lang === "en")?.path ?? canonicalPath)} />}
     {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
