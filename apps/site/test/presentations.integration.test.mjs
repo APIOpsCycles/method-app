@@ -63,7 +63,12 @@ test('Reveal.js downloads are portable HTML decks with bundled runtime, notes an
     const content=await zip.file('index.html').async('string');
     assert.equal((content.match(/data-slide aria-label/g)||[]).length,e.slideCount);
     assert.match(content,/<aside class="notes">/);assert.match(content,/apiops-slide-text/);assert.match(content,/<(?:ul|ol) class="apiops-slide-item/);
-    assert.ok(!content.includes('cdn.jsdelivr.net'));
+    const archiveOrigin=new URL('https://presentation.invalid/');
+    for(const [,reference] of content.matchAll(/\b(?:src|href)="([^"]+)"/g)){
+      const url=new URL(reference,archiveOrigin);
+      assert.equal(url.origin,archiveOrigin.origin,'Reveal.js assets must stay inside the portable archive');
+      assert.ok(zip.file(decodeURIComponent(url.pathname.slice(1))),`bundled asset: ${reference}`);
+    }
     for(const [,asset] of content.matchAll(/src="(assets\/[^\"]+)"/g))assert.ok(zip.file(asset),asset);
   }
 });
