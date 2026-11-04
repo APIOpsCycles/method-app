@@ -4,13 +4,14 @@ import { useEffect, useState } from "react";
 interface Props {
   id: string;
   href: string;
+  title?: string;
   message: string;
   linkLabel: string;
   dismissLabel: string;
   delay?: number;
 }
 
-export default function SiteAnnouncement({ id, href, message, linkLabel, dismissLabel, delay = 3000 }: Props) {
+export default function SiteAnnouncement({ id, href, title, message, linkLabel, dismissLabel, delay = 3000 }: Props) {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -40,6 +41,7 @@ export default function SiteAnnouncement({ id, href, message, linkLabel, dismiss
 
   return (
     <AnnouncementToast className="ds-announcement-toast" dismissLabel={dismissLabel} onDismiss={dismiss}>
+      {title && <strong>{title}</strong>}
       <span>{message}</span>{" "}<a href={href}>{linkLabel} <span aria-hidden="true">→</span></a>
     </AnnouncementToast>
   );
