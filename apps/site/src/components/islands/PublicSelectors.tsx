@@ -1,4 +1,5 @@
 import { PillList, ResourceSelector } from "apiops-design-system/react";
+import type { ResourceSelectorItem } from "apiops-design-system/react";
 
 type LinkedItem = { id: string; href: string };
 
@@ -11,6 +12,6 @@ export function PublicPillList({ items, label }: { items: Array<LinkedItem & { l
   return <PillList items={items} label={label} onSelect={(id) => navigate(items, id)} />;
 }
 
-export function PublicResourceSelector({ items, emptyLabel }: { items: Array<LinkedItem & { type: string; title: string; description: string }>; emptyLabel: string }) {
+export function PublicResourceSelector({ items, emptyLabel }: { items: ResourceSelectorItem[]; emptyLabel: string }) {
   return <ResourceSelector items={items} emptyLabel={emptyLabel} />;
 }

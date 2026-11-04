@@ -6,6 +6,7 @@ import { metroLineColor } from "../../lib/line-colors";
 import { PublicPillList, PublicResourceSelector } from "../islands/PublicSelectors";
 import MethodContext from "./MethodContext.astro";
 import { getPageMethodContext } from "../../lib/method-graph";
+import { canvasCreatorUrl } from "../../lib/resource-routes.mjs";
 interface Props { station: Station; locale: Locale; cycle?: ReturnType<typeof getCatalog>["cycles"][number]; compatibilityAlias?: boolean }
 const { station, locale, cycle, compatibilityAlias = false } = Astro.props;
 const prefix = localePrefix(locale);
@@ -33,7 +34,7 @@ const relatedLines = cycle ? getLinesForContext(getCatalog(locale), cycle, stati
   <section class="public-section" aria-labelledby="outcomes"><h2 id="outcomes">{labels["section.outcomes"]}</h2><ul>{station.outcomes.map((item) => <li>{item}</li>)}</ul></section>
   {cycle && <section class="public-section" aria-labelledby="criteria"><h2 id="criteria">{labels["section.journeyCriteria"]}</h2><JourneyCriteria entryLabel={labels["section.entryCriteria"]} exitLabel={labels["section.exitCriteria"]} entryCriteria={entryCriteria} exitCriteria={exitCriteria} /></section>}
   <section class="public-section" aria-labelledby="roles"><h2 id="roles">{labels["section.people"]}</h2><PublicPillList client:load label={labels["section.people"]} items={station.stakeholders.map((role) => ({ id: role.id, label: role.title, href: `${prefix}/roles/${role.id}` }))} /></section>
-  <section class="public-section" aria-labelledby="resources"><h2 id="resources">{labels["section.resources"]}</h2><PublicResourceSelector client:load emptyLabel={labels["resources.emptyLinked"]} items={resources.map((resource) => ({ id: resource.id, type: resource.category, title: resource.title, description: resource.description, href: resourcePath(locale, resource) }))} /></section>
+  <section class="public-section" aria-labelledby="resources"><h2 id="resources">{labels["section.resources"]}</h2><PublicResourceSelector client:load emptyLabel={labels["resources.emptyLinked"]} items={resources.map((resource) => ({ id: resource.id, type: resource.category, title: resource.title, description: resource.description, href: resourcePath(locale, resource), secondaryLink: resource.canvasId ? { href: canvasCreatorUrl(locale, resource)!, label: labels["canvas.openCreator"] } : undefined }))} /></section>
   {cycle && <LinesSection title={labels["section.lines"]} items={relatedLines.map((line) => ({ id: line.id, title: line.title, description: line.description, icon: line.icon, color: metroLineColor(line.id), href: `${prefix}/cycle/${cycle.slug}/lines/${line.slug}` }))} />}
   {!cycle && <CyclesSection title={labels["section.relevantCycles"]} items={cycles.map((item) => ({ id: item.id, title: item.title, description: item.description, href: `${prefix}/cycles/${item.slug}/stations/${station.id}` }))} />}
 </main>
