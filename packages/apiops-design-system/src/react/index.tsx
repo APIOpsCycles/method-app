@@ -303,10 +303,10 @@ export function PillList({ items, label, onSelect }: { items: PillListItem[]; la
 }
 
 export function ResourceActionLink({ href, label, accessibleLabel, external = false }: { href: string; label: string; accessibleLabel?: string; external?: boolean }) {
-  return <a className="ds-resource-action" href={href} aria-label={accessibleLabel}>{label}{external && <svg className="ds-external-link-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false"><path d="M14 3h7v7M21 3l-11 11" /><path d="M10 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-5" /></svg>}</a>;
+  return <a className="ds-resource-action" href={href} aria-label={accessibleLabel} target={external ? "_blank" : undefined} rel={external ? "noopener noreferrer" : undefined}>{label}{external && <svg className="ds-external-link-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false"><path d="M14 3h7v7M21 3l-11 11" /><path d="M10 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-5" /></svg>}</a>;
 }
 
-export type ResourceSelectorItem = { id: string; type: string; title: string; description: string; href?: string; icon?: ReactNode; secondaryLink?: { href: string; label: string; external?: boolean } };
+export type ResourceSelectorItem = { id: string; type: string; title: string; description: string; href?: string; icon?: ReactNode; primaryLinkLabel?: string; secondaryLink?: { href: string; label: string; external?: boolean } };
 
 export function ResourceSelector({ items, value, emptyLabel, onChange }: { items: ResourceSelectorItem[]; value?: string; emptyLabel: string; onChange?: (id: string) => void }) {
   if (!items.length) return <span className="side-resource-card side-resource-card--empty">{emptyLabel}</span>;
@@ -317,6 +317,7 @@ export function ResourceSelector({ items, value, emptyLabel, onChange }: { items
           <span className="side-resource-card__meta">{item.icon}{item.type}</span>
           <strong>{item.title}</strong>
           <small>{item.description}</small>
+          {item.href && item.primaryLinkLabel && <span className="side-resource-card__link-hint">{item.primaryLinkLabel} <span aria-hidden="true">→</span></span>}
         </>;
         const className = `side-resource-card${item.id === value ? " is-active" : ""}`;
         const primaryClassName = item.secondaryLink ? "side-resource-card__primary" : className;
