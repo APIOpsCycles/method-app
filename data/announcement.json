@@ -1,31 +1,37 @@
 {
-  "id": "announcement_personalized_navigation_2026_07_27",
-  "href": "/features/contextual-navigation",
+  "id": "announcement_presentations_2026_11_04",
+  "href": "/presentations",
+  "localizeHref": false,
   "defaultLocale": "en",
   "translations": {
     "en": {
-      "message": "Make the method your own! Select a role and goal, then transit to more cycles.",
-      "linkLabel": "Explore contextual navigation",
+      "title": "APIOps Cycles — ready to present",
+      "message": "New: four APIOps Cycles presentations. View online, download the slides or adapt them with your own branding.",
+      "linkLabel": "Explore the presentations",
       "dismissLabel": "Dismiss announcement"
     },
     "fi": {
-      "message": "Tee menetelmästä omasi! Valitse rooli ja tavoite ja siirry uusiin sykleihin.",
-      "linkLabel": "Tutustu kontekstuaaliseen navigointiin",
+      "title": "APIOps Cycles -esitykset ovat täällä",
+      "message": "Uutta: neljä APIOps Cycles -esitystä englanniksi. Katso verkossa, lataa diat tai muokkaa niitä oman brändisi mukaisiksi.",
+      "linkLabel": "Tutustu esityksiin",
       "dismissLabel": "Sulje ilmoitus"
     },
     "fr": {
-      "message": "Appropriez-vous la méthode ! Sélectionnez un rôle et un objectif, puis passez à d'autres cycles.",
-      "linkLabel": "Découvrir la navigation contextuelle",
+      "title": "Les présentations APIOps Cycles sont disponibles",
+      "message": "Nouveau : quatre présentations APIOps Cycles en anglais. Consultez-les en ligne, téléchargez les diapositives ou adaptez-les à votre marque.",
+      "linkLabel": "Découvrir les présentations",
       "dismissLabel": "Fermer l'annonce"
     },
     "de": {
-      "message": "Machen Sie die Methode zu Ihrer eigenen! Wählen Sie Rolle und Ziel und wechseln Sie zu weiteren Zyklen.",
-      "linkLabel": "Kontextnavigation entdecken",
+      "title": "APIOps Cycles-Präsentationen sind da",
+      "message": "Neu: vier APIOps Cycles-Präsentationen auf Englisch. Online ansehen, Folien herunterladen oder an das eigene Branding anpassen.",
+      "linkLabel": "Präsentationen entdecken",
       "dismissLabel": "Ankündigung schließen"
     },
     "pt": {
-      "message": "Adapte o método a você! Selecione uma função e um objetivo e avance para mais ciclos.",
-      "linkLabel": "Explorar a navegação contextual",
+      "title": "As apresentações APIOps Cycles estão disponíveis",
+      "message": "Novidade: quatro apresentações APIOps Cycles em inglês. Veja online, baixe os slides ou adapte-os à sua marca.",
+      "linkLabel": "Explorar as apresentações",
       "dismissLabel": "Fechar anúncio"
     }
   }

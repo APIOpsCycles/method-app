@@ -8,8 +8,10 @@ interface Props {
 const { ad } = Astro.props;
 ---
 <aside class="advertisement-rail" aria-label="Community notice" style={`--advertisement-color: ${ad.bgcolor ?? "var(--color-accent-600)"}`}>
-  <article class="advertisement-card">
-    {ad.visual && <img class="advertisement-card__visual" src={ad.visual.src} alt={ad.visual.alt} loading="lazy" />}
+  <article class:list={["advertisement-card", { "advertisement-card--full-visual": ad.visual?.fit === 'contain' }]}>
+    {ad.visual && (ad.visual.fit === 'contain'
+      ? <a class="advertisement-card__visual-link" href={ad.ctaHref}><img class="advertisement-card__visual advertisement-card__visual--contain" src={ad.visual.src} alt={ad.visual.alt} loading="lazy" /></a>
+      : <img class="advertisement-card__visual" src={ad.visual.src} alt={ad.visual.alt} loading="lazy" />)}
     <div class="advertisement-card__copy">
       <p class="advertisement-card__label">From the APIOps community</p>
       <h2>{ad.headline}</h2>
@@ -18,6 +20,13 @@ const { ad } = Astro.props;
     </div>
   </article>
 </aside>
+
+<style>
+  .advertisement-card__visual-link { display: block; align-self: center; }
+  .advertisement-card__visual--contain { height: auto; min-height: 0; object-fit: contain; }
+  .advertisement-card--full-visual .advertisement-card__label { color: var(--foreground, #0f172a); }
+  .advertisement-card__visual-link:focus-visible { outline: 3px solid var(--foreground, #0f172a); outline-offset: -3px; }
+</style>
 
 <script is:inline>
   (() => {
