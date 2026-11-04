@@ -18,6 +18,7 @@ Editions:
 
 | ID | Purpose | Slides |
 | --- | --- | --- |
+| `capability-productization-cycle` | Productize a reusable capability across eight stations | 16 |
 | `apiops-overview` | Introduce the method to a mixed audience | 8 |
 | `financial-services-case-study` | Product discovery, portfolio and ways of working | 11 |
 | `strategy-to-technical-delivery` | Full introduction through architecture, design, AI, linting and audit | 28 |
@@ -32,7 +33,7 @@ Copy `brands/partner-example.json`, put your logo in `assets/`, and edit the bra
 npm run build -- --edition apiops-overview --brand brands/your-company.json --name your-overview
 ```
 
-Unspecified settings inherit from `theme.json`. Branding controls fonts, text, table fills, the slide logo and footer. Colours and method marks embedded inside image assets are retained. PowerPoint text, bullets, numbering and tables are editable; canvas diagrams and human scenes are images.
+Unspecified settings inherit from `theme.json`. Slide headers use the APIOps Cycles method symbol on its own; its editable SVG and PNG are in `assets/`. Branding controls fonts, text, table fills, the slide logo and footer. Colours and method marks embedded inside image assets are retained. PowerPoint text, bullets, numbering and tables are editable; canvas diagrams and human scenes are images.
 
 | Source | Controls |
 | --- | --- |
@@ -65,7 +66,7 @@ npm run build:pdf -- --edition apiops-overview --name my-overview
 
 `npm run build` produces editable PPTX, a portable Reveal.js folder and ZIP, a Typst entry point, resolved JSON and Markdown notes under `output/`. `--format typst` generates only the source outputs. To use the Typst web app, upload the entire package and select the generated `output/*.typ` file as the main file.
 
-The JSON content and brand files are authoritative. Editing a generated PPTX or Typst file does not update them. PPTX and Typst/PDF render independently; inspect wrapping in both formats after content or font changes. Speaker notes are in PPTX and Markdown, while the PDF contains audience slides only.
+The JSON content and brand files are authoritative. Editing a generated PPTX or Typst file does not update them. PPTX and Typst/PDF render independently; inspect wrapping in both formats after content or font changes. Typst falls back to Arial when the chosen font is unavailable; install your brand fonts for an exact match. Speaker notes are in PPTX and Markdown, while the PDF contains audience slides only.
 
 ## Reveal.js
 

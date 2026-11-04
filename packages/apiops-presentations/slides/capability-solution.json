@@ -1,0 +1,44 @@
+{
+  "id": "capability-solution",
+  "title": "4. Design: make the service promise testable",
+  "elements": [
+    {
+      "id": "table",
+      "type": "table",
+      "rows": [
+        [
+          "Decision",
+          "Supplier-payment status example"
+        ],
+        [
+          "Shared meaning",
+          "Define submitted, processing, paid and exception states."
+        ],
+        [
+          "Interaction",
+          "Read current status; optionally subscribe to changes."
+        ],
+        [
+          "Access and privacy",
+          "Identify caller and supplier; return only permitted records."
+        ],
+        [
+          "Unhappy path",
+          "Distinguish unknown payment, delayed source and denied access."
+        ],
+        [
+          "Change and compatibility",
+          "Specify timestamps, version policy and consumer migration."
+        ]
+      ],
+      "header": true,
+      "emphasizeFirstColumn": true
+    },
+    {
+      "id": "takeaway",
+      "type": "text",
+      "text": "Review the interaction with a real consumer before implementation."
+    }
+  ],
+  "notes": "Canonical station: Capability Solution & Interaction Design. Recommended resources: Domain Canvas, Capability Solution Design Canvas, Interaction Canvas and contract-first design. Select the contract or service definition appropriate to the architecture; an OpenAPI contract only covers an HTTP API portion.\n\nThe supplier-payment status capability is a newly authored fictional teaching example, not a client implementation or measured outcome. Figures, service promises and release criteria are illustrative proposals requiring validation. Working summaries are not reproductions of canonical canvas templates.\n\nSource: apiops-cycles-method-data 4.2.1, src/data/method/cycles.json and en/labels.cycles.json; reviewed 4 November 2026. https://apiopscycles.com/cycles/capability-productization-cycle . Method: APIOps Cycles / Osaango Ltd, CC-BY-SA 4.0."
+}

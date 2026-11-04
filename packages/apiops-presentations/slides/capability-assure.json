@@ -1,0 +1,44 @@
+{
+  "id": "capability-assure",
+  "title": "6. Readiness: decide from evidence",
+  "elements": [
+    {
+      "id": "table",
+      "type": "table",
+      "rows": [
+        [
+          "Readiness question",
+          "Evidence for the release decision"
+        ],
+        [
+          "Does it serve the consumer?",
+          "Reviewed service definition and consumer acceptance."
+        ],
+        [
+          "Is access appropriate?",
+          "Permission tests and data-handling decisions."
+        ],
+        [
+          "Can it run and recover?",
+          "Failure tests, runbook, monitoring and fallback."
+        ],
+        [
+          "Can people use and support it?",
+          "Onboarding rehearsal, support route and named owners."
+        ],
+        [
+          "What risk remains?",
+          "Recorded exceptions, accountable owner and review date."
+        ]
+      ],
+      "header": true,
+      "emphasizeFirstColumn": true
+    },
+    {
+      "id": "takeaway",
+      "type": "text",
+      "text": "Release, release with accepted conditions, or return for more evidence."
+    }
+  ],
+  "notes": "Canonical station: Capability Readiness Assurance. Use the capability readiness checklist, compliance/governance guide and service-quality checklist. Review design, contract or service definition, tests, operations, permissions, monitoring, support, fallback, lifecycle, risk and ownership. This is a teaching selection, not the complete canonical checklist.\n\nThe supplier-payment status capability is a newly authored fictional teaching example, not a client implementation or measured outcome. Figures, service promises and release criteria are illustrative proposals requiring validation. Working summaries are not reproductions of canonical canvas templates.\n\nSource: apiops-cycles-method-data 4.2.1, src/data/method/cycles.json and en/labels.cycles.json; reviewed 4 November 2026. https://apiopscycles.com/cycles/capability-productization-cycle . Method: APIOps Cycles / Osaango Ltd, CC-BY-SA 4.0."
+}

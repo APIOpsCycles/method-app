@@ -1,0 +1,45 @@
+{
+  "id": "capability-improve",
+  "title": "8. Measure value and improve the service",
+  "elements": [
+    {
+      "id": "table",
+      "type": "table",
+      "rows": [
+        [
+          "Signal",
+          "What to observe",
+          "Decision it can inform"
+        ],
+        [
+          "Consumer outcome",
+          "Enquiry reasons and time to understand a delay.",
+          "Is the original problem being reduced?"
+        ],
+        [
+          "Adoption and reuse",
+          "Active intended consumers and repeat use.",
+          "Improve onboarding or revisit demand."
+        ],
+        [
+          "Service health",
+          "Status age, failures and recovery time.",
+          "Improve source access or resilience."
+        ],
+        [
+          "Cost and lifecycle",
+          "Cost to serve, support effort, dependencies.",
+          "Invest, change scope or plan retirement."
+        ]
+      ],
+      "header": true,
+      "emphasizeFirstColumn": true
+    },
+    {
+      "id": "takeaway",
+      "type": "text",
+      "text": "Agree a baseline and review cadence; take findings back to earlier stations."
+    }
+  ],
+  "notes": "Canonical station: Capability Monitoring & Improvement. Monitor value, outcomes, adoption, reuse, service health, consumer experience, cost, sustainability and lifecycle needs. Establish a baseline, data source, owner and review cadence before interpreting changes. Metrics above are proposals; no measured benefit or target is claimed.\n\nThe supplier-payment status capability is a newly authored fictional teaching example, not a client implementation or measured outcome. Figures, service promises and release criteria are illustrative proposals requiring validation. Working summaries are not reproductions of canonical canvas templates.\n\nSource: apiops-cycles-method-data 4.2.1, src/data/method/cycles.json and en/labels.cycles.json; reviewed 4 November 2026. https://apiopscycles.com/cycles/capability-productization-cycle . Method: APIOps Cycles / Osaango Ltd, CC-BY-SA 4.0."
+}

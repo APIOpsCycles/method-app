@@ -54,7 +54,7 @@ test('Reveal.js renders every edition as HTML and supports named links and fulls
   const failures:string[]=[];
   const layoutIssues:unknown[]=[];
   page.on('pageerror',error=>failures.push(error.message));
-  for(const id of ['apiops-overview','financial-services-case-study','strategy-to-technical-delivery']){
+  for(const id of ['apiops-overview','financial-services-case-study','strategy-to-technical-delivery','capability-productization-cycle']){
     await page.goto(`/presentations/${id}/view#/slide-1`);
     await expect(page.locator('[data-presentation-viewer]')).toHaveAttribute('data-reveal-ready','true');
     const options=await page.locator('[data-slide-picker] option').count();
@@ -71,6 +71,8 @@ test('Reveal.js renders every edition as HTML and supports named links and fulls
   await page.getByRole('button',{name:'Exit fullscreen'}).click();
   await expect.poll(()=>page.evaluate(()=>Boolean(document.fullscreenElement))).toBe(false);
   expect(failures).toEqual([]);
+  await page.goto('/presentations/strategy-to-technical-delivery/view');
+  await expect(page.locator('[data-presentation-viewer]')).toHaveAttribute('data-reveal-ready','true');
   await page.getByLabel('Choose a slide').selectOption('17');
   await expect(page.locator('[data-slide-status]')).toHaveText('Slide 18 of 28');
   await page.screenshot({path:'.codex-artifacts/apiops-library/reveal-desktop.png',fullPage:true});

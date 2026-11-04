@@ -1,0 +1,23 @@
+{
+  "id": "capability-workshop",
+  "title": "Start with one capability and its consumers",
+  "elements": [
+    {
+      "id": "steps",
+      "type": "numbered",
+      "items": [
+        "Choose a consumer journey and write one capability hypothesis.",
+        "Agree the service promise with the owner, producer and consumer.",
+        "Compare implementation options and record the first decision.",
+        "Test a small service interaction and review readiness evidence.",
+        "Agree what to measure and when to revisit the hypothesis."
+      ]
+    },
+    {
+      "id": "result",
+      "type": "text",
+      "text": "Workshop output: an evidence backlog, named decision owners and a next review date."
+    }
+  ],
+  "notes": "Suggested workshop facilitation sequence. Invite the capability owner, producer, intended consumers and architecture/operations representatives. Capture unknowns rather than inventing evidence. The method entry criteria are business goals defined and stakeholder approval; exit criteria are value proposition validated, architecture patterns validated, capability readiness confirmed and capability published for reuse.\n\nThe supplier-payment status capability is a newly authored fictional teaching example, not a client implementation or measured outcome. Figures, service promises and release criteria are illustrative proposals requiring validation. Working summaries are not reproductions of canonical canvas templates.\n\nSource: apiops-cycles-method-data 4.2.1, src/data/method/cycles.json and en/labels.cycles.json; reviewed 4 November 2026. https://apiopscycles.com/cycles/capability-productization-cycle . Method: APIOps Cycles / Osaango Ltd, CC-BY-SA 4.0."
+}

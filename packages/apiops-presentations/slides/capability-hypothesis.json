@@ -1,0 +1,44 @@
+{
+  "id": "capability-hypothesis",
+  "title": "1. Strategy: test one capability hypothesis",
+  "elements": [
+    {
+      "id": "table",
+      "type": "table",
+      "rows": [
+        [
+          "Question",
+          "Illustrative working answer"
+        ],
+        [
+          "Consumer and job",
+          "Suppliers and service teams need to see payment progress."
+        ],
+        [
+          "Problem to validate",
+          "Status is scattered; people contact support to explain delays."
+        ],
+        [
+          "Reusable service promise",
+          "Provide an authorised, current status and a clear next step."
+        ],
+        [
+          "Value and viability evidence",
+          "Observe the journey, review enquiry reasons and test demand."
+        ],
+        [
+          "Decision before investing",
+          "Proceed, revise or stop; name the capability owner."
+        ]
+      ],
+      "header": true,
+      "emphasizeFirstColumn": true
+    },
+    {
+      "id": "takeaway",
+      "type": "text",
+      "text": "A reusable capability needs evidence of demand and an owner."
+    }
+  ],
+  "notes": "Recommended strategy resources: Customer Journey Canvas, Capability Value Proposition Canvas, Capability Business Model Canvas and Capability Hypothesis Canvas. This table is a filled working summary, not the canonical canvas. Validate reuse with actual intended consumers.\n\nThe supplier-payment status capability is a newly authored fictional teaching example, not a client implementation or measured outcome. Figures, service promises and release criteria are illustrative proposals requiring validation. Working summaries are not reproductions of canonical canvas templates.\n\nSource: apiops-cycles-method-data 4.2.1, src/data/method/cycles.json and en/labels.cycles.json; reviewed 4 November 2026. https://apiopscycles.com/cycles/capability-productization-cycle . Method: APIOps Cycles / Osaango Ltd, CC-BY-SA 4.0."
+}

@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "released": "2026-11-04",
   "language": "en",
   "methodDataVersion": "4.2.1",
@@ -96,6 +96,34 @@
       ],
       "slideCount": 28,
       "cycle": "api-productization-cycle"
+    },
+    {
+      "id": "capability-productization-cycle",
+      "title": "Capability Productization Cycle",
+      "description": "Define a reusable digital capability, choose its implementation and follow eight stations through readiness, publishing and continuous improvement.",
+      "audience": [
+        "Capability and product owners",
+        "Architects, producers and consumer teams"
+      ],
+      "durationMinutes": 25,
+      "topics": [
+        "Capability strategy",
+        "Consumer and producer commitments",
+        "Architecture decisions",
+        "Readiness and operations"
+      ],
+      "stations": [
+        "api-product-strategy",
+        "api-consumer-experience",
+        "api-platform-architecture",
+        "api-design",
+        "api-delivery",
+        "api-audit",
+        "api-publishing",
+        "monitoring-and-improving"
+      ],
+      "slideCount": 16,
+      "cycle": "capability-productization-cycle"
     }
   ]
 }

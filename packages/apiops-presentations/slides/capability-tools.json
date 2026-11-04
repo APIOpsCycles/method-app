@@ -1,0 +1,44 @@
+{
+  "id": "capability-tools",
+  "title": "Use canvases to make decisions visible",
+  "elements": [
+    {
+      "id": "table",
+      "type": "table",
+      "rows": [
+        [
+          "Decision to work through",
+          "Capability Cycle resources"
+        ],
+        [
+          "Value and viability",
+          "Customer Journey; Capability Value Proposition; Business Model; Hypothesis."
+        ],
+        [
+          "Service commitments",
+          "Capability Consumer/Producer Requirements."
+        ],
+        [
+          "Architecture",
+          "Business Impact; Locations; Capacity; Capability Architecture Decision."
+        ],
+        [
+          "Solution and interaction",
+          "Domain; Capability Solution Design; Interaction."
+        ],
+        [
+          "Operation and readiness",
+          "Capability Readiness & Operations; readiness checklist."
+        ]
+      ],
+      "header": true,
+      "emphasizeFirstColumn": true
+    },
+    {
+      "id": "takeaway",
+      "type": "text",
+      "text": "Start with the unanswered decision; use its relevant canvas or guide."
+    }
+  ],
+  "notes": "Resource selection follows recommendedResources in the canonical capability cycle definition. Full canvas names and links: https://apiopscycles.com/resources/capability-hypothesis-canvas ; https://apiopscycles.com/resources/capability-value-proposition-canvas ; https://apiopscycles.com/resources/capability-business-model-canvas ; https://apiopscycles.com/resources/capability-consumer-producer-requirements-canvas ; https://apiopscycles.com/resources/capability-architecture-decision-canvas ; https://apiopscycles.com/resources/capability-solution-design-canvas ; https://apiopscycles.com/resources/capability-readiness-operations-canvas . Canvas attribution: APIOps Cycles / Osaango Ltd; preserve notices in the actual templates.\n\nThe supplier-payment status capability is a newly authored fictional teaching example, not a client implementation or measured outcome. Figures, service promises and release criteria are illustrative proposals requiring validation. Working summaries are not reproductions of canonical canvas templates.\n\nSource: apiops-cycles-method-data 4.2.1, src/data/method/cycles.json and en/labels.cycles.json; reviewed 4 November 2026. https://apiopscycles.com/cycles/capability-productization-cycle . Method: APIOps Cycles / Osaango Ltd, CC-BY-SA 4.0."
+}

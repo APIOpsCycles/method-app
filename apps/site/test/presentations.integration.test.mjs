@@ -17,6 +17,9 @@ test('all editions expose matching downloadable artifacts, source and complete o
     assert.match(detail,/Download PowerPoint/);assert.match(detail,/Download PDF/);assert.match(detail,/Download source kit/);
     assert.equal((viewer.match(/ data-slide(?:\s|>)/g)||[]).length,edition.slideCount);
     assert.equal(manifest.slides[edition.id].length,edition.slideCount);
+    const content=JSON.parse(readFileSync(path.join(base,manifest.artifacts[edition.id].content.file),'utf8'));
+    assert.equal(content.theme.logo,'assets/apiops-cycles-logo.png','default decks use the method logo');
+    assert.ok(viewer.includes(`/presentations/${catalog.version}/assets/apiops-cycles-logo.png`));
     for(const artifact of [manifest.source,...Object.values(manifest.artifacts[edition.id]),...manifest.slides[edition.id].map(s=>s.preview)]){
       const bytes=readFileSync(path.join(base,artifact.file));
       assert.equal(bytes.length,artifact.bytes);
@@ -68,6 +71,8 @@ test('Reveal.js downloads are portable HTML decks with bundled runtime, notes an
 test('method navigation discovers presentations without creating unsupported language routes',()=>{
   for(const route of ['stations/api-design','cycles/api-productization-cycle','fi/stations/api-design'])assert.match(html(route),/related-presentations/);
   assert.match(html('presentations'),/8 slides/);assert.match(html('presentations'),/11 slides/);assert.match(html('presentations'),/28 slides/);
+  assert.match(html('presentations'),/16 slides/);
+  assert.match(html('cycles/capability-productization-cycle'),/\/presentations\/capability-productization-cycle/);
   assert.match(html('presentations/developers'),/npm run build/);
   assert.ok(!existsSync(path.join(dist,'fi/presentations/index.html')));
 });

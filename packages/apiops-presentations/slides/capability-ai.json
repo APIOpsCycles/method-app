@@ -1,0 +1,29 @@
+{
+  "id": "capability-ai",
+  "title": "Use AI with agreed capability context",
+  "elements": [
+    {
+      "id": "lead",
+      "type": "text",
+      "text": "Give AI the service promise, boundaries and reviewed interaction—not just a feature request."
+    },
+    {
+      "id": "points",
+      "type": "bullets",
+      "items": [
+        "Supply approved domain terms, contracts and acceptance examples.",
+        "Generate one small implementation or test change at a time.",
+        "Review permissions, failures and recovery with a human owner.",
+        "Run the applicable tests, linting and readiness checks."
+      ]
+    },
+    {
+      "id": "image",
+      "type": "image",
+      "asset": "intro-ai-build.png",
+      "alt": "Conceptual APIOps illustration of AI-assisted building with human review",
+      "fit": "contain"
+    }
+  ],
+  "notes": "Author-developed guidance applying the delivery station to AI-assisted work; this is not a separate canonical capability station. For an API implementation, scaffold contracts, linting, tests and CI using the API tooling described in the technical deck. For integrations or workflows, use equivalent checks for those artefacts. AI output and a clean lint result do not establish service readiness. Do not put client secrets or restricted data in prompts.\n\nThe supplier-payment status capability is a newly authored fictional teaching example, not a client implementation or measured outcome. Figures, service promises and release criteria are illustrative proposals requiring validation. Working summaries are not reproductions of canonical canvas templates.\n\nSource: apiops-cycles-method-data 4.2.1, src/data/method/cycles.json and en/labels.cycles.json; reviewed 4 November 2026. https://apiopscycles.com/cycles/capability-productization-cycle . Method: APIOps Cycles / Osaango Ltd, CC-BY-SA 4.0."
+}

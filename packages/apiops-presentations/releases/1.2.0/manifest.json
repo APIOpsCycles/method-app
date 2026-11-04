@@ -1,0 +1,927 @@
+{
+  "schemaVersion": "1.0",
+  "version": "1.2.0",
+  "released": "2026-11-04",
+  "language": "en",
+  "methodDataVersion": "4.2.1",
+  "scaffoldVersion": "1.1.4",
+  "sourceRepository": "https://github.com/APIOpsCycles/method-app/tree/main/packages/apiops-presentations",
+  "reuse": {
+    "methodContent": "CC-BY-SA-4.0",
+    "code": "Apache-2.0",
+    "credit": "APIOps Cycles; case-study engagement by APIsFirst with partner Osaango."
+  },
+  "editions": [
+    {
+      "id": "apiops-overview",
+      "title": "APIOps Cycles overview",
+      "description": "Introduce the method through a customer journey, API value and the decisions connecting strategy to delivery.",
+      "audience": [
+        "Business and technology leaders",
+        "Teams new to APIOps Cycles"
+      ],
+      "durationMinutes": 15,
+      "topics": [
+        "Method overview",
+        "Consumer value",
+        "Architecture",
+        "Building with AI"
+      ],
+      "stations": [
+        "api-product-strategy",
+        "api-consumer-experience",
+        "api-platform-architecture",
+        "api-design",
+        "api-delivery",
+        "api-audit",
+        "api-publishing",
+        "monitoring-and-improving"
+      ],
+      "slideCount": 8,
+      "cycle": "api-productization-cycle"
+    },
+    {
+      "id": "financial-services-case-study",
+      "title": "From API delivery to digital product thinking",
+      "description": "An anonymous Australian financial-services case connecting product discovery, API design, portfolio planning and ways of working.",
+      "audience": [
+        "API product owners",
+        "Business stakeholders",
+        "Partner presenters"
+      ],
+      "durationMinutes": 20,
+      "topics": [
+        "Case study",
+        "Product strategy",
+        "Canvases",
+        "Portfolio planning"
+      ],
+      "stations": [
+        "api-product-strategy",
+        "api-consumer-experience",
+        "api-platform-architecture",
+        "api-design",
+        "api-delivery",
+        "api-audit",
+        "api-publishing",
+        "monitoring-and-improving"
+      ],
+      "slideCount": 11,
+      "cycle": "api-productization-cycle"
+    },
+    {
+      "id": "strategy-to-technical-delivery",
+      "title": "From product strategy to technical delivery",
+      "description": "Follow the case study into architecture, domain and contract design, AI-assisted building, testing, linting, audit and continuous improvement.",
+      "audience": [
+        "Architects and API designers",
+        "Engineers and technical product owners"
+      ],
+      "durationMinutes": 45,
+      "topics": [
+        "Architecture",
+        "API design",
+        "Building with AI",
+        "Linting and audit"
+      ],
+      "stations": [
+        "api-product-strategy",
+        "api-consumer-experience",
+        "api-platform-architecture",
+        "api-design",
+        "api-delivery",
+        "api-audit",
+        "api-publishing",
+        "monitoring-and-improving"
+      ],
+      "slideCount": 28,
+      "cycle": "api-productization-cycle"
+    },
+    {
+      "id": "capability-productization-cycle",
+      "title": "Capability Productization Cycle",
+      "description": "Define a reusable digital capability, choose its implementation and follow eight stations through readiness, publishing and continuous improvement.",
+      "audience": [
+        "Capability and product owners",
+        "Architects, producers and consumer teams"
+      ],
+      "durationMinutes": 25,
+      "topics": [
+        "Capability strategy",
+        "Consumer and producer commitments",
+        "Architecture decisions",
+        "Readiness and operations"
+      ],
+      "stations": [
+        "api-product-strategy",
+        "api-consumer-experience",
+        "api-platform-architecture",
+        "api-design",
+        "api-delivery",
+        "api-audit",
+        "api-publishing",
+        "monitoring-and-improving"
+      ],
+      "slideCount": 16,
+      "cycle": "capability-productization-cycle"
+    }
+  ],
+  "artifacts": {
+    "apiops-overview": {
+      "pptx": {
+        "file": "apiops-overview/apiops-overview.pptx",
+        "bytes": 2156781,
+        "sha256": "a7fe2c3b4e4d92aa947c1fc60b7be26df6f5c5faea950b6a518e63553903a71d"
+      },
+      "pdf": {
+        "file": "apiops-overview/apiops-overview.pdf",
+        "bytes": 2446658,
+        "sha256": "69e9b0502dbea5f3475faa9a1dd97df683933e90cfad902c8a8f2885c7acd648"
+      },
+      "content": {
+        "file": "apiops-overview/content.json",
+        "bytes": 55732,
+        "sha256": "28e74a36001ac3fbd15ca69da808802db3a636584e7539a8e585b9913e82c15d"
+      },
+      "notes": {
+        "file": "apiops-overview/speaker-notes.md",
+        "bytes": 5952,
+        "sha256": "2977f1f32ae5ac3cba76f79aec4ad46b147695c6a70e7d35c4f8efbf953d7422"
+      },
+      "reveal": {
+        "file": "apiops-overview/apiops-overview-reveal.zip",
+        "bytes": 2167469,
+        "sha256": "be9829412a57d8b274e4b8573c4cf2fad17ac9ea8aa7b52172b04599d2dc3d4f"
+      }
+    },
+    "financial-services-case-study": {
+      "pptx": {
+        "file": "financial-services-case-study/financial-services-case-study.pptx",
+        "bytes": 4029328,
+        "sha256": "2f9f328869abfb3de13f86c0671a87351aec5eafa5466c21fa12a6db29d8b18b"
+      },
+      "pdf": {
+        "file": "financial-services-case-study/financial-services-case-study.pdf",
+        "bytes": 4574232,
+        "sha256": "71b301b89c197203aacbae8600c71ea59f26339ead95e3526523cb706925db4d"
+      },
+      "content": {
+        "file": "financial-services-case-study/content.json",
+        "bytes": 63986,
+        "sha256": "bfc04da2b1374fe7d6cffad232fff8c91c56344418c2b5d62f56cb79707fb25b"
+      },
+      "notes": {
+        "file": "financial-services-case-study/speaker-notes.md",
+        "bytes": 9154,
+        "sha256": "023ecf38fd659151e194138f688e1d4d661d8be2a56d05838d932ee963139cef"
+      },
+      "reveal": {
+        "file": "financial-services-case-study/financial-services-case-study-reveal.zip",
+        "bytes": 3990774,
+        "sha256": "c325d5e52f6c19fd995d69c32b1ddac4a4d5b4bf3670074097218b88bac52baf"
+      }
+    },
+    "strategy-to-technical-delivery": {
+      "pptx": {
+        "file": "strategy-to-technical-delivery/strategy-to-technical-delivery.pptx",
+        "bytes": 5642671,
+        "sha256": "554e2ecd5c4c4f766c162e8f974a1a76cb062d56a03d00cbd6445dc8e7ea1455"
+      },
+      "pdf": {
+        "file": "strategy-to-technical-delivery/strategy-to-technical-delivery.pdf",
+        "bytes": 6232718,
+        "sha256": "5cf3adb337cec22dc0b8659ce230dc0be6b4ca734c10063e1800cb738c498937"
+      },
+      "content": {
+        "file": "strategy-to-technical-delivery/content.json",
+        "bytes": 99189,
+        "sha256": "0adf6aed0b73cc1d05c635038330b15dd0a0c2f48ad422f539590456c9ae1a9c"
+      },
+      "notes": {
+        "file": "strategy-to-technical-delivery/speaker-notes.md",
+        "bytes": 22205,
+        "sha256": "ac1d2eba1b83dc8a366b4ab5f8b26f5948634183b4f1f88722b576f4bbe14a43"
+      },
+      "reveal": {
+        "file": "strategy-to-technical-delivery/strategy-to-technical-delivery-reveal.zip",
+        "bytes": 5402762,
+        "sha256": "e35354d84a580eee570c497ca948ef627515db44733406345a722eaa1ddbafde"
+      }
+    },
+    "capability-productization-cycle": {
+      "pptx": {
+        "file": "capability-productization-cycle/capability-productization-cycle.pptx",
+        "bytes": 2219196,
+        "sha256": "4a5074d742d3445780cc0024dbad884dc5078fd557c9012243c683223799b2ec"
+      },
+      "pdf": {
+        "file": "capability-productization-cycle/capability-productization-cycle.pdf",
+        "bytes": 2092624,
+        "sha256": "5f761be2222c1cc294b61ffdaff882edecbd3028e9fec0b40c4674bf3a01b525"
+      },
+      "content": {
+        "file": "capability-productization-cycle/content.json",
+        "bytes": 73092,
+        "sha256": "e8666ce29faeb8d1640fbd9d3a118a3efed47826a69d49954097c5444bd62bfe"
+      },
+      "notes": {
+        "file": "capability-productization-cycle/speaker-notes.md",
+        "bytes": 14666,
+        "sha256": "28db0207e09c55827b28e4866cedae9ec077dfa0abe502f546f22951adc8cb7e"
+      },
+      "reveal": {
+        "file": "capability-productization-cycle/capability-productization-cycle-reveal.zip",
+        "bytes": 2134000,
+        "sha256": "1102bb09581bd438aac6c93746f994f5c8d1a541c619fbbb279172807fb42e1a"
+      }
+    }
+  },
+  "slides": {
+    "apiops-overview": [
+      {
+        "id": "overview-cover",
+        "title": "APIOps Cycles",
+        "preview": {
+          "file": "apiops-overview/slides/1.png",
+          "bytes": 68269,
+          "sha256": "cb6f1eab85d99d3cfabd19cec8a523a597a727fa06ad9850e990c9df16152768"
+        },
+        "cover": true
+      },
+      {
+        "id": "method-overview",
+        "title": "APIOps Cycles connects decisions across the lifecycle",
+        "preview": {
+          "file": "apiops-overview/slides/2.png",
+          "bytes": 110842,
+          "sha256": "f3ef2fab8cbedbb9c50102bab115989c3aa9f72074815ee30df56e314c2c4d3b"
+        }
+      },
+      {
+        "id": "productization-map",
+        "title": "API Productization Cycle metro map",
+        "preview": {
+          "file": "apiops-overview/slides/3.png",
+          "bytes": 147752,
+          "sha256": "ec7486117b5824d2ddc6176f251bb29c89cf0649b12a3b04f86db1184652d528"
+        }
+      },
+      {
+        "id": "customer-journey",
+        "title": "Customer Journey Canvas: a supplier payment",
+        "preview": {
+          "file": "apiops-overview/slides/4.png",
+          "bytes": 122401,
+          "sha256": "ea32580925d793d15cd7b3ec0d07bd31c9ce617e3068fa963009c51cddbf714d"
+        }
+      },
+      {
+        "id": "value-proposition",
+        "title": "API Value Proposition Canvas: the same journey",
+        "preview": {
+          "file": "apiops-overview/slides/5.png",
+          "bytes": 138546,
+          "sha256": "57411824e793afbf8de1f7355d2463bb3372a7ac2a2780cd1b01982c29983a35"
+        }
+      },
+      {
+        "id": "architecture-inputs",
+        "title": "Architecture: business needs become operating decisions",
+        "preview": {
+          "file": "apiops-overview/slides/6.png",
+          "bytes": 115220,
+          "sha256": "fb1db7dd2e28d9612910bc312397c443000d51dd3a6093a8ac10eb9605d64d01"
+        }
+      },
+      {
+        "id": "ai-build",
+        "title": "Building with AI works best as a bounded change",
+        "preview": {
+          "file": "apiops-overview/slides/7.png",
+          "bytes": 249112,
+          "sha256": "728f88c637d9b08d1b95e20a64b17888bd24a8d4ac18c500151990b6735e48cb"
+        }
+      },
+      {
+        "id": "first-cycle",
+        "title": "A first working cycle",
+        "preview": {
+          "file": "apiops-overview/slides/8.png",
+          "bytes": 96259,
+          "sha256": "7bd5ab57b71bcfe2dfec6e7df95580696fb5ae5a4468b2055c396616c9dbda5f"
+        }
+      }
+    ],
+    "financial-services-case-study": [
+      {
+        "id": "case-cover",
+        "title": "APIOps Cycles",
+        "preview": {
+          "file": "financial-services-case-study/slides/1.png",
+          "bytes": 66379,
+          "sha256": "7bfe70913be98886effc3a274a4ac6bf46c25b2435e7eef07998c1548140fe33"
+        },
+        "cover": true
+      },
+      {
+        "id": "case-challenge",
+        "title": "The challenge: dependencies across teams",
+        "preview": {
+          "file": "financial-services-case-study/slides/2.png",
+          "bytes": 104669,
+          "sha256": "a1fba78b65f971c18917830e3e488991a29b6c0cdba2838da46b17ca7d7aeb68"
+        }
+      },
+      {
+        "id": "collaborative-discovery",
+        "title": "Collaborative discovery in the payments case",
+        "preview": {
+          "file": "financial-services-case-study/slides/3.png",
+          "bytes": 258905,
+          "sha256": "9ce0afc2447f48d47da5a3ccae3715a638e69b956c304dad3b0d4f82f4e37913"
+        }
+      },
+      {
+        "id": "customer-journey",
+        "title": "Customer Journey Canvas: a supplier payment",
+        "preview": {
+          "file": "financial-services-case-study/slides/4.png",
+          "bytes": 122401,
+          "sha256": "ea32580925d793d15cd7b3ec0d07bd31c9ce617e3068fa963009c51cddbf714d"
+        }
+      },
+      {
+        "id": "value-proposition",
+        "title": "API Value Proposition Canvas: the same journey",
+        "preview": {
+          "file": "financial-services-case-study/slides/5.png",
+          "bytes": 138546,
+          "sha256": "57411824e793afbf8de1f7355d2463bb3372a7ac2a2780cd1b01982c29983a35"
+        }
+      },
+      {
+        "id": "canvas-collection",
+        "title": "Other canvases supporting API product decisions",
+        "preview": {
+          "file": "financial-services-case-study/slides/6.png",
+          "bytes": 118969,
+          "sha256": "5032a85f107d20d51bd3da0ef19ee340072e9c1295ea7bf740a490a87f67ba75"
+        }
+      },
+      {
+        "id": "productization-map",
+        "title": "API Productization Cycle metro map",
+        "preview": {
+          "file": "financial-services-case-study/slides/7.png",
+          "bytes": 147596,
+          "sha256": "fa60e12a4b4b071acdaba77a5579110fecc64c0320cbe957264e91ae4527be46"
+        }
+      },
+      {
+        "id": "traceability",
+        "title": "Discovery informed decisions across the lifecycle",
+        "preview": {
+          "file": "financial-services-case-study/slides/8.png",
+          "bytes": 97145,
+          "sha256": "d815464fcbc199791187f748454555e7203df9d42f345299b552d6597c152deb"
+        }
+      },
+      {
+        "id": "product-management",
+        "title": "API product management in everyday work",
+        "preview": {
+          "file": "financial-services-case-study/slides/9.png",
+          "bytes": 88644,
+          "sha256": "f96706534ac742ad8ac9837922bdacd2173df0c6a8a1a8767bae78779bfb6eed"
+        }
+      },
+      {
+        "id": "portfolio-planning",
+        "title": "Portfolio planning coordinated API releases",
+        "preview": {
+          "file": "financial-services-case-study/slides/10.png",
+          "bytes": 282763,
+          "sha256": "6bc4280b41b4b4e547c45e40358b46427ae3a3e51e9079437a98bd60096b12bd"
+        }
+      },
+      {
+        "id": "case-value",
+        "title": "The value across products, portfolio and ways of working",
+        "preview": {
+          "file": "financial-services-case-study/slides/11.png",
+          "bytes": 111837,
+          "sha256": "977436de51c9af9b0be23241355bc1ccd900e5e45e246891f49dca8b9dda7250"
+        }
+      }
+    ],
+    "strategy-to-technical-delivery": [
+      {
+        "id": "intro",
+        "title": "APIOps Cycles",
+        "preview": {
+          "file": "strategy-to-technical-delivery/slides/1.png",
+          "bytes": 74079,
+          "sha256": "a331b71d021a3a6fc4484fcca97d0959c18738edac64291042ddba9b009fabec"
+        },
+        "cover": true
+      },
+      {
+        "id": "method-overview",
+        "title": "APIOps Cycles connects decisions across the lifecycle",
+        "preview": {
+          "file": "strategy-to-technical-delivery/slides/2.png",
+          "bytes": 110842,
+          "sha256": "f3ef2fab8cbedbb9c50102bab115989c3aa9f72074815ee30df56e314c2c4d3b"
+        }
+      },
+      {
+        "id": "productization-map",
+        "title": "API Productization Cycle metro map",
+        "preview": {
+          "file": "strategy-to-technical-delivery/slides/3.png",
+          "bytes": 147752,
+          "sha256": "ec7486117b5824d2ddc6176f251bb29c89cf0649b12a3b04f86db1184652d528"
+        }
+      },
+      {
+        "id": "case-challenge",
+        "title": "The challenge: dependencies across teams",
+        "preview": {
+          "file": "strategy-to-technical-delivery/slides/4.png",
+          "bytes": 104591,
+          "sha256": "75c0b36f1ff5e1ad0c64a708346c59ec00aa9f0470b96f07907c31abfa095e9d"
+        }
+      },
+      {
+        "id": "collaborative-discovery",
+        "title": "Collaborative discovery in the payments case",
+        "preview": {
+          "file": "strategy-to-technical-delivery/slides/5.png",
+          "bytes": 258856,
+          "sha256": "a939d7eefbb15558d8bcd08a59bed837376d56634abb8d409518151c762cd852"
+        }
+      },
+      {
+        "id": "customer-journey",
+        "title": "Customer Journey Canvas: a supplier payment",
+        "preview": {
+          "file": "strategy-to-technical-delivery/slides/6.png",
+          "bytes": 122535,
+          "sha256": "72fb3a8cd7d440a10233d0bb6ed1de61e7d99b21a95ea95418ecf72123f994ad"
+        }
+      },
+      {
+        "id": "value-proposition",
+        "title": "API Value Proposition Canvas: the same journey",
+        "preview": {
+          "file": "strategy-to-technical-delivery/slides/7.png",
+          "bytes": 138438,
+          "sha256": "d934aaba2f0ab339dfa733819b4f07cad1b16d27b52148b95479a95938755569"
+        }
+      },
+      {
+        "id": "canvas-collection",
+        "title": "Other canvases supporting API product decisions",
+        "preview": {
+          "file": "strategy-to-technical-delivery/slides/8.png",
+          "bytes": 118959,
+          "sha256": "8bd645494f9876dae84a73ab913806b9bd1dfad254d54591d0c935c5014a318a"
+        }
+      },
+      {
+        "id": "traceability",
+        "title": "Discovery informed decisions across the lifecycle",
+        "preview": {
+          "file": "strategy-to-technical-delivery/slides/9.png",
+          "bytes": 97145,
+          "sha256": "e556c0b7b091521b6367d74f865329c8e643312b9ba9e9800937fc2548af39e8"
+        }
+      },
+      {
+        "id": "product-management",
+        "title": "API product management in everyday work",
+        "preview": {
+          "file": "strategy-to-technical-delivery/slides/10.png",
+          "bytes": 88705,
+          "sha256": "7a55bc844419b639b64acc3ed730fe774b77ba09c5758c18bca00b24d752eef7"
+        }
+      },
+      {
+        "id": "portfolio-planning",
+        "title": "Portfolio planning coordinated API releases",
+        "preview": {
+          "file": "strategy-to-technical-delivery/slides/11.png",
+          "bytes": 282561,
+          "sha256": "3e6766432eb582bd8553938d3cfa1c7cdd330702211d86f79fd1cc59ebbe8bf5"
+        }
+      },
+      {
+        "id": "case-value",
+        "title": "The value across products, portfolio and ways of working",
+        "preview": {
+          "file": "strategy-to-technical-delivery/slides/12.png",
+          "bytes": 112033,
+          "sha256": "b1b67d21bc72e04523d04507fe592852c4db49dc1e2f90f816b71d88c3e9ed43"
+        }
+      },
+      {
+        "id": "architecture-inputs",
+        "title": "Architecture: business needs become operating decisions",
+        "preview": {
+          "file": "strategy-to-technical-delivery/slides/13.png",
+          "bytes": 115274,
+          "sha256": "3a5724af5adf2c882740fddd61a00f3e4fa99bf420649210586868b137426d4c"
+        }
+      },
+      {
+        "id": "architecture-decisions",
+        "title": "A payment requirement can change the architecture",
+        "preview": {
+          "file": "strategy-to-technical-delivery/slides/14.png",
+          "bytes": 122541,
+          "sha256": "a6b92b5272ece9dd3d2cef65f7fcbd26d2cad316f3f6c92df91bb222da70b7d0"
+        }
+      },
+      {
+        "id": "trust-and-capacity",
+        "title": "Trust boundaries and capacity need explicit answers",
+        "preview": {
+          "file": "strategy-to-technical-delivery/slides/15.png",
+          "bytes": 114027,
+          "sha256": "9051100fd89a1ab162aed7d87e047ae884b0cd8c073f5cdab6109f9cf3ebd7ab"
+        }
+      },
+      {
+        "id": "domain-meaning",
+        "title": "API design starts with shared domain meaning",
+        "preview": {
+          "file": "strategy-to-technical-delivery/slides/16.png",
+          "bytes": 113585,
+          "sha256": "647174ebe1d550fce6e588e8c9ea6393881714811201984992b64dbe7232a846"
+        }
+      },
+      {
+        "id": "interaction-design",
+        "title": "Interaction design precedes the interface contract",
+        "preview": {
+          "file": "strategy-to-technical-delivery/slides/17.png",
+          "bytes": 118786,
+          "sha256": "5cf1002d7c1966f5bc811c45793f2c71e2ccb9ca3a11f48e12600a176db67808"
+        }
+      },
+      {
+        "id": "contract-first",
+        "title": "Contract-first design makes behaviour reviewable",
+        "preview": {
+          "file": "strategy-to-technical-delivery/slides/18.png",
+          "bytes": 95094,
+          "sha256": "5696ac72acb1995813b86ae7cccd803cbf32b4c8956c45568a25dfac13256d71"
+        }
+      },
+      {
+        "id": "scaffold",
+        "title": "The scaffold gives people and AI a shared workspace",
+        "preview": {
+          "file": "strategy-to-technical-delivery/slides/19.png",
+          "bytes": 109987,
+          "sha256": "1ed213813e298ecf4ea3b4c5ecd3c4027300927a15f043b6e9e23744a1935ac4"
+        }
+      },
+      {
+        "id": "ai-context",
+        "title": "AI needs the decisions behind the contract",
+        "preview": {
+          "file": "strategy-to-technical-delivery/slides/20.png",
+          "bytes": 121165,
+          "sha256": "0455345a4f9be236cbd62b4d5e5f8dc9319c640c8ac829066f733fcf90dea6a2"
+        }
+      },
+      {
+        "id": "ai-build",
+        "title": "Building with AI works best as a bounded change",
+        "preview": {
+          "file": "strategy-to-technical-delivery/slides/21.png",
+          "bytes": 249310,
+          "sha256": "a28a03de5663c436114871d3527226ab353d2edeaa76742683bb2463a6d62ee8"
+        }
+      },
+      {
+        "id": "tests",
+        "title": "Tests turn the payment promises into evidence",
+        "preview": {
+          "file": "strategy-to-technical-delivery/slides/22.png",
+          "bytes": 120910,
+          "sha256": "c50a0210a6147e8a30584454818824c231bf92df3e2760ec66dff83bcb93c3d7"
+        }
+      },
+      {
+        "id": "linting",
+        "title": "Linting checks the contract against explicit rules",
+        "preview": {
+          "file": "strategy-to-technical-delivery/slides/23.png",
+          "bytes": 88379,
+          "sha256": "578e2cceb9201b05d330cbde6a69b1b8b4fed3b3996488909f7e184336317b70"
+        }
+      },
+      {
+        "id": "audit",
+        "title": "API Audit brings evidence together across the lifecycle",
+        "preview": {
+          "file": "strategy-to-technical-delivery/slides/24.png",
+          "bytes": 96664,
+          "sha256": "c3c35cb6accae9becc5a8289d21cb42c82c2cb07d0a27e7ce31e456d5195631d"
+        }
+      },
+      {
+        "id": "audit-interpretation",
+        "title": "A check result needs a clear interpretation",
+        "preview": {
+          "file": "strategy-to-technical-delivery/slides/25.png",
+          "bytes": 121839,
+          "sha256": "a66c304a281eea0d7d238b499e3a4fd19f46a71548a2052bc82dc64673bf84d5"
+        }
+      },
+      {
+        "id": "ci",
+        "title": "CI can keep the review evidence current",
+        "preview": {
+          "file": "strategy-to-technical-delivery/slides/26.png",
+          "bytes": 98892,
+          "sha256": "64b07fe0cd337319df5210a033368f8e0cce8c7726c0894bf7e6f030354444cf"
+        }
+      },
+      {
+        "id": "publishing-improvement",
+        "title": "Publishing and improvement complete the product cycle",
+        "preview": {
+          "file": "strategy-to-technical-delivery/slides/27.png",
+          "bytes": 112554,
+          "sha256": "f3e94b6f7ac2ad77ab306c44d7b44bbb9e633a9b005f4da6f8f3272a8e852464"
+        }
+      },
+      {
+        "id": "first-cycle",
+        "title": "A first working cycle",
+        "preview": {
+          "file": "strategy-to-technical-delivery/slides/28.png",
+          "bytes": 96504,
+          "sha256": "c6cdf1c1f20c3c011b602e59947b661baece3c6e6b357735c3a263a3c98d8f63"
+        }
+      }
+    ],
+    "capability-productization-cycle": [
+      {
+        "id": "capability-cover",
+        "title": "APIOps Cycles",
+        "preview": {
+          "file": "capability-productization-cycle/slides/1.png",
+          "bytes": 71452,
+          "sha256": "6baee9aa25c26ff66be0cb3d76e91ad5f48b9782ffa54183b0322d9fea2ce567"
+        },
+        "cover": true
+      },
+      {
+        "id": "capability-outcome",
+        "title": "Start with the outcome people need",
+        "preview": {
+          "file": "capability-productization-cycle/slides/2.png",
+          "bytes": 96761,
+          "sha256": "8a61638a00b264479f6243aea7f4da1e6d5150d51c2e0bd0c0db62b398c75e42"
+        }
+      },
+      {
+        "id": "capability-route",
+        "title": "Eight stations, revisited as evidence changes",
+        "preview": {
+          "file": "capability-productization-cycle/slides/3.png",
+          "bytes": 90815,
+          "sha256": "38edc5529d6e18c3ced748dd61cdb97415ecc59bf77f30f2d38cfd8213a3b4ed"
+        }
+      },
+      {
+        "id": "capability-hypothesis",
+        "title": "1. Strategy: test one capability hypothesis",
+        "preview": {
+          "file": "capability-productization-cycle/slides/4.png",
+          "bytes": 95912,
+          "sha256": "6d141cd900897d75dd507eca03c9e273c1efccb94e3d7a7279c1ab70f582c2e6"
+        }
+      },
+      {
+        "id": "capability-commitments",
+        "title": "2. Requirements: agree the service together",
+        "preview": {
+          "file": "capability-productization-cycle/slides/5.png",
+          "bytes": 178960,
+          "sha256": "d34e08bd75c0f9907cc1d9dd73a020847826ce8c8398881f8c70e5616b67ba34"
+        }
+      },
+      {
+        "id": "capability-choice",
+        "title": "3. Architecture: choose how to provide it",
+        "preview": {
+          "file": "capability-productization-cycle/slides/6.png",
+          "bytes": 93357,
+          "sha256": "a835f9c5286665772bacc43f357303847d0184d304003e2ac134c54ac13e6fe9"
+        }
+      },
+      {
+        "id": "capability-solution",
+        "title": "4. Design: make the service promise testable",
+        "preview": {
+          "file": "capability-productization-cycle/slides/7.png",
+          "bytes": 100988,
+          "sha256": "6731088f276b618441d9eea61c774e6954ba8ba7c787d60dc845f2c65eea22a8"
+        }
+      },
+      {
+        "id": "capability-operate",
+        "title": "5. Delivery includes operation and support",
+        "preview": {
+          "file": "capability-productization-cycle/slides/8.png",
+          "bytes": 101573,
+          "sha256": "8b725170477cc5d326bd67998e756bc337fc4b26b9725314bf57d80f3dd4985e"
+        }
+      },
+      {
+        "id": "capability-ai",
+        "title": "Use AI with agreed capability context",
+        "preview": {
+          "file": "capability-productization-cycle/slides/9.png",
+          "bytes": 182804,
+          "sha256": "7be77eaeeb6f8daea1c3b0c8a8e554f1cbd8b87e6d518a7700fe9dfaa2a48bd4"
+        }
+      },
+      {
+        "id": "capability-assure",
+        "title": "6. Readiness: decide from evidence",
+        "preview": {
+          "file": "capability-productization-cycle/slides/10.png",
+          "bytes": 94250,
+          "sha256": "3663fd9691d1c5c6f87a4d420f72253f368666a186cd1a02ddf843cef04fb878"
+        }
+      },
+      {
+        "id": "capability-publish",
+        "title": "7. Publish a capability people can adopt",
+        "preview": {
+          "file": "capability-productization-cycle/slides/11.png",
+          "bytes": 99916,
+          "sha256": "bf0a5367c01de27b3a8c0ebf2c8e92348ffe026e91a8a7b1b5f10c35c36ff24f"
+        }
+      },
+      {
+        "id": "capability-improve",
+        "title": "8. Measure value and improve the service",
+        "preview": {
+          "file": "capability-productization-cycle/slides/12.png",
+          "bytes": 99528,
+          "sha256": "e8c4576ffb51c1e188855630be4cca4e651dd83b8b8bbe00e31f7483b8ce7552"
+        }
+      },
+      {
+        "id": "capability-related-cycles",
+        "title": "Choose a cycle view for the work ahead",
+        "preview": {
+          "file": "capability-productization-cycle/slides/13.png",
+          "bytes": 91638,
+          "sha256": "d8d2e076869620f350b1c74b9290b312290f380cde04d105604c40bf628aee0c"
+        }
+      },
+      {
+        "id": "capability-tools",
+        "title": "Use canvases to make decisions visible",
+        "preview": {
+          "file": "capability-productization-cycle/slides/14.png",
+          "bytes": 100483,
+          "sha256": "8cda429646f78ec0f6a45fecf419170efaf08056eabe5f191e4f59db73c47ef7"
+        }
+      },
+      {
+        "id": "capability-workshop",
+        "title": "Start with one capability and its consumers",
+        "preview": {
+          "file": "capability-productization-cycle/slides/15.png",
+          "bytes": 93836,
+          "sha256": "fe26f5a0fc867cfb388920aaf9b7833e57fe74ba8551dbe3be43d01192d789b0"
+        }
+      },
+      {
+        "id": "capability-next",
+        "title": "Make the next reuse easier",
+        "preview": {
+          "file": "capability-productization-cycle/slides/16.png",
+          "bytes": 98971,
+          "sha256": "226c4da2f96d4d0df08be8c1d95e865a417b410f2588c84acb5e4554f231f003"
+        }
+      }
+    ]
+  },
+  "assets": [
+    {
+      "file": "assets/api-first-not-enough.png",
+      "bytes": 37455,
+      "sha256": "cd4b9323a8d8e348d8a57633820ca23445cdd09e7b494c638c4fadebf1044a4c"
+    },
+    {
+      "file": "assets/api-productization-metro-neutral.png",
+      "bytes": 632113,
+      "sha256": "b3cedda68f168e0fd48b2b60e6aac4cae195f352cd23c18690cbead702ed93b8"
+    },
+    {
+      "file": "assets/apiops-cycles-logo.png",
+      "bytes": 7438,
+      "sha256": "0b03825e4a973ff58e6b6d02f004352cfff172bdf8b445cdeb17028567f8881b"
+    },
+    {
+      "file": "assets/apiops-cycles-logo.svg",
+      "bytes": 4245,
+      "sha256": "35b2b31043b571b1ddd79e504f922374dadc0d3d031819238d4e1c2812a3ab42"
+    },
+    {
+      "file": "assets/capability-cycle-route.png",
+      "bytes": 94829,
+      "sha256": "bf75a4627718d2d5261f2ce1c998db40dbeec9692c96b1c10f59c985db894528"
+    },
+    {
+      "file": "assets/capability-cycle-route.svg",
+      "bytes": 3379,
+      "sha256": "d6c133532f86efd6b83d2d48eee2d39c143820610efafe4c6535ebbd0d278249"
+    },
+    {
+      "file": "assets/chaos-to-capabilities.png",
+      "bytes": 85691,
+      "sha256": "767160e5b55e35307919293fe921bd7a51a768f9703f1de2a8f78d92b109ce14"
+    },
+    {
+      "file": "assets/filled-apiBusinessModelCanvas.png",
+      "bytes": 325517,
+      "sha256": "e1e5d00012ff514ffbd3112e31a8d8e1cabb572a4f142db8eae7e4a399d71fb4"
+    },
+    {
+      "file": "assets/filled-apiValuePropositionCanvas-neutral.png",
+      "bytes": 295773,
+      "sha256": "a306fcfcc56fb2a8364f7caffdb3230ff5eb67ab346289ec3e971be5019163a5"
+    },
+    {
+      "file": "assets/filled-businessImpactCanvas.png",
+      "bytes": 349081,
+      "sha256": "2d30e0f15f766465d06ff767c1c7a871bfb029cdce044d71b08d1521827920fa"
+    },
+    {
+      "file": "assets/filled-capacityCanvas.png",
+      "bytes": 272312,
+      "sha256": "b74aced07439476e2b44072ec22be293b67f4ee1eef727fa54d93f38469e86cf"
+    },
+    {
+      "file": "assets/filled-customerJourneyCanvas-neutral.png",
+      "bytes": 386566,
+      "sha256": "d00ba1868a60ea3e4b477099fb7d914b03be0e913b679152d260d13920153cdf"
+    },
+    {
+      "file": "assets/filled-restCanvas.png",
+      "bytes": 215502,
+      "sha256": "5d1f0b3375f2e45409d1f6ad895017898e131a401d74ceac02d1d917a7be037b"
+    },
+    {
+      "file": "assets/intro-ai-build.png",
+      "bytes": 1143257,
+      "sha256": "607024cd0fa73e6345033e9f6266f0e9ceccc13da90bd967f06bc8635ed48347"
+    },
+    {
+      "file": "assets/partner-example.svg",
+      "bytes": 359,
+      "sha256": "87cdefff34c738f29861c30214f4d085b51b63dd2b29a14efebbe2883a53ab82"
+    },
+    {
+      "file": "assets/portfolio.png",
+      "bytes": 1072422,
+      "sha256": "12297e37f5077ec5c94efc51114f9d0064a3980a1eb32ef04e5bcadec0d32c60"
+    },
+    {
+      "file": "assets/shared-picture-missing.png",
+      "bytes": 42473,
+      "sha256": "4407d2aac30a46f0df582fcce8aa608c9356ff08d7f5853d1f72e8c30f9b24d8"
+    },
+    {
+      "file": "assets/technical-domainCanvas.png",
+      "bytes": 340127,
+      "sha256": "56772c95cde60b2233ede9036dd6292895273d12a64cc33b9000cd304143e2ee"
+    },
+    {
+      "file": "assets/technical-locationsCanvas.png",
+      "bytes": 362761,
+      "sha256": "5b39e7cd1e9441989b079d0b993031dc37e62ae033a0c6c737d5403544cd6ada"
+    },
+    {
+      "file": "assets/workshop.png",
+      "bytes": 1154015,
+      "sha256": "9a573ba082606918fd280d11dd66d2104c9c8dc9bea480b01c7001ef8bc9ebbe"
+    }
+  ],
+  "source": {
+    "file": "apiops-presentations-source.zip",
+    "bytes": 5435543,
+    "sha256": "6d08015f0c1b5daa3cb632478b673cfc7a68b01b304a4b2b8f1a34e36d7b2e2b"
+  }
+}

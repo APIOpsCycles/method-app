@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "1.0",
+  "id": "capability-productization-cycle",
+  "title": "Capability Productization Cycle",
+  "language": "en",
+  "author": "APIOps Cycles",
+  "slides": [
+    "slides/capability-cover.json",
+    "slides/capability-outcome.json",
+    "slides/capability-route.json",
+    "slides/capability-hypothesis.json",
+    "slides/capability-commitments.json",
+    "slides/capability-choice.json",
+    "slides/capability-solution.json",
+    "slides/capability-operate.json",
+    "slides/capability-ai.json",
+    "slides/capability-assure.json",
+    "slides/capability-publish.json",
+    "slides/capability-improve.json",
+    "slides/capability-related-cycles.json",
+    "slides/capability-tools.json",
+    "slides/capability-workshop.json",
+    "slides/capability-next.json"
+  ]
+}

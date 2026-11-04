@@ -7,14 +7,14 @@
   let col(key) = rgb(t.colors.at(key))
   set page(width: l.canvas.width * px, height: l.canvas.height * px,
     margin: 0pt, fill: col("background"))
-  set text(font: t.font, fill: col("body"), hyphenate: false, lang: model.deck.language)
+  set text(font: (t.font, "Arial"), fill: col("body"), hyphenate: false, lang: model.deck.language)
   set par(leading: 0.28em, spacing: 0pt)
   let put(b, body) = place(top + left, dx: b.x * px, dy: b.y * px,
     block(width: b.w * px, height: b.h * px, clip: false, body))
-  let words(value) = {
+  let words(value, font: t.font) = {
     for (i, line) in value.split("\n").enumerate() {
       if i > 0 { linebreak() }
-      text(line)
+      text(font: (font, "Arial"), line)
     }
   }
   for (i, s) in model.slides.enumerate() {
@@ -49,7 +49,7 @@
       } else {
         text(font: if e.type == "code" { t.codeFont } else { t.font },
           size: b.fontSize * px, weight: if b.bold { "bold" } else { "regular" },
-          fill: col(b.color), words(e.text))
+          fill: col(b.color), words(e.text, font: if e.type == "code" { t.codeFont } else { t.font }))
       }
       put(b, body)
     }
