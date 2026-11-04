@@ -1,0 +1,32 @@
+{
+  "id": "contract-first",
+  "title": "Contract-first design makes behaviour reviewable",
+  "elements": [
+    {
+      "id": "text-1",
+      "type": "code",
+      "text": "POST /payments\nIdempotency-Key: <request-key>\n\n201 Created\n{\n  \"paymentId\": \"pay-42\",\n  \"status\": \"pending\"\n}"
+    },
+    {
+      "id": "text-2",
+      "type": "text",
+      "text": "Decisions around this operation"
+    },
+    {
+      "id": "bullets-3",
+      "type": "bullets",
+      "items": [
+        "Define amount, currency, payee and validation errors.",
+        "Specify replay scope, retention and conflicting-payload behaviour.",
+        "Declare authentication and required permissions.",
+        "Keep resource creation distinct from payment completion."
+      ]
+    },
+    {
+      "id": "text-4",
+      "type": "text",
+      "text": "Illustrative contract excerpt. The idempotency policy still needs agreement and implementation."
+    }
+  ],
+  "notes": "APIOps introduction. Technical continuation is illustrative; no client implementation or measured improvement is claimed.\n\nIllustrative operation and payload, not copied from a client contract or supplied by the scaffold. The starter scaffold contract uses OpenAPI 3.0.3 and a read-only Catalog example. OpenAPI describes operations, schemas, responses and security requirements; the service enforces the agreed behaviour. The proposed Idempotency-Key header represents an application contract decision.\n\nSources checked 3 November 2026:\nsrc/snippets/api-contract-example.yaml\nsrc/snippets/api-style-guide.json: REST-CONTRACT-01, REST-CONTRACT-02, REST-VALIDATION-01\nhttps://spec.openapis.org/oas/v3.0.3"
+}

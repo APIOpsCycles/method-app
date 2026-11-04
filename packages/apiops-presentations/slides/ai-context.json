@@ -1,0 +1,45 @@
+{
+  "id": "ai-context",
+  "title": "AI needs the decisions behind the contract",
+  "elements": [
+    {
+      "id": "table-1",
+      "type": "table",
+      "rows": [
+        [
+          "Input supplied to AI",
+          "What it constrains",
+          "Human owner"
+        ],
+        [
+          "Journey and value proposition",
+          "Supported task, intended value\nand consumer expectations",
+          "Product and consumer\nrepresentatives"
+        ],
+        [
+          "Domain and architecture outputs",
+          "Meaning, ownership, trust\nand operational constraints",
+          "Domain, architecture\nand security owners"
+        ],
+        [
+          "Validated contract and style guide",
+          "Interface behaviour, validation\nand shared conventions",
+          "API designer"
+        ],
+        [
+          "Audit findings and test evidence",
+          "Known gaps, acceptance criteria\nand the next bounded change",
+          "Engineering and\nreadiness owners"
+        ]
+      ],
+      "header": true,
+      "emphasizeFirstColumn": true
+    },
+    {
+      "id": "text-2",
+      "type": "text",
+      "text": "AGENTS.md and package skills provide a route through the method; the team still validates the decisions."
+    }
+  ],
+  "notes": "APIOps introduction. Technical continuation is illustrative; no client implementation or measured improvement is claimed.\n\nRecommended AI working pattern derived from the scaffold AGENTS.md and method guidance. The new-api-guide skill prefers the shared method engine and station readiness criteria. Canvas JSON authoring and export skills support reviewable decisions. The presence of a starter OpenAPI file does not establish design readiness. This is guidance for AI-assisted work, not a claim that the initializer automates implementation.\n\nSources checked 3 November 2026:\npackages/create-apiops/template/AGENTS.md\nskills/new-api-guide/SKILL.md\nsrc/snippets/api-design-principles-guidance.md"
+}

@@ -1,0 +1,8 @@
+---
+import type {PresentationSlide} from '../../content/presentations';
+interface Props {slide: PresentationSlide}
+const {slide}=Astro.props;
+---
+<div class="presentation-transcript">
+  {slide.elements.map(e => e.type === 'text' ? <p>{e.text}</p> : e.type === 'code' ? <pre><code>{e.text}</code></pre> : e.type === 'numbered' ? <ol>{e.items?.map(item => <li>{item}</li>)}</ol> : e.type === 'bullets' ? <ul>{e.items?.map(item => <li>{item}</li>)}</ul> : e.type === 'table' ? <div class="presentation-table-scroll"><table><thead><tr>{e.rows?.[0].map(cell => <th scope="col">{cell}</th>)}</tr></thead><tbody>{e.rows?.slice(1).map(row => <tr>{row.map(cell => <td>{cell}</td>)}</tr>)}</tbody></table></div> : e.type === 'image' ? <p class="presentation-visual-description"><strong>Visual:</strong> {e.alt}</p> : null)}
+</div>

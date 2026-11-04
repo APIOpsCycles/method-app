@@ -1,0 +1,45 @@
+{
+  "id": "method-overview",
+  "title": "APIOps Cycles connects decisions across the lifecycle",
+  "elements": [
+    {
+      "id": "text-1",
+      "type": "text",
+      "text": "An open method for connecting consumer value with architecture, design, delivery and continuous improvement."
+    },
+    {
+      "id": "table-2",
+      "type": "table",
+      "rows": [
+        [
+          "Cycle view",
+          "Primary focus"
+        ],
+        [
+          "Capability Productization",
+          "Define a reusable capability and the service promise."
+        ],
+        [
+          "API Productization",
+          "Develop, publish and improve an API as a product."
+        ],
+        [
+          "Integration Productization",
+          "Connect providers and consumers through reusable integrations."
+        ],
+        [
+          "Automation",
+          "Design and govern workflows, agents and operational controls."
+        ]
+      ],
+      "header": true,
+      "emphasizeFirstColumn": true
+    },
+    {
+      "id": "text-3",
+      "type": "text",
+      "text": "This introduction follows API Productization, with a financial-services case and an illustrative payment continuation."
+    }
+  ],
+  "notes": "APIOps introduction. Technical continuation is illustrative; no client implementation or measured improvement is claimed.\n\nThe cycle catalog provides these four views over shared stations, resource guidance and readiness criteria. This deck follows the API Productization Cycle. Case-study statements derive from the supplied anonymised Word document. The supplier-payment canvases and subsequent technical decisions are illustrative.\n\nSources checked 3 November 2026:\nsrc/data/method/cycles.json\nsrc/lib/method-engine.js"
+}

@@ -1,0 +1,13 @@
+{
+  "name": "Partner example",
+  "author": "Your organisation",
+  "logo": "assets/partner-example.svg",
+  "footer": "Your organisation · APIOps Cycles",
+  "font": "Arial",
+  "codeFont": "Courier New",
+  "colors": {
+    "heading": "#111111",
+    "body": "#333333",
+    "tableHeader": "#d9d9d9"
+  }
+}

@@ -2,6 +2,9 @@
 
 The APIOps human assets are not only brand illustrations. They are a notation layer for showing collaboration, ownership, alignment, and digital capability design in a way that can be composed consistently across slides, canvases, social posts, and product UI.
 
+For practical download, scene composition, application and AI image-brief workflows,
+start with [Create and reuse visuals](creating-visuals.md).
+
 The grammar has five layers:
 
 | Layer | Current examples | Role in the notation |
@@ -16,21 +19,28 @@ The grammar has five layers:
 
 The grammar is based on the new standalone scarf-human assets in `src/assets/humans`. Do not use `apiops-stick-figures-poses.svg` or `apiops-stick-figures-stories.svg` as grammar sources; those sheets are legacy assets and will be replaced.
 
-| Asset | Grammar role | Canonical pose token |
-| --- | --- |
-| `pose-with-scarf.svg`, `pose-with-scarf-standing.svg` | Neutral actor. | `pose-standing` |
-| `pose-with-scarf-thinking.svg` | Understand, question, diagnose. | `pose-thinking` |
-| `pose-with-scarf-presenting.svg` | Explain, teach, share. | `pose-presenting` |
-| `pose-with-scarf-announcing.svg` | Publish, call attention, invite. | `pose-announcing` |
-| `pose-with-scarf-holding.svg` | Own, carry, offer, hand off. | `pose-holding` |
-| `pose-with-scarf-holding-interface.svg` | Present an interface or API surface. | `pose-holding-interface` |
-| `pose-with-scarf-holding-computer.svg` | Build, configure, operate. | `pose-holding-computer` |
-| `pose-with-scarf-holding-box.svg` | Package a reusable product or capability. | `pose-holding-box` |
-| `pose-with-scarf-holding-AI.svg` | AI-assisted design or automation. | `pose-holding-ai` |
-| `pose-with-scarf-listening.svg` | Receive, include, learn. | `pose-listening` |
-| `pose-with-scarf-amazed.svg` | Surprise, discovery, misalignment revealed. | `pose-amazed` |
-| `pose-with-scarf-walking.svg` | Movement, adoption, progress. | `pose-walking` |
-| `pose-with-scarf-dancing.svg` | Celebration, shared momentum. | `pose-celebrating` |
+The following files and recipe aliases exist in the current registry. Conceptual pose
+tokens elsewhere in this document describe visual meanings; recipe `pose` values must
+use the registry aliases below.
+
+| Asset | Grammar role | Recipe alias |
+| --- | --- | --- |
+| `pose-with-scarf-standing.svg` | Neutral actor. | `standing` |
+| `pose-with-scarf-thinking.svg` | Understand, question, diagnose. | `thinking` |
+| `pose-with-scarf-pointing.svg` | Explain, direct attention, share. | `pointing` |
+| `pose-with-scarf-holding.svg` | Own, carry, offer, hand off. | `holding` |
+| `pose-with-scarf-holding-up.svg` | Hold up an object or make it visible. | `holding-up` |
+| `pose-with-scarf-listening.svg` | Receive, include, learn. | `listening` |
+| `pose-with-scarf-amazed.svg` | Surprise, discovery, misalignment revealed. | `amazed` |
+| `pose-with-scarf-walking.svg` | Movement, adoption, progress. | `walking` |
+| `pose-with-scarf-dancing.svg` | Celebration, shared momentum. | `dancing` |
+| `pose-with-scarf-watching-hand-down.svg` | Observe or attend. | `watching-hand-down` |
+| `pose-with-scarf-watching-hand-up.svg` | Observe with a raised-hand gesture. | `watching-hand-up` |
+
+The base `pose-with-scarf.svg` is also available as a standalone file. Dedicated
+presenting, announcing, interface-holding, computer-holding, box-holding and AI-holding
+files are not currently registered; compose those meanings from available actors and
+notation symbols, or add reviewed source geometry and a registry alias.
 
 Existing method icons that can be reused:
 

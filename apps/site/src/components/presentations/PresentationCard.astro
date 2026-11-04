@@ -1,0 +1,15 @@
+---
+import {presentationPath,previewFor,type PresentationEdition} from '../../content/presentations';
+interface Props {edition: PresentationEdition}
+const {edition}=Astro.props;
+---
+<article class="presentation-card">
+  <a class="presentation-card__preview" href={presentationPath(edition.id)} tabindex="-1" aria-hidden="true"><img src={previewFor(edition.id)} alt="" width="1280" height="720" loading="lazy" /></a>
+  <div class="presentation-card__body">
+    <p class="presentation-meta">{edition.slideCount} slides · About {edition.durationMinutes} minutes · English</p>
+    <h2><a href={presentationPath(edition.id)}>{edition.title}</a></h2>
+    <p>{edition.description}</p>
+    <p class="presentation-audience"><strong>For:</strong> {edition.audience.join(', ')}</p>
+    <a class="presentation-text-link" href={presentationPath(edition.id)}>View and download <span aria-hidden="true">→</span></a>
+  </div>
+</article>

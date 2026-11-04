@@ -1,0 +1,40 @@
+{
+  "id": "publishing-improvement",
+  "title": "Publishing and improvement complete the product cycle",
+  "elements": [
+    {
+      "id": "text-1",
+      "type": "text",
+      "text": "API Publishing"
+    },
+    {
+      "id": "bullets-2",
+      "type": "bullets",
+      "items": [
+        "Publish the reviewed contract and consumer-facing examples.",
+        "Make access, onboarding and support ownership clear.",
+        "Keep service terms and operational responsibilities visible."
+      ]
+    },
+    {
+      "id": "text-3",
+      "type": "text",
+      "text": "API Monitoring & Improvement"
+    },
+    {
+      "id": "bullets-4",
+      "type": "bullets",
+      "items": [
+        "Observe payment completion, pending age, latency and errors.",
+        "Combine runtime evidence with adoption and consumer feedback.",
+        "Revisit architecture, contracts and priorities when assumptions change."
+      ]
+    },
+    {
+      "id": "text-5",
+      "type": "text",
+      "text": "The next improvement starts with evidence from consumers and operations."
+    }
+  ],
+  "notes": "APIOps introduction. Technical continuation is illustrative; no client implementation or measured improvement is claimed.\n\nCanonical API Publishing resources cover release channels, documentation, onboarding and readiness. Monitoring and Improving resources cover performance, adoption, feedback and continuous improvement. Payment completion and pending age are proposed example metrics, not measured client results or package defaults.\n\nSources checked 3 November 2026:\nmethod-engine: buildStationResourceData(api-publishing, en, REST)\nmethod-engine: buildStationResourceData(monitoring-and-improving, en, REST)"
+}

@@ -1,0 +1,37 @@
+{
+  "id": "first-cycle",
+  "title": "A first working cycle",
+  "elements": [
+    {
+      "id": "numbered-1",
+      "type": "numbered",
+      "items": [
+        "Agree one API product, a consumer journey and an accountable owner.",
+        "Record the architecture choices and review one contract.",
+        "Build one path with AI assistance and meaningful tests.",
+        "Lint, audit and share findings before the next release decision."
+      ]
+    },
+    {
+      "id": "text-2",
+      "type": "text",
+      "text": "Method and project resources"
+    },
+    {
+      "id": "bullets-3",
+      "type": "bullets",
+      "items": [
+        "apiopscycles.com",
+        "apiops-cycles-method-data",
+        "create-apiops",
+        "CanvasCreator"
+      ]
+    },
+    {
+      "id": "text-4",
+      "type": "text",
+      "text": "Local reference versions checked: method-data 4.2.1 and create-apiops 1.1.4. 3 November 2026."
+    }
+  ],
+  "notes": "APIOps introduction. Technical continuation is illustrative; no client implementation or measured improvement is claimed.\n\nSuggested introduction-to-practice sequence. Sources reviewed include the supplied anonymised Word case study, the previously prepared strategy case deck, installed apiops-cycles-method-data 4.2.1, create-apiops 1.1.4 template and initializer, and the matching local method-data repository. Technical examples and AI workflow recommendations are newly authored illustrative continuations. The case benefits remain qualitative. The local scaffold was generated with --no-install, so no live payment service, Spectral run or runtime test outcome is claimed.\n\nSources checked 3 November 2026:\nhttps://apiopscycles.com/\nhttps://github.com/APIOpsCycles/apiops-cycles-method-data\npackages/create-apiops/README.md\nsrc/lib/method-engine.js"
+}

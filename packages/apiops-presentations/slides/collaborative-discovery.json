@@ -1,0 +1,39 @@
+{
+  "id": "collaborative-discovery",
+  "title": "Collaborative discovery in the payments case",
+  "elements": [
+    {
+      "id": "text-1",
+      "type": "text",
+      "text": "What the team did"
+    },
+    {
+      "id": "text-2",
+      "type": "text",
+      "text": "APIsFirst and Osaango facilitated iterative workshops with business stakeholders, architects and engineers."
+    },
+    {
+      "id": "text-3",
+      "type": "text",
+      "text": "What the canvases made visible"
+    },
+    {
+      "id": "text-4",
+      "type": "text",
+      "text": "Customer and API consumer journeys, value propositions, business rules and operating constraints."
+    },
+    {
+      "id": "image-5",
+      "type": "image",
+      "asset": "workshop.png",
+      "alt": "Generated conceptual APIOps workshop scene, not a photograph or project artefact",
+      "fit": "contain"
+    },
+    {
+      "id": "text-6",
+      "type": "text",
+      "text": "Payments example: consumer details, payment method access, business risks and internal or partner channel needs."
+    }
+  ],
+  "notes": "Source: Australian_Financial_Services_APIOps_Cycles_Case_Study (1).docx, supplied by the user. Client anonymised. Engagement by APIsFirst with partner Osaango. Benefits are qualitative; no quantified delivery or business impact is claimed.\n\nSource section 1: Collaborative product discovery and design. Teams also considered domain concepts, compliance, security, functional requirements and non-functional requirements. Canvases made assumptions visible before implementation choices. The source does not establish that every discrepancy was resolved.\n\nVisual: AI-generated conceptual illustration using the APIOps scarf-human style. Not evidence of an actual workshop."
+}

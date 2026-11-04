@@ -1,0 +1,34 @@
+{
+  "id": "case-challenge",
+  "title": "The challenge: dependencies across teams",
+  "elements": [
+    {
+      "id": "text-1",
+      "type": "text",
+      "text": "Established API engineering practices"
+    },
+    {
+      "id": "text-2",
+      "type": "text",
+      "text": "API products still depended on business and technology teams working across organisational boundaries."
+    },
+    {
+      "id": "text-3",
+      "type": "text",
+      "text": "Customer journeys and partner integrations had to fit internal services, legacy systems and compliance obligations."
+    },
+    {
+      "id": "image-4",
+      "type": "image",
+      "asset": "shared-picture-missing.png",
+      "alt": "APIOps human scene showing uncertainty around shared APIs and contracts",
+      "fit": "contain"
+    },
+    {
+      "id": "text-5",
+      "type": "text",
+      "text": "Teams needed shared requirements, clearer ownership\nand coordinated delivery decisions."
+    }
+  ],
+  "notes": "Source: Australian_Financial_Services_APIOps_Cycles_Case_Study (1).docx, supplied by the user. Client anonymised. Engagement by APIsFirst with partner Osaango. Benefits are qualitative; no quantified delivery or business impact is claimed.\n\nThe source describes an organisation with established API engineering practices. The challenge concerned shared business value, requirements, technical decisions, product management responsibilities and delivery coordination.\n\nVisual: APIOps Cycles design system, scene-shared-picture-missing."
+}

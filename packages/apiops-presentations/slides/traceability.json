@@ -1,0 +1,54 @@
+{
+  "id": "traceability",
+  "title": "Discovery informed decisions across the lifecycle",
+  "elements": [
+    {
+      "id": "text-1",
+      "type": "text",
+      "text": "Payment API design connected consumer needs to technical controls"
+    },
+    {
+      "id": "table-2",
+      "type": "table",
+      "rows": [
+        [
+          "Consumer tasks",
+          "Requirements",
+          "API design",
+          "Controls",
+          "Testing"
+        ],
+        [
+          "Journeys and\nchannel needs",
+          "Business rules\nand constraints",
+          "Domain model\nand contracts",
+          "Access, limits\nand monitoring",
+          "API test\nautomation"
+        ]
+      ],
+      "header": true,
+      "emphasizeFirstColumn": false
+    },
+    {
+      "id": "text-3",
+      "type": "text",
+      "text": "Practical support"
+    },
+    {
+      "id": "text-4",
+      "type": "text",
+      "text": "Guidance on API contracts and test automation. Cross-team input on unresolved architecture and security decisions."
+    },
+    {
+      "id": "text-5",
+      "type": "text",
+      "text": "AI modernisation guidance"
+    },
+    {
+      "id": "text-6",
+      "type": "text",
+      "text": "Advice on using AI to convert legacy interfaces while retaining business requirements and constraints."
+    }
+  ],
+  "notes": "Source: Australian_Financial_Services_APIOps_Cycles_Case_Study (1).docx, supplied by the user. Client anonymised. Engagement by APIsFirst with partner Osaango. Benefits are qualitative; no quantified delivery or business impact is claimed.\n\nSource section 2: Following the product through the lifecycle. The table is a conceptual summary of the traceability described, not a reproduced project artefact. Design material also addressed operations, authentication and authorisation, rate limits, error handling, monitoring, asynchronous processing and capacity planning. The engagement included advice on AI-assisted conversion. It does not establish completed conversion, acceleration, uninterrupted operations or measured test improvements."
+}

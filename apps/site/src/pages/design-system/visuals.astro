@@ -1,0 +1,24 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import guide from '../../../../../packages/apiops-design-system/docs/creating-visuals.md?raw';
+import {createMarkdownProcessor} from '@astrojs/markdown-remark';
+import remarkGfm from 'remark-gfm';
+import rehypeSanitize from 'rehype-sanitize';
+const processor=await createMarkdownProcessor({syntaxHighlight:false,remarkPlugins:[remarkGfm],rehypePlugins:[rehypeSanitize]});
+const content=await processor.render(guide);
+---
+<BaseLayout title="Create and reuse APIOps visuals" description="Download APIOps design-system assets, compose editable SVG scenes, brief AI image generation and use visuals in presentations or applications." canonicalPath="/design-system/visuals" lang="en">
+  <main class="public-content visual-guide">
+    <nav class="public-breadcrumbs" aria-label="Breadcrumb"><a href="/design-system">Design system</a><span aria-hidden="true">/</span><span>Create and reuse visuals</span></nav>
+    <section class="public-hero"><p class="public-kicker">Visual guidance</p><h1>Create and reuse APIOps visuals</h1><p>Use an existing asset, compose a new scene or create a conceptual illustration that follows the APIOps visual language.</p><p><a href="/design-system#assets">Browse downloadable assets</a> · <a href="https://github.com/APIOpsCycles/method-app/blob/main/packages/apiops-design-system/docs/apiops-character-grammar.md">Read the Character Grammar</a></p></section>
+    <article class="public-section source-markdown" set:html={content.code} />
+  </main>
+</BaseLayout>
+<style>
+  .visual-guide :global(pre) { white-space:pre-wrap; overflow-wrap:anywhere; background:var(--panel); border:1px solid var(--panel-border); padding:20px; line-height:1.6; }
+  .visual-guide :global(table) { display:block; max-width:100%; overflow-x:auto; border-collapse:collapse; }
+  .visual-guide :global(th),.visual-guide :global(td) { text-align:left; vertical-align:top; padding:12px; border:1px solid var(--panel-border); }
+  .visual-guide :global(h2) { margin-top:40px; }
+  .visual-guide :global(li) { margin-bottom:8px; }
+  .visual-guide :global(code) { overflow-wrap:anywhere; }
+</style>

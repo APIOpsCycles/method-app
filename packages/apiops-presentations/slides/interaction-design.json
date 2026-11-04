@@ -1,0 +1,45 @@
+{
+  "id": "interaction-design",
+  "title": "Interaction design precedes the interface contract",
+  "elements": [
+    {
+      "id": "table-1",
+      "type": "table",
+      "rows": [
+        [
+          "Consumer task",
+          "Candidate interaction",
+          "Contract questions"
+        ],
+        [
+          "Submit a payment instruction",
+          "REST request creating\na payment resource",
+          "Required data, replay behaviour,\ncreation response and errors"
+        ],
+        [
+          "Check the outcome",
+          "REST query returning\nthe current payment state",
+          "Status meaning, freshness\nand permitted access"
+        ],
+        [
+          "Receive a final update",
+          "Event or callback if\nconsumer needs justify it",
+          "Delivery, retry, ordering\nand duplicate handling"
+        ],
+        [
+          "Compose a portal view",
+          "GraphQL only where its\nquery model serves the need",
+          "Schema, authorisation\nand query-cost controls"
+        ]
+      ],
+      "header": true,
+      "emphasizeFirstColumn": true
+    },
+    {
+      "id": "text-2",
+      "type": "text",
+      "text": "The Interaction Canvas explores the flow; REST, Event or GraphQL canvases refine the chosen style."
+    }
+  ],
+  "notes": "APIOps introduction. Technical continuation is illustrative; no client implementation or measured improvement is claimed.\n\nCanonical design resource mapping includes domain and interaction modelling, style-specific canvases and contract-first guidance. These interactions are options for a fictional example, not a mandate to implement every style. The final choice depends on consumer tasks and reviewed architecture.\n\nSources checked 3 November 2026:\nmethod-engine: buildStationResourceData(api-design, en, REST)\nsrc/data/canvas/canvasData.json: interactionCanvas, restCanvas, eventCanvas, graphqlCanvas"
+}

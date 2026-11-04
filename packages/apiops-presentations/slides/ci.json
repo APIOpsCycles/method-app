@@ -1,0 +1,40 @@
+{
+  "id": "ci",
+  "title": "CI can keep the review evidence current",
+  "elements": [
+    {
+      "id": "text-1",
+      "type": "text",
+      "text": "Included scaffold workflow"
+    },
+    {
+      "id": "numbered-2",
+      "type": "numbered",
+      "items": [
+        "Install dependencies with npm ci.",
+        "Lint the selected profile and generate audit reports.",
+        "Publish the JUnit coverage result as a GitHub check."
+      ]
+    },
+    {
+      "id": "text-3",
+      "type": "text",
+      "text": "Extend for the payment implementation"
+    },
+    {
+      "id": "bullets-4",
+      "type": "bullets",
+      "items": [
+        "Run contract, integration, security and load tests.",
+        "Define which lint findings, gaps and failed tests block release.",
+        "Review changes to contracts, controls and generated evidence together."
+      ]
+    },
+    {
+      "id": "text-5",
+      "type": "text",
+      "text": "Audit outputs: JSON for tooling, Markdown and HTML for review, JUnit for CI."
+    }
+  ],
+  "notes": "APIOps introduction. Technical continuation is illustrative; no client implementation or measured improvement is claimed.\n\nThe inspected .github/workflows/openapi-lint.yml installs with npm ci, lints, generates audit reports and publishes JUnit. It defaults to read-only and supports manual full-crud selection. The audit runner writes reports; its CLI does not itself fail merely because coverage includes gaps. The JUnit publisher step has continue-on-error enabled. Teams should define explicit gating behaviour for the chosen profile and runtime tests. No changes were made to production CI.\n\nSources checked 3 November 2026:\npackages/create-apiops/template/.github/workflows/openapi-lint.yml\npackages/create-apiops/template/scripts/run-design-audit.js\npackages/create-apiops/template/README.md"
+}

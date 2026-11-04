@@ -1,0 +1,38 @@
+{
+  "id": "productization-map",
+  "title": "API Productization Cycle metro map",
+  "elements": [
+    {
+      "id": "image-1",
+      "type": "image",
+      "asset": "api-productization-metro-neutral.png",
+      "alt": "Official API Productization Cycle metro map exported from the repository application",
+      "fit": "contain"
+    },
+    {
+      "id": "text-2",
+      "type": "text",
+      "text": "One lifecycle connects the work"
+    },
+    {
+      "id": "numbered-3",
+      "type": "numbered",
+      "items": [
+        "API Product Strategy",
+        "API Consumer Experience",
+        "API Platform Architecture",
+        "API Design",
+        "API Delivery",
+        "API Audit",
+        "API Publishing",
+        "API Monitoring & Improvement"
+      ]
+    },
+    {
+      "id": "text-4",
+      "type": "text",
+      "text": "The engagement connected discovery to design, delivery and testing across these stations."
+    }
+  ],
+  "notes": "Source: Australian_Financial_Services_APIOps_Cycles_Case_Study (1).docx, supplied by the user. Client anonymised. Engagement by APIsFirst with partner Osaango. Benefits are qualitative; no quantified delivery or business impact is claimed.\n\nCanonical API Productization Cycle map exported through the local repository application at /cycles/api-productization-cycle/ using Export SVG. Public reference: https://apiopscycles.com/cycles/api-productization-cycle/ . Supporting lines cover business opportunities, platform architecture, design, delivery, publishing and adoption, and operating model. The map is a method overview, not evidence that every station was completed during the engagement."
+}

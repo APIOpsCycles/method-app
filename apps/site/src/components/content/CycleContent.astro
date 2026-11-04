@@ -7,6 +7,8 @@ import { metroLineColor } from "../../lib/line-colors";
 import { PublicPillList, PublicResourceSelector } from "../islands/PublicSelectors";
 import MethodContext from "./MethodContext.astro";
 import { getPageMethodContext } from "../../lib/method-graph";
+import RelatedPresentations from '../presentations/RelatedPresentations.astro';
+import '../../styles/presentations.css';
 interface Props { cycle: Cycle; locale: Locale }
 const { cycle, locale } = Astro.props;
 const prefix = localePrefix(locale);
@@ -24,5 +26,6 @@ const catalog = getCatalog(locale);
   <section class="public-section" aria-labelledby="resources"><h2 id="resources">{labels["section.resourcesCanvases"]}</h2><PublicResourceSelector client:load emptyLabel={labels["resources.emptyLinked"]} items={resources.map((resource) => ({ id: resource.id, type: resource.category, title: resource.title, description: resource.description, href: `${prefix}/${resource.slug}` }))} /></section>
   <section class="public-section" aria-labelledby="criteria"><h2 id="criteria">{labels["section.journeyCriteria"]}</h2><JourneyCriteria entryLabel={labels["section.entryCriteria"]} exitLabel={labels["section.exitCriteria"]} entryCriteria={cycle.entryCriteriaDetails} exitCriteria={cycle.exitCriteriaDetails} /></section>
   <StationsSection ordered title={labels["section.stations"]} items={cycle.stations.map((station) => ({ id: station.id, title: station.title, description: station.description, supportingText: station.whyItMatters, href: `${prefix}/cycles/${cycle.slug}/stations/${station.id}`, lineColors: catalog.lines.filter((line) => line.stations.includes(station.id)).map((line) => metroLineColor(line.id)) }))} />
+  <RelatedPresentations cycleId={cycle.id} locale={locale} />
     <EntityTools locale={locale} cycle={cycle} />
 </main>

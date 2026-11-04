@@ -1,0 +1,7 @@
+Asset: intro-ai-build.png
+Production mode: built-in image generation
+Use: APIOps introduction, slide 21. Conceptual illustration, not a client photograph.
+
+Prompt direction: APIOps minimal scarf-human illustration on pure white, 3:2 composition. Two people collaborate at a desk: an engineer with a teal scarf at a laptop, with a subtle AI sparkle, and a reviewer with a purple scarf examining a contract. Above them, a contract-to-code-to-test sequence and feedback arrows communicate bounded AI-assisted implementation and human review. Neutral grey linework, coloured scarf accents, no text, logos or robot.
+
+The deck uses existing APIOps design-system scenes and newly authored fictional canvas examples. Technical examples are illustrative continuations of the financial-services case, not disclosed client implementation details. Sources and interpretation limits are recorded in slide speaker notes.

@@ -1,0 +1,80 @@
+{
+  "templateId": "restCanvas",
+  "metadata": {
+    "source": "APIOps Cycles method",
+    "license": "CC-BY-SA 4.0",
+    "authors": [
+      "Codex"
+    ],
+    "website": "www.apiopscycles.com",
+    "date": "2026-11-01",
+    "context": "Illustrative supplier-invoice payment through a partner portal. Fictional example, not a record of client work. API names are provisional."
+  },
+  "sections": [
+    {
+      "sectionId": "apiResources",
+      "stickyNotes": [
+        {
+          "content": "payments",
+          "size": 80,
+          "color": "#fff1c9"
+        }
+      ]
+    },
+    {
+      "sectionId": "apiResourceModel",
+      "stickyNotes": [
+        {
+          "content": "Amount and payee",
+          "size": 80,
+          "color": "#fff1c9"
+        },
+        {
+          "content": "Reference and status",
+          "size": 80,
+          "color": "#fff1c9"
+        }
+      ]
+    },
+    {
+      "sectionId": "apiVerbs",
+      "stickyNotes": [
+        {
+          "content": "POST to submit",
+          "size": 80,
+          "color": "#dceef8"
+        },
+        {
+          "content": "GET for status",
+          "size": 80,
+          "color": "#dceef8"
+        }
+      ]
+    },
+    {
+      "sectionId": "apiVerbExample",
+      "stickyNotes": [
+        {
+          "content": "POST /payments",
+          "size": 80,
+          "color": "#dceef8"
+        },
+        {
+          "content": "201 + payment ID",
+          "size": 80,
+          "color": "#deefdc"
+        },
+        {
+          "content": "GET /payments/42",
+          "size": 80,
+          "color": "#dceef8"
+        },
+        {
+          "content": "200 + payment status",
+          "size": 80,
+          "color": "#deefdc"
+        }
+      ]
+    }
+  ]
+}

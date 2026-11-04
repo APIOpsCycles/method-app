@@ -1,0 +1,45 @@
+{
+  "id": "architecture-decisions",
+  "title": "A payment requirement can change the architecture",
+  "elements": [
+    {
+      "id": "table-1",
+      "type": "table",
+      "rows": [
+        [
+          "Customer or business need",
+          "Proposed design decision",
+          "Evidence to review"
+        ],
+        [
+          "One payment per instruction",
+          "Define replay handling and\na durable deduplication record",
+          "Repeated request and\nconcurrent-submission tests"
+        ],
+        [
+          "Clear progress and final outcome",
+          "Separate resource creation from\ncompletion of the business payment",
+          "State-transition and\nconsumer walkthrough tests"
+        ],
+        [
+          "A partner sees only its payments",
+          "Enforce access for the requested\nobject and the caller context",
+          "Cross-partner denial tests"
+        ],
+        [
+          "Dependable month-end service",
+          "Measure peak demand and agree\ncapacity and recovery behaviour",
+          "Load tests and failure\nrecovery evidence"
+        ]
+      ],
+      "header": true,
+      "emphasizeFirstColumn": true
+    },
+    {
+      "id": "text-2",
+      "type": "text",
+      "text": "Illustrative choices to validate, rather than facts about the client implementation."
+    }
+  ],
+  "notes": "APIOps introduction. Technical continuation is illustrative; no client implementation or measured improvement is claimed.\n\nProposed architecture decisions for the fictional supplier-payment continuation. Idempotency scope, retention, conflict handling and recovery remain decisions to validate. A successful HTTP creation response does not establish completion of the underlying payment. Object-level access control requires implementation and tests.\n\nSources checked 3 November 2026:\nsrc/snippets/api-design-principles-guidance.md\nhttps://api-security.owasp.org/editions/2023/en/0xa1-broken-object-level-authorization/"
+}

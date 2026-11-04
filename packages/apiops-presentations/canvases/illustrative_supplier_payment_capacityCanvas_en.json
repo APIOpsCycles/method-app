@@ -1,0 +1,80 @@
+{
+  "templateId": "capacityCanvas",
+  "metadata": {
+    "source": "APIOps Cycles method",
+    "license": "CC-BY-SA 4.0",
+    "authors": [
+      "Codex"
+    ],
+    "website": "www.apiopscycles.com",
+    "date": "2026-11-01",
+    "context": "Illustrative supplier-invoice payment through a partner portal. Fictional example, not a record of client work. API names are provisional."
+  },
+  "sections": [
+    {
+      "sectionId": "currentBusinessVolumes",
+      "stickyNotes": [
+        {
+          "content": "Daily count to measure",
+          "size": 80,
+          "color": "#fff1c9"
+        }
+      ]
+    },
+    {
+      "sectionId": "futureConsumptionTrends",
+      "stickyNotes": [
+        {
+          "content": "More partner portals",
+          "size": 80,
+          "color": "#fff1c9"
+        }
+      ]
+    },
+    {
+      "sectionId": "peakLoadAndAvailabilityRequirements",
+      "stickyNotes": [
+        {
+          "content": "Month-end peak to test",
+          "size": 80,
+          "color": "#fff1c9"
+        },
+        {
+          "content": "Agree service hours",
+          "size": 80,
+          "color": "#fff1c9"
+        }
+      ]
+    },
+    {
+      "sectionId": "cachingStrategies",
+      "stickyNotes": [
+        {
+          "content": "Cache method details",
+          "size": 80,
+          "color": "#dceef8"
+        }
+      ]
+    },
+    {
+      "sectionId": "rateLimitingStrategies",
+      "stickyNotes": [
+        {
+          "content": "Limits per partner",
+          "size": 80,
+          "color": "#dceef8"
+        }
+      ]
+    },
+    {
+      "sectionId": "scalingStrategies",
+      "stickyNotes": [
+        {
+          "content": "Load-test peak demand",
+          "size": 80,
+          "color": "#dceef8"
+        }
+      ]
+    }
+  ]
+}

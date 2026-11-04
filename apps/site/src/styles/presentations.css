@@ -1,0 +1,59 @@
+.presentation-library__editions { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:24px; margin-block:12px 56px; }
+.presentation-card { display:flex; flex-direction:column; border-bottom:2px solid var(--panel-border); min-width:0; }
+.presentation-card__preview { display:block; border:1px solid var(--panel-border); background:white; }
+.presentation-card__preview img,.presentation-cover img { display:block; width:100%; height:auto; }
+.presentation-card__body { padding:20px 0 24px; display:flex; flex:1; flex-direction:column; gap:12px; }
+.presentation-card__body h2 { font-size:1.5rem; margin:0; line-height:1.22; }
+.presentation-card__body h2 a { text-decoration:none; }
+.presentation-card__body p { margin:0; line-height:1.6; }
+.presentation-card__body>.presentation-text-link { margin-top:auto; padding-top:8px; }
+.presentation-meta { color:var(--muted); font-size:.88rem; line-height:1.6; }
+.presentation-audience { font-size:.94rem; }
+.presentation-text-link { font-weight:750; text-underline-offset:4px; }
+.presentation-actions { display:flex; gap:12px 20px; flex-wrap:wrap; align-items:center; margin-top:24px; }
+.presentation-button { display:inline-flex; align-items:center; justify-content:center; min-height:48px; padding:12px 18px; border:1px solid var(--foreground); border-radius:6px; background:var(--foreground); color:var(--background); font-weight:750; line-height:1.3; text-decoration:none; }
+.presentation-button:hover { opacity:.85; }
+.presentation-button--secondary { background:transparent; color:var(--foreground); border-color:var(--panel-border); }
+.presentation-adapt-grid { display:grid; grid-template-columns:1fr 1fr; gap:28px 48px; }
+.presentation-adapt-grid h3 { margin-top:0; }
+.presentation-reuse { border-top:1px solid var(--panel-border); }
+.presentation-cover { display:block; border:1px solid var(--panel-border); box-shadow:0 10px 30px #00000008; }
+.presentation-stations { display:flex; flex-wrap:wrap; gap:12px 28px; padding-left:20px; }
+.presentation-related { display:grid; gap:14px; padding-left:20px; }
+.presentation-related li>a { font-weight:750; }
+.presentation-related li>span { display:block; color:var(--muted); font-size:.9rem; margin-top:3px; }
+.presentation-view-page { max-width:1440px; }
+.presentation-view-page>h1 { font-size:clamp(1.7rem,3vw,2.7rem); line-height:1.15; margin-block:28px 12px; }
+.presentation-viewer { min-width:0; }
+.presentation-viewer .presentation-reveal { width:100%; height:auto; aspect-ratio:16/9; border:1px solid var(--panel-border); }
+.presentation-viewer .presentation-reveal[hidden],.presentation-viewer [data-fallback-image][hidden] { display:none; }
+.presentation-viewer .presentation-reveal:focus-visible { outline:2px solid var(--foreground); outline-offset:3px; }
+.presentation-viewer__toolbar { display:flex; gap:10px; align-items:center; flex-wrap:wrap; padding:12px 0; }
+.presentation-viewer__toolbar[hidden],.presentation-viewer__slide[hidden],.presentation-viewer__toolbar button[hidden] { display:none; }
+.presentation-viewer__toolbar select { flex:1; min-width:0; max-width:600px; padding:10px; border:1px solid var(--panel-border); border-radius:6px; background:var(--background); color:var(--foreground); }
+.presentation-viewer__toolbar button { min-height:44px; padding:8px 14px; border:1px solid var(--panel-border); border-radius:6px; background:var(--background); color:var(--foreground); font-weight:700; }
+.presentation-viewer__toolbar button:disabled { cursor:default; opacity:.4; transform:none; }
+.presentation-viewer__slide { margin-bottom:24px; scroll-margin-top:90px; }
+.presentation-viewer__slide>img { display:block; width:100%; height:auto; background:#fff; border:1px solid var(--panel-border); }
+.presentation-slide-text { border-bottom:1px solid var(--panel-border); padding:16px 0; }
+.presentation-slide-text summary { cursor:pointer; font-weight:750; }
+.presentation-transcript { max-width:900px; margin-top:20px; }
+.presentation-transcript p { white-space:pre-line; }
+.presentation-transcript li { margin-bottom:8px; }
+.presentation-visual-description { color:var(--muted); font-size:.95rem; }
+.presentation-table-scroll { max-width:100%; overflow-x:auto; }
+.presentation-table-scroll table { border-collapse:collapse; width:100%; text-align:left; }
+.presentation-table-scroll th,.presentation-table-scroll td { padding:12px; border:1px solid var(--panel-border); vertical-align:top; white-space:pre-line; }
+.presentation-table-scroll th { background:var(--panel); }
+.presentation-developer-guide pre,.presentation-transcript pre { white-space:pre-wrap; overflow-wrap:anywhere; background:var(--panel); border:1px solid var(--panel-border); padding:20px; border-radius:6px; line-height:1.7; }
+.presentation-viewer:fullscreen { background:var(--background); padding:12px clamp(12px,3vw,48px); overflow:auto; }
+.presentation-viewer:fullscreen .presentation-viewer__slide>img { max-height:calc(100vh - 160px); object-fit:contain; }
+.presentation-viewer:fullscreen .presentation-reveal { height:calc(100dvh - 110px); aspect-ratio:auto; }
+.presentation-viewer:fullscreen [data-transcript] { display:none; }
+@media(max-width:900px) { .presentation-library__editions { grid-template-columns:1fr; gap:36px; } .presentation-card { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:24px; } .presentation-card__body { padding-top:0; } }
+@media(max-width:600px) { .presentation-card { display:flex; gap:0; } .presentation-card__body { padding-top:18px; } .presentation-adapt-grid { grid-template-columns:1fr; gap:22px; } .presentation-actions { align-items:stretch; } .presentation-actions>.presentation-button { width:100%; } .presentation-viewer__toolbar select { order:-1; flex-basis:100%; max-width:none; } .presentation-viewer__toolbar [data-slide-status] { flex-basis:100%; } }
+@media(max-width:600px) { .presentation-reveal .controls { display:none; } .presentation-reveal .slide-number { font-size:10px; padding:3px; } }
+.presentation-speaker-receiver .global-site-shell>:not(.page-with-ad),.presentation-speaker-receiver .page-with-ad>:not(main),.presentation-speaker-receiver .presentation-view-page>:not(.presentation-viewer),.presentation-speaker-receiver [data-viewer-controls],.presentation-speaker-receiver [data-transcript] { display:none!important; }
+.presentation-speaker-receiver .page-with-ad { display:block; padding:0; margin:0; width:100%; max-width:none; }
+.presentation-speaker-receiver .presentation-view-page { margin:0; padding:0; max-width:none; width:100%; }
+.presentation-speaker-receiver .presentation-viewer .presentation-reveal { width:100%; height:100dvh; aspect-ratio:auto; border:0; }

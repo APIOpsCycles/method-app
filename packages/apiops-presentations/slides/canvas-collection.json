@@ -1,0 +1,80 @@
+{
+  "id": "canvas-collection",
+  "title": "Other canvases supporting API product decisions",
+  "elements": [
+    {
+      "id": "image-1",
+      "type": "image",
+      "asset": "filled-apiBusinessModelCanvas.png",
+      "alt": "New illustrative supplier-payment API Business Model Canvas",
+      "fit": "contain"
+    },
+    {
+      "id": "text-2",
+      "type": "text",
+      "text": "API Business Model Canvas"
+    },
+    {
+      "id": "text-3",
+      "type": "text",
+      "text": "Value, partners and costs of the payments service"
+    },
+    {
+      "id": "image-4",
+      "type": "image",
+      "asset": "filled-businessImpactCanvas.png",
+      "alt": "New illustrative supplier-payment Business Impact Canvas",
+      "fit": "contain"
+    },
+    {
+      "id": "text-5",
+      "type": "text",
+      "text": "Business Impact Canvas"
+    },
+    {
+      "id": "text-6",
+      "type": "text",
+      "text": "Expected benefits, consequences and critical risks"
+    },
+    {
+      "id": "image-7",
+      "type": "image",
+      "asset": "filled-capacityCanvas.png",
+      "alt": "New illustrative supplier-payment Capacity Canvas",
+      "fit": "contain"
+    },
+    {
+      "id": "text-8",
+      "type": "text",
+      "text": "Capacity Canvas"
+    },
+    {
+      "id": "text-9",
+      "type": "text",
+      "text": "Demand baseline, peak load and scaling decisions"
+    },
+    {
+      "id": "image-10",
+      "type": "image",
+      "asset": "filled-restCanvas.png",
+      "alt": "New illustrative supplier-payment REST API Canvas",
+      "fit": "contain"
+    },
+    {
+      "id": "text-11",
+      "type": "text",
+      "text": "REST API Canvas"
+    },
+    {
+      "id": "text-12",
+      "type": "text",
+      "text": "Payment resources, verbs and response examples"
+    },
+    {
+      "id": "text-13",
+      "type": "text",
+      "text": "Illustrative supplier-payment examples. Capacity measurements and assumptions require validation."
+    }
+  ],
+  "notes": "Source: Australian_Financial_Services_APIOps_Cycles_Case_Study (1).docx, supplied by the user. Client anonymised. Engagement by APIsFirst with partner Osaango. Benefits are qualitative; no quantified delivery or business impact is claimed.\n\nFour newly authored illustrative examples continue the fictional supplier-payment scenario. They demonstrate the canonical API Business Model, Business Impact, Capacity and REST canvases. They do not reproduce the supplied real reference set, and are not evidence of actual client artefacts or delivered capabilities. The business-model canvas names the provisional Supplier Payments API before its value proposition. Impact entries describe expected benefits and risks, not observed impact. Capacity entries explicitly identify a volume baseline to measure, a peak to test and service hours to agree; no traffic forecast or measured capacity is invented. REST request and response examples are illustrative only. Canonical templates: local apiops-cycles-method-data canvasData.json and localizedData.json, IDs apiBusinessModelCanvas, businessImpactCanvas, capacityCanvas, restCanvas. Template attribution: APIOps Cycles and Osaango Ltd, with Alexander Osterwalder for API Business Model Canvas. CC-BY-SA 4.0. Importable illustrative JSON and full-size canvas images are saved under assets."
+}

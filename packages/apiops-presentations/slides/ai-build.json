@@ -1,0 +1,29 @@
+{
+  "id": "ai-build",
+  "title": "Building with AI works best as a bounded change",
+  "elements": [
+    {
+      "id": "numbered-1",
+      "type": "numbered",
+      "items": [
+        "Select one reviewed operation and its acceptance criteria.",
+        "Ask for an implementation diff and tests against the contract.",
+        "Run checks, inspect behaviour and record unresolved decisions.",
+        "Have the responsible people review the evidence before merging."
+      ]
+    },
+    {
+      "id": "image-2",
+      "type": "image",
+      "asset": "intro-ai-build.png",
+      "alt": "Generated conceptual APIOps scene of AI-assisted implementation and human review",
+      "fit": "contain"
+    },
+    {
+      "id": "text-3",
+      "type": "text",
+      "text": "Suggested task: implement payment submission with replay and cross-partner denial tests."
+    }
+  ],
+  "notes": "APIOps introduction. Technical continuation is illustrative; no client implementation or measured improvement is claimed.\n\nRecommended iterative working pattern. The validated contract, domain rules, architecture decisions and critical journeys constrain the implementation. The example task is illustrative. AI output requires review and execution of meaningful tests. Source guidance explicitly connects delivery with prior method outputs. Visual generated with the built-in image generation tool using the APIOps scarf-human style; conceptual, not a client workshop photograph.\n\nSources checked 3 November 2026:\nsrc/snippets/api-design-principles-guidance.md\npackages/create-apiops/template/AGENTS.md"
+}

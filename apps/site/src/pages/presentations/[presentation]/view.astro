@@ -1,0 +1,79 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PresentationTranscript from '../../../components/presentations/PresentationTranscript.astro';
+import {presentationEditions,presentationPath,previewFor,getPresentationSlides,getPresentationMarkup,slideTitle,downloadsFor,artifactUrl} from '../../../content/presentations';
+import '../../../../../../packages/apiops-presentations/scripts/reveal-theme.css';
+import '../../../styles/presentations.css';
+export function getStaticPaths(){return presentationEditions.map(edition=>({params:{presentation:edition.id},props:{edition}}));}
+const {edition}=Astro.props,slides=getPresentationSlides(edition.id),files=downloadsFor(edition.id);
+---
+<BaseLayout title={`${edition.title} — slides`} description={edition.description} canonicalPath={`${presentationPath(edition.id)}/view`} lang="en">
+  <main class="public-content presentation-view-page">
+    <nav class="public-breadcrumbs" aria-label="Breadcrumb"><a href="/presentations">Presentations</a><span aria-hidden="true">/</span><a href={presentationPath(edition.id)}>{edition.title}</a></nav>
+    <h1>{edition.title}</h1>
+    <p class="presentation-view-intro">Present with Reveal.js or open the text versions. <a href={artifactUrl(files.pptx)} download>Download PowerPoint</a> · <a href={artifactUrl(files.pdf)} download>Download PDF</a> · <a href={artifactUrl(files.reveal)} download>Download Reveal.js</a></p>
+    <div class="presentation-viewer" data-presentation-viewer>
+      <div class="presentation-viewer__toolbar" data-viewer-controls hidden>
+        <button type="button" data-previous aria-label="Previous slide">← Previous</button>
+        <label class="sr-only" for="slide-picker">Choose a slide</label><select id="slide-picker" data-slide-picker>{slides.map((slide,i)=><option value={i}>{i+1}. {slideTitle(slide).replaceAll('\n',' ')}</option>)}</select>
+        <button type="button" data-next aria-label="Next slide">Next →</button>
+        <button type="button" data-overview>Slide overview</button>
+        <button type="button" data-fullscreen hidden>Enter fullscreen</button>
+        <span class="presentation-meta" data-slide-status role="status" aria-live="polite" aria-atomic="true"></span>
+      </div>
+      <div class="reveal apiops-reveal presentation-reveal" data-reveal-root hidden tabindex="0" aria-label={`${edition.title} — Reveal.js presentation`}><div class="slides" set:html={getPresentationMarkup(edition.id)} /></div>
+      <noscript><p>All slides and their text versions are available below without JavaScript.</p></noscript>
+      {slides.map((slide,i)=><article class="presentation-viewer__slide" id={`text-slide-${i+1}`} data-transcript={i+1}>
+        <h2 class="sr-only">Slide {i+1}: {slideTitle(slide)}</h2>
+        <img data-fallback-image src={previewFor(edition.id,i)} alt={`Slide ${i+1}: ${slideTitle(slide).replaceAll('\n',' ')}`} width="1280" height="720" loading={i===0?'eager':'lazy'} />
+        <details class="presentation-slide-text"><summary>Read text version of slide {i+1}</summary><PresentationTranscript slide={slide} /></details>
+      </article>)}
+    </div>
+    <p class="presentation-meta">Use arrow keys or swipe to navigate, Esc for slide overview and S for speaker view. <a href={presentationPath(edition.id)}>Back to presentation details and source</a>.</p>
+  </main>
+</BaseLayout>
+<script>
+  import Reveal from 'reveal.js';
+  import RevealNotes from 'reveal.js/plugin/notes';
+  import 'reveal.js/reveal.css';
+  const viewer=document.querySelector<HTMLElement>('[data-presentation-viewer]');
+  if(viewer){
+    if(new URLSearchParams(location.search).has('receiver'))document.documentElement.classList.add('presentation-speaker-receiver');
+    const root=viewer.querySelector<HTMLElement>('[data-reveal-root]')!;
+    const transcripts=Array.from(viewer.querySelectorAll<HTMLElement>('[data-transcript]'));
+    const previous=viewer.querySelector<HTMLButtonElement>('[data-previous]')!;
+    const next=viewer.querySelector<HTMLButtonElement>('[data-next]')!;
+    const picker=viewer.querySelector<HTMLSelectElement>('[data-slide-picker]')!;
+    const status=viewer.querySelector<HTMLElement>('[data-slide-status]')!;
+    const fullscreen=viewer.querySelector<HTMLButtonElement>('[data-fullscreen]')!;
+    // Preserve links shared before the Reveal.js viewer was introduced.
+    if(/^#slide-\d+$/.test(location.hash))history.replaceState(null,'',location.hash.replace('#','#/'));
+    root.hidden=false;
+    const deck=new Reveal(root,{
+      embedded:true,width:1280,height:720,margin:0,center:false,hash:true,history:false,transition:'none',scrollActivationWidth:null,
+      controls:true,controlsTutorial:false,progress:true,slideNumber:'c/t',plugins:[RevealNotes],
+      keyboardCondition:event=>!((event.target as HTMLElement).closest('input,select,textarea,details,[contenteditable="true"]')),
+    });
+    function update(){
+      const current=deck.getIndices().h;
+      transcripts.forEach((slide,i)=>slide.hidden=i!==current);
+      picker.value=String(current);previous.disabled=current===0;next.disabled=current===transcripts.length-1;
+      status.textContent=`Slide ${current+1} of ${transcripts.length}`;
+      // Reveal throttles its own hash writes; keep immediate reload/share actions on this slide.
+      history.replaceState(null,'',`#/slide-${current+1}`);
+    }
+    deck.on('slidechanged',update);
+    deck.initialize().then(()=>{
+      viewer.dataset.revealReady='true';
+      viewer.querySelectorAll<HTMLElement>('[data-fallback-image]').forEach(image=>image.hidden=true);
+      viewer.querySelector<HTMLElement>('[data-viewer-controls]')!.hidden=false;
+      previous.addEventListener('click',()=>deck.prev());next.addEventListener('click',()=>deck.next());
+      picker.addEventListener('change',()=>deck.slide(Number(picker.value)));
+      viewer.querySelector('[data-overview]')!.addEventListener('click',()=>deck.toggleOverview());
+      fullscreen.hidden=!document.fullscreenEnabled;
+      fullscreen.addEventListener('click',async()=>{try{if(document.fullscreenElement)await document.exitFullscreen();else await viewer.requestFullscreen();}catch{status.textContent='Fullscreen is unavailable. You can continue browsing slides here.';}});
+      document.addEventListener('fullscreenchange',()=>{fullscreen.textContent=document.fullscreenElement?'Exit fullscreen':'Enter fullscreen';deck.layout();});
+      update();
+    }).catch(()=>{root.hidden=true;transcripts.forEach(t=>t.hidden=false);});
+  }
+</script>

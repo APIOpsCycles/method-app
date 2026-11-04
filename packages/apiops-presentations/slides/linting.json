@@ -1,0 +1,45 @@
+{
+  "id": "linting",
+  "title": "Linting checks the contract against explicit rules",
+  "elements": [
+    {
+      "id": "text-1",
+      "type": "code",
+      "text": "npm run lint:openapi:full-crud"
+    },
+    {
+      "id": "table-2",
+      "type": "table",
+      "rows": [
+        [
+          "Scaffold profile",
+          "Rules in the inspected template",
+          "Use in this example"
+        ],
+        [
+          "read-only",
+          "spectral:oas, a versioned server\npath and bans on write methods",
+          "For a genuinely read-only API"
+        ],
+        [
+          "full-crud",
+          "The shared base rules,\nwithout the read-only verb bans",
+          "For the payment API with POST"
+        ]
+      ],
+      "header": true,
+      "emphasizeFirstColumn": true
+    },
+    {
+      "id": "text-3",
+      "type": "text",
+      "text": "The full-crud name permits writes; it does not require every CRUD operation."
+    },
+    {
+      "id": "text-4",
+      "type": "text",
+      "text": "The scaffold validate:openapi command runs both profiles, so a write-enabled API needs a deliberate profile choice."
+    }
+  ],
+  "notes": "APIOps introduction. Technical continuation is illustrative; no client implementation or measured improvement is claimed.\n\nVerified against the actual Spectral YAML and npm scripts. read-only extends base.yaml and prohibits POST, PUT, PATCH and DELETE. full-crud extends the same base and adds no rules. base.yaml extends spectral:oas and checks server URLs against ^/v\\d+$, for example /v1. The README wording calling full-crud stricter is not used here because the implementation is authoritative. These are configured rules, not proof of the full style guide or runtime security. No Spectral execution result is claimed.\n\nSources checked 3 November 2026:\npackages/create-apiops/template/spectral/base.yaml\npackages/create-apiops/template/spectral/read-only.yaml\npackages/create-apiops/template/spectral/full-crud.yaml\npackages/create-apiops/template/package.json\nhttps://github.com/stoplightio/spectral"
+}

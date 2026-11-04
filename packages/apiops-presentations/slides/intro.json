@@ -1,0 +1,34 @@
+{
+  "id": "intro",
+  "title": "",
+  "elements": [
+    {
+      "id": "text-1",
+      "type": "text",
+      "text": "APIOps Cycles"
+    },
+    {
+      "id": "text-2",
+      "type": "text",
+      "text": "Product strategy, architecture\nand delivery with AI"
+    },
+    {
+      "id": "text-3",
+      "type": "text",
+      "text": "An introduction grounded in a financial-services case"
+    },
+    {
+      "id": "text-4",
+      "type": "text",
+      "text": "Case study: APIsFirst with partner Osaango"
+    },
+    {
+      "id": "image-5",
+      "type": "image",
+      "asset": "chaos-to-capabilities.png",
+      "alt": "APIOps human scene showing connected discovery and delivery roles",
+      "fit": "contain"
+    }
+  ],
+  "notes": "Source: Australian_Financial_Services_APIOps_Cycles_Case_Study (1).docx, supplied by the user. Client anonymised. Engagement by APIsFirst with partner Osaango. Benefits are qualitative; no quantified delivery or business impact is claimed.\n\nThe engagement applied APIOps Cycles to real API product development, coordinated release planning and organisational capability improvement. It connected business discovery with architecture, security, development and testing.\n\nVisual: APIOps Cycles design system, scene-chaos-to-capabilities."
+}

@@ -1,0 +1,44 @@
+{
+  "id": "value-proposition",
+  "title": "API Value Proposition Canvas: the same journey",
+  "elements": [
+    {
+      "id": "image-1",
+      "type": "image",
+      "asset": "filled-apiValuePropositionCanvas-neutral.png",
+      "alt": "New illustrative filled API Value Proposition Canvas using the same supplier-payment tasks",
+      "fit": "contain"
+    },
+    {
+      "id": "text-2",
+      "type": "text",
+      "text": "Customer concern to API feature"
+    },
+    {
+      "id": "text-3",
+      "type": "text",
+      "text": "Unclear payment status:\nshow progress and a receipt.\n\nRepeat-payment concern:\nprevent duplicate submissions."
+    },
+    {
+      "id": "text-4",
+      "type": "text",
+      "text": "Candidate API products"
+    },
+    {
+      "id": "bullets-5",
+      "type": "bullets",
+      "items": [
+        "Payee Check API",
+        "Payment Methods API",
+        "Payments API",
+        "Payment Status API"
+      ]
+    },
+    {
+      "id": "text-6",
+      "type": "text",
+      "text": "Illustrative example. API names are provisional."
+    }
+  ],
+  "notes": "Source: Australian_Financial_Services_APIOps_Cycles_Case_Study (1).docx, supplied by the user. Client anonymised. Engagement by APIsFirst with partner Osaango. Benefits are qualitative; no quantified delivery or business impact is claimed.\n\nThe fictional example continues exactly the same five customer tasks as the preceding Customer Journey Canvas. Proposed gain-enabling features: status visibility, a receipt ID and notification of the final result. Proposed pain-relieving features: checking payee details, preventing repeat submissions and explaining failed payments. The four API product names are illustrative candidates, not actual client systems, delivered APIs or verified product boundaries. All canvas notes were authored afresh. No reference screenshots or client-specific details are embedded. Template source: local apiops-cycles-method-data, apiValuePropositionCanvas. https://apiopscycles.com/resources/api-value-proposition-canvas/ . Template by APIOps Cycles, Alexander Osterwalder and Osaango Ltd, CC-BY-SA 4.0. Importable example JSON: assets/illustrative_supplier_payment_apiValuePropositionCanvas_en.json."
+}

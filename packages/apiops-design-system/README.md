@@ -37,6 +37,10 @@ Run `npm test` before publishing to verify the package contract.
 
 ## Assets
 
+For downloading, composing scenes, briefing AI image generation and using visuals in
+slides or applications, read [Create and reuse visuals](docs/creating-visuals.md),
+also available on the [method website](https://apiopscycles.com/design-system/visuals).
+
 The default named asset inventory uses `/design-system`. Applications deployed at a
 subpath or behind a CDN can call `createDesignSystemAssets(basePath)` or pass a base
 path to `designSystemAssetPath(path, basePath)`.
