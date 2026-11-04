@@ -317,7 +317,6 @@ export function ResourceSelector({ items, value, emptyLabel, onChange }: { items
           <span className="side-resource-card__meta">{item.icon}{item.type}</span>
           <strong>{item.title}</strong>
           <small>{item.description}</small>
-          {item.href && item.primaryLinkLabel && <span className="side-resource-card__link-hint">{item.primaryLinkLabel} <span aria-hidden="true">→</span></span>}
         </>;
         const className = `side-resource-card${item.id === value ? " is-active" : ""}`;
         const primaryClassName = item.secondaryLink ? "side-resource-card__primary" : className;
@@ -325,7 +324,13 @@ export function ResourceSelector({ items, value, emptyLabel, onChange }: { items
           ? <a className={primaryClassName} href={item.href} key={item.id}>{content}</a>
           : <button className={primaryClassName} key={item.id} type="button" onClick={() => onChange?.(item.id)}>{content}</button>;
         return item.secondaryLink
-          ? <div className={`${className} side-resource-card--with-action`} key={item.id}>{primary}<div className="side-resource-card__actions"><ResourceActionLink {...item.secondaryLink} accessibleLabel={`${item.secondaryLink.label}: ${item.title}`} /></div></div>
+          ? <div className={`${className} side-resource-card--with-action`} key={item.id}>
+              {item.href && item.primaryLinkLabel ? <div className="side-resource-card__content">{content}</div> : primary}
+              <div className="side-resource-card__actions">
+                {item.href && item.primaryLinkLabel && <ResourceActionLink href={item.href} label={item.primaryLinkLabel} accessibleLabel={`${item.primaryLinkLabel}: ${item.title}`} />}
+                <ResourceActionLink {...item.secondaryLink} accessibleLabel={`${item.secondaryLink.label}: ${item.title}`} />
+              </div>
+            </div>
           : primary;
       })}
     </div>
