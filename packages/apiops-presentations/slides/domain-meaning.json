@@ -1,0 +1,37 @@
+{
+  "id": "domain-meaning",
+  "title": "API design starts with shared domain meaning",
+  "elements": [
+    {
+      "id": "image-1",
+      "type": "image",
+      "asset": "technical-domainCanvas.png",
+      "alt": "New illustrative Domain Canvas using the supplier-payment journey",
+      "fit": "contain"
+    },
+    {
+      "id": "text-2",
+      "type": "text",
+      "text": "Payment and payee"
+    },
+    {
+      "id": "text-3",
+      "type": "text",
+      "text": "A payment is an instruction with an amount, currency, payee and a lifecycle status."
+    },
+    {
+      "id": "text-4",
+      "type": "text",
+      "text": "Business rules shape the contract"
+    },
+    {
+      "id": "bullets-5",
+      "type": "bullets",
+      "items": [
+        "Keep accepted, pending and completed meanings distinct.",
+        "Agree ownership and the source of truth for state changes."
+      ]
+    }
+  ],
+  "notes": "APIOps introduction. Technical continuation is illustrative; no client implementation or measured improvement is claimed.\n\nAPI Design links Domain Canvas, Interaction Canvas, protocol-specific canvases, design principles and contract-first design. The domain entries are illustrative working definitions. Validate business meanings and state transitions before adopting them. The prior Customer Journey Canvas supplies the actor, trigger and sequence for this example.\n\nSources checked 3 November 2026:\nmethod-engine: buildStationResourceData(api-design, en, REST)\nsrc/snippets/api-style-guide.json: REST-DOMAIN-01, REST-DOMAIN-02"
+}

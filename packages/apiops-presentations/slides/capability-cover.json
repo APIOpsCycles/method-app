@@ -1,0 +1,34 @@
+{
+  "id": "capability-cover",
+  "title": "",
+  "elements": [
+    {
+      "id": "text-1",
+      "type": "text",
+      "text": "APIOps Cycles"
+    },
+    {
+      "id": "text-2",
+      "type": "text",
+      "text": "Capability\nProductization Cycle"
+    },
+    {
+      "id": "text-3",
+      "type": "text",
+      "text": "From a reusable service promise\nto operation and improvement"
+    },
+    {
+      "id": "text-4",
+      "type": "text",
+      "text": "A practical introduction · 25 minutes"
+    },
+    {
+      "id": "image-5",
+      "type": "image",
+      "asset": "chaos-to-capabilities.png",
+      "alt": "APIOps scarf-human scene connecting fragmented work to reusable capabilities",
+      "fit": "contain"
+    }
+  ],
+  "notes": "Introduce the capability view of the method. It begins with value and mutual service commitments before selecting an implementation style.\n\nThe supplier-payment status capability is a newly authored fictional teaching example, not a client implementation or measured outcome. Figures, service promises and release criteria are illustrative proposals requiring validation. Working summaries are not reproductions of canonical canvas templates.\n\nSource: apiops-cycles-method-data 4.2.1, src/data/method/cycles.json and en/labels.cycles.json; reviewed 4 November 2026. https://apiopscycles.com/cycles/capability-productization-cycle . Method: APIOps Cycles / Osaango Ltd, CC-BY-SA 4.0."
+}

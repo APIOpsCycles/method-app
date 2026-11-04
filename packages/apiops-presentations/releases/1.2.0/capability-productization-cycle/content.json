@@ -1,0 +1,2529 @@
+{
+  "deck": {
+    "schemaVersion": "1.0",
+    "id": "capability-productization-cycle",
+    "title": "Capability Productization Cycle",
+    "language": "en",
+    "author": "APIOps Cycles",
+    "slides": [
+      "slides/capability-cover.json",
+      "slides/capability-outcome.json",
+      "slides/capability-route.json",
+      "slides/capability-hypothesis.json",
+      "slides/capability-commitments.json",
+      "slides/capability-choice.json",
+      "slides/capability-solution.json",
+      "slides/capability-operate.json",
+      "slides/capability-ai.json",
+      "slides/capability-assure.json",
+      "slides/capability-publish.json",
+      "slides/capability-improve.json",
+      "slides/capability-related-cycles.json",
+      "slides/capability-tools.json",
+      "slides/capability-workshop.json",
+      "slides/capability-next.json"
+    ]
+  },
+  "slides": [
+    {
+      "id": "capability-cover",
+      "title": "",
+      "elements": [
+        {
+          "id": "text-1",
+          "type": "text",
+          "text": "APIOps Cycles"
+        },
+        {
+          "id": "text-2",
+          "type": "text",
+          "text": "Capability\nProductization Cycle"
+        },
+        {
+          "id": "text-3",
+          "type": "text",
+          "text": "From a reusable service promise\nto operation and improvement"
+        },
+        {
+          "id": "text-4",
+          "type": "text",
+          "text": "A practical introduction · 25 minutes"
+        },
+        {
+          "id": "image-5",
+          "type": "image",
+          "asset": "chaos-to-capabilities.png",
+          "alt": "APIOps scarf-human scene connecting fragmented work to reusable capabilities",
+          "fit": "contain"
+        }
+      ],
+      "notes": "Introduce the capability view of the method. It begins with value and mutual service commitments before selecting an implementation style.\n\nThe supplier-payment status capability is a newly authored fictional teaching example, not a client implementation or measured outcome. Figures, service promises and release criteria are illustrative proposals requiring validation. Working summaries are not reproductions of canonical canvas templates.\n\nSource: apiops-cycles-method-data 4.2.1, src/data/method/cycles.json and en/labels.cycles.json; reviewed 4 November 2026. https://apiopscycles.com/cycles/capability-productization-cycle . Method: APIOps Cycles / Osaango Ltd, CC-BY-SA 4.0."
+    },
+    {
+      "id": "capability-outcome",
+      "title": "Start with the outcome people need",
+      "elements": [
+        {
+          "id": "lead",
+          "type": "text",
+          "text": "A capability is a reusable ability offered to consumers, with an owner and a service promise."
+        },
+        {
+          "id": "points",
+          "type": "bullets",
+          "items": [
+            "Name the consumer and the job they need to complete.",
+            "Define what the producer provides and supports.",
+            "Choose the implementation after testing the need."
+          ]
+        },
+        {
+          "id": "image",
+          "type": "image",
+          "asset": "api-first-not-enough.png",
+          "alt": "APIOps human scene illustrating that an API alone does not define a useful capability",
+          "fit": "contain"
+        },
+        {
+          "id": "example",
+          "type": "text",
+          "text": "Example: let suppliers and service teams understand payment progress without repeated status enquiries."
+        }
+      ],
+      "notes": "The method description explicitly avoids assuming implementation style in advance. A capability might be accessed through APIs, events, integrations or automation. This is not an organisational maturity assessment.\n\nThe supplier-payment status capability is a newly authored fictional teaching example, not a client implementation or measured outcome. Figures, service promises and release criteria are illustrative proposals requiring validation. Working summaries are not reproductions of canonical canvas templates.\n\nSource: apiops-cycles-method-data 4.2.1, src/data/method/cycles.json and en/labels.cycles.json; reviewed 4 November 2026. https://apiopscycles.com/cycles/capability-productization-cycle . Method: APIOps Cycles / Osaango Ltd, CC-BY-SA 4.0."
+    },
+    {
+      "id": "capability-route",
+      "title": "Eight stations, revisited as evidence changes",
+      "elements": [
+        {
+          "id": "map",
+          "type": "image",
+          "asset": "capability-cycle-route.png",
+          "alt": "Capability Productization Cycle route: strategy; consumer and producer requirements; architecture; solution and interaction design; delivery and operations; readiness; publishing and enablement; monitoring and improvement; feedback returns to earlier decisions",
+          "fit": "contain"
+        },
+        {
+          "id": "caption",
+          "type": "text",
+          "text": "Use the stations to expose missing decisions and evidence. Return to earlier work when assumptions change."
+        }
+      ],
+      "notes": "The eight labels and their order follow the Capability Productization Cycle station mapping in method-data. This simplified route is an original presentation diagram, not the API Productization metro map. It does not prescribe a one-way delivery process.\n\nThe supplier-payment status capability is a newly authored fictional teaching example, not a client implementation or measured outcome. Figures, service promises and release criteria are illustrative proposals requiring validation. Working summaries are not reproductions of canonical canvas templates.\n\nSource: apiops-cycles-method-data 4.2.1, src/data/method/cycles.json and en/labels.cycles.json; reviewed 4 November 2026. https://apiopscycles.com/cycles/capability-productization-cycle . Method: APIOps Cycles / Osaango Ltd, CC-BY-SA 4.0."
+    },
+    {
+      "id": "capability-hypothesis",
+      "title": "1. Strategy: test one capability hypothesis",
+      "elements": [
+        {
+          "id": "table",
+          "type": "table",
+          "rows": [
+            [
+              "Question",
+              "Illustrative working answer"
+            ],
+            [
+              "Consumer and job",
+              "Suppliers and service teams need to see payment progress."
+            ],
+            [
+              "Problem to validate",
+              "Status is scattered; people contact support to explain delays."
+            ],
+            [
+              "Reusable service promise",
+              "Provide an authorised, current status and a clear next step."
+            ],
+            [
+              "Value and viability evidence",
+              "Observe the journey, review enquiry reasons and test demand."
+            ],
+            [
+              "Decision before investing",
+              "Proceed, revise or stop; name the capability owner."
+            ]
+          ],
+          "header": true,
+          "emphasizeFirstColumn": true
+        },
+        {
+          "id": "takeaway",
+          "type": "text",
+          "text": "A reusable capability needs evidence of demand and an owner."
+        }
+      ],
+      "notes": "Recommended strategy resources: Customer Journey Canvas, Capability Value Proposition Canvas, Capability Business Model Canvas and Capability Hypothesis Canvas. This table is a filled working summary, not the canonical canvas. Validate reuse with actual intended consumers.\n\nThe supplier-payment status capability is a newly authored fictional teaching example, not a client implementation or measured outcome. Figures, service promises and release criteria are illustrative proposals requiring validation. Working summaries are not reproductions of canonical canvas templates.\n\nSource: apiops-cycles-method-data 4.2.1, src/data/method/cycles.json and en/labels.cycles.json; reviewed 4 November 2026. https://apiopscycles.com/cycles/capability-productization-cycle . Method: APIOps Cycles / Osaango Ltd, CC-BY-SA 4.0."
+    },
+    {
+      "id": "capability-commitments",
+      "title": "2. Requirements: agree the service together",
+      "elements": [
+        {
+          "id": "heading",
+          "type": "text",
+          "text": "Consumer and producer commitments"
+        },
+        {
+          "id": "points",
+          "type": "bullets",
+          "items": [
+            "Consumer: describe use, access needs and change constraints.",
+            "Producer: define freshness, availability and support.",
+            "Owner: agree funding, scope and lifecycle decisions.",
+            "Together: test onboarding and the exception path."
+          ]
+        },
+        {
+          "id": "image",
+          "type": "image",
+          "asset": "workshop.png",
+          "alt": "APIOps human workshop scene representing agreement between capability consumers, producers and owners",
+          "fit": "contain"
+        },
+        {
+          "id": "agreement",
+          "type": "text",
+          "text": "Example agreement: show the source timestamp; restrict access to permitted suppliers; explain unavailable status."
+        }
+      ],
+      "notes": "Canonical station: Consumer & Producer Service Requirements. Use the Capability Consumer/Producer Requirements Canvas. Agree access, service, support, change and lifecycle commitments with all parties. The example is a proposed service expectation, not an SLA already agreed.\n\nThe supplier-payment status capability is a newly authored fictional teaching example, not a client implementation or measured outcome. Figures, service promises and release criteria are illustrative proposals requiring validation. Working summaries are not reproductions of canonical canvas templates.\n\nSource: apiops-cycles-method-data 4.2.1, src/data/method/cycles.json and en/labels.cycles.json; reviewed 4 November 2026. https://apiopscycles.com/cycles/capability-productization-cycle . Method: APIOps Cycles / Osaango Ltd, CC-BY-SA 4.0."
+    },
+    {
+      "id": "capability-choice",
+      "title": "3. Architecture: choose how to provide it",
+      "elements": [
+        {
+          "id": "table",
+          "type": "table",
+          "rows": [
+            [
+              "Option",
+              "Useful when",
+              "Evidence to check"
+            ],
+            [
+              "API on demand",
+              "A consumer needs current status now.",
+              "Authorisation, source latency, peak demand."
+            ],
+            [
+              "Event notification",
+              "Consumers react when status changes.",
+              "Delivery guarantees, ordering, replay."
+            ],
+            [
+              "Reusable integration",
+              "Status spans several providers.",
+              "Ownership, mapping, reconciliation."
+            ],
+            [
+              "Workflow or automation",
+              "Exceptions require coordinated action.",
+              "Human approval, fallback, recovery."
+            ]
+          ],
+          "header": true,
+          "emphasizeFirstColumn": true
+        },
+        {
+          "id": "takeaway",
+          "type": "text",
+          "text": "Record the choice, alternatives, trust boundaries and operating cost."
+        }
+      ],
+      "notes": "Canonical station: Capability Architecture & Platform Decisions. Recommended resources include Business Impact, Locations, Capacity and Capability Architecture Decision canvases. Options can be combined; do not imply the method requires one implementation.\n\nThe supplier-payment status capability is a newly authored fictional teaching example, not a client implementation or measured outcome. Figures, service promises and release criteria are illustrative proposals requiring validation. Working summaries are not reproductions of canonical canvas templates.\n\nSource: apiops-cycles-method-data 4.2.1, src/data/method/cycles.json and en/labels.cycles.json; reviewed 4 November 2026. https://apiopscycles.com/cycles/capability-productization-cycle . Method: APIOps Cycles / Osaango Ltd, CC-BY-SA 4.0."
+    },
+    {
+      "id": "capability-solution",
+      "title": "4. Design: make the service promise testable",
+      "elements": [
+        {
+          "id": "table",
+          "type": "table",
+          "rows": [
+            [
+              "Decision",
+              "Supplier-payment status example"
+            ],
+            [
+              "Shared meaning",
+              "Define submitted, processing, paid and exception states."
+            ],
+            [
+              "Interaction",
+              "Read current status; optionally subscribe to changes."
+            ],
+            [
+              "Access and privacy",
+              "Identify caller and supplier; return only permitted records."
+            ],
+            [
+              "Unhappy path",
+              "Distinguish unknown payment, delayed source and denied access."
+            ],
+            [
+              "Change and compatibility",
+              "Specify timestamps, version policy and consumer migration."
+            ]
+          ],
+          "header": true,
+          "emphasizeFirstColumn": true
+        },
+        {
+          "id": "takeaway",
+          "type": "text",
+          "text": "Review the interaction with a real consumer before implementation."
+        }
+      ],
+      "notes": "Canonical station: Capability Solution & Interaction Design. Recommended resources: Domain Canvas, Capability Solution Design Canvas, Interaction Canvas and contract-first design. Select the contract or service definition appropriate to the architecture; an OpenAPI contract only covers an HTTP API portion.\n\nThe supplier-payment status capability is a newly authored fictional teaching example, not a client implementation or measured outcome. Figures, service promises and release criteria are illustrative proposals requiring validation. Working summaries are not reproductions of canonical canvas templates.\n\nSource: apiops-cycles-method-data 4.2.1, src/data/method/cycles.json and en/labels.cycles.json; reviewed 4 November 2026. https://apiopscycles.com/cycles/capability-productization-cycle . Method: APIOps Cycles / Osaango Ltd, CC-BY-SA 4.0."
+    },
+    {
+      "id": "capability-operate",
+      "title": "5. Delivery includes operation and support",
+      "elements": [
+        {
+          "id": "sequence",
+          "type": "numbered",
+          "items": [
+            "Build one complete consumer path from access to useful status.",
+            "Test permissions, stale data, source failure and recovery.",
+            "Release with monitoring, support and rollback ownership.",
+            "Practise the incident and change process with the producer."
+          ]
+        },
+        {
+          "id": "side-title",
+          "type": "text",
+          "text": "Evidence to keep"
+        },
+        {
+          "id": "side",
+          "type": "bullets",
+          "items": [
+            "Test results and release record",
+            "Runbook and escalation route",
+            "Dependency and access inventory",
+            "Recovery and lifecycle decisions"
+          ]
+        }
+      ],
+      "notes": "Canonical station: Capability Delivery & Operations. Use implementation-style-appropriate engineering, testing, security, release, support and operational ownership practices. The Capability Readiness & Operations Canvas connects delivery decisions to operation. The numbered sequence is a suggested teaching workflow, not an additional mandatory method process.\n\nThe supplier-payment status capability is a newly authored fictional teaching example, not a client implementation or measured outcome. Figures, service promises and release criteria are illustrative proposals requiring validation. Working summaries are not reproductions of canonical canvas templates.\n\nSource: apiops-cycles-method-data 4.2.1, src/data/method/cycles.json and en/labels.cycles.json; reviewed 4 November 2026. https://apiopscycles.com/cycles/capability-productization-cycle . Method: APIOps Cycles / Osaango Ltd, CC-BY-SA 4.0."
+    },
+    {
+      "id": "capability-ai",
+      "title": "Use AI with agreed capability context",
+      "elements": [
+        {
+          "id": "lead",
+          "type": "text",
+          "text": "Give AI the service promise, boundaries and reviewed interaction—not just a feature request."
+        },
+        {
+          "id": "points",
+          "type": "bullets",
+          "items": [
+            "Supply approved domain terms, contracts and acceptance examples.",
+            "Generate one small implementation or test change at a time.",
+            "Review permissions, failures and recovery with a human owner.",
+            "Run the applicable tests, linting and readiness checks."
+          ]
+        },
+        {
+          "id": "image",
+          "type": "image",
+          "asset": "intro-ai-build.png",
+          "alt": "Conceptual APIOps illustration of AI-assisted building with human review",
+          "fit": "contain"
+        }
+      ],
+      "notes": "Author-developed guidance applying the delivery station to AI-assisted work; this is not a separate canonical capability station. For an API implementation, scaffold contracts, linting, tests and CI using the API tooling described in the technical deck. For integrations or workflows, use equivalent checks for those artefacts. AI output and a clean lint result do not establish service readiness. Do not put client secrets or restricted data in prompts.\n\nThe supplier-payment status capability is a newly authored fictional teaching example, not a client implementation or measured outcome. Figures, service promises and release criteria are illustrative proposals requiring validation. Working summaries are not reproductions of canonical canvas templates.\n\nSource: apiops-cycles-method-data 4.2.1, src/data/method/cycles.json and en/labels.cycles.json; reviewed 4 November 2026. https://apiopscycles.com/cycles/capability-productization-cycle . Method: APIOps Cycles / Osaango Ltd, CC-BY-SA 4.0."
+    },
+    {
+      "id": "capability-assure",
+      "title": "6. Readiness: decide from evidence",
+      "elements": [
+        {
+          "id": "table",
+          "type": "table",
+          "rows": [
+            [
+              "Readiness question",
+              "Evidence for the release decision"
+            ],
+            [
+              "Does it serve the consumer?",
+              "Reviewed service definition and consumer acceptance."
+            ],
+            [
+              "Is access appropriate?",
+              "Permission tests and data-handling decisions."
+            ],
+            [
+              "Can it run and recover?",
+              "Failure tests, runbook, monitoring and fallback."
+            ],
+            [
+              "Can people use and support it?",
+              "Onboarding rehearsal, support route and named owners."
+            ],
+            [
+              "What risk remains?",
+              "Recorded exceptions, accountable owner and review date."
+            ]
+          ],
+          "header": true,
+          "emphasizeFirstColumn": true
+        },
+        {
+          "id": "takeaway",
+          "type": "text",
+          "text": "Release, release with accepted conditions, or return for more evidence."
+        }
+      ],
+      "notes": "Canonical station: Capability Readiness Assurance. Use the capability readiness checklist, compliance/governance guide and service-quality checklist. Review design, contract or service definition, tests, operations, permissions, monitoring, support, fallback, lifecycle, risk and ownership. This is a teaching selection, not the complete canonical checklist.\n\nThe supplier-payment status capability is a newly authored fictional teaching example, not a client implementation or measured outcome. Figures, service promises and release criteria are illustrative proposals requiring validation. Working summaries are not reproductions of canonical canvas templates.\n\nSource: apiops-cycles-method-data 4.2.1, src/data/method/cycles.json and en/labels.cycles.json; reviewed 4 November 2026. https://apiopscycles.com/cycles/capability-productization-cycle . Method: APIOps Cycles / Osaango Ltd, CC-BY-SA 4.0."
+    },
+    {
+      "id": "capability-publish",
+      "title": "7. Publish a capability people can adopt",
+      "elements": [
+        {
+          "id": "table",
+          "type": "table",
+          "rows": [
+            [
+              "Catalogue entry",
+              "Illustrative content"
+            ],
+            [
+              "Purpose and audience",
+              "Payment progress for authorised suppliers and service teams."
+            ],
+            [
+              "Access and onboarding",
+              "Eligibility, request route, example interaction and first-use test."
+            ],
+            [
+              "Service expectations",
+              "Data freshness, supported usage and known limitations."
+            ],
+            [
+              "Ownership and support",
+              "Capability owner, producer contact and escalation route."
+            ],
+            [
+              "Lifecycle",
+              "Version, change notice, migration and retirement policy."
+            ]
+          ],
+          "header": true,
+          "emphasizeFirstColumn": true
+        },
+        {
+          "id": "takeaway",
+          "type": "text",
+          "text": "Publishing includes enablement and support, alongside technical access."
+        }
+      ],
+      "notes": "Canonical station: Capability Publishing & Enablement. Publish so intended consumers can discover, understand, request access, onboard, use and get support. Resources include publishing/discovery, consumer onboarding, service-agreement and versioning/lifecycle guides. Use a catalogue entry and service agreement appropriate to the selected style.\n\nThe supplier-payment status capability is a newly authored fictional teaching example, not a client implementation or measured outcome. Figures, service promises and release criteria are illustrative proposals requiring validation. Working summaries are not reproductions of canonical canvas templates.\n\nSource: apiops-cycles-method-data 4.2.1, src/data/method/cycles.json and en/labels.cycles.json; reviewed 4 November 2026. https://apiopscycles.com/cycles/capability-productization-cycle . Method: APIOps Cycles / Osaango Ltd, CC-BY-SA 4.0."
+    },
+    {
+      "id": "capability-improve",
+      "title": "8. Measure value and improve the service",
+      "elements": [
+        {
+          "id": "table",
+          "type": "table",
+          "rows": [
+            [
+              "Signal",
+              "What to observe",
+              "Decision it can inform"
+            ],
+            [
+              "Consumer outcome",
+              "Enquiry reasons and time to understand a delay.",
+              "Is the original problem being reduced?"
+            ],
+            [
+              "Adoption and reuse",
+              "Active intended consumers and repeat use.",
+              "Improve onboarding or revisit demand."
+            ],
+            [
+              "Service health",
+              "Status age, failures and recovery time.",
+              "Improve source access or resilience."
+            ],
+            [
+              "Cost and lifecycle",
+              "Cost to serve, support effort, dependencies.",
+              "Invest, change scope or plan retirement."
+            ]
+          ],
+          "header": true,
+          "emphasizeFirstColumn": true
+        },
+        {
+          "id": "takeaway",
+          "type": "text",
+          "text": "Agree a baseline and review cadence; take findings back to earlier stations."
+        }
+      ],
+      "notes": "Canonical station: Capability Monitoring & Improvement. Monitor value, outcomes, adoption, reuse, service health, consumer experience, cost, sustainability and lifecycle needs. Establish a baseline, data source, owner and review cadence before interpreting changes. Metrics above are proposals; no measured benefit or target is claimed.\n\nThe supplier-payment status capability is a newly authored fictional teaching example, not a client implementation or measured outcome. Figures, service promises and release criteria are illustrative proposals requiring validation. Working summaries are not reproductions of canonical canvas templates.\n\nSource: apiops-cycles-method-data 4.2.1, src/data/method/cycles.json and en/labels.cycles.json; reviewed 4 November 2026. https://apiopscycles.com/cycles/capability-productization-cycle . Method: APIOps Cycles / Osaango Ltd, CC-BY-SA 4.0."
+    },
+    {
+      "id": "capability-related-cycles",
+      "title": "Choose a cycle view for the work ahead",
+      "elements": [
+        {
+          "id": "table",
+          "type": "table",
+          "rows": [
+            [
+              "Cycle view",
+              "How it contributes to the same capability"
+            ],
+            [
+              "Capability Productization",
+              "Validate value, commitments, readiness and ongoing ownership."
+            ],
+            [
+              "API Productization",
+              "Design and operate APIs selected as consumer interfaces."
+            ],
+            [
+              "Integration Productization",
+              "Productize reusable connections between providers and consumers."
+            ],
+            [
+              "Automation",
+              "Design workflows, human controls, agents and exception handling."
+            ]
+          ],
+          "header": true,
+          "emphasizeFirstColumn": true
+        },
+        {
+          "id": "takeaway",
+          "type": "text",
+          "text": "Keep one service promise and owner across implementation choices."
+        }
+      ],
+      "notes": "The method catalog defines four cycle views over shared stations. These descriptions explain their relationship in the fictional example; they do not require executing every cycle as a sequential project phase.\n\nThe supplier-payment status capability is a newly authored fictional teaching example, not a client implementation or measured outcome. Figures, service promises and release criteria are illustrative proposals requiring validation. Working summaries are not reproductions of canonical canvas templates.\n\nSource: apiops-cycles-method-data 4.2.1, src/data/method/cycles.json and en/labels.cycles.json; reviewed 4 November 2026. https://apiopscycles.com/cycles/capability-productization-cycle . Method: APIOps Cycles / Osaango Ltd, CC-BY-SA 4.0."
+    },
+    {
+      "id": "capability-tools",
+      "title": "Use canvases to make decisions visible",
+      "elements": [
+        {
+          "id": "table",
+          "type": "table",
+          "rows": [
+            [
+              "Decision to work through",
+              "Capability Cycle resources"
+            ],
+            [
+              "Value and viability",
+              "Customer Journey; Capability Value Proposition; Business Model; Hypothesis."
+            ],
+            [
+              "Service commitments",
+              "Capability Consumer/Producer Requirements."
+            ],
+            [
+              "Architecture",
+              "Business Impact; Locations; Capacity; Capability Architecture Decision."
+            ],
+            [
+              "Solution and interaction",
+              "Domain; Capability Solution Design; Interaction."
+            ],
+            [
+              "Operation and readiness",
+              "Capability Readiness & Operations; readiness checklist."
+            ]
+          ],
+          "header": true,
+          "emphasizeFirstColumn": true
+        },
+        {
+          "id": "takeaway",
+          "type": "text",
+          "text": "Start with the unanswered decision; use its relevant canvas or guide."
+        }
+      ],
+      "notes": "Resource selection follows recommendedResources in the canonical capability cycle definition. Full canvas names and links: https://apiopscycles.com/resources/capability-hypothesis-canvas ; https://apiopscycles.com/resources/capability-value-proposition-canvas ; https://apiopscycles.com/resources/capability-business-model-canvas ; https://apiopscycles.com/resources/capability-consumer-producer-requirements-canvas ; https://apiopscycles.com/resources/capability-architecture-decision-canvas ; https://apiopscycles.com/resources/capability-solution-design-canvas ; https://apiopscycles.com/resources/capability-readiness-operations-canvas . Canvas attribution: APIOps Cycles / Osaango Ltd; preserve notices in the actual templates.\n\nThe supplier-payment status capability is a newly authored fictional teaching example, not a client implementation or measured outcome. Figures, service promises and release criteria are illustrative proposals requiring validation. Working summaries are not reproductions of canonical canvas templates.\n\nSource: apiops-cycles-method-data 4.2.1, src/data/method/cycles.json and en/labels.cycles.json; reviewed 4 November 2026. https://apiopscycles.com/cycles/capability-productization-cycle . Method: APIOps Cycles / Osaango Ltd, CC-BY-SA 4.0."
+    },
+    {
+      "id": "capability-workshop",
+      "title": "Start with one capability and its consumers",
+      "elements": [
+        {
+          "id": "steps",
+          "type": "numbered",
+          "items": [
+            "Choose a consumer journey and write one capability hypothesis.",
+            "Agree the service promise with the owner, producer and consumer.",
+            "Compare implementation options and record the first decision.",
+            "Test a small service interaction and review readiness evidence.",
+            "Agree what to measure and when to revisit the hypothesis."
+          ]
+        },
+        {
+          "id": "result",
+          "type": "text",
+          "text": "Workshop output: an evidence backlog, named decision owners and a next review date."
+        }
+      ],
+      "notes": "Suggested workshop facilitation sequence. Invite the capability owner, producer, intended consumers and architecture/operations representatives. Capture unknowns rather than inventing evidence. The method entry criteria are business goals defined and stakeholder approval; exit criteria are value proposition validated, architecture patterns validated, capability readiness confirmed and capability published for reuse.\n\nThe supplier-payment status capability is a newly authored fictional teaching example, not a client implementation or measured outcome. Figures, service promises and release criteria are illustrative proposals requiring validation. Working summaries are not reproductions of canonical canvas templates.\n\nSource: apiops-cycles-method-data 4.2.1, src/data/method/cycles.json and en/labels.cycles.json; reviewed 4 November 2026. https://apiopscycles.com/cycles/capability-productization-cycle . Method: APIOps Cycles / Osaango Ltd, CC-BY-SA 4.0."
+    },
+    {
+      "id": "capability-next",
+      "title": "Make the next reuse easier",
+      "elements": [
+        {
+          "id": "lead",
+          "type": "text",
+          "text": "A capability is ready for reuse when its value, service promise, access and operational ownership are clear."
+        },
+        {
+          "id": "steps",
+          "type": "numbered",
+          "items": [
+            "Name one capability and the consumer outcome.",
+            "Find the weakest evidence across the eight stations.",
+            "Assign the next experiment and review the result."
+          ]
+        },
+        {
+          "id": "links",
+          "type": "text",
+          "text": "Explore the cycle and its resources\napiopscycles.com/cycles/capability-productization-cycle"
+        },
+        {
+          "id": "credit",
+          "type": "text",
+          "text": "APIOps Cycles · Osaango Ltd · CC-BY-SA 4.0\nFictional supplier-payment example; no client results claimed."
+        }
+      ],
+      "notes": "Close with an actionable next step. Method exit criteria provide the readiness anchors; the slide is a practical summary, not a replacement for those criteria. The website provides downloadable canonical resources and this deck’s source, PPTX, PDF and Reveal.js versions.\n\nThe supplier-payment status capability is a newly authored fictional teaching example, not a client implementation or measured outcome. Figures, service promises and release criteria are illustrative proposals requiring validation. Working summaries are not reproductions of canonical canvas templates.\n\nSource: apiops-cycles-method-data 4.2.1, src/data/method/cycles.json and en/labels.cycles.json; reviewed 4 November 2026. https://apiopscycles.com/cycles/capability-productization-cycle . Method: APIOps Cycles / Osaango Ltd, CC-BY-SA 4.0."
+    }
+  ],
+  "layouts": {
+    "schemaVersion": "1.0",
+    "canvas": {
+      "width": 1280,
+      "height": 720
+    },
+    "title": {
+      "x": 64,
+      "y": 111,
+      "w": 1152,
+      "h": 100,
+      "fontSize": 42
+    },
+    "logo": {
+      "x": 64,
+      "y": 24,
+      "w": 64,
+      "h": 64
+    },
+    "pageNumber": {
+      "x": 1170,
+      "y": 42,
+      "w": 46,
+      "h": 24,
+      "fontSize": 16
+    },
+    "slides": {
+      "intro": {
+        "text-1": {
+          "x": 64,
+          "y": 143,
+          "w": 640,
+          "h": 64,
+          "fontSize": 48,
+          "bold": true,
+          "color": "heading",
+          "spaceAfter": 0
+        },
+        "text-2": {
+          "x": 64,
+          "y": 242,
+          "w": 710,
+          "h": 154,
+          "fontSize": 43,
+          "bold": true,
+          "color": "heading",
+          "spaceAfter": 0
+        },
+        "text-3": {
+          "x": 64,
+          "y": 430,
+          "w": 660,
+          "h": 80,
+          "fontSize": 27,
+          "bold": false,
+          "color": "body",
+          "spaceAfter": 0
+        },
+        "text-4": {
+          "x": 64,
+          "y": 581,
+          "w": 650,
+          "h": 44,
+          "fontSize": 24,
+          "bold": false,
+          "color": "body",
+          "spaceAfter": 0
+        },
+        "image-5": {
+          "x": 760,
+          "y": 250,
+          "w": 450,
+          "h": 270,
+          "fontSize": 25,
+          "bold": false,
+          "color": "body",
+          "spaceAfter": 0
+        }
+      },
+      "method-overview": {
+        "text-1": {
+          "x": 64,
+          "y": 217,
+          "w": 1152,
+          "h": 86,
+          "fontSize": 30,
+          "bold": true,
+          "color": "heading",
+          "spaceAfter": 0
+        },
+        "table-2": {
+          "x": 64,
+          "y": 340,
+          "w": 1152,
+          "h": 257,
+          "columnWidths": [
+            350,
+            802
+          ],
+          "fontSize": 23
+        },
+        "text-3": {
+          "x": 64,
+          "y": 628,
+          "w": 1152,
+          "h": 56,
+          "fontSize": 23,
+          "bold": false,
+          "color": "body",
+          "spaceAfter": 0
+        }
+      },
+      "productization-map": {
+        "image-1": {
+          "x": 48,
+          "y": 178,
+          "w": 540,
+          "h": 540,
+          "fontSize": 25,
+          "bold": false,
+          "color": "body",
+          "spaceAfter": 0
+        },
+        "text-2": {
+          "x": 640,
+          "y": 219,
+          "w": 565,
+          "h": 42,
+          "fontSize": 29,
+          "bold": true,
+          "color": "body",
+          "spaceAfter": 0
+        },
+        "numbered-3": {
+          "x": 640,
+          "y": 282,
+          "w": 565,
+          "h": 300,
+          "fontSize": 24,
+          "bold": false,
+          "color": "body",
+          "spaceAfter": 8
+        },
+        "text-4": {
+          "x": 640,
+          "y": 600,
+          "w": 565,
+          "h": 77,
+          "fontSize": 24,
+          "bold": true,
+          "color": "body",
+          "spaceAfter": 0
+        }
+      },
+      "case-challenge": {
+        "text-1": {
+          "x": 64,
+          "y": 228,
+          "w": 610,
+          "h": 44,
+          "fontSize": 29,
+          "bold": true,
+          "color": "heading",
+          "spaceAfter": 0
+        },
+        "text-2": {
+          "x": 64,
+          "y": 284,
+          "w": 590,
+          "h": 112,
+          "fontSize": 28,
+          "bold": false,
+          "color": "body",
+          "spaceAfter": 0
+        },
+        "text-3": {
+          "x": 64,
+          "y": 422,
+          "w": 590,
+          "h": 112,
+          "fontSize": 27,
+          "bold": false,
+          "color": "body",
+          "spaceAfter": 0
+        },
+        "image-4": {
+          "x": 739,
+          "y": 252,
+          "w": 455,
+          "h": 272,
+          "fontSize": 25,
+          "bold": false,
+          "color": "body",
+          "spaceAfter": 0
+        },
+        "text-5": {
+          "x": 64,
+          "y": 593,
+          "w": 1140,
+          "h": 74,
+          "fontSize": 28,
+          "bold": true,
+          "color": "body",
+          "spaceAfter": 0
+        }
+      },
+      "collaborative-discovery": {
+        "text-1": {
+          "x": 64,
+          "y": 232,
+          "w": 550,
+          "h": 36,
+          "fontSize": 27,
+          "bold": true,
+          "color": "body",
+          "spaceAfter": 0
+        },
+        "text-2": {
+          "x": 64,
+          "y": 277,
+          "w": 550,
+          "h": 94,
+          "fontSize": 24,
+          "bold": false,
+          "color": "body",
+          "spaceAfter": 0
+        },
+        "text-3": {
+          "x": 64,
+          "y": 408,
+          "w": 550,
+          "h": 36,
+          "fontSize": 27,
+          "bold": true,
+          "color": "body",
+          "spaceAfter": 0
+        },
+        "text-4": {
+          "x": 64,
+          "y": 453,
+          "w": 550,
+          "h": 94,
+          "fontSize": 24,
+          "bold": false,
+          "color": "body",
+          "spaceAfter": 0
+        },
+        "image-5": {
+          "x": 651,
+          "y": 214,
+          "w": 565,
+          "h": 381,
+          "fontSize": 25,
+          "bold": false,
+          "color": "body",
+          "spaceAfter": 0
+        },
+        "text-6": {
+          "x": 64,
+          "y": 606,
+          "w": 1150,
+          "h": 66,
+          "fontSize": 24,
+          "bold": true,
+          "color": "heading",
+          "spaceAfter": 0
+        }
+      },
+      "customer-journey": {
+        "image-1": {
+          "x": 35,
+          "y": 187,
+          "w": 760,
+          "h": 510,
+          "fontSize": 25,
+          "bold": false,
+          "color": "body",
+          "spaceAfter": 0
+        },
+        "text-2": {
+          "x": 824,
+          "y": 211,
+          "w": 392,
+          "h": 38,
+          "fontSize": 27,
+          "bold": true,
+          "color": "body",
+          "spaceAfter": 0
+        },
+        "text-3": {
+          "x": 824,
+          "y": 255,
+          "w": 392,
+          "h": 110,
+          "fontSize": 24,
+          "bold": false,
+          "color": "body",
+          "spaceAfter": 0
+        },
+        "text-4": {
+          "x": 824,
+          "y": 391,
+          "w": 392,
+          "h": 38,
+          "fontSize": 27,
+          "bold": true,
+          "color": "body",
+          "spaceAfter": 0
+        },
+        "numbered-5": {
+          "x": 824,
+          "y": 439,
+          "w": 392,
+          "h": 165,
+          "fontSize": 23,
+          "bold": false,
+          "color": "body",
+          "spaceAfter": 5
+        },
+        "text-6": {
+          "x": 824,
+          "y": 628,
+          "w": 392,
+          "h": 52,
+          "fontSize": 18,
+          "bold": false,
+          "color": "muted",
+          "spaceAfter": 0
+        }
+      },
+      "value-proposition": {
+        "image-1": {
+          "x": 40,
+          "y": 190,
+          "w": 770,
+          "h": 510,
+          "fontSize": 25,
+          "bold": false,
+          "color": "body",
+          "spaceAfter": 0
+        },
+        "text-2": {
+          "x": 840,
+          "y": 210,
+          "w": 376,
+          "h": 74,
+          "fontSize": 27,
+          "bold": true,
+          "color": "body",
+          "spaceAfter": 0
+        },
+        "text-3": {
+          "x": 840,
+          "y": 294,
+          "w": 376,
+          "h": 170,
+          "fontSize": 23,
+          "bold": false,
+          "color": "body",
+          "spaceAfter": 0
+        },
+        "text-4": {
+          "x": 840,
+          "y": 486,
+          "w": 376,
+          "h": 36,
+          "fontSize": 26,
+          "bold": true,
+          "color": "body",
+          "spaceAfter": 0
+        },
+        "bullets-5": {
+          "x": 840,
+          "y": 528,
+          "w": 376,
+          "h": 114,
+          "fontSize": 23,
+          "bold": false,
+          "color": "body",
+          "spaceAfter": 3
+        },
+        "text-6": {
+          "x": 840,
+          "y": 653,
+          "w": 376,
+          "h": 48,
+          "fontSize": 18,
+          "bold": false,
+          "color": "muted",
+          "spaceAfter": 0
+        }
+      },
+      "canvas-collection": {
+        "image-1": {
+          "x": 64,
+          "y": 199,
+          "w": 258,
+          "h": 194,
+          "fontSize": 25,
+          "bold": false,
+          "color": "body",
+          "spaceAfter": 0
+        },
+        "text-2": {
+          "x": 340,
+          "y": 233,
+          "w": 284,
+          "h": 65,
+          "fontSize": 25,
+          "bold": true,
+          "color": "heading",
+          "spaceAfter": 0
+        },
+        "text-3": {
+          "x": 340,
+          "y": 306,
+          "w": 284,
+          "h": 72,
+          "fontSize": 21,
+          "bold": false,
+          "color": "body",
+          "spaceAfter": 0
+        },
+        "image-4": {
+          "x": 656,
+          "y": 199,
+          "w": 258,
+          "h": 194,
+          "fontSize": 25,
+          "bold": false,
+          "color": "body",
+          "spaceAfter": 0
+        },
+        "text-5": {
+          "x": 932,
+          "y": 233,
+          "w": 284,
+          "h": 65,
+          "fontSize": 25,
+          "bold": true,
+          "color": "heading",
+          "spaceAfter": 0
+        },
+        "text-6": {
+          "x": 932,
+          "y": 306,
+          "w": 284,
+          "h": 72,
+          "fontSize": 21,
+          "bold": false,
+          "color": "body",
+          "spaceAfter": 0
+        },
+        "image-7": {
+          "x": 64,
+          "y": 431,
+          "w": 258,
+          "h": 194,
+          "fontSize": 25,
+          "bold": false,
+          "color": "body",
+          "spaceAfter": 0
+        },
+        "text-8": {
+          "x": 340,
+          "y": 465,
+          "w": 284,
+          "h": 65,
+          "fontSize": 25,
+          "bold": true,
+          "color": "heading",
+          "spaceAfter": 0
+        },
+        "text-9": {
+          "x": 340,
+          "y": 538,
+          "w": 284,
+          "h": 72,
+          "fontSize": 21,
+          "bold": false,
+          "color": "body",
+          "spaceAfter": 0
+        },
+        "image-10": {
+          "x": 656,
+          "y": 431,
+          "w": 258,
+          "h": 194,
+          "fontSize": 25,
+          "bold": false,
+          "color": "body",
+          "spaceAfter": 0
+        },
+        "text-11": {
+          "x": 932,
+          "y": 465,
+          "w": 284,
+          "h": 65,
+          "fontSize": 25,
+          "bold": true,
+          "color": "heading",
+          "spaceAfter": 0
+        },
+        "text-12": {
+          "x": 932,
+          "y": 538,
+          "w": 284,
+          "h": 72,
+          "fontSize": 21,
+          "bold": false,
+          "color": "body",
+          "spaceAfter": 0
+        },
+        "text-13": {
+          "x": 64,
+          "y": 678,
+          "w": 1152,
+          "h": 27,
+          "fontSize": 17,
+          "bold": false,
+          "color": "muted",
+          "spaceAfter": 0
+        }
+      },
+      "traceability": {
+        "text-1": {
+          "x": 64,
+          "y": 216,
+          "w": 1150,
+          "h": 44,
+          "fontSize": 29,
+          "bold": true,
+          "color": "heading",
+          "spaceAfter": 0
+        },
+        "table-2": {
+          "x": 64,
+          "y": 285,
+          "w": 1152,
+          "h": 175,
+          "columnWidths": [
+            230.4,
+            230.4,
+            230.4,
+            230.4,
+            230.4
+          ],
+          "fontSize": 23
+        },
+        "text-3": {
+          "x": 64,
+          "y": 506,
+          "w": 520,
+          "h": 38,
+          "fontSize": 28,
+          "bold": true,
+          "color": "body",
+          "spaceAfter": 0
+        },
+        "text-4": {
+          "x": 64,
+          "y": 553,
+          "w": 540,
+          "h": 105,
+          "fontSize": 24,
+          "bold": false,
+          "color": "body",
+          "spaceAfter": 0
+        },
+        "text-5": {
+          "x": 680,
+          "y": 506,
+          "w": 536,
+          "h": 38,
+          "fontSize": 28,
+          "bold": true,
+          "color": "body",
+          "spaceAfter": 0
+        },
+        "text-6": {
+          "x": 680,
+          "y": 553,
+          "w": 536,
+          "h": 105,
+          "fontSize": 24,
+          "bold": false,
+          "color": "body",
+          "spaceAfter": 0
+        }
+      },
+      "product-management": {
+        "bullets-1": {
+          "x": 64,
+          "y": 225,
+          "w": 740,
+          "h": 415,
+          "fontSize": 23,
+          "bold": false,
+          "color": "body",
+          "spaceAfter": 16
+        },
+        "image-2": {
+          "x": 837,
+          "y": 291,
+          "w": 376,
+          "h": 240,
+          "fontSize": 25,
+          "bold": false,
+          "color": "body",
+          "spaceAfter": 0
+        }
+      },
+      "portfolio-planning": {
+        "text-1": {
+          "x": 64,
+          "y": 217,
+          "w": 1145,
+          "h": 46,
+          "fontSize": 29,
+          "bold": true,
+          "color": "heading",
+          "spaceAfter": 0
+        },
+        "image-2": {
+          "x": 105,
+          "y": 258,
+          "w": 1070,
+          "h": 270,
+          "fontSize": 25,
+          "bold": false,
+          "color": "body",
+          "spaceAfter": 0
+        },
+        "text-3": {
+          "x": 64,
+          "y": 532,
+          "w": 535,
+          "h": 36,
+          "fontSize": 27,
+          "bold": true,
+          "color": "body",
+          "spaceAfter": 0
+        },
+        "text-4": {
+          "x": 64,
+          "y": 577,
+          "w": 535,
+          "h": 94,
+          "fontSize": 24,
+          "bold": false,
+          "color": "body",
+          "spaceAfter": 0
+        },
+        "text-5": {
+          "x": 680,
+          "y": 532,
+          "w": 536,
+          "h": 36,
+          "fontSize": 27,
+          "bold": true,
+          "color": "body",
+          "spaceAfter": 0
+        },
+        "text-6": {
+          "x": 680,
+          "y": 577,
+          "w": 536,
+          "h": 94,
+          "fontSize": 24,
+          "bold": false,
+          "color": "body",
+          "spaceAfter": 0
+        }
+      },
+      "case-value": {
+        "text-1": {
+          "x": 64,
+          "y": 220,
+          "w": 1152,
+          "h": 43,
+          "fontSize": 29,
+          "bold": true,
+          "color": "body",
+          "spaceAfter": 0
+        },
+        "table-2": {
+          "x": 64,
+          "y": 292,
+          "w": 1152,
+          "h": 290,
+          "columnWidths": [
+            210,
+            500,
+            442
+          ],
+          "fontSize": 24
+        },
+        "text-3": {
+          "x": 64,
+          "y": 640,
+          "w": 1152,
+          "h": 38,
+          "fontSize": 20,
+          "bold": false,
+          "color": "muted",
+          "spaceAfter": 0
+        }
+      },
+      "architecture-inputs": {
+        "table-1": {
+          "x": 64,
+          "y": 220,
+          "w": 1152,
+          "h": 355,
+          "columnWidths": [
+            302,
+            510,
+            340
+          ],
+          "fontSize": 23
+        },
+        "text-2": {
+          "x": 64,
+          "y": 613,
+          "w": 1152,
+          "h": 60,
+          "fontSize": 27,
+          "bold": true,
+          "color": "heading",
+          "spaceAfter": 0
+        }
+      },
+      "architecture-decisions": {
+        "table-1": {
+          "x": 64,
+          "y": 221,
+          "w": 1152,
+          "h": 366,
+          "columnWidths": [
+            330,
+            475,
+            347
+          ],
+          "fontSize": 23
+        },
+        "text-2": {
+          "x": 64,
+          "y": 635,
+          "w": 1152,
+          "h": 35,
+          "fontSize": 20,
+          "bold": false,
+          "color": "muted",
+          "spaceAfter": 0
+        }
+      },
+      "trust-and-capacity": {
+        "image-1": {
+          "x": 45,
+          "y": 195,
+          "w": 735,
+          "h": 470,
+          "fontSize": 25,
+          "bold": false,
+          "color": "body",
+          "spaceAfter": 0
+        },
+        "text-2": {
+          "x": 823,
+          "y": 221,
+          "w": 390,
+          "h": 38,
+          "fontSize": 28,
+          "bold": true,
+          "color": "heading",
+          "spaceAfter": 0
+        },
+        "bullets-3": {
+          "x": 823,
+          "y": 272,
+          "w": 390,
+          "h": 161,
+          "fontSize": 23,
+          "bold": false,
+          "color": "body",
+          "spaceAfter": 12
+        },
+        "text-4": {
+          "x": 823,
+          "y": 462,
+          "w": 390,
+          "h": 38,
+          "fontSize": 28,
+          "bold": true,
+          "color": "heading",
+          "spaceAfter": 0
+        },
+        "bullets-5": {
+          "x": 823,
+          "y": 512,
+          "w": 390,
+          "h": 150,
+          "fontSize": 23,
+          "bold": false,
+          "color": "body",
+          "spaceAfter": 12
+        }
+      },
+      "domain-meaning": {
+        "image-1": {
+          "x": 38,
+          "y": 194,
+          "w": 740,
+          "h": 475,
+          "fontSize": 25,
+          "bold": false,
+          "color": "body",
+          "spaceAfter": 0
+        },
+        "text-2": {
+          "x": 823,
+          "y": 224,
+          "w": 390,
+          "h": 38,
+          "fontSize": 28,
+          "bold": true,
+          "color": "heading",
+          "spaceAfter": 0
+        },
+        "text-3": {
+          "x": 823,
+          "y": 273,
+          "w": 390,
+          "h": 115,
+          "fontSize": 25,
+          "bold": false,
+          "color": "body",
+          "spaceAfter": 0
+        },
+        "text-4": {
+          "x": 823,
+          "y": 422,
+          "w": 390,
+          "h": 76,
+          "fontSize": 28,
+          "bold": true,
+          "color": "heading",
+          "spaceAfter": 0
+        },
+        "bullets-5": {
+          "x": 823,
+          "y": 509,
+          "w": 390,
+          "h": 147,
+          "fontSize": 23,
+          "bold": false,
+          "color": "body",
+          "spaceAfter": 10
+        }
+      },
+      "interaction-design": {
+        "table-1": {
+          "x": 64,
+          "y": 219,
+          "w": 1152,
+          "h": 370,
+          "columnWidths": [
+            320,
+            400,
+            432
+          ],
+          "fontSize": 23
+        },
+        "text-2": {
+          "x": 64,
+          "y": 616,
+          "w": 1152,
+          "h": 63,
+          "fontSize": 25,
+          "bold": true,
+          "color": "heading",
+          "spaceAfter": 0
+        }
+      },
+      "contract-first": {
+        "text-1": {
+          "x": 64,
+          "y": 232,
+          "w": 555,
+          "h": 335,
+          "fontSize": 23,
+          "bold": false,
+          "color": "body",
+          "spaceAfter": 0
+        },
+        "text-2": {
+          "x": 680,
+          "y": 221,
+          "w": 536,
+          "h": 39,
+          "fontSize": 28,
+          "bold": true,
+          "color": "heading",
+          "spaceAfter": 0
+        },
+        "bullets-3": {
+          "x": 680,
+          "y": 280,
+          "w": 536,
+          "h": 318,
+          "fontSize": 24,
+          "bold": false,
+          "color": "body",
+          "spaceAfter": 12
+        },
+        "text-4": {
+          "x": 64,
+          "y": 640,
+          "w": 1152,
+          "h": 34,
+          "fontSize": 19,
+          "bold": false,
+          "color": "muted",
+          "spaceAfter": 0
+        }
+      },
+      "scaffold": {
+        "text-1": {
+          "x": 64,
+          "y": 244,
+          "w": 560,
+          "h": 177,
+          "fontSize": 22,
+          "bold": false,
+          "color": "body",
+          "spaceAfter": 0
+        },
+        "text-2": {
+          "x": 64,
+          "y": 462,
+          "w": 545,
+          "h": 106,
+          "fontSize": 25,
+          "bold": false,
+          "color": "body",
+          "spaceAfter": 0
+        },
+        "table-3": {
+          "x": 680,
+          "y": 223,
+          "w": 536,
+          "h": 365,
+          "columnWidths": [
+            285,
+            251
+          ],
+          "fontSize": 21
+        },
+        "text-4": {
+          "x": 64,
+          "y": 627,
+          "w": 1152,
+          "h": 52,
+          "fontSize": 22,
+          "bold": true,
+          "color": "heading",
+          "spaceAfter": 0
+        }
+      },
+      "ai-context": {
+        "table-1": {
+          "x": 64,
+          "y": 220,
+          "w": 1152,
+          "h": 366,
+          "columnWidths": [
+            330,
+            480,
+            342
+          ],
+          "fontSize": 23
+        },
+        "text-2": {
+          "x": 64,
+          "y": 623,
+          "w": 1152,
+          "h": 58,
+          "fontSize": 25,
+          "bold": true,
+          "color": "heading",
+          "spaceAfter": 0
+        }
+      },
+      "ai-build": {
+        "numbered-1": {
+          "x": 64,
+          "y": 238,
+          "w": 535,
+          "h": 352,
+          "fontSize": 26,
+          "bold": false,
+          "color": "body",
+          "spaceAfter": 15
+        },
+        "image-2": {
+          "x": 657,
+          "y": 226,
+          "w": 558,
+          "h": 373,
+          "fontSize": 25,
+          "bold": false,
+          "color": "body",
+          "spaceAfter": 0
+        },
+        "text-3": {
+          "x": 64,
+          "y": 628,
+          "w": 1152,
+          "h": 51,
+          "fontSize": 24,
+          "bold": true,
+          "color": "heading",
+          "spaceAfter": 0
+        }
+      },
+      "tests": {
+        "table-1": {
+          "x": 64,
+          "y": 200,
+          "w": 1152,
+          "h": 420,
+          "columnWidths": [
+            305,
+            442,
+            405
+          ],
+          "fontSize": 22
+        },
+        "text-2": {
+          "x": 64,
+          "y": 651,
+          "w": 1152,
+          "h": 34,
+          "fontSize": 22,
+          "bold": true,
+          "color": "heading",
+          "spaceAfter": 0
+        }
+      },
+      "linting": {
+        "text-1": {
+          "x": 64,
+          "y": 231,
+          "w": 1152,
+          "h": 53,
+          "fontSize": 26,
+          "bold": false,
+          "color": "body",
+          "spaceAfter": 0
+        },
+        "table-2": {
+          "x": 64,
+          "y": 326,
+          "w": 1152,
+          "h": 218,
+          "columnWidths": [
+            240,
+            550,
+            362
+          ],
+          "fontSize": 23
+        },
+        "text-3": {
+          "x": 64,
+          "y": 581,
+          "w": 1152,
+          "h": 43,
+          "fontSize": 25,
+          "bold": true,
+          "color": "heading",
+          "spaceAfter": 0
+        },
+        "text-4": {
+          "x": 64,
+          "y": 637,
+          "w": 1152,
+          "h": 52,
+          "fontSize": 21,
+          "bold": false,
+          "color": "body",
+          "spaceAfter": 0
+        }
+      },
+      "audit": {
+        "text-1": {
+          "x": 64,
+          "y": 216,
+          "w": 1152,
+          "h": 51,
+          "fontSize": 25,
+          "bold": false,
+          "color": "body",
+          "spaceAfter": 0
+        },
+        "table-2": {
+          "x": 64,
+          "y": 285,
+          "w": 1152,
+          "h": 340,
+          "columnWidths": [
+            318,
+            834
+          ],
+          "fontSize": 22
+        },
+        "text-3": {
+          "x": 64,
+          "y": 644,
+          "w": 1152,
+          "h": 47,
+          "fontSize": 22,
+          "bold": true,
+          "color": "heading",
+          "spaceAfter": 0
+        }
+      },
+      "audit-interpretation": {
+        "table-1": {
+          "x": 64,
+          "y": 222,
+          "w": 1152,
+          "h": 360,
+          "columnWidths": [
+            325,
+            465,
+            362
+          ],
+          "fontSize": 23
+        },
+        "text-2": {
+          "x": 64,
+          "y": 622,
+          "w": 1152,
+          "h": 65,
+          "fontSize": 26,
+          "bold": true,
+          "color": "heading",
+          "spaceAfter": 0
+        }
+      },
+      "ci": {
+        "text-1": {
+          "x": 64,
+          "y": 226,
+          "w": 545,
+          "h": 42,
+          "fontSize": 29,
+          "bold": true,
+          "color": "heading",
+          "spaceAfter": 0
+        },
+        "numbered-2": {
+          "x": 64,
+          "y": 285,
+          "w": 535,
+          "h": 260,
+          "fontSize": 25,
+          "bold": false,
+          "color": "body",
+          "spaceAfter": 13
+        },
+        "text-3": {
+          "x": 680,
+          "y": 226,
+          "w": 536,
+          "h": 78,
+          "fontSize": 29,
+          "bold": true,
+          "color": "heading",
+          "spaceAfter": 0
+        },
+        "bullets-4": {
+          "x": 680,
+          "y": 319,
+          "w": 536,
+          "h": 285,
+          "fontSize": 25,
+          "bold": false,
+          "color": "body",
+          "spaceAfter": 13
+        },
+        "text-5": {
+          "x": 64,
+          "y": 630,
+          "w": 1152,
+          "h": 39,
+          "fontSize": 24,
+          "bold": true,
+          "color": "heading",
+          "spaceAfter": 0
+        }
+      },
+      "publishing-improvement": {
+        "text-1": {
+          "x": 64,
+          "y": 223,
+          "w": 550,
+          "h": 42,
+          "fontSize": 30,
+          "bold": true,
+          "color": "heading",
+          "spaceAfter": 0
+        },
+        "bullets-2": {
+          "x": 64,
+          "y": 287,
+          "w": 540,
+          "h": 295,
+          "fontSize": 26,
+          "bold": false,
+          "color": "body",
+          "spaceAfter": 15
+        },
+        "text-3": {
+          "x": 680,
+          "y": 223,
+          "w": 536,
+          "h": 80,
+          "fontSize": 30,
+          "bold": true,
+          "color": "heading",
+          "spaceAfter": 0
+        },
+        "bullets-4": {
+          "x": 680,
+          "y": 327,
+          "w": 536,
+          "h": 295,
+          "fontSize": 26,
+          "bold": false,
+          "color": "body",
+          "spaceAfter": 15
+        },
+        "text-5": {
+          "x": 64,
+          "y": 638,
+          "w": 1152,
+          "h": 45,
+          "fontSize": 26,
+          "bold": true,
+          "color": "heading",
+          "spaceAfter": 0
+        }
+      },
+      "first-cycle": {
+        "numbered-1": {
+          "x": 64,
+          "y": 234,
+          "w": 708,
+          "h": 350,
+          "fontSize": 27,
+          "bold": false,
+          "color": "body",
+          "spaceAfter": 16
+        },
+        "text-2": {
+          "x": 835,
+          "y": 228,
+          "w": 380,
+          "h": 76,
+          "fontSize": 29,
+          "bold": true,
+          "color": "heading",
+          "spaceAfter": 0
+        },
+        "bullets-3": {
+          "x": 835,
+          "y": 320,
+          "w": 380,
+          "h": 224,
+          "fontSize": 23,
+          "bold": false,
+          "color": "body",
+          "spaceAfter": 16
+        },
+        "text-4": {
+          "x": 64,
+          "y": 642,
+          "w": 1152,
+          "h": 36,
+          "fontSize": 19,
+          "bold": false,
+          "color": "muted",
+          "spaceAfter": 0
+        }
+      },
+      "overview-cover": {
+        "text-1": {
+          "x": 64,
+          "y": 143,
+          "w": 640,
+          "h": 64,
+          "fontSize": 48,
+          "bold": true,
+          "color": "heading",
+          "spaceAfter": 0
+        },
+        "text-2": {
+          "x": 64,
+          "y": 242,
+          "w": 710,
+          "h": 154,
+          "fontSize": 43,
+          "bold": true,
+          "color": "heading",
+          "spaceAfter": 0
+        },
+        "text-3": {
+          "x": 64,
+          "y": 430,
+          "w": 660,
+          "h": 80,
+          "fontSize": 27,
+          "bold": false,
+          "color": "body",
+          "spaceAfter": 0
+        },
+        "text-4": {
+          "x": 64,
+          "y": 581,
+          "w": 650,
+          "h": 44,
+          "fontSize": 24,
+          "bold": false,
+          "color": "body",
+          "spaceAfter": 0
+        },
+        "image-5": {
+          "x": 760,
+          "y": 250,
+          "w": 450,
+          "h": 270,
+          "fontSize": 25,
+          "bold": false,
+          "color": "body",
+          "spaceAfter": 0
+        }
+      },
+      "case-cover": {
+        "text-1": {
+          "x": 64,
+          "y": 143,
+          "w": 640,
+          "h": 64,
+          "fontSize": 48,
+          "bold": true,
+          "color": "heading",
+          "spaceAfter": 0
+        },
+        "text-2": {
+          "x": 64,
+          "y": 242,
+          "w": 710,
+          "h": 154,
+          "fontSize": 43,
+          "bold": true,
+          "color": "heading",
+          "spaceAfter": 0
+        },
+        "text-3": {
+          "x": 64,
+          "y": 430,
+          "w": 660,
+          "h": 80,
+          "fontSize": 27,
+          "bold": false,
+          "color": "body",
+          "spaceAfter": 0
+        },
+        "text-4": {
+          "x": 64,
+          "y": 581,
+          "w": 650,
+          "h": 44,
+          "fontSize": 24,
+          "bold": false,
+          "color": "body",
+          "spaceAfter": 0
+        },
+        "image-5": {
+          "x": 760,
+          "y": 250,
+          "w": 450,
+          "h": 270,
+          "fontSize": 25,
+          "bold": false,
+          "color": "body",
+          "spaceAfter": 0
+        }
+      },
+      "capability-cover": {
+        "text-1": {
+          "x": 64,
+          "y": 143,
+          "w": 640,
+          "h": 64,
+          "fontSize": 48,
+          "bold": true,
+          "color": "heading",
+          "spaceAfter": 0
+        },
+        "text-2": {
+          "x": 64,
+          "y": 242,
+          "w": 710,
+          "h": 154,
+          "fontSize": 43,
+          "bold": true,
+          "color": "heading",
+          "spaceAfter": 0
+        },
+        "text-3": {
+          "x": 64,
+          "y": 430,
+          "w": 660,
+          "h": 80,
+          "fontSize": 27,
+          "bold": false,
+          "color": "body",
+          "spaceAfter": 0
+        },
+        "text-4": {
+          "x": 64,
+          "y": 581,
+          "w": 650,
+          "h": 44,
+          "fontSize": 24,
+          "bold": false,
+          "color": "body",
+          "spaceAfter": 0
+        },
+        "image-5": {
+          "x": 760,
+          "y": 250,
+          "w": 450,
+          "h": 270,
+          "fontSize": 25,
+          "bold": false,
+          "color": "body",
+          "spaceAfter": 0
+        }
+      },
+      "capability-outcome": {
+        "lead": {
+          "x": 64,
+          "y": 235,
+          "w": 650,
+          "h": 90,
+          "fontSize": 29,
+          "bold": false,
+          "color": "body",
+          "spaceAfter": 12
+        },
+        "points": {
+          "x": 64,
+          "y": 350,
+          "w": 650,
+          "h": 225,
+          "fontSize": 27,
+          "bold": false,
+          "color": "body",
+          "spaceAfter": 12
+        },
+        "image": {
+          "x": 780,
+          "y": 235,
+          "w": 435,
+          "h": 300,
+          "fontSize": 26,
+          "bold": false,
+          "color": "body",
+          "spaceAfter": 12
+        },
+        "example": {
+          "x": 64,
+          "y": 600,
+          "w": 1152,
+          "h": 74,
+          "fontSize": 26,
+          "bold": true,
+          "color": "body",
+          "spaceAfter": 12
+        }
+      },
+      "capability-route": {
+        "map": {
+          "x": 64,
+          "y": 220,
+          "w": 1152,
+          "h": 390,
+          "fontSize": 26,
+          "bold": false,
+          "color": "body",
+          "spaceAfter": 12
+        },
+        "caption": {
+          "x": 64,
+          "y": 615,
+          "w": 1152,
+          "h": 70,
+          "fontSize": 25,
+          "bold": false,
+          "color": "body",
+          "spaceAfter": 12
+        }
+      },
+      "capability-hypothesis": {
+        "table": {
+          "x": 64,
+          "y": 225,
+          "w": 1152,
+          "h": 380,
+          "fontSize": 22,
+          "bold": false,
+          "color": "body",
+          "spaceAfter": 12,
+          "columnWidths": [
+            330,
+            822
+          ]
+        },
+        "takeaway": {
+          "x": 64,
+          "y": 635,
+          "w": 1152,
+          "h": 55,
+          "fontSize": 25,
+          "bold": true,
+          "color": "body",
+          "spaceAfter": 12
+        }
+      },
+      "capability-commitments": {
+        "heading": {
+          "x": 64,
+          "y": 235,
+          "w": 685,
+          "h": 45,
+          "fontSize": 28,
+          "bold": true,
+          "color": "body",
+          "spaceAfter": 12
+        },
+        "points": {
+          "x": 64,
+          "y": 300,
+          "w": 685,
+          "h": 260,
+          "fontSize": 27,
+          "bold": false,
+          "color": "body",
+          "spaceAfter": 12
+        },
+        "image": {
+          "x": 805,
+          "y": 250,
+          "w": 400,
+          "h": 280,
+          "fontSize": 26,
+          "bold": false,
+          "color": "body",
+          "spaceAfter": 12
+        },
+        "agreement": {
+          "x": 64,
+          "y": 605,
+          "w": 1152,
+          "h": 70,
+          "fontSize": 25,
+          "bold": true,
+          "color": "body",
+          "spaceAfter": 12
+        }
+      },
+      "capability-choice": {
+        "table": {
+          "x": 64,
+          "y": 235,
+          "w": 1152,
+          "h": 350,
+          "fontSize": 24,
+          "bold": false,
+          "color": "body",
+          "spaceAfter": 12,
+          "columnWidths": [
+            250,
+            450,
+            452
+          ]
+        },
+        "takeaway": {
+          "x": 64,
+          "y": 610,
+          "w": 1152,
+          "h": 66,
+          "fontSize": 25,
+          "bold": true,
+          "color": "body",
+          "spaceAfter": 12
+        }
+      },
+      "capability-solution": {
+        "table": {
+          "x": 64,
+          "y": 235,
+          "w": 1152,
+          "h": 350,
+          "fontSize": 24,
+          "bold": false,
+          "color": "body",
+          "spaceAfter": 12,
+          "columnWidths": [
+            330,
+            822
+          ]
+        },
+        "takeaway": {
+          "x": 64,
+          "y": 610,
+          "w": 1152,
+          "h": 66,
+          "fontSize": 25,
+          "bold": true,
+          "color": "body",
+          "spaceAfter": 12
+        }
+      },
+      "capability-operate": {
+        "sequence": {
+          "x": 64,
+          "y": 240,
+          "w": 700,
+          "h": 360,
+          "fontSize": 29,
+          "bold": false,
+          "color": "body",
+          "spaceAfter": 12
+        },
+        "side-title": {
+          "x": 830,
+          "y": 240,
+          "w": 385,
+          "h": 60,
+          "fontSize": 28,
+          "bold": true,
+          "color": "body",
+          "spaceAfter": 12
+        },
+        "side": {
+          "x": 830,
+          "y": 325,
+          "w": 385,
+          "h": 300,
+          "fontSize": 25,
+          "bold": false,
+          "color": "body",
+          "spaceAfter": 12
+        }
+      },
+      "capability-ai": {
+        "lead": {
+          "x": 64,
+          "y": 235,
+          "w": 680,
+          "h": 95,
+          "fontSize": 29,
+          "bold": false,
+          "color": "body",
+          "spaceAfter": 12
+        },
+        "points": {
+          "x": 64,
+          "y": 360,
+          "w": 680,
+          "h": 280,
+          "fontSize": 27,
+          "bold": false,
+          "color": "body",
+          "spaceAfter": 12
+        },
+        "image": {
+          "x": 800,
+          "y": 255,
+          "w": 410,
+          "h": 300,
+          "fontSize": 26,
+          "bold": false,
+          "color": "body",
+          "spaceAfter": 12
+        }
+      },
+      "capability-assure": {
+        "table": {
+          "x": 64,
+          "y": 225,
+          "w": 1152,
+          "h": 380,
+          "fontSize": 22,
+          "bold": false,
+          "color": "body",
+          "spaceAfter": 12,
+          "columnWidths": [
+            330,
+            822
+          ]
+        },
+        "takeaway": {
+          "x": 64,
+          "y": 635,
+          "w": 1152,
+          "h": 55,
+          "fontSize": 25,
+          "bold": true,
+          "color": "body",
+          "spaceAfter": 12
+        }
+      },
+      "capability-publish": {
+        "table": {
+          "x": 64,
+          "y": 235,
+          "w": 1152,
+          "h": 350,
+          "fontSize": 24,
+          "bold": false,
+          "color": "body",
+          "spaceAfter": 12,
+          "columnWidths": [
+            330,
+            822
+          ]
+        },
+        "takeaway": {
+          "x": 64,
+          "y": 610,
+          "w": 1152,
+          "h": 66,
+          "fontSize": 25,
+          "bold": true,
+          "color": "body",
+          "spaceAfter": 12
+        }
+      },
+      "capability-improve": {
+        "table": {
+          "x": 64,
+          "y": 235,
+          "w": 1152,
+          "h": 350,
+          "fontSize": 24,
+          "bold": false,
+          "color": "body",
+          "spaceAfter": 12,
+          "columnWidths": [
+            250,
+            450,
+            452
+          ]
+        },
+        "takeaway": {
+          "x": 64,
+          "y": 610,
+          "w": 1152,
+          "h": 66,
+          "fontSize": 25,
+          "bold": true,
+          "color": "body",
+          "spaceAfter": 12
+        }
+      },
+      "capability-related-cycles": {
+        "table": {
+          "x": 64,
+          "y": 235,
+          "w": 1152,
+          "h": 350,
+          "fontSize": 24,
+          "bold": false,
+          "color": "body",
+          "spaceAfter": 12,
+          "columnWidths": [
+            330,
+            822
+          ]
+        },
+        "takeaway": {
+          "x": 64,
+          "y": 610,
+          "w": 1152,
+          "h": 66,
+          "fontSize": 25,
+          "bold": true,
+          "color": "body",
+          "spaceAfter": 12
+        }
+      },
+      "capability-tools": {
+        "table": {
+          "x": 64,
+          "y": 225,
+          "w": 1152,
+          "h": 380,
+          "fontSize": 22,
+          "bold": false,
+          "color": "body",
+          "spaceAfter": 12,
+          "columnWidths": [
+            330,
+            822
+          ]
+        },
+        "takeaway": {
+          "x": 64,
+          "y": 635,
+          "w": 1152,
+          "h": 55,
+          "fontSize": 25,
+          "bold": true,
+          "color": "body",
+          "spaceAfter": 12
+        }
+      },
+      "capability-workshop": {
+        "steps": {
+          "x": 64,
+          "y": 235,
+          "w": 1152,
+          "h": 340,
+          "fontSize": 30,
+          "bold": false,
+          "color": "body",
+          "spaceAfter": 12
+        },
+        "result": {
+          "x": 64,
+          "y": 610,
+          "w": 1152,
+          "h": 65,
+          "fontSize": 28,
+          "bold": true,
+          "color": "body",
+          "spaceAfter": 12
+        }
+      },
+      "capability-next": {
+        "lead": {
+          "x": 64,
+          "y": 235,
+          "w": 1152,
+          "h": 95,
+          "fontSize": 32,
+          "bold": true,
+          "color": "body",
+          "spaceAfter": 12
+        },
+        "steps": {
+          "x": 64,
+          "y": 365,
+          "w": 1152,
+          "h": 195,
+          "fontSize": 29,
+          "bold": false,
+          "color": "body",
+          "spaceAfter": 12
+        },
+        "links": {
+          "x": 64,
+          "y": 575,
+          "w": 1152,
+          "h": 65,
+          "fontSize": 25,
+          "bold": false,
+          "color": "body",
+          "spaceAfter": 12
+        },
+        "credit": {
+          "x": 64,
+          "y": 654,
+          "w": 1152,
+          "h": 39,
+          "fontSize": 17,
+          "bold": false,
+          "color": "muted",
+          "spaceAfter": 12
+        }
+      }
+    }
+  },
+  "theme": {
+    "name": "APIOps Cycles",
+    "author": "APIOps Cycles",
+    "font": "Inter",
+    "codeFont": "Consolas",
+    "logo": "assets/apiops-cycles-logo.png",
+    "footer": "APIOps Cycles",
+    "colors": {
+      "background": "#ffffff",
+      "heading": "#222222",
+      "body": "#444444",
+      "muted": "#666666",
+      "tableHeader": "#e5e5e5",
+      "tableAlternate": "#f7f7f7",
+      "tableBorder": "#dddddd"
+    }
+  }
+}

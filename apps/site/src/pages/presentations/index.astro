@@ -1,0 +1,21 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PresentationCard from '../../components/presentations/PresentationCard.astro';
+import {presentationEditions,presentationCatalog,presentationRelease,artifactUrl,fileSize} from '../../content/presentations';
+import '../../styles/presentations.css';
+const title='APIOps Cycles presentations';
+const description='Choose an APIOps overview, a financial-services case study or a technical introduction. View slides online and download editable PowerPoint, PDF or developer source.';
+---
+<BaseLayout title={title} description={description} canonicalPath="/presentations" lang="en">
+  <main class="public-content presentation-library">
+    <nav class="public-breadcrumbs" aria-label="Breadcrumb"><a href="/">APIOps Cycles</a><span aria-hidden="true">/</span><span>Presentations</span></nav>
+    <section class="public-hero"><p class="public-kicker">Explain the method</p><h1>APIOps Cycles presentations</h1><p>Find a deck for your audience. Present it as it is, adapt it in PowerPoint, or build your own version from the source.</p></section>
+    <div class="presentation-library__editions">{presentationEditions.map(edition=><PresentationCard edition={edition} />)}</div>
+    <section class="public-section" aria-labelledby="adapt"><p class="public-kicker">Make it yours</p><h2 id="adapt">One slide collection. Your presentation.</h2>
+      <div class="presentation-adapt-grid"><div><h3>Work in PowerPoint</h3><p>Download an editable deck, update the logo and text, and select the slides you need. Text, lists and tables remain editable. Canvas diagrams and illustrations are images.</p></div><div><h3>Work with code</h3><p>Shared JSON content, layout files and brand settings generate editable PowerPoint and Typst/PDF. The source includes all three editions, example branding, canvas JSON and build instructions.</p><a class="presentation-text-link" href="/presentations/developers">Developer guide <span aria-hidden="true">→</span></a></div></div>
+      <p><a class="presentation-button presentation-button--secondary" href={artifactUrl(presentationRelease.source)} download>Download source kit (ZIP, {fileSize(presentationRelease.source.bytes)})</a></p>
+      <p>Need a visual for your talk? <a href="/design-system/visuals">Reuse design-system assets or create a new scene.</a></p>
+    </section>
+    <section class="public-section presentation-reuse" aria-labelledby="reuse"><h2 id="reuse">Reuse and attribution</h2><p>Adapt the method material and add your organisation’s branding while retaining APIOps Cycles and canvas attribution. The case-study engagement is credited to APIsFirst with partner Osaango. Fictional canvas examples are labelled in the decks.</p><p><a href="/licensing">Method content: CC BY-SA 4.0 · Source code: Apache 2.0</a></p><p class="presentation-meta">Release {presentationCatalog.version} · Updated {presentationCatalog.released} · Decks are currently available in English. Presentation times are estimates.</p></section>
+  </main>
+</BaseLayout>

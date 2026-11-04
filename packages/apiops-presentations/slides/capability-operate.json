@@ -1,0 +1,32 @@
+{
+  "id": "capability-operate",
+  "title": "5. Delivery includes operation and support",
+  "elements": [
+    {
+      "id": "sequence",
+      "type": "numbered",
+      "items": [
+        "Build one complete consumer path from access to useful status.",
+        "Test permissions, stale data, source failure and recovery.",
+        "Release with monitoring, support and rollback ownership.",
+        "Practise the incident and change process with the producer."
+      ]
+    },
+    {
+      "id": "side-title",
+      "type": "text",
+      "text": "Evidence to keep"
+    },
+    {
+      "id": "side",
+      "type": "bullets",
+      "items": [
+        "Test results and release record",
+        "Runbook and escalation route",
+        "Dependency and access inventory",
+        "Recovery and lifecycle decisions"
+      ]
+    }
+  ],
+  "notes": "Canonical station: Capability Delivery & Operations. Use implementation-style-appropriate engineering, testing, security, release, support and operational ownership practices. The Capability Readiness & Operations Canvas connects delivery decisions to operation. The numbered sequence is a suggested teaching workflow, not an additional mandatory method process.\n\nThe supplier-payment status capability is a newly authored fictional teaching example, not a client implementation or measured outcome. Figures, service promises and release criteria are illustrative proposals requiring validation. Working summaries are not reproductions of canonical canvas templates.\n\nSource: apiops-cycles-method-data 4.2.1, src/data/method/cycles.json and en/labels.cycles.json; reviewed 4 November 2026. https://apiopscycles.com/cycles/capability-productization-cycle . Method: APIOps Cycles / Osaango Ltd, CC-BY-SA 4.0."
+}

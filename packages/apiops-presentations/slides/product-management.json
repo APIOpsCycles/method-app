@@ -1,0 +1,32 @@
+{
+  "id": "product-management",
+  "title": "API product management in everyday work",
+  "elements": [
+    {
+      "id": "bullets-1",
+      "type": "bullets",
+      "items": [
+        "Consumers and value: Who uses the API, and what does it help them do?",
+        "Ownership: Who is responsible for the product over its lifecycle?",
+        "Reuse and adoption: How can other teams discover and use the capability?",
+        "Lifecycle decisions: How should the product evolve as needs change?",
+        "Governance and developer experience: How do practices support product outcomes?"
+      ],
+      "emphasis": [
+        "Consumers and value:",
+        "Ownership:",
+        "Reuse and adoption:",
+        "Lifecycle decisions:",
+        "Governance and developer experience:"
+      ]
+    },
+    {
+      "id": "image-2",
+      "type": "image",
+      "asset": "api-first-not-enough.png",
+      "alt": "APIOps human scene connecting an API interface to a reusable product capability",
+      "fit": "contain"
+    }
+  ],
+  "notes": "Source: Australian_Financial_Services_APIOps_Cycles_Case_Study (1).docx, supplied by the user. Client anonymised. Engagement by APIsFirst with partner Osaango. Benefits are qualitative; no quantified delivery or business impact is claimed.\n\nSource section 3: Making API product management practical. The engagement helped teams understand product management responsibilities, reuse and adoption, ownership, lifecycle decisions and the link between governance, developer experience and product outcomes. These are related responsibilities, not five sequential implementation stages. No adoption metrics or proven deprecation outcomes are supplied.\n\nVisual: APIOps Cycles design system, scene-api-first-not-enough."
+}

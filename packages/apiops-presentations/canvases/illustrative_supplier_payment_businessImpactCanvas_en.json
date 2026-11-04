@@ -1,0 +1,105 @@
+{
+  "templateId": "businessImpactCanvas",
+  "metadata": {
+    "source": "APIOps Cycles method",
+    "license": "CC-BY-SA 4.0",
+    "authors": [
+      "Codex"
+    ],
+    "website": "www.apiopscycles.com",
+    "date": "2026-11-01",
+    "context": "Illustrative supplier-invoice payment through a partner portal. Fictional example, not a record of client work. API names are provisional."
+  },
+  "sections": [
+    {
+      "sectionId": "expectedBenefits",
+      "stickyNotes": [
+        {
+          "content": "Clear payment status",
+          "size": 80,
+          "color": "#deefdc"
+        }
+      ]
+    },
+    {
+      "sectionId": "operationalEfficiencyImpact",
+      "stickyNotes": [
+        {
+          "content": "Less manual chasing",
+          "size": 80,
+          "color": "#deefdc"
+        }
+      ]
+    },
+    {
+      "sectionId": "customerEmployeeImpact",
+      "stickyNotes": [
+        {
+          "content": "Fewer status queries",
+          "size": 80,
+          "color": "#deefdc"
+        }
+      ]
+    },
+    {
+      "sectionId": "financialImpact",
+      "stickyNotes": [
+        {
+          "content": "Support cost to test",
+          "size": 80,
+          "color": "#fff1c9"
+        }
+      ]
+    },
+    {
+      "sectionId": "complianceStrategicImpact",
+      "stickyNotes": [
+        {
+          "content": "Trace payment actions",
+          "size": 80,
+          "color": "#fff1c9"
+        }
+      ]
+    },
+    {
+      "sectionId": "impactOfNotProceeding",
+      "stickyNotes": [
+        {
+          "content": "Status stays unclear",
+          "size": 80,
+          "color": "#f6dce4"
+        }
+      ]
+    },
+    {
+      "sectionId": "risksAndCriticality",
+      "stickyNotes": [
+        {
+          "content": "Duplicate payment",
+          "size": 80,
+          "color": "#f6dce4"
+        },
+        {
+          "content": "Wrong user access",
+          "size": 80,
+          "color": "#f6dce4"
+        }
+      ]
+    },
+    {
+      "sectionId": "mitigationsAndDecisionImpact",
+      "stickyNotes": [
+        {
+          "content": "Check permissions",
+          "size": 80,
+          "color": "#deefdc"
+        },
+        {
+          "content": "Safe repeat requests",
+          "size": 80,
+          "color": "#deefdc"
+        }
+      ]
+    }
+  ]
+}

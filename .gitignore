@@ -52,3 +52,9 @@ packages/apiops-design-system/dist/
 
 #astro
 /apps/site/node_modules/
+
+#presentations
+/.codex-artifacts/
+/public/presentations/
+/packages/apiops-presentations/output/
+/packages/apiops-presentations/.release-tmp/

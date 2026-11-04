@@ -1,0 +1,39 @@
+{
+  "id": "portfolio-planning",
+  "title": "Portfolio planning coordinated API releases",
+  "elements": [
+    {
+      "id": "text-1",
+      "type": "text",
+      "text": "Which APIs to create, improve or release, and in what sequence"
+    },
+    {
+      "id": "image-2",
+      "type": "image",
+      "asset": "portfolio.png",
+      "alt": "Generated conceptual API dependency and release-coordination scene",
+      "fit": "cover"
+    },
+    {
+      "id": "text-3",
+      "type": "text",
+      "text": "API portfolio planning"
+    },
+    {
+      "id": "text-4",
+      "type": "text",
+      "text": "Priorities reflected partner integrations, UI development and dependencies between provider and consumer teams."
+    },
+    {
+      "id": "text-5",
+      "type": "text",
+      "text": "Capability improvement"
+    },
+    {
+      "id": "text-6",
+      "type": "text",
+      "text": "A complementary view addressed API discoverability, governance, developer experience and product management."
+    }
+  ],
+  "notes": "Source: Australian_Financial_Services_APIOps_Cycles_Case_Study (1).docx, supplied by the user. Client anonymised. Engagement by APIsFirst with partner Osaango. Benefits are qualitative; no quantified delivery or business impact is claimed.\n\nSource section 4: Coordinating the API product portfolio. The roadmap prioritised API creation, improvement and release to support partner integrations and UI development. It made dependencies visible across provider, consumer and connected-service teams. A separate improvement view translated assessments and workshop findings into practical next steps. No release dates or actual dependency map are supplied.\n\nVisual: AI-generated conceptual APIOps dependency illustration. It is not the client release roadmap."
+}

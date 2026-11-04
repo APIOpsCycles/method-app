@@ -1,7 +1,8 @@
 import { defaultLocale, getCatalog, locales, localePrefix, publicResources, resourcePath, type Locale } from "./method-data";
 import { featureSlugs } from "../content/features";
+import presentationCatalog from '../../../../packages/apiops-presentations/catalog.json';
 
-export type RouteKind = "home" | "cycle" | "station" | "cycleStation" | "role" | "resource" | "line" | "cycleLine" | "partners" | "faq" | "licensing" | "data" | "designSystem" | "feature";
+export type RouteKind = "home" | "cycle" | "station" | "cycleStation" | "role" | "resource" | "line" | "cycleLine" | "partners" | "faq" | "licensing" | "data" | "designSystem" | "feature" | "presentation";
 export type PublicRoute = { kind: RouteKind; locale: Locale; path: string; alternateKey?: string };
 
 /** One indexing policy shared by sitemap and future route discovery surfaces. */
@@ -29,6 +30,13 @@ export function publicRouteInventory(): PublicRoute[] {
   return [
     ...localized,
     { kind: "designSystem", locale: defaultLocale, path: "/design-system" },
+    { kind: "designSystem", locale: defaultLocale, path: "/design-system/visuals" },
+    { kind: "presentation", locale: defaultLocale, path: "/presentations" },
+    { kind: "presentation", locale: defaultLocale, path: "/presentations/developers" },
+    ...presentationCatalog.editions.flatMap(edition => [
+      { kind: "presentation" as const, locale: defaultLocale, path: `/presentations/${edition.id}` },
+      { kind: "presentation" as const, locale: defaultLocale, path: `/presentations/${edition.id}/view` },
+    ]),
   ];
 }
 

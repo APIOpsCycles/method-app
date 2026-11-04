@@ -10,9 +10,9 @@
     "node": ">=22.16.0"
   },
   "scripts": {
-    "predev": "npm run prepare:local-data",
+    "predev": "npm run prepare:local-data && npm run sync:presentations",
     "dev": "npm run dev --workspace @apiops/site",
-    "prebuild": "npm run prepare:local-data",
+    "prebuild": "npm run prepare:local-data && npm run sync:presentations",
     "build": "npm run build --workspace @apiops/site",
     "start": "npm run preview --workspace @apiops/site",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next",
@@ -24,6 +24,9 @@
     "test:e2e": "playwright test",
     "prepare:local-data": "node packages/apiops-design-system/scripts/build.mjs && npm run sync:design-system-assets && npm run sync:method-data",
     "sync:method-data": "node scripts/sync-method-data.mjs && tsx scripts/build-method-graph.ts",
+    "sync:presentations": "node scripts/sync-presentations.mjs",
+    "presentations:build": "npm run build --workspace @apiops/presentations",
+    "presentations:release": "npm run release --workspace @apiops/presentations",
     "build:method-graph": "tsx scripts/build-method-graph.ts",
     "db:generate": "drizzle-kit generate",
     "sync:design-system-assets": "node packages/apiops-design-system/dist/cli/index.js copy-assets --output public/design-system",

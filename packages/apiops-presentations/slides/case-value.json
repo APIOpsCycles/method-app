@@ -1,0 +1,45 @@
+{
+  "id": "case-value",
+  "title": "The value across products, portfolio and ways of working",
+  "elements": [
+    {
+      "id": "text-1",
+      "type": "text",
+      "text": "Connected work made decisions easier to discuss and repeat"
+    },
+    {
+      "id": "table-2",
+      "type": "table",
+      "rows": [
+        [
+          "Level",
+          "What the engagement connected",
+          "Qualitative value"
+        ],
+        [
+          "API product",
+          "Consumer needs, business rules,\ncontracts and technical controls",
+          "Shared understanding\nand more informed design"
+        ],
+        [
+          "API portfolio",
+          "Provider and consumer dependencies\nwith API priorities and releases",
+          "End-to-end visibility\nand coordinated delivery"
+        ],
+        [
+          "Ways of working",
+          "Product ownership and lifecycle\ndecisions with practical methods",
+          "Repeatable capability\nand continuous improvement"
+        ]
+      ],
+      "header": true,
+      "emphasizeFirstColumn": true
+    },
+    {
+      "id": "text-3",
+      "type": "text",
+      "text": "Qualitative benefits of the engagement. No quantified delivery or business impact is claimed."
+    }
+  ],
+  "notes": "Source: Australian_Financial_Services_APIOps_Cycles_Case_Study (1).docx, supplied by the user. Client anonymised. Engagement by APIsFirst with partner Osaango. Benefits are qualitative; no quantified delivery or business impact is claimed.\n\nSource: The value of APIOps Cycles and Key takeaway. This editable summary compares the connected work and qualitative value at API product, API portfolio and organisational levels. No measured acceleration, revenue growth, savings or completed transformation is claimed."
+}

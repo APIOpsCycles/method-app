@@ -1,0 +1,21 @@
+{
+  "name": "@apiops/presentations",
+  "version": "1.2.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "check": "node scripts/check.mjs",
+    "build": "node scripts/build.mjs",
+    "build:partner": "node scripts/build.mjs --brand brands/partner-example.json --name partner-example",
+    "build:pdf": "node scripts/build.mjs --format pdf",
+    "release": "node scripts/release.mjs"
+  },
+  "dependencies": {
+    "jszip": "3.10.1",
+    "pptxgenjs": "4.0.1",
+    "reveal.js": "6.0.2"
+  }
+}

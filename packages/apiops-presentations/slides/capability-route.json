@@ -1,0 +1,19 @@
+{
+  "id": "capability-route",
+  "title": "Eight stations, revisited as evidence changes",
+  "elements": [
+    {
+      "id": "map",
+      "type": "image",
+      "asset": "capability-cycle-route.png",
+      "alt": "Capability Productization Cycle route: strategy; consumer and producer requirements; architecture; solution and interaction design; delivery and operations; readiness; publishing and enablement; monitoring and improvement; feedback returns to earlier decisions",
+      "fit": "contain"
+    },
+    {
+      "id": "caption",
+      "type": "text",
+      "text": "Use the stations to expose missing decisions and evidence. Return to earlier work when assumptions change."
+    }
+  ],
+  "notes": "The eight labels and their order follow the Capability Productization Cycle station mapping in method-data. This simplified route is an original presentation diagram, not the API Productization metro map. It does not prescribe a one-way delivery process.\n\nThe supplier-payment status capability is a newly authored fictional teaching example, not a client implementation or measured outcome. Figures, service promises and release criteria are illustrative proposals requiring validation. Working summaries are not reproductions of canonical canvas templates.\n\nSource: apiops-cycles-method-data 4.2.1, src/data/method/cycles.json and en/labels.cycles.json; reviewed 4 November 2026. https://apiopscycles.com/cycles/capability-productization-cycle . Method: APIOps Cycles / Osaango Ltd, CC-BY-SA 4.0."
+}

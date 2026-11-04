@@ -1,0 +1,11 @@
+---
+import {presentationEditions,presentationPath} from '../../content/presentations';
+interface Props {stationId?: string; cycleId?: string; locale?: string}
+const {stationId,cycleId,locale='en'}=Astro.props;
+const related=presentationEditions.filter(e=>stationId?e.stations.includes(stationId):e.cycle===cycleId);
+---
+{related.length > 0 && <section class="public-section" aria-labelledby="related-presentations" lang="en">
+  <h2 id="related-presentations">Presentations{locale !== 'en' && ' (English)'}</h2>
+  <p>Use these decks to introduce the method or discuss it with your team. View online or download PowerPoint and PDF.</p>
+  <ul class="presentation-related">{related.map(e=><li><a href={presentationPath(e.id)}>{e.title}</a><span>{e.slideCount} slides · About {e.durationMinutes} minutes</span></li>)}</ul>
+</section>}

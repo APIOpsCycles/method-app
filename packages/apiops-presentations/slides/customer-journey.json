@@ -1,0 +1,45 @@
+{
+  "id": "customer-journey",
+  "title": "Customer Journey Canvas: a supplier payment",
+  "elements": [
+    {
+      "id": "image-1",
+      "type": "image",
+      "asset": "filled-customerJourneyCanvas-neutral.png",
+      "alt": "New illustrative filled Customer Journey Canvas for a small business owner paying a supplier invoice",
+      "fit": "contain"
+    },
+    {
+      "id": "text-2",
+      "type": "text",
+      "text": "Customer and trigger"
+    },
+    {
+      "id": "text-3",
+      "type": "text",
+      "text": "A small business owner has a supplier bill due and wants to know the payment has completed."
+    },
+    {
+      "id": "text-4",
+      "type": "text",
+      "text": "The customer journey"
+    },
+    {
+      "id": "numbered-5",
+      "type": "numbered",
+      "items": [
+        "Open the due bill",
+        "Choose the payee",
+        "Choose a payment method",
+        "Confirm the payment",
+        "Check the receipt"
+      ]
+    },
+    {
+      "id": "text-6",
+      "type": "text",
+      "text": "Illustrative example. Not a client artefact."
+    }
+  ],
+  "notes": "Source: Australian_Financial_Services_APIOps_Cycles_Case_Study (1).docx, supplied by the user. Client anonymised. Engagement by APIsFirst with partner Osaango. Benefits are qualitative; no quantified delivery or business impact is claimed.\n\nNewly authored fictional example for this case study: a small business owner pays a supplier invoice through a partner portal. The supplied real example set informed only the method of connecting customer tasks, pains, gains and API capabilities. No source screenshot, wording, institution, system identifier, endpoint, number or product name has been reused. Unclear status and duplicate-payment concern are illustrative hypotheses, not measured client findings. Template source: local apiops-cycles-method-data, customerJourneyCanvas. https://apiopscycles.com/resources/customer-journey-canvas/ . Template by APIOps Cycles and Osaango Ltd, CC-BY-SA 4.0. Importable example JSON: assets/illustrative_supplier_payment_customerJourneyCanvas_en.json."
+}

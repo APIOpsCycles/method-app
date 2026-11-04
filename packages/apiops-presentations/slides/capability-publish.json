@@ -1,0 +1,44 @@
+{
+  "id": "capability-publish",
+  "title": "7. Publish a capability people can adopt",
+  "elements": [
+    {
+      "id": "table",
+      "type": "table",
+      "rows": [
+        [
+          "Catalogue entry",
+          "Illustrative content"
+        ],
+        [
+          "Purpose and audience",
+          "Payment progress for authorised suppliers and service teams."
+        ],
+        [
+          "Access and onboarding",
+          "Eligibility, request route, example interaction and first-use test."
+        ],
+        [
+          "Service expectations",
+          "Data freshness, supported usage and known limitations."
+        ],
+        [
+          "Ownership and support",
+          "Capability owner, producer contact and escalation route."
+        ],
+        [
+          "Lifecycle",
+          "Version, change notice, migration and retirement policy."
+        ]
+      ],
+      "header": true,
+      "emphasizeFirstColumn": true
+    },
+    {
+      "id": "takeaway",
+      "type": "text",
+      "text": "Publishing includes enablement and support, alongside technical access."
+    }
+  ],
+  "notes": "Canonical station: Capability Publishing & Enablement. Publish so intended consumers can discover, understand, request access, onboard, use and get support. Resources include publishing/discovery, consumer onboarding, service-agreement and versioning/lifecycle guides. Use a catalogue entry and service agreement appropriate to the selected style.\n\nThe supplier-payment status capability is a newly authored fictional teaching example, not a client implementation or measured outcome. Figures, service promises and release criteria are illustrative proposals requiring validation. Working summaries are not reproductions of canonical canvas templates.\n\nSource: apiops-cycles-method-data 4.2.1, src/data/method/cycles.json and en/labels.cycles.json; reviewed 4 November 2026. https://apiopscycles.com/cycles/capability-productization-cycle . Method: APIOps Cycles / Osaango Ltd, CC-BY-SA 4.0."
+}

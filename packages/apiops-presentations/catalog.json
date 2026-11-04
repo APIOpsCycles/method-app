@@ -1,0 +1,129 @@
+{
+  "schemaVersion": "1.0",
+  "version": "1.2.0",
+  "released": "2026-11-04",
+  "language": "en",
+  "methodDataVersion": "4.2.1",
+  "scaffoldVersion": "1.1.4",
+  "sourceRepository": "https://github.com/APIOpsCycles/method-app/tree/main/packages/apiops-presentations",
+  "reuse": {
+    "methodContent": "CC-BY-SA-4.0",
+    "code": "Apache-2.0",
+    "credit": "APIOps Cycles; case-study engagement by APIsFirst with partner Osaango."
+  },
+  "editions": [
+    {
+      "id": "apiops-overview",
+      "title": "APIOps Cycles overview",
+      "description": "Introduce the method through a customer journey, API value and the decisions connecting strategy to delivery.",
+      "audience": [
+        "Business and technology leaders",
+        "Teams new to APIOps Cycles"
+      ],
+      "durationMinutes": 15,
+      "topics": [
+        "Method overview",
+        "Consumer value",
+        "Architecture",
+        "Building with AI"
+      ],
+      "stations": [
+        "api-product-strategy",
+        "api-consumer-experience",
+        "api-platform-architecture",
+        "api-design",
+        "api-delivery",
+        "api-audit",
+        "api-publishing",
+        "monitoring-and-improving"
+      ],
+      "slideCount": 8,
+      "cycle": "api-productization-cycle"
+    },
+    {
+      "id": "financial-services-case-study",
+      "title": "From API delivery to digital product thinking",
+      "description": "An anonymous Australian financial-services case connecting product discovery, API design, portfolio planning and ways of working.",
+      "audience": [
+        "API product owners",
+        "Business stakeholders",
+        "Partner presenters"
+      ],
+      "durationMinutes": 20,
+      "topics": [
+        "Case study",
+        "Product strategy",
+        "Canvases",
+        "Portfolio planning"
+      ],
+      "stations": [
+        "api-product-strategy",
+        "api-consumer-experience",
+        "api-platform-architecture",
+        "api-design",
+        "api-delivery",
+        "api-audit",
+        "api-publishing",
+        "monitoring-and-improving"
+      ],
+      "slideCount": 11,
+      "cycle": "api-productization-cycle"
+    },
+    {
+      "id": "strategy-to-technical-delivery",
+      "title": "From product strategy to technical delivery",
+      "description": "Follow the case study into architecture, domain and contract design, AI-assisted building, testing, linting, audit and continuous improvement.",
+      "audience": [
+        "Architects and API designers",
+        "Engineers and technical product owners"
+      ],
+      "durationMinutes": 45,
+      "topics": [
+        "Architecture",
+        "API design",
+        "Building with AI",
+        "Linting and audit"
+      ],
+      "stations": [
+        "api-product-strategy",
+        "api-consumer-experience",
+        "api-platform-architecture",
+        "api-design",
+        "api-delivery",
+        "api-audit",
+        "api-publishing",
+        "monitoring-and-improving"
+      ],
+      "slideCount": 28,
+      "cycle": "api-productization-cycle"
+    },
+    {
+      "id": "capability-productization-cycle",
+      "title": "Capability Productization Cycle",
+      "description": "Define a reusable digital capability, choose its implementation and follow eight stations through readiness, publishing and continuous improvement.",
+      "audience": [
+        "Capability and product owners",
+        "Architects, producers and consumer teams"
+      ],
+      "durationMinutes": 25,
+      "topics": [
+        "Capability strategy",
+        "Consumer and producer commitments",
+        "Architecture decisions",
+        "Readiness and operations"
+      ],
+      "stations": [
+        "api-product-strategy",
+        "api-consumer-experience",
+        "api-platform-architecture",
+        "api-design",
+        "api-delivery",
+        "api-audit",
+        "api-publishing",
+        "monitoring-and-improving"
+      ],
+      "slideCount": 16,
+      "cycle": "capability-productization-cycle"
+    }
+  ]
+}

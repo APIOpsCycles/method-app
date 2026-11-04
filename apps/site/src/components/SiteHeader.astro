@@ -19,6 +19,7 @@ const localeNames: Record<Locale, string> = { en: "English", fi: "Suomi", fr: "F
       <span aria-hidden="true"></span>
     </button>
     <div class="site-navigation__links" id="site-navigation-links">
+      <a href="/presentations" lang="en">Presentations</a>
       <a href={`${prefix}/partners`}>{labels["nav.partners"]}</a>
       <a href={`${prefix}/faq`}>FAQ</a>
       <a href={repository} target="_blank" rel="noreferrer">{labels["nav.github"]}</a>
@@ -58,6 +59,6 @@ const localeNames: Record<Locale, string> = { en: "English", fi: "Suomi", fr: "F
     const parts = window.location.pathname.split('/').filter(Boolean);
     if (supported.includes(parts[0])) parts.shift();
     const path = `/${parts.join('/')}`;
-    window.location.assign(path === '/design-system' || next === select.dataset.defaultLocale ? path || '/' : `/${next}${path === '/' ? '' : path}`);
+    window.location.assign(path === '/design-system' || path.startsWith('/design-system/') || path === '/presentations' || path.startsWith('/presentations/') || next === select.dataset.defaultLocale ? path || '/' : `/${next}${path === '/' ? '' : path}`);
   });
 </script>

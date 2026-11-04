@@ -1,0 +1,135 @@
+{
+  "templateId": "apiBusinessModelCanvas",
+  "metadata": {
+    "source": "APIOps Cycles method",
+    "license": "CC-BY-SA 4.0",
+    "authors": [
+      "Codex"
+    ],
+    "website": "www.apiopscycles.com",
+    "date": "2026-11-01",
+    "context": "Illustrative supplier-invoice payment through a partner portal. Fictional example, not a record of client work. API names are provisional."
+  },
+  "sections": [
+    {
+      "sectionId": "keyPartners",
+      "stickyNotes": [
+        {
+          "content": "Partner portal team",
+          "size": 80,
+          "color": "#fff1c9"
+        },
+        {
+          "content": "Payment operations",
+          "size": 80,
+          "color": "#fff1c9"
+        }
+      ]
+    },
+    {
+      "sectionId": "keyActivities",
+      "stickyNotes": [
+        {
+          "content": "Run payment service",
+          "size": 80,
+          "color": "#dceef8"
+        },
+        {
+          "content": "Support partners",
+          "size": 80,
+          "color": "#dceef8"
+        }
+      ]
+    },
+    {
+      "sectionId": "keyResources",
+      "stickyNotes": [
+        {
+          "content": "Payment platform",
+          "size": 80,
+          "color": "#fff1c9"
+        },
+        {
+          "content": "Operations team",
+          "size": 80,
+          "color": "#fff1c9"
+        }
+      ]
+    },
+    {
+      "sectionId": "apiValueProposition",
+      "stickyNotes": [
+        {
+          "content": "Supplier Payments API",
+          "size": 80,
+          "color": "#fff1c9"
+        },
+        {
+          "content": "Pay with confidence",
+          "size": 80,
+          "color": "#deefdc"
+        }
+      ]
+    },
+    {
+      "sectionId": "developerRelations",
+      "stickyNotes": [
+        {
+          "content": "Sandbox and guides",
+          "size": 80,
+          "color": "#dceef8"
+        }
+      ]
+    },
+    {
+      "sectionId": "channels",
+      "stickyNotes": [
+        {
+          "content": "Partner portal",
+          "size": 80,
+          "color": "#dceef8"
+        }
+      ]
+    },
+    {
+      "sectionId": "apiConsumerSegments",
+      "stickyNotes": [
+        {
+          "content": "Partner app teams",
+          "size": 80,
+          "color": "#fff1c9"
+        }
+      ]
+    },
+    {
+      "sectionId": "costs",
+      "stickyNotes": [
+        {
+          "content": "Build and operate",
+          "size": 80,
+          "color": "#f6dce4"
+        },
+        {
+          "content": "Partner onboarding",
+          "size": 80,
+          "color": "#f6dce4"
+        }
+      ]
+    },
+    {
+      "sectionId": "benefits",
+      "stickyNotes": [
+        {
+          "content": "Less payment rework",
+          "size": 80,
+          "color": "#deefdc"
+        },
+        {
+          "content": "Reusable capability",
+          "size": 80,
+          "color": "#deefdc"
+        }
+      ]
+    }
+  ]
+}

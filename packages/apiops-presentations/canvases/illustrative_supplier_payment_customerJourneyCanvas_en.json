@@ -1,0 +1,165 @@
+{
+  "templateId": "customerJourneyCanvas",
+  "metadata": {
+    "source": "APIOps Cycles method",
+    "license": "CC-BY-SA 4.0",
+    "authors": [
+      "Codex"
+    ],
+    "website": "www.apiopscycles.com",
+    "date": "2026-11-01",
+    "context": "Illustrative supplier-invoice payment through a partner portal. Fictional example, not a record of client work. API names are provisional."
+  },
+  "sections": [
+    {
+      "sectionId": "customerDiscoversNeed",
+      "stickyNotes": [
+        {
+          "content": "Supplier bill due",
+          "size": 80,
+          "color": "#dceef8"
+        }
+      ]
+    },
+    {
+      "sectionId": "persona",
+      "stickyNotes": [
+        {
+          "content": "Small business owner",
+          "size": 80,
+          "color": "#fff1c9"
+        }
+      ]
+    },
+    {
+      "sectionId": "pains",
+      "stickyNotes": [
+        {
+          "content": "Unclear payment status",
+          "size": 80,
+          "color": "#f6dce4"
+        },
+        {
+          "content": "Fear of double payment",
+          "size": 80,
+          "color": "#f6dce4"
+        }
+      ]
+    },
+    {
+      "sectionId": "journeySteps",
+      "stickyNotes": [
+        {
+          "content": "Open due bill",
+          "size": 80,
+          "color": "#dceef8"
+        },
+        {
+          "content": "Choose payee",
+          "size": 80,
+          "color": "#dceef8"
+        },
+        {
+          "content": "Choose method",
+          "size": 80,
+          "color": "#dceef8"
+        },
+        {
+          "content": "Confirm payment",
+          "size": 80,
+          "color": "#dceef8"
+        },
+        {
+          "content": "Check receipt",
+          "size": 80,
+          "color": "#dceef8"
+        }
+      ]
+    },
+    {
+      "sectionId": "customerNeedIsResolved",
+      "stickyNotes": [
+        {
+          "content": "Payment confirmed",
+          "size": 80,
+          "color": "#deefdc"
+        }
+      ]
+    },
+    {
+      "sectionId": "gains",
+      "stickyNotes": [
+        {
+          "content": "Clear payment status",
+          "size": 80,
+          "color": "#deefdc"
+        },
+        {
+          "content": "One payment only",
+          "size": 80,
+          "color": "#deefdc"
+        }
+      ]
+    },
+    {
+      "sectionId": "inputsOutputs",
+      "stickyNotes": [
+        {
+          "content": "Bill and amount",
+          "size": 80,
+          "color": "#fff1c9"
+        },
+        {
+          "content": "Payee details",
+          "size": 80,
+          "color": "#fff1c9"
+        },
+        {
+          "content": "Payment reference",
+          "size": 80,
+          "color": "#fff1c9"
+        }
+      ]
+    },
+    {
+      "sectionId": "interactionProcessingRules",
+      "stickyNotes": [
+        {
+          "content": "Check user access",
+          "size": 80,
+          "color": "#fff1c9"
+        },
+        {
+          "content": "Confirm amount",
+          "size": 80,
+          "color": "#fff1c9"
+        },
+        {
+          "content": "Block repeat sends",
+          "size": 80,
+          "color": "#fff1c9"
+        }
+      ]
+    },
+    {
+      "sectionId": "improvementOpportunities",
+      "stickyNotes": [
+        {
+          "content": "Verify payee first",
+          "size": 80,
+          "color": "#deefdc"
+        },
+        {
+          "content": "Track pending state",
+          "size": 80,
+          "color": "#deefdc"
+        },
+        {
+          "content": "Notify final result",
+          "size": 80,
+          "color": "#deefdc"
+        }
+      ]
+    }
+  ]
+}

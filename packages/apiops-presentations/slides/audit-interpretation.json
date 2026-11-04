@@ -1,0 +1,45 @@
+{
+  "id": "audit-interpretation",
+  "title": "A check result needs a clear interpretation",
+  "elements": [
+    {
+      "id": "table-1",
+      "type": "table",
+      "rows": [
+        [
+          "Starter check or signal",
+          "What the inspected code checks",
+          "Evidence to add"
+        ],
+        [
+          "Examples pass validation",
+          "Presence of an example\nsomewhere in the specification",
+          "Actual example-to-schema\nvalidation"
+        ],
+        [
+          "Validation workflow present",
+          "Existence of the expected\nworkflow file",
+          "Successful execution and\nmeaningful test results"
+        ],
+        [
+          "Opaque identifier check",
+          "Names specific to the\nstarter Catalog example",
+          "Checks adapted to payment\nidentifiers and contracts"
+        ],
+        [
+          "Manual readiness item",
+          "The checklist default status,\ncommonly partial",
+          "Review of the actual evidence\nby the accountable owner"
+        ]
+      ],
+      "header": true,
+      "emphasizeFirstColumn": true
+    },
+    {
+      "id": "text-2",
+      "type": "text",
+      "text": "Adapt the starter checks to the API domain before treating coverage as a release decision."
+    }
+  ],
+  "notes": "APIOps introduction. Technical continuation is illustrative; no client implementation or measured improvement is claimed.\n\nDirect implementation review: checkExamplesPassValidation returns hasAnyExample(spec); checkValidationWorkflowPresent checks file existence; checkOpaqueIdentifiers looks for productId, variantId and categoryId; normalizeStatus returns manual defaultStatus or partial. These limitations are concrete in the inspected local create-apiops 1.1.4 template. The canonical JSON style guide is guidance and linked audit metadata; it is not automatically compiled into a complete Spectral ruleset. Review and extend automation rather than interpreting report generation as verified readiness.\n\nSources checked 3 November 2026:\npackages/create-apiops/template/scripts/run-design-audit.js: checkExamplesPassValidation, checkValidationWorkflowPresent, checkOpaqueIdentifiers, normalizeStatus\nsrc/snippets/api-style-guide.json"
+}

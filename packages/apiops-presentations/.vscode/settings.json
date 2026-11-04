@@ -1,0 +1,6 @@
+{
+  "json.schemas": [
+    { "fileMatch": ["/slides/*.json"], "url": "./schemas/slide.schema.json" },
+    { "fileMatch": ["/theme.json", "/brands/*.json"], "url": "./schemas/brand.schema.json" }
+  ]
+}

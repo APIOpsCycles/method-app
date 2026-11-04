@@ -1,0 +1,45 @@
+{
+  "id": "capability-choice",
+  "title": "3. Architecture: choose how to provide it",
+  "elements": [
+    {
+      "id": "table",
+      "type": "table",
+      "rows": [
+        [
+          "Option",
+          "Useful when",
+          "Evidence to check"
+        ],
+        [
+          "API on demand",
+          "A consumer needs current status now.",
+          "Authorisation, source latency, peak demand."
+        ],
+        [
+          "Event notification",
+          "Consumers react when status changes.",
+          "Delivery guarantees, ordering, replay."
+        ],
+        [
+          "Reusable integration",
+          "Status spans several providers.",
+          "Ownership, mapping, reconciliation."
+        ],
+        [
+          "Workflow or automation",
+          "Exceptions require coordinated action.",
+          "Human approval, fallback, recovery."
+        ]
+      ],
+      "header": true,
+      "emphasizeFirstColumn": true
+    },
+    {
+      "id": "takeaway",
+      "type": "text",
+      "text": "Record the choice, alternatives, trust boundaries and operating cost."
+    }
+  ],
+  "notes": "Canonical station: Capability Architecture & Platform Decisions. Recommended resources include Business Impact, Locations, Capacity and Capability Architecture Decision canvases. Options can be combined; do not imply the method requires one implementation.\n\nThe supplier-payment status capability is a newly authored fictional teaching example, not a client implementation or measured outcome. Figures, service promises and release criteria are illustrative proposals requiring validation. Working summaries are not reproductions of canonical canvas templates.\n\nSource: apiops-cycles-method-data 4.2.1, src/data/method/cycles.json and en/labels.cycles.json; reviewed 4 November 2026. https://apiopscycles.com/cycles/capability-productization-cycle . Method: APIOps Cycles / Osaango Ltd, CC-BY-SA 4.0."
+}

@@ -1,0 +1,50 @@
+{
+  "id": "tests",
+  "title": "Tests turn the payment promises into evidence",
+  "elements": [
+    {
+      "id": "table-1",
+      "type": "table",
+      "rows": [
+        [
+          "Promise or risk",
+          "Example test",
+          "What to inspect"
+        ],
+        [
+          "Contract consistency",
+          "Validate valid and invalid\nrequests and responses",
+          "Schemas, error bodies\nand documented status codes"
+        ],
+        [
+          "Replay protection",
+          "Repeat a request and\nsubmit concurrent duplicates",
+          "Stable result and no\nduplicate processing"
+        ],
+        [
+          "Partner isolation",
+          "Read or alter a payment\nowned by another partner",
+          "Denied access and\nappropriate audit evidence"
+        ],
+        [
+          "Clear failure behaviour",
+          "Simulate a slow or\nunavailable dependency",
+          "Agreed timeout, recovery\nand consumer-visible status"
+        ],
+        [
+          "Peak demand",
+          "Exercise a measured\npeak traffic model",
+          "Latency, errors and\nresource consumption"
+        ]
+      ],
+      "header": true,
+      "emphasizeFirstColumn": true
+    },
+    {
+      "id": "text-2",
+      "type": "text",
+      "text": "These tests extend the scaffold with runtime evidence for the chosen implementation."
+    }
+  ],
+  "notes": "APIOps introduction. Technical continuation is illustrative; no client implementation or measured improvement is claimed.\n\nIllustrative acceptance-test ideas derived from journey, architecture and contract decisions. No test execution or client performance result is claimed. The repository guidance includes functional, security and performance testing. Object-level access tests support the OWASP recommendation to validate permissions for requested objects. The scaffold does not supply this payment runtime or these application tests.\n\nSources checked 3 November 2026:\nmethod-engine: buildResourceMetadata(api-testing-best-practices, en)\nsrc/snippets/api-design-principles-guidance.md\nhttps://api-security.owasp.org/editions/2023/en/0xa1-broken-object-level-authorization/"
+}

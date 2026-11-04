@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "1.0",
+  "title": "From API delivery to digital product thinking",
+  "language": "en",
+  "author": "APIOps Cycles",
+  "slides": [
+    "slides/case-cover.json",
+    "slides/case-challenge.json",
+    "slides/collaborative-discovery.json",
+    "slides/customer-journey.json",
+    "slides/value-proposition.json",
+    "slides/canvas-collection.json",
+    "slides/productization-map.json",
+    "slides/traceability.json",
+    "slides/product-management.json",
+    "slides/portfolio-planning.json",
+    "slides/case-value.json"
+  ],
+  "id": "financial-services-case-study"
+}

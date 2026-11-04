@@ -1,0 +1,54 @@
+{
+  "id": "scaffold",
+  "title": "The scaffold gives people and AI a shared workspace",
+  "elements": [
+    {
+      "id": "text-1",
+      "type": "code",
+      "text": "npm create apiops@latest payments\ncd payments\nnpm run method:start\nnpm run method:canvases:new-api"
+    },
+    {
+      "id": "text-2",
+      "type": "text",
+      "text": "Choose API Productization and REST in the prompts. The tooling requires Node.js 22 or later."
+    },
+    {
+      "id": "table-3",
+      "type": "table",
+      "rows": [
+        [
+          "Project location",
+          "Purpose"
+        ],
+        [
+          "specs/canvases/",
+          "Editable method decisions"
+        ],
+        [
+          "specs/openapi/api.yaml",
+          "Project-owned API contract"
+        ],
+        [
+          "docs/api/",
+          "Review and generated outputs"
+        ],
+        [
+          "spectral/ and scripts/",
+          "Lint rules and audit checks"
+        ],
+        [
+          ".github/workflows/",
+          "Automated review workflow"
+        ]
+      ],
+      "header": true,
+      "emphasizeFirstColumn": true
+    },
+    {
+      "id": "text-4",
+      "type": "text",
+      "text": "The starter includes a sample Catalog contract; your team builds the payment runtime in its chosen language."
+    }
+  ],
+  "notes": "APIOps introduction. Technical continuation is illustrative; no client implementation or measured improvement is claimed.\n\nSource-reviewed local versions: apiops-cycles-method-data 4.2.1 and create-apiops 1.1.4. The npm initializer command is documented by the local package. An isolated project was generated with the local initializer, API Productization, REST, English and --no-install. That mode skips installation and canvas generation. The command block shows the normal installed workflow. The scaffold supplies a design and review workspace, not a complete payment implementation.\n\nSources checked 3 November 2026:\npackages/create-apiops/README.md\npackages/create-apiops/template/README.md\npackages/create-apiops/template/package.json\nLocal scaffold verification: .codex-artifacts/apiops-intro/scaffold-check/intro-payments-demo"
+}

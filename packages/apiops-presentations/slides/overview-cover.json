@@ -1,0 +1,34 @@
+{
+  "id": "overview-cover",
+  "title": "",
+  "elements": [
+    {
+      "id": "text-1",
+      "type": "text",
+      "text": "APIOps Cycles"
+    },
+    {
+      "id": "text-2",
+      "type": "text",
+      "text": "Connecting API strategy,\ndesign and delivery"
+    },
+    {
+      "id": "text-3",
+      "type": "text",
+      "text": "A short introduction to APIOps Cycles"
+    },
+    {
+      "id": "text-4",
+      "type": "text",
+      "text": "APIOps Cycles"
+    },
+    {
+      "id": "image-5",
+      "type": "image",
+      "asset": "chaos-to-capabilities.png",
+      "alt": "APIOps human scene showing connected discovery and delivery roles",
+      "fit": "contain"
+    }
+  ],
+  "notes": "Introduction to the APIOps Cycles method. The supplier-payment examples in this edition are fictional illustrations. Method and canvas attribution is preserved in the relevant slides."
+}

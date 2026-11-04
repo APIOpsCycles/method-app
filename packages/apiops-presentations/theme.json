@@ -1,0 +1,17 @@
+{
+  "name": "APIOps Cycles",
+  "author": "APIOps Cycles",
+  "font": "Inter",
+  "codeFont": "Consolas",
+  "logo": "assets/apiops-cycles-logo.png",
+  "footer": "APIOps Cycles",
+  "colors": {
+    "background": "#ffffff",
+    "heading": "#222222",
+    "body": "#444444",
+    "muted": "#666666",
+    "tableHeader": "#e5e5e5",
+    "tableAlternate": "#f7f7f7",
+    "tableBorder": "#dddddd"
+  }
+}

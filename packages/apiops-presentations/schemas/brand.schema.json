@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "APIOps partner brand override",
+  "type": "object",
+  "properties": {
+    "name": {"type": "string"}, "author": {"type": "string"},
+    "font": {"type": "string"}, "codeFont": {"type": "string"},
+    "logo": {"type": "string"}, "footer": {"type": "string"},
+    "colors": {
+      "type": "object",
+      "properties": {
+        "background": {"$ref": "#/$defs/color"}, "heading": {"$ref": "#/$defs/color"},
+        "body": {"$ref": "#/$defs/color"}, "muted": {"$ref": "#/$defs/color"},
+        "tableHeader": {"$ref": "#/$defs/color"}, "tableAlternate": {"$ref": "#/$defs/color"},
+        "tableBorder": {"$ref": "#/$defs/color"}
+      },
+      "additionalProperties": false
+    }
+  },
+  "$defs": {"color": {"type": "string", "pattern": "^#[0-9a-fA-F]{6}$"}},
+  "additionalProperties": false
+}

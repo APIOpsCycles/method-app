@@ -1,0 +1,31 @@
+{
+  "id": "capability-next",
+  "title": "Make the next reuse easier",
+  "elements": [
+    {
+      "id": "lead",
+      "type": "text",
+      "text": "A capability is ready for reuse when its value, service promise, access and operational ownership are clear."
+    },
+    {
+      "id": "steps",
+      "type": "numbered",
+      "items": [
+        "Name one capability and the consumer outcome.",
+        "Find the weakest evidence across the eight stations.",
+        "Assign the next experiment and review the result."
+      ]
+    },
+    {
+      "id": "links",
+      "type": "text",
+      "text": "Explore the cycle and its resources\napiopscycles.com/cycles/capability-productization-cycle"
+    },
+    {
+      "id": "credit",
+      "type": "text",
+      "text": "APIOps Cycles · Osaango Ltd · CC-BY-SA 4.0\nFictional supplier-payment example; no client results claimed."
+    }
+  ],
+  "notes": "Close with an actionable next step. Method exit criteria provide the readiness anchors; the slide is a practical summary, not a replacement for those criteria. The website provides downloadable canonical resources and this deck’s source, PPTX, PDF and Reveal.js versions.\n\nThe supplier-payment status capability is a newly authored fictional teaching example, not a client implementation or measured outcome. Figures, service promises and release criteria are illustrative proposals requiring validation. Working summaries are not reproductions of canonical canvas templates.\n\nSource: apiops-cycles-method-data 4.2.1, src/data/method/cycles.json and en/labels.cycles.json; reviewed 4 November 2026. https://apiopscycles.com/cycles/capability-productization-cycle . Method: APIOps Cycles / Osaango Ltd, CC-BY-SA 4.0."
+}

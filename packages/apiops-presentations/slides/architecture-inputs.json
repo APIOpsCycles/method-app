@@ -1,0 +1,45 @@
+{
+  "id": "architecture-inputs",
+  "title": "Architecture: business needs become operating decisions",
+  "elements": [
+    {
+      "id": "table-1",
+      "type": "table",
+      "rows": [
+        [
+          "Method input",
+          "Decision it supports",
+          "Review with"
+        ],
+        [
+          "Business Impact Canvas",
+          "Failure consequences, resilience\nand acceptable degradation",
+          "Product owner, security\nand operations"
+        ],
+        [
+          "Locations Canvas",
+          "Trust boundaries, connectivity\nand data-location constraints",
+          "Architecture, security\nand compliance"
+        ],
+        [
+          "Capacity Canvas",
+          "Demand, peaks, availability\nand scaling assumptions",
+          "Business and platform\nowners"
+        ],
+        [
+          "Metrics and analytics",
+          "Observable service behaviour\nand consumer outcomes",
+          "Operations and API\nproduct owner"
+        ]
+      ],
+      "header": true,
+      "emphasizeFirstColumn": true
+    },
+    {
+      "id": "text-2",
+      "type": "text",
+      "text": "The next station needs architecture choices that stakeholders have reviewed."
+    }
+  ],
+  "notes": "APIOps introduction. Technical continuation is illustrative; no client implementation or measured improvement is claimed.\n\nCanonical API Platform Architecture resources and the API Design entry criteria require validated architecture and shared conventions. Canvas contents inform decisions; they do not prescribe a vendor or deployment topology.\n\nSources checked 3 November 2026:\nmethod-engine: buildStationResourceData(api-platform-architecture), buildStartData(en, api-productization-cycle)"
+}

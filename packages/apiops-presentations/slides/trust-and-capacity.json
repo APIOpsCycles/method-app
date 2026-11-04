@@ -1,0 +1,40 @@
+{
+  "id": "trust-and-capacity",
+  "title": "Trust boundaries and capacity need explicit answers",
+  "elements": [
+    {
+      "id": "image-1",
+      "type": "image",
+      "asset": "technical-locationsCanvas.png",
+      "alt": "New illustrative Locations Canvas for the partner payment example",
+      "fit": "contain"
+    },
+    {
+      "id": "text-2",
+      "type": "text",
+      "text": "Trust and access"
+    },
+    {
+      "id": "bullets-3",
+      "type": "bullets",
+      "items": [
+        "Identify the caller and permitted payment objects.",
+        "Agree exposed endpoints, network paths and data locations."
+      ]
+    },
+    {
+      "id": "text-4",
+      "type": "text",
+      "text": "Demand and resilience"
+    },
+    {
+      "id": "bullets-5",
+      "type": "bullets",
+      "items": [
+        "Measure normal and peak demand before setting limits.",
+        "Test retries, delays and recovery without duplicate processing."
+      ]
+    }
+  ],
+  "notes": "APIOps introduction. Technical continuation is illustrative; no client implementation or measured improvement is claimed.\n\nThe Locations Canvas and questions are canonical method resources. The filled diagram is newly authored and fictional. No actual client topology, residency decision, traffic volume, capacity target or production control is disclosed or claimed.\n\nSources checked 3 November 2026:\nmethod-engine: buildCanvasMetadata(locationsCanvas, en)\nmethod-engine: buildCanvasMetadata(capacityCanvas, en)"
+}

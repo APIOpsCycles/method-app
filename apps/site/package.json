@@ -8,11 +8,12 @@
     "preview": "astro preview"
   },
   "dependencies": {
-    "apiops-design-system": "^0.1.0",
     "@astrojs/markdown-remark": "7.2.1",
     "@astrojs/react": "^6.0.1",
+    "apiops-design-system": "^0.1.0",
     "astro": "^7.1.1",
     "react": "19.2.6",
-    "react-dom": "19.2.6"
+    "react-dom": "19.2.6",
+    "reveal.js": "6.0.2"
   }
 }

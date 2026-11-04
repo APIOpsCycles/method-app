@@ -1,0 +1,125 @@
+{
+  "templateId": "domainCanvas",
+  "metadata": {
+    "source": "APIOps Cycles method",
+    "license": "CC-BY-SA 4.0",
+    "authors": [
+      "Codex"
+    ],
+    "website": "www.apiopscycles.com",
+    "date": "2026-11-03",
+    "context": "Illustrative supplier-payment continuation. Proposed decisions to validate, not client evidence."
+  },
+  "sections": [
+    {
+      "sectionId": "selectedCustomerJourneySteps",
+      "stickyNotes": [
+        {
+          "content": "Open due bill",
+          "size": 80,
+          "color": "#dceef8"
+        },
+        {
+          "content": "Choose payee",
+          "size": 80,
+          "color": "#dceef8"
+        },
+        {
+          "content": "Choose method",
+          "size": 80,
+          "color": "#dceef8"
+        },
+        {
+          "content": "Confirm payment",
+          "size": 80,
+          "color": "#dceef8"
+        },
+        {
+          "content": "Check receipt",
+          "size": 80,
+          "color": "#dceef8"
+        }
+      ]
+    },
+    {
+      "sectionId": "coreEntitiesAndBusinessMeaning",
+      "stickyNotes": [
+        {
+          "content": "Payment instruction",
+          "size": 80,
+          "color": "#fff1c9"
+        },
+        {
+          "content": "Payee receives funds",
+          "size": 80,
+          "color": "#fff1c9"
+        }
+      ]
+    },
+    {
+      "sectionId": "attributesAndBusinessImportance",
+      "stickyNotes": [
+        {
+          "content": "Amount and currency",
+          "size": 80,
+          "color": "#fff1c9"
+        },
+        {
+          "content": "Payment status",
+          "size": 80,
+          "color": "#fff1c9"
+        },
+        {
+          "content": "Receipt reference",
+          "size": 80,
+          "color": "#fff1c9"
+        }
+      ]
+    },
+    {
+      "sectionId": "relationshipsBetweenEntities",
+      "stickyNotes": [
+        {
+          "content": "Payment has payee",
+          "size": 80,
+          "color": "#fff1c9"
+        },
+        {
+          "content": "Partner owns request",
+          "size": 80,
+          "color": "#fff1c9"
+        }
+      ]
+    },
+    {
+      "sectionId": "businessComplianceAndIntegrityRules",
+      "stickyNotes": [
+        {
+          "content": "No duplicate debit",
+          "size": 80,
+          "color": "#fff1c9"
+        },
+        {
+          "content": "Final status has proof",
+          "size": 80,
+          "color": "#fff1c9"
+        }
+      ]
+    },
+    {
+      "sectionId": "securityAndPrivacyConsiderations",
+      "stickyNotes": [
+        {
+          "content": "Check partner access",
+          "size": 80,
+          "color": "#fff1c9"
+        },
+        {
+          "content": "Audit state changes",
+          "size": 80,
+          "color": "#fff1c9"
+        }
+      ]
+    }
+  ]
+}

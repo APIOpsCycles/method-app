@@ -1,0 +1,34 @@
+{
+  "id": "capability-commitments",
+  "title": "2. Requirements: agree the service together",
+  "elements": [
+    {
+      "id": "heading",
+      "type": "text",
+      "text": "Consumer and producer commitments"
+    },
+    {
+      "id": "points",
+      "type": "bullets",
+      "items": [
+        "Consumer: describe use, access needs and change constraints.",
+        "Producer: define freshness, availability and support.",
+        "Owner: agree funding, scope and lifecycle decisions.",
+        "Together: test onboarding and the exception path."
+      ]
+    },
+    {
+      "id": "image",
+      "type": "image",
+      "asset": "workshop.png",
+      "alt": "APIOps human workshop scene representing agreement between capability consumers, producers and owners",
+      "fit": "contain"
+    },
+    {
+      "id": "agreement",
+      "type": "text",
+      "text": "Example agreement: show the source timestamp; restrict access to permitted suppliers; explain unavailable status."
+    }
+  ],
+  "notes": "Canonical station: Consumer & Producer Service Requirements. Use the Capability Consumer/Producer Requirements Canvas. Agree access, service, support, change and lifecycle commitments with all parties. The example is a proposed service expectation, not an SLA already agreed.\n\nThe supplier-payment status capability is a newly authored fictional teaching example, not a client implementation or measured outcome. Figures, service promises and release criteria are illustrative proposals requiring validation. Working summaries are not reproductions of canonical canvas templates.\n\nSource: apiops-cycles-method-data 4.2.1, src/data/method/cycles.json and en/labels.cycles.json; reviewed 4 November 2026. https://apiopscycles.com/cycles/capability-productization-cycle . Method: APIOps Cycles / Osaango Ltd, CC-BY-SA 4.0."
+}

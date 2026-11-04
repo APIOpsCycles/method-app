@@ -1,0 +1,49 @@
+{
+  "id": "audit",
+  "title": "API Audit brings evidence together across the lifecycle",
+  "elements": [
+    {
+      "id": "text-1",
+      "type": "code",
+      "text": "npm run audit:design:full-crud"
+    },
+    {
+      "id": "table-2",
+      "type": "table",
+      "rows": [
+        [
+          "Coverage area",
+          "Evidence to review"
+        ],
+        [
+          "Strategy and architecture",
+          "Consumer value, architecture decisions, trust boundaries and capacity"
+        ],
+        [
+          "Design",
+          "Contract checks, examples, conventions and consumer review"
+        ],
+        [
+          "Delivery",
+          "Functional, security, resilience and performance tests"
+        ],
+        [
+          "Publishing",
+          "Documentation, access, support and readiness decisions"
+        ],
+        [
+          "Improving",
+          "Runtime metrics, adoption and feedback connected to the next change"
+        ]
+      ],
+      "header": true,
+      "emphasizeFirstColumn": true
+    },
+    {
+      "id": "text-3",
+      "type": "text",
+      "text": "The report uses pass, partial, gap and not applicable. Manual items require evidence and owner review."
+    }
+  ],
+  "notes": "APIOps introduction. Technical continuation is illustrative; no client implementation or measured improvement is claimed.\n\nThe package audit checklist uses six lifecycle stages: Strategy, Architecture, Design, Delivery, Publishing and Improving. In the inspected default checklist, Improving currently has no checklist items, so teams must add meaningful improvement evidence. The eight core stations remain the navigation model. The audit script reads the canonical package checklist unless a project-local override exists, combines spec checks and manual/default statuses, and emits JSON, Markdown, HTML and JUnit. The table describes evidence expectations; it is not an actual result for this example.\n\nSources checked 3 November 2026:\nsrc/snippets/api-audit-checklist.json\npackages/create-apiops/template/scripts/run-design-audit.js\npackages/create-apiops/template/specs/audit/README.md"
+}

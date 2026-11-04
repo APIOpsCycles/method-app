@@ -1,0 +1,17 @@
+.apiops-reveal { --r-controls-color:#333; --r-progress-color:#555; background:#fff; color:#333; }
+.apiops-reveal .slides>section { padding:0; width:1280px; height:720px; text-align:left; }
+.apiops-slide-canvas { position:relative; width:1280px; height:720px; font-family:var(--apiops-slide-font),Arial,sans-serif; color:var(--apiops-slide-body); line-height:1.2; text-align:left; }
+.apiops-slide-canvas * { box-sizing:border-box; }
+.apiops-slide-canvas .apiops-slide-item { position:absolute; margin:0; padding:0; border:0; max-width:none; max-height:none; box-shadow:none; background:none; text-transform:none; letter-spacing:normal; }
+.apiops-slide-canvas .apiops-slide-text { white-space:pre-line; line-height:1.2; }
+.apiops-slide-canvas .apiops-slide-code { font-family:var(--apiops-code-font),monospace; white-space:pre-wrap; line-height:1.2; overflow:visible; }
+.apiops-slide-canvas .apiops-slide-list { padding-left:30px; list-style-position:outside; line-height:1.15; }
+.apiops-slide-canvas ul.apiops-slide-list { list-style-type:disc; }
+.apiops-slide-canvas ol.apiops-slide-list { list-style-type:decimal; }
+.apiops-slide-canvas .apiops-slide-list li { margin:0 0 var(--apiops-list-space); padding:0; color:inherit; font:inherit; line-height:inherit; }
+.apiops-slide-canvas .apiops-slide-list li:last-child { margin-bottom:0; }
+.apiops-slide-canvas .apiops-slide-table { border-collapse:collapse; width:100%; table-layout:fixed; font-size:inherit; font-family:inherit; line-height:1.2; color:inherit; margin:0; }
+.apiops-slide-canvas .apiops-slide-table th,.apiops-slide-canvas .apiops-slide-table td { border:1px solid var(--apiops-table-border); padding:5px 10px; text-align:left; vertical-align:top; white-space:pre-line; }
+.apiops-slide-canvas .apiops-slide-table tr:first-child { background:var(--apiops-table-header); }
+.apiops-slide-canvas .apiops-slide-table tr:nth-child(even) { background:var(--apiops-table-alternate); }
+.apiops-reveal .slide-number { font:14px Arial,sans-serif; background:#333; color:#fff; }

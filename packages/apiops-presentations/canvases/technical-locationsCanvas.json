@@ -1,0 +1,115 @@
+{
+  "templateId": "locationsCanvas",
+  "metadata": {
+    "source": "APIOps Cycles method",
+    "license": "CC-BY-SA 4.0",
+    "authors": [
+      "Codex"
+    ],
+    "website": "www.apiopscycles.com",
+    "date": "2026-11-03",
+    "context": "Illustrative supplier-payment continuation. Proposed decisions to validate, not client evidence."
+  },
+  "sections": [
+    {
+      "sectionId": "locationGroups",
+      "stickyNotes": [
+        {
+          "content": "Partner network",
+          "size": 80,
+          "color": "#fff1c9"
+        },
+        {
+          "content": "Service boundary",
+          "size": 80,
+          "color": "#fff1c9"
+        }
+      ]
+    },
+    {
+      "sectionId": "locationGroupCharacteristics",
+      "stickyNotes": [
+        {
+          "content": "Separate trust zones",
+          "size": 80,
+          "color": "#fff1c9"
+        }
+      ]
+    },
+    {
+      "sectionId": "locations",
+      "stickyNotes": [
+        {
+          "content": "Partner portal",
+          "size": 80,
+          "color": "#fff1c9"
+        },
+        {
+          "content": "Payment service",
+          "size": 80,
+          "color": "#fff1c9"
+        }
+      ]
+    },
+    {
+      "sectionId": "locationCharacteristics",
+      "stickyNotes": [
+        {
+          "content": "Partner owns portal",
+          "size": 80,
+          "color": "#fff1c9"
+        },
+        {
+          "content": "Provider runs service",
+          "size": 80,
+          "color": "#fff1c9"
+        }
+      ]
+    },
+    {
+      "sectionId": "locationDistances",
+      "stickyNotes": [
+        {
+          "content": "Cross trust boundary",
+          "size": 80,
+          "color": "#fff1c9"
+        }
+      ]
+    },
+    {
+      "sectionId": "locationDistanceCharacteristics",
+      "stickyNotes": [
+        {
+          "content": "Agree data residency",
+          "size": 80,
+          "color": "#fff1c9"
+        }
+      ]
+    },
+    {
+      "sectionId": "locationEndpoints",
+      "stickyNotes": [
+        {
+          "content": "Partner API ingress",
+          "size": 80,
+          "color": "#fff1c9"
+        }
+      ]
+    },
+    {
+      "sectionId": "locationEndpointCharacteristics",
+      "stickyNotes": [
+        {
+          "content": "Authenticate caller",
+          "size": 80,
+          "color": "#fff1c9"
+        },
+        {
+          "content": "Scope access by partner",
+          "size": 80,
+          "color": "#fff1c9"
+        }
+      ]
+    }
+  ]
+}

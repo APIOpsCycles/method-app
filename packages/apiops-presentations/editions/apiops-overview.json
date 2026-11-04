@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "1.0",
+  "title": "APIOps Cycles overview",
+  "language": "en",
+  "author": "APIOps Cycles",
+  "slides": [
+    "slides/overview-cover.json",
+    "slides/method-overview.json",
+    "slides/productization-map.json",
+    "slides/customer-journey.json",
+    "slides/value-proposition.json",
+    "slides/architecture-inputs.json",
+    "slides/ai-build.json",
+    "slides/first-cycle.json"
+  ],
+  "id": "apiops-overview"
+}
