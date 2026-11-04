@@ -302,7 +302,11 @@ export function PillList({ items, label, onSelect }: { items: PillListItem[]; la
   );
 }
 
-export type ResourceSelectorItem = { id: string; type: string; title: string; description: string; href?: string; icon?: ReactNode };
+export function ResourceActionLink({ href, label, accessibleLabel, external = false }: { href: string; label: string; accessibleLabel?: string; external?: boolean }) {
+  return <a className="ds-resource-action" href={href} aria-label={accessibleLabel} target={external ? "_blank" : undefined} rel={external ? "noopener noreferrer" : undefined}>{label}{external && <svg className="ds-external-link-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false"><path d="M14 3h7v7M21 3l-11 11" /><path d="M10 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-5" /></svg>}</a>;
+}
+
+export type ResourceSelectorItem = { id: string; type: string; title: string; description: string; href?: string; icon?: ReactNode; primaryLinkLabel?: string; secondaryLink?: { href: string; label: string; external?: boolean } };
 
 export function ResourceSelector({ items, value, emptyLabel, onChange }: { items: ResourceSelectorItem[]; value?: string; emptyLabel: string; onChange?: (id: string) => void }) {
   if (!items.length) return <span className="side-resource-card side-resource-card--empty">{emptyLabel}</span>;
@@ -315,9 +319,19 @@ export function ResourceSelector({ items, value, emptyLabel, onChange }: { items
           <small>{item.description}</small>
         </>;
         const className = `side-resource-card${item.id === value ? " is-active" : ""}`;
-        return item.href
-          ? <a className={className} href={item.href} key={item.id}>{content}</a>
-          : <button className={className} key={item.id} type="button" onClick={() => onChange?.(item.id)}>{content}</button>;
+        const primaryClassName = item.secondaryLink ? "side-resource-card__primary" : className;
+        const primary = item.href
+          ? <a className={primaryClassName} href={item.href} key={item.id}>{content}</a>
+          : <button className={primaryClassName} key={item.id} type="button" onClick={() => onChange?.(item.id)}>{content}</button>;
+        return item.secondaryLink
+          ? <div className={`${className} side-resource-card--with-action`} key={item.id}>
+              {item.href && item.primaryLinkLabel ? <div className="side-resource-card__content">{content}</div> : primary}
+              <div className="side-resource-card__actions">
+                {item.href && item.primaryLinkLabel && <ResourceActionLink href={item.href} label={item.primaryLinkLabel} accessibleLabel={`${item.primaryLinkLabel}: ${item.title}`} />}
+                <ResourceActionLink {...item.secondaryLink} accessibleLabel={`${item.secondaryLink.label}: ${item.title}`} />
+              </div>
+            </div>
+          : primary;
       })}
     </div>
   );

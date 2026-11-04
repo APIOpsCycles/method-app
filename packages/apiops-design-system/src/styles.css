@@ -12,6 +12,15 @@
 .pill-list { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 8px; }
 .pill-list button, .pill-list span { background: #f8fbff; border: 1px solid var(--panel-border); border-radius: 999px; color: var(--foreground); font-size: .75rem; font-weight: 800; padding: 7px 10px; }
 .side-resource-grid { display: grid; gap: 8px; }
+.side-resource-card.side-resource-card--with-action { padding: 0; }
+.side-resource-card__primary { background: none; border: 0; border-radius: 8px; color: inherit; display: grid; font: inherit; gap: 5px; padding: 10px; text-align: left; text-decoration: none; }
+.side-resource-card__primary:hover strong { text-decoration: underline; }
+.side-resource-card__content { display: grid; gap: 5px; padding: 10px; }
+.side-resource-card__actions { border-top: 1px solid var(--panel-border); display: flex; flex-wrap: wrap; gap: 8px; padding: 10px; }
+.ds-resource-action { align-items: center; background: var(--color-neutral-paper, #fff); border: 1px solid var(--panel-border, #d7dfed); border-radius: 6px; color: var(--apiops-accent-community, #0069c0); display: inline-flex; font-size: .875rem; font-weight: 700; gap: 8px; min-height: 40px; padding: 8px 12px; text-decoration: none; }
+.ds-resource-action:hover { background: #edf4ff; border-color: currentColor; }
+.ds-resource-action:focus-visible, .side-resource-card__primary:focus-visible { outline: 2px solid var(--apiops-accent-community, #0069c0); outline-offset: 3px; }
+.ds-external-link-icon { flex: 0 0 16px; }
 .side-resource-card { background: #f8fbff; border: 1px solid var(--panel-border); border-radius: 8px; color: var(--foreground); display: grid; gap: 5px; padding: 10px; text-align: left; text-decoration: none; }
 .side-resource-card__meta { align-items: center; color: var(--teal); display: inline-flex; font-size: .68rem; font-weight: 900; gap: 5px; text-transform: lowercase; }
 .side-resource-card small, .side-resource-card--empty { color: var(--muted); }

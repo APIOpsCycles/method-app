@@ -5,6 +5,7 @@ import {
   CanvasSystemMetadataReadOnly,
   CanvasSystemShell,
   CanvasSystemZone,
+  ResourceActionLink,
   type CanvasSystemMetadata,
   type CanvasSystemSection,
 } from "apiops-design-system/react";
@@ -32,12 +33,14 @@ export default function CanvasWorkspaceIsland({
   entityTitle,
   canvas,
   labels,
+  creatorUrl,
 }: {
   locale: string;
   labels: Record<string, string>;
   entityId: string;
   entityTitle: string;
   canvas: CanvasDefinition;
+  creatorUrl?: string;
 }) {
   const keys = useMemo(() => canvasStorageKeys(entityId, canvas.id), [canvas.id, entityId]);
   const [notes, setNotes] = useState<Record<string, Note[]>>({});
@@ -145,6 +148,7 @@ export default function CanvasWorkspaceIsland({
         description={`${canvas.purpose} ${canvas.howToUse}`}
         toolbar={
           <div className="ds-canvas-toolbar" role="toolbar" aria-label={labels["canvas.localWorkspace"]}>
+            {creatorUrl && <ResourceActionLink href={creatorUrl} label={labels["canvas.openCreator"]} external />}
             {presentationMode ? (
               <button type="button" onClick={() => setPresentationMode(false)}>
                 Exit presentation
