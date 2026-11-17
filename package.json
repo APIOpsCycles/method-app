@@ -26,6 +26,7 @@
     "sync:method-data": "node scripts/sync-method-data.mjs && tsx scripts/build-method-graph.ts",
     "sync:presentations": "node scripts/sync-presentations.mjs",
     "presentations:build": "npm run build --workspace @apiops/presentations",
+    "whitepapers:stage": "node scripts/prepare-whitepaper-downloads.mjs",
     "presentations:release": "npm run release --workspace @apiops/presentations",
     "build:method-graph": "tsx scripts/build-method-graph.ts",
     "db:generate": "drizzle-kit generate",

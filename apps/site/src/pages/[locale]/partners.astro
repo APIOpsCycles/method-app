@@ -8,4 +8,4 @@ const { locale } = Astro.props as { locale: Locale };
 const canonicalPath = `/${locale}/partners`;
 const seo = metadataForRoute("partners", locale, canonicalPath);
 ---
-<BaseLayout title="Partners" lang={locale} canonicalPath={canonicalPath} {...seo}><PartnersContent /></BaseLayout>
+<BaseLayout title="Partners and whitepapers" description="Explore APIOps Cycles whitepapers, download practical resources and find a partner to discuss your API or AI integration challenge." lang={locale} canonicalPath={canonicalPath} {...seo}><PartnersContent /></BaseLayout>

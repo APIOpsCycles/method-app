@@ -28,7 +28,7 @@ export const ads: Record<string, Ad> = {
       src: designSystemAssets.humans.poses,
       alt: 'APIOps people collaborating in a workshop'
     },
-    groups: ['resources'],
+    groups: ['resources', 'partners'],
     bgcolor: '#21ce94ff' // Light background color for the ad
   },
   community: {
