@@ -9,11 +9,11 @@
       "description": "Why API quality shapes user, developer and agent experiences—even when the software connections are invisible.",
       "pages": 9,
       "language": "English",
-      "date": "16 November 2026",
+      "date": "17 November 2026",
       "url": "/whitepapers/what-your-ai-depends-on.pdf",
       "cover": "/whitepapers/paper1-cover.png",
-      "bytes": 293196,
-      "sha256": "72dd1aac7cadfbd87d75d55a7b488c13520ee73cd43c98c28028efdb3bc550d6"
+      "bytes": 295334,
+      "sha256": "375192c924cec1f67ee951f6309ef527b49006dfdd07036cae354b61416d3577"
     },
     {
       "id": "paper2",
