@@ -19,7 +19,8 @@
 <p>The API has documentation. Its team has followed technical standards. A previous review even raised a question about retry guidance. Yet the partner developer, payment-platform team and operations staff must now reconstruct what happened. Each has part of the answer; no one has agreed the whole recovery experience.</p>
 <p>This fictional Supplier Payments API illustrates a recurring organisational problem. An API is a connection through which one application uses another service’s capabilities. Its quality depends on what consumers need to accomplish and on the people, decisions and systems behind that connection. Correct interfaces and clear documentation matter, but neither alone makes a payment recoverable.</p>
 <aside><h3>Fix the defect. Improve the capability that produced it.</h3><p>A corrected guide may close a finding. A shared recovery model, named owners and tests that survive the next change help prevent the same uncertainty from returning.</p></aside>
-<p>This paper follows that distinction: what readiness means, what assessment evidence reveals, why improvements stall, and how organisations can connect the work needed to sustain quality. The Supplier Payments API develops throughout as a worked example, rather than a reported client result.</p>
+<h3>Who this paper is for—and what you will learn</h3>
+<p>For API leaders, product owners, architects, governance and platform teams whose quality findings keep returning. Learn how to choose useful evidence, uncover the decisions behind recurring problems, and establish a practice that survives the next API change. The payment example shows how Kin’s Score, API Audit and APIOps Cycles can contribute, and how to start with focused work while addressing strategy and architecture dependencies.</p>
 <p class="small">The organisational capability perspective. Paper 1, <em>What Your AI Depends On</em>, explores the consumer experience perspective. Each paper stands alone; together they connect consumer needs with the capability to meet them over time.</p>
 </main><footer><span>APIOps Cycles · 17 November 2026</span><span>01</span></footer>
 </article>
@@ -31,17 +32,17 @@
 <h2>Ready for whom, and for what?</h2>
 <p class="standfirst">API readiness is the ability to support an intended use under understood conditions. The consumer’s task gives quality its context.</p>
 <p>For the business owner, success means paying the right supplier once and knowing what happened. The API consumer is the partner application carrying out that task. Its developers need to understand submission, uncertainty and recovery; its support team needs a way to resolve an outcome it cannot explain.</p>
-<p>A well-documented API can still leave this task incomplete. A technically valid response may describe receipt of an instruction without establishing that funds have moved. A successful demonstration may omit a lost response, a delayed payment or two simultaneous retries. These are different questions about quality.</p>
+<p>A response may confirm receipt of an instruction while the payment remains pending. A successful demonstration may omit a lost response, a delay or simultaneous retries. Readiness must cover those conditions too.</p>
 <h3>Four questions establish the context</h3>
 <ul>
 <li><strong>Consumer task:</strong> can the application help its user complete the journey, including recovery when something goes wrong?</li>
 <li><strong>Business purpose:</strong> is the capability valuable enough to maintain, and are its responsibilities and expected benefits understood?</li>
-<li><strong>Technical behaviour:</strong> do the contract and implementation provide consistent meaning, appropriate access and reliable behaviour under the relevant failures?</li>
+<li><strong>Technical behaviour:</strong> do the API contract—the description of requests, responses and expected behaviour—and the running service agree on meaning, access and recovery?</li>
 <li><strong>Operations:</strong> can teams observe, support and maintain the service and explain an uncertain outcome?</li>
 </ul>
-<p>For supplier payments, readiness therefore includes more than a submission endpoint. The partner needs to recognise an existing payment instruction, understand its state and know when recovery requires support. The provider needs evidence that these behaviours hold under the conditions it promises.</p>
-<aside><h3>A single score cannot answer every question</h3><p>Public documentation can help a developer discover an API. It cannot, by itself, demonstrate safe recovery in a running payment system or establish who funds ongoing support.</p></aside>
-<p>Useful assessment starts by stating the API, consumers, task and conditions in scope. Evidence can then answer specific questions. Without that context, a reassuring result may say little about the situation that matters most.</p>
+<p>For supplier payments, readiness therefore includes more than an endpoint: the address an application calls to submit an instruction. The partner needs to recognise an existing payment instruction, understand its state and know when recovery requires support. The provider needs evidence that these behaviours hold under the conditions it promises.</p>
+<aside><h3>Match evidence to the decision</h3><p>Use public documentation to examine discoverability and guidance, task tests to examine recovery behaviour, and business decisions to establish ownership and funding. Each answers a different question.</p></aside>
+<p>State the API, consumers, task and conditions in scope so the evidence answers the questions that matter.</p>
 </main><footer><span>APIOps Cycles · 17 November 2026</span><span>02</span></footer>
 </article>
 
@@ -56,7 +57,7 @@
 <h3>What would help us assess the lost payment response?</h3>
 <p>The published guide can show what the provider tells partners to do. The contract can show how requests and outcomes are represented. A test that loses the response and repeats the submission can examine what the server actually does. A partner walkthrough can reveal whether the portal explains uncertainty clearly. Operations records and support guidance can show how an unresolved outcome would be investigated.</p>
 <p>These sources are complementary. If the guide is unclear, better wording may help. If the server treats every retry as a new instruction, wording alone will not prevent another payment. If the API behaves correctly but the portal starts a new operation, the consumer interaction needs attention too.</p>
-<aside><h3>Assessment is evidence, not improvement</h3><p>A finding identifies a question or gap. It becomes useful when people interpret its consequence, decide what should change and verify the result.</p></aside>
+<aside><h3>Turn assessment evidence into a decision</h3><p>A finding identifies a question or gap. It becomes useful when people interpret its consequence, decide what should change and verify the result.</p></aside>
 <p>Choose evidence for the decision. An internal API may need audit and consumer evidence without a public-provider assessment. Relevant published material may support several reviews. Detailed mappings, assessment boundaries and frozen comparison versions are retained in the optional supporting pack, S3–S5 and S8.</p>
 </main><footer><span>APIOps Cycles · 17 November 2026</span><span>03</span></footer>
 </article>
@@ -85,18 +86,18 @@
 <p class="eyebrow">04 / Continued · Investment and responsibility</p>
 <h2>Who funds the shared capability?</h2>
 <p class="standfirst">If every consumer pays to compensate for the same API limitation, individual projects can look efficient while total integration costs grow.</p>
-<p>The provider can improve a contract, but who funds the test environment, partner onboarding, recovery support and continuing maintenance? In the payment example, the platform team pays for API upkeep, partner teams pay for local workarounds and operations pays in investigation time. Those costs are related even if their budgets are separate.</p>
+<p>The platform team pays for API upkeep, partners fund local workarounds, and operations pays in investigation time. Who will fund shared test access, onboarding and recovery support? These costs are related even when their budgets are separate.</p>
 <p>The API Business Model Canvas helps teams examine those relationships: who consumes the API, what value it provides, which activities and resources sustain it, and how costs and benefits are distributed. Its role here is to make an investment decision visible. [5]</p>
 <table>
-<thead><tr><th>Decision</th><th>Fragmented model</th><th>Stronger intended model</th></tr></thead>
+<thead><tr><th>Decision</th><th>Shared capability with maintained support</th><th>Each integration fills the gaps</th></tr></thead>
 <tbody>
-<tr><th>Consumers and value</th><td>One portal relies on local recovery knowledge.</td><td>Partner applications share a defined payment and recovery model.</td></tr>
-<tr><th>Ownership and resources</th><td>Expert memory and operations calls bridge gaps.</td><td>Named owners maintain a test system, guidance and support route.</td></tr>
-<tr><th>Activities and costs</th><td>Each integration funds its own workaround.</td><td>Provider and consumer teams agree funding for shared review, tests and upkeep.</td></tr>
-<tr><th>Benefits to validate</th><td>Submission works; reuse and recovery remain uncertain.</td><td>Less recovery rework and easier reuse are expected benefits to examine.</td></tr>
+<tr><th>Consumers and value</th><td>Partners use the same defined payment and recovery model.</td><td>Each portal depends on its team’s local recovery knowledge.</td></tr>
+<tr><th>Ownership and resources</th><td>Named owners maintain test access, guidance and a support route.</td><td>Experts explain unwritten rules; operations investigates unclear outcomes.</td></tr>
+<tr><th>Activities and costs</th><td>Provider and consumer teams fund shared review, tests and upkeep.</td><td>Each integration funds its own workaround.</td></tr>
+<tr><th>Benefits to validate</th><td>Test whether shared support reduces recovery rework and helps reuse.</td><td>Check how much repeated investigation and adaptation each partner needs.</td></tr>
 </tbody>
 </table>
-<p>The decision is whether to fund a maintained payment capability across partner applications. That requires commitments from business, platform, partner and operations owners, rather than an assumption that one API developer can absorb the work.</p>
+<p>The proposed shared model requires commitments from business, platform, partner and operations owners. Decide whether its intended benefits justify the implementation and upkeep.</p>
 <aside><h3>Two investments need examination</h3><p>The technical change aims to prevent repeated instructions during recovery. The practice change aims to reveal consumer risks earlier and retain reusable evidence. Compare both intended benefits with implementation, review and maintenance effort.</p></aside>
 <p class="small">The full poor and stronger intended business-model canvases are in supporting pack S1–S2. They illustrate a decision; they establish no measured savings.</p>
 </main><footer><span>APIOps Cycles · 17 November 2026</span><span>05</span></footer>
@@ -106,13 +107,13 @@
 <header><img src="../assets/apiops-cycles-logo.png" alt="APIOps Cycles method symbol"><span>APIOps Cycles</span></header>
 <main>
 <p class="eyebrow">05 / Connecting the work with APIOps Cycles</p>
-<h2>A shared view of the decisions</h2>
-<p class="standfirst">APIOps Cycles connects business purpose, consumer needs, architecture, design, delivery and operations so a finding can lead to coordinated work.</p>
-<p>Business work establishes why the payment capability merits investment. Consumer work establishes the recovery task. Architecture examines platform and downstream constraints. Design makes the promised behaviour explicit. Delivery, audit and operations establish whether that promise can be implemented, exposed and maintained. [2–4]</p>
-<figure class="diagram"><img src="supplier-payments-metro.svg" alt="Simplified eight-station API Productization Cycle. API Design is highlighted for joint consumer impact review. Strategy and architecture show open dependencies. Operating responsibilities support the route."><figcaption>One adapted metro map for the Supplier Payments API. Purple marks the selected improvement, not a pass. Amber marks open dependencies; grey stations are not rated. Simplified core route; branches omitted. APIOps Cycles / Osaango Ltd · CC-BY-SA 4.0. [2]</figcaption></figure>
-<p>The method calls areas of work <em>stations</em> and related concerns <em>lines</em>. Entry criteria identify dependencies; exit criteria describe what the work must establish. Evidence can come from several stations. Teams reuse what remains valid and revisit what needs attention; each change does not require a complete tour.</p>
-<p>Here the selected practice is <strong>joint consumer impact review during API design</strong>. Partner developers and payment operations examine recovery with the API owner before implementation. Canvases help expose decisions where needed; they are tools for the work, rather than additional approval stages.</p>
-<p>Business and architecture owners must resolve dependencies for the test-environment trial and own wider follow-up. Missing strategy or platform evidence can narrow, stop or broaden the work. Selecting one improvement does not make unmet criteria pass.</p>
+<h2>Agree recovery across the teams involved</h2>
+<p class="standfirst">The API team can change submission behaviour, but partners, platform, business and operations owners must agree how payment recovery will work.</p>
+<p>APIOps Cycles connects those decisions. Business work establishes the investment; consumer work defines the recovery task. Architecture checks platform and downstream constraints. Design specifies the promise, while delivery, audit and operations establish how it will be implemented, exposed and maintained. [2–4]</p>
+<figure class="diagram"><img src="supplier-payments-metro.svg" alt="Angular eight-station API Productization Cycle metro map. The filled API Design station marks joint consumer impact review. Amber rings mark open Strategy and Architecture dependencies. Other stations remain unrated. Roles and Responsibilities and Operating Guidelines sit on a separate Operating Model Line."><figcaption>Adapted metro map for the Supplier Payments API. The filled station marks the selected practice; amber rings mark open dependencies. These show work priorities rather than assessment results or a required tour. Core route shown; branches omitted. APIOps Cycles / Osaango Ltd · CC-BY-SA 4.0. [2]</figcaption></figure>
+<p>Areas of work are <em>stations</em>; related concerns form <em>lines</em>. Entry criteria identify dependencies; exit criteria describe what the work must establish. Reuse valid evidence and revisit affected work; a change need not repeat the whole cycle.</p>
+<p>The selected practice is <strong>joint consumer impact review during API design</strong>. Partner developers, payment operations and the API owner review recovery before implementation. Canvases help expose decisions without adding approval stages.</p>
+<p>Business and architecture owners resolve dependencies for the trial and own wider follow-up. Missing evidence can narrow, stop or broaden the work. A selected focus leaves unmet criteria open.</p>
 </main><footer><span>APIOps Cycles · 17 November 2026</span><span>06</span></footer>
 </article>
 
@@ -123,7 +124,7 @@
 <h2>Investigate the recovery task together</h2>
 <p class="standfirst">The Supplier Payments API team uses one uncertain payment to test its assumptions and choose an intervention.</p>
 <p>The starting finding is incomplete retry guidance. The API owner brings partner developers and payment operations into a walkthrough: submit an instruction, lose the response, then try to determine what happened. The business owner needs one supplier payment; the partner needs a recovery action it can safely explain.</p>
-<p>For this fictional trial, assume the investigation reveals that the portal creates a new submission attempt after a timeout and the server has no agreed replay protection. Operations must investigate the original outcome. Simply making the retry button clearer could make the problem easier to trigger.</p>
+<p>For this fictional trial, assume the investigation reveals that the portal creates a new submission attempt after a timeout and the server has no agreed replay protection: a way to recognise repeated submissions as the same instruction. Operations must investigate the original outcome. Simply making the retry button clearer could make the problem easier to trigger.</p>
 <h3>Agree what must be true before writing the solution</h3>
 <p>The group distinguishes an instruction being accepted from a payment being processed or settled. It agrees that recovery must refer to the original operation, with states that applications and support can interpret consistently. Pending or uncertain processing cannot be presented as a completed payment.</p>
 <p>The API owner is accountable for the submission and recovery contract. The partner-guide owner documents the same model and examples. Operations owns the investigation and escalation route. Partner developers check that the portal retains the operation identity and explains its current state.</p>
@@ -137,9 +138,9 @@
 <header><img src="../assets/apiops-cycles-logo.png" alt="APIOps Cycles method symbol"><span>APIOps Cycles</span></header>
 <main>
 <p class="eyebrow">06 / Continued · Intervention and verification</p>
-<h2>Change behaviour, then examine the evidence</h2>
+<h2>Keep retries tied to one payment instruction</h2>
 <p class="standfirst">A request identifier supports recovery only when the provider enforces its meaning and consumers know how to use it.</p>
-<p>In the proposed design, the caller retains one partner-scoped identifier for the payment instruction. During an agreed retention period, the server must enforce one operation and no second instruction, including simultaneous retries. It rejects changed payment details. [6]</p>
+<p>In the proposed design, the caller keeps one reference for the payment instruction, scoped to that partner. The retention period defines how long the server remembers it. Throughout that period, the server links repeated submissions to one operation and prevents a second instruction, even when retries arrive together. It rejects changed payment details. [6]</p>
 <p>The contract and guide explain state retrieval, pending and final outcomes, and support escalation. Access checks protect each operation; an identifier must not grant another partner access. [7]</p>
 <table>
 <thead><tr><th>Trial condition</th><th>Evidence needed for the decision</th></tr></thead>
@@ -192,12 +193,9 @@
 <li>What focused change can we trial, and which dependencies must be resolved first?</li>
 <li>What should the next team be able to reuse, and when must it be reconsidered?</li>
 </ul>
-<h3>Three ideas to carry forward</h3>
-<p><strong>API readiness is contextual.</strong> An API can be technically well documented and still fail to support an important consumer task.</p>
-<p><strong>Assessment is evidence, not improvement.</strong> Findings become valuable when they inform decisions, ownership and changes in how teams work.</p>
-<p><strong>Sustainable quality is an organisational capability.</strong> Teams retain useful evidence, learn from changes and revisit decisions when circumstances change.</p>
-<aside><h3>Bring one API challenge. Leave with a clearer next step.</h3><p>Explore a real API or AI integration challenge with APIOps Cycles practitioners. Bring the consumer task, a recurring concern and available evidence. A focused discovery conversation can identify a shared problem, the people and decisions involved, and a candidate next step.</p></aside>
-<p>Method partners can help teams apply the approach through consulting and training. An introductory conversation is a starting point for that work, rather than a full assessment. Osaango is the method creator’s consultancy.</p>
+<h3>Make the next change easier to get right</h3>
+<p>Readiness depends on the consumer’s task. Assessment helps reveal gaps; sustainable quality comes from the decisions, responsibilities and repeatable practices that address them. The contribution of APIOps Cycles is to connect that work so the next team can build on what was learned. Whether this improves decisions, reduces repeated work or helps consumers still needs validation.</p>
+<aside><h3>Bring one API challenge.</h3><p>Discuss a recurring API or AI integration concern with Osaango or another APIOps Cycles partner. Bring the consumer task and available evidence; explore the people, decisions and practical next step involved.</p></aside>
 <p><a href="https://www.apiopscycles.com/partners/">Find an APIOps Cycles practitioner</a><br><span class="url">https://www.apiopscycles.com/partners/</span></p>
 </main><footer><span>APIOps Cycles · 17 November 2026</span><span>10</span></footer>
 </article>

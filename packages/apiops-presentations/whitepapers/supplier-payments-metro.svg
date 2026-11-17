@@ -1,38 +1,64 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 540" role="img" aria-labelledby="title desc">
-<title id="title">Supplier Payments API: connect the work, select an improvement</title>
-<desc id="desc">Simplified APIOps Cycles API Productization Cycle core route. Strategy and architecture have open dependencies. API Design is the focus for joint consumer impact review. Other stations are not rated. Roles and responsibilities and operating guidelines support the work.</desc>
-<rect width="1080" height="540" fill="white"/>
-<g font-family="Arial, sans-serif" fill="#333">
-<path d="M540 65 C790 65 815 120 815 245 S790 425 540 425 S265 370 265 245 S290 65 540 65" fill="none" stroke="#b2b2b2" stroke-width="7"/>
-<g fill="white" stroke="#777" stroke-width="4">
-<circle cx="540" cy="65" r="19" stroke="#b27b19"/>
-<circle cx="755" cy="115" r="19"/>
-<circle cx="815" cy="245" r="19" stroke="#b27b19"/>
-<circle cx="755" cy="375" r="25" stroke="#7042a0" stroke-width="7"/>
-<circle cx="540" cy="425" r="19"/>
-<circle cx="325" cy="375" r="19"/>
-<circle cx="265" cy="245" r="19"/>
-<circle cx="325" cy="115" r="19"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 600" role="img" aria-labelledby="title desc">
+<title id="title">Supplier Payments API: select a practice, keep dependencies visible</title>
+<desc id="desc">Eight numbered stations on the angular API Productization Cycle metro route. The filled Design station is the selected practice. Amber rings show open strategy and architecture dependencies. Other stations remain unrated. Roles and Responsibilities and Operating Guidelines sit on the Operating Model Line. This map is a view of the work, not a required tour or assessment result.</desc>
+<metadata>APIOps Cycles / Osaango Ltd. CC-BY-SA 4.0. Adapted core route; branches omitted.</metadata>
+<rect width="1080" height="600" fill="#fff"/>
+<path d="M540 80 680 130 730 250 680 370 540 420 400 370 350 250 400 130Z" fill="#fafaff" stroke="#5b5bd6" stroke-width="10" stroke-linejoin="round"/>
+<g font-family="Arial, sans-serif" fill="#1a3987">
+<g fill="#fff" stroke="#5b5bd6" stroke-width="2.5">
+<rect x="407" y="16" width="266" height="42" rx="10"/>
+<rect x="758" y="102" width="270" height="58" rx="10"/>
+<rect x="800" y="221" width="250" height="58" rx="10"/>
+<rect x="758" y="343" width="270" height="54" rx="10" stroke="#7042a0"/>
+<rect x="425" y="446" width="230" height="42" rx="10"/>
+<rect x="70" y="343" width="245" height="54" rx="10"/>
+<rect x="25" y="225" width="260" height="50" rx="10"/>
+<rect x="35" y="102" width="280" height="58" rx="10"/>
 </g>
-<g font-size="18" text-anchor="middle" font-weight="bold">
-<text x="540" y="71">1</text><text x="755" y="121">2</text><text x="815" y="251">3</text><text x="755" y="381" fill="#7042a0">4</text><text x="540" y="431">5</text><text x="325" y="381">6</text><text x="265" y="251">7</text><text x="325" y="121">8</text>
+<g font-size="22" text-anchor="middle">
+<text x="540" y="44">API Product Strategy</text>
+<text x="893" y="127">API Consumer<tspan x="893" dy="25">Experience</tspan></text>
+<text x="925" y="246">API Platform<tspan x="925" dy="25">Architecture</tspan></text>
+<text x="893" y="377" fill="#7042a0" font-weight="700">API Design</text>
+<text x="540" y="474">API Delivery</text>
+<text x="192" y="377">API Audit</text>
+<text x="155" y="257">API Publishing</text>
+<text x="175" y="127">API Monitoring<tspan x="175" dy="25">&amp; Improvement</tspan></text>
 </g>
-<g font-size="21">
-<text x="540" y="23" text-anchor="middle">API Product Strategy</text>
-<text x="795" y="110">API Consumer</text><text x="795" y="137">Experience</text>
-<text x="850" y="237">API Platform</text><text x="850" y="264">Architecture</text>
-<text x="795" y="382" fill="#7042a0" font-weight="bold">API Design</text>
-<text x="540" y="468" text-anchor="middle">API Delivery</text>
-<text x="281" y="382" text-anchor="end">API Audit</text>
-<text x="230" y="251" text-anchor="end">API Publishing</text>
-<text x="285" y="110" text-anchor="end">API Monitoring</text><text x="285" y="137" text-anchor="end">&amp; Improvement</text>
+<g fill="#fff" stroke="#5b5bd6" stroke-width="3.5">
+<circle cx="540" cy="80" r="21" fill="#fff4df" stroke="#ac7017"/>
+<circle cx="680" cy="130" r="21"/>
+<circle cx="730" cy="250" r="21" fill="#fff4df" stroke="#ac7017"/>
+<circle cx="680" cy="370" r="31" fill="#eee8fb" stroke="none"/>
+<circle cx="680" cy="370" r="23" fill="#7042a0" stroke="#7042a0"/>
+<circle cx="540" cy="420" r="21"/>
+<circle cx="400" cy="370" r="21"/>
+<circle cx="350" cy="250" r="21"/>
+<circle cx="400" cy="130" r="21"/>
 </g>
-<text x="540" y="196" text-anchor="middle" font-size="22" font-weight="bold" fill="#7042a0">Selected improvement</text>
-<text x="540" y="231" text-anchor="middle" font-size="21">Joint consumer impact review</text>
-<text x="540" y="260" text-anchor="middle" font-size="21">of payment recovery during design</text>
-<text x="540" y="304" text-anchor="middle" font-size="18" fill="#805a15">Open: investment and platform dependencies</text>
-<path d="M610 326 L727 365" fill="none" stroke="#7042a0" stroke-width="2"/>
-<path d="M140 500 H940" stroke="#999" stroke-width="3"/>
-<text x="540" y="529" text-anchor="middle" font-size="19">Operating Model Line: Roles and Responsibilities · Operating Guidelines</text>
+<g text-anchor="middle" font-size="22" font-weight="700">
+<text x="540" y="88" fill="#87540a">1</text><text x="680" y="138">2</text>
+<text x="730" y="258" fill="#87540a">3</text><text x="680" y="378" fill="#fff">4</text>
+<text x="540" y="428">5</text><text x="400" y="378">6</text>
+<text x="350" y="258">7</text><text x="400" y="138">8</text>
+</g>
+<g text-anchor="middle">
+<text x="540" y="197" font-size="17" font-weight="700" fill="#7042a0" letter-spacing="1">SELECTED PRACTICE</text>
+<text x="540" y="234" font-size="21" font-weight="700">Joint consumer impact review</text>
+<text x="540" y="264" font-size="22">of payment recovery</text>
+<text x="540" y="294" font-size="22">during API design</text>
+<text x="540" y="324" font-size="17" fill="#87540a">Open: investment and</text>
+<text x="540" y="344" font-size="17" fill="#87540a">platform dependencies</text>
+</g>
+<path d="M597 346 650 365" fill="none" stroke="#7042a0" stroke-width="2"/>
+<g font-size="17">
+<circle cx="165" cy="517" r="8" fill="#7042a0"/><text x="182" y="523">Selected focus</text>
+<circle cx="420" cy="517" r="8" fill="#fff4df" stroke="#ac7017" stroke-width="2.5"/><text x="437" y="523">Open dependency</text>
+<circle cx="730" cy="517" r="8" fill="#fff" stroke="#5b5bd6" stroke-width="2.5"/><text x="747" y="523">Other stations unrated</text>
+</g>
+<path d="M300 555H910" stroke="#1b61aa" stroke-width="6" stroke-linecap="round"/>
+<g fill="#fff" stroke="#1b61aa" stroke-width="3"><circle cx="420" cy="555" r="9"/><circle cx="770" cy="555" r="9"/></g>
+<text x="265" y="562" text-anchor="end" font-size="19" font-weight="700">Operating Model Line</text>
+<g text-anchor="middle" font-size="17"><text x="420" y="586">Roles and Responsibilities</text><text x="770" y="586">Operating Guidelines</text></g>
 </g>
 </svg>
