@@ -61,7 +61,7 @@ const locale = lang as Locale;
 const markdownDocument = methodDocuments(locale).find((document) => document.canonicalPath === canonicalPath);
 const ad = selectAd(undefined, Astro.url.pathname);
 const announcementLabels = announcement.translations[locale] ?? announcement.translations[announcement.defaultLocale];
-const announcementHref = locale === announcement.defaultLocale
+const announcementHref = announcement.localizeHref === false || /^https?:\/\//i.test(announcement.href) || locale === announcement.defaultLocale
   ? announcement.href
   : `/${locale}${announcement.href}`;
 ---
@@ -111,6 +111,7 @@ const announcementHref = locale === announcement.defaultLocale
       <SiteAnnouncement
         id={announcement.id}
         href={announcementHref}
+        title={announcementLabels.title}
         message={announcementLabels.message}
         linkLabel={announcementLabels.linkLabel}
         dismissLabel={announcementLabels.dismissLabel}

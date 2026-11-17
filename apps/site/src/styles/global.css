@@ -3276,6 +3276,12 @@ pre {
   margin: 0;
 }
 
+.ds-announcement p strong {
+  display: block;
+  font-weight: 800;
+  margin-bottom: 2px;
+}
+
 .ds-announcement p a {
   color: inherit;
   font-weight: 700;

@@ -5,13 +5,15 @@ export interface Ad {
   text: string;
   ctaHref: string;
   ctaText: string;
-  visual?: { src: string; alt: string };
+  visual?: { src: string; alt: string; fit?: 'cover' | 'contain' };
   bgcolor?: string; // Optional color for the ad, e.g., `#ff0000` used in border and button background
   /**
    * Optional folder groups that this ad should automatically appear on.
    * Examples: `"getting-started"`, `"de/getting-started"`.
    */
   groups?: string[];
+  /** Page groups where this ad should never appear, including its own destination. */
+  excludeGroups?: string[];
 }
 
 interface AdPageEntry {
@@ -19,6 +21,19 @@ interface AdPageEntry {
 }
 
 export const ads: Record<string, Ad> = {
+  presentations: {
+    headline: 'APIOps Cycles — ready to present',
+    text: 'Four presentations to view online, download and adapt with your own branding.',
+    ctaHref: '/presentations',
+    ctaText: 'Explore the presentations',
+    visual: {
+      src: '/ads/apiops-presentations-collection.webp',
+      alt: 'Don’t start from a blank slide. APIOps Cycles decks: Method Overview, Financial Services Case, Technical Delivery and Capability Productization.',
+      fit: 'contain'
+    },
+    excludeGroups: ['presentations'],
+    bgcolor: '#dcd6ff'
+  },
   apiopsWS: {
     headline: 'Accelerate Your APIs with APIOps Cycles Workshop',
     text: 'A compact, high-impact 2-hour online or onsite workshop for API product owners, architects, platform teams, and IT leaders. ',
@@ -54,6 +69,7 @@ export function selectAd(entry?: AdPageEntry, pathname?: string): Ad | undefined
   let best: { ad: Ad; score: number } | undefined;
   let fallback: Ad | undefined;
   for (const ad of Object.values(ads)) {
+    if (ad.excludeGroups?.some(group => groups.includes(group))) continue;
     if (!ad.groups) {
       fallback ??= ad;
       continue;
