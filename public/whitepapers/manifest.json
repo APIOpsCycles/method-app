@@ -18,14 +18,14 @@
     {
       "id": "paper2",
       "title": "From API Readiness to Sustainable Quality",
-      "description": "How teams turn assessment findings into decisions, coordinated work and improvements they can sustain.",
-      "pages": 10,
+      "description": "Why API quality problems recur, how evidence becomes decisions, and how organisations make improvements sustainable.",
+      "pages": 11,
       "language": "English",
-      "date": "16 November 2026",
+      "date": "17 November 2026",
       "url": "/whitepapers/from-api-readiness-to-sustainable-quality.pdf",
       "cover": "/whitepapers/paper2-cover.png",
-      "bytes": 246366,
-      "sha256": "30267bf9d103dbcd5ea1f36d1cc934a73f5a1de522f78fb5db4bd1a5c6c652f5"
+      "bytes": 125192,
+      "sha256": "4cefa3c77bb217535a7db91ec4bfcfe03db8cfc276c54dc53a3fd26faa852536"
     },
     {
       "id": "companion",

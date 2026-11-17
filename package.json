@@ -31,7 +31,8 @@
     "build:method-graph": "tsx scripts/build-method-graph.ts",
     "db:generate": "drizzle-kit generate",
     "sync:design-system-assets": "node packages/apiops-design-system/dist/cli/index.js copy-assets --output public/design-system",
-    "preview": "npm run preview --workspace @apiops/site"
+    "preview": "npm run preview --workspace @apiops/site",
+    "whitepapers:build:paper2": "node scripts/build-paper2.mjs"
   },
   "dependencies": {
     "drizzle-orm": "0.45.2"
