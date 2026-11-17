@@ -13,6 +13,12 @@ const releases=import.meta.glob('../../../../packages/apiops-presentations/relea
 const releasedContent=import.meta.glob('../../../../packages/apiops-presentations/releases/*/*/content.json',{eager:true,import:'default'});
 export const presentationRelease = releases[`../../../../packages/apiops-presentations/releases/${catalog.version}/manifest.json`] as Release;
 if(!presentationRelease)throw new Error(`Missing presentation release ${catalog.version}`);
+for(const edition of presentationEditions){
+ const content=releasedContent[`../../../../packages/apiops-presentations/releases/${catalog.version}/${edition.id}/content.json`] as {slides?:unknown[]} | undefined;
+ if(!content?.slides || content.slides.length!==edition.slideCount || !presentationRelease.artifacts[edition.id]?.content || presentationRelease.slides[edition.id]?.length!==edition.slideCount){
+  throw new Error(`Incomplete presentation release ${catalog.version}: ${edition.id}. Keep unreleased editions out of catalog.json until a complete reviewed release is prepared.`);
+ }
+}
 export const presentationPath = (id: string) => `/presentations/${id}`;
 export const artifactUrl = (artifact: Artifact) => `/presentations/${catalog.version}/${artifact.file}`;
 export const fileSize = (bytes: number) => bytes < 1024 * 1024 ? `${Math.ceil(bytes/1024)} KB` : `${(bytes/1024/1024).toFixed(1)} MB`;

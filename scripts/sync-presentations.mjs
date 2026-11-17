@@ -2,6 +2,8 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {createHash} from 'node:crypto';
+import {readFileSync} from 'node:fs';
+import {validatePresentationRelease} from './presentation-release.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const pkg=path.join(root,'packages/apiops-presentations');
 const catalog=JSON.parse(await fs.readFile(path.join(pkg,'catalog.json'),'utf8'));
@@ -14,6 +16,11 @@ const manifest=JSON.parse(await fs.readFile(path.join(release,'manifest.json'),'
 if(manifest.version!==version)throw new Error('Presentation release/directory version mismatch');
 const {artifacts:_artifacts,slides:_slides,source:_source,assets:_assets,...releasedCatalog}=manifest;
 if(version===catalog.version&&JSON.stringify(releasedCatalog)!==JSON.stringify(catalog))throw new Error('Presentation catalog differs from its release. Prepare a new reviewed release.');
+validatePresentationRelease(releasedCatalog,manifest,file=>{
+ const contentPath=path.resolve(release,file);
+ if(!contentPath.startsWith(release+path.sep))throw new Error('Invalid presentation content path');
+ return JSON.parse(readFileSync(contentPath,'utf8'));
+});
 const entries=[manifest.source,...(manifest.assets??[]),...Object.values(manifest.artifacts).flatMap(Object.values),...Object.values(manifest.slides).flatMap(slides=>slides.map(slide=>slide.preview))];
 // Validate the entire release before copying any public artifacts.
 for(const artifact of entries){
