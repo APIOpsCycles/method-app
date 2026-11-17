@@ -1,0 +1,48 @@
+{
+  "edition": "2026-11-17",
+  "author": "Marjukka Niinioja / Osaango Ltd",
+  "license": "CC-BY-SA-4.0",
+  "publications": [
+    {
+      "id": "paper1",
+      "title": "What Your AI Depends On",
+      "description": "Why API quality shapes user, developer and agent experiences—even when the software connections are invisible.",
+      "pages": 9,
+      "language": "English",
+      "date": "16 November 2026",
+      "url": "/whitepapers/what-your-ai-depends-on.pdf",
+      "cover": "/whitepapers/paper1-cover.png",
+      "bytes": 293196,
+      "sha256": "72dd1aac7cadfbd87d75d55a7b488c13520ee73cd43c98c28028efdb3bc550d6"
+    },
+    {
+      "id": "paper2",
+      "title": "From API Readiness to Sustainable Quality",
+      "description": "How teams turn assessment findings into decisions, coordinated work and improvements they can sustain.",
+      "pages": 10,
+      "language": "English",
+      "date": "16 November 2026",
+      "url": "/whitepapers/from-api-readiness-to-sustainable-quality.pdf",
+      "cover": "/whitepapers/paper2-cover.png",
+      "bytes": 246366,
+      "sha256": "30267bf9d103dbcd5ea1f36d1cc934a73f5a1de522f78fb5db4bd1a5c6c652f5"
+    },
+    {
+      "id": "companion",
+      "title": "Practical Assessment and Improvement Resources",
+      "description": "Optional canvases, evidence mappings and a fictional completed improvement brief for practitioners.",
+      "pages": 8,
+      "language": "English",
+      "date": "16 November 2026",
+      "url": "/whitepapers/practical-assessment-and-improvement-resources.pdf",
+      "cover": "/whitepapers/companion-cover.png",
+      "bytes": 236078,
+      "sha256": "86dcddacc16ebb36cb8c293b078e1800b75da83569ce150f3a222a7203fb7208"
+    }
+  ],
+  "bundle": {
+    "url": "/whitepapers/practical-assessment-and-improvement-resources.zip",
+    "bytes": 257413,
+    "sha256": "a856c2230d71a10f2eb11553ec54c78f6bb84a971a3e20dc4ff36c7987562a91"
+  }
+}
