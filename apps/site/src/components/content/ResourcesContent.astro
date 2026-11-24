@@ -1,0 +1,65 @@
+---
+import {getCatalog,localePrefix,type Locale} from '../../lib/method-data';
+import {resourceDirectory,resourceLibraryCopy} from '../../lib/resource-library';
+const {locale='en'}=Astro.props as {locale:Locale};
+const copy=resourceLibraryCopy[locale],entries=resourceDirectory(locale),prefix=localePrefix(locale);
+const types=[...new Set(entries.map(e=>e.resource.category))];
+const normalize=(value:string)=>value.normalize('NFKD').replace(/\p{M}/gu,'').toLocaleLowerCase(locale);
+---
+<main class="public-content resource-directory">
+ <nav class="public-breadcrumbs" aria-label="Breadcrumb"><a href={`${prefix}/`}>APIOps Cycles</a><span aria-hidden="true">/</span><span>{copy.title}</span></nav>
+ <section class="public-hero"><h1>{copy.title}</h1><p>{copy.intro}</p></section>
+ <resource-library data-locale={locale} data-count-label={copy.results}>
+  <form role="search" aria-label={copy.search}>
+   <fieldset hidden data-resource-filters><legend class="sr-only">{copy.search}</legend>
+    <label class="resource-search">{copy.search}<input type="search" name="q" placeholder={copy.searchHint} /></label>
+    <label>{copy.type}<select name="type" aria-label={copy.type}><option value="">{copy.all}</option>{types.map(type=><option value={type}>{copy[type as 'canvas'|'checklist'|'guideline']??type}</option>)}</select></label>
+    <label>{copy.cycle}<select name="cycle" aria-label={copy.cycle}><option value="">{copy.all}</option>{getCatalog(locale).cycles.map(c=><option value={c.id}>{c.title}</option>)}</select></label>
+    <button class="is-button" type="reset">{copy.reset}</button>
+   </fieldset>
+  </form>
+  <noscript><p>{copy.noScript}</p></noscript>
+  <p role="status" aria-live="polite" data-resource-count>{copy.results.replace('{count}',String(entries.length))}</p>
+  <p data-resource-empty hidden>{copy.empty}</p>
+  <div class="resource-list">
+   {entries.map(({resource,href,creator,stations,cycles})=><article class="resource-entry" data-resource data-type={resource.category} data-cycles={cycles.map(c=>c.id).join(' ')} data-search={normalize([resource.title,resource.description,...resource.outcomes,...resource.steps,...stations.map(s=>s.title),...cycles.map(c=>c.title)].join(' '))}>
+    <p class="resource-type">{copy[resource.category as 'canvas'|'checklist'|'guideline']??resource.category}</p>
+    <h2><a href={href}>{resource.title}</a></h2><p>{resource.description}</p>
+    {stations.length>0&&<p class="resource-context"><strong>{copy.stations}: </strong>{stations.map((s,i)=><>{i>0?' · ':''}<a href={s.href}>{s.title}</a></>)}</p>}
+    {cycles.length>0&&<p class="resource-context"><strong>{copy.cycles}: </strong>{cycles.map((c,i)=><>{i>0?' · ':''}<a href={c.href}>{c.title}</a></>)}</p>}
+    <nav class="resource-actions" aria-label={`${copy.use}: ${resource.title}`}><a href={href}>{copy.guidance}</a>{creator&&<a class="is-button" href={creator}>{copy.open}</a>}</nav>
+   </article>)}
+  </div>
+ </resource-library>
+</main>
+<style>
+ resource-library{display:block}fieldset{border:0;padding:0;margin:0;display:flex;flex-wrap:wrap;align-items:end;gap:1rem}label{display:grid;gap:.4rem;min-width:0;flex:1 1 12rem}.resource-search{flex:2 1 20rem}input,select{width:100%;min-width:0;padding:.7rem;border:1px solid var(--panel-border);border-radius:.3rem;background:var(--panel);color:inherit;font:inherit}.resource-entry{padding:1.6rem 0;border-top:1px solid var(--panel-border);overflow-wrap:anywhere}.resource-entry h2{margin:.2rem 0 .7rem}.resource-type{margin:0;font-size:.9rem;color:var(--muted)}.resource-context{font-size:.95rem;line-height:1.7}.resource-actions{display:flex;flex-wrap:wrap;gap:1.2rem;align-items:center;margin-top:1rem}[hidden]{display:none!important}
+</style>
+<style>
+ button[type=reset]{padding:.7rem .9rem;border:1px solid var(--panel-border);border-radius:.3rem;background:var(--panel);color:inherit;font:inherit;cursor:pointer}button[type=reset]:hover{border-color:currentColor}input:focus-visible,select:focus-visible,button:focus-visible{outline:3px solid #1656b8;outline-offset:3px}
+</style>
+<script>
+ class ResourceLibrary extends HTMLElement{
+  connectedCallback(){
+   const form=this.querySelector('form')!;
+   const query=form.elements.namedItem('q') as HTMLInputElement;
+   const type=form.elements.namedItem('type') as HTMLSelectElement;
+   const cycle=form.elements.namedItem('cycle') as HTMLSelectElement;
+   const entries=Array.from(this.querySelectorAll<HTMLElement>('[data-resource]'));
+   const normalize=(value:string)=>value.normalize('NFKD').replace(/\p{M}/gu,'').toLocaleLowerCase(this.dataset.locale);
+   const params=new URLSearchParams(location.search);
+   query.value=params.get('q')??'';
+   for(const select of [type,cycle]){const value=params.get(select.name)??'';select.value=Array.from(select.options).some(o=>o.value===value)?value:'';}
+   const filter=()=>{
+    const words=normalize(query.value).trim().split(/\s+/).filter(Boolean);let count=0;
+    for(const entry of entries){const match=(!type.value||entry.dataset.type===type.value)&&(!cycle.value||entry.dataset.cycles?.split(' ').includes(cycle.value))&&words.every(word=>entry.dataset.search?.includes(word));entry.hidden=!match;if(match)count++;}
+    this.querySelector('[data-resource-count]')!.textContent=this.dataset.countLabel!.replace('{count}',String(count));
+    (this.querySelector('[data-resource-empty]') as HTMLElement).hidden=count!==0;
+    const url=new URL(location.href);for(const field of [query,type,cycle]){if(field.value.trim())url.searchParams.set(field.name,field.value.trim());else url.searchParams.delete(field.name);}history.replaceState(null,'',url);
+   };
+   form.addEventListener('input',filter);form.addEventListener('change',filter);form.addEventListener('submit',event=>{event.preventDefault();filter();});form.addEventListener('reset',()=>requestAnimationFrame(filter));
+   this.querySelector<HTMLElement>('[data-resource-filters]')!.hidden=false;filter();
+  }
+ }
+ if(!customElements.get('resource-library'))customElements.define('resource-library',ResourceLibrary);
+</script>

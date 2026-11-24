@@ -2,7 +2,7 @@ import { defaultLocale, getCatalog, locales, localePrefix, publicResources, reso
 import { featureSlugs } from "../content/features";
 import presentationCatalog from '../../../../packages/apiops-presentations/catalog.json';
 
-export type RouteKind = "home" | "cycle" | "station" | "cycleStation" | "role" | "resource" | "line" | "cycleLine" | "partners" | "faq" | "licensing" | "data" | "designSystem" | "feature" | "presentation";
+export type RouteKind = "home" | "cycle" | "station" | "cycleStation" | "role" | "resource" | "resources" | "line" | "cycleLine" | "partners" | "faq" | "licensing" | "data" | "designSystem" | "feature" | "presentation";
 export type PublicRoute = { kind: RouteKind; locale: Locale; path: string; alternateKey?: string };
 
 /** One indexing policy shared by sitemap and future route discovery surfaces. */
@@ -12,6 +12,7 @@ export function publicRouteInventory(): PublicRoute[] {
     const prefix = localePrefix(locale);
     return [
       { kind: "home", locale, path: `${prefix}/`, alternateKey: "home" },
+      { kind: "resources", locale, path: `${prefix}/resources`, alternateKey: "resources" },
       { kind: "partners", locale, path: `${prefix}/partners`, alternateKey: "partners" },
       { kind: "faq", locale, path: `${prefix}/faq`, alternateKey: "faq" },
       { kind: "licensing", locale, path: `${prefix}/licensing`, alternateKey: "licensing" },

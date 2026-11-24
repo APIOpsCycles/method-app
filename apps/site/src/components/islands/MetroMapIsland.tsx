@@ -54,7 +54,7 @@ function metroMapSvgStyles(activeColor: string) {
     .metro-legend text,
     .metro-line-legend text { fill: #071640; font-family: Arial, sans-serif; font-size: 13px; font-weight: 800; }
     .metro-label { font-size: 10px; }
-    .metro-support-label { font-size: 11px; font-weight: 650; }
+    .metro-support-label { font-size: 14px; font-weight: 700; }
     .metro-zone-title-bg { fill: #ffffff;  fill-opacity: 0.88; }
     .metro-route { fill: none; }
     .metro-support-node,
@@ -79,7 +79,7 @@ function metroMapSvgStyles(activeColor: string) {
     .metro-node-number--active { fill: #ffffff; }
     .metro-brand { opacity: 0.45; }
     .metro-core-label rect  { fill: #ffffff;  fill-opacity: 0.95; stroke: currentColor; }
-    .metro-core-label text { fill: currentColor; font-family: Arial, sans-serif; font-size: 10px; font-weight: 850; pointer-events: none; }
+    .metro-core-label text { fill: currentColor; font-family: Arial, sans-serif; font-size: 12px; font-weight: 850; pointer-events: none; }
     .metro-line-legend text { font-family: Arial, sans-serif; font-size: 10px; font-weight: 700; }
   `;
 }
@@ -208,10 +208,10 @@ function MetroMapView({
     "business-goals": { x: 270, y: 220, dx: 16, dy: 0 },
     "market-insights": { x: 270, y: 250, dx: 16, dy: 0 },
     "user-experience": { x: 270, y: 280, dx: 16, dy: 0 },
-    "scalable-infrastructure": { x: 900, y: 560, dx: -16, dy: 0, anchor: "end" },
-    "legal-and-compliance": { x: 900, y: 590, dx: -16, dy: 0, anchor: "end" },
-    "security-and-privacy": { x: 900, y: 620, dx: -16, dy: 0, anchor: "end" },
-    "design-standards": { x: 900, y: 650, dx: -16, dy: 0, anchor: "end" },
+    "scalable-infrastructure": { x: 900, y: 544, dx: -16, dy: 0, anchor: "end" },
+    "legal-and-compliance": { x: 900, y: 578, dx: -16, dy: 0, anchor: "end" },
+    "security-and-privacy": { x: 900, y: 612, dx: -16, dy: 0, anchor: "end" },
+    "design-standards": { x: 900, y: 646, dx: -16, dy: 0, anchor: "end" },
     "vendor-management": { x: 900, y: 680, dx: -16, dy: 0, anchor: "end" },
     "contract-design": { x: 500, y: 720, dx: 16, dy: 0 },
     development: { x: 500, y: 755, dx: 16, dy: 0 },
@@ -444,7 +444,19 @@ function MetroMapView({
                 <circle cx={point.x} cy={point.y} r="10" className={`metro-involvement-ring metro-involvement-ring--${involvementFor(point.id)}`} />
               ) : null}
               {point.id === recommendedStationId && point.id !== selectedStationId ? <circle cx={point.x} cy={point.y} r="14" className="metro-recommended-ring" /> : null}
-              <MetroStationMarker x={point.x} y={point.y} radius={6} label={point.baseTitle} labelX={point.x + (point.dx ?? 0)} labelY={point.y + (point.dy ?? 0)} textAnchor={point.anchor} />
+              <MetroStationMarker x={point.x} y={point.y} radius={6} />
+              {(() => {
+                // Keep full names readable without running into neighbouring
+                // branches or the circular crop. Technical rows allow extra
+                // space for the longer translated legal/security names.
+                const maxLength = point.x === 240 ? 20 : point.id === "legal-and-compliance" ? 28 : point.x === 900 ? 24 : 26;
+                const labelLines = wrapMapLabel(point.baseTitle, maxLength);
+                const labelX = point.x + (point.dx ?? 0);
+                const labelY = point.y + (point.dy ?? 0);
+                return <text x={labelX} y={labelY} textAnchor={point.anchor} dominantBaseline="middle" className="metro-support-label">
+                  {labelLines.map((line, index) => <tspan key={index} x={labelX} y={labelY + (index - (labelLines.length - 1) / 2) * 14}>{line}{index < labelLines.length - 1 ? " " : ""}</tspan>)}
+                </text>;
+              })()}
             </MetroStationButton>
           ))}
         </g>
@@ -531,9 +543,16 @@ export default function MetroMapIsland({ locale, labels, cycles, lines, stations
     if (!svgRef.current) return;
     const clone = svgRef.current.cloneNode(true) as SVGSVGElement;
     await inlineLogoForExport(clone);
-    inlineMetroMapExportColors(clone, colors[cycleId] ?? "#164e63");
+    const activeColor = inlineMetroMapExportColors(clone, colors[cycleId] ?? "#164e63");
     sanitizeMetroMapExportSvg(clone);
-    clone.insertAdjacentHTML("afterbegin", `<style>${metroMapSvgStyles(colors[cycleId] ?? "#164e63")}</style>`);
+    clone.insertAdjacentHTML("afterbegin", `<style>${metroMapSvgStyles(activeColor)}</style>`);
+    // Keep vector geometry for arbitrary print sizes. A 16K intrinsic long edge
+    // also gives importers a larger fallback if they rasterize the SVG.
+    // Changing only these dimensions leaves the interactive map/viewBox intact.
+    const viewBox = svgRef.current.viewBox.baseVal;
+    const scale = 16_384 / Math.max(viewBox.width, viewBox.height);
+    clone.setAttribute("width", String(Math.round(viewBox.width * scale)));
+    clone.setAttribute("height", String(Math.round(viewBox.height * scale)));
     clone.setAttribute("xmlns", "http://www.w3.org/2000/svg");
     const url = URL.createObjectURL(new Blob([makeCanvaSafeSvg(new XMLSerializer().serializeToString(clone))], { type: "image/svg+xml" }));
     const link = document.createElement("a"); link.href = url; link.download = `apiops-metro-${locale}.svg`; link.click(); URL.revokeObjectURL(url);

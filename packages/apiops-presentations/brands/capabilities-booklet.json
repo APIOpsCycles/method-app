@@ -1,0 +1,12 @@
+{
+  "name": "APIOps Cycles",
+  "author": "APIOps Cycles / Osaango Ltd",
+  "font": "Arial",
+  "footer": "apiopscycles.com",
+  "logo": "assets/apiops-cycles-logo.png",
+  "colors": {
+    "heading": "#071640",
+    "body": "#10233f",
+    "muted": "#526077"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "capabilities-booklet-01",
+  "title": "Turning ideas into\nreusable capabilities",
+  "elements": [
+    {
+      "id": "subtitle",
+      "type": "text",
+      "text": "A practical method to connect business goals, people and technology across APIs, integrations and AI-assisted automation."
+    },
+    {
+      "id": "cover",
+      "type": "image",
+      "asset": "capabilities-booklet-cover-collaboration.svg",
+      "alt": "People align API decisions and shared understanding. The original small linear process strip is omitted.",
+      "fit": "contain"
+    },
+    {
+      "id": "wordmark",
+      "type": "image",
+      "asset": "capabilities-booklet-wordmark.svg",
+      "alt": "APIOps Cycles",
+      "fit": "contain"
+    }
+  ],
+  "notes": "APIOps Cycles / Osaango Ltd. Method content CC-BY-SA 4.0. Original artwork retained from the supplied Pariisi-Messuvihko.pptx. "
+}

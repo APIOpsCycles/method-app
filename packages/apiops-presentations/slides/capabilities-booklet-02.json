@@ -1,0 +1,25 @@
+{
+  "id": "capabilities-booklet-02",
+  "title": "APIOps Cycles",
+  "elements": [
+    {
+      "id": "definition",
+      "type": "text",
+      "text": "An open method for reusable capabilities, APIs, integrations and automation."
+    },
+    {
+      "id": "full-map",
+      "type": "image",
+      "asset": "capabilities-booklet-capability-map.svg",
+      "alt": "The official APIOps Cycles metro map with the Capability Productization route selected. Shared stations connect business, governance, consumer and technical work.",
+      "fit": "contain"
+    },
+    {
+      "id": "overview",
+      "type": "text",
+      "text": "Four cycles share stations, decisions and tools."
+    }
+  ],
+  "notes": "APIOps Cycles / Osaango Ltd. Method content CC-BY-SA 4.0. Original artwork retained from the supplied Pariisi-Messuvihko.pptx. Official method map exported from the local method website with the Capability Productization route selected. This map is an orientation image; the full-size interactive map supplies station detail. The method builds on Lean and Service Design. Attribution remains in notes and the digital edition.",
+  "footer": "apiopscycles.com · CC BY-SA 4.0"
+}

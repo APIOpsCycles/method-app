@@ -1,0 +1,30 @@
+TURNING IDEAS INTO REUSABLE CAPABILITIES - PRODUCTION HANDOFF
+
+12 pages in normal reading order. Finished size: 148 x 210 mm (A5 portrait).
+Print PDF media: 154 x 216 mm, including 3 mm white bleed on every edge.
+TrimBox: 148 x 210 mm, inset by 3 mm. No crop marks or imposition.
+All page backgrounds are white, so the bleed extends that white background.
+Interior reading-order spreads are 2-3, 4-5, 6-7, 8-9 and 10-11.
+For the current mirrored layout, the main content has 11.9 mm side
+margins; all furniture is at least 5 mm from trim and 7 mm from binding.
+Small method marks and page numbers alternate to the outside of each spread.
+Fonts are embedded. Artwork remains vector in PDF where supplied as SVG.
+The separate PowerPoint uses embedded high-resolution PNGs for compatibility.
+
+This is an RGB production draft, not a certified PDF/X file. Confirm the
+printer's ICC profile, required PDF standard, stock, binding and imposition
+before production. Avoid an arbitrary CMYK conversion without that profile.
+The 12-page count supports saddle stitching; the printer should impose pages.
+Print at 100 percent / actual size for an A5 proof. Do not use fit-to-page.
+
+The 35.2 mm QR was decoded from A5 rasterizations at 100, 150 and 300 dpi.
+This is a digital decode check, not a physical print proof. Check the printed
+proof's QR and small logo details before committing the print run.
+
+For digital distribution, use the A5 reading PDF or self-contained reading
+HTML. The reading PDF retains structural tags; PDF/UA compliance has not
+been independently certified. The HTML provides real headings, navigation,
+descriptive alternatives, keyboard links and a responsive reading order.
+
+Before public distribution, deploy the repository's /resources directory and
+metro SVG export changes. Generating this booklet does not deploy the website.

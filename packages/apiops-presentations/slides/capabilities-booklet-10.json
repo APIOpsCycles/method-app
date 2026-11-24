@@ -1,0 +1,39 @@
+{
+  "id": "capabilities-booklet-10",
+  "title": "Start where it\nhurts most",
+  "elements": [
+    {
+      "id": "intro",
+      "type": "text",
+      "text": "Bring your biggest challenge to the map."
+    },
+    {
+      "id": "challenge-map",
+      "type": "image",
+      "asset": "capabilities-booklet-focus-map.svg",
+      "alt": "Focused official map: A Capability Strategy, B Consumer and Producer Commitments, C Roles and Responsibilities. Routes and station positions are unchanged.",
+      "fit": "contain"
+    },
+    {
+      "id": "a",
+      "type": "text",
+      "text": "A  Strategy: what can we reuse?"
+    },
+    {
+      "id": "b",
+      "type": "text",
+      "text": "B  Consumers: who are we serving?"
+    },
+    {
+      "id": "c",
+      "type": "text",
+      "text": "C  Roles & responsibilities:\nwho owns the decisions?"
+    },
+    {
+      "id": "start",
+      "type": "text",
+      "text": "Examples only. Start where it hurts most."
+    }
+  ],
+  "notes": "APIOps Cycles / Osaango Ltd. Method content CC-BY-SA 4.0. Original artwork retained from the supplied Pariisi-Messuvihko.pptx. A points to Capability Strategy (api-product-strategy), B to Consumer & Producer Commitments (api-consumer-experience), C to the supporting governance station Roles and Responsibilities. Letter annotations identify the three questions, not a mandatory sequence. Start with the question where the team lacks agreement."
+}

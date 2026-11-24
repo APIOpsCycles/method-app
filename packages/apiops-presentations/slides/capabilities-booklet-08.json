@@ -1,0 +1,37 @@
+{
+  "id": "capabilities-booklet-08",
+  "title": "A shared view of\nthe customer journey",
+  "elements": [
+    {
+      "id": "intro",
+      "type": "text",
+      "text": "Use the Customer Journey Canvas to connect the customer’s task, pain points and desired outcome."
+    },
+    {
+      "id": "canvas-detail",
+      "type": "image",
+      "asset": "capabilities-booklet-customer-journey-detail.svg",
+      "alt": "Enlarged original Customer Discovers Need field from the Customer Journey Canvas. How does the customer recognize their need or problem?",
+      "fit": "contain"
+    },
+    {
+      "id": "canvas",
+      "type": "image",
+      "asset": "capabilities-booklet-customer-journey-canvas.svg",
+      "alt": "The canonical Customer Journey Canvas: customer need, persona, pains and gains, journey steps, inputs and outputs, interaction rules and improvement opportunities.",
+      "fit": "contain"
+    },
+    {
+      "id": "prompt",
+      "type": "text",
+      "text": "Discuss what happens before deciding what to build."
+    },
+    {
+      "id": "tools",
+      "type": "text",
+      "text": "Get the free canvas:\napiopscycles.com/resources"
+    }
+  ],
+  "notes": "APIOps Cycles / Osaango Ltd. Method content CC-BY-SA 4.0. Original artwork retained from the supplied Pariisi-Messuvihko.pptx. Canonical Customer Journey Canvas generated with CanvasCreator from the installed method-data template. The large image is an exact crop of the Customer Discovers Need field, with its original question and native geometry. The smaller complete canvas provides context. Blank reusable template; no fabricated client evidence. Full-size tool: https://apiopscycles.com/resources/customer-journey-canvas",
+  "footer": ""
+}

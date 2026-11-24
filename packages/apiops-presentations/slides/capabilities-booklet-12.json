@@ -1,0 +1,65 @@
+{
+  "id": "capabilities-booklet-12",
+  "title": "Your path\nstarts here",
+  "elements": [
+    {
+      "id": "scene",
+      "type": "image",
+      "asset": "capabilities-booklet-together.svg",
+      "alt": "API practitioners work together.",
+      "fit": "contain"
+    },
+    {
+      "id": "link",
+      "type": "text",
+      "text": "Choose your challenge and explore the map."
+    },
+    {
+      "id": "qr",
+      "type": "image",
+      "asset": "capabilities-booklet-method-qr.svg",
+      "alt": "QR code linking to https://apiopscycles.com/#metro-map-title",
+      "fit": "contain"
+    },
+    {
+      "id": "qr-label",
+      "type": "text",
+      "text": "apiopscycles.com\nExplore the interactive map"
+    },
+    {
+      "id": "partners",
+      "type": "text",
+      "text": "APIOps Cycles partners can help you map your path."
+    },
+    {
+      "id": "partner-osaango",
+      "type": "image",
+      "asset": "capabilities-booklet-partner-osaango.png",
+      "alt": "Osaango",
+      "fit": "contain"
+    },
+    {
+      "id": "partner-adorsys",
+      "type": "image",
+      "asset": "capabilities-booklet-partner-adorsys.png",
+      "alt": "adorsys GmbH & Co. KG",
+      "fit": "contain"
+    },
+    {
+      "id": "partner-apisfirst",
+      "type": "image",
+      "asset": "capabilities-booklet-partner-apisfirst.png",
+      "alt": "APIsFirst",
+      "fit": "contain"
+    },
+    {
+      "id": "partner-api-evangelist",
+      "type": "image",
+      "asset": "capabilities-booklet-partner-api-evangelist.png",
+      "alt": "API Evangelist",
+      "fit": "contain"
+    }
+  ],
+  "notes": "APIOps Cycles / Osaango Ltd. Method content CC-BY-SA 4.0. Original artwork retained from the supplied Pariisi-Messuvihko.pptx.  Partner names and original logo assets follow generated/method/partners.json and public/partners/. The invitation placeholder is not a partner.",
+  "footer": "apiopscycles.com/partners"
+}

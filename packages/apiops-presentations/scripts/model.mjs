@@ -17,7 +17,8 @@ export function options(args=process.argv.slice(2)){
 }
 export async function load(brand='theme.json',edition='strategy-to-technical-delivery'){
   if(!/^[a-z0-9-]+$/.test(edition))throw new Error('Invalid edition ID');
-  const [deck,layouts,base,override]=await Promise.all([readJson(localPath(`editions/${edition}.json`)),readJson(localPath('layouts.json')),readJson(localPath('theme.json')),readJson(localPath(brand))]);
+  const deck=await readJson(localPath(`editions/${edition}.json`));
+  const [layouts,base,override]=await Promise.all([readJson(localPath(deck.layouts??'layouts.json')),readJson(localPath('theme.json')),readJson(localPath(brand))]);
   const theme={...base,...override,colors:{...base.colors,...override.colors}};
   const slides=await Promise.all(deck.slides.map(file=>readJson(localPath(file))));
   if(!slides.length)throw new Error('Deck must contain slides.');

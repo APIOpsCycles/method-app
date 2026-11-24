@@ -1,0 +1,33 @@
+{
+  "source": "generated/method/partners.json",
+  "partners": [
+    {
+      "title": "Osaango",
+      "source": "/partners/osaango-black.svg",
+      "asset": "capabilities-booklet-partner-osaango.png",
+      "width": 1800,
+      "height": 492
+    },
+    {
+      "title": "adorsys GmbH & Co. KG",
+      "source": "/partners/adorsys.svg",
+      "asset": "capabilities-booklet-partner-adorsys.png",
+      "width": 1800,
+      "height": 303
+    },
+    {
+      "title": "APIsFirst",
+      "source": "/partners/apisfirst.svg",
+      "asset": "capabilities-booklet-partner-apisfirst.png",
+      "width": 1800,
+      "height": 346
+    },
+    {
+      "title": "API Evangelist",
+      "source": "/partners/api-evangelist-logo-butterfly-transparent.png",
+      "asset": "capabilities-booklet-partner-api-evangelist.png",
+      "width": 1800,
+      "height": 328
+    }
+  ]
+}
