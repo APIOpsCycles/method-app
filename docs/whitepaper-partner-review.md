@@ -8,7 +8,7 @@ This change is held for partner feedback. Do not merge or deploy until the publi
 - [Paper 2 — From API Readiness to Sustainable Quality](../public/whitepapers/from-api-readiness-to-sustainable-quality.pdf): the organisational capability perspective: why API quality findings recur, how evidence becomes decisions and how improvements become sustainable.
 - [Optional supporting PDF](../public/whitepapers/practical-assessment-and-improvement-resources.pdf) and [editable resource ZIP](../public/whitepapers/practical-assessment-and-improvement-resources.zip): canvases, evidence mappings and a fictional completed brief.
 
-GitHub's PDF file view offers a download button if an inline preview is unavailable. Paper 2’s revised editable HTML, stylesheet and single metro-map illustration are in `packages/apiops-presentations/whitepapers`; its standalone build updates the public PDF, cover and manifest. Paper 1 and the supporting pack retain their existing editions. The original separate authoring workspace is not included.
+GitHub's PDF file view offers a download button if an inline preview is unavailable. Paper 2’s revised editable HTML, stylesheet, metro map and three additional editable visuals are in `packages/apiops-presentations/whitepapers`; its standalone build updates the public PDF, cover and manifest. Paper 1 and the supporting pack retain their existing editions. The original separate authoring workspace is not included.
 
 ## Focus for feedback
 
