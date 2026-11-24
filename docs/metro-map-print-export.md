@@ -4,6 +4,9 @@ The website's existing Export SVG button keeps the actual paths, text and inline
 vector logo, with explicit colours and no external image dependencies. Its
 intrinsic long edge is 4,096 pixels, while the geometric viewBox stays
 unchanged. The live on-screen map is not enlarged or mutated during export.
+The downloaded SVG also fits the browser viewport when opened as a standalone
+file. Without that root constraint, a browser opens the intrinsic-size canvas
+on its empty upper-left corner, which can make the map appear blank.
 
 Substation lettering is now 14 viewBox units rather than 11 (27% larger), with
 700 weight, in both the interactive map and the SVG download. Longer names wrap

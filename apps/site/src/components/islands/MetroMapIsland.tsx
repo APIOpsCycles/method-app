@@ -554,7 +554,13 @@ export default function MetroMapIsland({ locale, labels, cycles, lines, stations
     clone.setAttribute("width", String(Math.round(viewBox.width * scale)));
     clone.setAttribute("height", String(Math.round(viewBox.height * scale)));
     clone.setAttribute("xmlns", "http://www.w3.org/2000/svg");
-    const url = URL.createObjectURL(new Blob([makeCanvaSafeSvg(new XMLSerializer().serializeToString(clone))], { type: "image/svg+xml" }));
+    const serializer = new XMLSerializer();
+    const portable = new DOMParser().parseFromString(makeCanvaSafeSvg(serializer.serializeToString(clone)), "image/svg+xml");
+    // A standalone SVG document otherwise opens at 4096px (formerly 16384px),
+    // leaving the browser looking at its empty upper-left corner. Apply this
+    // after flattening artwork styles; importers still retain the pixel hint.
+    portable.documentElement.setAttribute("style", "max-width:100vw;max-height:100vh");
+    const url = URL.createObjectURL(new Blob([serializer.serializeToString(portable)], { type: "image/svg+xml" }));
     const link = document.createElement("a");
     link.href = url; link.download = `apiops-metro-${locale}.svg`;
     document.body.append(link); link.click(); link.remove();

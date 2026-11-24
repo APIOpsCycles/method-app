@@ -1,6 +1,7 @@
 import {expect,test} from '@playwright/test';
 import fs from 'node:fs/promises';
 import sharp from 'sharp';
+import {pathToFileURL} from 'node:url';
 test.use({launchOptions:process.env.APIOPS_TEST_BROWSER?{executablePath:process.env.APIOPS_TEST_BROWSER}:undefined});
 
 for(const variant of [
@@ -70,5 +71,18 @@ for(const variant of [
     return count;
   },svg);
   expect(browserPaint).toBeGreaterThan(512*512*.2);
+  if(variant.path==='/'){
+    // Opening the downloaded file is different from rendering it in an <img>.
+    // The whole SVG must fit its own browser document, not open on a blank corner.
+    const standalone=await page.context().newPage();
+    await standalone.goto(pathToFileURL(target).href);
+    for(const viewport of [{width:1280,height:720},{width:390,height:844}]){
+      await standalone.setViewportSize(viewport);
+      const overflow=await standalone.evaluate(()=>({horizontal:document.documentElement.scrollWidth>innerWidth+1,vertical:document.documentElement.scrollHeight>innerHeight+1,outside:Array.from(document.querySelectorAll('text')).filter(e=>{const b=e.getBoundingClientRect();return b.left<0||b.top<0||b.right>innerWidth+1||b.bottom>innerHeight+1;}).map(e=>e.textContent)}));
+      expect(overflow).toEqual({horizontal:false,vertical:false,outside:[]});
+    }
+    await standalone.screenshot({path:testInfo.outputPath('standalone-svg-mobile.png')});
+    await standalone.close();
+  }
   expect(await page.locator('svg.metro-map').evaluate(e=>e.outerHTML)).toBe(before);
 });
