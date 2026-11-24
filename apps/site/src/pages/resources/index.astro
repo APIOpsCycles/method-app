@@ -1,0 +1,8 @@
+---
+import ResourcesContent from '../../components/content/ResourcesContent.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import {metadataForRoute} from '../../lib/seo';
+import {resourceLibraryCopy} from '../../lib/resource-library';
+const locale='en',canonicalPath='/resources',copy=resourceLibraryCopy[locale];
+---
+<BaseLayout title={copy.title} description={copy.intro} lang={locale} canonicalPath={canonicalPath} {...metadataForRoute('resources',locale,canonicalPath)}><ResourcesContent locale={locale}/></BaseLayout>

@@ -8,9 +8,10 @@ export function renderRevealSections(model,assetBase='assets/'){
  const text=(value,b,type='text')=>`<${type==='code'?'pre':'p'} class="apiops-slide-item apiops-slide-${type}" style="${box(b)}font-size:${b.fontSize}px;font-weight:${b.bold?'700':'400'};color:${t.colors[b.color??'body']}">${escapeHtml(value)}</${type==='code'?'pre':'p'}>`;
  return slides.map((s,i)=>{
   const positions=l.slides[s.id];
-  const vars=`--apiops-slide-font:${JSON.stringify(t.font)};--apiops-code-font:${JSON.stringify(t.codeFont)};--apiops-slide-body:${t.colors.body};--apiops-table-border:${t.colors.tableBorder};--apiops-table-header:${t.colors.tableHeader};--apiops-table-alternate:${t.colors.tableAlternate};background:${t.colors.background};`;
-  let content=image(t.logo.replace(/^assets\//,''),l.logo,t.name+' logo')+text(String(i+1).padStart(2,'0'),{...l.pageNumber,color:'muted'});
-  if(s.title)content+=text(s.title,{...l.title,bold:true,color:'heading'});
+  const chrome={...l,...l.pageChrome?.[s.id]};
+  const vars=`--apiops-slide-width:${l.canvas.width}px;--apiops-slide-height:${l.canvas.height}px;--apiops-slide-font:${JSON.stringify(t.font)};--apiops-code-font:${JSON.stringify(t.codeFont)};--apiops-slide-body:${t.colors.body};--apiops-table-border:${t.colors.tableBorder};--apiops-table-header:${t.colors.tableHeader};--apiops-table-alternate:${t.colors.tableAlternate};background:${t.colors.background};`;
+  let content=image(t.logo.replace(/^assets\//,''),chrome.logo,t.name+' logo')+text(String(i+1).padStart(2,'0'),{...chrome.pageNumber,color:'muted'});
+  if(s.title)content+=text(s.title,{...chrome.title,bold:true,color:'heading'});
   for(const e of s.elements){
    const b=positions[e.id];
    if(e.type==='image')content+=image(e.asset,b,e.alt,e.fit);
@@ -23,7 +24,7 @@ export function renderRevealSections(model,assetBase='assets/'){
     }).join('')}</${tag}>`;
    }else content+=text(e.text,b,e.type);
   }
-  content+=text(t.footer,{x:64,y:704,w:1100,h:14,fontSize:12,color:'muted'});
+  content+=text(s.footer??t.footer,chrome.footer??{x:64,y:704,w:1100,h:14,fontSize:12,color:'muted'});
   return `<section id="slide-${i+1}" data-slide aria-label="Slide ${i+1}: ${escapeHtml(titleOf(s))}"><div class="apiops-slide-canvas" style="${escapeHtml(vars)}">${content}</div><aside class="notes">${escapeHtml(s.notes)}</aside></section>`;
  }).join('\n');
 }

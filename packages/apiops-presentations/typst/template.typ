@@ -19,9 +19,10 @@
   }
   for (i, s) in model.slides.enumerate() {
     if i > 0 { pagebreak() }
-    put(l.logo, image("../" + t.logo, width: l.logo.w * px, height: l.logo.h * px, fit: "contain"))
-    put(l.pageNumber, text(size: l.pageNumber.fontSize * px, fill: col("muted"), str(i + 1)))
-    if s.title != "" { put(l.title, text(size: l.title.fontSize * px, weight: "bold", fill: col("heading"), words(s.title))) }
+    let c = l + l.at("pageChrome", default: (:)).at(s.id, default: (:))
+    put(c.logo, image("../" + t.logo, width: c.logo.w * px, height: c.logo.h * px, fit: "contain"))
+    put(c.pageNumber, text(size: c.pageNumber.fontSize * px, fill: col("muted"), str(i + 1)))
+    if s.title != "" { put(c.title, text(size: c.title.fontSize * px, weight: "bold", fill: col("heading"), words(s.title))) }
     for e in s.elements {
       let b = l.slides.at(s.id).at(e.id)
       let body = if e.type == "image" {
@@ -53,7 +54,8 @@
       }
       put(b, body)
     }
-    put((x: 64, y: 704, w: 1100, h: 14), text(size: 9pt, fill: col("muted"), t.footer))
+    let footer = c.at("footer", default: (x: 64, y: 704, w: 1100, h: 14, fontSize: 12))
+    put(footer, text(size: footer.fontSize * px, fill: col("muted"), s.at("footer", default: t.footer)))
     // Speaker notes remain in *.notes.md and native PPTX notes; they are not audience content.
     // Occupy exactly one page even though all content is positioned.
     box(width: 1pt, height: 1pt)

@@ -1,0 +1,66 @@
+{
+  "id": "capabilities-booklet-11",
+  "title": "Join the\nAPIOps Community",
+  "elements": [
+    {
+      "id": "invitation",
+      "type": "text",
+      "text": "Bring your challenges.\nFind your people."
+    },
+    {
+      "id": "community",
+      "type": "image",
+      "asset": "capabilities-booklet-community.svg",
+      "alt": "APIOps Community",
+      "fit": "contain"
+    },
+    {
+      "id": "description",
+      "type": "text",
+      "text": "Connect with API practitioners around the world."
+    },
+    {
+      "id": "meetup-icon",
+      "type": "image",
+      "asset": "capabilities-booklet-community-meetups.svg",
+      "alt": "People meeting",
+      "fit": "contain"
+    },
+    {
+      "id": "workshop-icon",
+      "type": "image",
+      "asset": "capabilities-booklet-community-workshops.svg",
+      "alt": "Conversations in a workshop",
+      "fit": "contain"
+    },
+    {
+      "id": "talk-icon",
+      "type": "image",
+      "asset": "capabilities-booklet-community-talks.svg",
+      "alt": "Microphone for practitioner talks",
+      "fit": "contain"
+    },
+    {
+      "id": "meetups",
+      "type": "text",
+      "text": "Meetups"
+    },
+    {
+      "id": "workshops",
+      "type": "text",
+      "text": "Workshops"
+    },
+    {
+      "id": "talks",
+      "type": "text",
+      "text": "Talks"
+    },
+    {
+      "id": "action",
+      "type": "text",
+      "text": "Join us at apiops.info"
+    }
+  ],
+  "notes": "APIOps Cycles / Osaango Ltd. Method content CC-BY-SA 4.0. Original artwork retained from the supplied Pariisi-Messuvihko.pptx. APIOps is the practitioner community. APIOps Cycles is the open method.",
+  "footer": ""
+}

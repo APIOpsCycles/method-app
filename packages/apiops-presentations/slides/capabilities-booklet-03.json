@@ -1,0 +1,24 @@
+{
+  "id": "capabilities-booklet-03",
+  "title": "Different teams.\nDifferent pictures.",
+  "elements": [
+    {
+      "id": "problem",
+      "type": "text",
+      "text": "APIs, integrations and automation often grow in separate teams."
+    },
+    {
+      "id": "scene",
+      "type": "image",
+      "asset": "capabilities-booklet-shared-picture.svg",
+      "alt": "Teams have interfaces but lack a common view of their connections.",
+      "fit": "contain"
+    },
+    {
+      "id": "method",
+      "type": "text",
+      "text": "APIOps Cycles gives them a shared view of consumers, meaning, ownership and decisions."
+    }
+  ],
+  "notes": "APIOps Cycles / Osaango Ltd. Method content CC-BY-SA 4.0. Original artwork retained from the supplied Pariisi-Messuvihko.pptx. "
+}

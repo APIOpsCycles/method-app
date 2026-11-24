@@ -1,0 +1,51 @@
+{
+  "templateId": "customerJourneyCanvas",
+  "locale": "en",
+  "metadata": {
+    "source": "APIOps Cycles",
+    "license": "CC-BY-SA 4.0",
+    "authors": [
+      "Osaango Ltd"
+    ],
+    "website": "https://apiopscycles.com",
+    "context": "Blank canonical Customer Journey Canvas for the reusable capabilities booklet. No client case or electrical-design scenario."
+  },
+  "sections": [
+    {
+      "sectionId": "customerDiscoversNeed",
+      "stickyNotes": []
+    },
+    {
+      "sectionId": "persona",
+      "stickyNotes": []
+    },
+    {
+      "sectionId": "pains",
+      "stickyNotes": []
+    },
+    {
+      "sectionId": "journeySteps",
+      "stickyNotes": []
+    },
+    {
+      "sectionId": "customerNeedIsResolved",
+      "stickyNotes": []
+    },
+    {
+      "sectionId": "gains",
+      "stickyNotes": []
+    },
+    {
+      "sectionId": "inputsOutputs",
+      "stickyNotes": []
+    },
+    {
+      "sectionId": "interactionProcessingRules",
+      "stickyNotes": []
+    },
+    {
+      "sectionId": "improvementOpportunities",
+      "stickyNotes": []
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "id": "capabilities-booklet-09",
+  "title": "Governance\nand innovation",
+  "elements": [
+    {
+      "id": "scenario",
+      "type": "text",
+      "text": "A team needs to launch quickly. Security needs consistent controls. The platform team wants reuse."
+    },
+    {
+      "id": "scene",
+      "type": "image",
+      "asset": "capabilities-booklet-governance.svg",
+      "alt": "Practitioners balance shared controls and freedom to innovate.",
+      "fit": "contain"
+    },
+    {
+      "id": "method",
+      "type": "text",
+      "text": "APIOps Cycles helps them agree which decisions to make together and which can remain local."
+    },
+    {
+      "id": "example",
+      "type": "text",
+      "text": "For example: shared access rules, with local implementation choices."
+    }
+  ],
+  "notes": "APIOps Cycles / Osaango Ltd. Method content CC-BY-SA 4.0. Original artwork retained from the supplied Pariisi-Messuvihko.pptx. Illustrative scenario. Shared and local decisions depend on organizational context."
+}

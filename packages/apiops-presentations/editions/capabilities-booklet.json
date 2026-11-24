@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "1.0",
+  "id": "capabilities-booklet",
+  "title": "Turning ideas into reusable capabilities",
+  "language": "en",
+  "author": "APIOps Cycles / Osaango Ltd",
+  "layouts": "layouts-capabilities-booklet.json",
+  "slides": [
+    "slides/capabilities-booklet-01.json",
+    "slides/capabilities-booklet-02.json",
+    "slides/capabilities-booklet-03.json",
+    "slides/capabilities-booklet-04.json",
+    "slides/capabilities-booklet-05.json",
+    "slides/capabilities-booklet-06.json",
+    "slides/capabilities-booklet-07.json",
+    "slides/capabilities-booklet-08.json",
+    "slides/capabilities-booklet-09.json",
+    "slides/capabilities-booklet-10.json",
+    "slides/capabilities-booklet-11.json",
+    "slides/capabilities-booklet-12.json"
+  ]
+}

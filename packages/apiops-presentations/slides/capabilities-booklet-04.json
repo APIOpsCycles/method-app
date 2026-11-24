@@ -1,0 +1,24 @@
+{
+  "id": "capabilities-booklet-04",
+  "title": "Every team\noptimizes locally",
+  "elements": [
+    {
+      "id": "scene",
+      "type": "image",
+      "asset": "capabilities-booklet-local-decisions.svg",
+      "alt": "Teams optimize their own APIs independently.",
+      "fit": "contain"
+    },
+    {
+      "id": "example",
+      "type": "text",
+      "text": "An API and an automation use different definitions of “customer”. Their outputs cannot be combined reliably."
+    },
+    {
+      "id": "decision",
+      "type": "text",
+      "text": "Agree on what “customer” means, which capabilities can be reused, and who owns the shared decisions before choosing implementations."
+    }
+  ],
+  "notes": "APIOps Cycles / Osaango Ltd. Method content CC-BY-SA 4.0. Original artwork retained from the supplied Pariisi-Messuvihko.pptx. Illustrative scenario, not a reported client case."
+}

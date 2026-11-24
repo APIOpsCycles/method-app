@@ -1,5 +1,6 @@
 import { canonicalUrl } from "../env";
 import { defaultLocale, getCatalog, getStationResources, localePrefix, publicResources, resourcePath, type Cycle, type Locale, type Station } from "./method-data";
+import {resourceDirectory,resourceLibraryCopy} from './resource-library';
 import canvasEn from "../../../../generated/method/canvas-manifest.en.json";
 import canvasFi from "../../../../generated/method/canvas-manifest.fi.json";
 import canvasFr from "../../../../generated/method/canvas-manifest.fr.json";
@@ -35,6 +36,12 @@ export function methodDocuments(locale: Locale = defaultLocale): MethodDocument[
     const resource = resourceById.get(id);
     return resource ? [`- ${link(resource.title, markdownPath(resourcePath(locale, resource)))}`] : [];
   });
+  const libraryCopy=resourceLibraryCopy[locale];
+  add(`${prefix}/resources`,libraryCopy.title,libraryCopy.intro+'\n\n'+resourceDirectory(locale).map(entry=>
+    `## ${text(entry.resource.title)}\n\n${text(entry.resource.description)}\n\n${link(libraryCopy.guidance,markdownPath(entry.href))}\n\n`
+    +section(libraryCopy.stations,entry.stations.map(s=>`- ${link(s.title,markdownPath(s.href))}`))
+    +section(libraryCopy.cycles,entry.cycles.map(c=>`- ${link(c.title,markdownPath(c.href))}`))
+  ).join('\n'));
   const stationLinks = (stations: Station[], cycle?: Cycle) => stations.map((station) =>
     `- ${link(station.title, markdownPath(cycle ? `${prefix}/cycles/${cycle.slug}/stations/${station.id}` : `${prefix}/stations/${station.id}`))}`);
   const stationBody = (station: Station, baseline?: Station) => {

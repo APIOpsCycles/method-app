@@ -1,6 +1,7 @@
 ---
 import { designSystemAssets } from "apiops-design-system/assets";
 import { defaultLocale, getLabels, locales, localePrefix, type Locale } from "../lib/method-data";
+import {resourceLibraryCopy} from '../lib/resource-library';
 
 interface Props { locale?: Locale }
 const locale = Astro.props.locale ?? defaultLocale;
@@ -19,6 +20,7 @@ const localeNames: Record<Locale, string> = { en: "English", fi: "Suomi", fr: "F
       <span aria-hidden="true"></span>
     </button>
     <div class="site-navigation__links" id="site-navigation-links">
+      <a href={`${prefix}/resources`}>{resourceLibraryCopy[locale].nav}</a>
       <a href="/presentations" lang="en">Presentations</a>
       <a href={`${prefix}/partners`}>{labels["nav.partners"]}</a>
       <a href={`${prefix}/faq`}>FAQ</a>

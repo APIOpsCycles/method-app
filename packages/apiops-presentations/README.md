@@ -101,3 +101,14 @@ The case study is anonymous; engagement credit belongs to APIsFirst with partner
 The initial source references method-data 4.2.1 and create-apiops 1.1.4, reviewed on 3 November 2026. `assets/visual-prompt.txt` and slide notes describe conceptual generated images. Review technical commands against the versions used for a later release.
 
 References: https://apiopscycles.com/ · https://typst.app/docs/ · https://gitbrent.github.io/PptxGenJS/
+
+## A5 capabilities booklet
+
+The 12-page **Turning ideas into reusable capabilities** booklet uses the existing
+framework with a dedicated A5 layout, editable text and embedded PNGs in PowerPoint.
+Current filenames use `apiops-cycles-capabilities-booklet-a5` without draft numbers
+or an event name. Final PowerPoint, reading PDF, print PDF (3mm bleed), reading HTML
+and production notes are staged in `public/booklets/`.
+
+Build from the repo root: `npm run build:booklet --workspace @apiops/presentations -- --stage`.
+See [booklet source, build and production notes](specifications/capabilities-booklet.md).

@@ -1,0 +1,38 @@
+{
+  "id": "capabilities-booklet-07",
+  "title": "One method.\nMany ways to use it.",
+  "elements": [
+    {
+      "id": "people",
+      "type": "text",
+      "text": "Work with people"
+    },
+    {
+      "id": "people-use",
+      "type": "text",
+      "text": "Use visual canvases and workshops to make decisions together."
+    },
+    {
+      "id": "assistants",
+      "type": "text",
+      "text": "Work with AI"
+    },
+    {
+      "id": "assistants-use",
+      "type": "text",
+      "text": "Give AI assistants structured method knowledge and reusable tools."
+    },
+    {
+      "id": "build",
+      "type": "text",
+      "text": "Build with the method"
+    },
+    {
+      "id": "build-use",
+      "type": "text",
+      "text": "Use open data and code to bring the method into your own workflows."
+    }
+  ],
+  "notes": "APIOps Cycles / Osaango Ltd. Method content CC-BY-SA 4.0. Original artwork retained from the supplied Pariisi-Messuvihko.pptx. Feature coverage follows the user-supplied method features screenshot and apps/site/src/content/features.ts. Visual canvas workspaces export JSON; /data provides catalog, canvas manifest, method graph and prompt packs. The installed canonical apiops-cycles-method-data 4.2.1 package exports method-engine and method-cli. Its README documents npm create apiops@latest; CLI help supports start, resources and generate-canvases. AI context is an integration input, not a claim that a live MCP service or autonomous execution is included. Sources: apps/site/src/pages/features/ai-ready-method.astro, open-json-data.astro, DataContent.astro and node_modules/apiops-cycles-method-data/README.md.",
+  "footer": "apiopscycles.com/data"
+}

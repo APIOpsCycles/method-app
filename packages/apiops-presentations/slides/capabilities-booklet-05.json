@@ -1,0 +1,24 @@
+{
+  "id": "capabilities-booklet-05",
+  "title": "AI-assisted\nautomation",
+  "elements": [
+    {
+      "id": "question",
+      "type": "text",
+      "text": "AI can assist a task. Its authority, evidence and fallback need deliberate design."
+    },
+    {
+      "id": "ai-scene",
+      "type": "image",
+      "asset": "intro-ai-build.png",
+      "alt": "People review AI-assisted work against a specification and explicit checks.",
+      "fit": "contain"
+    },
+    {
+      "id": "method",
+      "type": "text",
+      "text": "The Automation Cycle helps you decide what to automate, when AI is useful, and where human review belongs."
+    }
+  ],
+  "notes": "APIOps Cycles / Osaango Ltd. Method content CC-BY-SA 4.0. Original artwork retained from the supplied Pariisi-Messuvihko.pptx. Grounded in the Automation Cycle opportunity, architecture, workflow, readiness and monitoring stations. AI is an implementation option, selected alongside deterministic approaches, with explicit authority, evidence, fallback and review. Existing repository illustration intro-ai-build.png is reused."
+}

@@ -1,0 +1,39 @@
+{
+  "id": "capabilities-booklet-06",
+  "title": "Contextual\nnavigation",
+  "elements": [
+    {
+      "id": "intro",
+      "type": "text",
+      "text": "Choose your role and goal. The method highlights relevant stations and tools."
+    },
+    {
+      "id": "context-controls",
+      "type": "image",
+      "asset": "capabilities-booklet-context-navigation.png",
+      "alt": "Real Who and Why controls: Capability Owner selected as the role, and Define or improve a reusable capability selected as the goal.",
+      "fit": "contain"
+    },
+    {
+      "id": "capability",
+      "type": "text",
+      "text": "Capability: shape a reusable capability."
+    },
+    {
+      "id": "api",
+      "type": "text",
+      "text": "API: design and productize an API."
+    },
+    {
+      "id": "integration",
+      "type": "text",
+      "text": "Integration: develop reusable integrations."
+    },
+    {
+      "id": "automation",
+      "type": "text",
+      "text": "Automation: improve workflows and tasks."
+    }
+  ],
+  "notes": "APIOps Cycles / Osaango Ltd. Method content CC-BY-SA 4.0. Original artwork retained from the supplied Pariisi-Messuvihko.pptx. Merges former pages 6 and 7. The supplied context navigation screenshot is the reference. The real responsive website editor is captured without redrawing the controls; Who and Why are stacked for readable A6 placement. Role and goal resolve relevant method context; the route is guidance rather than a compulsory sequence. Cycle purpose summaries follow generated method data. Source: apps/site/src/components/islands/MethodContextStrip.tsx and resolve-method-context.ts."
+}
