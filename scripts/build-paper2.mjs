@@ -21,6 +21,9 @@ const inputs = new Map([
   ['/supplier-payments-metro.svg', [path.join(path.dirname(source), 'supplier-payments-metro.svg'), 'image/svg+xml']],
   ['/assets/apiops-cycles-logo.png', [path.join(root, 'packages/apiops-presentations/assets/apiops-cycles-logo.png'), 'image/png']]
 ]);
+for (const name of ['paper2-finding-to-practice', 'paper2-payment-decision-board', 'supplier-payments-costs-benefits']) {
+  inputs.set('/' + name + '.svg', [path.join(path.dirname(source), name + '.svg'), 'image/svg+xml']);
+}
 const server = createServer(async (req, res) => {
   const input = inputs.get(req.url);
   if (!input) { res.writeHead(404).end(); return; }

@@ -1,5 +1,6 @@
 ---
 import partners from "../../../../../generated/method/partners.json";
+import ParisCommunityNotice from "../ParisCommunityNotice.astro";
 import { whitepapers, companion, resourceBundle, downloadSize } from "../../content/whitepapers";
 const practitioners = partners.items.filter(partner => partner.title !== "You?");
 const join = partners.items.find(partner => partner.title === "You?");
@@ -14,6 +15,7 @@ const join = partners.items.find(partner => partner.title === "You?");
     </div>
     <figure class="hero-illustration"><img src="/whitepapers/api-capability.svg" alt="APIOps Cycles figures connecting an API to a useful capability." width="520" height="310" /><figcaption>APIOps Cycles / Osaango Ltd · CC-BY-SA 4.0</figcaption></figure>
   </section>
+  <ParisCommunityNotice />
   <section class="public-section" id="whitepapers" aria-labelledby="whitepaper-title">
     <div class="section-intro"><p class="public-kicker">Read, share, apply</p><h2 id="whitepaper-title">From recognising the problem<br />to improving the capability.</h2><p>Two complementary whitepapers by Marjukka Niinioja. Start with the experience, then explore the organisational work behind sustainable quality. Freely available, with no sign-up.</p></div>
     <div class="whitepaper-grid">

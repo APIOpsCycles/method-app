@@ -26,6 +26,10 @@ This rebuilds and replaces **only** Paper 2's public PDF, cover preview and mani
 
 The existing `whitepapers:stage` command imports the complete separate authoring kit and can overwrite Paper 2 with an older edition. When using that workflow, first reconcile this revised source with that kit; otherwise run the Paper 2 build/stage command last and review the resulting edition. Paper 1 and the supporting pack remain sourced from their existing kit.
 
+## Added visuals, 24 November 2026
+
+Three editable SVGs supplement the metro map: the finding-to-practice overview (page 1), a native API Business Model Canvas costs/benefits excerpt (page 5), and the worked payment decision board (page 7). Each replaces overlapping prose so the eleven-page structure and body typography remain. The decision board is an editorial aid, not a canonical method canvas; the native excerpt retains APIOps Cycles, Osaango Ltd and Alexander Osterwalder attribution. All benefits and payment behaviour remain proposed. The build serves these local SVGs and checks their presence before exporting.
+
 ## Editorial review
 
 Check that the paper answers why problems recur, distinguishes assessment from improvement, and connects consumer consequences with ownership and investment before explaining the method. The metro map marks a selected practice rather than passed criteria. Strategy and architecture dependencies remain explicit. Replay handling is a proposed server-enforced design; the example makes no implementation, executed-test or measured-benefit claims.

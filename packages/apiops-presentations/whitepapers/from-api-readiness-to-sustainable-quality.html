@@ -18,7 +18,7 @@
 <p>A small-business owner submits a supplier payment through a partner portal. The response is lost. The portal cannot tell whether the payment was accepted, and the owner cannot tell whether the supplier will be paid. Trying again might initiate another payment. Waiting might leave the invoice unpaid.</p>
 <p>The API has documentation. Its team has followed technical standards. A previous review even raised a question about retry guidance. Yet the partner developer, payment-platform team and operations staff must now reconstruct what happened. Each has part of the answer; no one has agreed the whole recovery experience.</p>
 <p>This fictional Supplier Payments API illustrates a recurring organisational problem. An API is a connection through which one application uses another service’s capabilities. Its quality depends on what consumers need to accomplish and on the people, decisions and systems behind that connection. Correct interfaces and clear documentation matter, but neither alone makes a payment recoverable.</p>
-<aside><h3>Fix the defect. Improve the capability that produced it.</h3><p>A corrected guide may close a finding. A shared recovery model, named owners and tests that survive the next change help prevent the same uncertainty from returning.</p></aside>
+<figure class="diagram paper2-visual overview"><img src="paper2-finding-to-practice.svg" alt="A recovery finding leads to an owned decision, consumer impact review in design and reusable decisions and replay tests. On the next change, check assumptions and revisit gaps."><figcaption>Fix the defect and improve the practice that produced it. Illustrative payment example; CC-BY-SA 4.0.</figcaption></figure>
 <h3>Who this paper is for—and what you will learn</h3>
 <p>For API leaders, product owners, architects, governance and platform teams whose quality findings keep returning. Learn how to choose useful evidence, uncover the decisions behind recurring problems, and establish a practice that survives the next API change. The payment example shows how Kin’s Score, API Audit and APIOps Cycles can contribute, and how to start with focused work while addressing strategy and architecture dependencies.</p>
 <p class="small">The organisational capability perspective. Paper 1, <em>What Your AI Depends On</em>, explores the consumer experience perspective. Each paper stands alone; together they connect consumer needs with the capability to meet them over time.</p>
@@ -93,12 +93,11 @@
 <tbody>
 <tr><th>Consumers and value</th><td>Partners use the same defined payment and recovery model.</td><td>Each portal depends on its team’s local recovery knowledge.</td></tr>
 <tr><th>Ownership and resources</th><td>Named owners maintain test access, guidance and a support route.</td><td>Experts explain unwritten rules; operations investigates unclear outcomes.</td></tr>
-<tr><th>Activities and costs</th><td>Provider and consumer teams fund shared review, tests and upkeep.</td><td>Each integration funds its own workaround.</td></tr>
 <tr><th>Benefits to validate</th><td>Test whether shared support reduces recovery rework and helps reuse.</td><td>Check how much repeated investigation and adaptation each partner needs.</td></tr>
 </tbody>
 </table>
-<p>The proposed shared model requires commitments from business, platform, partner and operations owners. Decide whether its intended benefits justify the implementation and upkeep.</p>
-<aside><h3>Two investments need examination</h3><p>The technical change aims to prevent repeated instructions during recovery. The practice change aims to reveal consumer risks earlier and retain reusable evidence. Compare both intended benefits with implementation, review and maintenance effort.</p></aside>
+<p>Business, platform, partner and operations owners must fund both the technical change and the review practice. Compare intended benefits with implementation and upkeep.</p>
+<figure class="diagram paper2-visual canvas-excerpt"><img src="supplier-payments-costs-benefits.svg" alt="API Business Model Canvas excerpt. Costs: API upkeep, task review, guide upkeep and replay tests. Intended benefits: API reuse, less rework and a known result. Benefits remain to be validated."><figcaption>Continuing costs and intended benefits. API Business Model Canvas excerpt; APIOps Cycles / Osaango Ltd; Alexander Osterwalder. CC-BY-SA 4.0. [5]</figcaption></figure>
 <p class="small">The full poor and stronger intended business-model canvases are in supporting pack S1–S2. They illustrate a decision; they establish no measured savings.</p>
 </main><footer><span>APIOps Cycles · 17 November 2026</span><span>05</span></footer>
 </article>
@@ -128,9 +127,8 @@
 <h3>Agree what must be true before writing the solution</h3>
 <p>The group distinguishes an instruction being accepted from a payment being processed or settled. It agrees that recovery must refer to the original operation, with states that applications and support can interpret consistently. Pending or uncertain processing cannot be presented as a completed payment.</p>
 <p>The API owner is accountable for the submission and recovery contract. The partner-guide owner documents the same model and examples. Operations owns the investigation and escalation route. Partner developers check that the portal retains the operation identity and explains its current state.</p>
-<aside><h3>A bounded decision</h3><p>Trial server-enforced replay protection and clear recovery states in a test environment. Use that trial to establish joint consumer review before implementation, with decisions and evidence retained for the next change.</p></aside>
-<p>The team checks platform support, downstream behaviour, access boundaries and the resources needed for testing. Business and architecture owners identify what must be resolved for the trial, what remains open and what would require wider work. If the platform cannot preserve the promised behaviour, the scope must change before proceeding.</p>
-<p>This is how the technical and organisational changes connect. The proposed API behaviour addresses today’s recovery risk. The review practice changes how teams find and decide such issues. The next page sets out what the trial would need to implement and verify.</p>
+<figure class="diagram paper2-visual decision-board"><img src="paper2-payment-decision-board.svg" alt="Worked payment pilot decision board: confirm the consumer consequence, connect lifecycle work, choose an owned test-environment intervention and retain evidence with business and architecture dependencies."><figcaption>Worked decision board, not a canonical method canvas or assessment result. Fictional trial; CC-BY-SA 4.0.</figcaption></figure>
+<p>Platform support, downstream behaviour and access boundaries must support the promise. If they cannot, change the scope before proceeding. The next page sets out what to implement and verify.</p>
 </main><footer><span>APIOps Cycles · 17 November 2026</span><span>07</span></footer>
 </article>
 

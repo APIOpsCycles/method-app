@@ -86,3 +86,9 @@ footer span:last-child { color: var(--heading); font-weight: 600; }
 .page.paper2 .small { font-size: 8.5pt; }
 .page.paper2 table { font-size: 9.3pt; margin: 4mm 0; }
 .page.paper2 th, .page.paper2 td { padding: 2.2mm; }
+
+/* Editorial visuals added without changing the page grid or body type. */
+.page.paper2 .paper2-visual { margin: 3mm 0; }
+.page.paper2 .overview img { max-height: 37mm; }
+.page.paper2 .canvas-excerpt img { max-height: 46mm; }
+.page.paper2 .decision-board img { max-height: 68mm; }
