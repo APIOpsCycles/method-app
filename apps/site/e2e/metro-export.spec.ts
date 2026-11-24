@@ -1,5 +1,6 @@
 import {expect,test} from '@playwright/test';
 import fs from 'node:fs/promises';
+import sharp from 'sharp';
 test.use({launchOptions:process.env.APIOPS_TEST_BROWSER?{executablePath:process.env.APIOPS_TEST_BROWSER}:undefined});
 
 for(const variant of [
@@ -43,11 +44,31 @@ for(const variant of [
     const root=document.documentElement;
     return {width:root.getAttribute('width'),height:root.getAttribute('height'),viewBox:root.getAttribute('viewBox'),errors:document.querySelectorAll('parsererror').length,paths:document.querySelectorAll('path').length,texts:document.querySelectorAll('text').length,labels:Array.from(document.querySelectorAll('text')).map(t=>t.textContent).join(' '),supportSizes:Array.from(document.querySelectorAll('text')).filter(t=>t.querySelector('tspan')).map(t=>t.getAttribute('font-size')),externalImages:document.querySelectorAll('image,foreignObject').length};
   },svg);
-  expect(result).toMatchObject({width:'16384',height:'16384',viewBox:'0 0 1000 1000',errors:0,externalImages:0});
+  expect(result).toMatchObject({width:'4096',height:'4096',viewBox:'0 0 1000 1000',errors:0,externalImages:0});
   expect(result.paths).toBeGreaterThan(0);
   expect(result.texts).toBeGreaterThan(20);
   expect(new Set(result.supportSizes)).toEqual(new Set(['14px']));
   expect(svg).not.toMatch(/var\(|currentColor/);
   if(variant.station)expect(result.labels).toContain(variant.station);
+  // Parse/count checks alone can pass for an SVG that imports as a blank image.
+  // Exercise a real raster importer at its default safety limit, then inspect
+  // painted pixels independently of the live SVG DOM.
+  const metadata=await sharp(Buffer.from(svg)).metadata();
+  expect([metadata.width,metadata.height]).toEqual([4096,4096]);
+  const {data}=await sharp(Buffer.from(svg)).resize(512,512).ensureAlpha().raw().toBuffer({resolveWithObject:true});
+  let painted=0;
+  for(let i=0;i<data.length;i+=4)if(data[i+3]>0 && data[i]+data[i+1]+data[i+2]<740)painted++;
+  expect(painted).toBeGreaterThan(512*512*.2);
+  const browserPaint=await page.evaluate(async source=>{
+    const image=new Image();
+    image.src='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(source);
+    await image.decode();
+    const canvas=document.createElement('canvas');canvas.width=canvas.height=512;
+    const context=canvas.getContext('2d')!;context.drawImage(image,0,0,512,512);
+    const pixels=context.getImageData(0,0,512,512).data;
+    let count=0;for(let i=0;i<pixels.length;i+=4)if(pixels[i+3]>0&&pixels[i]+pixels[i+1]+pixels[i+2]<740)count++;
+    return count;
+  },svg);
+  expect(browserPaint).toBeGreaterThan(512*512*.2);
   expect(await page.locator('svg.metro-map').evaluate(e=>e.outerHTML)).toBe(before);
 });

@@ -3,6 +3,8 @@
 .presentation-card__preview { display:block; border:1px solid var(--panel-border); background:white; }
 .presentation-card__preview img,.presentation-cover img { display:block; width:100%; height:auto; }
 .presentation-card__body { padding:20px 0 24px; display:flex; flex:1; flex-direction:column; gap:12px; }
+.presentation-card--booklet .presentation-card__preview img { aspect-ratio:16/9; object-fit:contain; }
+.booklet-cover { max-width:25rem; }
 .presentation-card__body h2 { font-size:1.5rem; margin:0; line-height:1.22; }
 .presentation-card__body h2 a { text-decoration:none; }
 .presentation-card__body p { margin:0; line-height:1.6; }

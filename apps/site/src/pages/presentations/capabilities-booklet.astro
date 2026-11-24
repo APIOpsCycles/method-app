@@ -1,0 +1,21 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import {capabilitiesBooklet as booklet} from '../../content/booklets';
+import '../../styles/presentations.css';
+---
+<BaseLayout title={booklet.title} description={booklet.description} canonicalPath={booklet.path} lang="en">
+  <main class="public-content presentation-library">
+    <nav class="public-breadcrumbs" aria-label="Breadcrumb"><a href="/">APIOps Cycles</a><span aria-hidden="true">/</span><a href="/presentations">Presentations</a><span aria-hidden="true">/</span><span>Capabilities booklet</span></nav>
+    <section class="public-hero"><p class="public-kicker">A5 booklet · 12 pages · English</p><h1>{booklet.title}</h1><p>{booklet.description}</p>
+      <div class="presentation-actions">
+        <a class="presentation-button" href={booklet.reading}>Read booklet online</a>
+        <a class="presentation-button presentation-button--secondary" href={booklet.pdf} download>Download PDF</a>
+        <a class="presentation-button presentation-button--secondary" href={booklet.powerpoint} download>Download PowerPoint</a>
+      </div>
+    </section>
+    <section class="presentation-adapt-grid public-section" aria-label="About the booklet">
+      <a class="presentation-cover booklet-cover" href={booklet.reading}><img src={booklet.cover} alt="Cover of Turning ideas into reusable capabilities" width="1119" height="1588" /></a>
+      <div><h2>A shared map for your next conversation</h2><p>Explore the four cycles, choose a role and goal, try a Customer Journey Canvas and start with the question your team needs to resolve.</p><p>The booklet also introduces ways to work with AI and open method data, the APIOps Community, and partners who can help you map your path.</p><h2>Print the booklet</h2><p>The finished size is A5 (148 × 210 mm). The print PDF includes 3 mm bleed and all 12 pages in reading order.</p><div class="presentation-actions"><a class="presentation-button presentation-button--secondary" href={booklet.print} download>Download print PDF</a></div><p><a href={booklet.production}>Production notes for your printer</a></p><p>Method content: <a href="/licensing">CC BY-SA 4.0</a>.</p></div>
+    </section>
+  </main>
+</BaseLayout>

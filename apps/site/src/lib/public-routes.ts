@@ -34,6 +34,7 @@ export function publicRouteInventory(): PublicRoute[] {
     { kind: "designSystem", locale: defaultLocale, path: "/design-system/visuals" },
     { kind: "presentation", locale: defaultLocale, path: "/presentations" },
     { kind: "presentation", locale: defaultLocale, path: "/presentations/developers" },
+    { kind: "presentation", locale: defaultLocale, path: "/presentations/capabilities-booklet" },
     ...presentationCatalog.editions.flatMap(edition => [
       { kind: "presentation" as const, locale: defaultLocale, path: `/presentations/${edition.id}` },
       { kind: "presentation" as const, locale: defaultLocale, path: `/presentations/${edition.id}/view` },

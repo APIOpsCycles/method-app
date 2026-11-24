@@ -25,6 +25,7 @@ if(stage){
  await fs.mkdir(destination,{recursive:true});
  for(const suffix of ['.pptx','.pdf','-print.pdf','-reading.html','-production-notes.txt'])
   await fs.copyFile(path.join(ROOT,'output',name+suffix),path.join(destination,name+suffix));
+ await fs.copyFile(path.join(ROOT,'output',name+'-previews/page-01.png'),path.join(destination,name+'-cover.png'));
  console.log(`Staged final deliverables in ${destination}`);
 }
 console.log(`Booklet ready in ${path.join(ROOT,'output',name)}.*`);

@@ -546,16 +546,20 @@ export default function MetroMapIsland({ locale, labels, cycles, lines, stations
     const activeColor = inlineMetroMapExportColors(clone, colors[cycleId] ?? "#164e63");
     sanitizeMetroMapExportSvg(clone);
     clone.insertAdjacentHTML("afterbegin", `<style>${metroMapSvgStyles(activeColor)}</style>`);
-    // Keep vector geometry for arbitrary print sizes. A 16K intrinsic long edge
-    // also gives importers a larger fallback if they rasterize the SVG.
-    // Changing only these dimensions leaves the interactive map/viewBox intact.
+    // SVG remains scalable at any print size. Keep its intrinsic size below
+    // common raster importer limits: 16K square exceeds 268 million pixels
+    // and can produce blank previews/imports despite valid vector geometry.
     const viewBox = svgRef.current.viewBox.baseVal;
-    const scale = 16_384 / Math.max(viewBox.width, viewBox.height);
+    const scale = 4096 / Math.max(viewBox.width, viewBox.height);
     clone.setAttribute("width", String(Math.round(viewBox.width * scale)));
     clone.setAttribute("height", String(Math.round(viewBox.height * scale)));
     clone.setAttribute("xmlns", "http://www.w3.org/2000/svg");
     const url = URL.createObjectURL(new Blob([makeCanvaSafeSvg(new XMLSerializer().serializeToString(clone))], { type: "image/svg+xml" }));
-    const link = document.createElement("a"); link.href = url; link.download = `apiops-metro-${locale}.svg`; link.click(); URL.revokeObjectURL(url);
+    const link = document.createElement("a");
+    link.href = url; link.download = `apiops-metro-${locale}.svg`;
+    document.body.append(link); link.click(); link.remove();
+    // Let browsers finish consuming the download before releasing its bytes.
+    window.setTimeout(() => URL.revokeObjectURL(url), 60_000);
   }
   const prefix = locale === "en" ? "" : `/${locale}`;
   const navigate = (path: string) => window.location.assign(`${prefix}${path}`);

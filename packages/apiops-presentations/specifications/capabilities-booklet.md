@@ -63,7 +63,7 @@ matching descriptive filenames.
 ## Map and website
 
 The site export supplies native paths and text, with an inline vector logo and a
-16,384-pixel intrinsic long edge. Its substation labels are 27% larger, with full
+4,096-pixel intrinsic long edge. Its substation labels are 27% larger, with full
 names wrapped and spaced for all five site languages. The presentation helper
 downloads through the same Export SVG button and makes a separate raster fallback:
 
@@ -93,3 +93,8 @@ roughly 35.2mm QR decodes at 100, 150 and 300 dpi.
 This is RGB artwork, not a certified PDF/X file. Printer-specific colour conversion,
 imposition and a physical proof remain part of production handoff. A detailed
 handoff accompanies the print PDF.
+
+The booklet is listed in the presentations library with a dedicated
+`/presentations/capabilities-booklet` page, an A5 cover preview and direct links
+to reading HTML, PowerPoint and both PDF variants. Booklet publications are
+independent of the immutable reviewed slide-release manifest.

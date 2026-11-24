@@ -1,0 +1,13 @@
+---
+import {capabilitiesBooklet as booklet} from '../../content/booklets';
+---
+<article class="presentation-card presentation-card--booklet">
+  <a class="presentation-card__preview" href={booklet.path} tabindex="-1" aria-hidden="true"><img src={booklet.cover} alt="" width="1119" height="1588" loading="lazy" /></a>
+  <div class="presentation-card__body">
+    <p class="presentation-meta">A5 booklet · 12 pages · English</p>
+    <h2><a href={booklet.path}>{booklet.title}</a></h2>
+    <p>{booklet.description}</p>
+    <p class="presentation-audience"><strong>For:</strong> People exploring the method, workshop participants and event visitors</p>
+    <a class="presentation-text-link" href={booklet.path}>Read and download <span aria-hidden="true">→</span></a>
+  </div>
+</article>

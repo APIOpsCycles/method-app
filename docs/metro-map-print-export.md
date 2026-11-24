@@ -2,7 +2,7 @@
 
 The website's existing Export SVG button keeps the actual paths, text and inline
 vector logo, with explicit colours and no external image dependencies. Its
-intrinsic long edge is now 16,384 pixels, while the geometric viewBox stays
+intrinsic long edge is 4,096 pixels, while the geometric viewBox stays
 unchanged. The live on-screen map is not enlarged or mutated during export.
 
 Substation lettering is now 14 viewBox units rather than 11 (27% larger), with
@@ -18,8 +18,8 @@ dimensions alone cannot increase text size relative to the map.
 
 Use the SVG for rollups, posters and other large-format layouts. It is scalable
 vector artwork; the intrinsic pixel dimensions are an import hint, not a fixed
-resolution limit. A large default helps applications that rasterize an imported
-SVG. Their own import limits can still affect the raster they produce. Text
+resolution limit. The 4K intrinsic size avoids the raster-import limit exceeded by the previous
+16K-square hint. The artwork remains vector at any physical print size. Text
 remains text using the declared Arial/sans-serif fonts, so the print workflow
 should retain those fonts or outline them in its final production file.
 
@@ -38,7 +38,7 @@ Very large PNGs require more memory; use the SVG when the layout application
 supports it. Colour conversion and bleed belong to the final rollup/poster layout.
 
 Regression checks exercise every English cycle and all five site languages, parse the
-downloaded XML, check 16K dimensions and the original viewBox, confirm native
+downloaded XML, check 4K dimensions and the original viewBox, confirm native
 paths/text with no bitmap images, and check the larger exported label sizes.
 They also check that substation names remain complete, do not overlap other
 labels or fall outside the circular crop, and that exporting leaves the live map
